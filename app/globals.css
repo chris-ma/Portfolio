@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design tokens ─────────────────────────────────────────────────────────── */
+:root {
+  --brand-black:         #0A0A0A;
+  --brand-white:         #F5F4F0;
+  --brand-cobalt:        #2563EB;
+  --brand-cobalt-light:  #60A5FA;
+  --brand-graphite:      #1C1C1C;
+  --brand-concrete:      #3A3A3A;
+  --brand-muted:         #6B6B6B;
+
+  --dur-fast:      150ms;
+  --dur-base:      300ms;
+  --dur-slow:      600ms;
+  --dur-cinematic: 1000ms;
+  --ease-expo: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Base ───────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--brand-black);
+  color: var(--brand-white);
+}
+
+body {
+  background-color: var(--brand-black);
+  color: var(--brand-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--brand-cobalt);
+  color: var(--brand-white);
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--brand-black); }
+::-webkit-scrollbar-thumb { background: var(--brand-concrete); }
+::-webkit-scrollbar-thumb:hover { background: var(--brand-cobalt); }
+
+/* ── Grain texture (SVG noise via data-URI) ─────────────────────────────────── */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* ── Blob keyframes (CSS fallback) ──────────────────────────────────────────── */
+@keyframes blob-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(40px, -30px) scale(1.1); }
+  66%       { transform: translate(-20px, 20px) scale(0.95); }
+}
+@keyframes blob-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(-50px, 30px) scale(1.05); }
+  66%       { transform: translate(30px, -40px) scale(1.1); }
+}
+
+/* ── Section spacing ─────────────────────────────────────────────────────────── */
+.section-padding {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+/* ── No scrollbar utility ────────────────────────────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Clip overflow for text reveal animations ────────────────────────────────── */
+.clip-text-reveal {
+  overflow: hidden;
+  display: inline-block;
+}
