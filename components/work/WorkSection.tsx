@@ -39,7 +39,7 @@ const projects = [
 
 export default function WorkSection() {
   return (
-    <section id="work" className="section-padding px-6 md:px-10 lg:px-16 bg-brand-black">
+    <section id="work" className="section-padding px-6 md:px-10 lg:px-16 bg-brand-white">
       {/* Header */}
       <motion.div
         className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16"
@@ -54,7 +54,7 @@ export default function WorkSection() {
           </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="font-display text-[clamp(3rem,8vw,7rem)] leading-none text-brand-white"
+            className="font-display text-[clamp(3rem,8vw,7rem)] leading-none text-brand-black"
           >
             SELECTED
             <br />
@@ -83,7 +83,7 @@ export default function WorkSection() {
 
       {/* Footer link */}
       <motion.div
-        className="mt-16 pt-8 border-t border-brand-concrete/30 flex justify-between items-center"
+        className="mt-16 pt-8 border-t border-brand-concrete flex justify-between items-center"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}

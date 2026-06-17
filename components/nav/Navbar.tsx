@@ -21,12 +21,12 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      className="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 lg:px-16 flex items-center justify-between border-b border-brand-concrete/20 backdrop-blur-sm bg-brand-black/80"
+      className="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 lg:px-16 flex items-center justify-between border-b border-brand-concrete/60 backdrop-blur-sm bg-brand-white/95"
       animate={{ paddingTop: scrolled ? '0.75rem' : '1.5rem', paddingBottom: scrolled ? '0.75rem' : '1.5rem' }}
       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
     >
       {/* Monogram */}
-      <a href="#" className="font-display text-2xl text-brand-white tracking-tight hover:text-brand-cobalt transition-colors duration-300">
+      <a href="#" className="font-display text-2xl text-brand-black tracking-tight hover:text-brand-cobalt transition-colors duration-300">
         CM
       </a>
 
@@ -36,7 +36,7 @@ export default function Navbar() {
           <a
             key={link.label}
             href={link.href}
-            className="font-sans text-xs tracking-[0.18em] uppercase text-brand-muted hover:text-brand-white transition-colors duration-300 relative group"
+            className="font-sans text-xs tracking-[0.18em] uppercase text-brand-muted hover:text-brand-black transition-colors duration-300 relative group"
           >
             {link.label}
             <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-brand-cobalt group-hover:w-full transition-all duration-300 ease-out" />
@@ -57,17 +57,17 @@ export default function Navbar() {
         aria-label="Toggle menu"
       >
         <motion.span
-          className="block w-6 h-px bg-brand-white"
+          className="block w-6 h-px bg-brand-black"
           animate={{ rotate: menuOpen ? 45 : 0, y: menuOpen ? 6 : 0 }}
           transition={{ duration: 0.25 }}
         />
         <motion.span
-          className="block w-6 h-px bg-brand-white"
+          className="block w-6 h-px bg-brand-black"
           animate={{ opacity: menuOpen ? 0 : 1 }}
           transition={{ duration: 0.2 }}
         />
         <motion.span
-          className="block w-6 h-px bg-brand-white"
+          className="block w-6 h-px bg-brand-black"
           animate={{ rotate: menuOpen ? -45 : 0, y: menuOpen ? -6 : 0 }}
           transition={{ duration: 0.25 }}
         />
@@ -75,7 +75,7 @@ export default function Navbar() {
 
       {/* Mobile drawer */}
       <motion.div
-        className="md:hidden absolute top-full left-0 right-0 bg-brand-graphite border-b border-brand-concrete/30 overflow-hidden"
+        className="md:hidden absolute top-full left-0 right-0 bg-brand-graphite border-b border-brand-concrete/60 overflow-hidden"
         initial={{ height: 0 }}
         animate={{ height: menuOpen ? 'auto' : 0 }}
         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
@@ -85,7 +85,7 @@ export default function Navbar() {
             <a
               key={link.label}
               href={link.href}
-              className="font-display text-4xl text-brand-white hover:text-brand-cobalt transition-colors duration-300"
+              className="font-display text-4xl text-brand-black hover:text-brand-cobalt transition-colors duration-300"
               onClick={() => setMenuOpen(false)}
             >
               {link.label}

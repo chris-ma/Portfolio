@@ -33,7 +33,7 @@ const domains = [
 
 export default function ExpertiseSection() {
   return (
-    <section id="expertise" className="section-padding bg-brand-black">
+    <section id="expertise" className="section-padding bg-brand-white">
       {/* Header */}
       <div className="px-6 md:px-10 lg:px-16 mb-16">
         <motion.div
@@ -47,7 +47,7 @@ export default function ExpertiseSection() {
           </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="font-display text-[clamp(3rem,8vw,7rem)] leading-none text-brand-white"
+            className="font-display text-[clamp(3rem,8vw,7rem)] leading-none text-brand-black"
           >
             WHAT I DO
           </motion.h2>
@@ -55,11 +55,11 @@ export default function ExpertiseSection() {
       </div>
 
       {/* Domain grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-brand-concrete/20">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-brand-concrete/40">
         {domains.map((domain, i) => (
           <motion.div
             key={domain.index}
-            className="bg-brand-black px-8 py-10 group relative overflow-hidden"
+            className="bg-brand-white px-8 py-10 group relative overflow-hidden"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-5%' }}
@@ -67,17 +67,17 @@ export default function ExpertiseSection() {
             transition={{ delay: i * 0.08 }}
           >
             {/* Index number */}
-            <div className="font-display text-7xl text-brand-cobalt/15 leading-none mb-4 group-hover:text-brand-cobalt/25 transition-colors duration-500">
+            <div className="font-display text-7xl text-brand-cobalt/15 leading-none mb-4 group-hover:text-brand-cobalt/30 transition-colors duration-500">
               {domain.index}
             </div>
 
             {/* Title */}
-            <h3 className="font-display text-3xl text-brand-white mb-3 group-hover:text-brand-cobalt transition-colors duration-400">
+            <h3 className="font-display text-3xl text-brand-black mb-3 group-hover:text-brand-cobalt transition-colors duration-300">
               {domain.title}
             </h3>
 
             {/* Animated underline */}
-            <div className="relative h-px bg-brand-concrete/40 mb-6 overflow-hidden">
+            <div className="relative h-px bg-brand-concrete mb-6 overflow-hidden">
               <motion.div
                 className="absolute inset-y-0 left-0 bg-brand-cobalt"
                 style={{ originX: 0 }}
@@ -95,15 +95,12 @@ export default function ExpertiseSection() {
               {domain.tools.map((tool) => (
                 <span
                   key={tool}
-                  className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted border border-brand-concrete/50 px-2.5 py-1 group-hover:border-brand-cobalt/30 group-hover:text-brand-cobalt/70 transition-all duration-300"
+                  className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted border border-brand-concrete px-2.5 py-1 group-hover:border-brand-cobalt/40 group-hover:text-brand-cobalt transition-all duration-300"
                 >
                   {tool}
                 </span>
               ))}
             </div>
-
-            {/* Hover corner accent */}
-            <div className="absolute top-0 right-0 w-0 h-0 border-l-[0px] border-b-[0px] border-brand-cobalt group-hover:border-l-[40px] group-hover:border-b-[40px] transition-all duration-400 opacity-20" />
           </motion.div>
         ))}
       </div>

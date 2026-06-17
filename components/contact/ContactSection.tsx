@@ -5,16 +5,16 @@ import { fadeUp, staggerContainer } from '@/lib/motion'
 import SectionLabel from '@/components/ui/SectionLabel'
 
 const socials = [
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/chrisma' },
-  { label: 'GitHub', href: 'https://github.com/chris-ma' },
+  { label: 'LinkedIn',   href: 'https://linkedin.com/in/chrisma' },
+  { label: 'GitHub',     href: 'https://github.com/chris-ma' },
   { label: 'Twitter / X', href: 'https://twitter.com/chrisma' },
 ]
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="bg-brand-black">
+    <section id="contact" className="bg-brand-white">
       {/* Main contact block */}
-      <div className="section-padding px-6 md:px-10 lg:px-16 border-t border-brand-concrete/30">
+      <div className="section-padding px-6 md:px-10 lg:px-16 border-t border-brand-concrete">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -27,7 +27,7 @@ export default function ContactSection() {
 
           <motion.h2
             variants={fadeUp}
-            className="font-display text-[clamp(4rem,14vw,12rem)] leading-[0.9] text-brand-white mb-10"
+            className="font-display text-[clamp(4rem,14vw,12rem)] leading-[0.9] text-brand-black mb-10"
           >
             GET IN
             <br />
@@ -40,7 +40,7 @@ export default function ContactSection() {
           >
             <a
               href="mailto:hello@chrisma.co"
-              className="group font-sans text-base md:text-lg text-brand-white/70 hover:text-brand-cobalt transition-colors duration-300 flex items-center gap-3"
+              className="group font-sans text-base md:text-lg text-brand-black/70 hover:text-brand-cobalt transition-colors duration-300 flex items-center gap-3"
             >
               hello@chrisma.co
               <motion.span
@@ -51,7 +51,7 @@ export default function ContactSection() {
                 →
               </motion.span>
             </a>
-            <span className="hidden md:block w-px h-8 bg-brand-concrete/40" />
+            <span className="hidden md:block w-px h-8 bg-brand-concrete" />
             <div className="flex items-center gap-6">
               {socials.map((social) => (
                 <a
@@ -59,7 +59,7 @@ export default function ContactSection() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-sans text-xs tracking-[0.18em] uppercase text-brand-muted hover:text-brand-white transition-colors duration-300"
+                  className="font-sans text-xs tracking-[0.18em] uppercase text-brand-muted hover:text-brand-black transition-colors duration-300"
                 >
                   {social.label}
                 </a>
@@ -71,14 +71,14 @@ export default function ContactSection() {
 
       {/* Footer strip */}
       <motion.div
-        className="px-6 md:px-10 lg:px-16 py-8 border-t border-brand-concrete/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+        className="px-6 md:px-10 lg:px-16 py-8 border-t border-brand-concrete flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
         <div className="flex items-center gap-6">
-          <span className="font-display text-xl text-brand-white">CM</span>
+          <span className="font-display text-xl text-brand-black">CM</span>
           <span className="font-sans text-xs tracking-[0.15em] uppercase text-brand-muted">
             Chris Ma · Creative Technologist
           </span>

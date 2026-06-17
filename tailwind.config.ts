@@ -11,11 +11,11 @@ const config: Config = {
       colors: {
         'brand-black':        '#0A0A0A',
         'brand-white':        '#F5F4F0',
-        'brand-cobalt':       '#2563EB',
-        'brand-cobalt-light': '#60A5FA',
-        'brand-graphite':     '#1C1C1C',
-        'brand-concrete':     '#3A3A3A',
-        'brand-muted':        '#6B6B6B',
+        'brand-cobalt':       '#1A4D3A',
+        'brand-cobalt-light': '#3D7A60',
+        'brand-graphite':     '#EDEAE4',
+        'brand-concrete':     '#C9C6BE',
+        'brand-muted':        '#7A7872',
       },
       fontFamily: {
         display: ['var(--font-bebas)', 'Impact', 'sans-serif'],
