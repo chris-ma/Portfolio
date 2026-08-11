@@ -10,6 +10,7 @@ import {
   MidjourneyParams, CameraMovesGrid, PromptFormulaDiagram, ToolComparisonSplit,
   TokenLeaderboard, VanityVsValue, CostPerTaskChart, ComplexityRouter,
   HermesMemoryTimeline, SkillFlywheel, GatewayHubSpoke, HermesVsClaudeComparison,
+  RLSStateDiagram, OWASPTopTenVisual, RLSPolicyDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface PageProps {
@@ -38,6 +39,10 @@ export default function ArticlePage({ params }: PageProps) {
     month: 'long',
     day: 'numeric',
   })
+
+  if (article.slug === 'app-security-rls-owasp') {
+    return <AppSecurityArticle article={article} formattedDate={formattedDate} />
+  }
 
   if (article.slug === 'agentic-ai-loops-workflows') {
     return <AgenticArticle article={article} formattedDate={formattedDate} />
@@ -72,6 +77,384 @@ export default function ArticlePage({ params }: PageProps) {
   }
 
   notFound()
+}
+
+function AppSecurityArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+
+        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+          THE<br />
+          <span className="text-brand-cobalt">OPEN</span><br />
+          DOOR.
+        </h1>
+
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+          {article!.subtitle}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 py-14 space-y-16">
+
+        {/* Lede */}
+        <section>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+            In January 2026, a startup called Moltbook shipped with their Supabase database wide open.
+            No breach, no sophisticated attack — anyone who copied the project URL from the browser
+            could make a raw HTTP request and read 1.5 million API keys. The app functioned perfectly.
+            Every manual test passed. The database was just sitting there.
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            This is not a story about bad developers. It is a story about a gap that AI-assisted tooling
+            creates by default: the gap between an app that <em>works</em> and an app that is <em>secured</em>.
+            Nothing in the demo experience tells you the difference.
+          </p>
+        </section>
+
+        {/* Section 1 — Why the demo lies */}
+        <section>
+          <SectionHeading number="01" title="Why the demo lies" />
+          <div className="space-y-4 mt-6">
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              Your Supabase anon key ships inside your JavaScript bundle. That is not a mistake — Supabase
+              designed it that way. The anon key is public by intent, meant to be visible in browser dev
+              tools. It is safe for exactly one reason: Row Level Security. With RLS correctly in place,
+              the anon key can only do what your policies allow. Without it, the anon key is a skeleton
+              key to your entire public schema.
+            </p>
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              An AI coding tool will generate a complete, working frontend against that open database.
+              Click through every screen. Create a user, load data, submit a form. It all functions.
+              Nothing in that experience surfaces the fact that the same data is readable by anyone on
+              the internet with a curl command. A 2025 analysis found that 10.3% of tested AI-scaffolded
+              apps exposed vulnerable Supabase endpoints due to missing or misconfigured RLS.
+            </p>
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              Functional correctness and access control are different concerns, and only one of them
+              shows up in a manual click-through. That gap is the central failure mode.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 2 — Three states */}
+        <section>
+          <SectionHeading number="02" title="The three states of a table" />
+          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-8">
+            RLS has three states, and confusing them is the most common mistake. Only one of the
+            three is actually safe.
+          </p>
+
+          <div className="border border-brand-concrete overflow-hidden mb-8">
+            <RLSStateDiagram />
+          </div>
+
+          <div className="border border-brand-concrete divide-y divide-brand-concrete">
+            <div className="flex gap-0">
+              <div className="w-44 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/40">
+                <span className="font-sans text-[10px] text-brand-muted block leading-snug tracking-[0.1em] uppercase">State</span>
+                <span className="font-sans font-semibold text-sm text-red-700 mt-0.5 block">RLS off</span>
+              </div>
+              <p className="font-sans text-sm text-brand-black/70 p-4 leading-relaxed">
+                The default on every new Supabase table. The table is fully public — anyone with your
+                anon key can read or write everything, with no authentication required. Your frontend
+                auth checks do not protect this; those run on the client you control, not on the database.
+              </p>
+            </div>
+            <div className="flex gap-0">
+              <div className="w-44 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/40">
+                <span className="font-sans text-[10px] text-brand-muted block leading-snug tracking-[0.1em] uppercase">State</span>
+                <span className="font-sans font-semibold text-sm text-amber-700 mt-0.5 block">RLS on, no policies</span>
+              </div>
+              <p className="font-sans text-sm text-brand-black/70 p-4 leading-relaxed">
+                The opposite failure. The table is fully locked — including from your own app. Every
+                query returns zero rows, every write is rejected. Your app looks broken, not insecure.
+                This is actually the safer failure mode to land in by accident, because it surfaces
+                immediately rather than silently.
+              </p>
+            </div>
+            <div className="flex gap-0">
+              <div className="w-44 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/40">
+                <span className="font-sans text-[10px] text-brand-muted block leading-snug tracking-[0.1em] uppercase">State</span>
+                <span className="font-sans font-semibold text-sm text-brand-cobalt mt-0.5 block">RLS on + policies</span>
+              </div>
+              <p className="font-sans text-sm text-brand-black/70 p-4 leading-relaxed">
+                Where you want to be. Access is scoped to what your policies explicitly permit — typically
+                the authenticated user's own data, or data their role grants them access to. This is the
+                only state that is actually secure.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 3 — OWASP Top 10 */}
+        <section>
+          <SectionHeading number="03" title="OWASP Top 10:2025, translated" />
+          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-8">
+            The OWASP Top 10 is the industry-consensus list of the most critical web application
+            security risks. The 2025 edition added two new categories that reflect how cloud-native,
+            AI-assisted apps actually break. The list matters, but not equally — for a solo builder
+            shipping on Supabase, two categories are doing most of the work.
+          </p>
+
+          <div className="border border-brand-concrete overflow-hidden mb-8">
+            <OWASPTopTenVisual />
+          </div>
+
+          <Callout label="The two that actually matter">
+            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              <strong className="text-brand-black">A01 (Broken Access Control)</strong> and{' '}
+              <strong className="text-brand-black">A02 (Security Misconfiguration)</strong> account for
+              the overwhelming majority of real incidents in small, fast-shipped apps. A01 is the
+              category that missing or misconfigured RLS falls into — it has been the number-one risk
+              on the OWASP list for four years running. A02 jumped from fifth to second in 2025,
+              driven by cloud platform defaults being left open. Every other category on this list is
+              real, but these two are where the actual incidents happen.
+            </p>
+          </Callout>
+        </section>
+
+        {/* Section 4 — Five fixes */}
+        <section>
+          <SectionHeading number="04" title="Five fixes, in order" />
+          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-10">
+            These are the highest-leverage moves, ordered by when to apply them.
+          </p>
+
+          {/* Fix 1 */}
+          <div className="border-l-2 border-brand-cobalt pl-6 mb-10">
+            <h3 className="font-sans font-semibold text-base text-brand-black mb-3">1. Audit what is open right now</h3>
+            <p className="font-sans text-sm text-brand-black/70 leading-relaxed mb-4">
+              Run this in the Supabase SQL editor on every project you own. It takes five minutes and
+              it is the check that would have caught every real-world incident cited in this article.
+            </p>
+            <CodeBlock>{`SELECT schemaname, tablename, rowsecurity
+FROM pg_tables
+WHERE schemaname = 'public' AND rowsecurity = false;`}</CodeBlock>
+            <p className="font-sans text-sm text-brand-black/60 leading-relaxed mt-4">
+              Every table this query returns is publicly readable and writable through the REST and
+              GraphQL APIs right now, regardless of what your frontend appears to enforce. Do this
+              before anything else in this guide.
+            </p>
+          </div>
+
+          {/* Fix 2 */}
+          <div className="border-l-2 border-brand-cobalt pl-6 mb-10">
+            <h3 className="font-sans font-semibold text-base text-brand-black mb-3">2. Enable RLS and write real policies</h3>
+            <p className="font-sans text-sm text-brand-black/70 leading-relaxed mb-6">
+              There is a pattern that looks like RLS but does nothing. Know it so you can spot it in
+              generated code.
+            </p>
+            <div className="border border-brand-concrete overflow-hidden mb-6">
+              <RLSPolicyDiagram />
+            </div>
+            <CodeBlock>{`-- Enable on every table, every time
+ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
+
+-- The pattern you want
+CREATE POLICY "users read own profile" ON profiles
+  FOR SELECT USING (auth.uid() = user_id);
+
+-- UPDATE needs both clauses — USING governs reads,
+-- WITH CHECK governs writes
+CREATE POLICY "users update own profile" ON profiles
+  FOR UPDATE USING (auth.uid() = user_id)
+  WITH CHECK (auth.uid() = user_id);`}</CodeBlock>
+            <p className="font-sans text-sm text-brand-black/60 leading-relaxed mt-4">
+              The <code className="font-mono text-[11px] bg-brand-graphite px-1.5 py-0.5">USING</code> / <code className="font-mono text-[11px] bg-brand-graphite px-1.5 py-0.5">WITH CHECK</code> distinction matters: UPDATE policies need both, or a user
+              can read their own row but silently overwrite it with another user's data.
+              Add <code className="font-mono text-[11px] bg-brand-graphite px-1.5 py-0.5">ALTER TABLE ... ENABLE ROW LEVEL SECURITY</code> to every table-creation migration
+              as a standing habit — not an afterthought once data exists.
+            </p>
+          </div>
+
+          {/* Fix 3 */}
+          <div className="border-l-2 border-brand-cobalt pl-6 mb-10">
+            <h3 className="font-sans font-semibold text-base text-brand-black mb-3">3. Test from the client, not the SQL editor</h3>
+            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              The Supabase SQL editor runs as an elevated role that bypasses RLS entirely. Testing
+              a policy there tells you nothing about what a real user can actually do. Test from the
+              client SDK, logged in as different real accounts, and verify each policy behaves as
+              intended. Testing as yourself while you are also the database admin is how policies
+              that do nothing ship to production looking correct.
+            </p>
+          </div>
+
+          {/* Fix 4 */}
+          <div className="border-l-2 border-brand-cobalt pl-6 mb-10">
+            <h3 className="font-sans font-semibold text-base text-brand-black mb-3">4. Never expose the service_role key</h3>
+            <p className="font-sans text-sm text-brand-black/70 leading-relaxed mb-4">
+              The <code className="font-mono text-[11px] bg-brand-graphite px-1.5 py-0.5">service_role</code> key bypasses RLS completely — full database access, no restrictions.
+              It should never appear in client-side code. The most common real-world leak paths:
+            </p>
+            <div className="space-y-3">
+              {[
+                { label: 'NEXT_PUBLIC_ prefix', note: 'Ships the key straight into the browser bundle. Any env variable prefixed NEXT_PUBLIC_ is public by design.' },
+                { label: 'Committed to a repo', note: 'Even briefly. Even with "just for testing" in the commit message. Rotation is the only recovery.' },
+                { label: 'Logged at server boot', note: 'Or returned in an error response from an Edge Function. Scan your logs if you suspect this.' },
+              ].map(({ label, note }) => (
+                <div key={label} className="flex gap-3 items-start">
+                  <span className="font-mono text-[10px] text-brand-cobalt/60 mt-0.5 flex-shrink-0 bg-brand-graphite px-2 py-1 border border-brand-cobalt/20">{label}</span>
+                  <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{note}</p>
+                </div>
+              ))}
+            </div>
+            <p className="font-sans text-sm text-brand-black/60 leading-relaxed mt-4">
+              If you suspect a service_role key has leaked, rotate it immediately in the Supabase
+              dashboard, then audit query logs for anything that could not plausibly have come from
+              your own app.
+            </p>
+          </div>
+
+          {/* Fix 5 */}
+          <div className="border-l-2 border-brand-cobalt pl-6">
+            <h3 className="font-sans font-semibold text-base text-brand-black mb-3">5. Index every column referenced in your policies</h3>
+            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              An unindexed policy check is the single most common performance killer in production
+              Supabase apps. A policy on an unindexed column can turn a 2ms query into a multi-second
+              one — which then becomes the reason someone disables the policy to "fix" a performance
+              problem. Every column referenced inside a <code className="font-mono text-[11px] bg-brand-graphite px-1.5 py-0.5">USING</code> or <code className="font-mono text-[11px] bg-brand-graphite px-1.5 py-0.5">WITH CHECK</code> clause needs an index.
+              Do not give anyone a reason to remove security for speed.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 5 — AI-assisted building */}
+        <section>
+          <SectionHeading number="05" title="When you're building with AI" />
+          <div className="space-y-4 mt-6">
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              Treat "it works" and "it's secured" as two separate checkpoints, not one. An AI coding
+              tool will happily scaffold a fully functional app against a completely open database,
+              because functional correctness and access control are different problems and only the
+              first one shows up in a demo.
+            </p>
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              Ask for RLS policies in the same prompt as the table — not as a follow-up. "Create
+              this table with RLS enabled and a policy scoping rows to the authenticated user's own
+              data" gets you the right output. "Create this table" followed by "oh, and secure it
+              later" produces a table that is live and open until you remember.
+            </p>
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              Review AI-generated error handling specifically. Generated code often returns raw
+              exception details to help with debugging during development — stack traces, database
+              error messages, table names. That pattern, shipped to production unchanged, is an
+              information leak. Fail closed by default: deny access when something goes wrong,
+              return a generic error to the client, and log the detail server-side.
+            </p>
+          </div>
+
+          <Callout label="Standing habit" className="mt-8">
+            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              Run the audit query from Fix 1 before every deploy, not just at initial launch.
+              It takes five minutes. A significant schema change is enough to introduce an unprotected
+              table — normalizing the check means you catch it before it ships rather than after.
+            </p>
+          </Callout>
+        </section>
+
+        {/* Section 6 — Pre-launch checklist */}
+        <section>
+          <SectionHeading number="06" title="Pre-launch checklist" />
+          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-8">
+            Run this against any project before it goes live, and again after any significant schema
+            change. The ongoing items belong in your regular review cycle.
+          </p>
+
+          <div className="space-y-8">
+            {[
+              {
+                group: 'Access control',
+                items: [
+                  'Run the RLS audit query on every table in the public schema',
+                  'Confirm every table has RLS enabled, not just some',
+                  'Confirm no USING (true) policies unless the data is genuinely meant to be public',
+                  'UPDATE policies have both USING and WITH CHECK clauses',
+                  'Policies tested from the client SDK under real, different user accounts',
+                ],
+              },
+              {
+                group: 'Secrets and keys',
+                items: [
+                  'service_role key does not appear in client-side code or NEXT_PUBLIC_ variables',
+                  'No secrets committed to the repo, including in commit history',
+                  '.env files are gitignored — verified in the actual repo, not assumed',
+                ],
+              },
+              {
+                group: 'Configuration',
+                items: [
+                  'Storage buckets reviewed — confirm which are intentionally public',
+                  'Production error responses do not expose stack traces or raw database errors',
+                  'Dependencies reviewed for anything unfamiliar or recently added',
+                ],
+              },
+              {
+                group: 'Ongoing',
+                items: [
+                  'At least one alert configured for anomalous auth or access activity',
+                  'This checklist re-run after any schema change, not only at initial launch',
+                ],
+              },
+            ].map(({ group, items }) => (
+              <div key={group}>
+                <h3 className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-cobalt mb-3">{group}</h3>
+                <ul className="space-y-2 border border-brand-concrete">
+                  {items.map((item) => (
+                    <li key={item} className="flex gap-3 items-start px-4 py-2.5 border-b border-brand-concrete/60 last:border-b-0">
+                      <span className="font-mono text-xs text-brand-concrete flex-shrink-0 mt-0.5 select-none">☐</span>
+                      <span className="font-sans text-sm text-brand-black/70">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Closing */}
+        <section>
+          <p className="font-sans text-base text-brand-black/60 leading-relaxed border-t border-brand-concrete pt-8">
+            The security gap in AI-scaffolded apps is not a model problem or a tooling problem — it is a
+            checkpoint problem. The five fixes above are not complex. None of them require specialized
+            knowledge. They require only that you treat "it works" and "it's secured" as two separate
+            questions, and answer both before you ship.
+          </p>
+        </section>
+
+        {/* Back link */}
+        <div className="border-t border-brand-concrete pt-8">
+          <Link
+            href="/#notes"
+            className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
+          >
+            ← Back to Field Notes
+          </Link>
+        </div>
+
+      </div>
+    </div>
+  )
 }
 
 function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {

@@ -11,6 +11,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'app-security-rls-owasp',
+    title: 'The Open Door',
+    subtitle: 'What AI-scaffolded apps get wrong about security, and the fixes that actually close it.',
+    category: 'Engineering',
+    date: '2026-08-11',
+    readTime: '11 min read',
+    tags: ['Security', 'Supabase', 'RLS', 'OWASP', 'Vibe Coding'],
+    excerpt:
+      'AI tools build working apps against completely open databases. The demo looks fine. The database is not.',
+  },
+  {
     slug: 'hermes-agent-persistent-ai',
     title: 'The Agent That Remembers',
     subtitle: 'Every chat tool resets. Hermes is a daemon — it accumulates context, writes its own skills, and runs unattended while you sleep.',

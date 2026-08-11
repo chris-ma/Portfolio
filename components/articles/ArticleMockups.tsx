@@ -1715,3 +1715,171 @@ export function HermesVsClaudeComparison() {
     </svg>
   )
 }
+
+// ─── App Security illustrations ───────────────────────────────────────────────
+
+const DANGER = '#C0392B'
+const AMBER  = '#D4890A'
+
+export function RLSStateDiagram() {
+  return (
+    <svg viewBox="0 0 720 240" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="240" fill={BG} />
+      <defs>
+        <marker id="rls-arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+          <path d="M0,0.5 L5,3 L0,5.5 Z" fill={MUTED} opacity="0.45" />
+        </marker>
+      </defs>
+
+      {/* ─── Box 1: RLS OFF ─── */}
+      <rect x="18" y="28" width="192" height="178" rx="3" fill={DANGER} fillOpacity="0.06" stroke={DANGER} strokeWidth="1" strokeOpacity="0.6" />
+      <rect x="18" y="28" width="192" height="24" rx="3" fill={DANGER} fillOpacity="0.14" />
+      <rect x="18" y="40" width="192" height="12" fill={DANGER} fillOpacity="0.14" />
+      <text x="114" y="44" textAnchor="middle" fontFamily="monospace" fontSize="8.5" fontWeight="700" fill={DANGER} letterSpacing="2">RLS OFF</text>
+      {/* Open padlock — right shackle leg lifted out of body */}
+      <rect x="96" y="100" width="36" height="28" rx="2" stroke={DANGER} strokeWidth="1.5" fill="none" fillOpacity="0.0" />
+      <path d="M102 100 L102 88 A12 12 0 0 0 126 88 L126 80" stroke={DANGER} strokeWidth="1.5" fill="none" strokeLinecap="round" />
+      <circle cx="114" cy="112" r="3.5" fill={DANGER} fillOpacity="0.45" />
+      <rect x="112" y="112" width="4" height="7" rx="1" fill={DANGER} fillOpacity="0.45" />
+      <text x="114" y="155" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={DANGER} opacity="0.85">Anyone with your anon key</text>
+      <text x="114" y="167" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={DANGER} opacity="0.85">can read/write everything.</text>
+      <text x="114" y="196" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={DANGER} opacity="0.45">default on every new table</text>
+
+      {/* ─── Arrow 1 ─── */}
+      <line x1="210" y1="117" x2="257" y2="117" stroke={MUTED} strokeWidth="1" strokeOpacity="0.4" markerEnd="url(#rls-arr)" />
+      <text x="233" y="110" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED} opacity="0.55">enable RLS</text>
+
+      {/* ─── Box 2: RLS ON, no policies ─── */}
+      <rect x="262" y="28" width="196" height="178" rx="3" fill={AMBER} fillOpacity="0.06" stroke={AMBER} strokeWidth="1" strokeOpacity="0.5" />
+      <rect x="262" y="28" width="196" height="24" rx="3" fill={AMBER} fillOpacity="0.12" />
+      <rect x="262" y="40" width="196" height="12" fill={AMBER} fillOpacity="0.12" />
+      <text x="360" y="44" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fontWeight="700" fill={AMBER} letterSpacing="1.5">RLS ON, NO POLICIES</text>
+      {/* Closed padlock */}
+      <rect x="342" y="100" width="36" height="28" rx="2" stroke={AMBER} strokeWidth="1.5" fill="none" />
+      <path d="M348 100 L348 88 A12 12 0 0 0 372 88 L372 100" stroke={AMBER} strokeWidth="1.5" fill="none" strokeLinecap="round" />
+      <circle cx="360" cy="112" r="3.5" fill={AMBER} fillOpacity="0.45" />
+      <rect x="358" y="112" width="4" height="7" rx="1" fill={AMBER} fillOpacity="0.45" />
+      <text x="360" y="155" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={AMBER} opacity="0.85">All queries return zero rows.</text>
+      <text x="360" y="167" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={AMBER} opacity="0.85">Your app looks broken.</text>
+      <text x="360" y="196" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={AMBER} opacity="0.45">safer failure — still not right</text>
+
+      {/* ─── Arrow 2 ─── */}
+      <line x1="458" y1="117" x2="505" y2="117" stroke={MUTED} strokeWidth="1" strokeOpacity="0.4" markerEnd="url(#rls-arr)" />
+      <text x="481" y="110" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED} opacity="0.55">write policies</text>
+
+      {/* ─── Box 3: RLS ON + policies ─── */}
+      <rect x="510" y="28" width="192" height="178" rx="3" fill={G} fillOpacity="0.06" stroke={G} strokeWidth="1" strokeOpacity="0.5" />
+      <rect x="510" y="28" width="192" height="24" rx="3" fill={G} fillOpacity="0.12" />
+      <rect x="510" y="40" width="192" height="12" fill={G} fillOpacity="0.12" />
+      <text x="606" y="44" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fontWeight="700" fill={G} letterSpacing="1.5">RLS ON + POLICIES</text>
+      {/* Shield with checkmark */}
+      <path d="M606 72 L632 80 L632 104 Q632 122 606 130 Q580 122 580 104 L580 80 Z" stroke={G} strokeWidth="1.5" fill={G} fillOpacity="0.1" />
+      <path d="M592 104 L603 115 L622 94" stroke={G} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <text x="606" y="155" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.85">Access scoped to authenticated</text>
+      <text x="606" y="167" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.85">user. Controlled, tested.</text>
+      <text x="606" y="196" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={G} opacity="0.45">where you want to be</text>
+    </svg>
+  )
+}
+
+export function OWASPTopTenVisual() {
+  const items = [
+    { code: 'A01', name: 'Broken Access Control',           note: 'Missing/wrong RLS is exactly this',          pct: 100, hi: true  },
+    { code: 'A02', name: 'Security Misconfiguration',        note: 'Default settings left open',                  pct: 88,  hi: true  },
+    { code: 'A03', name: 'Supply Chain Failures',            note: 'Verify before npm install',                   pct: 38,  hi: false },
+    { code: 'A04', name: 'Cryptographic Failures',           note: 'Never store secrets plaintext',               pct: 44,  hi: false },
+    { code: 'A05', name: 'Injection',                        note: "Don't bypass the client library",             pct: 42,  hi: false },
+    { code: 'A06', name: 'Insecure Design',                  note: 'Threat-model before you build',               pct: 35,  hi: false },
+    { code: 'A07', name: 'Authentication Failures',          note: 'Use Supabase Auth, not custom sessions',      pct: 48,  hi: false },
+    { code: 'A08', name: 'Integrity Failures',               note: 'Verify webhooks and third-party payloads',    pct: 30,  hi: false },
+    { code: 'A09', name: 'Logging & Alerting Failures',      note: 'Set one alert for anomalous auth activity',   pct: 33,  hi: false },
+    { code: 'A10', name: 'Mishandling Exceptional Conditions', note: 'Fail closed; never leak raw DB errors',     pct: 37,  hi: false },
+  ]
+
+  const ROW_H = 34
+  const BAR_MAX = 148
+  const startY = 48
+
+  return (
+    <svg viewBox="0 0 720 400" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="400" fill={BG} />
+
+      {/* Header */}
+      <text x="20" y="20" fontFamily="monospace" fontSize="7.5" fill={MUTED} opacity="0.5" letterSpacing="1.5">CODE</text>
+      <text x="72" y="20" fontFamily="monospace" fontSize="7.5" fill={MUTED} opacity="0.5" letterSpacing="1.5">CATEGORY</text>
+      <text x="380" y="20" fontFamily="monospace" fontSize="7.5" fill={MUTED} opacity="0.5" letterSpacing="1.5">YOUR MOVE</text>
+      <text x="555" y="20" fontFamily="monospace" fontSize="7.5" fill={MUTED} opacity="0.5" letterSpacing="1.5">PRIORITY</text>
+      <line x1="18" y1="26" x2="702" y2="26" stroke={BORDER} strokeWidth="0.5" />
+
+      {items.map((item, i) => {
+        const y = startY + i * ROW_H
+        const barW = (item.pct / 100) * BAR_MAX
+        const color = item.hi ? G : MUTED
+        const textOp = item.hi ? 0.9 : 0.55
+        const bgOp = item.hi ? 0.04 : 0
+
+        return (
+          <g key={item.code}>
+            {item.hi && <rect x="18" y={y - 2} width="684" height={ROW_H} fill={G} fillOpacity={bgOp} />}
+            {/* Code */}
+            <text x="20" y={y + 18} fontFamily="monospace" fontSize="10" fontWeight={item.hi ? '700' : '400'} fill={color} opacity={item.hi ? 1 : 0.45} letterSpacing="0.5">{item.code}</text>
+            {/* Name */}
+            <text x="72" y={y + 18} fontFamily="monospace" fontSize="10" fontWeight={item.hi ? '600' : '400'} fill={item.hi ? G : TEXT} opacity={textOp}>{item.name}</text>
+            {/* Note */}
+            <text x="380" y={y + 18} fontFamily="monospace" fontSize="8" fill={MUTED} opacity={item.hi ? 0.75 : 0.45}>{item.note}</text>
+            {/* Bar */}
+            <rect x="553" y={y + 8} width={BAR_MAX} height="10" rx="2" fill={MUTED} fillOpacity="0.1" />
+            <rect x="553" y={y + 8} width={barW} height="10" rx="2" fill={color} fillOpacity={item.hi ? 0.7 : 0.28} />
+            {/* Row divider */}
+            <line x1="18" y1={y + ROW_H - 2} x2="702" y2={y + ROW_H - 2} stroke={BORDER} strokeWidth="0.4" opacity="0.5" />
+          </g>
+        )
+      })}
+
+      <text x="360" y="392" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={G} opacity="0.3" letterSpacing="1">A01 + A02 ACCOUNT FOR THE MAJORITY OF INCIDENTS IN SMALL, FAST-SHIPPED APPS</text>
+    </svg>
+  )
+}
+
+export function RLSPolicyDiagram() {
+  return (
+    <svg viewBox="0 0 720 210" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="210" fill={BG} />
+
+      {/* Divider */}
+      <line x1="360" y1="15" x2="360" y2="195" stroke={BORDER} strokeWidth="0.75" strokeOpacity="0.6" />
+
+      {/* ─── Left: BAD ─── */}
+      <rect x="18" y="18" width="326" height="24" fill={DANGER} fillOpacity="0.08" />
+      <text x="30" y="34" fontFamily="monospace" fontSize="8.5" fontWeight="700" fill={DANGER} opacity="0.8" letterSpacing="1">BAD — USING (true)</text>
+
+      {/* SQL code block */}
+      <rect x="18" y="50" width="326" height="80" rx="2" fill={TEXT} fillOpacity="0.04" stroke={BORDER} strokeWidth="0.75" />
+      <text x="32" y="70"  fontFamily="monospace" fontSize="8.5" fill={MUTED} opacity="0.6">CREATE POLICY &quot;users can read&quot;</text>
+      <text x="32" y="84"  fontFamily="monospace" fontSize="8.5" fill={MUTED} opacity="0.6">  ON profiles</text>
+      <text x="32" y="98"  fontFamily="monospace" fontSize="8.5" fill={MUTED} opacity="0.6">  FOR SELECT</text>
+      <text x="32" y="112" fontFamily="monospace" fontSize="8.5" fill={DANGER} opacity="0.85">  USING (true);</text>
+
+      {/* Result label */}
+      <text x="30" y="152" fontFamily="monospace" fontSize="8" fill={DANGER} opacity="0.8">→  Every row. Every user. No access control.</text>
+      <text x="30" y="166" fontFamily="monospace" fontSize="7.5" fill={MUTED} opacity="0.5">RLS enabled in name only — functionally open.</text>
+      <text x="30" y="185" fontFamily="monospace" fontSize="7" fill={DANGER} opacity="0.35">Treat USING(true) the same as no RLS at all.</text>
+
+      {/* ─── Right: GOOD ─── */}
+      <rect x="368" y="18" width="334" height="24" fill={G} fillOpacity="0.08" />
+      <text x="380" y="34" fontFamily="monospace" fontSize="8.5" fontWeight="700" fill={G} opacity="0.85" letterSpacing="1">GOOD — USING (auth.uid() = user_id)</text>
+
+      {/* SQL code block */}
+      <rect x="368" y="50" width="334" height="80" rx="2" fill={TEXT} fillOpacity="0.04" stroke={BORDER} strokeWidth="0.75" />
+      <text x="382" y="70"  fontFamily="monospace" fontSize="8.5" fill={MUTED} opacity="0.6">CREATE POLICY &quot;users read own row&quot;</text>
+      <text x="382" y="84"  fontFamily="monospace" fontSize="8.5" fill={MUTED} opacity="0.6">  ON profiles</text>
+      <text x="382" y="98"  fontFamily="monospace" fontSize="8.5" fill={MUTED} opacity="0.6">  FOR SELECT</text>
+      <text x="382" y="112" fontFamily="monospace" fontSize="8.5" fill={G} opacity="0.9">  USING (auth.uid() = user_id);</text>
+
+      {/* Result label */}
+      <text x="380" y="152" fontFamily="monospace" fontSize="8" fill={G} opacity="0.85">→  Only the authenticated user&apos;s own rows.</text>
+      <text x="380" y="166" fontFamily="monospace" fontSize="7.5" fill={MUTED} opacity="0.5">UPDATE policies need both USING and WITH CHECK.</text>
+      <text x="380" y="185" fontFamily="monospace" fontSize="7" fill={G} opacity="0.35">auth.uid() comes from the JWT — no extra query.</text>
+    </svg>
+  )
+}
