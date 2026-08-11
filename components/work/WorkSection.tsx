@@ -8,7 +8,7 @@ import ProjectCard from './ProjectCard'
 const projects = [
   {
     title: 'Campaign Intelligence Platform',
-    description: 'End-to-end marketing intelligence platform combining real-time analytics, creative performance scoring, and automated media buying — built for a global consumer brand.',
+    description: 'End-to-end marketing intelligence platform combining real-time analytics, creative performance scoring, and automated media buying. Built for a global consumer brand.',
     tags: ['Product Strategy', 'Frontend', 'Data Viz'],
     year: '2025',
     category: 'Digital Marketing',

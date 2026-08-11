@@ -65,7 +65,7 @@ export function WisprMockup() {
       <line x1="478" y1="233" x2="466" y2="245" stroke={BG} strokeWidth="1.5" opacity="0.5" />
 
       {/* Label */}
-      <text x="360" y="298" textAnchor="middle" fontFamily="monospace" fontSize="10" fill={MUTED}>Wispr Flow — fn to activate</text>
+      <text x="360" y="298" textAnchor="middle" fontFamily="monospace" fontSize="10" fill={MUTED}>Wispr Flow / fn to activate</text>
     </svg>
   )
 }
@@ -80,7 +80,7 @@ export function ObsidianMockup() {
       <circle cx="20" cy="16" r="5.5" fill="#F2956A" />
       <circle cx="38" cy="16" r="5.5" fill="#F5C842" />
       <circle cx="56" cy="16" r="5.5" fill="#5CB85C" />
-      <text x="360" y="20" textAnchor="middle" fontFamily="monospace" fontSize="11" fill="#888">Obsidian — pkm-vault</text>
+      <text x="360" y="20" textAnchor="middle" fontFamily="monospace" fontSize="11" fill="#888">Obsidian / pkm-vault</text>
 
       {/* Left sidebar — file tree */}
       <rect x="0" y="32" width="200" height="368" fill="#1E1E1E" />
@@ -348,7 +348,7 @@ export function FlowDiagram() {
 
       {/* NO reverse arrow note */}
       <text x="370" y="258" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.6">
-        ✕ no two-way sync — Notion links to Obsidian, never reverse
+        ✕ no two-way sync. Notion links to Obsidian, not reverse.
       </text>
     </svg>
   )
@@ -598,7 +598,7 @@ export function QueryFanOut() {
       })}
 
       <text x="360" y="252" fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.6">
-        each query returns its own candidate source list — engine decides which to open
+        each query returns its own candidate source list; engine decides which to open
       </text>
     </svg>
   )
@@ -664,7 +664,7 @@ export function ThreeGateDiagram() {
             {/* Header */}
             <rect x={x} y={y} width={GATE_W} height={30} rx="3" fill={G} opacity={gate.opacity} />
             <rect x={x} y={y + 18} width={GATE_W} height={12} fill={G} opacity={gate.opacity} />
-            <text x={x + 10} y={y + 12} fontFamily="monospace" fontSize="9" fill={BG} letterSpacing="1">GATE {gate.n} — {gate.name}</text>
+            <text x={x + 10} y={y + 12} fontFamily="monospace" fontSize="9" fill={BG} letterSpacing="1">GATE {gate.n}: {gate.name}</text>
 
             {/* Question */}
             <text x={x + 10} y={y + 48} fontFamily="monospace" fontSize="8.5" fill={TEXT} opacity="0.8">{gate.q.split('?')[0]}</text>
@@ -692,7 +692,7 @@ export function ThreeGateDiagram() {
       <line x1={startX + GATE_W * 3 + GAP * 2} y1="110" x2={startX + GATE_W * 3 + GAP * 3} y2="110" stroke={G} strokeWidth="1.2" markerEnd="url(#ga)" opacity="0.6" />
 
       <text x="360" y="240" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.6">
-        failing any gate removes you from consideration — diagnosis tells you which one
+        failing any gate removes you from consideration. diagnosis tells you which one
       </text>
     </svg>
   )
@@ -701,7 +701,7 @@ export function ThreeGateDiagram() {
 export function SAGELoop() {
   const stages = [
     { label: 'SETUP', sub: 'decide what to track', x: 260, y: 40 },
-    { label: 'ANALYZE', sub: 'find where you\'re losing', x: 480, y: 140 },
+    { label: 'ANALYSE', sub: 'find where you\'re losing', x: 480, y: 140 },
     { label: 'ENGINEER', sub: 'make wins repeatable', x: 100, y: 140 },
     { label: 'GENERATE', sub: 'turn gaps into shipped work', x: 480, y: 240 },
   ]
@@ -709,7 +709,7 @@ export function SAGELoop() {
   // We'll arrange as a 2×2 grid with arrows between them
   const grid = [
     { label: 'SETUP',    sub: 'Decide what to track',          x: 170, y: 50,  color: G },
-    { label: 'ANALYZE',  sub: 'Find where you\'re losing',     x: 430, y: 50,  color: G },
+    { label: 'ANALYSE',  sub: 'Find where you\'re losing',     x: 430, y: 50,  color: G },
     { label: 'ENGINEER', sub: 'Make wins repeatable',          x: 170, y: 170, color: G },
     { label: 'GENERATE', sub: 'Turn gaps into shipped work',   x: 430, y: 170, color: G },
   ]
@@ -752,7 +752,7 @@ export function SAGELoop() {
 
       {/* Diagnostic question */}
       <text x="360" y="282" textAnchor="middle" fontFamily="monospace" fontSize="9" fill={G} opacity="0.6" letterSpacing="1">
-        "What time is it?" — which stage you're in, right now
+        "What time is it?" / which stage you're in, right now
       </text>
       <text x="360" y="298" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.5">
         not a checklist you complete once; a cycle you run continuously
@@ -810,7 +810,7 @@ export function ContentShapeComparison() {
       ))}
       <rect x="410" y="66" width={W} height={productRows.length * ROW_H} fill="none" stroke={BORDER} strokeWidth="1" />
       <text x={410 + W / 2} y={66 + productRows.length * ROW_H + 22} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.7">
-        single angle — loses compound-job queries
+        single angle. loses compound-job queries
       </text>
 
       {/* VS */}
@@ -918,7 +918,7 @@ export function HybridRetrievalDiagram() {
       <text x="575" y="132" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G}>sent to LLM</text>
 
       <text x="360" y="210" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.6">
-        hybrid outperforms either alone — default in production systems (2026)
+        hybrid outperforms either alone. default in production systems (2026)
       </text>
     </svg>
   )
@@ -957,7 +957,7 @@ export function ChunkingComparison() {
       ))}
 
       <text x="360" y="220" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.6">
-        semantic chunking: embed sentence-by-sentence, break when similarity drops — better signal for retrieval
+        semantic chunking: embed sentence-by-sentence, break when similarity drops. better signal for retrieval
       </text>
     </svg>
   )
@@ -1001,7 +1001,7 @@ export function AdaptiveRAGDiagram() {
       })}
 
       <text x="360" y="218" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.6">
-        adaptive RAG — emerging 2026 default: most queries are simple, route them cheap
+        adaptive RAG: emerging 2026 default; most queries are simple, route them cheap
       </text>
     </svg>
   )
@@ -1176,9 +1176,9 @@ export function PlanExecuteDiagram() {
 
 export function AgentFailureModeDiagram() {
   const failures = [
-    { n: '01', label: 'LOOP-STUCK', line1: 'ReAct cycles without progress —', line2: 'no exit condition, no step ceiling', x: 44, y: 44 },
-    { n: '02', label: 'ERROR COMPOUND', line1: 'Each autonomous step drifts further —', line2: 'errors stack across the loop', x: 316, y: 44 },
-    { n: '03', label: 'CIRCULAR EVAL', line1: "Evaluator can't reliably score quality —", line2: 'iterates without improving', x: 44, y: 168 },
+    { n: '01', label: 'LOOP-STUCK', line1: 'ReAct cycles without progress:', line2: 'no exit condition, no step ceiling', x: 44, y: 44 },
+    { n: '02', label: 'ERROR COMPOUND', line1: 'Each autonomous step drifts further:', line2: 'errors stack across the loop', x: 316, y: 44 },
+    { n: '03', label: 'CIRCULAR EVAL', line1: "Evaluator can't reliably score quality:", line2: 'iterates without improving', x: 44, y: 168 },
     { n: '04', label: 'OVER-ENGINEER', line1: 'Multi-agent orchestration on a task', line2: 'a simple workflow would handle', x: 316, y: 168 },
   ]
   return (
@@ -1206,7 +1206,7 @@ export function AgentFailureModeDiagram() {
 export function MidjourneyParams() {
   const params = [
     { flag: '--ar', name: 'Aspect Ratio', example: '16:9  ·  2:3  ·  1:1' },
-    { flag: '--s', name: 'Stylize', example: '0–1000: low=literal, high=MJ aesthetic' },
+    { flag: '--s', name: 'Stylise', example: '0–1000: low=literal, high=MJ aesthetic' },
     { flag: '--chaos', name: 'Variation', example: '0–100: higher = more unpredictable batch' },
     { flag: '--raw', name: 'Raw mode', example: 'Literal, photoreal; cuts aesthetic bias' },
     { flag: '--sref', name: 'Style Reference', example: 'Image URL or style code + --sw weight' },
@@ -1284,7 +1284,7 @@ export function PromptFormulaDiagram() {
     { label: 'SUBJECT', eg: 'a woman in her 30s', color: G, op: 0.75 },
     { label: 'ACTION', eg: 'standing still,\ncontemplative', color: G, op: 0.60 },
     { label: 'ENVIRONMENT', eg: 'fog-filled\nwarehouse', color: G, op: 0.50 },
-    { label: 'LIGHTING', eg: 'god rays,\nRem brandt', color: G, op: 0.42 },
+    { label: 'LIGHTING', eg: 'god rays,\nRembrandt', color: G, op: 0.42 },
     { label: 'LENS', eg: '35mm,\nshallow DOF', color: G, op: 0.35 },
     { label: 'STYLE', eg: 'teal-orange grade,\nanamorphic', color: G, op: 0.28 },
     { label: 'PARAMS', eg: '--ar 16:9\n--raw --s 150', color: G, op: 0.22 },
@@ -1297,7 +1297,7 @@ export function PromptFormulaDiagram() {
   return (
     <svg viewBox="0 0 620 280" className="w-full" xmlns="http://www.w3.org/2000/svg">
       <rect width="620" height="280" fill={BG} />
-      <text x="310" y="40" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} opacity="0.3" letterSpacing="1">UNIVERSAL PROMPT FORMULA — WORKS ACROSS MIDJOURNEY AND HIGGSFIELD</text>
+      <text x="310" y="40" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} opacity="0.3" letterSpacing="1">UNIVERSAL PROMPT FORMULA · WORKS ACROSS MIDJOURNEY AND HIGGSFIELD</text>
       {blocks.map((b, i) => {
         const x = startX + i * (BW + GAP)
         return (
@@ -1672,7 +1672,7 @@ export function GatewayHubSpoke() {
       <circle cx={HUB_CX} cy={HUB_CY} r={HUB_R} fill={G} opacity="0.1" stroke={G} strokeWidth="1.2" />
       <text x={HUB_CX} y={HUB_CY - 5} textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill={G} opacity="0.75">HERMES</text>
       <text x={HUB_CX} y={HUB_CY + 10} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} opacity="0.55">DAEMON</text>
-      <text x="360" y="284" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.25" letterSpacing="1">ONE PROCESS — 20 PLATFORMS — SAME MEMORY ACROSS ALL</text>
+      <text x="360" y="284" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.25" letterSpacing="1">ONE PROCESS · 20 PLATFORMS · SAME MEMORY ACROSS ALL</text>
     </svg>
   )
 }
@@ -1680,7 +1680,7 @@ export function GatewayHubSpoke() {
 export function HermesVsClaudeComparison() {
   const rows = [
     { dim: 'Scope', claude: 'Deep, real-time session work', hermes: 'Cross-project persistent context' },
-    { dim: 'Sessions', claude: 'Bounded — resets each time', hermes: 'Daemon — remembers indefinitely' },
+    { dim: 'Sessions', claude: 'Bounded: resets each time', hermes: 'Daemon: remembers indefinitely' },
     { dim: 'Scheduling', claude: 'No native cron', hermes: 'Built-in scheduler' },
     { dim: 'Hosting', claude: 'Anthropic-managed', hermes: 'Self-hosted, your data' },
     { dim: 'Platforms', claude: 'Terminal, IDE, desktop app', hermes: 'CLI + ~20 messaging platforms' },

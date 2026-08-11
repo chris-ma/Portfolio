@@ -74,8 +74,8 @@ export default function HeroSection() {
         >
           <div className="max-w-sm">
             <p className="font-sans text-base text-brand-black/60 leading-relaxed">
-              At the intersection of culture, technology, and commerce.
-              Building digital experiences that move people.
+              Culture, technology, and commerce, applied.
+              Building digital experiences that earn attention.
             </p>
           </div>
 

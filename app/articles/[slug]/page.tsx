@@ -368,7 +368,7 @@ CREATE POLICY "users update own profile" ON profiles
             <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
               Run the audit query from Fix 1 before every deploy, not just at initial launch.
               It takes five minutes. A significant schema change is enough to introduce an unprotected
-              table — normalizing the check means you catch it before it ships rather than after.
+              table — normalising the check means you catch it before it ships rather than after.
             </p>
           </Callout>
         </section>
@@ -436,7 +436,7 @@ CREATE POLICY "users update own profile" ON profiles
         <section>
           <p className="font-sans text-base text-brand-black/60 leading-relaxed border-t border-brand-concrete pt-8">
             The security gap in AI-scaffolded apps is not a model problem or a tooling problem — it is a
-            checkpoint problem. The five fixes above are not complex. None of them require specialized
+            checkpoint problem. The five fixes above are not complex. None of them require specialised
             knowledge. They require only that you treat "it works" and "it's secured" as two separate
             questions, and answer both before you ship.
           </p>
@@ -498,7 +498,7 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
         {/* Lede */}
         <section>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
-            Most things marketed as AI agents are not agents. They are workflows — fixed sequences of LLM calls
+            Most things marketed as AI agents are not agents. They are workflows: fixed sequences of LLM calls
             with predefined branching logic and deterministic execution paths. The distinction matters, not
             because "workflow" is a demotion, but because calling a workflow an agent tends to make you engineer
             it wrong. You add complexity it doesn't need, remove predictability you were counting on, and then
@@ -507,7 +507,7 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
             Anthropic's own engineering team puts it plainly: find the simplest solution possible, and only
             increase complexity when a simpler workflow genuinely can't do the job. The most common production
-            mistake isn't under-engineering AI systems — it's reaching for autonomous loops when a fixed
+            mistake isn't under-engineering AI systems. It's reaching for autonomous loops when a fixed
             workflow would have been cheaper, faster, and far more debuggable.
           </p>
         </section>
@@ -539,7 +539,7 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
 
         {/* Section 2 — Five patterns */}
         <section>
-          <SectionHeading number="02" title="The five patterns — use these first" />
+          <SectionHeading number="02" title="The five patterns. Use these first" />
           <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-8">
             These are Anthropic's own taxonomy. Five compositional patterns that are all technically workflows —
             predefined code paths — but that together cover nearly every real production use case.
@@ -553,23 +553,23 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
           <div className="border border-brand-concrete divide-y divide-brand-concrete">
             <AgentPatternRow
               n="01" label="Prompt chaining" when="Fixed, ordered sub-steps"
-              desc={"Each LLM call processes the output of the previous one, in a fixed sequence. The model at step 3 doesn't decide to go to step 3 — your code does. Use when the task decomposes cleanly into ordered stages whose structure you can write down in advance."}
+              desc={"Each LLM call processes the output of the previous one, in a fixed sequence. The model at step 3 doesn't decide to go to step 3. Your code does. Use when the task decomposes cleanly into ordered stages whose structure you can write down in advance."}
             />
             <AgentPatternRow
               n="02" label="Routing" when="Different input types"
-              desc={"An LLM classifies the input and directs it to a specialized follow-up path. The model decides which branch, but not what the branches are. Use when different input types need genuinely different handling that's too varied to cover with one general prompt."}
+              desc={"An LLM classifies the input and directs it to a specialised follow-up path. The model decides which branch, but not what the branches are. Use when different input types need genuinely different handling that's too varied to cover with one general prompt."}
             />
             <AgentPatternRow
-              n="03" label="Parallelization" when="Independent subtasks"
+              n="03" label="Parallelisation" when="Independent subtasks"
               desc={"Multiple LLM calls run simultaneously, results aggregated at the end. Two sub-variants: sectioning (divide the problem, run each part independently) and voting (run the same task multiple ways, pick the consensus or best answer). Use when subtasks have no dependencies on each other."}
             />
             <AgentPatternRow
               n="04" label="Orchestrator–workers" when="Subtasks unknown until examined"
-              desc={"A central LLM dynamically breaks a task into pieces and delegates to worker LLMs. The orchestrator decides the subtasks; the workers execute them. Closer to agentic than the previous patterns — the orchestrator has real decision-making power — but still a workflow if the worker execution paths are predefined."}
+              desc={"A central LLM dynamically breaks a task into pieces and delegates to worker LLMs. The orchestrator decides the subtasks; the workers execute them. Closer to agentic than the previous patterns: the orchestrator has real decision-making power. Still a workflow if the worker execution paths are predefined."}
             />
             <AgentPatternRow
-              n="05" label="Evaluator–optimizer" when="Clear quality bar, iteration helps"
-              desc={"One LLM generates a response; a second evaluates it against criteria; loop until it passes or you hit a ceiling. The classic 'generate and critique' pattern. Works when you can state what 'good' looks like precisely enough that an LLM can score it reliably — if you can't, the loop runs without improving anything."} last
+              n="05" label="Evaluator–optimiser" when="Clear quality bar, iteration helps"
+              desc={"One LLM generates a response; a second evaluates it against criteria; loop until it passes or you hit a ceiling. The classic 'generate and critique' pattern. Works when you can state what 'good' looks like precisely enough that an LLM can score it reliably. If you can't, the loop runs without improving anything."} last
             />
           </div>
 
@@ -644,7 +644,7 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
           <h3 className="font-sans font-semibold text-sm tracking-[0.15em] uppercase text-brand-cobalt mb-4">Beyond the two basics</h3>
           <div className="border border-brand-concrete divide-y divide-brand-concrete">
             <AgentLoopRow label="Reflection" desc={"The simplest quality loop: generate output, evaluate it, accept or revise. The agent becomes its own reviewer. Identical in shape to evaluator-optimizer, but run as a loop within a single agent rather than as two separate calls."} />
-            <AgentLoopRow label="Multi-agent / Debate" desc={"A coordinator LLM breaks a large task into pieces and dispatches to specialized sub-agents. For high-stakes factual decisions: spawn multiple agents with different stances and have them argue; a judge synthesizes the result. Measurably reduces hallucination because no single confident wrong answer goes unchallenged."} />
+            <AgentLoopRow label="Multi-agent / Debate" desc={"A coordinator LLM breaks a large task into pieces and dispatches to specialised sub-agents. For high-stakes factual decisions: spawn multiple agents with different stances and have them argue; a judge synthesises the result. Measurably reduces hallucination because no single confident wrong answer goes unchallenged."} />
             <AgentLoopRow label="Agentic RAG" desc={"Retrieval embedded inside the reasoning loop rather than run once upfront. The agent decides mid-loop when it needs to retrieve and what to retrieve, based on what it's discovered so far. Different from standard RAG — retrieval itself becomes an available action at every step, not a fixed preprocessing stage."} />
             <AgentLoopRow label="Loop engineering / checkpointing" desc={"For long-running tasks: periodically checkpoint progress to a durable store — a doc, a file, a task list — and restart the loop with compressed context rather than letting the context window grow unbounded. The emerging standard for multi-session or multi-day tasks."} last />
           </div>
@@ -701,7 +701,7 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
 
         {/* Section 5 — Build sequence */}
         <section>
-          <SectionHeading number="05" title="Build it right — six steps in order" />
+          <SectionHeading number="05" title="Build it right. Six steps in order" />
           <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-8">
             These steps are sequenced deliberately. Skipping ahead is the failure mode.
           </p>
@@ -737,9 +737,9 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
             {([
               ['Fixed, ordered sub-steps', 'Prompt chaining'],
               ['Different input types need different handling', 'Routing'],
-              ['Independent subtasks, or want consensus across attempts', 'Parallelization'],
+              ['Independent subtasks, or want consensus across attempts', 'Parallelisation'],
               ['Subtasks unknown until main task is examined', 'Orchestrator-workers'],
-              ['Clear quality bar exists and iteration helps', 'Evaluator-optimizer'],
+              ['Clear quality bar exists and iteration helps', 'Evaluator-optimiser'],
               ['Exploratory, open-ended, uncertain next step', 'ReAct'],
               ['Long, structured, guaranteed sequence required', 'Plan-and-Execute'],
               ['High-stakes factual decision', 'Debate pattern (multi-agent)'],
@@ -875,7 +875,7 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
 
           <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
             RAG (Retrieval-Augmented Generation) pairs a language model with an external retrieval system.
-            Instead of answering purely from memorized training data, the model first retrieves relevant
+            Instead of answering purely from memorised training data, the model first retrieves relevant
             documents from a knowledge source, then generates its answer using those retrieved documents
             as grounding context. The answer cites specific sources. You can check it.
           </p>
@@ -885,24 +885,24 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
               <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-cobalt block mb-3">What it fixes</span>
               <div className="space-y-2">
                 <p className="font-sans text-sm text-brand-black/75 leading-relaxed">
-                  <strong className="text-brand-black">Staleness</strong> — model training has a cutoff. RAG works with information from after that cutoff, or with private data the model never saw.
+                  <strong className="text-brand-black">Staleness:</strong> model training has a cutoff. RAG works with information from after that cutoff, or with private data the model never saw.
                 </p>
                 <p className="font-sans text-sm text-brand-black/75 leading-relaxed">
-                  <strong className="text-brand-black">Hallucination</strong> — without retrieval, a model under-specified on a fact generates a plausible-sounding wrong answer. With retrieval, it has an actual source.
+                  <strong className="text-brand-black">Hallucination:</strong> without retrieval, a model under-specified on a fact generates a plausible-sounding wrong answer. With retrieval, it has an actual source.
                 </p>
               </div>
             </div>
             <div className="border border-brand-concrete p-5 bg-brand-graphite">
               <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-muted block mb-3">What it introduces</span>
               <p className="font-sans text-sm text-brand-black/75 leading-relaxed">
-                <strong className="text-brand-black">False confidence</strong> — a RAG system with poor retrieval is worse than no RAG. It adds latency and cost while producing an ungrounded answer, now with a citation attached to give it unearned authority.
+                <strong className="text-brand-black">False confidence:</strong> a RAG system with poor retrieval is worse than no RAG. It adds latency and cost while producing an ungrounded answer, now with a citation attached to give it unearned authority.
               </p>
             </div>
           </div>
 
           <Callout label="vs. fine-tuning">
             <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
-              Fine-tuning changes model <em>behaviour</em> — tone, format, task specialization.
+              Fine-tuning changes model <em>behaviour</em>: tone, format, task specialisation.
               RAG changes what <em>facts</em> the model has access to. If you need the model to know
               something specific, use RAG. If you need it to behave differently, fine-tune.
               RAG is also cheaper and faster to update: swap or add documents rather than retraining.
@@ -931,7 +931,7 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
           </figure>
 
           <div className="space-y-3">
-            <PipelineRow n="1" label="Ingest" detail="Collect and clean source documents — PDFs, markdown, web pages, database records. Quality here determines quality throughout. Cleaning means removing headers and footers, stripping embedded-image text that won't extract, normalizing encoding." />
+            <PipelineRow n="1" label="Ingest" detail="Collect and clean source documents — PDFs, markdown, web pages, database records. Quality here determines quality throughout. Cleaning means removing headers and footers, stripping embedded-image text that won't extract, normalising encoding." />
             <PipelineRow n="2" label="Chunk" detail="Split documents into smaller passages. Retrieval works at the chunk level. Chunk too small: context gets severed. Chunk too large: relevance gets diluted and tokens get wasted. Chunk size is a real trade-off — the right answer depends on your document type and query patterns." />
             <PipelineRow n="3" label="Embed" detail="Convert each chunk into a vector representation capturing semantic meaning. The embedding model choice affects retrieval quality directly. Domain-specific embedding models often outperform general-purpose ones on specialized content." />
             <PipelineRow n="4" label="Index" detail="Store vectors in a vector database for fast similarity search. Choice of database affects latency, scale, and operational complexity — but it's a secondary concern until you've got the first three steps right." />
@@ -1047,7 +1047,7 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
             />
             <AdvancedPatternRow
               name="GraphRAG"
-              detail="Builds a knowledge graph over source data and retrieves via graph traversal rather than similarity search. The right tool when questions are relationship-heavy: 'how do these three entities connect' — the answer isn't in any single chunk and vector similarity won't find it."
+              detail="Builds a knowledge graph over source data and retrieves via graph traversal rather than similarity search. The right tool when questions are relationship-heavy: 'how do these three entities connect' — where the answer isn't in any single chunk and vector similarity won't find it."
             />
             <AdvancedPatternRow
               name="Adaptive RAG"
@@ -1254,8 +1254,8 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <div className="border-l-2 border-brand-cobalt pl-6 space-y-4">
             <p className="font-sans text-base text-brand-black/80 leading-relaxed">
-              Most content optimization assumes a visibility problem. It usually isn&apos;t.
-              It&apos;s a mechanism problem — the engine never opened your page, or chose not to click through,
+              Most content optimisation assumes a visibility problem. It usually isn&apos;t.
+              It&apos;s a mechanism problem. The engine never opened your page, or chose not to click through,
               or couldn&apos;t extract a usable answer from what it found. Three different problems.
               Three different fixes.
             </p>
@@ -1278,8 +1278,8 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
 
           <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6 mb-4">
             This sounds obvious stated plainly. It&apos;s not obvious in practice, because most content
-            optimization still treats AI visibility the same way it treats search ranking — as a function
-            of quality, relevance, and authority. Those things matter. But they&apos;re evaluated only after
+            optimisation still treats AI visibility the same way it treats search ranking: quality, relevance,
+            and authority. Those things matter. But they&apos;re evaluated only after
             the engine has already decided to open your page. Get eliminated before that decision and
             quality is irrelevant.
           </p>
@@ -1310,8 +1310,8 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
             Before any extraction, before any quality assessment, the engine makes a click decision
             based on what&apos;s visible without opening the page: URL, title, snippet, sometimes
             a freshness date. That&apos;s the cover. Content quality inside the page is irrelevant at this
-            stage. If your title signals brand story rather than utility — if your snippet reads like
-            a press release rather than an answer — the engine won&apos;t click through regardless of
+            stage. If your title signals brand story rather than utility, if your snippet reads like
+            a press release rather than an answer, the engine won&apos;t click through regardless of
             what&apos;s inside.
           </p>
           <p className="font-sans text-base text-brand-black/75 leading-relaxed">
@@ -1365,7 +1365,7 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
 
           <Callout label="Platform divergence is diagnostic" className="mt-8">
             <p className="font-sans text-sm text-brand-black/75 leading-relaxed">
-              Ranking first on ChatGPT and tenth on Gemini isn&apos;t noise — it means two engines are
+              Ranking first on ChatGPT and tenth on Gemini isn&apos;t noise: it means two engines are
               applying different selection logic to the same content. The fix for each will be different.
               Averaging them into a single &quot;AI visibility&quot; number hides both the problem and the opportunity.
               Diagnose each platform separately.
@@ -1410,7 +1410,7 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
           <SectionHeading number="05" title="The SAGE loop" />
 
           <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
-            SAGE is a four-stage cycle — Setup, Analyze, Generate, Engineer — and its most useful
+            SAGE is a four-stage cycle (Setup, Analyse, Generate, Engineer) and its most useful
             property is that it tells you which stage to be in right now. The temptation is to default
             to Generate (producing content) because it feels productive. Generating against the wrong
             gaps, or without measurement, is how you ship a lot and move nothing.
@@ -2260,7 +2260,7 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
         <section>
           <SectionHeading number="01" title="Midjourney — stills, art direction, composition" />
           <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-8">
-            V8.2 is the current default as of mid-2026, focused on aesthetics and Personalization — it reads
+            V8.2 is the current default as of mid-2026, focused on aesthetics and Personalisation — it reads
             your accumulated ratings and moodboard to skew toward your taste. A handful of parameters do
             most of the work. The rest are edge cases.
           </p>
@@ -2562,7 +2562,7 @@ function HermesArticle({ article, formattedDate }: { article: ReturnType<typeof 
           <SectionHeading number="01" title="Memory that actually persists" />
           <div className="space-y-4 mt-6">
             <p className="font-sans text-base text-brand-black/75 leading-relaxed">
-              Hermes stores all memory in a local SQLite database at <code className="font-mono text-xs bg-brand-graphite px-1.5 py-0.5">~/.hermes/state.db</code>, indexed with FTS5 for full-text search across every session you&rsquo;ve ever run. When you ask &ldquo;what did we land on for the authentication schema?&rdquo; it&rsquo;s not searching your current context — it&rsquo;s searching the actual historical record, with LLM summarization to surface relevant cross-session context the way a good note-taking system would.
+              Hermes stores all memory in a local SQLite database at <code className="font-mono text-xs bg-brand-graphite px-1.5 py-0.5">~/.hermes/state.db</code>, indexed with FTS5 for full-text search across every session you&rsquo;ve ever run. When you ask &ldquo;what did we land on for the authentication schema?&rdquo; it&rsquo;s not searching your current context — it&rsquo;s searching the actual historical record, with LLM summarisation to surface relevant cross-session context the way a good note-taking system would.
             </p>
             <p className="font-sans text-base text-brand-black/75 leading-relaxed">
               The memory is <strong className="text-brand-black">agent-curated, not a raw transcript dump.</strong> Hermes periodically reviews what it&rsquo;s logged and decides what&rsquo;s actually worth keeping — condensing, surfacing key decisions, archiving noise. This matters because unlimited transcript accumulation gets expensive and slow quickly; curated memory stays useful.
@@ -2687,7 +2687,7 @@ hermes gateway install   # install as a systemd service (runs on reboot)`}</Code
         <section>
           <SectionHeading number="05" title="Claude Code or Hermes?" />
           <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
-            These tools solve different problems. The comparison is worth being explicit about, because the marketing language around both leans toward overlap that doesn&rsquo;t exist in practice.
+            These tools solve different problems. The marketing language around both implies overlap that doesn&rsquo;t exist in practice.
           </p>
 
           <div className="mt-8 border border-brand-concrete">
@@ -2844,9 +2844,9 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
         <section>
           <SectionHeading number="02" title="The corrective: valuemaxxing" />
           <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
-            The counter-practice gaining traction is <strong className="text-brand-black">valuemaxxing</strong> —
+            The counter-practice gaining traction is <strong className="text-brand-black">valuemaxxing</strong>:
             optimising for outcomes per dollar spent, rather than volume for its own sake. The signal
-            distinction is straightforward: genuine skill shows up as tokens per good outcome
+            distinction is straightforward. Genuine skill shows up as tokens per good outcome
             <em> going down</em>, not up. A tighter, better-scoped context package consistently
             outperforms four parallel agents running against a vague prompt, using a fraction of
             the tokens to reach an acceptable result.
@@ -2956,11 +2956,10 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
 
           <Callout label="The real skill signal" className="mt-8">
             <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
-              Better outcomes come from fewer iterations, cleaner results, correct architecture on the
-              first pass — not from higher volume. A person with a tight, well-scoped context package
-              can outperform someone running four parallel agents against a vague prompt, using a
-              fraction of the tokens. Skill shows up as <em>tokens per good outcome going down</em>.
-              That&rsquo;s the number worth putting on a dashboard.
+              The transition from training spend to steady-state should be visible on a graph.
+              If cost per task is still climbing six weeks into a repeatable workflow, the workflow
+              hasn&rsquo;t been engineered yet. Track cost per completed task week over week.
+              That downward slope is what mastery looks like, not a leaderboard position.
             </p>
           </Callout>
 

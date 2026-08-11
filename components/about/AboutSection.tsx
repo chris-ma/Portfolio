@@ -75,13 +75,13 @@ export default function AboutSection() {
             variants={fadeUp}
             className="font-sans text-base md:text-lg text-brand-black/75 leading-relaxed mb-6"
           >
-            I work at the intersection of creative technology, digital marketing, and product thinking — building experiences that are both culturally resonant and commercially effective.
+            I build across creative technology, digital marketing, and product thinking. The work earns attention and delivers commercially.
           </motion.p>
           <motion.p
             variants={fadeUp}
             className="font-sans text-base text-brand-black/55 leading-relaxed mb-6"
           >
-            With a background spanning brand campaigns, engineering systems, and product strategy, I bring a full-stack perspective to every project. From campaign intelligence platforms to editorial design systems, the common thread is clarity of vision and precision of execution.
+            My background covers brand campaigns, engineering systems, and product strategy. From campaign intelligence platforms to editorial design systems, the rigour applied to a brief is the same as the rigour applied to a build.
           </motion.p>
           <motion.p
             variants={fadeUp}

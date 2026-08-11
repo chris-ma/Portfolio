@@ -24,13 +24,13 @@ export const articles: Article[] = [
   {
     slug: 'hermes-agent-persistent-ai',
     title: 'The Agent That Remembers',
-    subtitle: 'Every chat tool resets. Hermes is a daemon — it accumulates context, writes its own skills, and runs unattended while you sleep.',
+    subtitle: 'Every chat tool resets. Hermes is a daemon that accumulates context, writes its own skills, and runs unattended while you sleep.',
     category: 'Tools',
     date: '2026-08-11',
     readTime: '8 min read',
     tags: ['Hermes Agent', 'Nous Research', 'Self-Hosted AI', 'Autonomous Agents'],
     excerpt:
-      "Every chat tool resets. Hermes doesn't. The open-source persistent-memory daemon from Nous Research — why the session model is the real bottleneck, and what changes when the agent remembers who you are.",
+      "Every chat tool resets. Hermes doesn't. The open-source persistent-memory daemon from Nous Research: why the session model is the real bottleneck, and what changes when the agent remembers who you are.",
   },
   {
     slug: 'tokenmaxxing-ai-productivity',
@@ -46,18 +46,18 @@ export const articles: Article[] = [
   {
     slug: 'ai-image-video-generation-midjourney-higgsfield',
     title: 'Not Prompting. Directing.',
-    subtitle: 'Midjourney builds the still. Higgsfield moves the camera. And the gap between good and great output is almost entirely about knowing the vocabulary.',
+    subtitle: 'Midjourney builds the still. Higgsfield moves the camera. The gap between good and great output comes down to knowing the vocabulary.',
     category: 'Creative',
     date: '2026-08-11',
     readTime: '10 min read',
     tags: ['Midjourney', 'Higgsfield', 'AI Video', 'Cinematography'],
     excerpt:
-      "The biggest quality jump in AI-generated video isn't a better model. It's treating the camera preset menu as a director's toolkit — picking a deliberate move for a deliberate reason, instead of defaulting to Static and hoping the prompt carries the shot.",
+      "The biggest quality jump in AI-generated video isn't a better model. It's using the camera preset menu as a director would: choosing a specific move for a specific reason, rather than defaulting to Static and hoping the prompt carries the shot.",
   },
   {
     slug: 'agentic-ai-loops-workflows',
     title: 'Stop Building Agents',
-    subtitle: 'Most AI agents are workflows in disguise. Five patterns cover 90% of real tasks — genuine autonomy is for the other 10%',
+    subtitle: 'Most AI agents are workflows in disguise. Five patterns cover 90% of real tasks. Genuine autonomy is for the other 10%.',
     category: 'Engineering',
     date: '2026-08-11',
     readTime: '8 min read',
@@ -79,7 +79,7 @@ export const articles: Article[] = [
   {
     slug: 'aeo-three-gate-diagnostic',
     title: 'The Three Gates',
-    subtitle: 'How answer engines decide what to cite — and why most content fails before you\'ve written a word',
+    subtitle: 'How answer engines decide what to cite, and why most content fails before you\'ve written a word',
     category: 'Strategy',
     date: '2026-08-11',
     readTime: '10 min read',
@@ -90,24 +90,24 @@ export const articles: Article[] = [
   {
     slug: 'claude-code-vs-codex',
     title: 'The $140 Question',
-    subtitle: 'Claude Code vs OpenAI Codex — same task, very different bill',
+    subtitle: 'Claude Code vs OpenAI Codex. Same task, very different bill.',
     category: 'Tools',
     date: '2026-08-11',
     readTime: '6 min read',
     tags: ['AI', 'Claude Code', 'Codex', 'Dev Tooling'],
     excerpt:
-      'The benchmark numbers are close. The bill isn\'t. What the $155 vs $15 refactor test actually tells you about which tool to reach for — and when.',
+      'The benchmark numbers are close. The bill isn\'t. What the $155 vs $15 refactor test actually tells you about which tool to reach for, and when.',
   },
   {
     slug: 'wispr-obsidian-notion-pkm-stack',
     title: 'Capture → Think → Coordinate',
-    subtitle: 'Building a frictionless PKM stack with Wispr Flow, Obsidian, and Notion',
+    subtitle: 'Three tools, three distinct jobs. The PKM stack that actually holds together.',
     category: 'Systems',
     date: '2026-08-11',
     readTime: '8 min read',
     tags: ['PKM', 'Productivity', 'Obsidian', 'Notion', 'Wispr'],
     excerpt:
-      'A boundary-first approach to personal knowledge management. One tool for capture, one for thinking, one for coordination — and clear rules for what lives where.',
+      'Three tools, three distinct jobs. One for capture, one for thinking, one for coordination, with clear rules about what lives where.',
   },
 ]
 

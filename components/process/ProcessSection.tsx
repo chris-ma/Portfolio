@@ -14,13 +14,13 @@ const steps = [
   {
     number: '02',
     title: 'Define the Experience',
-    description: 'Translate insight into architecture. What should someone feel the moment they land? What does the journey look like from first touch to conversion?',
+    description: 'Translate insight into architecture. Define how someone should feel from first touch through to conversion.',
     tags: ['UX', 'Information Architecture', 'Vision'],
   },
   {
     number: '03',
     title: 'Build with Precision',
-    description: 'Design and engineer simultaneously. Components that are clean, reusable, and production-ready. No throwaway prototypes — just real, ship-ready work.',
+    description: 'Design and engineer simultaneously. Components that are clean, reusable, and production-ready. Nothing throwaway; everything ships.',
     tags: ['Design', 'Engineering', 'Systems'],
   },
   {
