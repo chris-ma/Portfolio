@@ -158,6 +158,82 @@ function ArticleVisual({ category, index }: { category: string; index: number })
     )
   }
 
+  if (category === 'Strategy') {
+    // Three-gate funnel — filter narrowing from left to right
+    const gates = [
+      { label: 'FETCHABLE', w: 160, x: 40 },
+      { label: 'CHOSEN',    w: 120, x: 240 },
+      { label: 'EXTRACTABLE', w: 80, x: 400 },
+    ]
+    const H = 180
+    const CY = 170
+    return (
+      <svg viewBox="0 0 600 340" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="340" fill="#EDEAE4" />
+        {/* Grid */}
+        {Array.from({ length: 6 }).map((_, i) => (
+          <line key={i} x1="0" y1={i * 60} x2="600" y2={i * 60} stroke={green} strokeWidth="0.3" opacity="0.07" />
+        ))}
+        {/* Funnel bars — each narrower */}
+        {gates.map((g, i) => (
+          <g key={g.label}>
+            <rect
+              x={g.x}
+              y={CY - H / 2}
+              width={g.w}
+              height={H}
+              rx="2"
+              fill={green}
+              opacity={0.7 - i * 0.2}
+            />
+            <text
+              x={g.x + g.w / 2}
+              y={CY + H / 2 + 18}
+              textAnchor="middle"
+              fontFamily="monospace"
+              fontSize="8"
+              fill={green}
+              opacity={0.8 - i * 0.15}
+              letterSpacing="1"
+            >
+              {g.label}
+            </text>
+            {/* Arrow connector */}
+            {i < gates.length - 1 && (
+              <line
+                x1={g.x + g.w + 4}
+                y1={CY}
+                x2={gates[i + 1].x - 4}
+                y2={CY}
+                stroke={green}
+                strokeWidth="1"
+                opacity="0.3"
+                markerEnd="url(#fga)"
+              />
+            )}
+          </g>
+        ))}
+        <defs>
+          <marker id="fga" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+            <path d="M0,0 L5,2.5 L0,5 Z" fill={green} opacity="0.35" />
+          </marker>
+        </defs>
+        {/* Cited box */}
+        <rect x="516" y={CY - 28} width="60" height="56" rx="2" fill={green} opacity="0.15" stroke={green} strokeWidth="1" />
+        <text x="546" y={CY - 4} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={green}>CITED</text>
+        <text x="546" y={CY + 12} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={green}>IN AI</text>
+        <line x1="496" y1={CY} x2="516" y2={CY} stroke={green} strokeWidth="1" opacity="0.3" />
+        {/* Gate numbers */}
+        {gates.map((g, i) => (
+          <text key={i} x={g.x + g.w / 2} y={CY - H / 2 - 10} textAnchor="middle" fontFamily="monospace" fontSize="9" fill={green} opacity="0.4">
+            0{i + 1}
+          </text>
+        ))}
+        <text x="300" y="308" textAnchor="middle" fill={green} fontSize="8" fontFamily="monospace" opacity="0.3" letterSpacing="1">THREE GATES · AEO DIAGNOSTIC</text>
+      </svg>
+    )
+  }
+
   // Default abstract visual for other categories
   return (
     <svg viewBox="0 0 600 340" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">

@@ -11,6 +11,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'aeo-three-gate-diagnostic',
+    title: 'The Three Gates',
+    subtitle: 'How answer engines decide what to cite — and why most content fails before you\'ve written a word',
+    category: 'Strategy',
+    date: '2026-08-11',
+    readTime: '10 min read',
+    tags: ['AEO', 'GEO', 'SEO', 'Content Strategy', 'BrightEdge'],
+    excerpt:
+      'AEO isn\'t a visibility problem. It\'s a mechanism problem. Fetchable → Chosen → Extractable: three gates, three different failures, three different fixes. Most content never gets past Gate 2.',
+  },
+  {
     slug: 'claude-code-vs-codex',
     title: 'The $140 Question',
     subtitle: 'Claude Code vs OpenAI Codex — same task, very different bill',

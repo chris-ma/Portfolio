@@ -539,3 +539,282 @@ export function WorkflowSplit() {
     </svg>
   )
 }
+
+// ─── AEO / Three-Gate illustrations ──────────────────────────────────────────
+
+export function QueryFanOut() {
+  // One messy question → multiple clean search branches
+  const queries = [
+    'best mattress for back pain and hot sleepers',
+    'cooling mattress comparison 2026',
+    'mattress for lumbar support reviews',
+    'hybrid vs memory foam back support',
+  ]
+  return (
+    <svg viewBox="0 0 720 260" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="260" fill={BG} />
+
+      {/* Source prompt box */}
+      <rect x="40" y="100" width="200" height="60" rx="3" fill={BG2} stroke={BORDER} strokeWidth="1" />
+      <text x="140" y="122" textAnchor="middle" fontFamily="monospace" fontSize="9" fill={MUTED} letterSpacing="1">USER PROMPT</text>
+      <text x="140" y="138" textAnchor="middle" fontFamily="sans-serif" fontSize="10" fill={TEXT}>
+        "best mattress for back
+      </text>
+      <text x="140" y="151" textAnchor="middle" fontFamily="sans-serif" fontSize="10" fill={TEXT}>
+        pain and hot sleepers"
+      </text>
+
+      {/* Fan-out label */}
+      <text x="280" y="128" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="1">QUERY</text>
+      <text x="280" y="140" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="1">FAN-OUT</text>
+
+      {/* Fan lines */}
+      {queries.map((_, i) => {
+        const y = 40 + i * 55
+        const midY = 130
+        return (
+          <path
+            key={i}
+            d={`M240,${midY} C300,${midY} 310,${y + 12} 360,${y + 12}`}
+            fill="none"
+            stroke={G}
+            strokeWidth="1"
+            opacity="0.35"
+          />
+        )
+      })}
+
+      {/* Query boxes */}
+      {queries.map((q, i) => {
+        const y = 30 + i * 55
+        return (
+          <g key={i}>
+            <rect x="360" y={y} width="320" height="28" rx="3" fill={BG2} stroke={BORDER} strokeWidth="0.8" />
+            <text x="372" y={y + 18} fontFamily="monospace" fontSize="9" fill={G}>
+              {q}
+            </text>
+          </g>
+        )
+      })}
+
+      <text x="360" y="252" fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.6">
+        each query returns its own candidate source list — engine decides which to open
+      </text>
+    </svg>
+  )
+}
+
+export function ThreeGateDiagram() {
+  const gates = [
+    {
+      n: '01',
+      name: 'FETCHABLE',
+      q: 'Can the engine reach and ingest the page?',
+      checks: ['Indexed?', 'robots.txt clear?', 'No paywall / auth?'],
+      symptom: 'Low visibility score',
+      color: G,
+      opacity: '0.9',
+    },
+    {
+      n: '02',
+      name: 'CHOSEN',
+      q: 'Does the cover signal the right answer?',
+      checks: ['Title utility > brand?', 'Snippet answer-shaped?', 'Format matches intent?'],
+      symptom: 'Good score, low rank (9th, 10th)',
+      color: G,
+      opacity: '0.6',
+    },
+    {
+      n: '03',
+      name: 'EXTRACTABLE',
+      q: 'Can the engine lift a clean chunk?',
+      checks: ['Not buried in accordions?', 'Text-based, not image/video?', 'No JS render-blocking?'],
+      symptom: 'Cited but content missing from answer',
+      color: G,
+      opacity: '0.35',
+    },
+  ]
+
+  const GATE_W = 200
+  const GATE_H = 170
+  const GAP = 16
+  const startX = 36
+
+  return (
+    <svg viewBox="0 0 720 260" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="260" fill={BG} />
+
+      {/* Flow arrow baseline */}
+      <line x1={startX + GATE_W} y1="130" x2={startX + GATE_W + GAP} y2="130" stroke={BORDER} strokeWidth="1" markerEnd="url(#ga)" />
+      <line x1={startX + GATE_W * 2 + GAP} y1="130" x2={startX + GATE_W * 2 + GAP * 2} y2="130" stroke={BORDER} strokeWidth="1" markerEnd="url(#ga)" />
+      <defs>
+        <marker id="ga" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill={BORDER} />
+        </marker>
+      </defs>
+
+      {/* Gate blocks */}
+      {gates.map((gate, i) => {
+        const x = startX + i * (GATE_W + GAP)
+        const y = 44
+        return (
+          <g key={gate.n}>
+            <rect x={x} y={y} width={GATE_W} height={GATE_H} rx="3" fill={BG2} stroke={G} strokeWidth="1.2" opacity={gate.opacity} />
+
+            {/* Header */}
+            <rect x={x} y={y} width={GATE_W} height={30} rx="3" fill={G} opacity={gate.opacity} />
+            <rect x={x} y={y + 18} width={GATE_W} height={12} fill={G} opacity={gate.opacity} />
+            <text x={x + 10} y={y + 12} fontFamily="monospace" fontSize="9" fill={BG} letterSpacing="1">GATE {gate.n} — {gate.name}</text>
+
+            {/* Question */}
+            <text x={x + 10} y={y + 48} fontFamily="monospace" fontSize="8.5" fill={TEXT} opacity="0.8">{gate.q.split('?')[0]}</text>
+            <text x={x + 10} y={y + 60} fontFamily="monospace" fontSize="8.5" fill={TEXT} opacity="0.8">?</text>
+
+            {/* Checks */}
+            {gate.checks.map((c, ci) => (
+              <text key={ci} x={x + 14} y={y + 82 + ci * 16} fontFamily="monospace" fontSize="8" fill={MUTED}>
+                ✓ {c}
+              </text>
+            ))}
+
+            {/* Symptom */}
+            <rect x={x + 8} y={y + GATE_H - 28} width={GATE_W - 16} height={20} rx="2" fill={G} opacity="0.08" />
+            <text x={x + 14} y={y + GATE_H - 14} fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.85">{gate.symptom}</text>
+          </g>
+        )
+      })}
+
+      {/* Citation outcome box */}
+      <rect x={startX + GATE_W * 3 + GAP * 3} y="80" width="80" height="60" rx="3" fill={G} opacity="0.15" stroke={G} strokeWidth="1" />
+      <text x={startX + GATE_W * 3 + GAP * 3 + 40} y="106" textAnchor="middle" fontFamily="monospace" fontSize="9" fill={G}>CITED</text>
+      <text x={startX + GATE_W * 3 + GAP * 3 + 40} y="120" textAnchor="middle" fontFamily="monospace" fontSize="9" fill={G}>IN</text>
+      <text x={startX + GATE_W * 3 + GAP * 3 + 40} y="134" textAnchor="middle" fontFamily="monospace" fontSize="9" fill={G}>ANSWER</text>
+      <line x1={startX + GATE_W * 3 + GAP * 2} y1="110" x2={startX + GATE_W * 3 + GAP * 3} y2="110" stroke={G} strokeWidth="1.2" markerEnd="url(#ga)" opacity="0.6" />
+
+      <text x="360" y="240" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.6">
+        failing any gate removes you from consideration — diagnosis tells you which one
+      </text>
+    </svg>
+  )
+}
+
+export function SAGELoop() {
+  const stages = [
+    { label: 'SETUP', sub: 'decide what to track', x: 260, y: 40 },
+    { label: 'ANALYZE', sub: 'find where you\'re losing', x: 480, y: 140 },
+    { label: 'ENGINEER', sub: 'make wins repeatable', x: 100, y: 140 },
+    { label: 'GENERATE', sub: 'turn gaps into shipped work', x: 480, y: 240 },
+  ]
+
+  // We'll arrange as a 2×2 grid with arrows between them
+  const grid = [
+    { label: 'SETUP',    sub: 'Decide what to track',          x: 170, y: 50,  color: G },
+    { label: 'ANALYZE',  sub: 'Find where you\'re losing',     x: 430, y: 50,  color: G },
+    { label: 'ENGINEER', sub: 'Make wins repeatable',          x: 170, y: 170, color: G },
+    { label: 'GENERATE', sub: 'Turn gaps into shipped work',   x: 430, y: 170, color: G },
+  ]
+
+  const W = 200
+  const H = 80
+
+  return (
+    <svg viewBox="0 0 720 310" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="310" fill={BG} />
+
+      <defs>
+        <marker id="sa" markerWidth="7" markerHeight="7" refX="7" refY="3.5" orient="auto">
+          <polygon points="0,0 7,3.5 0,7" fill={G} opacity="0.5" />
+        </marker>
+      </defs>
+
+      {/* Setup → Analyze */}
+      <line x1={grid[0].x + W} y1={grid[0].y + H / 2} x2={grid[1].x} y2={grid[1].y + H / 2} stroke={G} strokeWidth="1.2" opacity="0.4" markerEnd="url(#sa)" />
+      {/* Analyze → Generate */}
+      <line x1={grid[1].x + W / 2} y1={grid[1].y + H} x2={grid[3].x + W / 2} y2={grid[3].y} stroke={G} strokeWidth="1.2" opacity="0.4" markerEnd="url(#sa)" />
+      {/* Generate → Engineer */}
+      <line x1={grid[3].x} y1={grid[3].y + H / 2} x2={grid[2].x + W} y2={grid[2].y + H / 2} stroke={G} strokeWidth="1.2" opacity="0.4" markerEnd="url(#sa)" />
+      {/* Engineer → Setup */}
+      <line x1={grid[2].x + W / 2} y1={grid[2].y} x2={grid[0].x + W / 2} y2={grid[0].y + H} stroke={G} strokeWidth="1.2" opacity="0.4" markerEnd="url(#sa)" />
+
+      {/* Stage boxes */}
+      {grid.map((s, i) => (
+        <g key={s.label}>
+          <rect x={s.x} y={s.y} width={W} height={H} rx="3" fill={BG2} stroke={G} strokeWidth="1.2" opacity="0.8" />
+          <rect x={s.x} y={s.y} width={W} height={28} rx="3" fill={G} opacity="0.85" />
+          <rect x={s.x} y={s.y + 16} width={W} height={12} fill={G} opacity="0.85" />
+          <text x={s.x + W / 2} y={s.y + 18} textAnchor="middle" fontFamily="monospace" fontSize="11" fill={BG} letterSpacing="2">{s.label}</text>
+          <text x={s.x + W / 2} y={s.y + 56} textAnchor="middle" fontFamily="monospace" fontSize="9" fill={MUTED}>{s.sub}</text>
+        </g>
+      ))}
+
+      {/* Centre label */}
+      <text x="360" y="148" textAnchor="middle" fontFamily="monospace" fontSize="10" fill={MUTED} letterSpacing="2" opacity="0.5">LOOP</text>
+
+      {/* Diagnostic question */}
+      <text x="360" y="282" textAnchor="middle" fontFamily="monospace" fontSize="9" fill={G} opacity="0.6" letterSpacing="1">
+        "What time is it?" — which stage you're in, right now
+      </text>
+      <text x="360" y="298" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.5">
+        not a checklist you complete once; a cycle you run continuously
+      </text>
+    </svg>
+  )
+}
+
+export function ContentShapeComparison() {
+  const utilityRows = [
+    '▶  What it is + who it\'s for',
+    '▶  Comparison: X vs Y vs Z',
+    '▶  Answer: cooling AND support',
+    '▶  Verdict per use case',
+    '▶  Direct recommendation',
+  ]
+  const productRows = [
+    '◦  Brand story / heritage',
+    '◦  Feature list',
+    '◦  Social proof section',
+    '◦  Single-angle positioning',
+    '◦  CTA / request demo',
+  ]
+  const ROW_H = 28
+  const W = 270
+
+  return (
+    <svg viewBox="0 0 720 260" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="260" fill={BG} />
+
+      {/* Utility asset column */}
+      <rect x="40" y="30" width={W} height={36} rx="3" fill={G} opacity="0.85" />
+      <text x={40 + W / 2} y="53" textAnchor="middle" fontFamily="monospace" fontSize="11" fill={BG} letterSpacing="2">UTILITY ASSET</text>
+      {utilityRows.map((r, i) => (
+        <g key={i}>
+          <rect x="40" y={66 + i * ROW_H} width={W} height={ROW_H} fill={i % 2 === 0 ? BG2 : BG} />
+          <line x1="40" y1={66 + i * ROW_H} x2={40 + W} y2={66 + i * ROW_H} stroke={BORDER} strokeWidth="0.5" />
+          <text x="52" y={66 + i * ROW_H + 18} fontFamily="monospace" fontSize="9" fill={G}>{r}</text>
+        </g>
+      ))}
+      <rect x="40" y="66" width={W} height={utilityRows.length * ROW_H} fill="none" stroke={G} strokeWidth="1" opacity="0.4" />
+      <text x={40 + W / 2} y={66 + utilityRows.length * ROW_H + 22} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} opacity="0.7">
+        resolves the compound job in one place
+      </text>
+
+      {/* Product page column */}
+      <rect x="410" y="30" width={W} height={36} rx="3" fill={MUTED} opacity="0.45" />
+      <text x={410 + W / 2} y="53" textAnchor="middle" fontFamily="monospace" fontSize="11" fill={BG} letterSpacing="2">PRODUCT PAGE</text>
+      {productRows.map((r, i) => (
+        <g key={i}>
+          <rect x="410" y={66 + i * ROW_H} width={W} height={ROW_H} fill={i % 2 === 0 ? BG2 : BG} opacity="0.7" />
+          <line x1="410" y1={66 + i * ROW_H} x2={410 + W} y2={66 + i * ROW_H} stroke={BORDER} strokeWidth="0.5" />
+          <text x="422" y={66 + i * ROW_H + 18} fontFamily="monospace" fontSize="9" fill={MUTED}>{r}</text>
+        </g>
+      ))}
+      <rect x="410" y="66" width={W} height={productRows.length * ROW_H} fill="none" stroke={BORDER} strokeWidth="1" />
+      <text x={410 + W / 2} y={66 + productRows.length * ROW_H + 22} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.7">
+        single angle — loses compound-job queries
+      </text>
+
+      {/* VS */}
+      <text x="360" y="148" textAnchor="middle" fontFamily="monospace" fontSize="14" fill={BORDER} letterSpacing="2">VS</text>
+    </svg>
+  )
+}

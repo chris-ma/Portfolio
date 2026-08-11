@@ -4,6 +4,7 @@ import { getArticleBySlug, articles } from '@/lib/articles'
 import {
   WisprMockup, ObsidianMockup, NotionMockup, FlowDiagram,
   ContextWindowComparison, BenchmarkChart, CostComparison, WorkflowSplit,
+  QueryFanOut, ThreeGateDiagram, SAGELoop, ContentShapeComparison,
 } from '@/components/articles/ArticleMockups'
 
 interface PageProps {
@@ -33,6 +34,10 @@ export default function ArticlePage({ params }: PageProps) {
     day: 'numeric',
   })
 
+  if (article.slug === 'aeo-three-gate-diagnostic') {
+    return <AEOArticle article={article} formattedDate={formattedDate} />
+  }
+
   if (article.slug === 'claude-code-vs-codex') {
     return <CodexArticle article={article} formattedDate={formattedDate} />
   }
@@ -42,6 +47,402 @@ export default function ArticlePage({ params }: PageProps) {
   }
 
   notFound()
+}
+
+function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+
+        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+          THE<br />
+          <span className="text-brand-cobalt">THREE</span><br />
+          GATES.
+        </h1>
+
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+          {article!.subtitle}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted border border-brand-concrete px-2.5 py-1">{tag}</span>
+          ))}
+        </div>
+      </header>
+
+      <article className="max-w-[720px] mx-auto px-6 md:px-10 py-16 space-y-16">
+
+        {/* Lede */}
+        <section>
+          <div className="border-l-2 border-brand-cobalt pl-6 space-y-4">
+            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+              Most content optimization assumes a visibility problem. It usually isn&apos;t.
+              It&apos;s a mechanism problem — the engine never opened your page, or chose not to click through,
+              or couldn&apos;t extract a usable answer from what it found. Three different problems.
+              Three different fixes.
+            </p>
+            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+              Treating them as one is why most AEO advice gives you motion without traction.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 01 — The core reframe */}
+        <section>
+          <SectionHeading number="01" title="The core reframe" />
+
+          <Callout label="The rule">
+            <p className="font-sans text-base text-brand-cobalt font-medium leading-relaxed">
+              The model can only answer from what it fetched. Not what exists. Not what is true.
+              What it actually pulled into context for that specific query.
+            </p>
+          </Callout>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6 mb-4">
+            This sounds obvious stated plainly. It&apos;s not obvious in practice, because most content
+            optimization still treats AI visibility the same way it treats search ranking — as a function
+            of quality, relevance, and authority. Those things matter. But they&apos;re evaluated only after
+            the engine has already decided to open your page. Get eliminated before that decision and
+            quality is irrelevant.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            The mechanism works in sequence. A human types a messy, multi-part question. The engine
+            doesn&apos;t search for that exact query — it translates it into several clean, query-shaped
+            searches (query fan-out). Each search returns its own candidate source list. The engine
+            then decides which candidates to open, which pages to extract from, and finally which
+            extracted chunks to use in composing the answer. Three decisions. Three places to fail.
+          </p>
+        </section>
+
+        {/* Query fan-out diagram */}
+        <figure>
+          <div className="border border-brand-concrete overflow-hidden">
+            <QueryFanOut />
+          </div>
+          <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+            Query fan-out — one human prompt becomes multiple discrete searches, each with its own candidate source list.
+          </figcaption>
+        </figure>
+
+        {/* Section 02 — The cover */}
+        <section>
+          <SectionHeading number="02" title="The cover" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            Before any extraction, before any quality assessment, the engine makes a click decision
+            based on what&apos;s visible without opening the page: URL, title, snippet, sometimes
+            a freshness date. That&apos;s the cover. Content quality inside the page is irrelevant at this
+            stage. If your title signals brand story rather than utility — if your snippet reads like
+            a press release rather than an answer — the engine won&apos;t click through regardless of
+            what&apos;s inside.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            This is why a well-written product page with strong SEO fundamentals can still be
+            invisible in AI answers. The cover wasn&apos;t shaped for the engine&apos;s selection criteria.
+            Optimizing the inside without optimizing the cover is backwards.
+          </p>
+        </section>
+
+        {/* Section 03 — The three gates */}
+        <section>
+          <SectionHeading number="03" title="The three gates" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+            Use this diagnostic any time visibility is lower than expected. It tells you
+            <em className="text-brand-black"> which</em> problem you have rather than asking you to guess.
+          </p>
+
+          <figure className="mb-8">
+            <div className="border border-brand-concrete overflow-hidden">
+              <ThreeGateDiagram />
+            </div>
+            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+              Three gates — failing any one removes you from consideration for that query.
+            </figcaption>
+          </figure>
+
+          <div className="space-y-4">
+            <GateRow
+              n="01"
+              name="Fetchable"
+              question="Can the engine reach and ingest your page?"
+              checks={['Indexed and not blocked by robots.txt?', 'Not behind a paywall or authentication?', 'Crawl errors in GSC?']}
+              symptom="Low visibility score across platforms — you're not in the candidate list at all."
+            />
+            <GateRow
+              n="02"
+              name="Chosen"
+              question="Does your cover look like the answer?"
+              checks={['Title signals utility, not brand?', 'Snippet is answer-shaped, not promotional?', 'Format matches the query intent — comparison vs single review?']}
+              symptom="Decent visibility score but low rank (9th, 10th position). You're in the list but not being selected."
+            />
+            <GateRow
+              n="03"
+              name="Extractable"
+              question="Can the engine lift a clean, usable chunk?"
+              checks={['Answers visible in plain HTML, not JavaScript-rendered?', 'Not buried in accordions or tabs?', 'Text-based — not locked in images, charts, or video with no surrounding copy?']}
+              symptom="Being cited but content isn't appearing in the actual answer. The engine found you but couldn't pull a clean extract."
+            />
+          </div>
+
+          <Callout label="Platform divergence is diagnostic" className="mt-8">
+            <p className="font-sans text-sm text-brand-black/75 leading-relaxed">
+              Ranking first on ChatGPT and tenth on Gemini isn&apos;t noise — it means two engines are
+              applying different selection logic to the same content. The fix for each will be different.
+              Averaging them into a single &quot;AI visibility&quot; number hides both the problem and the opportunity.
+              Diagnose each platform separately.
+            </p>
+          </Callout>
+        </section>
+
+        {/* Section 04 — Score vs Rank */}
+        <section>
+          <SectionHeading number="04" title="Score vs Rank" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+            These two metrics get conflated constantly. They measure completely different things.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div className="border border-brand-cobalt/30 p-5 bg-brand-graphite">
+              <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-cobalt block mb-2">Visibility Score</span>
+              <p className="font-sans text-sm text-brand-black/75 leading-relaxed">
+                Your raw presence in AI answers. This can rise for everyone simultaneously as engines
+                cite more sources overall. A rising score tells you the category is growing.
+              </p>
+            </div>
+            <div className="border border-brand-concrete p-5 bg-brand-graphite">
+              <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-muted block mb-2">Visibility Rank</span>
+              <p className="font-sans text-sm text-brand-black/75 leading-relaxed">
+                Your position relative to competitors. This is the number that tells you whether
+                you&apos;re actually winning. Track both, but optimise for rank.
+              </p>
+            </div>
+          </div>
+
+          <p className="font-sans text-sm text-brand-muted leading-relaxed italic">
+            A rising score with flat or falling rank means the category is growing but you&apos;re not
+            capturing more of it. This is the most common misread in AEO reporting — a chart that
+            goes up and right masking a competitive position that&apos;s quietly getting worse.
+          </p>
+        </section>
+
+        {/* Section 05 — The SAGE loop */}
+        <section>
+          <SectionHeading number="05" title="The SAGE loop" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+            SAGE is a four-stage cycle — Setup, Analyze, Generate, Engineer — and its most useful
+            property is that it tells you which stage to be in right now. The temptation is to default
+            to Generate (producing content) because it feels productive. Generating against the wrong
+            gaps, or without measurement, is how you ship a lot and move nothing.
+          </p>
+
+          <figure className="mb-8">
+            <div className="border border-brand-concrete overflow-hidden">
+              <SAGELoop />
+            </div>
+            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+              SAGE loop — a cycle you run continuously, not a checklist you complete once.
+            </figcaption>
+          </figure>
+
+          <div className="space-y-0 border border-brand-concrete mb-6">
+            <SAGERow
+              stage="Setup"
+              trigger={`"We don't know what to track yet"`}
+              actions={['Define 5–10 prompts using real buyer language, not target keywords', 'Validate each has genuine query volume', 'Map 3–5 direct competitors for citation comparison', 'Tag by funnel stage and persona for later filtering']}
+            />
+            <SAGERow
+              stage="Analyze"
+              trigger={`"We're not sure what's missing or why we're losing"`}
+              actions={['Run the three-gate diagnostic on 5 lowest-visibility priority pages', 'Pull citation data — see which competitor sources are winning compound-job queries', 'Check platform divergence — diagnose each engine separately', "Identify 3 \"should be winning but isn't\" pages"]}
+            />
+            <SAGERow
+              stage="Generate"
+              trigger={`"We know the gap but nothing is shipping"`}
+              actions={['Prioritize highest-leverage fixes first — not the easiest ones', 'Rewrite one existing page as a utility asset as a test before building net-new', 'Re-run visibility check 2–4 weeks post-publish — never assume it worked']}
+            />
+            <SAGERow
+              stage="Engineer"
+              trigger={`"It's working but it's manual every time"`}
+              actions={['Set recurring monthly minimum SAGE review', 'Build automated alerts for visibility drops on priority pages', "Write a one-page reusable brief template so wins aren't personality-dependent"]}
+              last
+            />
+          </div>
+        </section>
+
+        {/* Section 06 — Content that gets cited */}
+        <section>
+          <SectionHeading number="06" title="Content that gets cited" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            Two concepts do most of the work here.
+          </p>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            <strong className="text-brand-black">Compound jobs</strong> — queries that combine
+            multiple needs in a single ask (&quot;cooling <em>and</em> support&quot;, not just
+            &quot;cooling&quot;). These force the engine to be selective. It can&apos;t satisfy every angle,
+            so it picks the source that covers the combination best. Single-angle content loses to
+            content that resolves the compound job in one place. This is where differentiation
+            concentrates, because most content is still written to rank on one keyword at a time.
+          </p>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+            <strong className="text-brand-black">Utility assets</strong> — content shaped to match
+            what the engine is already fetching: comparative, high-density, answer-shaped. Explicitly
+            not: product pages, brand-story copy, buried leads. The format question to ask before
+            writing is &quot;does this match the shape of the answer the AI is already producing for
+            this query?&quot; — not &quot;does this match our content brief?&quot;
+          </p>
+
+          <figure>
+            <div className="border border-brand-concrete overflow-hidden">
+              <ContentShapeComparison />
+            </div>
+            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+              Utility asset vs product page — same topic, different shape, very different citation rate.
+            </figcaption>
+          </figure>
+
+          <Callout label="Supply chain awareness" className="mt-8">
+            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              Every AI-generated answer has a traceable supply chain: specific sources, specific
+              citations, specific reasons one brand gets mentioned over another. Most marketers never
+              read this chain. Understanding which sources an engine draws from — and why those
+              rather than others — shows you what content shape actually wins for a given query
+              before you&apos;ve written a word.
+            </p>
+          </Callout>
+        </section>
+
+        {/* Section 07 — Stack application */}
+        <section>
+          <SectionHeading number="07" title="Applying this to the stack" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+            The three-gate model maps directly onto existing tools. The diagnostic is faster
+            when you already know which data to pull.
+          </p>
+
+          <div className="space-y-4">
+            <StackRow
+              tool="BrightEdge"
+              gate="Gate 2 → 3"
+              detail="Already tracks some AI-answer visibility — cross-reference its citation data against the three-gate model rather than treating an AI visibility drop as one undifferentiated problem. The citation data tells you which sources are winning; the gate diagnostic tells you why."
+            />
+            <StackRow
+              tool="GSC"
+              gate="Gate 1"
+              detail="Crawl errors and index-coverage data map directly onto Gate 1 (Fetchable). Check this first, before assuming a content or positioning problem. A crawl block or indexing gap is a one-step fix; a content positioning problem is a quarter of work."
+            />
+            <StackRow
+              tool="AEM"
+              gate="Gate 3"
+              detail="Audit page templates against the extraction principle. Are answers buried in accordions or tabs — a common AEM pattern — that block Gate 3? Extractability is a template-level problem, not a content-level one. Fixing the template fixes it across every page using it."
+            />
+            <StackRow
+              tool="Marketo"
+              gate="Gate 2"
+              detail="Campaign landing pages built brand-first rather than utility-first are classic Gate 2 failures. A page optimized for a compound job (X vs Y for [use case]) will outperform a single-angle product page in AI citation terms even with identical SEO fundamentals. Rewrite one as a test before rebuilding the whole set."
+            />
+          </div>
+        </section>
+
+        {/* Source note */}
+        <section className="border-t border-brand-concrete pt-10">
+          <p className="font-sans text-sm text-brand-muted leading-relaxed">
+            The SAGE framework, three-gate model, query fan-out, and utility asset framing are sourced
+            from Profound University&apos;s Profound 101 curriculum — Profound is the AEO analytics
+            platform named sole Leader on G2&apos;s first AEO Grid (Winter 2026). The underlying framework
+            is platform-agnostic. Product-specific performance claims from their marketing material
+            should be treated with more scepticism than the model itself.
+          </p>
+        </section>
+
+        <div className="border-t border-brand-concrete pt-8">
+          <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+            ← Back to Field Notes
+          </Link>
+        </div>
+      </article>
+    </div>
+  )
+}
+
+function GateRow({ n, name, question, checks, symptom }: {
+  n: string; name: string; question: string; checks: string[]; symptom: string;
+}) {
+  return (
+    <div className="border border-brand-concrete">
+      <div className="flex items-baseline gap-3 p-4 pb-3 border-b border-brand-concrete bg-brand-graphite/40">
+        <span className="font-display text-3xl text-brand-cobalt/25 leading-none">{n}</span>
+        <span className="font-display text-2xl text-brand-black">{name.toUpperCase()}</span>
+      </div>
+      <div className="p-4 space-y-3">
+        <p className="font-sans text-sm font-semibold text-brand-black/80">{question}</p>
+        <ul className="space-y-1">
+          {checks.map((c) => (
+            <li key={c} className="font-sans text-sm text-brand-muted flex gap-2">
+              <span className="text-brand-cobalt/60 flex-shrink-0">✓</span>{c}
+            </li>
+          ))}
+        </ul>
+        <div className="pt-2 border-t border-brand-concrete/60">
+          <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted mr-2">Symptom</span>
+          <span className="font-sans text-xs text-brand-black/60 italic">{symptom}</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function SAGERow({ stage, trigger, actions, last = false }: {
+  stage: string; trigger: string; actions: string[]; last?: boolean;
+}) {
+  return (
+    <div className={`flex gap-0 ${!last ? 'border-b border-brand-concrete' : ''}`}>
+      <div className="w-32 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/40">
+        <span className="font-display text-xl text-brand-cobalt block">{stage.toUpperCase()}</span>
+        <span className="font-sans text-[10px] text-brand-muted leading-tight block mt-1 italic">{trigger}</span>
+      </div>
+      <ul className="p-4 space-y-1.5 flex-1">
+        {actions.map((a) => (
+          <li key={a} className="font-sans text-sm text-brand-black/70 flex gap-2">
+            <span className="text-brand-cobalt/40 flex-shrink-0">—</span>{a}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+function StackRow({ tool, gate, detail }: { tool: string; gate: string; detail: string }) {
+  return (
+    <div className="border border-brand-concrete p-4">
+      <div className="flex items-center justify-between mb-2">
+        <span className="font-sans font-semibold text-sm text-brand-black">{tool}</span>
+        <span className="font-mono text-[10px] text-brand-cobalt bg-brand-graphite px-2 py-0.5 border border-brand-cobalt/25">
+          {gate}
+        </span>
+      </div>
+      <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{detail}</p>
+    </div>
+  )
 }
 
 function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
