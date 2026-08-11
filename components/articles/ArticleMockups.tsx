@@ -1006,3 +1006,354 @@ export function AdaptiveRAGDiagram() {
     </svg>
   )
 }
+
+// ─── Agentic AI article mockups ───────────────────────────────────────────────
+
+export function WorkflowSpectrum() {
+  const patterns = [
+    { label: 'CHAIN', sub: 'fixed sequence', h: 60, op: 0.25 },
+    { label: 'ROUTE', sub: 'classify → branch', h: 72, op: 0.32 },
+    { label: 'PARALLEL', sub: 'concurrent calls', h: 86, op: 0.42 },
+    { label: 'ORCHESTRATE', sub: 'dynamic subtasks', h: 104, op: 0.58 },
+    { label: 'EVALUATE', sub: 'generate → judge → loop', h: 120, op: 0.75 },
+  ]
+  const W = 92
+  const GAP = 18
+  const baseX = 44
+  const baseY = 220
+  return (
+    <svg viewBox="0 0 600 300" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="600" height="300" fill={BG} />
+      {/* Baseline */}
+      <line x1="30" y1={baseY} x2="570" y2={baseY} stroke={G} strokeWidth="0.6" opacity="0.15" />
+      {/* Complexity arrow */}
+      <line x1="30" y1="258" x2="550" y2="258" stroke={G} strokeWidth="0.8" opacity="0.2" markerEnd="url(#cx)" />
+      <text x="300" y="274" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.35" letterSpacing="1">INCREASING COMPLEXITY →</text>
+      <defs>
+        <marker id="cx" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+          <path d="M0,0 L5,2.5 L0,5 Z" fill={G} opacity="0.3" />
+        </marker>
+      </defs>
+      {patterns.map((p, i) => {
+        const x = baseX + i * (W + GAP)
+        const y = baseY - p.h
+        return (
+          <g key={p.label}>
+            <rect x={x} y={y} width={W} height={p.h} rx="2" fill={G} opacity={p.op} />
+            <text x={x + W / 2} y={y - 10} textAnchor="middle" fontFamily="monospace" fontSize="7" fill={G} opacity="0.5" letterSpacing="0.5">{`0${i + 1}`}</text>
+            <text x={x + W / 2} y={y + p.h / 2 + 4} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={i >= 3 ? BG : G} opacity={i >= 3 ? 0.9 : 0.7}>{p.label}</text>
+            <text x={x + W / 2} y={baseY + 14} textAnchor="middle" fontFamily="monospace" fontSize="6.5" fill={G} opacity="0.4">{p.sub}</text>
+          </g>
+        )
+      })}
+      <text x="300" y="24" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} opacity="0.3" letterSpacing="1">FIVE WORKFLOW PATTERNS — USE THESE BEFORE REACHING FOR FULL AUTONOMY</text>
+    </svg>
+  )
+}
+
+export function ReActLoop() {
+  const r = 100
+  const cx = 300
+  const cy = 148
+  const nodes = [
+    { label: 'REASON', sub: 'what do I know,\nwhat do I need', angle: -90, fill: G, textFill: BG },
+    { label: 'ACT', sub: 'call tool\nor terminate', angle: 30, fill: G, textFill: BG },
+    { label: 'OBSERVE', sub: 'what came back\nfrom environment', angle: 150, fill: BG2, textFill: G },
+  ]
+  const toXY = (angle: number, radius: number) => ({
+    x: cx + radius * Math.cos((angle * Math.PI) / 180),
+    y: cy + radius * Math.sin((angle * Math.PI) / 180),
+  })
+  const NR = 40
+  const nodePositions = nodes.map((n) => toXY(n.angle, r))
+  return (
+    <svg viewBox="0 0 600 300" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="600" height="300" fill={BG} />
+      <defs>
+        <marker id="rl" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill={G} opacity="0.5" />
+        </marker>
+      </defs>
+      {/* Guide circle */}
+      <circle cx={cx} cy={cy} r={r} stroke={G} strokeWidth="0.5" fill="none" opacity="0.1" strokeDasharray="4 4" />
+      {/* Arrows between nodes */}
+      {nodes.map((_, i) => {
+        const from = nodePositions[i]
+        const to = nodePositions[(i + 1) % 3]
+        const dx = to.x - from.x
+        const dy = to.y - from.y
+        const len = Math.sqrt(dx * dx + dy * dy)
+        const ux = dx / len
+        const uy = dy / len
+        const sx = from.x + ux * (NR + 2)
+        const sy = from.y + uy * (NR + 2)
+        const ex = to.x - ux * (NR + 8)
+        const ey = to.y - uy * (NR + 8)
+        const mx = (sx + ex) / 2 + uy * 18
+        const my = (sy + ey) / 2 - ux * 18
+        return (
+          <path key={i} d={`M${sx},${sy} Q${mx},${my} ${ex},${ey}`} fill="none" stroke={G} strokeWidth="1.2" opacity="0.4" markerEnd="url(#rl)" />
+        )
+      })}
+      {/* Node circles */}
+      {nodes.map((n, i) => {
+        const pos = nodePositions[i]
+        return (
+          <g key={n.label}>
+            <circle cx={pos.x} cy={pos.y} r={NR} fill={n.fill} opacity={n.fill === G ? 0.75 : 0.5} stroke={G} strokeWidth="1" />
+            <text x={pos.x} y={pos.y + 4} textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill={n.textFill} opacity="0.95">{n.label}</text>
+          </g>
+        )
+      })}
+      {/* Center */}
+      <circle cx={cx} cy={cy} r="22" fill="none" stroke={G} strokeWidth="0.6" opacity="0.2" />
+      <text x={cx} y={cy + 4} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} opacity="0.45">LOOP</text>
+      {/* Side annotation */}
+      <text x="530" y="100" textAnchor="start" fontFamily="monospace" fontSize="7" fill={G} opacity="0.35">recalibrates</text>
+      <text x="530" y="112" textAnchor="start" fontFamily="monospace" fontSize="7" fill={G} opacity="0.35">at every step</text>
+      <text x="300" y="278" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.3" letterSpacing="1">ReAct LOOP · REASON → ACT → OBSERVE → REPEAT</text>
+    </svg>
+  )
+}
+
+export function PlanExecuteDiagram() {
+  const steps = [
+    { id: 'step_1', action: 'search_web', note: '"target topic"', dep: null },
+    { id: 'step_2', action: 'summarize', note: 'input: step_1.result', dep: null },
+    { id: 'step_3', action: 'write_outline', note: 'depends_on: step_2', dep: 'step_2' },
+    { id: 'step_4', action: 'write_output', note: 'context: step_3.outline', dep: 'step_3' },
+  ]
+  const SW = 200
+  const SH = 44
+  const SGY = 30
+  const sx = 340
+  const sy = 38
+  return (
+    <svg viewBox="0 0 600 280" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="600" height="280" fill={BG} />
+      <defs>
+        <marker id="pe" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill={G} opacity="0.5" />
+        </marker>
+        <marker id="dep" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+          <path d="M0,0 L5,2.5 L0,5 Z" fill={MUTED} opacity="0.5" />
+        </marker>
+      </defs>
+      {/* Planner box */}
+      <rect x="44" y="68" width="160" height="130" rx="4" fill={G} opacity="0.08" stroke={G} strokeWidth="1" />
+      <text x="124" y="96" textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill={G} opacity="0.7">PLANNER</text>
+      <text x="124" y="112" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={G} opacity="0.4">(stronger model)</text>
+      {/* Inner LLM icon — simple */}
+      {[0,1,2].map(i => (
+        <rect key={i} x="72" y={130 + i * 14} width="104" height="8" rx="2" fill={G} opacity="0.12 " />
+      ))}
+      <text x="124" y="184" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={G} opacity="0.3">writes plan</text>
+      {/* Arrow planner → steps */}
+      <line x1="204" y1="133" x2="330" y2="133" stroke={G} strokeWidth="1.2" opacity="0.4" markerEnd="url(#pe)" />
+      <text x="267" y="125" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={G} opacity="0.35">plan</text>
+      {/* Steps */}
+      {steps.map((s, i) => {
+        const y = sy + i * (SH + SGY)
+        const midY = y + SH / 2
+        return (
+          <g key={s.id}>
+            <rect x={sx} y={y} width={SW} height={SH} rx="3" fill={BG2} stroke={G} strokeWidth="0.8" opacity="0.7" />
+            <text x={sx + 10} y={y + 17} fontFamily="monospace" fontSize="8" fill={G} opacity="0.5">{s.id}</text>
+            <text x={sx + 10} y={y + 30} fontFamily="monospace" fontSize="9" fontWeight="600" fill={G} opacity="0.8">{s.action}</text>
+            <text x={sx + SW - 10} y={y + 17} textAnchor="end" fontFamily="monospace" fontSize="6.5" fill={MUTED} opacity="0.7">{s.note}</text>
+            {s.dep && (
+              <line x1={sx - 12} y1={midY - SH - SGY / 2} x2={sx - 12} y2={midY} stroke={MUTED} strokeWidth="0.8" strokeDasharray="3 2" opacity="0.4" markerEnd="url(#dep)" />
+            )}
+          </g>
+        )
+      })}
+      {/* Executor label */}
+      <text x={sx + SW / 2} y="248" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.3" letterSpacing="1">EXECUTOR · cheaper model · runs each step in sequence</text>
+      <text x="300" y="270" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.25" letterSpacing="1">PLAN-AND-EXECUTE · commits to strategy before first irreversible action</text>
+    </svg>
+  )
+}
+
+export function AgentFailureModeDiagram() {
+  const failures = [
+    { n: '01', label: 'LOOP-STUCK', line1: 'ReAct cycles without progress —', line2: 'no exit condition, no step ceiling', x: 44, y: 44 },
+    { n: '02', label: 'ERROR COMPOUND', line1: 'Each autonomous step drifts further —', line2: 'errors stack across the loop', x: 316, y: 44 },
+    { n: '03', label: 'CIRCULAR EVAL', line1: "Evaluator can't reliably score quality —", line2: 'iterates without improving', x: 44, y: 168 },
+    { n: '04', label: 'OVER-ENGINEER', line1: 'Multi-agent orchestration on a task', line2: 'a simple workflow would handle', x: 316, y: 168 },
+  ]
+  return (
+    <svg viewBox="0 0 600 300" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="600" height="300" fill={BG} />
+      {/* Cross divider */}
+      <line x1="300" y1="30" x2="300" y2="270" stroke={G} strokeWidth="0.4" opacity="0.12" />
+      <line x1="30" y1="155" x2="570" y2="155" stroke={G} strokeWidth="0.4" opacity="0.12" />
+      {failures.map((f) => (
+        <g key={f.n}>
+          <rect x={f.x} y={f.y} width="240" height="100" rx="3" fill={G} opacity="0.05" stroke={G} strokeWidth="0.8" />
+          <text x={f.x + 14} y={f.y + 26} fontFamily="monospace" fontSize="20" fontWeight="700" fill={G} opacity="0.12">{f.n}</text>
+          <text x={f.x + 14} y={f.y + 50} fontFamily="monospace" fontSize="8.5" fontWeight="600" fill={G} opacity="0.65" letterSpacing="0.5">{f.label}</text>
+          <text x={f.x + 14} y={f.y + 68} fontFamily="monospace" fontSize="7.5" fill={MUTED} opacity="0.75">{f.line1}</text>
+          <text x={f.x + 14} y={f.y + 82} fontFamily="monospace" fontSize="7.5" fill={MUTED} opacity="0.75">{f.line2}</text>
+        </g>
+      ))}
+      <text x="300" y="288" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.3" letterSpacing="1">FOUR FAILURE MODES · DESIGN AGAINST ALL OF THEM BEFORE YOU BUILD</text>
+    </svg>
+  )
+}
+
+// ─── AI Creative Tools article mockups ────────────────────────────────────────
+
+export function MidjourneyParams() {
+  const params = [
+    { flag: '--ar', name: 'Aspect Ratio', example: '16:9  ·  2:3  ·  1:1' },
+    { flag: '--s', name: 'Stylize', example: '0–1000: low=literal, high=MJ aesthetic' },
+    { flag: '--chaos', name: 'Variation', example: '0–100: higher = more unpredictable batch' },
+    { flag: '--raw', name: 'Raw mode', example: 'Literal, photoreal; cuts aesthetic bias' },
+    { flag: '--sref', name: 'Style Reference', example: 'Image URL or style code + --sw weight' },
+    { flag: '--seed', name: 'Seed', example: 'Same seed + prompt → reproducible output' },
+  ]
+  const ROW_H = 38
+  const startY = 50
+  return (
+    <svg viewBox="0 0 720 310" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="310" fill={BG} />
+      {/* Header */}
+      <rect x="40" y={startY} width="640" height="26" fill={G} opacity="0.08" />
+      <text x="54" y={startY + 17} fontFamily="monospace" fontSize="8.5" fontWeight="700" fill={G} opacity="0.5" letterSpacing="1">FLAG</text>
+      <text x="170" y={startY + 17} fontFamily="monospace" fontSize="8.5" fontWeight="700" fill={G} opacity="0.5" letterSpacing="1">PARAMETER</text>
+      <text x="370" y={startY + 17} fontFamily="monospace" fontSize="8.5" fontWeight="700" fill={G} opacity="0.5" letterSpacing="1">NOTES</text>
+      {/* Rows */}
+      {params.map((p, i) => {
+        const y = startY + 26 + i * ROW_H
+        const isEven = i % 2 === 0
+        return (
+          <g key={p.flag}>
+            {isEven && <rect x="40" y={y} width="640" height={ROW_H} fill={G} opacity="0.03" />}
+            <line x1="40" y1={y} x2="680" y2={y} stroke={G} strokeWidth="0.3" opacity="0.12" />
+            <text x="54" y={y + ROW_H / 2 + 4} fontFamily="monospace" fontSize="9.5" fontWeight="600" fill={G} opacity="0.75">{p.flag}</text>
+            <text x="170" y={y + ROW_H / 2 + 4} fontFamily="monospace" fontSize="9" fill={TEXT} opacity="0.7">{p.name}</text>
+            <text x="370" y={y + ROW_H / 2 + 4} fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.8">{p.example}</text>
+          </g>
+        )
+      })}
+      <line x1="40" y1={startY + 26 + params.length * ROW_H} x2="680" y2={startY + 26 + params.length * ROW_H} stroke={G} strokeWidth="0.3" opacity="0.12" />
+      <text x="360" y="292" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.25" letterSpacing="1">MIDJOURNEY V8.2 · CONFIRM CURRENT SYNTAX AT DOCS.MIDJOURNEY.COM</text>
+    </svg>
+  )
+}
+
+export function CameraMovesGrid() {
+  const groups = [
+    { label: 'PUSH / PULL', moves: ['Dolly In', 'Dolly Out', 'Dolly Zoom', 'Super Dolly'] },
+    { label: 'ZOOM', moves: ['Crash Zoom In', 'Crash Zoom Out', 'Rapid Zoom', 'YoYo Zoom'] },
+    { label: 'ORBIT', moves: ['360 Orbit', 'Arc Left', 'Bullet Time', 'Lazy Susan'] },
+    { label: 'CRANE', moves: ['Crane Up', 'Crane Down', 'Jib Up', 'Aerial Pullback'] },
+    { label: 'PAN / TILT', moves: ['Pan Left', 'Pan Right', 'Tilt Up', 'Whip Pan'] },
+    { label: 'HANDHELD', moves: ['Handheld', 'FPV Drone', 'Snorricam', 'Road Rush'] },
+  ]
+  const COLS = 3
+  const cellW = 210
+  const cellH = 90
+  const padX = 30
+  const padY = 30
+  return (
+    <svg viewBox="0 0 690 330" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="690" height="330" fill={BG} />
+      {groups.map((g, i) => {
+        const col = i % COLS
+        const row = Math.floor(i / COLS)
+        const x = padX + col * (cellW + 15)
+        const y = padY + row * (cellH + 12)
+        return (
+          <g key={g.label}>
+            <rect x={x} y={y} width={cellW} height={cellH} rx="2" fill={G} opacity={0.05 + row * 0.02} stroke={G} strokeWidth="0.6" />
+            <text x={x + 12} y={y + 18} fontFamily="monospace" fontSize="7.5" fontWeight="700" fill={G} opacity="0.6" letterSpacing="1">{g.label}</text>
+            {g.moves.map((m, mi) => (
+              <text key={m} x={x + 12} y={y + 32 + mi * 14} fontFamily="monospace" fontSize="8.5" fill={G} opacity="0.5">{m}</text>
+            ))}
+          </g>
+        )
+      })}
+      <text x="345" y="314" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.25" letterSpacing="1">HIGGSFIELD CINEMA STUDIO · 70+ NAMED PRESETS · ONE CLICK EACH</text>
+    </svg>
+  )
+}
+
+export function PromptFormulaDiagram() {
+  const blocks = [
+    { label: 'SUBJECT', eg: 'a woman in her 30s', color: G, op: 0.75 },
+    { label: 'ACTION', eg: 'standing still,\ncontemplative', color: G, op: 0.60 },
+    { label: 'ENVIRONMENT', eg: 'fog-filled\nwarehouse', color: G, op: 0.50 },
+    { label: 'LIGHTING', eg: 'god rays,\nRem brandt', color: G, op: 0.42 },
+    { label: 'LENS', eg: '35mm,\nshallow DOF', color: G, op: 0.35 },
+    { label: 'STYLE', eg: 'teal-orange grade,\nanamorphic', color: G, op: 0.28 },
+    { label: 'PARAMS', eg: '--ar 16:9\n--raw --s 150', color: G, op: 0.22 },
+  ]
+  const BW = 74
+  const BH = 110
+  const GAP = 8
+  const startX = 26
+  const startY = 80
+  return (
+    <svg viewBox="0 0 620 280" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="620" height="280" fill={BG} />
+      <text x="310" y="40" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} opacity="0.3" letterSpacing="1">UNIVERSAL PROMPT FORMULA — WORKS ACROSS MIDJOURNEY AND HIGGSFIELD</text>
+      {blocks.map((b, i) => {
+        const x = startX + i * (BW + GAP)
+        return (
+          <g key={b.label}>
+            <rect x={x} y={startY} width={BW} height={BH} rx="2" fill={b.color} opacity={b.op} />
+            <text x={x + BW / 2} y={startY + 16} textAnchor="middle" fontFamily="monospace" fontSize="6.5" fontWeight="700" fill={BG} opacity="0.9" letterSpacing="0.5">{b.label}</text>
+            {b.eg.split('\n').map((line, li) => (
+              <text key={li} x={x + BW / 2} y={startY + 34 + li * 13} textAnchor="middle" fontFamily="monospace" fontSize="7" fill={BG} opacity="0.8">{line}</text>
+            ))}
+            {i < blocks.length - 1 && (
+              <text x={x + BW + GAP / 2} y={startY + BH / 2 + 4} textAnchor="middle" fontFamily="monospace" fontSize="10" fill={G} opacity="0.3">+</text>
+            )}
+          </g>
+        )
+      })}
+      <text x="310" y="220" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.3">concrete beats vague · one dominant lighting cue · app controls belong in the interface</text>
+    </svg>
+  )
+}
+
+export function ToolComparisonSplit() {
+  return (
+    <svg viewBox="0 0 720 320" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="320" fill={BG} />
+      {/* Divider */}
+      <line x1="360" y1="30" x2="360" y2="290" stroke={G} strokeWidth="0.6" opacity="0.2" />
+      {/* Midjourney side */}
+      <text x="180" y="56" textAnchor="middle" fontFamily="monospace" fontSize="12" fontWeight="700" fill={G} opacity="0.7" letterSpacing="1">MIDJOURNEY</text>
+      <text x="180" y="72" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED} opacity="0.8">Image-first generator</text>
+      {/* MJ icon — aperture-style rings */}
+      <circle cx="180" cy="134" r="40" stroke={G} strokeWidth="1.2" fill="none" opacity="0.25" />
+      <circle cx="180" cy="134" r="28" stroke={G} strokeWidth="1" fill={G} opacity="0.08" />
+      <circle cx="180" cy="134" r="10" fill={G} opacity="0.25" />
+      {/* MJ strengths */}
+      {['Stylized art direction', 'Cinematic stills', 'Composition + lighting', 'Concept & editorial art', 'Style reference system'].map((s, i) => (
+        <g key={s}>
+          <circle cx="60" cy={192 + i * 18} r="2" fill={G} opacity="0.4" />
+          <text x="70" y={196 + i * 18} fontFamily="monospace" fontSize="8.5" fill={G} opacity="0.55">{s}</text>
+        </g>
+      ))}
+      {/* Higgsfield side */}
+      <text x="540" y="56" textAnchor="middle" fontFamily="monospace" fontSize="12" fontWeight="700" fill={G} opacity="0.7" letterSpacing="1">HIGGSFIELD</text>
+      <text x="540" y="72" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED} opacity="0.8">Director's console over 30+ models</text>
+      {/* HF icon — camera move path */}
+      <path d="M420,114 C450,94 510,94 540,114 C570,134 570,154 540,174 C510,194 450,194 420,174" stroke={G} strokeWidth="1.5" fill="none" opacity="0.25" />
+      <circle cx="540" cy="114" r="6" fill={G} opacity="0.35" />
+      <text x="540" y="140" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.4">DOLLY IN</text>
+      {/* HF strengths */}
+      {['Deterministic camera presets', 'Soul ID (persistent character)', 'Model routing (Kling/Veo/Sora)', 'Motion-reference transfer', 'Lipsync + voice binding'].map((s, i) => (
+        <g key={s}>
+          <circle cx="400" cy={192 + i * 18} r="2" fill={G} opacity="0.4" />
+          <text x="410" y={196 + i * 18} fontFamily="monospace" fontSize="8.5" fill={G} opacity="0.55">{s}</text>
+        </g>
+      ))}
+      {/* Bottom note */}
+      <text x="360" y="302" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.25" letterSpacing="1">NOT SUBSTITUTES · MIDJOURNEY MAKES THE STILL · HIGGSFIELD MOVES THE CAMERA</text>
+    </svg>
+  )
+}

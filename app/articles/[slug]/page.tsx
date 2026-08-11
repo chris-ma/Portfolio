@@ -6,6 +6,8 @@ import {
   ContextWindowComparison, BenchmarkChart, CostComparison, WorkflowSplit,
   QueryFanOut, ThreeGateDiagram, SAGELoop, ContentShapeComparison,
   RAGPipeline, HybridRetrievalDiagram, ChunkingComparison, AdaptiveRAGDiagram,
+  WorkflowSpectrum, ReActLoop, PlanExecuteDiagram, AgentFailureModeDiagram,
+  MidjourneyParams, CameraMovesGrid, PromptFormulaDiagram, ToolComparisonSplit,
 } from '@/components/articles/ArticleMockups'
 
 interface PageProps {
@@ -35,6 +37,10 @@ export default function ArticlePage({ params }: PageProps) {
     day: 'numeric',
   })
 
+  if (article.slug === 'agentic-ai-loops-workflows') {
+    return <AgenticArticle article={article} formattedDate={formattedDate} />
+  }
+
   if (article.slug === 'rag-retrieval-augmented-generation') {
     return <RAGArticle article={article} formattedDate={formattedDate} />
   }
@@ -51,7 +57,372 @@ export default function ArticlePage({ params }: PageProps) {
     return <PKMArticle article={article} formattedDate={formattedDate} />
   }
 
+  if (article.slug === 'ai-image-video-generation-midjourney-higgsfield') {
+    return <CreativeToolsArticle article={article} formattedDate={formattedDate} />
+  }
+
   notFound()
+}
+
+function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+
+        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+          STOP<br />
+          <span className="text-brand-cobalt">BUILDING</span><br />
+          AGENTS.
+        </h1>
+
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+          {article!.subtitle}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 py-14 space-y-16">
+
+        {/* Lede */}
+        <section>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+            Most things marketed as AI agents are not agents. They are workflows — fixed sequences of LLM calls
+            with predefined branching logic and deterministic execution paths. The distinction matters, not
+            because "workflow" is a demotion, but because calling a workflow an agent tends to make you engineer
+            it wrong. You add complexity it doesn't need, remove predictability you were counting on, and then
+            wonder why the system that was supposed to be intelligent keeps doing unexpected things.
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            Anthropic's own engineering team puts it plainly: find the simplest solution possible, and only
+            increase complexity when a simpler workflow genuinely can't do the job. The most common production
+            mistake isn't under-engineering AI systems — it's reaching for autonomous loops when a fixed
+            workflow would have been cheaper, faster, and far more debuggable.
+          </p>
+        </section>
+
+        {/* Section 1 */}
+        <section>
+          <SectionHeading number="01" title="The distinction that actually matters" />
+          <div className="space-y-4 mt-6">
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              A <strong className="text-brand-black">workflow</strong> executes LLM calls and tool calls through
+              code paths you define in advance. You decide the structure; the model fills in the content. It is
+              predictable, testable, and cheaper because every call has a known place in a known sequence.
+            </p>
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              An <strong className="text-brand-black">agent</strong> is a system where the LLM dynamically
+              decides its own sequence of actions based on what it observes — rather than following a control
+              flow you wrote in advance. You own the goal and the guardrails; the model decides what to do next.
+              Flexible. Harder to predict. More expensive. And errors can compound across steps in ways they
+              can't in a fixed workflow.
+            </p>
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              The practical test: can you enumerate the steps this task requires before running it? If yes,
+              you're building a workflow and should. If no — if the right next step genuinely depends on what
+              the previous step returned, and you can't anticipate that in advance — that's when an agent
+              earns its complexity.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 2 — Five patterns */}
+        <section>
+          <SectionHeading number="02" title="The five patterns — use these first" />
+          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-8">
+            These are Anthropic's own taxonomy. Five compositional patterns that are all technically workflows —
+            predefined code paths — but that together cover nearly every real production use case.
+            If your task fits any of these, you don't need a full autonomous agent.
+          </p>
+
+          <div className="border border-brand-concrete overflow-hidden mb-10">
+            <WorkflowSpectrum />
+          </div>
+
+          <div className="border border-brand-concrete divide-y divide-brand-concrete">
+            <AgentPatternRow
+              n="01" label="Prompt chaining" when="Fixed, ordered sub-steps"
+              desc={"Each LLM call processes the output of the previous one, in a fixed sequence. The model at step 3 doesn't decide to go to step 3 — your code does. Use when the task decomposes cleanly into ordered stages whose structure you can write down in advance."}
+            />
+            <AgentPatternRow
+              n="02" label="Routing" when="Different input types"
+              desc={"An LLM classifies the input and directs it to a specialized follow-up path. The model decides which branch, but not what the branches are. Use when different input types need genuinely different handling that's too varied to cover with one general prompt."}
+            />
+            <AgentPatternRow
+              n="03" label="Parallelization" when="Independent subtasks"
+              desc={"Multiple LLM calls run simultaneously, results aggregated at the end. Two sub-variants: sectioning (divide the problem, run each part independently) and voting (run the same task multiple ways, pick the consensus or best answer). Use when subtasks have no dependencies on each other."}
+            />
+            <AgentPatternRow
+              n="04" label="Orchestrator–workers" when="Subtasks unknown until examined"
+              desc={"A central LLM dynamically breaks a task into pieces and delegates to worker LLMs. The orchestrator decides the subtasks; the workers execute them. Closer to agentic than the previous patterns — the orchestrator has real decision-making power — but still a workflow if the worker execution paths are predefined."}
+            />
+            <AgentPatternRow
+              n="05" label="Evaluator–optimizer" when="Clear quality bar, iteration helps"
+              desc={"One LLM generates a response; a second evaluates it against criteria; loop until it passes or you hit a ceiling. The classic 'generate and critique' pattern. Works when you can state what 'good' looks like precisely enough that an LLM can score it reliably — if you can't, the loop runs without improving anything."} last
+            />
+          </div>
+
+          <Callout label="Decision rule">
+            If your task structure is knowable in advance, pick from this table.
+            Only move to a full autonomous agent when the task genuinely requires dynamic, open-ended
+            decision-making that can't be pinned down as a fixed sequence, route, or evaluation loop.
+          </Callout>
+        </section>
+
+        {/* Section 3 — Loop patterns */}
+        <section>
+          <SectionHeading number="03" title="When you actually need a loop" />
+          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-10">
+            Once a task does need genuine autonomy, two loop shapes handle the majority of production cases.
+            The choice between them is less about which is "better" and more about which failure mode
+            you're most worried about.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-10">
+            <div>
+              <h3 className="font-sans font-semibold text-sm tracking-[0.15em] uppercase text-brand-cobalt mb-4">ReAct (Reason + Act)</h3>
+              <div className="border border-brand-concrete overflow-hidden mb-5">
+                <ReActLoop />
+              </div>
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed mb-3">
+                The foundational loop. The model alternates: <em>Thought</em> (what do I know, what do I
+                need next) → <em>Action</em> (call a tool) → <em>Observation</em> (what came back) →
+                loop or terminate.
+              </p>
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                Strengths: transparent, auditable, adapts immediately to unexpected results. If a search
+                returns nothing, it reformulates. If an API errors, it tries a fallback. The loop recalibrates
+                after every single step.
+              </p>
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed mt-3">
+                Weakness: prone to getting stuck on tasks that need strict execution order, since it
+                recalibrates at every step rather than committing to a plan.
+              </p>
+              <div className="mt-4 p-3 border border-brand-concrete bg-brand-graphite/30">
+                <p className="font-sans text-xs text-brand-cobalt font-medium">Use for:</p>
+                <p className="font-sans text-xs text-brand-black/60 mt-1">Exploratory, open-ended tasks — debugging, research, anything where the right next step can't be known until the previous step returns.</p>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="font-sans font-semibold text-sm tracking-[0.15em] uppercase text-brand-cobalt mb-4">Plan-and-Execute</h3>
+              <div className="border border-brand-concrete overflow-hidden mb-5">
+                <PlanExecuteDiagram />
+              </div>
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed mb-3">
+                Splits thinking into two phases. A planner LLM writes the full multi-step plan up front,
+                then an executor runs each step in sequence — or in parallel where steps don't depend
+                on each other.
+              </p>
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                Strengths: locks in a coherent strategy before any irreversible action is taken. Reduces
+                step-count on long-horizon tasks. Lets a cheaper model do plain execution once a stronger
+                model has done the planning.
+              </p>
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed mt-3">
+                Weakness: less adaptive — if an early step produces an unexpected result, the plan
+                doesn't automatically recalibrate the way ReAct does.
+              </p>
+              <div className="mt-4 p-3 border border-brand-concrete bg-brand-graphite/30">
+                <p className="font-sans text-xs text-brand-cobalt font-medium">Use for:</p>
+                <p className="font-sans text-xs text-brand-black/60 mt-1">Long, structured tasks where you need a guaranteed sequence and mid-stream drift — the agent executing well but in the wrong order — is the failure mode you're most worried about.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 className="font-sans font-semibold text-sm tracking-[0.15em] uppercase text-brand-cobalt mb-4">Beyond the two basics</h3>
+          <div className="border border-brand-concrete divide-y divide-brand-concrete">
+            <AgentLoopRow label="Reflection" desc={"The simplest quality loop: generate output, evaluate it, accept or revise. The agent becomes its own reviewer. Identical in shape to evaluator-optimizer, but run as a loop within a single agent rather than as two separate calls."} />
+            <AgentLoopRow label="Multi-agent / Debate" desc={"A coordinator LLM breaks a large task into pieces and dispatches to specialized sub-agents. For high-stakes factual decisions: spawn multiple agents with different stances and have them argue; a judge synthesizes the result. Measurably reduces hallucination because no single confident wrong answer goes unchallenged."} />
+            <AgentLoopRow label="Agentic RAG" desc={"Retrieval embedded inside the reasoning loop rather than run once upfront. The agent decides mid-loop when it needs to retrieve and what to retrieve, based on what it's discovered so far. Different from standard RAG — retrieval itself becomes an available action at every step, not a fixed preprocessing stage."} />
+            <AgentLoopRow label="Loop engineering / checkpointing" desc={"For long-running tasks: periodically checkpoint progress to a durable store — a doc, a file, a task list — and restart the loop with compressed context rather than letting the context window grow unbounded. The emerging standard for multi-session or multi-day tasks."} last />
+          </div>
+        </section>
+
+        {/* Section 4 — Failure modes */}
+        <section>
+          <SectionHeading number="04" title="The four failure modes" />
+          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-8">
+            These are what production teams actually learn, usually after deploying something that seemed to work fine in testing.
+            Design against all of them before you build, not after.
+          </p>
+
+          <div className="border border-brand-concrete overflow-hidden mb-8">
+            <AgentFailureModeDiagram />
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-1">
+              <h4 className="font-sans font-semibold text-sm text-brand-black">Loop-stuck behavior</h4>
+              <p className="font-sans text-sm text-brand-black/60 leading-relaxed">
+                ReAct-style agents can cycle without making progress if the termination condition is
+                poorly specified. The fix: define an explicit "done" condition, and add a hard step-count
+                ceiling as a backstop. Both. Not one or the other.
+              </p>
+            </div>
+            <div className="space-y-1">
+              <h4 className="font-sans font-semibold text-sm text-brand-black">Error compounding</h4>
+              <p className="font-sans text-sm text-brand-black/60 leading-relaxed">
+                Each autonomous step is a chance to drift further from the goal. The longer the loop,
+                the more this matters. Grounding in real environment feedback at each step — tool output,
+                execution results — is what keeps this in check. Not just model reasoning.
+              </p>
+            </div>
+            <div className="space-y-1">
+              <h4 className="font-sans font-semibold text-sm text-brand-black">Circular evaluation</h4>
+              <p className="font-sans text-sm text-brand-black/60 leading-relaxed">
+                The evaluator-optimizer pattern breaks down when the evaluator can't reliably distinguish
+                good output from bad. If you can't clearly state what "good" looks like, this pattern
+                will loop without actually improving anything. State the quality bar before you build the loop.
+              </p>
+            </div>
+            <div className="space-y-1">
+              <h4 className="font-sans font-semibold text-sm text-brand-black">Over-engineering</h4>
+              <p className="font-sans text-sm text-brand-black/60 leading-relaxed">
+                Reaching for multi-agent orchestration or full autonomy on tasks that are actually
+                fixed-sequence or simple classification problems. Reported as the single most common
+                production mistake — not the reverse. The same note applies to agent frameworks:
+                they simplify getting started, but hide what's actually happening, making debugging harder.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 5 — Build sequence */}
+        <section>
+          <SectionHeading number="05" title="Build it right — six steps in order" />
+          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-8">
+            These steps are sequenced deliberately. Skipping ahead is the failure mode.
+          </p>
+
+          <div className="border border-brand-concrete divide-y divide-brand-concrete">
+            <AgentBuildStep n={1} label="State the goal and the done condition"
+              desc={"Before writing any code or prompt. If you can't state what success looks like, you're not ready to build the loop yet — you're still scoping the problem. A vague goal produces a loop that can never terminate correctly."} />
+            <AgentBuildStep n={2} label="Try the simplest workflow pattern first"
+              desc={"Usually prompt chaining or routing. Only move up the table toward orchestrator-workers or full autonomy if the simpler pattern demonstrably can't handle the task's actual complexity. Most don't need to move up."} />
+            <AgentBuildStep n={3} label="Build guardrails before you build capability"
+              desc={"Step-count ceilings, explicit termination conditions, human-in-the-loop checkpoints at points where an irreversible or high-stakes action would otherwise happen unsupervised. These come first."} />
+            <AgentBuildStep n={4} label="Ground every step in real feedback"
+              desc={"Tool call results, execution output, retrieved documents. Not just model reasoning. This is what lets an agent self-correct instead of drifting. A model that only reasons from its own prior output will compound its own errors."} />
+            <AgentBuildStep n={5} label="Checkpoint long-running loops"
+              desc={"To a durable external store rather than letting them run unbounded inside one context window. Compress and restart rather than accumulate indefinitely. Long context windows don't fix this — they delay it."} />
+            <AgentBuildStep n={6} label="Evaluate before you scale"
+              desc={"Measure whether the loop actually improves outcomes over the simpler workflow before committing to it in production. Same discipline as RAG: 'it looks like it's working' is not evaluation. The gain from autonomy should be measurable, not just felt."} last />
+          </div>
+
+          <Callout label="Field lesson">
+            Start with direct LLM API calls. Most patterns in this piece take only a few lines of code
+            without a framework. If you do adopt a framework, understand what it's doing underneath —
+            incorrect assumptions about the internals are a common source of error, and frameworks that
+            hide the prompts make debugging those errors much harder.
+          </Callout>
+        </section>
+
+        {/* Quick reference */}
+        <section>
+          <SectionHeading number="06" title="Quick reference" />
+          <p className="font-sans text-sm text-brand-muted mb-5 mt-4">Which pattern fits which task.</p>
+          <div className="border border-brand-concrete divide-y divide-brand-concrete">
+            {([
+              ['Fixed, ordered sub-steps', 'Prompt chaining'],
+              ['Different input types need different handling', 'Routing'],
+              ['Independent subtasks, or want consensus across attempts', 'Parallelization'],
+              ['Subtasks unknown until main task is examined', 'Orchestrator-workers'],
+              ['Clear quality bar exists and iteration helps', 'Evaluator-optimizer'],
+              ['Exploratory, open-ended, uncertain next step', 'ReAct'],
+              ['Long, structured, guaranteed sequence required', 'Plan-and-Execute'],
+              ['High-stakes factual decision', 'Debate pattern (multi-agent)'],
+              ['Retrieval need only becomes clear mid-task', 'Agentic RAG'],
+              ['Task spans multiple sessions or days', 'Loop engineering + checkpointing'],
+            ] as [string, string][]).map(([situation, pattern], i, arr) => (
+              <div key={situation} className={`flex gap-0 ${i < arr.length - 1 ? '' : ''}`}>
+                <div className="w-1/2 p-4 border-r border-brand-concrete">
+                  <p className="font-sans text-sm text-brand-black/70">{situation}</p>
+                </div>
+                <div className="w-1/2 p-4">
+                  <p className="font-sans text-sm font-medium text-brand-cobalt">{pattern}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
+          <Link href="/#notes" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+            ← All Field Notes
+          </Link>
+          <div className="flex flex-wrap gap-2">
+            {article!.tags.map((tag) => (
+              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/60 border border-brand-cobalt/20 px-2 py-0.5">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </footer>
+      </div>
+    </div>
+  )
+}
+
+function AgentPatternRow({ n, label, when, desc, last = false }: { n: string; label: string; when: string; desc: string; last?: boolean }) {
+  return (
+    <div className={`flex gap-0 ${!last ? '' : ''}`}>
+      <div className="w-8 flex-shrink-0 p-4 border-r border-brand-concrete flex items-start justify-center">
+        <span className="font-sans text-[10px] text-brand-muted font-medium">{n}</span>
+      </div>
+      <div className="flex-1 p-4">
+        <div className="flex flex-wrap items-baseline gap-3 mb-2">
+          <span className="font-sans font-semibold text-sm text-brand-black">{label}</span>
+          <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/60 border border-brand-cobalt/20 px-2 py-0.5">{when}</span>
+        </div>
+        <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{desc}</p>
+      </div>
+    </div>
+  )
+}
+
+function AgentLoopRow({ label, desc, last = false }: { label: string; desc: string; last?: boolean }) {
+  return (
+    <div className={`flex gap-0 ${!last ? '' : ''}`}>
+      <div className="w-44 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/30">
+        <span className="font-sans font-semibold text-sm text-brand-cobalt">{label}</span>
+      </div>
+      <p className="font-sans text-sm text-brand-black/65 p-4 leading-relaxed">{desc}</p>
+    </div>
+  )
+}
+
+function AgentBuildStep({ n, label, desc, last = false }: { n: number; label: string; desc: string; last?: boolean }) {
+  return (
+    <div className={`flex gap-0 ${!last ? '' : ''}`}>
+      <div className="w-12 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/20 flex items-start justify-center">
+        <span className="font-display text-2xl text-brand-cobalt/30 leading-none">{n}</span>
+      </div>
+      <div className="flex-1 p-4">
+        <h4 className="font-sans font-semibold text-sm text-brand-black mb-1.5">{label}</h4>
+        <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{desc}</p>
+      </div>
+    </div>
+  )
 }
 
 function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
@@ -1430,6 +1801,289 @@ tags: []
           </Link>
         </div>
       </article>
+    </div>
+  )
+}
+
+function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+
+        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+          NOT<br />
+          <span className="text-brand-cobalt">PROMPTING.</span><br />
+          DIRECTING.
+        </h1>
+
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+          {article!.subtitle}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 py-14 space-y-16">
+
+        {/* Tool comparison */}
+        <section>
+          <div className="border border-brand-concrete overflow-hidden mb-8">
+            <ToolComparisonSplit />
+          </div>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+            Midjourney and Higgsfield are not the same kind of tool in competition. One is built around
+            image quality and aesthetic sensibility — stills, art direction, composition. The other is
+            a director's console layered over 30-plus third-party and in-house video models, with
+            70-plus named, one-click camera presets as its actual product. You use Midjourney to build
+            the frame. You use Higgsfield to move it.
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            The quality gap that separates usable AI video from something that actually looks like it was
+            directed isn't model quality. It's intent. Defaulting to Static and hoping the prompt carries
+            the shot is the wrong workflow. Picking a deliberate camera move for a deliberate narrative
+            reason is the right one.
+          </p>
+        </section>
+
+        {/* Midjourney section */}
+        <section>
+          <SectionHeading number="01" title="Midjourney — stills, art direction, composition" />
+          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-8">
+            V8.2 is the current default as of mid-2026, focused on aesthetics and Personalization — it reads
+            your accumulated ratings and moodboard to skew toward your taste. A handful of parameters do
+            most of the work. The rest are edge cases.
+          </p>
+
+          <div className="border border-brand-concrete overflow-hidden mb-8">
+            <MidjourneyParams />
+          </div>
+
+          <h3 className="font-sans font-semibold text-sm tracking-[0.15em] uppercase text-brand-cobalt mb-4">Technique that actually moves the needle</h3>
+          <div className="border border-brand-concrete divide-y divide-brand-concrete">
+            <CreativeTechRow
+              label="Draft → full render workflow"
+              desc={"Generate 8–12 low-quality variants in Draft Mode at roughly a quarter of standard credit cost. Pick the strongest 2–3 compositions. Then render those at full quality. Running full renders on your first pass is the expensive way to explore."}
+            />
+            <CreativeTechRow
+              label="Subject vs. aesthetic split"
+              desc={"Think of the prompt as defining the subject and --sref as defining the aesthetic. They're separate levers. Turn --sw up to let the style reference dominate; down to let the prompt take the lead. Mixing both in the prompt text is the most common source of muddy output."}
+            />
+            <CreativeTechRow
+              label="Character consistency"
+              desc={"For a recurring figure across a sequence, use Omni Reference (V7 and up) rather than re-describing the same face in text each time. Text-only re-description drifts. Reference locking doesn't. This applies to style, product shape, and environment geometry as much as faces."}
+            />
+            <CreativeTechRow
+              label="Photorealism combination"
+              desc={"--raw with low --s (stylize value) gives maximum photorealism — it cuts Midjourney's default aesthetic bias and follows the prompt more literally. Higher --s with default styling leans toward the polished Midjourney look. Most confusion about V8 output comes from not knowing which mode you're in."}
+            />
+            <CreativeTechRow
+              label="Syntax drift is real"
+              desc={"Midjourney changes parameter names and defaults between versions more than most tools — --style raw became --raw between V7 and the V8 family. Before building a repeatable workflow around any specific flag, confirm current syntax at docs.midjourney.com. Last quarter's syntax is not guaranteed to work."} last
+            />
+          </div>
+        </section>
+
+        {/* Higgsfield section */}
+        <section>
+          <SectionHeading number="02" title="Higgsfield — camera control, motion, Soul ID" />
+          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-6">
+            Higgsfield is an orchestration layer over 30-plus underlying models — Kling 3.0, Veo 3.1,
+            Seedance 2.0, Wan 2.6, MiniMax Hailuo, Sora 2, and its own Soul and Cinema models. You route
+            each shot to whichever model fits it, from one interface, without managing separate subscriptions.
+            The differentiators are Soul ID (persistent character identity across generations) and the camera
+            preset system.
+          </p>
+
+          <div className="border border-brand-concrete overflow-hidden mb-8">
+            <CameraMovesGrid />
+          </div>
+
+          <h3 className="font-sans font-semibold text-sm tracking-[0.15em] uppercase text-brand-cobalt mb-4">Model routing — which model for which shot</h3>
+          <div className="border border-brand-concrete divide-y divide-brand-concrete mb-8">
+            <CreativeTechRow label="Kling 3.0" desc={"Photorealistic human motion and character-driven scenes. The go-to for anything that requires a real face to move naturally. Also supports Kling Motion Control — takes a character reference image plus a separate motion-reference video and transfers the movement onto the still while preserving identity."} />
+            <CreativeTechRow label="Veo 3.1" desc={"Atmospheric and outdoor scenes, native audio generation. Strong for establishing shots, environmental B-roll, and anything where ambient sound matters as much as the image."} />
+            <CreativeTechRow label="Seedance 2.0" desc={"Multi-shot narrative and stylized motion. Use it when you need consistent motion logic across a short sequence rather than a single clip."} />
+            <CreativeTechRow label="Wan 2.6" desc={"Restyling and video-to-video transfer. Takes real footage and reskins it rather than generating from nothing — useful for adapting one piece of content across multiple visual treatments without reshooting."} last />
+          </div>
+
+          <h3 className="font-sans font-semibold text-sm tracking-[0.15em] uppercase text-brand-cobalt mb-4">The honest trade-offs</h3>
+          <div className="grid md:grid-cols-2 gap-4 mb-6">
+            {([
+              ['Motion stability', "Complex, busy action sequences get unstable. Calm single-subject shots and stylized B-roll are where it performs best. Don't use it to replicate a Michael Bay sequence — use it to hold a character in a deliberate frame."],
+              ['Soul ID accuracy', '"Will never drift" is marketing, not guarantee — especially across many sequential generations. Treat it as a strong anchor, not a lock.'],
+              ['Credit economics', 'It\'s a credit-metered aggregator. Realistic per-clip cost runs well above the headline subscription once re-rolls factor in. Budget roughly $0.60–$1.00 per usable Kling-quality clip, more for Sora/Veo-tier output.'],
+              ['Learning curve', 'It operates as a structured pipeline, not a single-prompt generator. There\'s real workflow to learn versus typing one line and hoping. The presets are the payoff for that investment.'],
+            ] as [string, string][]).map(([label, desc]) => (
+              <div key={label} className="border border-brand-concrete p-4">
+                <h4 className="font-sans font-semibold text-xs text-brand-black mb-1.5">{label}</h4>
+                <p className="font-sans text-xs text-brand-black/60 leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <Callout label="Camera technique rule">
+            Stick to one primary camera move per clip. Distortion and artifacting increase sharply
+            when a prompt asks for multiple conflicting motions at once. Layer a primary move with at
+            most one subtle secondary effect — Dolly In plus a gentle Tilt Up — not two competing primaries.
+            Name the move in both places: select the preset in the app and repeat the move's name in the
+            prompt text. This reinforces the motion engine's target and gives the most reliable, repeatable result.
+          </Callout>
+        </section>
+
+        {/* Cinematography vocabulary */}
+        <section>
+          <SectionHeading number="03" title="Cinematography vocabulary — know these cold" />
+          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-8">
+            Prompting with cinematographic precision beats prompting with mood words every time.
+            "35mm film photography, Rembrandt lighting" outperforms "cinematic, moody" reliably and repeatably.
+            These are the terms worth having immediately available — they work across both tools.
+          </p>
+
+          <div className="border border-brand-concrete divide-y divide-brand-concrete">
+            {([
+              ['Dolly', 'Camera physically moves toward / away / alongside the subject on a track. Different from zoom — the whole camera moves, changing perspective relationships.'],
+              ['Dolly zoom (vertigo effect)', 'Dolly and zoom move in opposite directions simultaneously. Background appears to warp while subject stays framed. Hitchcock. Iconic. Use once.'],
+              ['Crane / Jib', 'Camera moves vertically, often combined with a horizontal arc. Frequently used for reveals — starting low, rising to show scale.'],
+              ['Dutch angle', 'Camera tilted off the horizontal axis. Signals unease, disorientation, instability. One of the most misused moves — reserve it for genuine tension.'],
+              ['Rack focus / focus change', 'Shifting focal point from one plane to another within a shot. Directs viewer attention without cutting. Requires shallow depth of field to read clearly.'],
+              ['Shallow depth of field', 'Narrow zone of sharp focus, blurred background. Draws attention to subject. Combined with 35mm or 85mm focal length shorthand to signal the look.'],
+              ['Anamorphic', 'Wide-format lens look. Horizontal lens flares, oval bokeh. Immediately reads as "film" rather than "digital video."'],
+              ['God rays / volumetric light', 'Visible light shafts through haze or fog. Atmospheric. Works best when paired with a specific light source — through a warehouse window, through forest canopy.'],
+              ['FPV (first-person view)', 'Fast, drone-style, unstabilized POV associated with chase and action framing. The opposite of a locked-off studio shot.'],
+              ['B-roll', 'Supplementary footage that cuts away from the main narrative shot. In AI generation, the fastest shots to generate and the easiest to over-produce.'],
+            ] as [string, string][]).map(([term, def], i, arr) => (
+              <div key={term} className="flex gap-0">
+                <div className="w-52 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/20">
+                  <span className="font-sans font-semibold text-sm text-brand-black">{term}</span>
+                </div>
+                <p className="font-sans text-sm text-brand-black/65 p-4 leading-relaxed">{def}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Prompt formula */}
+        <section>
+          <SectionHeading number="04" title="The universal prompt formula" />
+          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-8">
+            This structure works across both tools. The order matters — subject and environment set the
+            foundation; lighting and lens guide the model's interpretation; style and parameters tune the output.
+            App-level controls (aspect ratio, model selection, duration in Higgsfield) belong in the interface,
+            not buried in prompt text.
+          </p>
+
+          <div className="border border-brand-concrete overflow-hidden mb-8">
+            <PromptFormulaDiagram />
+          </div>
+
+          <div className="border border-brand-concrete p-6 bg-brand-graphite/20 space-y-4 mb-6">
+            <div>
+              <p className="font-sans text-xs text-brand-cobalt font-medium tracking-[0.1em] uppercase mb-1.5">Image (Midjourney-style)</p>
+              <p className="font-mono text-sm text-brand-black/70 leading-relaxed">
+                {"A contemplative portrait of a woman in her 30s, Rembrandt lighting casting gentle shadows across her face, medium format photography aesthetic, shallow depth of field --ar 4:5 --raw --s 150"}
+              </p>
+            </div>
+            <div className="border-t border-brand-concrete pt-4">
+              <p className="font-sans text-xs text-brand-cobalt font-medium tracking-[0.1em] uppercase mb-1.5">Video (Higgsfield-style)</p>
+              <p className="font-mono text-sm text-brand-black/70 leading-relaxed">
+                {"Cinematic slow dolly-in on [subject] standing in a fog-filled warehouse, camera glides forward at a steady creep, shallow depth of field with background softening, volumetric god rays through haze, teal-and-orange grade, anamorphic flares, 24fps film look — Preset: Dolly In"}
+              </p>
+            </div>
+          </div>
+
+          <div className="border border-brand-concrete divide-y divide-brand-concrete">
+            <CreativeTechRow label="One dominant cue" desc={"One dominant style or lighting cue is more reliable than five competing ones. Pick the one or two terms that matter most. 'Rembrandt lighting, shallow depth of field' is better than 'dramatic, moody, cinematic, noir, ethereal.'"} />
+            <CreativeTechRow label="Concrete beats vague" desc={'"35mm film photography, Rembrandt lighting" outperforms "cinematic, moody" every time. The model has nothing to work with when you give it a mood word and no technical signal.'} />
+            <CreativeTechRow label="App controls stay in the app" desc={"Settings that are app-level controls — duration, aspect ratio, model choice in Higgsfield — belong in the interface, not in the prompt. Add a short reminder at the end of your saved prompt template so you don't forget to set them each time."} last />
+          </div>
+        </section>
+
+        {/* Uses beyond the obvious */}
+        <section>
+          <SectionHeading number="05" title="Uses beyond still and clip generation" />
+          <div className="grid md:grid-cols-2 gap-4 mb-6">
+            {([
+              ['Product visualization', '360 Orbit + macro lens language + high-key studio lighting is a standard e-commerce formula. Shows a product in the round without a physical shoot.'],
+              ['Storyboarding', 'Draft Mode (Midjourney) or rapid MiniMax passes (Higgsfield) to block out a full sequence cheaply before committing budget to final-quality renders.'],
+              ['Brand / character consistency', 'Soul ID and Omni Reference exist specifically to solve the serialized-content problem: same face, same voice, across an entire campaign or episodic series.'],
+              ['Restyling existing footage', "Wan 2.6's video-reference and style-transfer capability takes real footage and reskins it — useful for adapting one piece of content across multiple visual treatments without reshooting."],
+              ['Concept art', "Midjourney's strength in stylized composition makes it a fast concept-art layer ahead of a 3D build (directly relevant to Three.js / Unity / UE5 environment work)."],
+              ['Voiceover + lipsync', 'Higgsfield bundles multilingual translation with automatic lip-sync and voice swapping — useful for adapting one video asset across markets without re-shooting or re-recording.'],
+            ] as [string, string][]).map(([label, desc]) => (
+              <div key={label} className="border border-brand-concrete p-4">
+                <h4 className="font-sans font-semibold text-xs text-brand-black mb-1.5">{label}</h4>
+                <p className="font-sans text-xs text-brand-black/60 leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* What separates good from average */}
+        <section>
+          <SectionHeading number="06" title="What separates good output from average" />
+          <div className="border border-brand-concrete divide-y divide-brand-concrete">
+            <CreativeTechRow
+              label="Direct, don't just prompt"
+              desc={"The biggest quality jump in Higgsfield specifically comes from treating the preset menu as a director's toolkit — picking a deliberate camera move for a deliberate narrative reason — rather than defaulting to Static and relying on text to carry all the motion description. Bullet Time on a quiet moment reads as a mistake, not a choice."}
+            />
+            <CreativeTechRow
+              label="Iterate cheap, finish expensive"
+              desc={"Block out and test compositions on faster or cheaper models (Draft Mode, MiniMax) before spending premium credits on Sora / Veo / Kling-tier final renders. The ratio should be heavily weighted toward drafting — one final render per ten drafts is not unusual."}
+            />
+            <CreativeTechRow
+              label="Reference images beat text for anything you need constant"
+              desc={"Style, character, product, environment geometry — across multiple generations, text re-description drifts and reference locking doesn't. If you need it to look the same in shot 6 as it did in shot 1, don't re-describe it. Reference it."}
+            />
+            <CreativeTechRow
+              label="Match camera language to narrative intent"
+              desc={"The named presets are the vocabulary. Using the right move still matters more than using an unusual one. A Crash Zoom on a slow, contemplative scene is a directorial error regardless of how sharp the render is. Calm shots deserve slow dollies. High-impact moments earn fast cuts and crash zooms."} last
+            />
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
+          <Link href="/#notes" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+            ← All Field Notes
+          </Link>
+          <div className="flex flex-wrap gap-2">
+            {article!.tags.map((tag) => (
+              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/60 border border-brand-cobalt/20 px-2 py-0.5">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </footer>
+      </div>
+    </div>
+  )
+}
+
+function CreativeTechRow({ label, desc, last = false }: { label: string; desc: string; last?: boolean }) {
+  return (
+    <div className="flex gap-0">
+      <div className="w-48 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/20">
+        <span className="font-sans font-semibold text-sm text-brand-cobalt">{label}</span>
+      </div>
+      <p className="font-sans text-sm text-brand-black/65 p-4 leading-relaxed">{desc}</p>
     </div>
   )
 }

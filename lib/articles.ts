@@ -11,6 +11,28 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'ai-image-video-generation-midjourney-higgsfield',
+    title: 'Not Prompting. Directing.',
+    subtitle: 'Midjourney builds the still. Higgsfield moves the camera. And the gap between good and great output is almost entirely about knowing the vocabulary.',
+    category: 'Creative',
+    date: '2026-08-11',
+    readTime: '10 min read',
+    tags: ['Midjourney', 'Higgsfield', 'AI Video', 'Cinematography'],
+    excerpt:
+      "The biggest quality jump in AI-generated video isn't a better model. It's treating the camera preset menu as a director's toolkit — picking a deliberate move for a deliberate reason, instead of defaulting to Static and hoping the prompt carries the shot.",
+  },
+  {
+    slug: 'agentic-ai-loops-workflows',
+    title: 'Stop Building Agents',
+    subtitle: 'Most AI agents are workflows in disguise. Five patterns cover 90% of real tasks — genuine autonomy is for the other 10%',
+    category: 'Engineering',
+    date: '2026-08-11',
+    readTime: '8 min read',
+    tags: ['Agentic AI', 'LLM', 'Workflows', 'ReAct'],
+    excerpt:
+      "The most common production mistake isn't under-engineering agentic AI. It's reaching for autonomous loops when a fixed workflow would have been cheaper, faster, and more reliable.",
+  },
+  {
     slug: 'rag-retrieval-augmented-generation',
     title: 'Retrieve First',
     subtitle: 'How RAG works, where it breaks, and why most implementations over-engineer the wrong things',

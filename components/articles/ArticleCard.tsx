@@ -266,6 +266,54 @@ function ArticleVisual({ category, index }: { category: string; index: number })
     )
   }
 
+  if (category === 'Creative') {
+    // Cinematic frame composition — letterbox + rule of thirds + focal indicator
+    const W = 600
+    const H = 340
+    const LB = 42 // letterbox bar height
+    const frameX = 60
+    const frameY = LB + 20
+    const frameW = W - 120
+    const frameH = H - LB * 2 - 40
+    const third = frameW / 3
+    const thirdH = frameH / 3
+    return (
+      <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <rect width={W} height={H} fill="#EDEAE4" />
+        {/* Letterbox bars */}
+        <rect x="0" y="0" width={W} height={LB} fill={green} opacity="0.55" />
+        <rect x="0" y={H - LB} width={W} height={LB} fill={green} opacity="0.55" />
+        {/* Frame */}
+        <rect x={frameX} y={frameY} width={frameW} height={frameH} fill="none" stroke={green} strokeWidth="0.6" opacity="0.25" />
+        {/* Rule of thirds grid */}
+        {[1, 2].map((i) => (
+          <g key={i}>
+            <line x1={frameX + third * i} y1={frameY} x2={frameX + third * i} y2={frameY + frameH} stroke={green} strokeWidth="0.4" opacity="0.12" />
+            <line x1={frameX} y1={frameY + thirdH * i} x2={frameX + frameW} y2={frameY + thirdH * i} stroke={green} strokeWidth="0.4" opacity="0.12" />
+          </g>
+        ))}
+        {/* Focal point — upper-right third intersection */}
+        <circle cx={frameX + third * 2} cy={frameY + thirdH} r="8" stroke={green} strokeWidth="1" fill="none" opacity="0.3" />
+        <circle cx={frameX + third * 2} cy={frameY + thirdH} r="2" fill={green} opacity="0.25" />
+        {/* Corner brackets */}
+        {[[frameX, frameY], [frameX + frameW, frameY], [frameX, frameY + frameH], [frameX + frameW, frameY + frameH]].map(([cx, cy], i) => {
+          const dx = i % 2 === 0 ? 1 : -1
+          const dy = i < 2 ? 1 : -1
+          return (
+            <g key={i}>
+              <line x1={cx} y1={cy} x2={cx + dx * 16} y2={cy} stroke={green} strokeWidth="1.5" opacity="0.4" />
+              <line x1={cx} y1={cy} x2={cx} y2={cy + dy * 16} stroke={green} strokeWidth="1.5" opacity="0.4" />
+            </g>
+          )
+        })}
+        {/* Dolly path indicator */}
+        <path d={`M${frameX + 30},${frameY + frameH / 2} Q${frameX + frameW / 2},${frameY + 20} ${frameX + frameW - 30},${frameY + frameH / 2}`} fill="none" stroke={green} strokeWidth="0.8" strokeDasharray="5 3" opacity="0.2" />
+        {/* Labels */}
+        <text x={W / 2} y={H - LB + 22} textAnchor="middle" fill={green} fontSize="8" fontFamily="monospace" opacity="0.5" letterSpacing="2">MIDJOURNEY · HIGGSFIELD · CINEMA</text>
+      </svg>
+    )
+  }
+
   // Default abstract visual for other categories
   return (
     <svg viewBox="0 0 600 340" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
