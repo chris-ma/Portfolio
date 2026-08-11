@@ -11,6 +11,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'rag-retrieval-augmented-generation',
+    title: 'Retrieve First',
+    subtitle: 'How RAG works, where it breaks, and why most implementations over-engineer the wrong things',
+    category: 'Engineering',
+    date: '2026-08-11',
+    readTime: '9 min read',
+    tags: ['RAG', 'LLM', 'AI Engineering', 'Vector Search'],
+    excerpt:
+      'RAG fixes two things: stale knowledge and hallucination. It introduces one new way to fail: bad retrieval with false confidence. The pipeline is simple. Getting retrieval right is not.',
+  },
+  {
     slug: 'aeo-three-gate-diagnostic',
     title: 'The Three Gates',
     subtitle: 'How answer engines decide what to cite — and why most content fails before you\'ve written a word',

@@ -5,6 +5,7 @@ import {
   WisprMockup, ObsidianMockup, NotionMockup, FlowDiagram,
   ContextWindowComparison, BenchmarkChart, CostComparison, WorkflowSplit,
   QueryFanOut, ThreeGateDiagram, SAGELoop, ContentShapeComparison,
+  RAGPipeline, HybridRetrievalDiagram, ChunkingComparison, AdaptiveRAGDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface PageProps {
@@ -34,6 +35,10 @@ export default function ArticlePage({ params }: PageProps) {
     day: 'numeric',
   })
 
+  if (article.slug === 'rag-retrieval-augmented-generation') {
+    return <RAGArticle article={article} formattedDate={formattedDate} />
+  }
+
   if (article.slug === 'aeo-three-gate-diagnostic') {
     return <AEOArticle article={article} formattedDate={formattedDate} />
   }
@@ -47,6 +52,402 @@ export default function ArticlePage({ params }: PageProps) {
   }
 
   notFound()
+}
+
+function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+
+        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+          RETRIEVE<br />
+          <span className="text-brand-cobalt">FIRST.</span>
+        </h1>
+
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+          {article!.subtitle}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted border border-brand-concrete px-2.5 py-1">{tag}</span>
+          ))}
+        </div>
+      </header>
+
+      <article className="max-w-[720px] mx-auto px-6 md:px-10 py-16 space-y-16">
+
+        {/* Lede */}
+        <section>
+          <div className="border-l-2 border-brand-cobalt pl-6 space-y-4">
+            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+              RAG fixes two problems simultaneously: a language model&apos;s training data goes stale,
+              and a model under-specified on a fact will confidently generate a plausible wrong answer.
+              Retrieval gives it a source to draw from instead. It introduces one new way to fail:
+              bad retrieval with false confidence attached.
+            </p>
+            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+              The pipeline is seven steps and conceptually simple. Getting retrieval right is not.
+              Most production mistakes aren&apos;t in the LLM call — they&apos;re in the three steps before it.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 01 — What RAG is */}
+        <section>
+          <SectionHeading number="01" title="What RAG actually does" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            RAG (Retrieval-Augmented Generation) pairs a language model with an external retrieval system.
+            Instead of answering purely from memorized training data, the model first retrieves relevant
+            documents from a knowledge source, then generates its answer using those retrieved documents
+            as grounding context. The answer cites specific sources. You can check it.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div className="border border-brand-cobalt/30 p-5 bg-brand-graphite">
+              <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-cobalt block mb-3">What it fixes</span>
+              <div className="space-y-2">
+                <p className="font-sans text-sm text-brand-black/75 leading-relaxed">
+                  <strong className="text-brand-black">Staleness</strong> — model training has a cutoff. RAG works with information from after that cutoff, or with private data the model never saw.
+                </p>
+                <p className="font-sans text-sm text-brand-black/75 leading-relaxed">
+                  <strong className="text-brand-black">Hallucination</strong> — without retrieval, a model under-specified on a fact generates a plausible-sounding wrong answer. With retrieval, it has an actual source.
+                </p>
+              </div>
+            </div>
+            <div className="border border-brand-concrete p-5 bg-brand-graphite">
+              <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-muted block mb-3">What it introduces</span>
+              <p className="font-sans text-sm text-brand-black/75 leading-relaxed">
+                <strong className="text-brand-black">False confidence</strong> — a RAG system with poor retrieval is worse than no RAG. It adds latency and cost while producing an ungrounded answer, now with a citation attached to give it unearned authority.
+              </p>
+            </div>
+          </div>
+
+          <Callout label="vs. fine-tuning">
+            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              Fine-tuning changes model <em>behaviour</em> — tone, format, task specialization.
+              RAG changes what <em>facts</em> the model has access to. If you need the model to know
+              something specific, use RAG. If you need it to behave differently, fine-tune.
+              RAG is also cheaper and faster to update: swap or add documents rather than retraining.
+              This matters most when the underlying information changes frequently.
+            </p>
+          </Callout>
+        </section>
+
+        {/* Section 02 — The pipeline */}
+        <section>
+          <SectionHeading number="02" title="The pipeline" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+            Seven steps, two phases. Steps 1–4 run at ingestion time (once per document, or when documents
+            update). Steps 5–7 run at query time for every user request. The quality of the query-time
+            steps depends entirely on how well the ingestion steps were done.
+          </p>
+
+          <figure className="mb-8">
+            <div className="border border-brand-concrete overflow-hidden">
+              <RAGPipeline />
+            </div>
+            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+              Shaded steps run at query time — everything before the dashed line is ingestion.
+            </figcaption>
+          </figure>
+
+          <div className="space-y-3">
+            <PipelineRow n="1" label="Ingest" detail="Collect and clean source documents — PDFs, markdown, web pages, database records. Quality here determines quality throughout. Cleaning means removing headers and footers, stripping embedded-image text that won't extract, normalizing encoding." />
+            <PipelineRow n="2" label="Chunk" detail="Split documents into smaller passages. Retrieval works at the chunk level. Chunk too small: context gets severed. Chunk too large: relevance gets diluted and tokens get wasted. Chunk size is a real trade-off — the right answer depends on your document type and query patterns." />
+            <PipelineRow n="3" label="Embed" detail="Convert each chunk into a vector representation capturing semantic meaning. The embedding model choice affects retrieval quality directly. Domain-specific embedding models often outperform general-purpose ones on specialized content." />
+            <PipelineRow n="4" label="Index" detail="Store vectors in a vector database for fast similarity search. Choice of database affects latency, scale, and operational complexity — but it's a secondary concern until you've got the first three steps right." />
+            <PipelineRow n="5" label="Retrieve" detail="At query time, embed the user's query and compare against the index to surface the most relevant chunks. This is where hybrid search pays off: vector search finds conceptually related content, keyword search catches exact terms the embedding might blur." highlight />
+            <PipelineRow n="6" label="Rerank" detail="A secondary model reorders the retrieved candidates by relevance before the final set is sent to the LLM. Common pattern: retrieve top 20, rerank down to 3–5. First-pass vector similarity is a rough filter, not a precise one." highlight />
+            <PipelineRow n="7" label="Generate" detail="The query plus the final selected chunks are sent to the LLM, which generates the answer grounded in that context. This is the step most people optimise first. It's usually the wrong place to start." highlight />
+          </div>
+        </section>
+
+        {/* Section 03 — Chunking */}
+        <section>
+          <SectionHeading number="03" title="Chunking strategy" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+            Fixed-size chunking — split every N characters — is a fast start and a low ceiling.
+            The chunk boundary is arbitrary, so it frequently falls mid-sentence, severing context and
+            making the extracted chunk ambiguous without what came before or after.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+            Semantic chunking computes embeddings sentence-by-sentence and starts a new chunk when semantic
+            similarity between adjacent sentences drops below a threshold. Boundaries correspond to where
+            meaning actually shifts. Retrieving a semantically coherent chunk against a semantically similar
+            query produces meaningfully better results — especially on documents that shift topic mid-section.
+          </p>
+
+          <figure>
+            <div className="border border-brand-concrete overflow-hidden">
+              <ChunkingComparison />
+            </div>
+            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+              Fixed-size chunks split at arbitrary boundaries — semantic chunks split where meaning shifts.
+            </figcaption>
+          </figure>
+        </section>
+
+        {/* Section 04 — Hybrid retrieval */}
+        <section>
+          <SectionHeading number="04" title="Hybrid retrieval" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            Dense vector search and sparse keyword search (BM25) are complementary, not competing.
+            Vector search finds conceptually related content even without matching words — useful for
+            paraphrase, synonyms, and domain inference. Keyword search catches exact terms, proper names,
+            codes, and identifiers that embeddings can blur by collapsing similar-sounding but distinct things.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+            Hybrid retrieval combined with reranking is the default for production systems in 2026.
+            It&apos;s not exotic — it&apos;s the sensible baseline. The common reranking pattern: retrieve a
+            broad candidate pool (~20), rerank down to 3–5 strong candidates, and send only those to the LLM.
+            Reranking larger pools (100+) rarely pays off — useful signal concentrates at the head of the distribution.
+          </p>
+
+          <figure>
+            <div className="border border-brand-concrete overflow-hidden">
+              <HybridRetrievalDiagram />
+            </div>
+            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+              Hybrid retrieval — both branches run on the same query, results merge before reranking.
+            </figcaption>
+          </figure>
+        </section>
+
+        {/* Section 05 — Query transformation */}
+        <section>
+          <SectionHeading number="05" title="Query transformation" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+            Raw user queries are often poorly shaped for retrieval. Two techniques address this:
+          </p>
+
+          <div className="space-y-4">
+            <div className="border border-brand-concrete p-5">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-2">Query expansion</span>
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                Generate several reformulations of the same question to widen the retrieval net. A user asking
+                &quot;how does this work with large files&quot; might retrieve more with
+                &quot;performance characteristics on large datasets&quot; or &quot;scalability with file size&quot; added as parallel queries.
+              </p>
+            </div>
+            <div className="border border-brand-concrete p-5">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-2">HyDE — Hypothetical Document Embeddings</span>
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                Have the model generate a hypothetical answer first, then embed and retrieve using <em>that</em> rather
+                than the raw query. The hypothetical answer contains domain language the user&apos;s original
+                question likely lacks. It&apos;s counterintuitive — you generate before you retrieve — but it
+                works well for knowledge-intensive queries where the user&apos;s vocabulary doesn&apos;t match the document vocabulary.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 06 — Advanced patterns */}
+        <section>
+          <SectionHeading number="06" title="Advanced patterns" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+            Know these exist. Don&apos;t reach for them by default.
+          </p>
+
+          <figure className="mb-8">
+            <div className="border border-brand-concrete overflow-hidden">
+              <AdaptiveRAGDiagram />
+            </div>
+            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+              Adaptive RAG — a classifier routes each query to the cheapest pipeline that can handle it.
+            </figcaption>
+          </figure>
+
+          <div className="space-y-4">
+            <AdvancedPatternRow
+              name="Agentic RAG"
+              detail="The model iteratively decides to run multiple retrieval steps, reformulating its own queries and reasoning across rounds before answering. Strong for multi-step questions where a single retrieve-then-generate pass misses intermediate context."
+            />
+            <AdvancedPatternRow
+              name="GraphRAG"
+              detail="Builds a knowledge graph over source data and retrieves via graph traversal rather than similarity search. The right tool when questions are relationship-heavy: 'how do these three entities connect' — the answer isn't in any single chunk and vector similarity won't find it."
+            />
+            <AdvancedPatternRow
+              name="Adaptive RAG"
+              detail="A query classifier routes each incoming question to the cheapest pipeline that can handle it. Simple factual questions go to fast vector RAG. Complex multi-step questions go to agentic RAG. Relationship questions go to GraphRAG. Emerging as the sensible default for production systems in 2026 — most real-world queries are simple and don't need the expensive path."
+            />
+          </div>
+
+          <Callout label="The field's actual lesson" className="mt-8">
+            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              The most common production mistake is not under-engineering RAG — it&apos;s over-engineering it.
+              Start with hybrid retrieval plus a reranker. Measure retrieval quality before adding anything else.
+              Only add query transformation, agentic loops, or graph structures once metrics prove the simpler
+              approach genuinely falls short for a specific, real class of queries — not because it seems more sophisticated.
+            </p>
+          </Callout>
+        </section>
+
+        {/* Section 07 — Two tracks */}
+        <section>
+          <SectionHeading number="07" title="Two tracks" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+            The right architecture depends on scale. One setup I use routinely; one for production applications.
+          </p>
+
+          <div className="space-y-0 border border-brand-concrete mb-8">
+            <div className="border-b border-brand-concrete">
+              <div className="p-4 border-b border-brand-concrete/60 bg-brand-graphite/40">
+                <span className="font-display text-2xl text-brand-cobalt">TRACK A</span>
+                <span className="font-sans text-sm text-brand-muted ml-3">Personal / research RAG</span>
+              </div>
+              <div className="p-5 space-y-3">
+                <RAGTrackRow n="1" text="One markdown file per topic — not one giant document. Retrieval works at the chunk level, and a single well-scoped file chunks more predictably than a sprawling one." />
+                <RAGTrackRow n="2" text="Use headings as natural chunk boundaries. A model retrieving 'just the pricing section' should find it by heading alone." />
+                <RAGTrackRow n="3" text="No exotic formatting — strip tables-as-images, embedded screenshots of text, heavy nested formatting. These are extraction failures identical to the Gate 3 problem in AEO." />
+                <RAGTrackRow n="4" text="Plain files on disk (e.g. Obsidian 30-library/) are sufficient at this scale. Claude's context window plus good file organization functions as your retrieval layer." />
+                <RAGTrackRow n="5" text="Update files in place rather than creating 'v2' copies. Retrieval should never have to guess which version is current." />
+              </div>
+            </div>
+            <div>
+              <div className="p-4 border-b border-brand-concrete/60 bg-brand-graphite/40">
+                <span className="font-display text-2xl text-brand-black">TRACK B</span>
+                <span className="font-sans text-sm text-brand-muted ml-3">Production / application RAG</span>
+              </div>
+              <div className="p-5 space-y-3">
+                <RAGTrackRow n="1" text="Define the question set first. What will this system actually be asked? Build against real query patterns, not hypothetical ones." />
+                <RAGTrackRow n="2" text="Choose a vector database on latency, pricing, and indexing behavior for your actual data volume — not on whichever is most discussed. Chroma and pgvector for smaller deployments; Pinecone, Weaviate, Qdrant, or Milvus for larger scale." />
+                <RAGTrackRow n="3" text="Build hybrid retrieval + reranking before anything fancier. This alone puts you ahead of most production deployments." />
+                <RAGTrackRow n="4" text="Instrument evaluation from the start — don't bolt it on after launch." />
+                <RAGTrackRow n="5" text="Only add complexity (agentic loops, graph retrieval, query transformation) once evaluation data shows the simple pipeline is genuinely insufficient for a real class of queries." />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 08 — Failure modes */}
+        <section>
+          <SectionHeading number="08" title="Failure modes" />
+
+          <div className="space-y-3">
+            {[
+              { title: 'Bad chunking', detail: 'Context lost at boundaries, or chunks too large to be precise. The most common retrieval quality problem — usually fixed by moving from fixed-size to semantic chunking.' },
+              { title: 'Irrelevant embeddings', detail: 'Retrieval surfaces topically adjacent content that doesn\'t actually answer the question. Often a sign of a generic embedding model on domain-specific content, or missing query transformation.' },
+              { title: 'Outdated index', detail: 'The knowledge base goes stale even though the system is technically "using RAG." Retrieval is only as current as the last index update.' },
+              { title: 'Ambiguous queries', detail: 'Vague questions retrieve vague or scattered results. Query expansion and HyDE exist specifically for this — but the first fix is often pushing back on the query design.' },
+              { title: 'False confidence', detail: 'A model will generate a fluent answer from irrelevant retrieved context if not explicitly instructed to say when context doesn\'t address the question. Faithfulness evaluation catches this. Visual inspection usually doesn\'t.' },
+            ].map(({ title, detail }) => (
+              <FailureMode key={title} n={0} title={title} desc={detail} />
+            ))}
+          </div>
+        </section>
+
+        {/* Evaluation */}
+        <section>
+          <SectionHeading number="09" title="Evaluation" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+            &quot;It looks like it&apos;s working&quot; is not evaluation. Systematic evaluation from day one is becoming
+            standard — a majority of new RAG deployments now build it in from the start. Three things to measure:
+          </p>
+
+          <div className="space-y-0 border border-brand-concrete">
+            <EvalRow
+              metric="Retrieval quality"
+              detail="Are the retrieved chunks actually relevant to the query? Measure precision and recall against a labeled test set. This is the most important metric — if retrieval is bad, generation can't save it."
+            />
+            <EvalRow
+              metric="Faithfulness"
+              detail="Does the generated answer reflect what's in the retrieved chunks, or did the model drift from them? A model that ignores its own retrieved context is producing ungrounded output — retrieval failed to constrain it."
+            />
+            <EvalRow
+              metric="Answer relevance"
+              detail="Does the final answer address what was actually asked? Distinct from faithfulness — an answer can be faithful to the retrieved context while still not answering the question if retrieval surfaced the wrong chunks."
+              last
+            />
+          </div>
+
+          <p className="font-sans text-sm text-brand-muted leading-relaxed mt-4 italic">
+            RAGAS is a commonly used open framework for scoring these dimensions systematically.
+          </p>
+        </section>
+
+        {/* Source note */}
+        <section className="border-t border-brand-concrete pt-10">
+          <p className="font-sans text-sm text-brand-muted leading-relaxed">
+            Core RAG mechanism per Lewis et al. (2020), the original RAG paper. Implementation patterns —
+            hybrid retrieval, reranking ratios, adaptive routing, evaluation-first deployment —
+            drawn from practitioner sources reporting on production trends (2026). Treat specific tool and
+            vendor comparisons as directional rather than definitive; verify against current documentation
+            before committing to a specific vector database or framework.
+          </p>
+        </section>
+
+        <div className="border-t border-brand-concrete pt-8">
+          <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+            ← Back to Field Notes
+          </Link>
+        </div>
+      </article>
+    </div>
+  )
+}
+
+function PipelineRow({ n, label, detail, highlight = false }: { n: string; label: string; detail: string; highlight?: boolean }) {
+  return (
+    <div className={`flex gap-0 border border-brand-concrete ${highlight ? 'border-brand-cobalt/30' : ''}`}>
+      <div className={`w-12 flex-shrink-0 flex items-center justify-center border-r border-brand-concrete ${highlight ? 'bg-brand-cobalt/8 border-brand-cobalt/30' : 'bg-brand-graphite/40'}`}>
+        <span className={`font-display text-xl ${highlight ? 'text-brand-cobalt' : 'text-brand-muted/50'}`}>{n}</span>
+      </div>
+      <div className="p-3 flex-1">
+        <span className={`font-sans font-semibold text-sm block mb-1 ${highlight ? 'text-brand-cobalt' : 'text-brand-black'}`}>{label}</span>
+        <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{detail}</p>
+      </div>
+    </div>
+  )
+}
+
+function AdvancedPatternRow({ name, detail }: { name: string; detail: string }) {
+  return (
+    <div className="border border-brand-concrete p-4">
+      <span className="font-sans font-semibold text-sm text-brand-black block mb-1.5">{name}</span>
+      <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{detail}</p>
+    </div>
+  )
+}
+
+function RAGTrackRow({ n, text }: { n: string; text: string }) {
+  return (
+    <div className="flex gap-3">
+      <span className="font-mono text-xs text-brand-cobalt/50 flex-shrink-0 mt-0.5">{n}.</span>
+      <p className="font-sans text-sm text-brand-black/70 leading-relaxed">{text}</p>
+    </div>
+  )
+}
+
+function EvalRow({ metric, detail, last = false }: { metric: string; detail: string; last?: boolean }) {
+  return (
+    <div className={`flex gap-0 ${!last ? 'border-b border-brand-concrete' : ''}`}>
+      <div className="w-40 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/40">
+        <span className="font-sans font-semibold text-sm text-brand-cobalt block leading-tight">{metric}</span>
+      </div>
+      <p className="font-sans text-sm text-brand-black/70 p-4 leading-relaxed">{detail}</p>
+    </div>
+  )
 }
 
 function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {

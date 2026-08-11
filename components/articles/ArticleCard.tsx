@@ -158,6 +158,38 @@ function ArticleVisual({ category, index }: { category: string; index: number })
     )
   }
 
+  if (category === 'Engineering') {
+    // RAG pipeline — seven steps as proportional blocks with arrows
+    const steps = ['INGEST', 'CHUNK', 'EMBED', 'INDEX', 'RETRIEVE', 'RERANK', 'GEN']
+    const BOX_W = 68
+    const GAP = 8
+    const startX = 36
+    const startY = 120
+    const BOX_H = 80
+    return (
+      <svg viewBox="0 0 600 340" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="340" fill="#EDEAE4" />
+        {Array.from({ length: 6 }).map((_, i) => (
+          <line key={i} x1="0" y1={i * 60} x2="600" y2={i * 60} stroke={green} strokeWidth="0.3" opacity="0.07" />
+        ))}
+        {steps.map((s, i) => {
+          const x = startX + i * (BOX_W + GAP)
+          const isQuery = i >= 4
+          return (
+            <g key={s}>
+              <rect x={x} y={startY} width={BOX_W} height={BOX_H} rx="2" fill={isQuery ? green : '#C9C6BE'} opacity={isQuery ? 0.7 : 0.35} />
+              <text x={x + BOX_W / 2} y={startY + 46} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={isQuery ? '#F5F4F0' : '#0A0A0A'} opacity={isQuery ? 0.95 : 0.5} letterSpacing="0">{s}</text>
+              {i < steps.length - 1 && (
+                <line x1={x + BOX_W + 1} y1={startY + BOX_H / 2} x2={x + BOX_W + GAP - 1} y2={startY + BOX_H / 2} stroke={green} strokeWidth="0.8" opacity="0.3" />
+              )}
+            </g>
+          )
+        })}
+        <text x="300" y="230" textAnchor="middle" fill={green} fontSize="7.5" fontFamily="monospace" opacity="0.35" letterSpacing="1">RAG PIPELINE · RETRIEVE FIRST</text>
+      </svg>
+    )
+  }
+
   if (category === 'Strategy') {
     // Three-gate funnel — filter narrowing from left to right
     const gates = [

@@ -818,3 +818,191 @@ export function ContentShapeComparison() {
     </svg>
   )
 }
+
+// ─── RAG illustrations ────────────────────────────────────────────────────────
+
+export function RAGPipeline() {
+  const steps = [
+    { n: '1', label: 'INGEST', sub: 'collect + clean docs' },
+    { n: '2', label: 'CHUNK', sub: 'split into passages' },
+    { n: '3', label: 'EMBED', sub: 'convert to vectors' },
+    { n: '4', label: 'INDEX', sub: 'store in vector DB' },
+    { n: '5', label: 'RETRIEVE', sub: 'top-k by similarity' },
+    { n: '6', label: 'RERANK', sub: 'narrow to 3-5 chunks' },
+    { n: '7', label: 'GENERATE', sub: 'LLM with context' },
+  ]
+
+  const BOX_W = 82
+  const BOX_H = 64
+  const GAP = 10
+  const startX = 18
+  const startY = 80
+
+  return (
+    <svg viewBox="0 0 720 230" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="230" fill={BG} />
+      <defs>
+        <marker id="rp" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill={G} opacity="0.45" />
+        </marker>
+      </defs>
+
+      {steps.map((s, i) => {
+        const x = startX + i * (BOX_W + GAP)
+        const isKey = i === 4 || i === 5 || i === 6
+        return (
+          <g key={s.n}>
+            <rect x={x} y={startY} width={BOX_W} height={BOX_H} rx="3" fill={BG2} stroke={isKey ? G : BORDER} strokeWidth={isKey ? 1.5 : 1} />
+            <rect x={x} y={startY} width={BOX_W} height={24} rx="3" fill={isKey ? G : BORDER} opacity={isKey ? 0.8 : 0.4} />
+            <rect x={x} y={startY + 12} width={BOX_W} height={12} fill={isKey ? G : BORDER} opacity={isKey ? 0.8 : 0.4} />
+            <text x={x + BOX_W / 2} y={startY + 16} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={BG} letterSpacing="0.5">{s.label}</text>
+            <text x={x + BOX_W / 2} y={startY + 40} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED}>{s.sub.split(' ').slice(0, 2).join(' ')}</text>
+            <text x={x + BOX_W / 2} y={startY + 52} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED}>{s.sub.split(' ').slice(2).join(' ')}</text>
+            {i < steps.length - 1 && (
+              <line x1={x + BOX_W + 1} y1={startY + BOX_H / 2} x2={x + BOX_W + GAP - 1} y2={startY + BOX_H / 2} stroke={G} strokeWidth="1" opacity="0.35" markerEnd="url(#rp)" />
+            )}
+            <text x={x + BOX_W / 2} y={startY + BOX_H + 18} textAnchor="middle" fontFamily="monospace" fontSize="9" fill={isKey ? G : MUTED} opacity={isKey ? 0.7 : 0.5}>{s.n}</text>
+          </g>
+        )
+      })}
+
+      <text x="362" y="198" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} letterSpacing="1" opacity="0.6">QUERY TIME ——————</text>
+      <line x1="480" y1={startY - 10} x2="480" y2={startY + BOX_H + 4} stroke={G} strokeWidth="0.8" strokeDasharray="3,3" opacity="0.3" />
+      <text x="520" y={startY - 14} fontFamily="monospace" fontSize="8" fill={G} opacity="0.5">query-time pipeline</text>
+      <text x="200" y={startY - 14} fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.5">ingestion pipeline (run once / on update)</text>
+    </svg>
+  )
+}
+
+export function HybridRetrievalDiagram() {
+  return (
+    <svg viewBox="0 0 720 240" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="240" fill={BG} />
+      <defs>
+        <marker id="hr" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill={G} opacity="0.5" />
+        </marker>
+      </defs>
+
+      {/* Query box */}
+      <rect x="40" y="90" width="130" height="52" rx="3" fill={BG2} stroke={BORDER} strokeWidth="1" />
+      <text x="105" y="112" textAnchor="middle" fontFamily="monospace" fontSize="10" fill={TEXT}>USER QUERY</text>
+      <text x="105" y="128" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED}>"hybrid mattress for</text>
+
+      {/* Dense vector branch */}
+      <path d="M170,105 C220,105 230,75 260,75" fill="none" stroke={G} strokeWidth="1.2" opacity="0.5" markerEnd="url(#hr)" />
+      <rect x="260" y="50" width="160" height="52" rx="3" fill={BG2} stroke={G} strokeWidth="1.2" opacity="0.7" />
+      <rect x="260" y="50" width="160" height="22" rx="3" fill={G} opacity="0.7" />
+      <rect x="260" y="60" width="160" height="12" fill={G} opacity="0.7" />
+      <text x="340" y="65" textAnchor="middle" fontFamily="monospace" fontSize="9" fill={BG} letterSpacing="1">DENSE VECTOR</text>
+      <text x="340" y="86" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED}>semantic similarity</text>
+      <text x="340" y="98" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED}>finds conceptually related</text>
+
+      {/* Sparse keyword branch */}
+      <path d="M170,127 C220,127 230,157 260,157" fill="none" stroke={MUTED} strokeWidth="1.2" opacity="0.5" markerEnd="url(#hr)" />
+      <rect x="260" y="132" width="160" height="52" rx="3" fill={BG2} stroke={MUTED} strokeWidth="1.2" opacity="0.5" />
+      <rect x="260" y="132" width="160" height="22" rx="3" fill={MUTED} opacity="0.45" />
+      <rect x="260" y="144" width="160" height="10" fill={MUTED} opacity="0.45" />
+      <text x="340" y="147" textAnchor="middle" fontFamily="monospace" fontSize="9" fill={BG} letterSpacing="1">SPARSE (BM25)</text>
+      <text x="340" y="168" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED}>keyword matching</text>
+      <text x="340" y="180" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED}>catches names, codes, terms</text>
+
+      {/* Merge */}
+      <path d="M420,76 C470,76 480,100 510,110" fill="none" stroke={G} strokeWidth="1" opacity="0.4" markerEnd="url(#hr)" />
+      <path d="M420,158 C470,158 480,130 510,120" fill="none" stroke={MUTED} strokeWidth="1" opacity="0.4" markerEnd="url(#hr)" />
+      <rect x="510" y="86" width="130" height="52" rx="3" fill={BG2} stroke={G} strokeWidth="1.5" />
+      <rect x="510" y="86" width="130" height="22" rx="3" fill={G} opacity="0.85" />
+      <rect x="510" y="96" width="130" height="12" fill={G} opacity="0.85" />
+      <text x="575" y="101" textAnchor="middle" fontFamily="monospace" fontSize="9" fill={BG} letterSpacing="1">MERGED + RERANKED</text>
+      <text x="575" y="120" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED}>top 20 → rerank → 3–5</text>
+      <text x="575" y="132" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G}>sent to LLM</text>
+
+      <text x="360" y="210" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.6">
+        hybrid outperforms either alone — default in production systems (2026)
+      </text>
+    </svg>
+  )
+}
+
+export function ChunkingComparison() {
+  return (
+    <svg viewBox="0 0 720 240" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="240" fill={BG} />
+
+      {/* Fixed-size label */}
+      <text x="80" y="30" fontFamily="monospace" fontSize="10" fill={MUTED} letterSpacing="2">FIXED-SIZE CHUNKING</text>
+      <text x="80" y="44" fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.6">split every N characters</text>
+
+      {/* Fixed chunk blocks — all equal width, arbitrary breaks */}
+      {[0, 1, 2, 3, 4, 5].map((i) => (
+        <rect key={i} x={80 + i * 88} y={54} width={82} height={44} rx="2" fill={i % 2 === 0 ? BG2 : '#E8E5DF'} stroke={BORDER} strokeWidth="1" />
+      ))}
+      {/* Break marker mid-sentence */}
+      <line x1={80 + 2 * 88 - 4} y1={50} x2={80 + 2 * 88 - 4} y2={102} stroke="#C05000" strokeWidth="1.5" strokeDasharray="3,2" opacity="0.6" />
+      <text x={80 + 2 * 88 - 4} y={46} textAnchor="middle" fontFamily="monospace" fontSize="8" fill="#C05000" opacity="0.7">context lost</text>
+
+      {/* Semantic label */}
+      <text x="80" y="136" fontFamily="monospace" fontSize="10" fill={G} letterSpacing="2">SEMANTIC CHUNKING</text>
+      <text x="80" y="150" fontFamily="monospace" fontSize="8" fill={G} opacity="0.6">split where meaning shifts</text>
+
+      {/* Semantic chunk blocks — variable width, natural breaks */}
+      {[
+        { w: 140 }, { w: 100 }, { w: 160 }, { w: 120 }, { w: 110 },
+      ].reduce((acc, b, i) => {
+        const prevX = acc.length > 0 ? acc[acc.length - 1].x + acc[acc.length - 1].w + 6 : 80
+        acc.push({ ...b, x: prevX })
+        return acc
+      }, [] as { w: number; x: number }[]).map(({ w, x }, i) => (
+        <rect key={i} x={x} y={160} width={w} height={44} rx="2" fill={BG2} stroke={G} strokeWidth={1.2} opacity={0.6 + i * 0.05} />
+      ))}
+
+      <text x="360" y="220" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.6">
+        semantic chunking: embed sentence-by-sentence, break when similarity drops — better signal for retrieval
+      </text>
+    </svg>
+  )
+}
+
+export function AdaptiveRAGDiagram() {
+  const paths = [
+    { label: 'Simple factual Q', target: 'VECTOR RAG', note: 'fast, cheap', color: GL },
+    { label: 'Multi-step reasoning', target: 'AGENTIC RAG', note: 'iterative retrieval loops', color: G },
+    { label: '"How do X+Y relate"', target: 'GRAPH RAG', note: 'graph traversal', color: MUTED },
+  ]
+
+  return (
+    <svg viewBox="0 0 720 240" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="240" fill={BG} />
+      <defs>
+        <marker id="ar" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill={G} opacity="0.4" />
+        </marker>
+      </defs>
+
+      {/* Classifier box */}
+      <rect x="40" y="90" width="160" height="56" rx="3" fill={BG2} stroke={G} strokeWidth="1.5" />
+      <rect x="40" y="90" width="160" height="24" rx="3" fill={G} opacity="0.8" />
+      <rect x="40" y="102" width="160" height="12" fill={G} opacity="0.8" />
+      <text x="120" y="106" textAnchor="middle" fontFamily="monospace" fontSize="9" fill={BG} letterSpacing="1">QUERY CLASSIFIER</text>
+      <text x="120" y="124" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED}>routes to cheapest pipeline</text>
+      <text x="120" y="136" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED}>that can handle the query</text>
+
+      {/* Routes */}
+      {paths.map((p, i) => {
+        const y = 60 + i * 60
+        return (
+          <g key={p.label}>
+            <path d={`M200,118 C270,118 280,${y + 22} 330,${y + 22}`} fill="none" stroke={p.color} strokeWidth="1.2" opacity="0.5" markerEnd="url(#ar)" />
+            <rect x="330" y={y} width="190" height="44" rx="3" fill={BG2} stroke={p.color} strokeWidth="1.2" opacity="0.7" />
+            <text x="340" y={y + 18} fontFamily="monospace" fontSize="10" fill={p.color} fontWeight="600">{p.target}</text>
+            <text x="340" y={y + 32} fontFamily="monospace" fontSize="8" fill={MUTED}>{p.note}</text>
+          </g>
+        )
+      })}
+
+      <text x="360" y="218" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.6">
+        adaptive RAG — emerging 2026 default: most queries are simple, route them cheap
+      </text>
+    </svg>
+  )
+}
