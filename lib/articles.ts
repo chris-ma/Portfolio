@@ -11,6 +11,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'claude-code-vs-codex',
+    title: 'The $140 Question',
+    subtitle: 'Claude Code vs OpenAI Codex — same task, very different bill',
+    category: 'Tools',
+    date: '2026-08-11',
+    readTime: '6 min read',
+    tags: ['AI', 'Claude Code', 'Codex', 'Dev Tooling'],
+    excerpt:
+      'The benchmark numbers are close. The bill isn\'t. What the $155 vs $15 refactor test actually tells you about which tool to reach for — and when.',
+  },
+  {
     slug: 'wispr-obsidian-notion-pkm-stack',
     title: 'Capture → Think → Coordinate',
     subtitle: 'Building a frictionless PKM stack with Wispr Flow, Obsidian, and Notion',

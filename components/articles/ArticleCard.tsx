@@ -131,6 +131,33 @@ function ArticleVisual({ category, index }: { category: string; index: number })
     )
   }
 
+  if (category === 'Tools') {
+    // Cost comparison: two columns — tall bar vs short bar
+    const tallH = 120
+    const shortH = Math.round(tallH * (15 / 155))
+    return (
+      <svg viewBox="0 0 600 340" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="340" fill="#EDEAE4" />
+        {/* Grid */}
+        {Array.from({ length: 6 }).map((_, i) => (
+          <line key={i} x1="60" y1={60 + i * 40} x2="540" y2={60 + i * 40} stroke={green} strokeWidth="0.3" opacity="0.1" />
+        ))}
+        {/* Baseline */}
+        <line x1="60" y1="260" x2="540" y2="260" stroke={green} strokeWidth="0.8" opacity="0.25" />
+        {/* Claude bar */}
+        <rect x="160" y={260 - tallH} width="100" height={tallH} rx="2" fill={green} opacity="0.7" />
+        <text x="210" y={260 - tallH - 12} textAnchor="middle" fill={green} fontSize="16" fontFamily="monospace" fontWeight="700" opacity="0.9">$155</text>
+        <text x="210" y="278" textAnchor="middle" fill={green} fontSize="9" fontFamily="monospace" opacity="0.6">Claude Code</text>
+        {/* Codex bar */}
+        <rect x="340" y={260 - shortH} width="100" height={shortH} rx="2" fill="#7A7872" opacity="0.4" />
+        <text x="390" y={260 - shortH - 12} textAnchor="middle" fill="#7A7872" fontSize="16" fontFamily="monospace" fontWeight="700" opacity="0.7">$15</text>
+        <text x="390" y="278" textAnchor="middle" fill="#7A7872" fontSize="9" fontFamily="monospace" opacity="0.5">Codex</text>
+        {/* Same task label */}
+        <text x="300" y="308" textAnchor="middle" fill={green} fontSize="8" fontFamily="monospace" opacity="0.35" letterSpacing="1">SAME TASK · 10× COST DELTA</text>
+      </svg>
+    )
+  }
+
   // Default abstract visual for other categories
   return (
     <svg viewBox="0 0 600 340" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">

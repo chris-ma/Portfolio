@@ -353,3 +353,189 @@ export function FlowDiagram() {
     </svg>
   )
 }
+
+// ─── Claude Code vs Codex illustrations ───────────────────────────────────────
+
+export function ContextWindowComparison() {
+  // 1M vs 200K — proportional bar comparison
+  const totalW = 560
+  const claudeW = totalW   // 1M = full width reference
+  const codexW = Math.round(totalW * (200 / 1000))  // 200K = 20% of 1M = 112px
+
+  return (
+    <svg viewBox="0 0 720 220" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="220" fill={BG} />
+
+      {/* Title */}
+      <text x="80" y="36" fontFamily="monospace" fontSize="10" fill={MUTED} letterSpacing="2">CONTEXT WINDOW</text>
+
+      {/* Claude Code bar */}
+      <text x="80" y="70" fontFamily="monospace" fontSize="12" fill={TEXT}>Claude Code</text>
+      <rect x="80" y="80" width={claudeW} height="28" rx="2" fill={G} opacity="0.85" />
+      <text x={80 + claudeW - 8} y="99" textAnchor="end" fontFamily="monospace" fontSize="10" fill={BG}>1,000,000 tokens</text>
+
+      {/* Codex bar */}
+      <text x="80" y="138" fontFamily="monospace" fontSize="12" fill={TEXT}>OpenAI Codex</text>
+      <rect x="80" y="148" width={codexW} height="28" rx="2" fill={MUTED} opacity="0.5" />
+      <text x={80 + codexW + 8} y="167" fontFamily="monospace" fontSize="10" fill={MUTED}>200,000 tokens</text>
+
+      {/* Annotation line */}
+      <line x1={80 + codexW} y1="100" x2={80 + codexW} y2="148" stroke={BORDER} strokeWidth="1" strokeDasharray="3,3" />
+      <text x={80 + codexW + 8} y="126" fontFamily="monospace" fontSize="8" fill={MUTED}>5× smaller</text>
+    </svg>
+  )
+}
+
+export function BenchmarkChart() {
+  const bars = [
+    { label: 'Terminal-Bench 2.0', claude: 69.4, codex: 82.7 },
+    { label: 'SWE-bench Verified', claude: 88.6, codex: 88.7 },
+    { label: 'Blind code-quality', claude: 67, codex: 25, note: '% preferred in review' },
+  ]
+
+  const BAR_H = 18
+  const GAP = 6
+  const ROW_H = BAR_H * 2 + GAP + 28
+  const LABEL_W = 170
+  const BAR_MAX = 380
+  const startX = 60
+  const startY = 50
+
+  return (
+    <svg viewBox="0 0 720 260" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="260" fill={BG} />
+
+      {/* Legend */}
+      <rect x={startX} y={18} width={12} height={12} rx="2" fill={G} opacity="0.85" />
+      <text x={startX + 18} y={29} fontFamily="monospace" fontSize="10" fill={TEXT}>Claude Code</text>
+      <rect x={startX + 110} y={18} width={12} height={12} rx="2" fill={MUTED} opacity="0.55" />
+      <text x={startX + 128} y={29} fontFamily="monospace" fontSize="10" fill={MUTED}>OpenAI Codex</text>
+
+      {bars.map((b, i) => {
+        const y = startY + i * ROW_H
+        const claudePx = (b.claude / 100) * BAR_MAX
+        const codexPx  = (b.codex  / 100) * BAR_MAX
+        return (
+          <g key={b.label}>
+            <text x={startX} y={y + 14} fontFamily="monospace" fontSize="9" fill={MUTED} letterSpacing="1">
+              {b.label.toUpperCase()}
+            </text>
+            {b.note && (
+              <text x={startX} y={y + 24} fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.6">{b.note}</text>
+            )}
+
+            {/* Claude bar */}
+            <rect x={startX + LABEL_W} y={y + 4} width={claudePx} height={BAR_H} rx="2" fill={G} opacity="0.85" />
+            <text x={startX + LABEL_W + claudePx + 6} y={y + 16} fontFamily="monospace" fontSize="9" fill={G}>{b.claude}%</text>
+
+            {/* Codex bar */}
+            <rect x={startX + LABEL_W} y={y + BAR_H + GAP + 4} width={codexPx} height={BAR_H} rx="2" fill={MUTED} opacity="0.45" />
+            <text x={startX + LABEL_W + codexPx + 6} y={y + BAR_H + GAP + 16} fontFamily="monospace" fontSize="9" fill={MUTED}>{b.codex}%</text>
+          </g>
+        )
+      })}
+    </svg>
+  )
+}
+
+export function CostComparison() {
+  // $155 vs $15 — same Express.js refactor
+  const MAX_H = 140
+  const claudeH = MAX_H        // $155 = full height
+  const codexH  = Math.round(MAX_H * (15 / 155)) // $15 = ~13.7% of $155
+
+  return (
+    <svg viewBox="0 0 720 260" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="260" fill={BG} />
+
+      <text x="360" y="30" textAnchor="middle" fontFamily="monospace" fontSize="10" fill={MUTED} letterSpacing="2">
+        SAME TASK · EXPRESS.JS REFACTOR · ONE DOCUMENTED TEST
+      </text>
+
+      {/* Baseline */}
+      <line x1="160" y1="210" x2="560" y2="210" stroke={BORDER} strokeWidth="1" />
+
+      {/* Claude bar */}
+      <rect x="210" y={210 - claudeH} width="120" height={claudeH} rx="2" fill={G} opacity="0.75" />
+      <text x="270" y={210 - claudeH - 10} textAnchor="middle" fontFamily="monospace" fontSize="18" fill={G} fontWeight="700">$155</text>
+      <text x="270" y="228" textAnchor="middle" fontFamily="monospace" fontSize="10" fill={TEXT}>Claude Code</text>
+
+      {/* Codex bar */}
+      <rect x="390" y={210 - codexH} width="120" height={codexH} rx="2" fill={MUTED} opacity="0.45" />
+      <text x="450" y={210 - codexH - 10} textAnchor="middle" fontFamily="monospace" fontSize="18" fill={MUTED} fontWeight="700">$15</text>
+      <text x="450" y="228" textAnchor="middle" fontFamily="monospace" fontSize="10" fill={MUTED}>Codex</text>
+
+      {/* 10× annotation */}
+      <line x1="330" y1={210 - claudeH + 20} x2="390" y2={210 - claudeH + 20} stroke={BORDER} strokeWidth="1" strokeDasharray="4,3" />
+      <text x="360" y={210 - claudeH + 14} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED}>10× cost delta</text>
+
+      <text x="360" y="252" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.6">
+        source: documented community benchmark · treat as directional
+      </text>
+    </svg>
+  )
+}
+
+export function WorkflowSplit() {
+  const cols = [
+    {
+      tool: 'CLAUDE CODE',
+      color: G,
+      rows: [
+        'Real-time pairing in editor',
+        'Iterative back-and-forth',
+        'Large, tangled codebases',
+        'Already in Claude ecosystem',
+        'Quality ceiling &gt; per-task cost',
+      ],
+    },
+    {
+      tool: 'CODEX',
+      color: MUTED,
+      rows: [
+        'Async PRs while doing other work',
+        'Well-defined, unattended tasks',
+        'Tight budget per task',
+        'Sandboxed cloud execution',
+        'Dependency bumps, type fixes',
+      ],
+    },
+  ]
+
+  return (
+    <svg viewBox="0 0 720 300" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="300" fill={BG} />
+
+      {cols.map((col, ci) => {
+        const x = ci === 0 ? 40 : 390
+        const w = 290
+        return (
+          <g key={col.tool}>
+            {/* Header */}
+            <rect x={x} y={30} width={w} height={36} rx="3" fill={col.color} opacity={ci === 0 ? 0.9 : 0.45} />
+            <text x={x + w / 2} y={53} textAnchor="middle" fontFamily="monospace" fontSize="12" fill={ci === 0 ? BG : BG} letterSpacing="2">
+              {col.tool}
+            </text>
+
+            {/* Rows */}
+            {col.rows.map((row, ri) => (
+              <g key={ri}>
+                <rect x={x} y={74 + ri * 38} width={w} height={32} rx="2" fill={col.color} opacity={0.05 + ri * 0.01} />
+                <line x1={x} y1={74 + ri * 38} x2={x + w} y2={74 + ri * 38} stroke={BORDER} strokeWidth="0.5" />
+                <text x={x + 14} y={74 + ri * 38 + 20} fontFamily="monospace" fontSize="10" fill={col.color === G ? TEXT : MUTED}>
+                  {row}
+                </text>
+              </g>
+            ))}
+            <line x1={x} y1={74 + cols[0].rows.length * 38} x2={x + w} y2={74 + cols[0].rows.length * 38} stroke={BORDER} strokeWidth="0.5" />
+            <rect x={x} y={30} width={w} height={74 + cols[0].rows.length * 38 - 30} rx="3" fill="none" stroke={col.color} strokeWidth="1.2" opacity={ci === 0 ? 0.5 : 0.3} />
+          </g>
+        )
+      })}
+
+      {/* VS divider */}
+      <text x="360" y="165" textAnchor="middle" fontFamily="monospace" fontSize="14" fill={BORDER} letterSpacing="2">VS</text>
+      <line x1="355" y1="60" x2="355" y2="270" stroke={BORDER} strokeWidth="0.5" strokeDasharray="4,4" />
+    </svg>
+  )
+}
