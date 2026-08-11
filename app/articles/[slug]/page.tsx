@@ -8,6 +8,7 @@ import {
   RAGPipeline, HybridRetrievalDiagram, ChunkingComparison, AdaptiveRAGDiagram,
   WorkflowSpectrum, ReActLoop, PlanExecuteDiagram, AgentFailureModeDiagram,
   MidjourneyParams, CameraMovesGrid, PromptFormulaDiagram, ToolComparisonSplit,
+  TokenLeaderboard, VanityVsValue, CostPerTaskChart, ComplexityRouter,
 } from '@/components/articles/ArticleMockups'
 
 interface PageProps {
@@ -59,6 +60,10 @@ export default function ArticlePage({ params }: PageProps) {
 
   if (article.slug === 'ai-image-video-generation-midjourney-higgsfield') {
     return <CreativeToolsArticle article={article} formattedDate={formattedDate} />
+  }
+
+  if (article.slug === 'tokenmaxxing-ai-productivity') {
+    return <TokenmaxxingArticle article={article} formattedDate={formattedDate} />
   }
 
   notFound()
@@ -2084,6 +2089,273 @@ function CreativeTechRow({ label, desc, last = false }: { label: string; desc: s
         <span className="font-sans font-semibold text-sm text-brand-cobalt">{label}</span>
       </div>
       <p className="font-sans text-sm text-brand-black/65 p-4 leading-relaxed">{desc}</p>
+    </div>
+  )
+}
+
+function MetricRow({ signal, meaning, last = false }: { signal: string; meaning: string; last?: boolean }) {
+  return (
+    <div className={`flex gap-0 ${!last ? 'border-b border-brand-concrete' : ''}`}>
+      <div className="w-52 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/30">
+        <span className="font-sans font-medium text-sm text-brand-black">{signal}</span>
+      </div>
+      <p className="font-sans text-sm text-brand-black/65 p-4 leading-relaxed">{meaning}</p>
+    </div>
+  )
+}
+
+function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+
+        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+          THE<br />
+          <span className="text-brand-cobalt">WRONG</span><br />
+          SCOREBOARD.
+        </h1>
+
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+          {article!.subtitle}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 py-14 space-y-16">
+
+        {/* Lede */}
+        <section>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+            In April 2026, The Information reported that a Meta employee had built an internal leaderboard —
+            nicknamed &ldquo;Claudeonomics&rdquo; — ranking colleagues by tokens processed and generated.
+            Top performers earned digital badges with titles like &ldquo;Cache Wizard&rdquo; and &ldquo;Model
+            Connoisseur.&rdquo; The highest-ranked individual averaged 281 billion tokens. The leaderboard
+            was taken down two days after the report.
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            That&rsquo;s the whole story. Everything else is commentary on why it was always going to end
+            that way, and what the people who built similar dashboards at Amazon, Atlassian, and a dozen
+            other companies should have tracked instead.
+          </p>
+        </section>
+
+        {/* Section 1 */}
+        <section>
+          <SectionHeading number="01" title="Why the metric failed" />
+          <div className="space-y-4 mt-6">
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              The origin of tokenmaxxing is rational. Organisations wanted a visible signal that teams were
+              actually adopting AI tools — a genuine, reasonable goal. Token counts happened to be one of the
+              only AI inputs every provider meters cleanly, so it was the easiest number to put on a dashboard.
+              Easy to measure is not the same thing as a good proxy for the thing you actually care about, and
+              that gap is the entire problem.
+            </p>
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              The core issue: <strong className="text-brand-black">tokenmaxxing measures consumption, not output.</strong> Token-heavy
+              workflows — agentic coding, multi-step reasoning — genuinely do consume large volumes of tokens when
+              they deliver real value. But identical token volumes can come from an agent running in circles
+              producing nothing useful. The number alone cannot distinguish the two cases.
+            </p>
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              Once the metric became visible on a leaderboard, behaviour predictably warped around it: engineers
+              padding prompts, running redundant parallel agents, routing everything through frontier-tier models
+              regardless of task complexity. One internal audit of roughly 100,000 prompt logs found that
+              approximately 65% of queries were simple definitional questions or minor refactors — work that
+              didn&rsquo;t need expensive tokens, but got them anyway because the default was always the
+              most powerful endpoint available.
+            </p>
+          </div>
+
+          <div className="mt-10 border border-brand-concrete">
+            <TokenLeaderboard />
+          </div>
+          <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+            Claudeonomics: the leaderboard that lasted 48 hours
+          </p>
+
+          <Callout label="The Goodhart problem" className="mt-8">
+            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              When a measure becomes a target, it ceases to be a good measure. Goodhart&rsquo;s Law has
+              been applied to everything from school test scores to hospital wait times. AI token
+              leaderboards were always going to produce the same outcome: behaviour optimised for the
+              number, not for the work the number was supposed to represent.
+            </p>
+          </Callout>
+        </section>
+
+        {/* Section 2 */}
+        <section>
+          <SectionHeading number="02" title="The corrective: valuemaxxing" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            The counter-practice gaining traction is <strong className="text-brand-black">valuemaxxing</strong> —
+            optimising for outcomes per dollar spent, rather than volume for its own sake. The signal
+            distinction is straightforward: genuine skill shows up as tokens per good outcome
+            <em> going down</em>, not up. A tighter, better-scoped context package consistently
+            outperforms four parallel agents running against a vague prompt, using a fraction of
+            the tokens to reach an acceptable result.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+            What to actually track:
+          </p>
+
+          <div className="mt-8 border border-brand-concrete">
+            <VanityVsValue />
+          </div>
+          <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+            Left column: what's on the dashboard. Right column: what should be.
+          </p>
+
+          <div className="mt-10 border border-brand-concrete divide-y divide-brand-concrete">
+            <MetricRow signal="Total tokens used" meaning="Activity level only — tells you something happened, nothing about whether it was worth anything." />
+            <MetricRow signal="Tasks completed & shipped" meaning="The closest single-number proxy to actual productivity. Not granular, but directionally honest." />
+            <MetricRow signal="Iterations to acceptable output" meaning="A measure of prompt and context quality. Falling iteration count is the real skill signal." />
+            <MetricRow signal="Cost per completed task" meaning="Total spend across all calls until the work is done and accepted. The number that should inform budgeting." />
+            <MetricRow signal="Model tier used vs. task complexity" meaning="Whether spend is matched to actual need. 65% of queries don't require frontier-tier models." last />
+          </div>
+        </section>
+
+        {/* Section 3 */}
+        <section>
+          <SectionHeading number="03" title="Practical calibration" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Most of this comes down to one discipline: match the tool to the task before you spend, not
+            after. That sounds obvious, but the default in most AI-enabled environments is to route
+            everything to the most capable endpoint available. The cost of that default adds up.
+          </p>
+
+          <div className="mt-10 border border-brand-concrete">
+            <ComplexityRouter />
+          </div>
+          <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+            Efficient allocation vs. defaulting everything to frontier tier
+          </p>
+
+          <div className="mt-10 space-y-6">
+            <div className="border-l-2 border-brand-cobalt pl-6">
+              <h3 className="font-display text-2xl text-brand-black mb-2">SCOPE BEFORE YOU SPEND.</h3>
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                Write the actual goal and &ldquo;done&rdquo; condition before starting a session. A vague
+                prompt invites a vague, token-heavy back-and-forth to converge on what you actually meant.
+                For Claude Code specifically: extended thinking is billed as output tokens at a real premium.
+                Cap it or drop the effort tier for tasks that don&rsquo;t require deep reasoning — routine
+                scripting and minor refactors don&rsquo;t need the same reasoning budget as a genuine
+                multi-file architecture decision.
+              </p>
+            </div>
+
+            <div className="border-l-2 border-brand-cobalt pl-6">
+              <h3 className="font-display text-2xl text-brand-black mb-2">MATCH MODEL TO TASK, NOT HABIT.</h3>
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                Default to lighter, faster models for simple, well-defined work — definitional questions,
+                small refactors, formatting. Reserve heavier models for tasks with real ambiguity or
+                multi-step reasoning. The 65% figure above — simple queries hitting frontier endpoints by
+                default — is the exact waste this avoids.
+              </p>
+            </div>
+
+            <div className="border-l-2 border-brand-cobalt pl-6">
+              <h3 className="font-display text-2xl text-brand-black mb-2">CHECKPOINT INSTEAD OF SPRAWL.</h3>
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                Long, meandering sessions accumulate context that isn&rsquo;t all pulling weight. Checkpoint
+                progress to a doc and start a fresh, compressed session rather than letting one conversation
+                run indefinitely. The same principle applies to your own working sessions, not just
+                autonomous agents: a clean context is a cheaper context.
+              </p>
+            </div>
+
+            <div className="border-l-2 border-brand-cobalt pl-6">
+              <h3 className="font-display text-2xl text-brand-black mb-2">MEASURE YOUR OWN SIGNAL.</h3>
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                Pick one recurring task type and track iterations and spend this month versus last.
+                Falling iteration count at stable or falling cost is the actual win condition.
+                Rising raw token usage is not.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 4 */}
+        <section>
+          <SectionHeading number="04" title="The trend line that actually matters" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            There&rsquo;s a legitimate version of high token consumption: the learning phase. When
+            you&rsquo;re learning how to engineer a new workflow type — figuring out the right context
+            packaging, the right model tier, the right loop structure — iteration is expensive, and that
+            cost is worth paying. It&rsquo;s training spend. Expected, worth budgeting for, worth
+            timeboxing.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+            What isn&rsquo;t acceptable is treating training-mode burn rates as steady-state. If you&rsquo;re
+            still consuming the same volume six weeks into a repeatable task, that&rsquo;s a signal the
+            workflow hasn&rsquo;t been engineered yet — it&rsquo;s still being improvised.
+          </p>
+
+          <div className="mt-10 border border-brand-concrete">
+            <CostPerTaskChart />
+          </div>
+          <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+            Training spend followed by outcome mode. The payoff should be visible.
+          </p>
+
+          <Callout label="The real skill signal" className="mt-8">
+            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              Better outcomes come from fewer iterations, cleaner results, correct architecture on the
+              first pass — not from higher volume. A person with a tight, well-scoped context package
+              can outperform someone running four parallel agents against a vague prompt, using a
+              fraction of the tokens. Skill shows up as <em>tokens per good outcome going down</em>.
+              That&rsquo;s the number worth putting on a dashboard.
+            </p>
+          </Callout>
+
+          <div className="mt-10 bg-brand-graphite border border-brand-concrete p-8">
+            <p className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-cobalt mb-5">Quick reference</p>
+            <div className="border border-brand-concrete divide-y divide-brand-concrete">
+              <div className="grid grid-cols-2 bg-brand-black/5">
+                <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted p-3">Signal</span>
+                <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted p-3">What it actually tells you</span>
+              </div>
+              <MetricRow signal="Total tokens used" meaning="Activity level only — no outcome information" />
+              <MetricRow signal="Tasks completed per session" meaning="Closer to real productivity" />
+              <MetricRow signal="Iterations to acceptable output" meaning="Skill and prompt / context quality" />
+              <MetricRow signal="Cost per completed task" meaning="The number that should actually inform budgeting" />
+              <MetricRow signal="Model tier vs. task complexity" meaning="Whether spend is matched to actual need" last />
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
+          <Link href="/#notes" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+            ← All Field Notes
+          </Link>
+          <div className="flex flex-wrap gap-2">
+            {article!.tags.map((tag) => (
+              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/60 border border-brand-cobalt/20 px-2 py-0.5">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </footer>
+      </div>
     </div>
   )
 }

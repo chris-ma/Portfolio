@@ -11,6 +11,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'tokenmaxxing-ai-productivity',
+    title: 'The Wrong Scoreboard',
+    subtitle: 'Token counts measure activity. They say nothing about whether the activity was worth anything.',
+    category: 'Strategy',
+    date: '2026-08-11',
+    readTime: '7 min read',
+    tags: ['AI Productivity', 'Tokenmaxxing', 'Valuemaxxing', 'Claude Code'],
+    excerpt:
+      "Meta built a leaderboard ranking employees by tokens processed. The highest scorer averaged 281 billion tokens. The leaderboard was taken down two days later. That's the whole story.",
+  },
+  {
     slug: 'ai-image-video-generation-midjourney-higgsfield',
     title: 'Not Prompting. Directing.',
     subtitle: 'Midjourney builds the still. Higgsfield moves the camera. And the gap between good and great output is almost entirely about knowing the vocabulary.',

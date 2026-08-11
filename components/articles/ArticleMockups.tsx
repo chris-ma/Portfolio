@@ -1357,3 +1357,194 @@ export function ToolComparisonSplit() {
     </svg>
   )
 }
+
+// ─── Tokenmaxxing article mockups ─────────────────────────────────────────────
+
+export function TokenLeaderboard() {
+  const rows = [
+    { rank: '01', name: 'jkrueger', tokens: '281B', badge: 'Cache Wizard', cost: '$4,200/mo' },
+    { rank: '02', name: 'priya_s', tokens: '194B', badge: 'Model Connoisseur', cost: '$2,900/mo' },
+    { rank: '03', name: 'dan.t', tokens: '147B', badge: 'Context Champion', cost: '$2,200/mo' },
+    { rank: '04', name: 'emilyq', tokens: '98B', badge: 'Prompt Architect', cost: '$1,470/mo' },
+    { rank: '05', name: 'r.okonkwo', tokens: '61B', badge: 'Token Enthusiast', cost: '$915/mo' },
+  ]
+  const ROW_H = 38
+  const startY = 72
+  return (
+    <svg viewBox="0 0 720 300" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="300" fill={BG} />
+      {/* Header bar */}
+      <rect x="40" y="30" width="640" height="32" fill={G} opacity="0.07" />
+      <text x="56" y="50" fontFamily="monospace" fontSize="9" fontWeight="700" fill={G} opacity="0.4" letterSpacing="1">CLAUDEONOMICS — WEEKLY TOKEN LEADERBOARD</text>
+      <text x="664" y="50" textAnchor="end" fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.5">taken down 48 hrs later</text>
+      {/* Column headers */}
+      <text x="56" y={startY - 8} fontFamily="monospace" fontSize="7.5" fontWeight="700" fill={G} opacity="0.35" letterSpacing="1">#</text>
+      <text x="90" y={startY - 8} fontFamily="monospace" fontSize="7.5" fontWeight="700" fill={G} opacity="0.35" letterSpacing="1">USER</text>
+      <text x="260" y={startY - 8} fontFamily="monospace" fontSize="7.5" fontWeight="700" fill={G} opacity="0.35" letterSpacing="1">TOKENS</text>
+      <text x="370" y={startY - 8} fontFamily="monospace" fontSize="7.5" fontWeight="700" fill={G} opacity="0.35" letterSpacing="1">BADGE</text>
+      <text x="580" y={startY - 8} textAnchor="end" fontFamily="monospace" fontSize="7.5" fontWeight="700" fill={G} opacity="0.35" letterSpacing="1">EST. COST</text>
+      <line x1="40" y1={startY - 4} x2="680" y2={startY - 4} stroke={G} strokeWidth="0.4" opacity="0.15" />
+      {rows.map((r, i) => {
+        const y = startY + i * ROW_H
+        const isTop = i === 0
+        return (
+          <g key={r.rank}>
+            {isTop && <rect x="40" y={y} width="640" height={ROW_H} fill={G} opacity="0.05" />}
+            <line x1="40" y1={y} x2="680" y2={y} stroke={G} strokeWidth="0.3" opacity="0.1" />
+            <text x="56" y={y + ROW_H / 2 + 4} fontFamily="monospace" fontSize="9" fill={G} opacity={isTop ? 0.7 : 0.35}>{r.rank}</text>
+            <text x="90" y={y + ROW_H / 2 + 4} fontFamily="monospace" fontSize="9.5" fill={TEXT} opacity={isTop ? 0.8 : 0.55}>{r.name}</text>
+            <text x="260" y={y + ROW_H / 2 + 4} fontFamily="monospace" fontSize="10" fontWeight="700" fill={G} opacity={isTop ? 0.85 : 0.5}>{r.tokens}</text>
+            <rect x="366" y={y + 10} width="160" height="18" rx="2" fill={G} opacity={isTop ? 0.15 : 0.07} />
+            <text x="374" y={y + ROW_H / 2 + 3} fontFamily="monospace" fontSize="8" fill={G} opacity={isTop ? 0.8 : 0.5}>{r.badge}</text>
+            <text x="580" y={y + ROW_H / 2 + 4} textAnchor="end" fontFamily="monospace" fontSize="9" fill={MUTED} opacity={isTop ? 0.7 : 0.45}>{r.cost}</text>
+          </g>
+        )
+      })}
+      <line x1="40" y1={startY + rows.length * ROW_H} x2="680" y2={startY + rows.length * ROW_H} stroke={G} strokeWidth="0.3" opacity="0.1" />
+      <text x="360" y="284" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.25" letterSpacing="1">TOKEN VOLUME DOES NOT DISTINGUISH WORK FROM NOISE</text>
+    </svg>
+  )
+}
+
+export function VanityVsValue() {
+  const vanity = ['Total tokens used', 'Daily active sessions', 'Model tier selected', 'Prompts sent', 'Background tasks run']
+  const value = ['Tasks completed & shipped', 'Iterations to acceptable output', 'Cost per shipped task', 'Skill delta month-over-month', 'Spend matched to task complexity']
+  const ROW_H = 34
+  const startY = 80
+  return (
+    <svg viewBox="0 0 720 320" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="320" fill={BG} />
+      {/* Divider */}
+      <line x1="360" y1="20" x2="360" y2="300" stroke={G} strokeWidth="0.4" opacity="0.15" />
+      {/* Headers */}
+      <rect x="40" y="30" width="300" height="26" fill={MUTED} opacity="0.08" />
+      <rect x="380" y="30" width="300" height="26" fill={G} opacity="0.08" />
+      <text x="190" y="47" textAnchor="middle" fontFamily="monospace" fontSize="8.5" fontWeight="700" fill={MUTED} opacity="0.45" letterSpacing="1">VANITY METRICS</text>
+      <text x="530" y="47" textAnchor="middle" fontFamily="monospace" fontSize="8.5" fontWeight="700" fill={G} opacity="0.7" letterSpacing="1">VALUE METRICS</text>
+      {/* Rows */}
+      {vanity.map((v, i) => {
+        const y = startY + i * ROW_H
+        return (
+          <g key={v}>
+            <line x1="40" y1={y} x2="340" y2={y} stroke={MUTED} strokeWidth="0.3" opacity="0.15" />
+            <line x1="380" y1={y} x2="680" y2={y} stroke={G} strokeWidth="0.3" opacity="0.12" />
+            <text x="56" y={y + ROW_H / 2 + 4} fontFamily="monospace" fontSize="9" fill={MUTED} opacity="0.5">{v}</text>
+            <text x="396" y={y + ROW_H / 2 + 4} fontFamily="monospace" fontSize="9" fill={G} opacity="0.72">{value[i]}</text>
+          </g>
+        )
+      })}
+      {/* Bottom label */}
+      <text x="190" y="288" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED} opacity="0.35">activity</text>
+      <text x="530" y="288" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.4">outcome</text>
+      <text x="360" y="308" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={G} opacity="0.2" letterSpacing="1">MEASURE WHAT MOVES THE WORK FORWARD, NOT WHAT MOVES THE METER</text>
+    </svg>
+  )
+}
+
+export function CostPerTaskChart() {
+  const W = 680
+  const H = 200
+  const padX = 40
+  const padY = 30
+  const chartW = W - padX * 2
+  const chartH = H - padY * 2
+  const baseline = padY + chartH
+  // Training phase = left 55% of chart
+  const splitX = padX + chartW * 0.55
+  // Token burn curve (high then declining as skill builds)
+  const tokenPts = [
+    [padX, padY + chartH * 0.15],
+    [padX + chartW * 0.15, padY + chartH * 0.1],
+    [padX + chartW * 0.3, padY + chartH * 0.25],
+    [splitX, padY + chartH * 0.4],
+    [padX + chartW * 0.7, padY + chartH * 0.55],
+    [padX + chartW * 0.85, padY + chartH * 0.62],
+    [padX + chartW, padY + chartH * 0.65],
+  ] as [number, number][]
+  // Outcome/quality curve (low then rising)
+  const outcomePts = [
+    [padX, padY + chartH * 0.9],
+    [padX + chartW * 0.2, padY + chartH * 0.82],
+    [padX + chartW * 0.4, padY + chartH * 0.62],
+    [splitX, padY + chartH * 0.45],
+    [padX + chartW * 0.68, padY + chartH * 0.28],
+    [padX + chartW * 0.85, padY + chartH * 0.22],
+    [padX + chartW, padY + chartH * 0.18],
+  ] as [number, number][]
+  const toPath = (pts: [number, number][]) =>
+    pts.map((p, i) => (i === 0 ? `M${p[0]},${p[1]}` : `L${p[0]},${p[1]}`)).join(' ')
+  return (
+    <svg viewBox={`0 0 ${W + 40} ${H + 80}`} className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width={W + 40} height={H + 80} fill={BG} />
+      {/* Phase bands */}
+      <rect x={padX} y={padY} width={splitX - padX} height={chartH} fill={G} opacity="0.03" />
+      <rect x={splitX} y={padX} width={padX + chartW - splitX} height={chartH} fill={G} opacity="0.06" />
+      {/* Phase labels */}
+      <text x={(padX + splitX) / 2} y={padY - 10} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.35" letterSpacing="0.5">TRAINING SPEND</text>
+      <text x={(splitX + padX + chartW) / 2} y={padY - 10} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.5" letterSpacing="0.5">OUTCOME MODE</text>
+      {/* Split line */}
+      <line x1={splitX} y1={padY - 4} x2={splitX} y2={baseline} stroke={G} strokeWidth="0.6" strokeDasharray="4 3" opacity="0.3" />
+      {/* Baseline + left axis */}
+      <line x1={padX} y1={baseline} x2={padX + chartW} y2={baseline} stroke={G} strokeWidth="0.5" opacity="0.15" />
+      <line x1={padX} y1={padY} x2={padX} y2={baseline} stroke={G} strokeWidth="0.5" opacity="0.15" />
+      {/* Token burn line */}
+      <path d={toPath(tokenPts)} fill="none" stroke={MUTED} strokeWidth="1.5" opacity="0.5" strokeDasharray="5 3" />
+      {/* Outcome / quality line */}
+      <path d={toPath(outcomePts)} fill="none" stroke={G} strokeWidth="2" opacity="0.65" />
+      {/* Legend */}
+      <line x1={padX} y1={baseline + 22} x2={padX + 22} y2={baseline + 22} stroke={MUTED} strokeWidth="1.5" opacity="0.5" strokeDasharray="5 3" />
+      <text x={padX + 28} y={baseline + 26} fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.55">token burn rate</text>
+      <line x1={padX + 160} y1={baseline + 22} x2={padX + 182} y2={baseline + 22} stroke={G} strokeWidth="2" opacity="0.65" />
+      <text x={padX + 188} y={baseline + 26} fontFamily="monospace" fontSize="8" fill={G} opacity="0.6">outcomes per dollar</text>
+      <text x={(padX + padX + chartW) / 2} y={H + 68} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.25" letterSpacing="1">SKILL SHOWS UP AS TOKENS-PER-GOOD-OUTCOME GOING DOWN, NOT UP</text>
+    </svg>
+  )
+}
+
+export function ComplexityRouter() {
+  const branches = [
+    { tier: 'SIMPLE', model: 'Haiku / fast model', pct: '65%', note: 'definitional Q&A, small refactors, formatting', color: MUTED, op: 0.55 },
+    { tier: 'STANDARD', model: 'Sonnet-tier', pct: '30%', note: 'multi-step reasoning, code generation', color: GL, op: 0.7 },
+    { tier: 'FRONTIER', model: 'Opus / heavy model', pct: '5%', note: 'architecture decisions, novel problems', color: G, op: 0.85 },
+  ]
+  const startX = 280
+  const branchX = 440
+  return (
+    <svg viewBox="0 0 680 280" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="680" height="280" fill={BG} />
+      <defs>
+        <marker id="cr" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill={G} opacity="0.4" />
+        </marker>
+      </defs>
+      {/* Incoming query */}
+      <rect x="40" y="116" width="120" height="48" rx="3" fill={G} opacity="0.07" stroke={G} strokeWidth="0.8" />
+      <text x="100" y="137" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} opacity="0.6">QUERY</text>
+      <text x="100" y="151" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED} opacity="0.5">arrives</text>
+      {/* Router box */}
+      <rect x={startX} y="108" width="130" height="64" rx="3" fill={G} opacity="0.1" stroke={G} strokeWidth="1" />
+      <text x={startX + 65} y="132" textAnchor="middle" fontFamily="monospace" fontSize="8.5" fontWeight="600" fill={G} opacity="0.7">CLASSIFIER</text>
+      <text x={startX + 65} y="148" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED} opacity="0.55">sub-40ms routing</text>
+      <text x={startX + 65} y="162" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED} opacity="0.45">complexity score</text>
+      {/* Arrow: query → classifier */}
+      <line x1="160" y1="140" x2={startX - 4} y2="140" stroke={G} strokeWidth="1" opacity="0.35" markerEnd="url(#cr)" />
+      {/* Branch arrows + boxes */}
+      {branches.map((b, i) => {
+        const totalBranches = branches.length
+        const branchY = 60 + i * 80
+        const centerY = 140
+        return (
+          <g key={b.tier}>
+            <path d={`M${startX + 130},${centerY} C${startX + 165},${centerY} ${branchX - 20},${branchY + 24} ${branchX},${branchY + 24}`} fill="none" stroke={b.color} strokeWidth="1" opacity={b.op * 0.6} markerEnd="url(#cr)" />
+            <rect x={branchX} y={branchY} width="200" height="48" rx="3" fill={b.color} opacity={0.07 + i * 0.04} stroke={b.color} strokeWidth="0.8" />
+            <text x={branchX + 10} y={branchY + 17} fontFamily="monospace" fontSize="8" fontWeight="700" fill={b.color} opacity={b.op}>{b.tier}</text>
+            <text x={branchX + 10} y={branchY + 30} fontFamily="monospace" fontSize="8.5" fill={b.color} opacity={b.op * 0.85}>{b.model}</text>
+            <text x={branchX + 190} y={branchY + 17} textAnchor="end" fontFamily="monospace" fontSize="11" fontWeight="700" fill={b.color} opacity={b.op * 0.7}>{b.pct}</text>
+            <text x={branchX + 10} y={branchY + 43} fontFamily="monospace" fontSize="7" fill={MUTED} opacity="0.55">{b.note}</text>
+          </g>
+        )
+      })}
+      <text x="340" y="264" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.25" letterSpacing="1">65% OF QUERIES ARE SIMPLE — DEFAULT-EVERYTHING-TO-FRONTIER IS THE WASTE</text>
+    </svg>
+  )
+}
