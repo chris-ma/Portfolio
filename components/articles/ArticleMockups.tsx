@@ -1548,3 +1548,170 @@ export function ComplexityRouter() {
     </svg>
   )
 }
+
+export function HermesMemoryTimeline() {
+  const leftSessions = [
+    { label: 'SESSION 1', sublabel: 'starts blank', note: 'no history' },
+    { label: 'SESSION 2', sublabel: 'starts blank', note: 'no history' },
+    { label: 'SESSION 3', sublabel: 'starts blank', note: 'no history' },
+  ]
+  const rightSessions = [
+    { label: 'SESSION 1', sublabel: 'context logged & indexed', note: 'foundation' },
+    { label: 'SESSION 2', sublabel: 'recalls Session 1 in full', note: 'inherits context' },
+    { label: 'SESSION 3', sublabel: 'recalls Sessions 1–2', note: 'full history' },
+  ]
+  const SESSION_H = 52
+  const SESSION_GAP = 10
+  const startY = 70
+  const ops = [0.07, 0.14, 0.24]
+  return (
+    <svg viewBox="0 0 720 280" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="280" fill={BG} />
+      <rect x="40" y="30" width="295" height="26" fill={MUTED} opacity="0.08" />
+      <text x="188" y="47" textAnchor="middle" fontFamily="monospace" fontSize="8.5" fontWeight="700" fill={MUTED} opacity="0.5" letterSpacing="1">STANDARD CHAT</text>
+      <rect x="385" y="30" width="295" height="26" fill={G} opacity="0.08" />
+      <text x="533" y="47" textAnchor="middle" fontFamily="monospace" fontSize="8.5" fontWeight="700" fill={G} opacity="0.7" letterSpacing="1">HERMES DAEMON</text>
+      {leftSessions.map((s, i) => {
+        const y = startY + i * (SESSION_H + SESSION_GAP)
+        return (
+          <g key={s.label + 'l'}>
+            <rect x="40" y={y} width="295" height={SESSION_H} rx="2" fill={MUTED} opacity="0.06" stroke={MUTED} strokeWidth="0.5" />
+            <text x="56" y={y + 20} fontFamily="monospace" fontSize="9" fontWeight="700" fill={MUTED} opacity="0.4">{s.label}</text>
+            <text x="56" y={y + 36} fontFamily="monospace" fontSize="7.5" fill={MUTED} opacity="0.3">{s.sublabel}</text>
+            <text x="329" y={y + 20} textAnchor="end" fontFamily="monospace" fontSize="7" fill={MUTED} opacity="0.25">{s.note}</text>
+          </g>
+        )
+      })}
+      {rightSessions.map((s, i) => {
+        const y = startY + i * (SESSION_H + SESSION_GAP)
+        return (
+          <g key={s.label + 'r'}>
+            {i > 0 && (
+              <g>
+                <line x1="533" y1={y - SESSION_GAP} x2="533" y2={y} stroke={G} strokeWidth="1" opacity="0.3" />
+                <path d={`M529,${y - 4} L533,${y} L537,${y - 4}`} fill={G} opacity="0.35" />
+              </g>
+            )}
+            <rect x="385" y={y} width="295" height={SESSION_H} rx="2" fill={G} opacity={ops[i]} stroke={G} strokeWidth="0.8" />
+            <text x="401" y={y + 20} fontFamily="monospace" fontSize="9" fontWeight="700" fill={G} opacity="0.7">{s.label}</text>
+            <text x="401" y={y + 36} fontFamily="monospace" fontSize="7.5" fill={G} opacity={0.4 + i * 0.1}>{s.sublabel}</text>
+            <text x="674" y={y + 20} textAnchor="end" fontFamily="monospace" fontSize="7" fill={G} opacity={0.35 + i * 0.1}>{s.note}</text>
+          </g>
+        )
+      })}
+      <text x="360" y="264" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.25" letterSpacing="1">EVERY SESSION INHERITS EVERY PREVIOUS SESSION</text>
+    </svg>
+  )
+}
+
+export function SkillFlywheel() {
+  const nodes = [
+    { n: '01', label: 'HARD PROBLEM', note: 'something non-trivial arises', x: 40, y: 40 },
+    { n: '02', label: 'HERMES SOLVES IT', note: 'tools, context, reasoning', x: 360, y: 40 },
+    { n: '03', label: 'SKILL.MD WRITTEN', note: 'agentskills.io compatible', x: 360, y: 200 },
+    { n: '04', label: 'BENEFIT COMPOUNDS', note: 'future sessions start ahead', x: 40, y: 200 },
+  ]
+  const W = 200
+  const H = 60
+  const ops = [0.07, 0.1, 0.13, 0.1]
+  return (
+    <svg viewBox="0 0 600 300" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="600" height="300" fill={BG} />
+      <defs>
+        <marker id="sf" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill={GL} opacity="0.5" />
+        </marker>
+      </defs>
+      <text x="300" y="143" textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill={G} opacity="0.3" letterSpacing="1">GROWS</text>
+      <text x="300" y="158" textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill={G} opacity="0.3" letterSpacing="1">WITH YOU</text>
+      <line x1="240" y1="70" x2="356" y2="70" stroke={GL} strokeWidth="1" opacity="0.4" markerEnd="url(#sf)" />
+      <line x1="460" y1="100" x2="460" y2="196" stroke={GL} strokeWidth="1" opacity="0.4" markerEnd="url(#sf)" />
+      <line x1="360" y1="230" x2="244" y2="230" stroke={GL} strokeWidth="1" opacity="0.4" markerEnd="url(#sf)" />
+      <line x1="140" y1="200" x2="140" y2="104" stroke={GL} strokeWidth="1" opacity="0.4" markerEnd="url(#sf)" />
+      {nodes.map((node, i) => (
+        <g key={node.n}>
+          <rect x={node.x} y={node.y} width={W} height={H} rx="3" fill={G} opacity={ops[i]} stroke={G} strokeWidth="0.8" />
+          <text x={node.x + 10} y={node.y + 20} fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.4">{node.n}</text>
+          <text x={node.x + 10} y={node.y + 37} fontFamily="monospace" fontSize="9" fontWeight="700" fill={G} opacity="0.75">{node.label}</text>
+          <text x={node.x + 10} y={node.y + 52} fontFamily="monospace" fontSize="7" fill={MUTED} opacity="0.55">{node.note}</text>
+        </g>
+      ))}
+      <text x="300" y="282" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.25" letterSpacing="1">EACH SOLVED PROBLEM MAKES THE NEXT ONE CHEAPER</text>
+    </svg>
+  )
+}
+
+export function GatewayHubSpoke() {
+  const platforms = [
+    { name: 'Telegram', cx: 360, cy: 40 },
+    { name: 'Discord', cx: 438, cy: 72 },
+    { name: 'Slack', cx: 470, cy: 150 },
+    { name: 'WhatsApp', cx: 438, cy: 228 },
+    { name: 'CLI', cx: 360, cy: 260 },
+    { name: 'Email', cx: 282, cy: 228 },
+    { name: 'Signal', cx: 250, cy: 150 },
+    { name: 'VS Code', cx: 282, cy: 72 },
+  ]
+  const HUB_CX = 360
+  const HUB_CY = 150
+  const HUB_R = 48
+  const BOX_W = 80
+  const BOX_H = 28
+  return (
+    <svg viewBox="0 0 720 300" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="300" fill={BG} />
+      {platforms.map(p => (
+        <line key={p.name + 'l'} x1={HUB_CX} y1={HUB_CY} x2={p.cx} y2={p.cy} stroke={G} strokeWidth="0.8" opacity="0.15" />
+      ))}
+      {platforms.map(p => (
+        <g key={p.name + 'b'}>
+          <rect x={p.cx - BOX_W / 2} y={p.cy - BOX_H / 2} width={BOX_W} height={BOX_H} rx="2" fill={G} opacity="0.07" stroke={G} strokeWidth="0.6" />
+          <text x={p.cx} y={p.cy + 4} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} opacity="0.7">{p.name}</text>
+        </g>
+      ))}
+      <circle cx={HUB_CX} cy={HUB_CY} r={HUB_R} fill={G} opacity="0.1" stroke={G} strokeWidth="1.2" />
+      <text x={HUB_CX} y={HUB_CY - 5} textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill={G} opacity="0.75">HERMES</text>
+      <text x={HUB_CX} y={HUB_CY + 10} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} opacity="0.55">DAEMON</text>
+      <text x="360" y="284" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.25" letterSpacing="1">ONE PROCESS — 20 PLATFORMS — SAME MEMORY ACROSS ALL</text>
+    </svg>
+  )
+}
+
+export function HermesVsClaudeComparison() {
+  const rows = [
+    { dim: 'Scope', claude: 'Deep, real-time session work', hermes: 'Cross-project persistent context' },
+    { dim: 'Sessions', claude: 'Bounded — resets each time', hermes: 'Daemon — remembers indefinitely' },
+    { dim: 'Scheduling', claude: 'No native cron', hermes: 'Built-in scheduler' },
+    { dim: 'Hosting', claude: 'Anthropic-managed', hermes: 'Self-hosted, your data' },
+    { dim: 'Platforms', claude: 'Terminal, IDE, desktop app', hermes: 'CLI + ~20 messaging platforms' },
+    { dim: 'Best for', claude: 'Active coding, right now', hermes: 'Recurring, unattended automation' },
+  ]
+  const ROW_H = 34
+  const startY = 80
+  return (
+    <svg viewBox="0 0 720 310" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="310" fill={BG} />
+      <line x1="360" y1="20" x2="360" y2="295" stroke={G} strokeWidth="0.4" opacity="0.15" />
+      <rect x="40" y="30" width="300" height="26" fill={MUTED} opacity="0.08" />
+      <rect x="380" y="30" width="300" height="26" fill={G} opacity="0.08" />
+      <text x="190" y="47" textAnchor="middle" fontFamily="monospace" fontSize="8.5" fontWeight="700" fill={MUTED} opacity="0.5" letterSpacing="1">CLAUDE CODE</text>
+      <text x="530" y="47" textAnchor="middle" fontFamily="monospace" fontSize="8.5" fontWeight="700" fill={G} opacity="0.7" letterSpacing="1">HERMES AGENT</text>
+      {rows.map((r, i) => {
+        const y = startY + i * ROW_H
+        return (
+          <g key={r.dim}>
+            <line x1="40" y1={y} x2="340" y2={y} stroke={MUTED} strokeWidth="0.3" opacity="0.15" />
+            <line x1="380" y1={y} x2="680" y2={y} stroke={G} strokeWidth="0.3" opacity="0.12" />
+            <text x="56" y={y + 11} fontFamily="monospace" fontSize="7" fill={MUTED} opacity="0.35" letterSpacing="0.5">{r.dim.toUpperCase()}</text>
+            <text x="56" y={y + 26} fontFamily="monospace" fontSize="9" fill={MUTED} opacity="0.5">{r.claude}</text>
+            <text x="396" y={y + 11} fontFamily="monospace" fontSize="7" fill={G} opacity="0.4" letterSpacing="0.5">{r.dim.toUpperCase()}</text>
+            <text x="396" y={y + 26} fontFamily="monospace" fontSize="9" fill={G} opacity="0.72">{r.hermes}</text>
+          </g>
+        )
+      })}
+      <text x="190" y="292" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED} opacity="0.35">the active coding tool</text>
+      <text x="530" y="292" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.4">the persistent automation layer</text>
+      <text x="360" y="307" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={G} opacity="0.2" letterSpacing="1">DIFFERENT TOOLS — DIFFERENT JOBS — BOTH WORTH HAVING</text>
+    </svg>
+  )
+}

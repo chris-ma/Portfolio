@@ -11,6 +11,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'hermes-agent-persistent-ai',
+    title: 'The Agent That Remembers',
+    subtitle: 'Every chat tool resets. Hermes is a daemon — it accumulates context, writes its own skills, and runs unattended while you sleep.',
+    category: 'Tools',
+    date: '2026-08-11',
+    readTime: '8 min read',
+    tags: ['Hermes Agent', 'Nous Research', 'Self-Hosted AI', 'Autonomous Agents'],
+    excerpt:
+      "Every chat tool resets. Hermes doesn't. The open-source persistent-memory daemon from Nous Research — why the session model is the real bottleneck, and what changes when the agent remembers who you are.",
+  },
+  {
     slug: 'tokenmaxxing-ai-productivity',
     title: 'The Wrong Scoreboard',
     subtitle: 'Token counts measure activity. They say nothing about whether the activity was worth anything.',

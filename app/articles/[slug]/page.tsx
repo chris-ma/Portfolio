@@ -9,6 +9,7 @@ import {
   WorkflowSpectrum, ReActLoop, PlanExecuteDiagram, AgentFailureModeDiagram,
   MidjourneyParams, CameraMovesGrid, PromptFormulaDiagram, ToolComparisonSplit,
   TokenLeaderboard, VanityVsValue, CostPerTaskChart, ComplexityRouter,
+  HermesMemoryTimeline, SkillFlywheel, GatewayHubSpoke, HermesVsClaudeComparison,
 } from '@/components/articles/ArticleMockups'
 
 interface PageProps {
@@ -64,6 +65,10 @@ export default function ArticlePage({ params }: PageProps) {
 
   if (article.slug === 'tokenmaxxing-ai-productivity') {
     return <TokenmaxxingArticle article={article} formattedDate={formattedDate} />
+  }
+
+  if (article.slug === 'hermes-agent-persistent-ai') {
+    return <HermesArticle article={article} formattedDate={formattedDate} />
   }
 
   notFound()
@@ -2089,6 +2094,256 @@ function CreativeTechRow({ label, desc, last = false }: { label: string; desc: s
         <span className="font-sans font-semibold text-sm text-brand-cobalt">{label}</span>
       </div>
       <p className="font-sans text-sm text-brand-black/65 p-4 leading-relaxed">{desc}</p>
+    </div>
+  )
+}
+
+function HermesCommandRow({ cmd, desc, last = false }: { cmd: string; desc: string; last?: boolean }) {
+  return (
+    <div className={`flex gap-0 ${!last ? 'border-b border-brand-concrete' : ''}`}>
+      <div className="w-56 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/30">
+        <code className="font-mono text-xs text-brand-cobalt">{cmd}</code>
+      </div>
+      <p className="font-sans text-sm text-brand-black/65 p-4 leading-relaxed">{desc}</p>
+    </div>
+  )
+}
+
+function HermesArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+
+        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+          THE<br />
+          AGENT<br />
+          <span className="text-brand-cobalt">THAT</span><br />
+          REMEMBERS.
+        </h1>
+
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+          {article!.subtitle}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 py-14 space-y-16">
+
+        {/* Lede */}
+        <section>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+            Every time you open a chat tool, you start from zero. You re-explain your stack.
+            You re-explain your project history, your naming conventions, your preferences, the decision you made
+            last week and why. The model has no memory of any of it — because session tools are designed
+            to be stateless. That&rsquo;s a product choice, not a technical constraint. And for most
+            active-session work, it&rsquo;s a reasonable one.
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            Hermes Agent, released by Nous Research in February 2026 under MIT, is built around the opposite
+            premise. It runs as a persistent daemon on your own hardware. It indexes every session into a
+            local SQLite store with full-text search. It writes reusable skill documents when it solves
+            something hard, so the next time a similar problem comes up, it doesn&rsquo;t start from scratch.
+            The setup overhead is real. What you get in return is an agent that already knows who you are
+            every time you open a session.
+          </p>
+
+          <div className="mt-10 border border-brand-concrete">
+            <HermesMemoryTimeline />
+          </div>
+          <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+            Standard chat vs. Hermes: the session inheritance model
+          </p>
+        </section>
+
+        {/* Section 1 */}
+        <section>
+          <SectionHeading number="01" title="Memory that actually persists" />
+          <div className="space-y-4 mt-6">
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              Hermes stores all memory in a local SQLite database at <code className="font-mono text-xs bg-brand-graphite px-1.5 py-0.5">~/.hermes/state.db</code>, indexed with FTS5 for full-text search across every session you&rsquo;ve ever run. When you ask &ldquo;what did we land on for the authentication schema?&rdquo; it&rsquo;s not searching your current context — it&rsquo;s searching the actual historical record, with LLM summarization to surface relevant cross-session context the way a good note-taking system would.
+            </p>
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              The memory is <strong className="text-brand-black">agent-curated, not a raw transcript dump.</strong> Hermes periodically reviews what it&rsquo;s logged and decides what&rsquo;s actually worth keeping — condensing, surfacing key decisions, archiving noise. This matters because unlimited transcript accumulation gets expensive and slow quickly; curated memory stays useful.
+            </p>
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              For teams or individuals who want deeper user modeling, there&rsquo;s optional Honcho integration — &ldquo;dialectic user modeling&rdquo; in the project&rsquo;s own framing. Instead of re-inferring your working style, your tool preferences, and your project context each session, Honcho builds and maintains a persistent model of who you are across all sessions. The result is an agent that gets progressively better at working with you specifically, not just better at generating text generally.
+            </p>
+          </div>
+
+          <Callout label="All of it stays local" className="mt-8">
+            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              Zero telemetry, zero data collection. The state database, all session logs, all memories
+              and skills — everything lives in <code className="font-mono text-xs bg-brand-graphite px-1 py-0.5">~/.hermes/</code> on your machine. Nothing leaves unless you&rsquo;ve
+              explicitly connected an external provider or messaging platform. The project is fully
+              open-source under MIT — every line is auditable.
+            </p>
+          </Callout>
+        </section>
+
+        {/* Section 2 */}
+        <section>
+          <SectionHeading number="02" title="The agent that writes its own manual" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            When Hermes solves something non-trivial, it writes a <strong className="text-brand-black">SKILL.md</strong> — a reusable, portable skill document that captures what it learned. The next time a similar problem comes up, it loads the relevant skill rather than re-solving from scratch. Skills self-improve during use, accumulate naturally as you work, and follow the open <code className="font-mono text-xs bg-brand-graphite px-1.5 py-0.5">agentskills.io</code> standard — meaning they&rsquo;re portable across any Hermes instance and shareable with the community.
+          </p>
+
+          <div className="mt-10 border border-brand-concrete">
+            <SkillFlywheel />
+          </div>
+          <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+            The skill accumulation flywheel — solved once, reused indefinitely
+          </p>
+
+          <div className="mt-8 space-y-4">
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              40+ skills ship built-in — MLOps workflows, GitHub automation, diagramming, note-taking,
+              and more. The community skill hub at <code className="font-mono text-xs bg-brand-graphite px-1.5 py-0.5">agentskills.io</code> extends that with a one-command install.
+              But the most useful skills are the ones the agent writes from your own work — those are
+              calibrated to your specific stack, your naming conventions, your preferences. They&rsquo;re
+              not generic.
+            </p>
+          </div>
+
+          <Callout label="Curator hygiene" className="mt-8">
+            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              As a long-running instance accumulates skills, overlap and redundancy creep in. <code className="font-mono text-xs bg-brand-graphite px-1 py-0.5">hermes curator</code> runs background maintenance: reviewing agent-created skills, consolidating duplicates, archiving stale entries, and protecting anything you&rsquo;ve pinned. Without periodic curation, a mature instance can end up with conflicting skill documents that slow retrieval and produce inconsistent behaviour. Run the curator; don&rsquo;t skip it.
+            </p>
+          </Callout>
+        </section>
+
+        {/* Section 3 */}
+        <section>
+          <SectionHeading number="03" title="One daemon, every surface" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            A single <code className="font-mono text-xs bg-brand-graphite px-1.5 py-0.5">hermes gateway</code> process serves every connected platform simultaneously — Telegram, Discord, Slack, WhatsApp, Signal, email, and roughly a dozen more. Cross-platform conversation continuity means you can start a thread on your phone via Telegram, continue it in the terminal, and pick it up in your IDE — same session memory, same context, carried across every surface.
+          </p>
+
+          <div className="mt-10 border border-brand-concrete">
+            <GatewayHubSpoke />
+          </div>
+          <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+            One gateway process — eight platforms shown, twenty supported
+          </p>
+
+          <div className="mt-8">
+            <CodeBlock>{`hermes gateway setup     # interactive wizard: connect Telegram, Discord, Slack, etc.
+hermes gateway           # start the gateway process
+hermes gateway install   # install as a systemd service (runs on reboot)`}</CodeBlock>
+          </div>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-8">
+            Execution environments give you control over how much isolation you want:
+          </p>
+          <div className="mt-4 space-y-4">
+            <div className="border-l-2 border-brand-cobalt pl-6">
+              <h3 className="font-display text-xl text-brand-black mb-1">LOCAL TERMINAL</h3>
+              <p className="font-sans text-sm text-brand-black/65">Direct execution on your machine. Fast, no overhead. Appropriate for trusted tasks you&rsquo;d run manually.</p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/40 pl-6">
+              <h3 className="font-display text-xl text-brand-black mb-1">DOCKER</h3>
+              <p className="font-sans text-sm text-brand-black/65">Isolated container with read-only root filesystem, dropped capabilities, and PID limits. The right default for anything untrusted.</p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/40 pl-6">
+              <h3 className="font-display text-xl text-brand-black mb-1">SSH REMOTE</h3>
+              <p className="font-sans text-sm text-brand-black/65">Execute on any remote server. Useful for scheduled tasks that touch production infrastructure without opening it to your local environment.</p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/40 pl-6">
+              <h3 className="font-display text-xl text-brand-black mb-1">MODAL / SINGULARITY</h3>
+              <p className="font-sans text-sm text-brand-black/65">Cloud and HPC execution backends for compute-heavy workloads.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 4 */}
+        <section>
+          <SectionHeading number="04" title="The machine that runs while you sleep" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            The scheduling system is the practical unlock. A cron job written in natural language, delivered to any connected platform, with skills attached so it doesn&rsquo;t start cold. A &ldquo;morning briefing to Telegram&rdquo; or &ldquo;nightly infrastructure health check to Slack&rdquo; is a single command plus a well-scoped prompt. No script, no wrapper, no pipeline configuration.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+            The most important rule for cron job prompts: <strong className="text-brand-black">the prompt must contain everything the agent needs that isn&rsquo;t covered by an attached skill.</strong> Vague prompts fail silently in unattended runs — there&rsquo;s no one present to clarify. A well-scoped cron prompt looks like: <em>&ldquo;SSH into server 192.168.1.100 as user &lsquo;deploy&rsquo;, check if nginx is running with systemctl status nginx, and verify that https://example.com returns HTTP 200.&rdquo;</em> That&rsquo;s specific enough to succeed without human input.
+          </p>
+
+          <div className="mt-10 border border-brand-concrete divide-y divide-brand-concrete">
+            <HermesCommandRow cmd="hermes cron list" desc="Show all scheduled jobs — status, next run, attached skills." />
+            <HermesCommandRow cmd="hermes cron create" desc="Create a job from a natural-language prompt. Specify delivery target and attached skills." />
+            <HermesCommandRow cmd="hermes cron edit <job>" desc="Update schedule, prompt, name, delivery target, or attached skills." />
+            <HermesCommandRow cmd="hermes cron pause <job>" desc="Pause without deleting. Useful for jobs that touch live infrastructure during testing." />
+            <HermesCommandRow cmd="hermes cron run <job>" desc="Trigger immediately, outside the schedule. Test before trusting to the clock." />
+            <HermesCommandRow cmd="hermes cron remove <job>" desc="Permanently delete the job." last />
+          </div>
+
+          <Callout label="Two safety constraints" className="mt-8">
+            <ul className="space-y-2 font-sans text-sm text-brand-black/70 leading-relaxed">
+              <li>Scheduled task prompts are scanned for prompt-injection and credential-exfiltration patterns at both creation and update time.</li>
+              <li>Cron-run sessions cannot recursively create more cron jobs — Hermes disables cron-management tools inside cron executions specifically to prevent runaway self-scheduling loops.</li>
+            </ul>
+          </Callout>
+        </section>
+
+        {/* Section 5 */}
+        <section>
+          <SectionHeading number="05" title="Claude Code or Hermes?" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            These tools solve different problems. The comparison is worth being explicit about, because the marketing language around both leans toward overlap that doesn&rsquo;t exist in practice.
+          </p>
+
+          <div className="mt-8 border border-brand-concrete">
+            <HermesVsClaudeComparison />
+          </div>
+          <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+            Different tools, different jobs — the honest comparison
+          </p>
+
+          <div className="mt-8 space-y-4">
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              If your need is &ldquo;help me refactor this codebase right now,&rdquo; Claude Code is the sharper tool. It has deeper context engineering, better real-time coding capability, and it&rsquo;s purpose-built for the active-session pairing model.
+            </p>
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              Hermes is worth the setup overhead specifically for the work that currently means re-explaining your context every time you start a new session — recurring automation, multi-project context management, unattended overnight tasks. If you&rsquo;re not doing that kind of work, the setup overhead doesn&rsquo;t pay off. If you are, nothing else has the same architecture for it.
+            </p>
+          </div>
+
+          <Callout label="The setup calculus" className="mt-8">
+            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              Recommended first run: install via the curl script, run <code className="font-mono text-xs bg-brand-graphite px-1 py-0.5">hermes setup</code> with whichever provider you already have credentials for, then <code className="font-mono text-xs bg-brand-graphite px-1 py-0.5">hermes doctor</code> to confirm a clean install. Run one plain interactive session as a smoke test before enabling the gateway or creating any cron jobs. Create exactly one low-stakes scheduled job first — a daily summary delivered to your home channel — before trusting it with anything that touches infrastructure or credentials. Let skills accumulate naturally through real use. That&rsquo;s the entire point of the design.
+            </p>
+          </Callout>
+        </section>
+
+        {/* Footer */}
+        <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
+          <Link href="/#notes" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+            ← All Field Notes
+          </Link>
+          <div className="flex flex-wrap gap-2">
+            {article!.tags.map((tag) => (
+              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/60 border border-brand-cobalt/20 px-2 py-0.5">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </footer>
+      </div>
     </div>
   )
 }
