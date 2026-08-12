@@ -11,6 +11,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'design-taste-frontend',
+    title: 'The Swap Test',
+    subtitle: 'Taste is pattern recognition, not talent. The deliberate practice that builds it, and the diagnostic that keeps your work from being a default.',
+    category: 'Creative',
+    date: '2026-08-12',
+    readTime: '10 min read',
+    tags: ['Design', 'UI Design', 'Typography', 'Visual Design', 'Figma'],
+    excerpt:
+      "Swap the logo and copy for an unrelated brand. If the design still makes sense, it wasn't designed for this brief — it's a default. That single test is the difference between competent and distinctive work.",
+  },
+  {
     slug: 'content-writing-eeat',
     title: 'The Last 50%',
     subtitle: 'AI handles structure and scaffolding. The sentences, specifics, and judgment are still yours.',

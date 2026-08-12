@@ -2047,3 +2047,186 @@ export function WritingWorkflowDiagram() {
     </svg>
   )
 }
+
+export function SwapTestDiagram() {
+  const GOOD_BG = '#EFF5F2'
+  const WARN_BG = '#FDF6EE'
+  return (
+    <svg viewBox="0 0 720 320" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="320" fill={BG} />
+
+      {/* ─── Left card: Brand A ─── */}
+      <rect x="16" y="16" width="316" height="200" rx="4" fill={GOOD_BG} stroke={G} strokeWidth="1.2" strokeOpacity="0.5" />
+      {/* Header stripe */}
+      <rect x="16" y="16" width="316" height="36" rx="4" fill={G} fillOpacity="0.15" />
+      <text x="30" y="38" fontFamily="system-ui, sans-serif" fontSize="10" fontWeight="700" fill={G} letterSpacing="1">BRAND A</text>
+      {/* Body blocks */}
+      <rect x="30" y="66" width="200" height="10" rx="2" fill={TEXT} fillOpacity="0.12" />
+      <rect x="30" y="82" width="260" height="7" rx="2" fill={TEXT} fillOpacity="0.07" />
+      <rect x="30" y="94" width="240" height="7" rx="2" fill={TEXT} fillOpacity="0.07" />
+      <rect x="30" y="106" width="180" height="7" rx="2" fill={TEXT} fillOpacity="0.07" />
+      {/* CTA */}
+      <rect x="30" y="128" width="96" height="28" rx="3" fill={G} fillOpacity="0.85" />
+      <text x="78" y="145" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9" fill="#fff" fontWeight="600">Get started</text>
+      {/* Accent bar — the "signature" */}
+      <rect x="30" y="170" width="60" height="4" rx="2" fill={G} />
+      <text x="30" y="196" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED}>Typography, palette, and layout chosen for this subject.</text>
+      {/* Label below */}
+      <rect x="16" y="224" width="316" height="28" rx="3" fill={G} fillOpacity="0.1" />
+      <text x="174" y="242" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9.5" fontWeight="600" fill={G}>Designed for this brief</text>
+
+      {/* ─── Arrow ─── */}
+      <text x="358" y="130" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="24" fill={BORDER}>&#8596;</text>
+      <text x="358" y="148" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED}>swap</text>
+
+      {/* ─── Right card: Brand B (same layout, different label) ─── */}
+      <rect x="388" y="16" width="316" height="200" rx="4" fill={WARN_BG} stroke="#D4890A" strokeWidth="1.2" strokeOpacity="0.45" />
+      {/* Header stripe */}
+      <rect x="388" y="16" width="316" height="36" rx="4" fill="#D4890A" fillOpacity="0.1" />
+      <text x="402" y="38" fontFamily="system-ui, sans-serif" fontSize="10" fontWeight="700" fill="#B5730A" letterSpacing="1">BRAND B</text>
+      {/* Identical body blocks */}
+      <rect x="402" y="66" width="200" height="10" rx="2" fill={TEXT} fillOpacity="0.12" />
+      <rect x="402" y="82" width="260" height="7" rx="2" fill={TEXT} fillOpacity="0.07" />
+      <rect x="402" y="94" width="240" height="7" rx="2" fill={TEXT} fillOpacity="0.07" />
+      <rect x="402" y="106" width="180" height="7" rx="2" fill={TEXT} fillOpacity="0.07" />
+      {/* Identical CTA */}
+      <rect x="402" y="128" width="96" height="28" rx="3" fill={G} fillOpacity="0.85" />
+      <text x="450" y="145" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9" fill="#fff" fontWeight="600">Get started</text>
+      {/* Same accent bar */}
+      <rect x="402" y="170" width="60" height="4" rx="2" fill={G} />
+      <text x="402" y="196" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED}>Same design. Different brand. Still makes sense?</text>
+      {/* Label below */}
+      <rect x="388" y="224" width="316" height="28" rx="3" fill="#D4890A" fillOpacity="0.1" />
+      <text x="546" y="242" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9.5" fontWeight="600" fill="#B5730A">Logo swapped — still works? It&apos;s a default.</text>
+
+      {/* Bottom verdict */}
+      <text x="360" y="288" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9" fill={MUTED}>
+        If the design survives the swap, it wasn&apos;t made for this brief. Revise before shipping.
+      </text>
+    </svg>
+  )
+}
+
+export function DesignFundamentalsGrid() {
+  const MID = 360
+  const MID_Y = 165
+  return (
+    <svg viewBox="0 0 720 330" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="330" fill={BG} />
+
+      {/* Grid lines */}
+      <line x1={MID} y1="12" x2={MID} y2="318" stroke={BORDER} strokeWidth="1" />
+      <line x1="12" y1={MID_Y} x2="708" y2={MID_Y} stroke={BORDER} strokeWidth="1" />
+
+      {/* ─── TL: Fewer Borders ─── */}
+      <text x="24" y="32" fontFamily="system-ui, sans-serif" fontSize="9" fontWeight="700" fill={TEXT} letterSpacing="1.5" opacity="0.5">FEWER BORDERS</text>
+      {/* Noisy version */}
+      <rect x="30" y="46" width="120" height="36" rx="2" fill={BG2} stroke={BORDER} strokeWidth="1.5" />
+      <rect x="38" y="54" width="80" height="8" rx="1" fill={TEXT} fillOpacity="0.12" />
+      <rect x="38" y="67" width="60" height="6" rx="1" fill={TEXT} fillOpacity="0.07" />
+      <text x="90" y="97" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill="#D4890A">borders add noise</text>
+      {/* Clean version */}
+      <rect x="186" y="46" width="120" height="36" rx="2" fill={BG2} />
+      <rect x="194" y="54" width="80" height="8" rx="1" fill={TEXT} fillOpacity="0.12" />
+      <rect x="194" y="67" width="60" height="6" rx="1" fill={TEXT} fillOpacity="0.07" />
+      <text x="246" y="97" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={G}>whitespace separates</text>
+
+      {/* ─── TR: Spacing as a System ─── */}
+      <text x={MID + 12} y="32" fontFamily="system-ui, sans-serif" fontSize="9" fontWeight="700" fill={TEXT} letterSpacing="1.5" opacity="0.5">SPACING AS A SYSTEM</text>
+      {/* Arbitrary */}
+      {[11, 23, 32, 46, 52].map((h, i) => (
+        <rect key={i} x={MID + 30} y={44 + i * 16} width={h * 4} height="8" rx="1" fill="#D4890A" fillOpacity="0.3" />
+      ))}
+      <text x={MID + 150} y="130" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill="#D4890A">arbitrary gaps</text>
+      {/* Systematic */}
+      {[4, 8, 8, 16, 16].map((h, i) => (
+        <rect key={i} x={MID + 220} y={44 + i * 16} width={h * 5} height="8" rx="1" fill={G} fillOpacity="0.4" />
+      ))}
+      <text x={MID + 310} y="130" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={G}>4/8/16 scale</text>
+
+      {/* ─── BL: Contrast for Hierarchy ─── */}
+      <text x="24" y={MID_Y + 22} fontFamily="system-ui, sans-serif" fontSize="9" fontWeight="700" fill={TEXT} letterSpacing="1.5" opacity="0.5">CONTRAST FOR HIERARCHY</text>
+      {/* Flat */}
+      <text x="40" y={MID_Y + 50} fontFamily="system-ui, sans-serif" fontSize="12" fill={TEXT} opacity="0.6">Section title</text>
+      <text x="40" y={MID_Y + 67} fontFamily="system-ui, sans-serif" fontSize="11" fill={TEXT} opacity="0.5">Body text here</text>
+      <text x="40" y={MID_Y + 82} fontFamily="system-ui, sans-serif" fontSize="11" fill={TEXT} opacity="0.45">Caption information</text>
+      <text x="120" y={MID_Y + 110} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill="#D4890A">no hierarchy</text>
+      {/* High contrast */}
+      <text x="200" y={MID_Y + 50} fontFamily="system-ui, sans-serif" fontSize="20" fontWeight="700" fill={TEXT} opacity="0.85">Section title</text>
+      <text x="200" y={MID_Y + 68} fontFamily="system-ui, sans-serif" fontSize="11" fill={TEXT} opacity="0.55">Body text here</text>
+      <text x="200" y={MID_Y + 82} fontFamily="system-ui, sans-serif" fontSize="9" fill={MUTED}>Caption information</text>
+      <text x="260" y={MID_Y + 110} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={G}>clear hierarchy</text>
+
+      {/* ─── BR: Consistency ─── */}
+      <text x={MID + 12} y={MID_Y + 22} fontFamily="system-ui, sans-serif" fontSize="9" fontWeight="700" fill={TEXT} letterSpacing="1.5" opacity="0.5">CONSISTENCY</text>
+      {/* Inconsistent */}
+      <rect x={MID + 30} y={MID_Y + 36} width="80" height="24" rx="3" fill={G} />
+      <text x={MID + 70} y={MID_Y + 52} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9" fill="#fff">Publish</text>
+      <text x={MID + 70} y={MID_Y + 74} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill="#D4890A">→ toast: &quot;Submitted&quot;</text>
+      <text x={MID + 70} y={MID_Y + 88} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="7.5" fill={MUTED}>breaks mental model</text>
+      {/* Consistent */}
+      <rect x={MID + 220} y={MID_Y + 36} width="80" height="24" rx="3" fill={G} />
+      <text x={MID + 260} y={MID_Y + 52} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9" fill="#fff">Publish</text>
+      <text x={MID + 260} y={MID_Y + 74} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={G}>→ toast: &quot;Published&quot;</text>
+      <text x={MID + 260} y={MID_Y + 88} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="7.5" fill={MUTED}>reinforces mental model</text>
+    </svg>
+  )
+}
+
+export function TwoPassDiagram() {
+  return (
+    <svg viewBox="0 0 720 300" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="300" fill={BG} />
+
+      {/* ─── PASS 1 block ─── */}
+      <rect x="16" y="16" width="280" height="230" rx="4" fill={G} fillOpacity="0.08" stroke={G} strokeWidth="1.2" strokeOpacity="0.4" />
+      <rect x="16" y="16" width="280" height="38" rx="4" fill={G} fillOpacity="0.85" />
+      <text x="26" y="30" fontFamily="system-ui, sans-serif" fontSize="8.5" fontWeight="700" fill="#fff" letterSpacing="1.5" opacity="0.7">PASS 1</text>
+      <text x="26" y="44" fontFamily="system-ui, sans-serif" fontSize="11" fontWeight="700" fill="#fff">Plan before you touch a canvas.</text>
+
+      {/* Token rows */}
+      {[
+        { y: 72,  label: 'Colour',    detail: '4–6 named hex values, not "blues and greys"' },
+        { y: 108, label: 'Type',      detail: 'Display face + body face. Utility if needed for data.' },
+        { y: 144, label: 'Layout',    detail: 'One-sentence concept + rough wireframe.' },
+        { y: 180, label: 'Signature', detail: 'The single element this design will be remembered by.' },
+      ].map(({ y, label, detail }) => (
+        <g key={label}>
+          <rect x="26" y={y - 2} width="260" height="30" rx="2" fill={BG} fillOpacity="0.5" />
+          <text x="36" y={y + 13} fontFamily="monospace" fontSize="9" fontWeight="700" fill={G}>{label}</text>
+          <text x="102" y={y + 13} fontFamily="system-ui, sans-serif" fontSize="8.5" fill={TEXT} opacity="0.6">{detail}</text>
+        </g>
+      ))}
+
+      {/* Arrow right */}
+      <text x="330" y="135" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="22" fill={BORDER}>&#8594;</text>
+
+      {/* ─── PASS 2 block ─── */}
+      <rect x="366" y="16" width="280" height="152" rx="4" fill={BG2} stroke={G} strokeWidth="1.2" strokeOpacity="0.4" />
+      <rect x="366" y="16" width="280" height="38" rx="4" fill={BG2} stroke={G} strokeWidth="1.2" strokeOpacity="0.4" />
+      <text x="376" y="30" fontFamily="system-ui, sans-serif" fontSize="8.5" fontWeight="700" fill={G} letterSpacing="1.5" opacity="0.7">PASS 2</text>
+      <text x="376" y="44" fontFamily="system-ui, sans-serif" fontSize="11" fontWeight="700" fill={G}>Interrogate the plan.</text>
+
+      <text x="376" y="74" fontFamily="system-ui, sans-serif" fontSize="9.5" fill={TEXT} opacity="0.75">For every choice: would I make this same</text>
+      <text x="376" y="88" fontFamily="system-ui, sans-serif" fontSize="9.5" fill={TEXT} opacity="0.75">choice for an unrelated brief?</text>
+      <rect x="376" y="100" width="254" height="22" rx="2" fill={G} fillOpacity="0.07" />
+      <text x="503" y="115" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9" fill={G} fontWeight="600">If yes → revise. Name what changed and why.</text>
+
+      <text x="376" y="146" fontFamily="system-ui, sans-serif" fontSize="9" fill={MUTED}>Only once the plan holds up does it earn the right to build.</text>
+      <text x="376" y="158" fontFamily="system-ui, sans-serif" fontSize="9" fill={MUTED}>Only once the plan holds up does it earn the right to build.</text>
+
+      {/* Arrow down */}
+      <text x="506" y="196" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="22" fill={BORDER}>&#8595;</text>
+
+      {/* ─── Build band ─── */}
+      <rect x="366" y="212" width="280" height="46" rx="4" fill={G} fillOpacity="0.85" />
+      <text x="506" y="232" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9" fill="#fff" opacity="0.7" letterSpacing="1.5">BUILD</text>
+      <text x="506" y="248" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="10" fill="#fff" fontWeight="600">Spend boldness in exactly one place.</text>
+
+      {/* Footer note */}
+      <text x="360" y="284" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9" fill={MUTED}>
+        One bold idea with total restraint around it reads more confident than five ideas competing.
+      </text>
+    </svg>
+  )
+}

@@ -12,6 +12,7 @@ import {
   HermesMemoryTimeline, SkillFlywheel, GatewayHubSpoke, HermesVsClaudeComparison,
   RLSStateDiagram, OWASPTopTenVisual, RLSPolicyDiagram,
   SlopPatternVisual, EEATFramework, WritingWorkflowDiagram,
+  SwapTestDiagram, DesignFundamentalsGrid, TwoPassDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface PageProps {
@@ -40,6 +41,9 @@ export default function ArticlePage({ params }: PageProps) {
     month: 'long',
     day: 'numeric',
   })
+
+  if (article.slug === 'design-taste-frontend')
+    return <DesignTasteArticle article={article} formattedDate={formattedDate} />
 
   if (article.slug === 'content-writing-eeat')
     return <ContentWritingArticle article={article} formattedDate={formattedDate} />
@@ -81,6 +85,315 @@ export default function ArticlePage({ params }: PageProps) {
   }
 
   notFound()
+}
+
+function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+
+        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+          THE<br />
+          <span className="text-brand-cobalt">SWAP</span><br />
+          TEST.
+        </h1>
+
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+          {article!.subtitle}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 py-14 space-y-16">
+
+        {/* Lede */}
+        <section>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+            Taste is not talent. It is not a style you are born liking. It is a trained
+            pattern-recognition skill — built the same way any other pattern-recognition skill
+            is built: repeated exposure to good and bad examples, paired with the discipline of
+            naming why one beats the other. Designers who &ldquo;just have an eye&rdquo; spent years doing
+            this, usually without calling it training.
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            The gap between &ldquo;I like this&rdquo; and &ldquo;this works because of X&rdquo; is the entire distance
+            between having preferences and having taste. This is the workbook for crossing it.
+          </p>
+        </section>
+
+        {/* Section 01 — Competent or distinctive */}
+        <section>
+          <SectionHeading number="01" title="Competent or distinctive" />
+          <div className="space-y-4 mt-6">
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              There is a specific reason a huge share of current interfaces cluster around the
+              same handful of looks: warm cream backgrounds with a serif display face and a
+              terracotta accent; near-black with one acid-green accent; broadsheet layouts with
+              hairline rules and dense columns. None of these are wrong. What makes them a problem
+              is that they are defaults, reached for regardless of subject, rather than choices
+              made because a specific brief called for them.
+            </p>
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              Competent design executes a template well. Distinctive design makes choices that
+              could only belong to this specific subject. The diagnostic worth running on your
+              own work is direct: swap the logo and copy for an unrelated brand. Does the design
+              still make sense? If yes, the design is not coming from the subject — it is coming
+              from a default.
+            </p>
+          </div>
+
+          <div className="mt-8">
+            <SwapTestDiagram />
+          </div>
+
+          <Callout label="The swap test" className="mt-8">
+            Before calling anything finished: would this design still make sense with a
+            competitor&apos;s logo and copy dropped in? If the honest answer is yes, it has not
+            actually been designed for this brief yet.
+          </Callout>
+        </section>
+
+        {/* Section 02 — Training your eye */}
+        <section>
+          <SectionHeading number="02" title="Training your eye" />
+          <div className="space-y-4 mt-6">
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              This is deliberate practice, not passive scrolling. The difference is whether you
+              are forcing yourself to name why. Four practices that actually compound into taste:
+            </p>
+          </div>
+
+          <div className="mt-6 space-y-5">
+            {[
+              {
+                head: 'Break down designs you respond to, every time.',
+                body: 'Use the same checklist below. The forcing function is consistency — running the same questions on every piece you study is what builds a real pattern library in your head, rather than a collection of things you vaguely admired.',
+              },
+              {
+                head: 'Redesign something that already exists.',
+                body: 'Pick a page with a real, specific problem — use your own past work. This forces active problem-solving in a way passive inspiration-browsing never does, because every choice has to be justified against a real constraint rather than admired in someone else\'s finished result.',
+              },
+              {
+                head: 'Imitate deliberately, then interrogate the imitation.',
+                body: 'Copying a card layout or a button is not cheating — it is how visual vocabulary gets internalised. The value is not in the copy; it is in the questions you ask while doing it. Skipping that interrogation step is what separates genuine skill-building from just tracing.',
+              },
+              {
+                head: 'Build the theory alongside the practice.',
+                body: 'Colour theory and typography fundamentals are not optional extras — they are what let you explain why something works instead of just recognising that it does.',
+              },
+            ].map(({ head, body }, i) => (
+              <div key={i} className="flex gap-5 border-l-2 border-brand-cobalt/20 pl-5">
+                <div>
+                  <p className="font-sans text-base font-semibold text-brand-black/85">{head}</p>
+                  <p className="font-sans text-base text-brand-black/65 leading-relaxed mt-1">{body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8">
+            <CodeBlock>
+{`Breakdown checklist — run this on every design you study:
+
+  Colour       how many, what relationship, what's doing the work vs. neutral
+  Typography   how many faces, what roles, what the size/weight contrast is doing
+  Balance      what's heavy, what's light, where the eye lands first and why
+  Spacing      systematic (a real scale) or arbitrary per element
+  Consistency  same recurring element behaving the same way everywhere
+  Tone         does the copy match the visual register, or fight it`}
+            </CodeBlock>
+          </div>
+        </section>
+
+        {/* Section 03 — The fundamentals */}
+        <section>
+          <SectionHeading number="03" title="The fundamentals" />
+          <div className="space-y-4 mt-6">
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              Most interface problems are solved by contrast, size, and spacing — used deliberately —
+              long before you need a clever idea. Four principles that do the most work for the
+              least effort:
+            </p>
+          </div>
+
+          <div className="mt-8">
+            <DesignFundamentalsGrid />
+          </div>
+
+          <div className="mt-8 space-y-5">
+            {[
+              {
+                head: 'Fewer borders than you think.',
+                body: 'Borders read as busy at scale. Box shadows, extra whitespace, and background-colour shifts separate elements more cleanly than another hairline. When in doubt, remove the border and add space.',
+              },
+              {
+                head: 'Spacing follows a system, not a feeling.',
+                body: 'An arbitrary spacing value on every element reads as noise even when no single value looks wrong in isolation. A real type/spacing scale is what makes a page feel considered rather than assembled screen-by-screen.',
+              },
+              {
+                head: 'Contrast does the hierarchy work.',
+                body: 'Before reaching for a new colour or a bigger element, ask whether size, weight, or spacing contrast alone would do it. Restraint in the palette, real contrast in the structure.',
+              },
+              {
+                head: 'Consistency is how people learn an interface.',
+                body: 'The same action should look and read the same everywhere it appears. A button labelled "Publish" that produces a toast saying "Submitted" breaks the mental model a user is quietly building — small inconsistencies erode trust faster than almost any visual flaw.',
+              },
+            ].map(({ head, body }, i) => (
+              <div key={i} className="flex gap-5 border-l-2 border-brand-cobalt/20 pl-5">
+                <div>
+                  <p className="font-sans text-base font-semibold text-brand-black/85">{head}</p>
+                  <p className="font-sans text-base text-brand-black/65 leading-relaxed mt-1">{body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 04 — Two-pass process */}
+        <section>
+          <SectionHeading number="04" title="The two-pass process" />
+          <div className="space-y-4 mt-6">
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              Taste that never gets externalised into a real decision does not count. This is the
+              discipline that separates knowing what good looks like from actually shipping
+              something distinctive.
+            </p>
+          </div>
+
+          <div className="mt-8">
+            <TwoPassDiagram />
+          </div>
+
+          <div className="mt-8 space-y-4">
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              Pass one is a named token system: four to six hex values stated explicitly (not
+              &ldquo;blues and greys&rdquo;), a characterful display face used with restraint, a complementary
+              body face, a rough wireframe to compare structural ideas before committing pixels,
+              and the single signature element this design will actually be remembered by.
+            </p>
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              Pass two is the interrogation: for every choice in the plan, would you make the same
+              choice for an unrelated brief? If the honest answer is yes, that choice is not coming
+              from the subject. Revise it and name explicitly what changed and why. The plan earns
+              the right to become the build only once it holds up under this check.
+            </p>
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              Spend boldness in exactly one place. Pick the single signature element that carries
+              the risk, and keep everything else quiet and disciplined around it. A design with
+              five bold ideas competing for attention reads as less confident than a design with
+              one bold idea and total restraint everywhere else. Before calling something finished,
+              look once more and remove one thing.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 05 — Copy as design material */}
+        <section>
+          <SectionHeading number="05" title="Copy is design material" />
+          <div className="space-y-4 mt-6">
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              Copy is one of the fastest ways a design reveals whether it is genuinely considered
+              or templated. Generic copy makes even a well-executed visual system read as hollow.
+            </p>
+          </div>
+
+          <div className="mt-6 space-y-5">
+            {[
+              {
+                head: 'Write from the user\'s side of the glass.',
+                body: 'Name things by what people recognise and control, not by how the system is technically built underneath.',
+              },
+              {
+                head: 'Active voice, consistent naming through the whole flow.',
+                body: 'A button that says "Publish" should produce a result that says "Published" — not "Submitted," not "Done." Inconsistent naming erodes trust in the whole interface faster than almost anything visual.',
+              },
+              {
+                head: 'Specific beats clever, every time.',
+                body: 'A label that plainly states what will happen beats a witty one that requires a beat of decoding.',
+              },
+              {
+                head: 'Errors and empty states are opportunities.',
+                body: 'An error should state exactly what happened and how to fix it, without apologising. An empty state should read as an invitation to act, not a dead end.',
+              },
+            ].map(({ head, body }, i) => (
+              <div key={i} className="flex gap-5 border-l-2 border-brand-cobalt/20 pl-5">
+                <div>
+                  <p className="font-sans text-base font-semibold text-brand-black/85">{head}</p>
+                  <p className="font-sans text-base text-brand-black/65 leading-relaxed mt-1">{body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 06 — Self-check */}
+        <section>
+          <SectionHeading number="06" title="Before calling it finished" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Run this checklist before shipping anything:
+          </p>
+
+          <Callout label="The self-check" className="mt-6">
+            <ul className="space-y-3 mt-2">
+              {[
+                'Named, specific colour and type choices — not "blues" but the actual hex values and the reason for them.',
+                'One clear signature element. Everything else disciplined around it.',
+                'Passes the swap test — would not make sense for an unrelated brief.',
+                'Spacing follows a real scale, not per-element judgment calls.',
+                'Copy matches the visual register and stays consistent through the whole flow.',
+                'Reviewed after time away from the screen, not only in the moment of building.',
+              ].map((item, i) => (
+                <li key={i} className="flex gap-3 font-sans text-sm text-brand-black/75 leading-relaxed">
+                  <span className="text-brand-cobalt shrink-0 mt-0.5">&#10003;</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </Callout>
+        </section>
+
+        {/* Closing */}
+        <section>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+            The test is whether the design could belong to anyone — or whether it could only be this.
+          </p>
+        </section>
+
+      </div>
+
+      <footer className="max-w-[900px] mx-auto px-6 md:px-10 py-10 border-t border-brand-concrete mt-6">
+        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← All Field Notes
+        </Link>
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </footer>
+    </div>
+  )
 }
 
 function ContentWritingArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
