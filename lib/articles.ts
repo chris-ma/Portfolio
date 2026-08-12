@@ -11,6 +11,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'content-writing-eeat',
+    title: 'The Last 50%',
+    subtitle: 'AI handles structure and scaffolding. The sentences, specifics, and judgment are still yours.',
+    category: 'Strategy',
+    date: '2026-08-11',
+    readTime: '9 min read',
+    tags: ['Content Writing', 'E-E-A-T', 'AI Slop', 'SEO', 'Copywriting'],
+    excerpt:
+      'AI produces the first 50%: outline, rough pass, structure. The last 50%, where trust and originality live, is still a human job. Skipping it is the actual failure.',
+  },
+  {
     slug: 'app-security-rls-owasp',
     title: 'The Open Door',
     subtitle: 'What AI-scaffolded apps get wrong about security, and the fixes that actually close it.',

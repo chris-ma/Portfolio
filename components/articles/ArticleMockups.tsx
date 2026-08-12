@@ -1883,3 +1883,167 @@ export function RLSPolicyDiagram() {
     </svg>
   )
 }
+
+export function SlopPatternVisual() {
+  const SLOP = '#C0392B'
+  const SLOP_BG = '#FDF0EE'
+  const GOOD = '#1A4D3A'
+  const GOOD_BG = '#EFF5F2'
+  return (
+    <svg viewBox="0 0 720 300" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="300" fill={BG} />
+
+      {/* Column headers */}
+      <text x="170" y="22" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="10" fontWeight="700" fill={SLOP} letterSpacing="1.5" textDecoration="none">DRAFT</text>
+      <text x="550" y="22" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="10" fontWeight="700" fill={GOOD} letterSpacing="1.5">EDITED</text>
+
+      {/* Left panel */}
+      <rect x="16" y="30" width="310" height="226" rx="4" fill={SLOP_BG} stroke={SLOP} strokeWidth="1" strokeOpacity="0.4" />
+
+      {/* Slop phrase rows */}
+      {[
+        { y: 58,  text: 'In today’s fast-paced world, content matters.' },
+        { y: 94,  text: 'It’s worth noting that AI can potentially help.' },
+        { y: 130, text: 'Whether you’re a beginner or a seasoned pro...' },
+        { y: 166, text: 'Delve into these robust and seamless solutions.' },
+        { y: 202, text: 'At the end of the day, this is a game-changer.' },
+      ].map(({ y, text }) => (
+        <g key={y}>
+          <rect x="28" y={y - 18} width="286" height="26" rx="3" fill={SLOP} fillOpacity="0.08" />
+          <text x="36" y={y - 2} fontFamily="system-ui, sans-serif" fontSize="9" fill={TEXT} opacity="0.75">{text}</text>
+          {/* Warning dot */}
+          <circle cx="302" cy={y - 6} r="5" fill={SLOP} fillOpacity="0.7" />
+          <text x="302" y={y - 3} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="7" fill="#fff" fontWeight="700">!</text>
+        </g>
+      ))}
+
+      {/* Arrow */}
+      <text x="358" y="148" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="20" fill={BORDER}>&#8594;</text>
+
+      {/* Right panel */}
+      <rect x="394" y="30" width="310" height="226" rx="4" fill={GOOD_BG} stroke={GOOD} strokeWidth="1" strokeOpacity="0.3" />
+
+      {/* Edited phrase rows */}
+      {[
+        { y: 58,  text: 'The Moltbook leak exposed 1.5M API keys in Jan 2026.' },
+        { y: 94,  text: 'Claude’s context window is 200k tokens.' },
+        { y: 130, text: 'Skip RLS and every row is readable by anyone with your key.' },
+        { y: 166, text: 'Signups grew 34% in six weeks after the copy rewrite.' },
+        { y: 202, text: 'The audit query takes 30 seconds. Run it before every deploy.' },
+      ].map(({ y, text }) => (
+        <g key={y}>
+          <rect x="406" y={y - 18} width="286" height="26" rx="3" fill={GOOD} fillOpacity="0.07" />
+          <text x="414" y={y - 2} fontFamily="system-ui, sans-serif" fontSize="9" fill={TEXT} opacity="0.8">{text}</text>
+          {/* Check dot */}
+          <circle cx="680" cy={y - 6} r="5" fill={GOOD} fillOpacity="0.7" />
+          <text x="680" y={y - 3} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill="#fff" fontWeight="700">&#10003;</text>
+        </g>
+      ))}
+
+      {/* Bottom label */}
+      <text x="360" y="272" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9" fill={MUTED}>
+        No single word is banned. The cluster, plus the absence of any specific detail, is the signal.
+      </text>
+    </svg>
+  )
+}
+
+export function EEATFramework() {
+  const bands = [
+    { label: 'Experience',        shade: '#1A4D3A', note: 'First-hand use or testing. Not a summary of what others said about the topic.' },
+    { label: 'Expertise',         shade: '#225E48', note: 'Genuine command shown through correct specifics. Not credential-dropping.' },
+    { label: 'Authoritativeness', shade: '#2A7258', note: 'Recognised standing, built through consistent, accurate, citable work over time.' },
+    { label: 'Trustworthiness',   shade: '#3D7A60', note: 'Accuracy, transparent sourcing, no manipulative intent.' },
+  ]
+  const bandH = 52
+  const startY = 24
+  return (
+    <svg viewBox="0 0 720 290" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="290" fill={BG} />
+
+      {bands.map(({ label, shade, note }, i) => {
+        const y = startY + i * (bandH + 6)
+        return (
+          <g key={label}>
+            {/* Band background */}
+            <rect x="16" y={y} width="688" height={bandH} rx="3" fill={shade} fillOpacity="0.07" stroke={shade} strokeWidth="0.75" strokeOpacity="0.3" />
+            {/* Left colour stripe */}
+            <rect x="16" y={y} width="6" height={bandH} rx="3" fill={shade} fillOpacity="0.85" />
+            {/* Label */}
+            <text x="36" y={y + 20} fontFamily="system-ui, sans-serif" fontSize="11" fontWeight="700" fill={shade} letterSpacing="0.5">{label.toUpperCase()}</text>
+            {/* Note */}
+            <text x="36" y={y + 38} fontFamily="system-ui, sans-serif" fontSize="10.5" fill={TEXT} opacity="0.7">{note}</text>
+          </g>
+        )
+      })}
+
+      {/* Callout bar */}
+      <rect x="16" y="258" width="688" height="26" rx="3" fill={G} fillOpacity="0.09" stroke={G} strokeWidth="0.75" strokeOpacity="0.35" />
+      <text x="360" y="275" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="10" fill={G} fontWeight="600">
+        Practical trigger: add one thing only you could know. That single step moves all four signals.
+      </text>
+    </svg>
+  )
+}
+
+export function WritingWorkflowDiagram() {
+  return (
+    <svg viewBox="0 0 720 310" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="310" fill={BG} />
+
+      {/* ─── Top split bar ─── */}
+      {/* AI half */}
+      <rect x="16" y="16" width="340" height="52" rx="3" fill={G} />
+      <text x="36" y="40" fontFamily="system-ui, sans-serif" fontSize="14" fontWeight="700" fill="#fff">AI</text>
+      <text x="36" y="56" fontFamily="system-ui, sans-serif" fontSize="9.5" fill="#fff" opacity="0.75">Structure, outline, drudgery</text>
+
+      {/* Human half */}
+      <rect x="364" y="16" width="340" height="52" rx="3" fill={BG2} stroke={G} strokeWidth="1.5" />
+      <text x="384" y="40" fontFamily="system-ui, sans-serif" fontSize="14" fontWeight="700" fill={G}>Human</text>
+      <text x="384" y="56" fontFamily="system-ui, sans-serif" fontSize="9.5" fill={MUTED}>Sentences, specifics, judgment</text>
+
+      {/* Divider label */}
+      <text x="358" y="46" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9" fill={MUTED} fontWeight="600">50%</text>
+
+      {/* ─── Step cards ─── */}
+      {/* Left column: steps 01–02 */}
+      <g>
+        <rect x="16" y="90" width="340" height="58" rx="3" fill={G} fillOpacity="0.06" stroke={G} strokeWidth="0.75" strokeOpacity="0.3" />
+        <text x="30" y="110" fontFamily="monospace" fontSize="11" fontWeight="700" fill={G} opacity="0.6">01</text>
+        <text x="30" y="126" fontFamily="system-ui, sans-serif" fontSize="9.5" fill={TEXT} opacity="0.75">Start with your own voice. Record yourself talking through</text>
+        <text x="30" y="139" fontFamily="system-ui, sans-serif" fontSize="9.5" fill={TEXT} opacity="0.75">the idea before AI touches it.</text>
+      </g>
+      <g>
+        <rect x="16" y="158" width="340" height="58" rx="3" fill={G} fillOpacity="0.06" stroke={G} strokeWidth="0.75" strokeOpacity="0.3" />
+        <text x="30" y="178" fontFamily="monospace" fontSize="11" fontWeight="700" fill={G} opacity="0.6">02</text>
+        <text x="30" y="194" fontFamily="system-ui, sans-serif" fontSize="9.5" fill={TEXT} opacity="0.75">Let AI handle structure: outlines, H2/H3 scaffolding,</text>
+        <text x="30" y="207" fontFamily="system-ui, sans-serif" fontSize="9.5" fill={TEXT} opacity="0.75">topic clusters, keyword expansion.</text>
+      </g>
+
+      {/* Right column: steps 03–06 */}
+      <g>
+        <rect x="364" y="90" width="340" height="50" rx="3" fill={BG2} stroke={BORDER} strokeWidth="0.75" />
+        <text x="378" y="108" fontFamily="monospace" fontSize="11" fontWeight="700" fill={G} opacity="0.6">03</text>
+        <text x="378" y="122" fontFamily="system-ui, sans-serif" fontSize="9.5" fill={TEXT} opacity="0.75">Write or heavily rewrite the actual sentences using</text>
+        <text x="378" y="135" fontFamily="system-ui, sans-serif" fontSize="9.5" fill={TEXT} opacity="0.75">your own material as the spine.</text>
+      </g>
+      <g>
+        <rect x="364" y="148" width="340" height="50" rx="3" fill={BG2} stroke={BORDER} strokeWidth="0.75" />
+        <text x="378" y="166" fontFamily="monospace" fontSize="11" fontWeight="700" fill={G} opacity="0.6">04</text>
+        <text x="378" y="180" fontFamily="system-ui, sans-serif" fontSize="9.5" fill={TEXT} opacity="0.75">Add one detail only you could know: a real number,</text>
+        <text x="378" y="193" fontFamily="system-ui, sans-serif" fontSize="9.5" fill={TEXT} opacity="0.75">a first-hand result, an opinion you will defend.</text>
+      </g>
+      <g>
+        <rect x="364" y="206" width="340" height="50" rx="3" fill={BG2} stroke={BORDER} strokeWidth="0.75" />
+        <text x="378" y="224" fontFamily="monospace" fontSize="11" fontWeight="700" fill={G} opacity="0.6">05</text>
+        <text x="378" y="238" fontFamily="system-ui, sans-serif" fontSize="9.5" fill={TEXT} opacity="0.75">Fact-check everything AI contributed. Hallucinated stats</text>
+        <text x="378" y="251" fontFamily="system-ui, sans-serif" fontSize="9.5" fill={TEXT} opacity="0.75">are a normal failure mode, not an edge case.</text>
+      </g>
+      <g>
+        <rect x="364" y="264" width="340" height="36" rx="3" fill={BG2} stroke={BORDER} strokeWidth="0.75" />
+        <text x="378" y="280" fontFamily="monospace" fontSize="11" fontWeight="700" fill={G} opacity="0.6">06</text>
+        <text x="378" y="294" fontFamily="system-ui, sans-serif" fontSize="9.5" fill={TEXT} opacity="0.75">Cut. If a sentence does not survive being deleted, delete it.</text>
+      </g>
+    </svg>
+  )
+}

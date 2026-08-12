@@ -11,6 +11,7 @@ import {
   TokenLeaderboard, VanityVsValue, CostPerTaskChart, ComplexityRouter,
   HermesMemoryTimeline, SkillFlywheel, GatewayHubSpoke, HermesVsClaudeComparison,
   RLSStateDiagram, OWASPTopTenVisual, RLSPolicyDiagram,
+  SlopPatternVisual, EEATFramework, WritingWorkflowDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface PageProps {
@@ -39,6 +40,9 @@ export default function ArticlePage({ params }: PageProps) {
     month: 'long',
     day: 'numeric',
   })
+
+  if (article.slug === 'content-writing-eeat')
+    return <ContentWritingArticle article={article} formattedDate={formattedDate} />
 
   if (article.slug === 'app-security-rls-owasp') {
     return <AppSecurityArticle article={article} formattedDate={formattedDate} />
@@ -77,6 +81,279 @@ export default function ArticlePage({ params }: PageProps) {
   }
 
   notFound()
+}
+
+function ContentWritingArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+
+        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+          THE<br />
+          <span className="text-brand-cobalt">LAST</span><br />
+          50%.
+        </h1>
+
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+          {article!.subtitle}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 py-14 space-y-16">
+
+        {/* Lede */}
+        <section>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+            The American Dialect Society named &ldquo;AI slop&rdquo; its 2025 Word of the Year.
+            Merriam-Webster flagged it as a defining term of the era. Google never needed to
+            penalise AI-generated content specifically — it ranked it the same way it always
+            ranked everything: does it demonstrate real experience, real expertise, and does it
+            actually help the reader?
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            The practical upshot: the question was never AI or not. It is whether a real point of
+            view, real specifics, and real editorial judgment are present in what ships. AI is a
+            legitimate production tool. Skipping the thinking is the actual failure.
+          </p>
+        </section>
+
+        {/* Section 1 — What slop actually is */}
+        <section>
+          <SectionHeading number="01" title="What slop actually is" />
+          <div className="space-y-4 mt-6">
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              Slop is not &ldquo;written with AI help.&rdquo; It is a specific failure pattern: no
+              point of view, structural padding substituted for substance, generic phrasing that
+              could have come from any source, and nothing that proves someone actually did the
+              thing being written about. A 2025 Edelman study found 73% of consumers report being
+              able to spot it, and 61% say it lowers their trust in the source. That is the
+              commercial cost — not an algorithm penalty, a reader penalty.
+            </p>
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              The tells are patterns, not individual words. A single instance proves nothing.
+              A cluster of these, combined with the absence of any specific detail, is the
+              actual signal — to a human reader and to the ranking systems built to detect it:
+            </p>
+          </div>
+
+          <div className="mt-6">
+            <CodeBlock>
+{`Throat-clearing openers
+  "In today's fast-paced world..."
+  "It's no secret that..."
+  "When it comes to X..."
+
+Hedge-stacking
+  "can potentially"
+  "it's worth noting that"
+  "generally speaking"
+
+False balance
+  "Whether you're a beginner or a seasoned professional..."
+
+Empty transitions
+  "That being said"  "At the end of the day"  "Moving forward"
+
+Inflated vocabulary standing in for a real claim
+  delve  elevate  unlock  unleash  robust  seamless  game-changer`}
+            </CodeBlock>
+          </div>
+
+          <div className="mt-8">
+            <SlopPatternVisual />
+          </div>
+
+          <Callout label="The actual signal" className="mt-8">
+            None of these words are banned outright. The pattern is: cluster of generic phrasing
+            plus no specific detail only the author could know. That combination is what both
+            readers and ranking systems are trained to recognise.
+          </Callout>
+        </section>
+
+        {/* Section 2 — The six-step fix */}
+        <section>
+          <SectionHeading number="02" title="The six-step fix" />
+          <div className="space-y-4 mt-6">
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              The practitioner consensus that holds up across every serious source: AI produces
+              the first 50% — structure, outline, rough pass. The last 50%, where trust and
+              originality live, is still a human job.
+            </p>
+          </div>
+
+          <div className="mt-8">
+            <WritingWorkflowDiagram />
+          </div>
+
+          <div className="mt-8 space-y-5">
+            {[
+              {
+                n: '01',
+                head: 'Start with your own voice, not the prompt box.',
+                body: 'Record yourself talking through the idea, or write a rough unstructured brain-dump, before AI touches it. This becomes your source material — it is what keeps the eventual piece from starting life as a generic take on the topic.',
+              },
+              {
+                n: '02',
+                head: 'Let AI handle structure and drudgery.',
+                body: 'Outlines, H2/H3 scaffolding based on real search intent, topic-cluster brainstorming, turning a long document into a summary, expanding a keyword list. This is where AI is genuinely strongest and where it saves real time.',
+              },
+              {
+                n: '03',
+                head: 'Write or heavily rewrite the actual sentences yourself.',
+                body: 'Use your own material as the spine. Read the draft aloud — clichéd AI-pattern phrasing is far more audible than it is visible on a screen.',
+              },
+              {
+                n: '04',
+                head: 'Add at least one detail only you could know.',
+                body: 'A specific result, an actual number, an opinion you are willing to defend, a first-hand observation. This single step does more to defeat both slop-perception and algorithmic demotion than any amount of line-editing.',
+              },
+              {
+                n: '05',
+                head: 'Fact-check everything AI contributed.',
+                body: 'Hallucinated statistics and fabricated citations are a normal failure mode, not an edge case. Treat every AI-sourced fact as unverified until you have checked it yourself.',
+              },
+              {
+                n: '06',
+                head: 'Cut, don\'t just polish.',
+                body: 'If a sentence doesn\'t survive being deleted, delete it. Length that isn\'t earning its place is the single most common slop signal.',
+              },
+            ].map(({ n, head, body }) => (
+              <div key={n} className="flex gap-5 border-l-2 border-brand-cobalt/20 pl-5">
+                <span className="font-mono text-[11px] text-brand-cobalt/50 font-bold pt-0.5 shrink-0">{n}</span>
+                <div>
+                  <p className="font-sans text-base font-semibold text-brand-black/85">{head}</p>
+                  <p className="font-sans text-base text-brand-black/65 leading-relaxed mt-1">{body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 3 — E-E-A-T */}
+        <section>
+          <SectionHeading number="03" title="E-E-A-T, practically" />
+          <div className="space-y-4 mt-6">
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              Google's E-E-A-T framework is the official vocabulary for what &ldquo;quality&rdquo;
+              means in search ranking. Increasingly, it is also the signal answer engines use when
+              deciding what to cite. The four components translate to a single practical question:
+              does this content contain something that could only have come from actually doing
+              the thing?
+            </p>
+          </div>
+
+          <div className="mt-8">
+            <EEATFramework />
+          </div>
+
+          <div className="mt-8 space-y-4">
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              Generic best-practices content, however well-structured, is exactly the shape
+              E-E-A-T is designed to rank below something narrower but real. A campaign page
+              or blog post gets stronger the moment it contains a specific number from a real
+              campaign, a screenshot of an actual result, or a stated opinion you are willing
+              to be disagreed with on.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 4 — Structure and clarity */}
+        <section>
+          <SectionHeading number="04" title="Structure and clarity" />
+          <div className="space-y-4 mt-6">
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              These principles predate AI and still determine whether anyone reads to the end.
+            </p>
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              Plain language, active voice. If you wouldn&apos;t say it out loud that way, don&apos;t
+              publish it that way. One idea per sentence, one point per paragraph — bloated,
+              multi-clause sentences are exactly what forces a reader to mentally run your
+              writing back through AI just to extract what you meant.
+            </p>
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              Front-load the point. Readers and answer engines both reward getting to the actual
+              answer fast, not building up to it. Concrete beats abstract, always: &ldquo;Grew signups
+              34% in six weeks&rdquo; beats &ldquo;significantly improved conversion.&rdquo; Specificity is also
+              the fastest way to sound human, because generic language is what AI defaults to
+              when it doesn&apos;t have a real number to reach for.
+            </p>
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              Match format to intent. A comparison deserves a table. A process deserves numbered
+              steps. A narrative deserves prose. Forcing content into the wrong shape is itself
+              a slop signal, independent of the sentences inside it.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 5 — The self-edit pass */}
+        <section>
+          <SectionHeading number="05" title="The self-edit pass" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Before publishing anything AI helped draft, run this checklist:
+          </p>
+
+          <Callout label="Before you publish" className="mt-6">
+            <ul className="space-y-3 mt-2">
+              {[
+                'At least one detail that only you — not any generic source — could have written',
+                'A clear, stated point of view. Not studied neutrality on something that deserves an opinion.',
+                'Read aloud once. Cut anything that sounds like it\'s clearing its throat before saying something.',
+                'Every AI-contributed fact or statistic independently verified.',
+                'No sentence survives purely because it sounds good. Each one earns its place or gets cut.',
+                'Format matches the content\'s actual shape — list vs. table vs. narrative — not defaulted to generic paragraphs.',
+              ].map((item, i) => (
+                <li key={i} className="flex gap-3 font-sans text-sm text-brand-black/75 leading-relaxed">
+                  <span className="text-brand-cobalt shrink-0 mt-0.5">&#10003;</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </Callout>
+        </section>
+
+        {/* Closing */}
+        <section>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+            The writing is the thinking. Skip that part, and it shows.
+          </p>
+        </section>
+
+      </div>
+
+      <footer className="max-w-[900px] mx-auto px-6 md:px-10 py-10 border-t border-brand-concrete mt-6">
+        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← All Field Notes
+        </Link>
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </footer>
+    </div>
+  )
 }
 
 function AppSecurityArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
