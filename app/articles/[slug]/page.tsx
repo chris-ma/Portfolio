@@ -15,6 +15,7 @@ import {
   SwapTestDiagram, DesignFundamentalsGrid, TwoPassDiagram,
   ValidationSequenceDiagram, MVPScopeVisual, TractionMetricsDiagram,
   FunnelStageDiagram, ScoringGapDiagram, AttributionDiagram,
+  JourneyMapVisual, CXMetricsDiagram, DataUnificationDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface PageProps {
@@ -43,6 +44,9 @@ export default function ArticlePage({ params }: PageProps) {
     month: 'long',
     day: 'numeric',
   })
+
+  if (article.slug === 'customer-journey-mapping')
+    return <CustomerJourneyArticle article={article} formattedDate={formattedDate} />
 
   if (article.slug === 'marketing-funnel-engineering')
     return <MarketingFunnelArticle article={article} formattedDate={formattedDate} />
@@ -93,6 +97,261 @@ export default function ArticlePage({ params }: PageProps) {
   }
 
   notFound()
+}
+
+function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+
+        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+          NOT<br />
+          A<br />
+          <span className="text-brand-cobalt">POSTER.</span>
+        </h1>
+
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+          {article!.subtitle}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 py-14 space-y-16">
+
+        {/* Lede */}
+        <section>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+            Forrester&rsquo;s 2026 buyer research on journey mapping makes one point that should reframe the whole exercise: journey maps have historically been static artifacts. A workshop output, a poster, a one-time deliverable. And that is exactly why most journey mapping work stalls, fails to scale, and struggles to demonstrate ROI. It gets cut in the next budget cycle.
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            The organisations that are getting durable value from this work treat customer journey management as an operating model, not a document. Structured and unstructured customer data, operational KPIs, and financial metrics feed the same system continuously, rather than a map that gets printed once. Where the data and metrics stay disconnected, journey work remains anecdotal. And anecdotal work is the first thing cut.
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            This is the standard this guide is built to. Not journey maps as a deliverable. Journey management as an operating model.
+          </p>
+        </section>
+
+        {/* Section 01 — Scope */}
+        <section>
+          <SectionHeading number="01" title="Scope it tight, or fix nothing" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Pick one journey, not &ldquo;the whole customer experience.&rdquo; A first-purchase journey, an onboarding journey, and a renewal journey are three different maps with three different owners and three different failure points. Trying to map all of them at once produces something too vague to act on.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+            State these four things explicitly before gathering a single data point. Without them, the map will drift to reflect what is easy to measure rather than what the business actually needs to understand.
+          </p>
+
+          <div className="mt-8 border border-brand-concrete divide-y divide-brand-concrete">
+            <div className="grid grid-cols-4 divide-x divide-brand-concrete bg-brand-graphite/40">
+              {['WHO', 'WHAT', 'WHEN', 'WHY'].map(h => (
+                <div key={h} className="px-4 py-3">
+                  <span className="font-display text-xl text-brand-cobalt/40">{h}</span>
+                </div>
+              ))}
+            </div>
+            <div className="grid grid-cols-4 divide-x divide-brand-concrete">
+              <div className="px-4 py-4"><p className="font-sans text-sm text-brand-black/70 leading-relaxed">Which specific persona or segment. Not &ldquo;all customers.&rdquo;</p></div>
+              <div className="px-4 py-4"><p className="font-sans text-sm text-brand-black/70 leading-relaxed">Which journey. For example: &ldquo;trial signup to first paid conversion.&rdquo;</p></div>
+              <div className="px-4 py-4"><p className="font-sans text-sm text-brand-black/70 leading-relaxed">The actual time window this journey covers.</p></div>
+              <div className="px-4 py-4"><p className="font-sans text-sm text-brand-black/70 leading-relaxed">What decision or improvement this map exists to inform.</p></div>
+            </div>
+          </div>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Tight scope is not a limitation. It is the thing that makes the work actionable. A well-scoped map of one journey that actually changes behaviour is worth more than a sweeping map of five journeys that sits in a shared drive.
+          </p>
+        </section>
+
+        {/* Section 02 — Real data */}
+        <section>
+          <SectionHeading number="02" title="Build from real data, not assumptions" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            The most consistent finding across current practitioner guidance: internal teams are reliably wrong about where the actual friction lives, because they experience the product from the inside. A journey map built from internal assumptions tends to reflect the product team&rsquo;s mental model of the experience rather than the one customers actually have.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+            The fix is not more research. It is pulling the data you already have before commissioning anything new. GA4, Salesforce, support ticket history, and existing survey data cover most of what you need for a first working draft. Most teams skip this step and go straight to a workshop.
+          </p>
+
+          <div className="mt-8">
+            <DataUnificationDiagram />
+          </div>
+
+          <div className="mt-8 space-y-4">
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Include both solicited and unsolicited data</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Solicited feedback (surveys, structured interviews) is useful but incomplete on its own. People answer the question you asked, not necessarily the thing that actually matters to them. Unsolicited data (support tickets, review text, call transcripts, session recordings) surfaces friction customers did not think to mention because you did not ask about it directly.</p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Detail the micro-interactions, not just the headline stages</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Not just Awareness, Consideration, Purchase — the specific page that causes hesitation, the specific email that gets ignored, the specific support interaction that escalates frustration. Session recordings and heatmaps earn their place here. They show you the step nobody thought to mention in an interview.</p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Validate before treating the map as finished</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Cross-check the drafted map against a fresh sample of real behavioural and feedback data before publishing it as the reference version. A map built from six-month-old assumptions is a liability rather than an asset.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 03 — Non-linear map */}
+        <section>
+          <SectionHeading number="03" title="Design for the non-linear path" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Customers loop. They re-enter stages. A subscription customer might cycle back through evaluation multiple times over a relationship — when a competitor changes pricing, when the internal champion gets a new job, when a new feature makes them reconsider what they are paying for. A map that only shows a single forward path misrepresents how returning and long-tenure customers actually behave.
+          </p>
+
+          <div className="mt-8">
+            <JourneyMapVisual />
+          </div>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-8">
+            This is the same principle underlying the McKinsey Customer Decision Journey model: the corrective to the linear funnel is not that stages are wrong, but that the assumption of unidirectional movement is wrong. On the acquisition side, a buyer who reaches Consideration may loop back to Awareness when a competitor shifts the category definition. On the post-purchase side, an Onboarding customer who hits friction may re-enter Consideration — evaluating whether to stay with you or switch.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+            Designing the map to accommodate this explicitly is not a complexity exercise. It is an accuracy exercise. A map that cannot represent the paths your customers actually take cannot tell you where they actually get stuck.
+          </p>
+        </section>
+
+        {/* Section 04 — KPIs */}
+        <section>
+          <SectionHeading number="04" title="The right metric for the right question" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            NPS, CSAT, and CES are each answering a different question. Using them interchangeably is the single most common CX measurement mistake, because it produces data that is too blunt to act on.
+          </p>
+
+          <div className="mt-8">
+            <CXMetricsDiagram />
+          </div>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-8">
+            The practical rule: NPS tells you if there is a problem somewhere in the relationship. CES and CSAT, measured at specific touchpoints, tell you where. Relying on NPS alone to diagnose a specific broken flow is like using a fever to diagnose which organ is infected. It tells you something is wrong, not what to fix.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+            A touchpoint that causes the most complaints is not automatically the one worth fixing first. Weigh it against how many customers actually pass through that touchpoint and how much value, in revenue or retention risk, sits on the other side of it. The highest-volume friction point and the highest-value friction point are rarely the same thing.
+          </p>
+
+          <div className="mt-8 space-y-4">
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Set KPIs against your mapping goals, not generically</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">A KPI set that does not map back to what a specific journey exists to inform will drift into vanity tracking over time. Each phase should have a KPI that actually matches what that phase is meant to diagnose.</p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Track behavioural and financial KPIs together</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Subscriber acquisition cost, churn rate, and customer lifetime value read very differently in combination than in isolation. A low CAC next to a high early-churn rate is a different problem than a high CAC next to strong retention — but a dashboard that shows them on separate tabs makes that connection easy to miss.</p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Tie journey work to financial accountability explicitly</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Journey initiatives with green KPIs still lose internal prioritisation battles if no one has connected those KPIs to revenue, cost, or retention impact in a way finance and leadership actually recognise. This is the most cited reason CX investment gets deprioritised even when the underlying metrics look healthy.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 05 — Build sequence */}
+        <section>
+          <SectionHeading number="05" title="The practical build sequence" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Nine steps, in order. Each one is a prerequisite for the next. Skip the validation step and the map becomes a liability. Skip the KPI-attachment step and the map becomes invisible.
+          </p>
+
+          <Callout label="Build sequence" className="mt-8">
+            <ol className="space-y-3">
+              {[
+                'Scope one journey — persona, journey, timeframe, and the decision it needs to inform.',
+                'Pull existing data first — GA4, Salesforce, support ticket history, any existing survey data. Do not commission new research before checking what you already have.',
+                'Fill the gaps with targeted, small-batch research — a handful of structured interviews or a short survey aimed at the specific touchpoints existing data cannot explain.',
+                'Draft the map, including the non-linear loops real customers actually take — not a single forward path.',
+                'Validate against a fresh data sample before treating it as the reference version.',
+                'Attach KPIs per phase, chosen to match what each phase&rsquo;s map is actually meant to diagnose.',
+                'Connect the KPI layer to the systems that already exist — CDJ dashboard exec, waterfall, and diagnostic layers rather than a parallel disconnected reporting system.',
+                'Close the loop: route what the map surfaces to the team that can act on it, and follow up with affected customers where practical.',
+                'Revisit on a cadence, not once — a stale map is worse than no map, because it creates false confidence.',
+              ].map((step, i) => (
+                <li key={i} className="flex gap-4">
+                  <span className="font-display text-2xl text-brand-cobalt/25 flex-shrink-0 leading-none w-6">{i + 1}</span>
+                  <p className="font-sans text-sm text-brand-black/70 leading-relaxed">{step}</p>
+                </li>
+              ))}
+            </ol>
+          </Callout>
+        </section>
+
+        {/* Section 06 — Making it stick */}
+        <section>
+          <SectionHeading number="06" title="The connective tissue that makes it stick" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Forrester identifies one differentiator between journey work that compounds and journey work that gets quietly deprioritised: whether the platform connects voice of customer, analytics, business intelligence, and delivery tooling into one operating system, versus keeping journey insight, execution, and measurement in separate tools that require manual translation between them.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+            Manual translation is where journey initiatives quietly die. Not from lack of insight, but from the insight never reaching the team that could act on it. The fix is not a new tool. It is treating the connective layer — the link from what the map surfaces to what the delivery team ships — as infrastructure rather than coordination overhead.
+          </p>
+
+          <div className="mt-8 space-y-4">
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Fix the brilliant basics before chasing big initiatives</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Consistency and reliability at the fundamental touchpoints — a support reply that actually resolves the issue, a checkout that does not break on mobile — build the trust foundation that makes any more ambitious CX investment actually land. A flashy new initiative on top of unreliable basics does not move the needle. It gets ignored because trust has not been earned yet.</p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Close the loop with the customer, not just internally</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">When a journey map surfaces a real fix, the highest-trust version of &ldquo;we heard you&rdquo; is telling the specific customers who experienced the friction what changed — not a generic release note, but a targeted message to the segment the friction affected. This is what actually builds Advocacy-stage behaviour: the feeling that the feedback went somewhere.</p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">CX ownership is cross-functional from the start</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">A journey map that identifies a handoff failure between marketing and support only creates change if both teams see the same map and agree on the same fix. A map that lives solely inside one team&rsquo;s tooling rarely survives contact with a budget or roadmap conversation outside that team.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Map health checklist */}
+        <section>
+          <SectionHeading number="07" title="Map health checklist" />
+          <Callout label="Before publishing as the reference version" className="mt-6">
+            <ul className="space-y-2 mt-2">
+              {[
+                'Scoped to one specific journey, persona, and decision — not "the whole customer experience"',
+                'Built from real behavioural, feedback, and operational data — not internal assumption',
+                'Includes both solicited and unsolicited data sources',
+                'Captures micro-interactions, not just headline stages',
+                'Reflects non-linear customer movement, including loops and re-entry points',
+                'Validated against a fresh data sample',
+                'Each phase has a KPI that actually matches what that phase is meant to diagnose',
+                'Findings routed to the specific team that can act on them — not just archived in a deck',
+              ].map((item, i) => (
+                <li key={i} className="flex gap-3 font-sans text-sm text-brand-black/70 leading-relaxed">
+                  <span className="text-brand-cobalt/50 flex-shrink-0 mt-0.5">&#9632;</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Callout>
+        </section>
+
+        {/* Closing */}
+        <section className="border-t border-brand-concrete pt-10">
+          <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+            The map is only as good as what it changes.
+          </p>
+        </section>
+      </div>
+    </div>
+  )
 }
 
 function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {

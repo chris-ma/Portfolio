@@ -11,6 +11,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'customer-journey-mapping',
+    title: 'Not a Poster',
+    subtitle: 'Most journey maps are printed once and pinned to a wall. The operating model that keeps them current — and the KPI layer that gives them teeth.',
+    category: 'Strategy',
+    date: '2026-08-12',
+    readTime: '10 min read',
+    tags: ['Customer Journey', 'CX', 'NPS', 'Journey Management', 'Analytics'],
+    excerpt:
+      "A journey map that lives in a deck doesn't change behaviour. Forrester's 2026 research makes the gap clear: journey management is an operating model, not a one-time deliverable. Here is the methodology — and the metric layer — that makes it stick.",
+  },
+  {
     slug: 'marketing-funnel-engineering',
     title: 'The Missing Middle',
     subtitle: 'Most funnels have a top and a bottom. The MOFU gap is where qualified buyers go cold — and that is an engineering problem, not a content problem.',

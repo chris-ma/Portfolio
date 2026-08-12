@@ -2509,3 +2509,228 @@ export function AttributionDiagram() {
     </svg>
   )
 }
+
+export function JourneyMapVisual() {
+  const SW = 116, SH = 46, GAP = 18, startX = 34
+  const stages = [
+    { label: 'AWARENESS',     sub: 'exploratory', fill: G,    op: 0.55 },
+    { label: 'CONSIDERATION', sub: 'comparing',   fill: GL,   op: 0.72 },
+    { label: 'PURCHASE',      sub: 'deciding',    fill: G,    op: 0.90 },
+    { label: 'ONBOARDING',    sub: 'validating',  fill: GL,   op: 0.60 },
+    { label: 'EXPANSION',     sub: 'compounding', fill: G,    op: 0.45 },
+  ]
+  const boxY = 20, boxBot = 66
+  return (
+    <svg viewBox="0 0 720 215" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="215" fill={BG2} />
+      {[1, 2, 3].map(i => (
+        <line key={i} x1="0" y1={70 + i * 44} x2="720" y2={70 + i * 44} stroke={BORDER} strokeWidth="0.3" opacity="0.35" />
+      ))}
+      <defs>
+        <marker id="jmFwd" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+          <path d="M0,0 L5,2.5 L0,5 Z" fill={G} opacity="0.55" />
+        </marker>
+        <marker id="jmLoop" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill={AMBER} opacity="0.78" />
+        </marker>
+      </defs>
+      {stages.map((s, i) => {
+        const x = startX + i * (SW + GAP)
+        const cx = x + SW / 2
+        return (
+          <g key={s.label}>
+            <rect x={x} y={boxY} width={SW} height={SH} rx="2" fill={s.fill} fillOpacity={s.op} />
+            <text x={cx} y={boxY + 17} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fontWeight="700" fill="#F5F4F0" letterSpacing="1" opacity="0.95">{s.label}</text>
+            <text x={cx} y={boxY + 32} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="7" fill="#F5F4F0" opacity="0.6">{s.sub}</text>
+            {[24, 58, 92].map(dx => (
+              <circle key={dx} cx={x + dx} cy={76} r="3" fill={s.fill} fillOpacity={0.38} />
+            ))}
+            {i < stages.length - 1 && (
+              <line x1={x + SW + 2} y1={boxY + SH / 2} x2={x + SW + GAP - 2} y2={boxY + SH / 2} stroke={G} strokeWidth="1.2" opacity="0.45" markerEnd="url(#jmFwd)" />
+            )}
+          </g>
+        )
+      })}
+      {/* Arc 1: CONSIDERATION(cx=226) → AWARENESS(cx=92) */}
+      <path d="M 226 66 C 226 118 92 118 92 66" fill="none" stroke={AMBER} strokeWidth="1.2" strokeDasharray="4 3" opacity="0.65" markerEnd="url(#jmLoop)" />
+      <text x="159" y="113" textAnchor="middle" fontFamily="monospace" fontSize="6.5" fill={AMBER} opacity="0.7" letterSpacing="0.5">RE-EVALUATION</text>
+      {/* Arc 2: ONBOARDING(cx=494) → CONSIDERATION(cx=226) */}
+      <path d="M 494 66 C 494 150 226 150 226 66" fill="none" stroke={AMBER} strokeWidth="1.2" strokeDasharray="4 3" opacity="0.48" markerEnd="url(#jmLoop)" />
+      <text x="360" y="146" textAnchor="middle" fontFamily="monospace" fontSize="6.5" fill={AMBER} opacity="0.55" letterSpacing="0.5">RE-ENTRY</text>
+      <text x="360" y="173" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} opacity="0.38" letterSpacing="1.5">CUSTOMERS LOOP — DESIGN FOR IT</text>
+      <text x="360" y="186" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="7.5" fill={MUTED} opacity="0.45">map both the forward path and the return</text>
+    </svg>
+  )
+}
+
+export function CXMetricsDiagram() {
+  const COL_W = 210, GAP = 15
+  const startX = (720 - 3 * COL_W - 2 * GAP) / 2  // = 30
+  const cols = [
+    { key: 'NPS',  full: 'Net Promoter Score',    fill: G,    measures: 'Likelihood to recommend the brand', bestFor: 'Overall relationship health · Long-horizon trend tracking' },
+    { key: 'CSAT', full: 'Customer Satisfaction',  fill: GL,   measures: 'Satisfaction with a specific interaction', bestFor: 'Point-in-time touchpoint quality — support, onboarding, checkout' },
+    { key: 'CES',  full: 'Customer Effort Score',  fill: AMBER, measures: 'How much effort a task required', bestFor: 'Diagnosing friction in a specific flow — the most actionable of the three' },
+  ]
+  return (
+    <svg viewBox="0 0 720 268" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="268" fill={BG2} />
+      {cols.map((c, i) => {
+        const x = startX + i * (COL_W + GAP)
+        return (
+          <g key={c.key}>
+            <rect x={x} y="16" width={COL_W} height={COL_W * 1.14} rx="2" fill={BG} stroke={BORDER} strokeWidth="0.6" strokeOpacity="0.6" />
+            {/* Header band */}
+            <rect x={x} y="16" width={COL_W} height="44" rx="2" fill={c.fill} fillOpacity="0.75" />
+            <text x={x + COL_W / 2} y="36" textAnchor="middle" fontFamily="monospace" fontSize="18" fontWeight="700" fill="#F5F4F0" opacity="0.95">{c.key}</text>
+            <text x={x + COL_W / 2} y="51" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="6.5" fill="#F5F4F0" opacity="0.75" letterSpacing="0.5">{c.full.toUpperCase()}</text>
+            {/* Measures */}
+            <text x={x + 14} y="76" fontFamily="monospace" fontSize="7" fill={MUTED} opacity="0.55" letterSpacing="1">MEASURES</text>
+            <text x={x + 14} y="90" fontFamily="system-ui, sans-serif" fontSize="9.5" fill={TEXT} opacity="0.75">{c.measures}</text>
+            {/* Best for */}
+            <text x={x + 14} y="112" fontFamily="monospace" fontSize="7" fill={MUTED} opacity="0.55" letterSpacing="1">BEST FOR</text>
+            <text x={x + 14} y="126" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={TEXT} opacity="0.65">{c.bestFor.split(' · ')[0]}</text>
+            {c.bestFor.includes(' · ') && (
+              <text x={x + 14} y="138" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={TEXT} opacity="0.65">{c.bestFor.split(' · ').slice(1).join(' · ')}</text>
+            )}
+            <line x1={x + 14} y1="150" x2={x + COL_W - 14} y2="150" stroke={BORDER} strokeWidth="0.5" />
+          </g>
+        )
+      })}
+      {/* NPS visual: horizontal scale */}
+      {(() => {
+        const x = startX, bx = x + 15, bw = 180, by = 158, bh = 16
+        return (
+          <g>
+            <rect x={bx} y={by} width={bw / 2} height={bh} rx="1" fill={DANGER} fillOpacity="0.12" />
+            <rect x={bx + bw / 2} y={by} width={bw / 2} height={bh} rx="1" fill={G} fillOpacity="0.22" />
+            <line x1={bx + bw / 2} y1={by - 2} x2={bx + bw / 2} y2={by + bh + 2} stroke={MUTED} strokeWidth="0.8" strokeOpacity="0.4" />
+            <circle cx={bx + bw * 0.72} cy={by + bh / 2} r="4" fill={G} fillOpacity="0.8" />
+            <text x={bx} y={by + bh + 12} fontFamily="monospace" fontSize="6.5" fill={MUTED} opacity="0.5">−100</text>
+            <text x={bx + bw / 2} y={by + bh + 12} textAnchor="middle" fontFamily="monospace" fontSize="6.5" fill={MUTED} opacity="0.5">0</text>
+            <text x={bx + bw} y={by + bh + 12} textAnchor="end" fontFamily="monospace" fontSize="6.5" fill={MUTED} opacity="0.5">+100</text>
+            <text x={bx + bw / 2} y="212" textAnchor="middle" fontFamily="monospace" fontSize="6.5" fill={G} opacity="0.38" letterSpacing="0.5">RELATIONSHIP LEVEL</text>
+          </g>
+        )
+      })()}
+      {/* CSAT visual: 4 point-in-time bars */}
+      {(() => {
+        const x = startX + COL_W + GAP
+        const heights = [50, 32, 62, 40]
+        const labels = ['Support', 'Email', 'Checkout', 'Chat']
+        const barW = 26, gap = 11, base = 212
+        const totalW = heights.length * barW + (heights.length - 1) * gap
+        const bx = x + (COL_W - totalW) / 2
+        return (
+          <g>
+            {heights.map((h, j) => (
+              <g key={j}>
+                <rect x={bx + j * (barW + gap)} y={base - h} width={barW} height={h} rx="1" fill={GL} fillOpacity="0.62" />
+                <text x={bx + j * (barW + gap) + barW / 2} y={base + 12} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="6.5" fill={MUTED} opacity="0.5">{labels[j]}</text>
+              </g>
+            ))}
+            <text x={x + COL_W / 2} y="232" textAnchor="middle" fontFamily="monospace" fontSize="6.5" fill={GL} opacity="0.45" letterSpacing="0.5">TOUCHPOINT LEVEL</text>
+          </g>
+        )
+      })()}
+      {/* CES visual: LOW/MED/HIGH segments */}
+      {(() => {
+        const x = startX + 2 * (COL_W + GAP)
+        const bx = x + 15, bw = 60, by = 162, bh = 20
+        const segs = [{ label: 'LOW', fill: G }, { label: 'MED', fill: AMBER }, { label: 'HIGH', fill: DANGER }]
+        return (
+          <g>
+            {segs.map((s, j) => (
+              <g key={j}>
+                <rect x={bx + j * (bw + 2)} y={by} width={bw} height={bh} rx="1" fill={s.fill} fillOpacity={j === 0 ? 0.72 : j === 1 ? 0.6 : 0.4} />
+                <text x={bx + j * (bw + 2) + bw / 2} y={by + 13} textAnchor="middle" fontFamily="monospace" fontSize="8" fontWeight="700" fill="#F5F4F0" opacity="0.9">{s.label}</text>
+              </g>
+            ))}
+            {/* Arrow pointing to LOW */}
+            <path d={`M ${bx + 30} ${by - 8} L ${bx + 30} ${by - 2}`} stroke={G} strokeWidth="1.2" markerEnd="url(#cesArr)" opacity="0.65" />
+            <text x={bx + 30} y={by - 12} textAnchor="middle" fontFamily="monospace" fontSize="6.5" fill={G} opacity="0.7">TARGET</text>
+            <text x={x + COL_W / 2} y="202" textAnchor="middle" fontFamily="monospace" fontSize="6.5" fill={AMBER} opacity="0.45" letterSpacing="0.5">EFFORT REQUIRED</text>
+            <text x={x + COL_W / 2} y="218" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={TEXT} opacity="0.55">Lower = better experience</text>
+          </g>
+        )
+      })()}
+      <defs>
+        <marker id="cesArr" markerWidth="5" markerHeight="5" refX="2.5" refY="5" orient="auto">
+          <path d="M0,0 L5,0 L2.5,5 Z" fill={G} opacity="0.7" />
+        </marker>
+      </defs>
+      {/* Bottom note */}
+      <rect x="0" y="250" width="720" height="18" fill={G} fillOpacity="0.06" />
+      <text x="360" y="263" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.55" letterSpacing="0.5">NPS tells you IF there is a problem · CSAT + CES tell you WHERE</text>
+    </svg>
+  )
+}
+
+export function DataUnificationDiagram() {
+  const sources = [
+    { label: 'GA4 · Behavioral', sub: 'clicks · sessions · heatmaps' },
+    { label: 'Salesforce · Pipeline', sub: 'pipeline · response times' },
+    { label: 'NPS · Surveys', sub: 'solicited voice of customer' },
+    { label: 'Support · Tickets', sub: 'unsolicited friction signals' },
+  ]
+  const outputs = [
+    { label: 'CDJ Dashboard', sub: 'exec / waterfall / diagnostic' },
+    { label: 'Team Routing', sub: 'Jira / Azure DevOps delivery' },
+    { label: 'Financial Metrics', sub: 'CLV · churn · NRR linkage' },
+  ]
+  const SRC_W = 196, SRC_H = 40, SRC_GAP = 10, startY = 26
+  const CX = 236, CW = 168
+  const OUT_X = 432, OUT_W = 270
+  const OUT_H = 50, OUT_GAP = 10
+  const outStartY = startY + 10
+  return (
+    <svg viewBox="0 0 720 248" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="248" fill={BG2} />
+      {[0,1,2,3,4].map(i => (
+        <line key={i} x1="0" y1={30 + i * 44} x2="720" y2={30 + i * 44} stroke={BORDER} strokeWidth="0.3" opacity="0.3" />
+      ))}
+      {/* Source boxes */}
+      {sources.map((s, i) => {
+        const y = startY + i * (SRC_H + SRC_GAP)
+        const cy = y + SRC_H / 2
+        return (
+          <g key={s.label}>
+            <rect x="16" y={y} width={SRC_W} height={SRC_H} rx="2" fill={BG} stroke={BORDER} strokeWidth="0.6" />
+            <text x="28" y={y + 15} fontFamily="monospace" fontSize="8" fontWeight="700" fill={TEXT} opacity="0.7">{s.label}</text>
+            <text x="28" y={y + 29} fontFamily="system-ui, sans-serif" fontSize="7" fill={MUTED} opacity="0.55">{s.sub}</text>
+            {/* Arrow to center */}
+            <line x1={16 + SRC_W + 2} y1={cy} x2={CX - 2} y2={cy} stroke={G} strokeWidth="0.8" strokeDasharray="3 2" opacity="0.38" markerEnd="url(#duArr)" />
+          </g>
+        )
+      })}
+      {/* Center box */}
+      <rect x={CX} y={startY} width={CW} height={4 * SRC_H + 3 * SRC_GAP} rx="3" fill={G} fillOpacity="0.08" stroke={G} strokeWidth="1" strokeOpacity="0.45" />
+      <text x={CX + CW / 2} y={startY + 64} textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill={G} opacity="0.75" letterSpacing="0.5">UNIFIED</text>
+      <text x={CX + CW / 2} y={startY + 80} textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill={G} opacity="0.75" letterSpacing="0.5">CUSTOMER</text>
+      <text x={CX + CW / 2} y={startY + 96} textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill={G} opacity="0.75" letterSpacing="0.5">VIEW</text>
+      <text x={CX + CW / 2} y={startY + 115} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="7" fill={MUTED} opacity="0.45">single source of truth</text>
+      {/* Output boxes */}
+      {outputs.map((o, i) => {
+        const y = outStartY + i * (OUT_H + OUT_GAP)
+        const cy = y + OUT_H / 2
+        const unifiedCY = startY + (4 * SRC_H + 3 * SRC_GAP) / 2
+        return (
+          <g key={o.label}>
+            <rect x={OUT_X} y={y} width={OUT_W} height={OUT_H} rx="2" fill={GL} fillOpacity="0.1" stroke={GL} strokeWidth="0.5" strokeOpacity="0.4" />
+            <text x={OUT_X + 14} y={y + 19} fontFamily="monospace" fontSize="8" fontWeight="700" fill={G} opacity="0.72">{o.label}</text>
+            <text x={OUT_X + 14} y={y + 34} fontFamily="system-ui, sans-serif" fontSize="7.5" fill={MUTED} opacity="0.55">{o.sub}</text>
+            {/* Arrow from center */}
+            <line x1={CX + CW + 2} y1={cy} x2={OUT_X - 2} y2={cy} stroke={G} strokeWidth="0.8" strokeDasharray="3 2" opacity="0.35" markerEnd="url(#duArr)" />
+          </g>
+        )
+      })}
+      <defs>
+        <marker id="duArr" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+          <path d="M0,0 L5,2.5 L0,5 Z" fill={G} opacity="0.45" />
+        </marker>
+      </defs>
+      {/* Footer */}
+      <rect x="0" y="232" width="720" height="16" fill={G} fillOpacity="0.05" />
+      <text x="360" y="244" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={G} opacity="0.45" letterSpacing="0.5">CONNECT VOICE · ANALYTICS · DELIVERY · BI INTO ONE OPERATING SYSTEM</text>
+    </svg>
+  )
+}
