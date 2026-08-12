@@ -16,6 +16,7 @@ import {
   ValidationSequenceDiagram, MVPScopeVisual, TractionMetricsDiagram,
   FunnelStageDiagram, ScoringGapDiagram, AttributionDiagram,
   JourneyMapVisual, CXMetricsDiagram, DataUnificationDiagram,
+  AIUsageTypologyDiagram, WellbeingBoundaryDiagram, UsageRhythmDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface PageProps {
@@ -44,6 +45,9 @@ export default function ArticlePage({ params }: PageProps) {
     month: 'long',
     day: 'numeric',
   })
+
+  if (article.slug === 'ai-self-improvement-wellbeing')
+    return <SelfImprovementArticle article={article} formattedDate={formattedDate} />
 
   if (article.slug === 'customer-journey-mapping')
     return <CustomerJourneyArticle article={article} formattedDate={formattedDate} />
@@ -97,6 +101,221 @@ export default function ArticlePage({ params }: PageProps) {
   }
 
   notFound()
+}
+
+function SelfImprovementArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+
+        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+          THE<br />
+          <span className="text-brand-cobalt">DECIDING</span><br />
+          FACTOR.
+        </h1>
+
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+          {article!.subtitle}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 py-14 space-y-16">
+
+        {/* Lede */}
+        <section>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+            A 2026 narrative review published in Behavioral Sciences synthesised the actual research on AI and wellbeing. Its finding is not that AI helps or does not help. It is more precise than that: real short-term benefits exist — for anxiety, stress, loneliness, self-esteem, skill-building, and social confidence — but the results are inconsistent. The variable that explains the inconsistency is not which tool you use. It is the structure of the interaction, the kind of feedback it gives, and the broader context you are using it in.
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            AI companionship specifically was found to offer real but temporary emotional support — useful in the moment, not a substitute for the kind of connection that compounds over time. That distinction is the load-bearing idea beneath everything that follows.
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            This is not a case for using AI more. It is a case for using it deliberately, in the places it actually helps, while staying honest about the places it does not.
+          </p>
+        </section>
+
+        {/* Section 01 — What the research says */}
+        <section>
+          <SectionHeading number="01" title="What the research actually found" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            The Behavioral Sciences review covered AI-facilitated interventions across wellbeing, education, interpersonal skill development, and AI companionship. The consistent pattern: structured interactions produced real short-term benefit; unstructured use produced much weaker and less consistent results. The difference was not model quality or tool choice. It was whether the interaction had a clear goal and a clear feedback loop.
+          </p>
+
+          <div className="mt-8 border border-brand-concrete divide-y divide-brand-concrete">
+            <div className="grid grid-cols-2 divide-x divide-brand-concrete bg-brand-graphite/40">
+              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-muted">Where structured use produced real benefit</span></div>
+              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-muted">Where results were weaker or inconsistent</span></div>
+            </div>
+            {[
+              { left: 'Processing a specific stressful situation or decision', right: 'Open-ended venting with no structure or goal' },
+              { left: 'Learning a topic with examples, practice, and feedback', right: 'Passive Q&A that substitutes for deliberate learning' },
+              { left: 'Walking through a specific coping or reframing technique', right: 'Generalised emotional support without a clear endpoint' },
+              { left: 'Rehearsing a hard conversation or social scenario', right: 'Avoidance of the real conversation via AI proxy' },
+            ].map(({ left, right }, i) => (
+              <div key={i} className="grid grid-cols-2 divide-x divide-brand-concrete">
+                <div className="px-4 py-3"><p className="font-sans text-sm text-brand-black/70 leading-relaxed">{left}</p></div>
+                <div className="px-4 py-3"><p className="font-sans text-sm text-brand-muted leading-relaxed">{right}</p></div>
+              </div>
+            ))}
+          </div>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            The review treats these as moderately reliable findings rather than settled consensus — this is an actively developing research area, and specific results vary by context, population, and how tightly the study controlled for confounders. Use the pattern as a calibration tool rather than a guarantee.
+          </p>
+        </section>
+
+        {/* Section 02 — Three modes */}
+        <section>
+          <SectionHeading number="02" title="Three modes of use — and why most people only have one" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Most AI use is task-directed. Draft this, fix that, build this. That mode is useful and it is also the only mode most people ever use. The two modes that produce the most growth are almost never on anyone&rsquo;s regular schedule.
+          </p>
+
+          <div className="mt-8">
+            <AIUsageTypologyDiagram />
+          </div>
+
+          <div className="mt-8 space-y-5">
+            {[
+              {
+                label: 'Task mode',
+                body: 'The mode you already have. Execution-directed: build, draft, fix, summarise. Useful for output. Produces no structural improvement to how you think or what you know unless something else is also happening.',
+              },
+              {
+                label: 'Learning mode',
+                body: 'The research distinction that matters: AI-assisted learning shows real benefit when structured — targeted explanation, practice, and feedback on a specific named gap. It shows much weaker benefit when it is just passive Q&A. The difference is whether you have identified a specific thing you do not know and are working through it, not browsing. One weekly session aimed at one specific gap outperforms daily ambient use for actual skill-building.',
+              },
+              {
+                label: 'Reflection mode',
+                body: 'The highest-leverage and least-used mode. A periodic session — weekly or monthly — where you externalise your own reasoning and have it reflected back: what actually worked, what did not, what pattern keeps repeating. This is not a task session. It uses the same tool for a different purpose: noticing your own patterns rather than just executing against them. Most people skip this entirely.',
+              },
+            ].map(({ label, body }) => (
+              <div key={label} className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+                <span className="font-sans font-semibold text-sm text-brand-black block mb-2">{label}</span>
+                <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
+
+          <Callout label="Practical setup" className="mt-8">
+            <p className="font-sans text-sm text-brand-black/75 leading-relaxed">Three session types, three different purposes. One task-directed (already happening). One learning-directed — a specific named gap, not general browsing, on a real weekly cadence. One reflection-directed — what pattern keeps repeating this month — on a real monthly cadence, not &ldquo;whenever I remember.&rdquo;</p>
+          </Callout>
+        </section>
+
+        {/* Section 03 — Opportunity */}
+        <section>
+          <SectionHeading number="03" title="Using AI to open up more opportunity" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            The same principle applies here as in content and AEO work: opportunity flows to whoever has a specific, findable point of view, not generic competence. AI can help you produce more and faster. The thing that actually opens doors is still specific, real expertise made visible. The tool collapses the production cost. The substance has to come from somewhere else.
+          </p>
+
+          <div className="mt-8 space-y-4">
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Lower the cost of showing your work</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Writing up a finished project into something shareable — a case study, a write-up, a talk outline — used to be the part that got skipped because it took too long after the actual work was done. AI collapses that cost. The value in the output is still in the specific detail only you could add, not the volume of what gets produced. AI-generated case study text without your actual numbers, decisions, and reasoning is indistinguishable from noise.</p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Rehearse, not just draft</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Before a real pitch, negotiation, or difficult conversation, running the actual scenario — including the specific pushback you expect — is a meaningfully different use than asking for advice in the abstract. This is closer to deliberate practice than to consultation. The research finding on rehearsal as a structured interaction is relevant here: the benefit is in the specificity of the scenario, not in the general question.</p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Widen the search radius deliberately</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Ask explicitly for adjacent fields, unfamiliar framings, or categories of opportunity you would not have thought to search for. AI-assisted research can surface the actual landscape of a space — rates, positioning, what the market calls a role, who is hiring for it — faster than manually piecing it together from individual searches.</p>
+            </div>
+          </div>
+
+          <Callout label="The caution worth naming directly" className="mt-8">
+            <p className="font-sans text-sm text-brand-black/75 leading-relaxed">None of this replaces the actual work of reaching out to people, showing up, and building real relationships in your field. AI can prepare you for the conversation. It cannot have the conversation for you. Heavy AI use that substitutes for real outreach and relationship-building produces activity that feels productive but does not compound into an actual network. The two feel similar from the inside. They are not.</p>
+          </Callout>
+        </section>
+
+        {/* Section 04 — Wellbeing boundary */}
+        <section>
+          <SectionHeading number="04" title="Where it genuinely helps — and where the real risk sits" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            The research on AI and wellbeing is where people most want a clear answer and where the evidence is most genuinely mixed. The honest version: structured use can help with real things. The risks are also real, not hypothetical, and they are worth being specific about.
+          </p>
+
+          <div className="mt-8">
+            <WellbeingBoundaryDiagram />
+          </div>
+
+          <div className="mt-10 space-y-5">
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">The companionship drift risk</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">The review is specific on this point: AI companionship provides real but temporary emotional benefit. The risk is not using AI when you are stressed. It is letting AI use quietly substitute for the slower, harder work of building or maintaining real human relationships — because the AI is always available, always responsive, and never having its own bad day. That asymmetry is real and worth noticing.</p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Not therapy</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Using AI for mental health literacy — understanding a condition, a term, a coping technique in plain language — is a different thing from using it as treatment. The line between the two gets blurry exactly when someone is struggling most. Anything approaching a genuine mental health crisis is where a static, well-meaning response from a tool is a poor substitute for a professional who can actually intervene.</p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">The echo chamber problem</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">A chatbot that is agreeable by design can quietly reinforce whatever you already believe — including unhelpful patterns. A tendency to catastrophise, a grudge, an avoidant instinct. A productive use pushes back and offers a genuinely different angle. A use that just validates whatever you already feel is an echo chamber of one. These feel different from the inside if you are paying attention.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 05 — Rhythm */}
+        <section>
+          <SectionHeading number="05" title="A practical weekly rhythm" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            A concrete way to run all of this without it becoming another thing to manage. Four cadences, each with a distinct purpose. The ongoing one is not a scheduled session — it is a standing question.
+          </p>
+
+          <div className="mt-8">
+            <UsageRhythmDiagram />
+          </div>
+
+          <div className="mt-8 space-y-3">
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">On the daily cadence</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">The task-directed mode you already have. No structure needed here — it is already running.</p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">On the weekly reflection</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Twenty minutes. What actually worked this week. What did not. One pattern you noticed. The value is in the regularity, not in any individual session. The habit of externalising your reasoning on a fixed cadence is the thing that compounds, not the quality of any single reflection.</p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">On the monthly shareable</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">One piece of real work, turned into something that can help someone else. Strip anything private. Post the general version. This is the lowest-cost high-leverage community contribution available, and it requires nothing you have not already done — only the step of making it legible to someone outside your own head.</p>
+            </div>
+            <div className="border-l-2 border-amber-500/50 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">On the standing check</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Not a session. A question: am I reaching for AI right now instead of a specific person I would otherwise talk to, or in addition to one? Sometimes the answer is genuinely fine. The point is to be honest about which it is rather than letting the decision happen by default.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Closing */}
+        <section className="border-t border-brand-concrete pt-10">
+          <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+            The tool is not the deciding factor. The structure is.
+          </p>
+        </section>
+      </div>
+    </div>
+  )
 }
 
 function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {

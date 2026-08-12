@@ -11,6 +11,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'ai-self-improvement-wellbeing',
+    title: 'The Deciding Factor',
+    subtitle: "The 2026 research on AI and wellbeing is consistent on one point: structure separates genuine growth from a comfortable loop that goes nowhere.",
+    category: 'Systems',
+    date: '2026-08-12',
+    readTime: '9 min read',
+    tags: ['AI Wellbeing', 'Self-Improvement', 'Personal Growth', 'Reflection', 'AI Productivity'],
+    excerpt:
+      "A 2026 narrative review found real short-term benefits from AI use — for anxiety, stress, loneliness, and skill-building. It also found the results are inconsistent. The deciding variable is not which tool you use. It is how.",
+  },
+  {
     slug: 'customer-journey-mapping',
     title: 'Not a Poster',
     subtitle: 'Most journey maps are printed once and pinned to a wall. The operating model that keeps them current — and the KPI layer that gives them teeth.',

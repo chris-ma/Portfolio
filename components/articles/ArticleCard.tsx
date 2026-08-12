@@ -20,6 +20,7 @@ import {
   ValidationSequenceDiagram,
   FunnelStageDiagram,
   JourneyMapVisual,
+  AIUsageTypologyDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface ArticleCardProps {
@@ -110,6 +111,9 @@ function DiagramWrapper({ children }: { children: React.ReactNode }) {
 }
 
 function ArticleVisual({ slug, category, index }: { slug: string; category: string; index: number }) {
+  if (slug === 'ai-self-improvement-wellbeing') {
+    return <DiagramWrapper><AIUsageTypologyDiagram /></DiagramWrapper>
+  }
   if (slug === 'customer-journey-mapping') {
     return <DiagramWrapper><JourneyMapVisual /></DiagramWrapper>
   }

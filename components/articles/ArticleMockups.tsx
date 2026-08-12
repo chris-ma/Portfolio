@@ -2734,3 +2734,141 @@ export function DataUnificationDiagram() {
     </svg>
   )
 }
+
+export function AIUsageTypologyDiagram() {
+  const modes = [
+    { label: 'TASK',       sub: 'Execution',          when: 'Daily, as needed',       purpose: 'Build, draft, fix, execute',   level: 0.88, fill: G,    note: 'Already established' },
+    { label: 'LEARNING',   sub: 'Skill-building',     when: 'Weekly, 1 session',      purpose: 'Close one specific gap',       level: 0.38, fill: GL,   note: 'Usually underdone' },
+    { label: 'REFLECTION', sub: 'Pattern recognition', when: 'Monthly, structured',   purpose: 'Notice your own patterns',     level: 0.12, fill: AMBER, note: 'Highest leverage' },
+  ]
+  const COL_W = 208, GAP = 16
+  const startX = Math.round((720 - 3 * COL_W - 2 * GAP) / 2)  // 32
+  const CONT_H = 70, CONT_Y = 130, CONT_BOT = CONT_Y + CONT_H
+  const POT_LINE_Y = CONT_Y + Math.round(CONT_H * 0.2)  // 80% fill potential line
+  return (
+    <svg viewBox="0 0 720 272" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="272" fill={BG2} />
+      {modes.map((m, i) => {
+        const x = startX + i * (COL_W + GAP)
+        const cx = x + COL_W / 2
+        const fillH = Math.round(CONT_H * m.level)
+        const fillY = CONT_BOT - fillH
+        return (
+          <g key={m.label}>
+            <rect x={x} y="16" width={COL_W} height="222" rx="2" fill={BG} stroke={BORDER} strokeWidth="0.5" />
+            <rect x={x} y="16" width={COL_W} height="42" rx="2" fill={m.fill} fillOpacity="0.78" />
+            <text x={cx} y="33" textAnchor="middle" fontFamily="monospace" fontSize="14" fontWeight="700" fill="#F5F4F0" opacity="0.95">{m.label}</text>
+            <text x={cx} y="48" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="7" fill="#F5F4F0" opacity="0.65">{m.sub.toUpperCase()}</text>
+            <text x={x + 14} y="74" fontFamily="monospace" fontSize="6.5" fill={MUTED} opacity="0.5" letterSpacing="0.8">WHEN</text>
+            <text x={x + 14} y="86" fontFamily="system-ui, sans-serif" fontSize="9" fill={TEXT} opacity="0.7">{m.when}</text>
+            <text x={x + 14} y="103" fontFamily="monospace" fontSize="6.5" fill={MUTED} opacity="0.5" letterSpacing="0.8">PURPOSE</text>
+            <text x={x + 14} y="115" fontFamily="system-ui, sans-serif" fontSize="9" fill={TEXT} opacity="0.7">{m.purpose}</text>
+            <line x1={x + 12} y1="125" x2={x + COL_W - 12} y2="125" stroke={BORDER} strokeWidth="0.4" />
+            {/* Container */}
+            <rect x={x + 16} y={CONT_Y} width={COL_W - 32} height={CONT_H} rx="1" fill={BG2} stroke={BORDER} strokeWidth="0.4" />
+            {/* Fill from bottom */}
+            <rect x={x + 16} y={fillY} width={COL_W - 32} height={fillH} rx="1" fill={m.fill} fillOpacity="0.45" />
+            {/* Potential line (80% fill target) */}
+            <line x1={x + 16} y1={POT_LINE_Y} x2={x + COL_W - 16} y2={POT_LINE_Y} stroke={m.fill} strokeWidth="1" strokeDasharray="3 2" opacity="0.55" />
+            {i === 0 && (
+              <text x={x + COL_W - 18} y={POT_LINE_Y - 3} textAnchor="end" fontFamily="monospace" fontSize="5.5" fill={MUTED} opacity="0.5">TARGET</text>
+            )}
+            {/* Level % */}
+            <text x={cx} y={CONT_BOT + 14} textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill={m.fill} opacity="0.75">{Math.round(m.level * 100)}%</text>
+            <text x={cx} y="226" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED} opacity="0.55">{m.note}</text>
+          </g>
+        )
+      })}
+      <text x="360" y="258" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} opacity="0.35" letterSpacing="1.5">STRUCTURE IS THE DECIDING FACTOR — NOT VOLUME</text>
+    </svg>
+  )
+}
+
+export function WellbeingBoundaryDiagram() {
+  const pairs = [
+    { left: 'Structured reflection on a specific situation',     right: 'Open-ended venting that loops without resolving' },
+    { left: 'Rehearsing a hard conversation before having it',    right: 'Having the conversation with AI instead of the person' },
+    { left: 'Learning a skill with practice and feedback',        right: 'Passive Q&A that feels productive but isn\'t structured' },
+    { left: 'Turning real work into something shareable',         right: 'Producing generic content just to seem active or visible' },
+    { left: 'Mental health literacy and coping-skill practice',   right: 'Treating AI as professional therapy during a real crisis' },
+    { left: 'AI\'s pushback to stress-test your thinking',        right: 'AI\'s agreeableness confirming what you already believe' },
+  ]
+  const ROW_H = 34, ROW_START = 68
+  return (
+    <svg viewBox="0 0 720 282" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="282" fill={BG2} />
+      {/* Left panel header */}
+      <rect x="16" y="16" width="334" height="40" rx="2" fill={G} fillOpacity="0.72" />
+      <text x="183" y="34" textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill="#F5F4F0" opacity="0.95" letterSpacing="1.5">GENUINE USE</text>
+      <text x="183" y="47" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="7" fill="#F5F4F0" opacity="0.65">structured · bounded · growth-oriented</text>
+      {/* Right panel header */}
+      <rect x="370" y="16" width="334" height="40" rx="2" fill={AMBER} fillOpacity="0.7" />
+      <text x="537" y="34" textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill="#F5F4F0" opacity="0.95" letterSpacing="1.5">WATCH FOR THIS INSTEAD</text>
+      <text x="537" y="47" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="7" fill="#F5F4F0" opacity="0.65">substitution · avoidance · echo-chamber</text>
+      {/* Center divider */}
+      <line x1="360" y1="56" x2="360" y2="270" stroke={BORDER} strokeWidth="0.6" />
+      {/* Rows */}
+      {pairs.map((p, i) => {
+        const y = ROW_START + i * ROW_H
+        const cy = y + ROW_H / 2
+        const alt = i % 2 === 0
+        return (
+          <g key={i}>
+            {alt && <rect x="16" y={y} width="334" height={ROW_H} fill={G} fillOpacity="0.04" />}
+            {alt && <rect x="370" y={y} width="334" height={ROW_H} fill={AMBER} fillOpacity="0.04" />}
+            <circle cx="30" cy={cy} r="3" fill={G} fillOpacity="0.55" />
+            <text x="40" y={cy + 4} fontFamily="system-ui, sans-serif" fontSize="8.5" fill={TEXT} opacity="0.72">{p.left}</text>
+            <circle cx="384" cy={cy} r="3" fill={AMBER} fillOpacity="0.6" />
+            <text x="394" y={cy + 4} fontFamily="system-ui, sans-serif" fontSize="8.5" fill={TEXT} opacity="0.65">{p.right}</text>
+            <line x1="16" y1={y + ROW_H} x2="704" y2={y + ROW_H} stroke={BORDER} strokeWidth="0.3" opacity="0.5" />
+          </g>
+        )
+      })}
+      {/* Footer */}
+      <text x="360" y="275" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED} opacity="0.45" letterSpacing="0.5">AI companionship: real but temporary · not a substitute for connection that compounds</text>
+    </svg>
+  )
+}
+
+export function UsageRhythmDiagram() {
+  const rows = [
+    { cadence: 'DAILY',    sub: 'as needed',   activity: 'Task-directed AI use — build, draft, fix, execute',              purpose: 'Execution',          color: G,    dots: 14, r: 4,  spacing: 14 },
+    { cadence: 'WEEKLY',   sub: '~20 min',     activity: 'Reflection session — what worked, what didn\'t, one pattern noticed', purpose: 'Self-improvement',  color: GL,   dots: 4,  r: 6,  spacing: 28 },
+    { cadence: 'MONTHLY',  sub: 'one piece',   activity: 'Existing work turned into something shareable',                  purpose: 'Opportunity',        color: G,    dots: 1,  r: 10, spacing: 0  },
+    { cadence: 'ONGOING',  sub: 'standing check', activity: 'Am I reaching for AI instead of a person — or in addition to one?', purpose: 'Wellbeing',       color: AMBER,dots: 0,  r: 0,  spacing: 0  },
+  ]
+  const ROW_H = 44, ROW_GAP = 8, START_Y = 16
+  const DOT_START_X = 464
+  return (
+    <svg viewBox="0 0 720 240" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="240" fill={BG2} />
+      {rows.map((r, i) => {
+        const y = START_Y + i * (ROW_H + ROW_GAP)
+        const cy = y + ROW_H / 2
+        return (
+          <g key={r.cadence}>
+            <rect x="16" y={y} width="688" height={ROW_H} rx="2" fill={BG} stroke={BORDER} strokeWidth="0.4" />
+            {/* Cadence label */}
+            <rect x="16" y={y} width="88" height={ROW_H} rx="2" fill={r.color} fillOpacity="0.65" />
+            <text x="60" y={cy - 4} textAnchor="middle" fontFamily="monospace" fontSize="8" fontWeight="700" fill="#F5F4F0" opacity="0.95">{r.cadence}</text>
+            <text x="60" y={cy + 9} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="6.5" fill="#F5F4F0" opacity="0.65">{r.sub}</text>
+            {/* Activity + purpose */}
+            <text x="112" y={cy - 3} fontFamily="system-ui, sans-serif" fontSize="9" fill={TEXT} opacity="0.72">{r.activity}</text>
+            <text x="112" y={cy + 11} fontFamily="monospace" fontSize="6.5" fill={r.color} opacity="0.55" letterSpacing="0.5">{r.purpose.toUpperCase()}</text>
+            {/* Density visual */}
+            {r.dots > 0 && Array.from({ length: r.dots }).map((_, j) => (
+              <circle key={j} cx={DOT_START_X + j * r.spacing} cy={cy} r={r.r} fill={r.color} fillOpacity={0.5 - j * 0.02} />
+            ))}
+            {r.cadence === 'ONGOING' && (
+              <>
+                <line x1={DOT_START_X} y1={cy} x2={692} y2={cy} stroke={AMBER} strokeWidth="1.5" strokeDasharray="6 4" opacity="0.55" />
+                <text x="580" y={cy - 5} fontFamily="monospace" fontSize="6.5" fill={AMBER} opacity="0.6" textAnchor="middle">ALWAYS PRESENT</text>
+              </>
+            )}
+          </g>
+        )
+      })}
+      <text x="360" y="233" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED} opacity="0.45" fontStyle="italic">&ldquo;Instead of a person, or in addition to one?&rdquo; — the question worth asking regularly</text>
+    </svg>
+  )
+}
