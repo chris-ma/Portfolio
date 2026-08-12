@@ -18,6 +18,7 @@ import {
   JourneyMapVisual, CXMetricsDiagram, DataUnificationDiagram,
   AIUsageTypologyDiagram, WellbeingBoundaryDiagram, UsageRhythmDiagram,
   CalibrationVsAccuracyDiagram, PromptTechniquesRanking, TwoStepVerificationDiagram,
+  PlatformEngagementDiagram, AlgorithmShiftDiagram, SocialSEODiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface PageProps {
@@ -46,6 +47,9 @@ export default function ArticlePage({ params }: PageProps) {
     month: 'long',
     day: 'numeric',
   })
+
+  if (article.slug === 'social-media-algorithms-kpis')
+    return <SocialMediaArticle article={article} formattedDate={formattedDate} />
 
   if (article.slug === 'ai-hallucination-reduction')
     return <HallucinationArticle article={article} formattedDate={formattedDate} />
@@ -105,6 +109,278 @@ export default function ArticlePage({ params }: PageProps) {
   }
 
   notFound()
+}
+
+function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+
+        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+          NO<br />
+          <span className="text-brand-cobalt">FOLLOWERS</span><br />
+          REQUIRED.
+        </h1>
+
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+          {article!.subtitle}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 py-14 space-y-16">
+
+        {/* Lede */}
+        <section>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+            Two things happened simultaneously in 2026 and they are directly related. Platforms became AI-ranked distribution engines rather than follower-count reach engines. And the volume of AI-produced content flooding every feed exploded — 87% of marketers used generative AI in at least one recurring workflow in Q1 2026, up from 51% two years prior.
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            The result is a squeeze from both sides: getting seen now depends on satisfying an AI ranking system, and getting believed once seen is harder because every feed is flooded with AI-assisted content that mostly looks the same. Winning in social in 2026 means engineering for the algorithm and standing out from the flood it created. Those are really the same problem, applied at different points in the same funnel.
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            The connecting thread to any AEO or GEO work is not coincidental. Social platforms now run what practitioners are calling Social SEO — users type full questions into TikTok and Instagram search bars, and the algorithms scan captions, subtitles, and spoken audio for keyword relevance. The three-gate diagnostic applies almost unmodified: is it discoverable, does the hook earn the click, is the actual answer extractable from the audio or caption in the first three seconds.
+          </p>
+        </section>
+
+        {/* Section 01 — The metric trap */}
+        <section>
+          <SectionHeading number="01" title="The metric trap — and which numbers actually predict anything" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Every platform surfaces the metric that flatters it. Instagram highlights reach. TikTok flaunts view counts. LinkedIn emphasises impressions. None of these are wrong to look at — they are just not KPIs on their own. Treat every number as diagnostic, laddering up to an actual business goal, and pick a small number of primary KPIs per campaign. One is genuinely enough. Everything else is context, not a second scoreboard.
+          </p>
+
+          <div className="mt-8 space-y-5">
+            {[
+              {
+                label: 'The formula trap',
+                body: '"Engagement rate by follower count" — the 2015-era formula — is now close to meaningless on algorithm-driven platforms like Instagram, TikTok, and X, because follower count has almost no relationship to distribution anymore. Use engagement rate by reach for organic reporting, and engagement rate by impressions for paid. The exception is LinkedIn, where the follower graph still genuinely drives distribution.',
+              },
+              {
+                label: 'The signal that actually predicts business outcomes',
+                body: 'Raw engagement — likes, views — is becoming less predictive every quarter, because platforms got too good at generating lightweight, low-friction interaction. What is actually predictive now sits further down: qualified traffic, saves, assisted conversions, return visits, and lead quality. A lower engagement number tied to genuine intent is often worth more than a higher one driven by broad, low-commitment entertainment reach.',
+              },
+              {
+                label: 'The same logic as the marketing funnel problem, inverted',
+                body: 'Applying a TOFU metric to a BOFU decision is a classic funnel engineering mistake. The same error runs in reverse on social: treating high vanity engagement as proof of business impact when the signal that matters sits one layer deeper — did it generate a qualified action, not just a frictionless tap.',
+              },
+            ].map(({ label, body }) => (
+              <div key={label} className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+                <span className="font-sans font-semibold text-sm text-brand-black block mb-2">{label}</span>
+                <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 02 — Platform benchmarks */}
+        <section>
+          <SectionHeading number="02" title="Platform benchmarks — the 2026 numbers and what to actually track" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Treat every figure below as a directional gut-check against your own numbers, not a target. They vary meaningfully by industry, follower tier, and format, and social benchmarks age faster than almost any other marketing data category. The most important rule: never benchmark across platforms. A 0.5% engagement rate on Instagram is healthy. The same number on TikTok is a warning sign.
+          </p>
+
+          <div className="mt-8">
+            <PlatformEngagementDiagram />
+          </div>
+
+          <div className="mt-8 border border-brand-concrete divide-y divide-brand-concrete">
+            <div className="grid grid-cols-3 divide-x divide-brand-concrete bg-brand-graphite/40">
+              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-muted">Platform</span></div>
+              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-muted">Best format</span></div>
+              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-muted">What to actually track</span></div>
+            </div>
+            {[
+              {
+                platform: 'LinkedIn (5.20%)',
+                format: 'Carousels — 21.77% median, highest of any format on any platform',
+                track: 'Carousel engagement specifically; lead quality over raw CTR; follower growth rate (still drives real distribution)',
+              },
+              {
+                platform: 'TikTok (3.70%)',
+                format: 'Short-form video, 21–34 seconds optimal completion',
+                track: 'Average view duration, completion rate, and shares in the first 24 hours — not raw view count',
+              },
+              {
+                platform: 'Instagram (0.48%)',
+                format: 'Carousels (6.90%), well above Reels (3.31%) and single images',
+                track: 'Reels reach as a share of follower count; saves; comment-reply rate',
+              },
+              {
+                platform: 'YouTube',
+                format: 'Full-length + Shorts split strategy',
+                track: 'Average view duration — the primary algorithmic ranking signal, above view count',
+              },
+              {
+                platform: 'X (0.12%)',
+                format: 'Lowest-engagement major platform; set expectations accordingly',
+                track: 'Set realistic benchmarks; do not judge X numbers against any other platform',
+              },
+              {
+                platform: 'Threads',
+                format: 'Comment reply engagement is the standout lever',
+                track: 'Reply rate — ~42% engagement lift from responsiveness, the highest of any platform tracked',
+              },
+            ].map(({ platform, format, track }, i) => (
+              <div key={i} className="grid grid-cols-3 divide-x divide-brand-concrete">
+                <div className="px-4 py-3"><p className="font-sans text-sm text-brand-black/75 font-medium">{platform}</p></div>
+                <div className="px-4 py-3"><p className="font-sans text-sm text-brand-muted leading-relaxed">{format}</p></div>
+                <div className="px-4 py-3"><p className="font-sans text-sm text-brand-muted leading-relaxed">{track}</p></div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 03 — How the algorithm works now */}
+        <section>
+          <SectionHeading number="03" title="How the algorithm works now — and what that demands of you" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Every major platform — LinkedIn, Instagram, YouTube, Facebook, X — now uses AI to determine who sees what, based on individual relevance rather than chronology or follower relationship. A post from three days ago can outperform one from three hours ago if the algorithm judges it more relevant to a specific viewer. Growing a following is necessary. It is no longer sufficient.
+          </p>
+
+          <div className="mt-8">
+            <AlgorithmShiftDiagram />
+          </div>
+
+          <div className="mt-8 space-y-4">
+            {[
+              {
+                label: 'Early engagement velocity is a ranking trigger',
+                body: 'Content earning comments, saves, and shares within the first 30–60 minutes gets pushed to a significantly wider audience. The algorithm reads early engagement as a quality signal and amplifies accordingly. This has real workflow implications: posting when your actual audience is live matters more in 2026 than it did when reach was closer to proportional to follower count.',
+              },
+              {
+                label: 'Watch time and completion rate are weighted heavily, across every video platform',
+                body: 'Short, high-retention content consistently beats longer content with high drop-off, across TikTok, Reels, and Shorts alike. This is a direct argument for getting the hook right in the first three seconds — that opening is doing algorithmic work now, not just narrative work. TikTok\'s completion rate on sub-30-second content is ~72%, the highest of any short-form platform.',
+              },
+              {
+                label: 'LinkedIn\'s follower graph still drives real distribution',
+                body: 'LinkedIn is the meaningful exception to the "followers don\'t matter" rule. Its algorithm still gives measurable weight to the follower relationship, which is why follower growth rate remains one of the KPIs worth tracking specifically on that platform — unlike Instagram or TikTok, where growing a following has diminishing returns relative to content quality.',
+              },
+            ].map(({ label, body }) => (
+              <div key={label} className="border border-brand-concrete p-5">
+                <span className="font-sans font-semibold text-sm text-brand-black block mb-2">{label}</span>
+                <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 04 — Social SEO */}
+        <section>
+          <SectionHeading number="04" title="Social SEO — captions as crawlable pages" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Users increasingly type full questions directly into TikTok and Instagram search bars rather than starting on Google. The platforms scan captions, on-screen text, and spoken audio transcripts for keyword relevance — which means a caption written like a mini-answer to a specific question outperforms a vague tagline, and saying the keyword out loud in the first three seconds of a video measurably improves search ranking within the platform.
+          </p>
+
+          <div className="mt-8">
+            <SocialSEODiagram />
+          </div>
+
+          <div className="mt-8 space-y-5">
+            {[
+              {
+                label: 'Gate 1: Discoverable',
+                body: 'The keyword has to be present in the caption, on-screen text, or spoken audio for the platform\'s search index to surface the content. This is directly analogous to AEO\'s Gate 1 (fetchable) — the platform\'s crawler has to be able to read and categorise the content before anything else happens. Saying the search term aloud in the first three seconds is now a real optimisation lever, not a gimmick.',
+              },
+              {
+                label: 'Gate 2: Chosen',
+                body: 'The hook has to earn the tap or the pause in the first three seconds. Completion rate in those opening seconds is now a ranking signal the algorithm reads as quality proof. A hook that stops the scroll does algorithmic work before it does any narrative work — it proves to the distribution system that this content is worth showing more people.',
+              },
+              {
+                label: 'Gate 3: Extractable — and the zero-click penalty',
+                body: 'The full value has to live inside the post, not behind a link. Posts with outbound links are consistently deprioritised, because platforms are optimising for in-app time. A genuinely useful carousel or a complete answer in the caption now outperforms content built primarily as a funnel to a landing page. Social is increasingly a destination for TOFU and MOFU content, not just a pipe to somewhere else.',
+              },
+            ].map(({ label, body }) => (
+              <div key={label} className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+                <span className="font-sans font-semibold text-sm text-brand-black block mb-2">{label}</span>
+                <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 05 — AI and the content flood */}
+        <section>
+          <SectionHeading number="05" title="AI collapsed production cost — which raises the bar, not lowers it" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            59% of creators now use generative AI to streamline content creation. Most audiences see AI-assisted images, captions, and video without any visible label. The brands actually winning with this shift are using AI to remove production bottlenecks — not to replace the editorial judgment about what is worth making and why.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-5">
+            Generic AI-assisted content is now the baseline everyone has, not a differentiator. On a platform flooded with it, the specific, first-hand detail is what actually separates a post from the noise — not production speed. This is the same finding as the content-writing workbook: AI produces roughly the first half of the work. The differentiated, trust-earning half is still a human editorial call. Skipping that half is visible, on social more than anywhere.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-5">
+            There is also a longer-term trend worth tracking: roughly two-thirds of U.S. teens now use an AI chatbot at least sometimes for things social media used to provide. UK adult active posting, sharing, and commenting rates have fallen from 61% to 49% since 2024. Social platforms are increasingly competing with AI interfaces for raw discretionary attention — worth being aware of as the landscape continues to shift.
+          </p>
+        </section>
+
+        {/* Section 06 — Practical playbook */}
+        <section>
+          <SectionHeading number="06" title="The practical playbook" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Eight rules that hold regardless of which platform you are optimising for in 2026.
+          </p>
+
+          <div className="mt-6 border border-brand-concrete divide-y divide-brand-concrete">
+            {[
+              { num: '01', rule: 'Pick 3–5 primary KPIs tied to an actual goal, not a 40-metric dashboard', detail: 'Growth goal → reach, engagement rate, follower growth rate. Revenue goal → CTR, conversion rate, social ROI. One primary KPI is enough; everything else is context.' },
+              { num: '02', rule: 'Benchmark against your own platform and industry — never across platforms', detail: 'A 0.5% engagement rate is healthy on Instagram and a warning sign on TikTok. The numbers are not comparable.' },
+              { num: '03', rule: 'Write captions like mini-answers, not taglines', detail: 'Social SEO rewards content that resolves a specific question. The same utility-asset discipline as AEO, applied to a caption field.' },
+              { num: '04', rule: 'Say the keyword out loud in the first three seconds of video', detail: 'Audio transcripts are actively scanned for search ranking. This is a real, measurable optimisation, not an affectation.' },
+              { num: '05', rule: 'Prioritise the format your platform is currently pushing', detail: 'Reels on Instagram, carousels on LinkedIn. The algorithm actively promotes specific formats it wants adopted — use the tailwind while it lasts.' },
+              { num: '06', rule: 'Reply to your own comments as a standing habit, not an afterthought', detail: 'One of the highest-lift, lowest-cost levers available: up to 30% engagement lift on LinkedIn, 21% on Instagram, 42% on Threads. Most teams still skip it.' },
+              { num: '07', rule: 'Build for on-platform value first, off-platform link second', detail: 'Given the zero-click penalty, treat social increasingly as a destination for TOFU and MOFU content rather than purely a funnel pipe.' },
+              { num: '08', rule: 'Use AI for production volume — keep the differentiated judgment human', detail: 'On a platform flooded with generative content, the specific first-hand detail is the differentiator. Production speed is table stakes. Editorial judgment is not.' },
+            ].map(({ num, rule, detail }) => (
+              <div key={num} className="px-5 py-4 flex gap-5">
+                <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-muted flex-shrink-0 mt-0.5">{num}</span>
+                <div>
+                  <span className="font-sans font-semibold text-sm text-brand-black block mb-1">{rule}</span>
+                  <p className="font-sans text-sm text-brand-muted leading-relaxed">{detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Closing */}
+        <section className="border-t border-brand-concrete pt-10">
+          <p className="font-sans text-base text-brand-black/60 leading-relaxed italic">
+            The algorithm distributes based on interest graph relevance, not audience size — which means the work is now in earning distribution on every post, not accumulating it once.
+          </p>
+        </section>
+
+      </div>
+
+      {/* Footer nav */}
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-brand-concrete pt-10">
+        <Link
+          href="/articles"
+          className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
+        >
+          ← Field Notes
+        </Link>
+      </div>
+    </div>
+  )
 }
 
 function HallucinationArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {

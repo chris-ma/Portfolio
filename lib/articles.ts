@@ -11,6 +11,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'social-media-algorithms-kpis',
+    title: 'No Followers Required',
+    subtitle: 'Follower count stopped predicting reach. AI-ranked feeds distribute based on interest graphs, not audience size. The 2026 benchmarks and the playbook for the new reality.',
+    category: 'Strategy',
+    date: '2026-08-12',
+    readTime: '10 min read',
+    tags: ['Social Media', 'Social SEO', 'Algorithms', 'KPIs', 'TikTok'],
+    excerpt:
+      'Every major platform now uses AI to decide who sees what, based on individual relevance rather than follower relationship. Growing an audience is no longer sufficient. The algorithm distributes per-viewer regardless of who follows you.',
+  },
+  {
     slug: 'ai-hallucination-reduction',
     title: 'Confident and Wrong',
     subtitle: 'A model that confidently hallucinates poisons every decision built on its output. The 11 techniques that push AI toward calibration — knowing what it knows.',

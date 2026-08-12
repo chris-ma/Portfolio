@@ -3039,3 +3039,244 @@ export function TwoStepVerificationDiagram() {
     </svg>
   )
 }
+
+// ── Social Media Algorithms + KPIs Diagrams ────────────────────────────────
+
+export function PlatformEngagementDiagram() {
+  const G = '#1A4D3A', GL = '#3D7A60', BG = '#F5F4F0', BG2 = '#EDEAE4'
+  const BORDER = '#C9C6BE', TEXT = '#0A0A0A', MUTED = '#7A7872', AMBER = '#D4890A'
+
+  // Chart area
+  const chartH = 160
+  const baseY = 220
+  const padX = 60
+  const maxRate = 6 // percent — y-axis max
+  const scale = chartH / maxRate
+
+  const platforms = [
+    { label: 'LinkedIn',  rate: 5.20, carouselRate: 21.77, color: G,    carouselColor: G    },
+    { label: 'TikTok',   rate: 3.70, carouselRate: null,  color: GL,   carouselColor: null },
+    { label: 'Instagram', rate: 0.48, carouselRate: 6.90,  color: MUTED, carouselColor: GL  },
+    { label: 'X',         rate: 0.12, carouselRate: null,  color: MUTED, carouselColor: null },
+  ]
+
+  const totalBars = 4
+  const barW = 80
+  const gapW = 52
+  const totalW = totalBars * barW + (totalBars - 1) * gapW // = 476
+  const startX = padX + (600 - totalW) / 2
+
+  // Y-axis gridlines at 0, 2, 4, 6
+  const gridLines = [0, 1, 2, 3, 4, 5, 6]
+
+  return (
+    <svg viewBox="0 0 720 290" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="290" fill={BG2} />
+      <text x="360" y="20" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="2">2026 MEDIAN ENGAGEMENT RATE · BY PLATFORM</text>
+
+      {/* Y-axis gridlines */}
+      {gridLines.map((v) => {
+        const y = baseY - v * scale
+        return (
+          <g key={v}>
+            <line x1={startX - 8} y1={y} x2={startX + totalW + 20} y2={y} stroke={BORDER} strokeWidth={v === 0 ? 1 : 0.5} opacity={v === 0 ? 0.7 : 0.4} />
+            <text x={startX - 14} y={y + 4} textAnchor="end" fontFamily="monospace" fontSize="7" fill={MUTED}>{v}%</text>
+          </g>
+        )
+      })}
+
+      {/* Bars */}
+      {platforms.map((p, i) => {
+        const x = startX + i * (barW + gapW)
+        const barH = Math.max(p.rate * scale, 3)
+        const barY = baseY - barH
+        return (
+          <g key={p.label}>
+            <rect x={x} y={barY} width={barW} height={barH} rx="2" fill={p.color} opacity={i === 0 ? 0.85 : i === 1 ? 0.65 : 0.35} />
+            {/* Rate label above bar */}
+            <text x={x + barW / 2} y={barY - 8} textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="600" fill={p.color} opacity={i < 2 ? 0.9 : 0.6}>{p.rate.toFixed(2)}%</text>
+            {/* Platform label below */}
+            <text x={x + barW / 2} y={baseY + 16} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={i < 2 ? TEXT : MUTED}>{p.label}</text>
+            {/* Carousel callout if applicable */}
+            {p.carouselRate && (
+              <g>
+                <rect x={x + barW + 4} y={baseY - p.carouselRate * scale * (chartH / p.carouselRate)} width={barW * 0.55} height={3} rx="1" fill={p.carouselColor!} opacity="0.5" />
+                <text x={x + barW + 6} y={baseY - p.carouselRate * scale * (chartH / p.carouselRate) - 5} fontFamily="monospace" fontSize="7" fill={p.carouselColor!} opacity="0.75">↑ carousel {p.carouselRate}%</text>
+              </g>
+            )}
+          </g>
+        )
+      })}
+
+      {/* YouTube note — separate since it's watch-time based */}
+      <rect x="580" y="142" width="112" height="68" rx="2" fill={BG} stroke={BORDER} strokeWidth="0.8" />
+      <text x="636" y="158" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="1">YOUTUBE</text>
+      <text x="636" y="173" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED}>watch time</text>
+      <text x="636" y="186" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED}>not views</text>
+      <text x="636" y="199" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED}>avg duration</text>
+      <text x="636" y="211" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED}>= primary signal</text>
+
+      {/* Footer */}
+      <text x="360" y="280" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED} letterSpacing="1">BENCHMARK AGAINST YOUR OWN PLATFORM ONLY — NEVER CROSS-PLATFORM</text>
+    </svg>
+  )
+}
+
+export function AlgorithmShiftDiagram() {
+  const G = '#1A4D3A', GL = '#3D7A60', BG = '#F5F4F0', BG2 = '#EDEAE4'
+  const BORDER = '#C9C6BE', TEXT = '#0A0A0A', MUTED = '#7A7872', AMBER = '#D4890A'
+
+  return (
+    <svg viewBox="0 0 720 248" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="248" fill={BG2} />
+      <text x="360" y="18" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="2">DISTRIBUTION MODEL · THEN VS NOW</text>
+
+      {/* ── LEFT panel: Old model ── */}
+      <rect x="28" y="28" width="308" height="192" rx="3" fill={BG} stroke={BORDER} strokeWidth="1" />
+      <text x="182" y="47" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="1">PRE-2022 MODEL</text>
+
+      {/* Follower count → linear reach */}
+      <rect x="58" y="60" width="100" height="36" rx="2" fill={MUTED} opacity="0.2" stroke={MUTED} strokeWidth="0.8" />
+      <text x="108" y="82" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="1">FOLLOWERS</text>
+
+      <line x1="158" y1="78" x2="210" y2="78" stroke={MUTED} strokeWidth="1" strokeDasharray="4 3" markerEnd="url(#asOld)" />
+      <defs>
+        <marker id="asOld" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill={MUTED} opacity="0.5" />
+        </marker>
+        <marker id="asNew" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill={G} opacity="0.8" />
+        </marker>
+      </defs>
+
+      <rect x="210" y="60" width="96" height="36" rx="2" fill={MUTED} opacity="0.15" stroke={MUTED} strokeWidth="0.8" />
+      <text x="258" y="82" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="1">REACH</text>
+
+      <text x="182" y="120" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>Proportional. Predictable.</text>
+      <text x="182" y="134" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>More followers = more reach.</text>
+
+      <rect x="68" y="152" width="236" height="48" rx="2" fill={MUTED} opacity="0.08" />
+      <text x="186" y="170" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED}>Each follower had ~equal chance of seeing</text>
+      <text x="186" y="184" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED}>your post. Chronological or near-chrono.</text>
+      <text x="186" y="198" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED}>Platform = follower graph.</text>
+
+      {/* ── RIGHT panel: New model ── */}
+      <rect x="384" y="28" width="308" height="192" rx="3" fill={BG} stroke={G} strokeWidth="1" />
+      <text x="538" y="47" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} letterSpacing="1">2026 MODEL · AI-RANKED</text>
+
+      {/* Content → Algorithm → branching distribution */}
+      <rect x="406" y="64" width="80" height="32" rx="2" fill={G} opacity="0.15" stroke={G} strokeWidth="0.8" />
+      <text x="446" y="84" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} letterSpacing="1">CONTENT</text>
+
+      <line x1="486" y1="80" x2="512" y2="80" stroke={G} strokeWidth="1.2" markerEnd="url(#asNew)" />
+
+      <rect x="512" y="64" width="88" height="32" rx="2" fill={G} opacity="0.6" />
+      <text x="556" y="80" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={BG} letterSpacing="1">ALGORITHM</text>
+      <text x="556" y="92" textAnchor="middle" fontFamily="monospace" fontSize="6" fill={BG} opacity="0.75">interest graph</text>
+
+      {/* Branches to viewer segments */}
+      {[
+        { label: 'Viewer: fashion', y: 134 },
+        { label: 'Viewer: marketing', y: 158 },
+        { label: 'Viewer: startups', y: 182 },
+      ].map((v, i) => (
+        <g key={v.label}>
+          <line x1="600" y1="80" x2="620" y2={v.y} stroke={G} strokeWidth="0.8" opacity="0.5" />
+          <rect x="622" y={v.y - 9} width="50" height="18" rx="2" fill={G} opacity="0.12" stroke={G} strokeWidth="0.5" />
+          <text x="647" y={v.y + 4} textAnchor="middle" fontFamily="monospace" fontSize="6.5" fill={G}>{v.label}</text>
+          <line x1="600" y1="80" x2="600" y2="182" stroke={G} strokeWidth="0.5" opacity="0.2" />
+        </g>
+      ))}
+
+      <text x="538" y="116" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G}>Follower count ≠ reach predictor.</text>
+      <text x="538" y="130" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G}>Distributed by relevance to each viewer.</text>
+      <text x="538" y="211" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED}>early engagement velocity triggers amplification</text>
+
+      {/* Divider label */}
+      <line x1="340" y1="28" x2="340" y2="220" stroke={BORDER} strokeWidth="1" strokeDasharray="5 4" />
+      <text x="340" y="240" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED}>→</text>
+
+      <text x="360" y="236" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED} letterSpacing="1">GROWING A FOLLOWING IS NECESSARY · NOT SUFFICIENT</text>
+    </svg>
+  )
+}
+
+export function SocialSEODiagram() {
+  const G = '#1A4D3A', GL = '#3D7A60', BG = '#F5F4F0', BG2 = '#EDEAE4'
+  const BORDER = '#C9C6BE', TEXT = '#0A0A0A', MUTED = '#7A7872', AMBER = '#D4890A'
+
+  const gates = [
+    {
+      num: '01',
+      title: 'DISCOVERABLE',
+      label: 'Keyword in caption,\non-screen text,\nspoken audio',
+      sublabel: 'Platforms scan audio\ntranscripts for search\nranking — same as a\nweb crawler on text',
+      color: G,
+    },
+    {
+      num: '02',
+      title: 'CHOSEN',
+      label: 'Hook earns the click\nor keeps the scroll\nin the first 3 seconds',
+      sublabel: 'Early completion rate\nis a ranking signal —\nthe algorithm reads\nit as quality proof',
+      color: GL,
+    },
+    {
+      num: '03',
+      title: 'EXTRACTABLE',
+      label: 'Full answer lives\ninside the post —\ncaption or audio,\nnot behind a link',
+      sublabel: 'Zero-click penalty:\noutbound links get\ndeprioritised — value\nmust be on-platform',
+      color: AMBER,
+    },
+  ]
+
+  const gateW = 192
+  const gateGap = 22
+  const totalW = 3 * gateW + 2 * gateGap // = 620
+  const startX = (720 - totalW) / 2
+
+  return (
+    <svg viewBox="0 0 720 250" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="250" fill={BG2} />
+      <text x="360" y="18" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="2">SOCIAL SEO · THREE-GATE DIAGNOSTIC</text>
+
+      {gates.map((gate, i) => {
+        const x = startX + i * (gateW + gateGap)
+        const isAmber = gate.color === AMBER
+        return (
+          <g key={gate.num}>
+            {/* Gate box */}
+            <rect x={x} y="30" width={gateW} height="184" rx="3" fill={BG} stroke={gate.color} strokeWidth={i === 0 ? 1.5 : 1} opacity="0.95" />
+            {/* Header band */}
+            <rect x={x} y="30" width={gateW} height="30" rx="3" fill={gate.color} opacity={isAmber ? 0.75 : i === 0 ? 0.85 : 0.65} />
+            <text x={x + gateW / 2} y="42" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={BG} letterSpacing="1">{gate.num}</text>
+            <text x={x + gateW / 2} y="54" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={BG} letterSpacing="2">{gate.title}</text>
+            {/* Primary label */}
+            {gate.label.split('\n').map((line, li) => (
+              <text key={li} x={x + gateW / 2} y={84 + li * 13} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={TEXT}>{line}</text>
+            ))}
+            {/* Divider */}
+            <line x1={x + 16} y1="131" x2={x + gateW - 16} y2="131" stroke={BORDER} strokeWidth="0.6" />
+            {/* Sub-label */}
+            {gate.sublabel.split('\n').map((line, li) => (
+              <text key={li} x={x + gateW / 2} y={146 + li * 12} textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED}>{line}</text>
+            ))}
+            {/* Connector arrow */}
+            {i < 2 && (
+              <line x1={x + gateW + 2} y1="122" x2={x + gateW + gateGap - 2} y2="122" stroke={GL} strokeWidth="1.2" markerEnd="url(#seoArrow)" />
+            )}
+          </g>
+        )
+      })}
+
+      <defs>
+        <marker id="seoArrow" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill={GL} />
+        </marker>
+      </defs>
+
+      {/* Footer cross-reference */}
+      <text x="360" y="236" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED} letterSpacing="1">SAME THREE-GATE LOGIC AS AEO — FETCHABLE → CHOSEN → EXTRACTABLE — APPLIED TO SOCIAL</text>
+      <text x="360" y="246" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED} letterSpacing="1">CAPTION IS THE CRAWLABLE PAGE · HOOK IS THE TITLE TAG · ON-PLATFORM ANSWER IS THE CITABLE CHUNK</text>
+    </svg>
+  )
+}

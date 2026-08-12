@@ -22,6 +22,7 @@ import {
   JourneyMapVisual,
   AIUsageTypologyDiagram,
   CalibrationVsAccuracyDiagram,
+  PlatformEngagementDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface ArticleCardProps {
@@ -112,6 +113,9 @@ function DiagramWrapper({ children }: { children: React.ReactNode }) {
 }
 
 function ArticleVisual({ slug, category, index }: { slug: string; category: string; index: number }) {
+  if (slug === 'social-media-algorithms-kpis') {
+    return <DiagramWrapper><PlatformEngagementDiagram /></DiagramWrapper>
+  }
   if (slug === 'ai-hallucination-reduction') {
     return <DiagramWrapper><CalibrationVsAccuracyDiagram /></DiagramWrapper>
   }
