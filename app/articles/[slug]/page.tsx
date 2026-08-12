@@ -19,6 +19,7 @@ import {
   AIUsageTypologyDiagram, WellbeingBoundaryDiagram, UsageRhythmDiagram,
   CalibrationVsAccuracyDiagram, PromptTechniquesRanking, TwoStepVerificationDiagram,
   PlatformEngagementDiagram, AlgorithmShiftDiagram, SocialSEODiagram,
+  MCPInteropDiagram, MCPCapabilityLayersDiagram, MCPTimelineDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface PageProps {
@@ -47,6 +48,9 @@ export default function ArticlePage({ params }: PageProps) {
     month: 'long',
     day: 'numeric',
   })
+
+  if (article.slug === 'mcp-model-context-protocol')
+    return <MCPArticle article={article} formattedDate={formattedDate} />
 
   if (article.slug === 'social-media-algorithms-kpis')
     return <SocialMediaArticle article={article} formattedDate={formattedDate} />
@@ -109,6 +113,225 @@ export default function ArticlePage({ params }: PageProps) {
   }
 
   notFound()
+}
+
+function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+
+        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+          ONE<br />
+          <span className="text-brand-cobalt">PROTOCOL.</span>
+        </h1>
+
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+          {article!.subtitle}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 py-14 space-y-16">
+
+        {/* Lede */}
+        <section>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+            The Model Context Protocol is an open standard, introduced by Anthropic in November 2024, that gives an AI model a universal way to connect to external tools, data, and services. One protocol instead of a custom integration per tool. It has since become the de facto standard across the industry — adopted by OpenAI, Google DeepMind, and Microsoft, with the Python and TypeScript SDKs alone seeing roughly 97 million monthly downloads.
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            In December 2025, Anthropic donated MCP to the Agentic AI Foundation under the Linux Foundation, with OpenAI and Block joining as co-founders and AWS, Google, Microsoft, Cloudflare, GitHub, and Bloomberg as supporting members. That governance shift matters practically: MCP is no longer a single vendor&rsquo;s protocol that others adopted. It is genuinely neutral infrastructure — which is part of why it is safe to build real workflows around, rather than treating it as a single-vendor bet.
+          </p>
+        </section>
+
+        {/* Section 01 — The core advantage */}
+        <section>
+          <SectionHeading number="01" title="The core advantage — build once, work with everything" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Before MCP, every AI product that wanted to integrate with GitHub had to build and maintain its own GitHub integration. Every tool, its own connector. The result was n different tools each maintaining n different connectors to the same services — a quadratic problem getting worse as both sides of the market grew. MCP flips the model: a server built for GitHub works with Claude, ChatGPT, Cursor, VS Code, or any other MCP-compatible host, with no additional integration work on the server side.
+          </p>
+
+          <div className="mt-8">
+            <MCPInteropDiagram />
+          </div>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            The MCP Registry, launched September 2025, reached nearly 2,000 server entries within months — tools for databases, design systems, code repositories, project management, monitoring, payments, and dozens of other categories. The practical implication: before writing a custom integration for anything, check the registry. The odds a maintained MCP server already exists are genuinely high.
+          </p>
+
+          <Callout label="Security model" className="mt-6">
+            <p className="font-sans text-sm text-brand-black/75 leading-relaxed">OAuth 2.0, TLS, sandboxing, and explicit consent flows are part of the protocol specification, not something each integration has to invent. As of the June 2025 spec, MCP servers are formally classified as OAuth Resource Servers with mandated Resource Indicators (RFC 8707) — a protocol-level fix for token misuse, not a best-practice suggestion left to each implementer. The July 2026 revision hardened this further with RFC 9207 issuer validation and a shift from Dynamic Client Registration to Client ID Metadata Documents specifically to prevent credential reuse across authorisation servers.</p>
+          </Callout>
+        </section>
+
+        {/* Section 02 — What MCP enables */}
+        <section>
+          <SectionHeading number="02" title="What MCP actually enables — three layers most people never reach" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Most casual MCP usage stays at Layer 1: connect a tool, call a function, get a result. The leverage that compounds is in Layers 2 and 3.
+          </p>
+
+          <div className="mt-8">
+            <MCPCapabilityLayersDiagram />
+          </div>
+
+          <div className="mt-8 space-y-5">
+            {[
+              {
+                label: 'Layer 1 — Connect: tools and data retrieval',
+                body: 'Standard tool calling — the layer everyone knows. One server, one tool call, one result. Useful, and also the minimum. The actual advantage of MCP is not that it makes individual tool calls easier; it is that it makes chaining them across unrelated services possible without custom glue code.',
+              },
+              {
+                label: 'Layer 2 — Compose: multi-server workflows in one session',
+                body: 'Because every MCP server speaks the same protocol, a single agent session can chain calls across genuinely unrelated tools without custom integration work. Pull data from Figma, cross-reference it against a Supabase table, open a GitHub issue, post a summary to Slack — all inside one coherent task, because each is just another server the same client already knows how to talk to. The value compounds with the number of connected servers, not linearly. This is the actual argument for connecting more tools than you think you need on any single task.',
+              },
+              {
+                label: 'Layer 3 — Interact: real UI, not just text output (MCP Apps)',
+                body: 'MCP Apps (SEP-1865, stabilised January 2026) is the single biggest expansion of what MCP can do beyond data retrieval. Previously, an MCP server could only return text or structured JSON for the model to summarise back in prose. MCP Apps lets a server return an actual interactive interface — a dashboard, a chart, a configuration wizard, a form — rendered inline in the chat, with real bidirectional interaction. Servers declare UI resources via a ui:// URI scheme; all content runs in sandboxed iframes; all UI-to-host communication is loggable JSON-RPC. Supported in Claude web and desktop, VS Code Insiders, Goose, and Postman as of early 2026.',
+              },
+            ].map(({ label, body }) => (
+              <div key={label} className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+                <span className="font-sans font-semibold text-sm text-brand-black block mb-2">{label}</span>
+                <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 03 — Agentic capabilities */}
+        <section>
+          <SectionHeading number="03" title="Agentic loops, sampling, and human-in-the-loop by design" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            The November 2025 spec release added server-side agent loops as a formal capability — meaning an MCP server itself can run genuinely agentic behaviour: reasoning, multi-step tool use, sampling calls to the client&rsquo;s model. Combined with the Tasks extension for long-running, poll-based work, this is what makes MCP a real substrate for agentic workflow patterns rather than a plain tool-calling layer underneath them.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-5">
+            Two primitives — sampling and elicitation — exist specifically so a server can request something from the user or model without ever seeing raw credentials or bypassing user control. Sampling lets a server ask the client&rsquo;s own model to generate text as part of a task, but the client controls model selection, can review and edit the prompt, and can deny the request outright. The server never sees the API key. This is a materially different trust model from a plugin that just gets handed a key and runs unsupervised.
+          </p>
+
+          <div className="mt-6 border border-brand-concrete divide-y divide-brand-concrete">
+            {[
+              {
+                label: 'Sampling',
+                body: 'Server requests that the client\'s model generate text as part of a task. Client controls model selection, reviews the prompt, and can deny. Server has no access to the underlying API key.',
+              },
+              {
+                label: 'Elicitation',
+                body: 'Server requests specific information from the user via the client interface, rather than having unrestricted access to ask for anything. Keeps the server operating within a defined permission scope.',
+              },
+              {
+                label: 'Tasks extension',
+                body: 'Long-running, asynchronous work with poll-based status rather than a blocking request-response. Required for any workflow that takes more than a few seconds — code generation, data processing, multi-step research.',
+              },
+            ].map(({ label, body }) => (
+              <div key={label} className="px-5 py-4">
+                <span className="font-sans font-semibold text-sm text-brand-black block mb-1.5">{label}</span>
+                <p className="font-sans text-sm text-brand-muted leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 04 — Timeline */}
+        <section>
+          <SectionHeading number="04" title="From Anthropic's 2024 release to Linux Foundation infrastructure" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            The pace of the MCP specification has been unusually fast for a protocol that is supposed to be stable infrastructure. The July 2026 release — described by its own authors as the largest revision since launch — restructured the core to be stateless: a remote MCP server that previously needed sticky sessions and a shared session store can now run behind a plain round-robin load balancer. That is an infrastructure-level change that makes MCP viable as real production infrastructure for multi-user products, not just developer tooling.
+          </p>
+
+          <div className="mt-8">
+            <MCPTimelineDiagram />
+          </div>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            The formal 12-month minimum deprecation policy, introduced alongside the July 2026 revision, is worth noting for anything production-facing. Deprecated features — including Roots, the original Sampling specification, and Logging as previously specified — are on a 12-month removal clock. If you are building on older patterns, particularly Dynamic Client Registration, the migration to Client ID Metadata Documents is the correct path now rather than a forced one later.
+          </p>
+        </section>
+
+        {/* Section 05 — Practical guidance */}
+        <section>
+          <SectionHeading number="05" title="Using MCP well — the practical guidance" />
+
+          <div className="mt-6 border border-brand-concrete divide-y divide-brand-concrete">
+            {[
+              {
+                num: '01',
+                rule: 'Think in composition, not connection count',
+                detail: 'Having many connectors available and using them one at a time is not the advantage. The advantage is chaining them inside one coherent task. The Figma-to-Supabase-to-GitHub-to-Slack sequence is the shape of the leverage, not just having all four connected.',
+              },
+              {
+                num: '02',
+                rule: 'Use MCP Apps when output should be interactive, not just informative',
+                detail: 'Anywhere a text summary of data needs to become a real chart, a real form, or a real picker — a metrics dashboard, a configuration step, a booking flow — that is an MCP Apps use case specifically, not a generic tool call.',
+              },
+              {
+                num: '03',
+                rule: 'Respect sampling and elicitation rather than routing around them',
+                detail: 'These primitives exist so you stay in control of what a server can do on your behalf. A server or workflow that tries to bypass explicit consent for anything touching credentials is a red flag regardless of how convenient it looks.',
+              },
+              {
+                num: '04',
+                rule: 'For anything client-facing or compliance-sensitive, use Client ID Metadata Documents',
+                detail: 'Dynamic Client Registration is formally deprecated and on a 12-month removal clock. Building on CIMD now avoids a forced migration later.',
+              },
+              {
+                num: '05',
+                rule: 'Check the MCP Registry before building a custom integration',
+                detail: 'At nearly 2,000 server entries and growing fast, the odds a tool you need already has a maintained MCP server are genuinely high. Check before writing bespoke integration code.',
+              },
+            ].map(({ num, rule, detail }) => (
+              <div key={num} className="px-5 py-4 flex gap-5">
+                <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-muted flex-shrink-0 mt-0.5">{num}</span>
+                <div>
+                  <span className="font-sans font-semibold text-sm text-brand-black block mb-1">{rule}</span>
+                  <p className="font-sans text-sm text-brand-muted leading-relaxed">{detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <Callout label="One caveat" className="mt-6">
+            <p className="font-sans text-sm text-brand-black/75 leading-relaxed">MCP is an actively evolving standard — the July 2026 release is the largest revision since launch. Confirm current spec version and host support against modelcontextprotocol.io before building anything you depend on long-term. The 12-month deprecation policy is the new protection against surprise breaking changes, but it only applies forward from July 2026.</p>
+          </Callout>
+        </section>
+
+        {/* Closing */}
+        <section className="border-t border-brand-concrete pt-10">
+          <p className="font-sans text-base text-brand-black/60 leading-relaxed italic">
+            The protocol is the interoperability layer — which means the capability you build today travels across whatever AI tooling you use next, rather than being locked into a single product&rsquo;s plugin ecosystem.
+          </p>
+        </section>
+
+      </div>
+
+      {/* Footer nav */}
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-brand-concrete pt-10">
+        <Link
+          href="/articles"
+          className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
+        >
+          ← Field Notes
+        </Link>
+      </div>
+    </div>
+  )
 }
 
 function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {

@@ -11,6 +11,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'mcp-model-context-protocol',
+    title: 'One Protocol',
+    subtitle: 'MCP is not a plugin format. It\'s vendor-neutral infrastructure — governed by the Linux Foundation, adopted across the industry, and the actual mechanism behind composable AI workflows.',
+    category: 'Engineering',
+    date: '2026-08-12',
+    readTime: '9 min read',
+    tags: ['MCP', 'Model Context Protocol', 'Agentic AI', 'Dev Tooling', 'Interoperability'],
+    excerpt:
+      'Before MCP, every AI product that wanted to integrate with GitHub had to build its own GitHub integration. MCP flips this: one server works with Claude, ChatGPT, Cursor, VS Code, or any compatible host — no additional work on the server side. The protocol is the interoperability layer.',
+  },
+  {
     slug: 'social-media-algorithms-kpis',
     title: 'No Followers Required',
     subtitle: 'Follower count stopped predicting reach. AI-ranked feeds distribute based on interest graphs, not audience size. The 2026 benchmarks and the playbook for the new reality.',

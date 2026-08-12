@@ -3280,3 +3280,253 @@ export function SocialSEODiagram() {
     </svg>
   )
 }
+
+// ── MCP: Model Context Protocol Diagrams ────────────────────────────────────
+
+export function MCPInteropDiagram() {
+  const G = '#1A4D3A', GL = '#3D7A60', BG = '#F5F4F0', BG2 = '#EDEAE4'
+  const BORDER = '#C9C6BE', TEXT = '#0A0A0A', MUTED = '#7A7872', AMBER = '#D4890A'
+
+  const hosts = ['Claude', 'ChatGPT', 'Cursor']
+  const tools = ['GitHub', 'Figma', 'Supabase', 'Slack']
+
+  const hostY = [72, 128, 184]
+  const toolY = [60, 106, 152, 198]
+
+  // Left panel: before (n² problem)
+  const lHX = 90    // host circle centers
+  const lTX = 270   // tool circle centers
+  // Right panel: with MCP (hub + spoke)
+  const rHX = 430
+  const rMX = 546
+  const rTX = 650
+
+  return (
+    <svg viewBox="0 0 720 268" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="268" fill={BG2} />
+
+      {/* Panel labels */}
+      <text x="185" y="18" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="2">WITHOUT MCP · N² PROBLEM</text>
+      <text x="547" y="18" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} letterSpacing="2">WITH MCP · HUB + SPOKE</text>
+
+      {/* ── LEFT PANEL ── */}
+      <rect x="22" y="26" width="328" height="210" rx="3" fill={BG} stroke={BORDER} strokeWidth="0.8" />
+
+      {/* n² crossing lines — visual mess */}
+      {hostY.map((hy) =>
+        toolY.map((ty, ti) => (
+          <line key={`${hy}-${ti}`} x1={lHX + 30} y1={hy} x2={lTX - 30} y2={ty} stroke={MUTED} strokeWidth="0.7" opacity="0.25" />
+        ))
+      )}
+
+      {/* Host nodes */}
+      {hosts.map((h, i) => (
+        <g key={h}>
+          <rect x={lHX - 30} y={hostY[i] - 13} width="60" height="26" rx="13" fill={MUTED} opacity="0.2" stroke={MUTED} strokeWidth="0.8" />
+          <text x={lHX} y={hostY[i] + 4} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>{h}</text>
+        </g>
+      ))}
+
+      {/* Tool nodes */}
+      {tools.map((t, i) => (
+        <g key={t}>
+          <rect x={lTX - 30} y={toolY[i] - 13} width="60" height="26" rx="2" fill={MUTED} opacity="0.15" stroke={MUTED} strokeWidth="0.8" />
+          <text x={lTX} y={toolY[i] + 4} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>{t}</text>
+        </g>
+      ))}
+
+      {/* Count label */}
+      <text x="185" y="250" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>3 × 4 = 12 custom integrations</text>
+
+      {/* Divider */}
+      <line x1="360" y1="26" x2="360" y2="236" stroke={BORDER} strokeWidth="1" strokeDasharray="5 4" />
+
+      {/* ── RIGHT PANEL ── */}
+      <rect x="372" y="26" width="326" height="210" rx="3" fill={BG} stroke={G} strokeWidth="0.8" />
+
+      {/* Host → MCP lines */}
+      {hostY.map((hy, i) => (
+        <line key={`rh${i}`} x1={rHX + 30} y1={hy} x2={rMX - 26} y2={128} stroke={G} strokeWidth="0.9" opacity="0.4" />
+      ))}
+
+      {/* MCP → Tool lines */}
+      {toolY.map((ty, i) => (
+        <line key={`rt${i}`} x1={rMX + 26} y1={128} x2={rTX - 30} y2={ty} stroke={GL} strokeWidth="0.9" opacity="0.4" />
+      ))}
+
+      {/* Host nodes */}
+      {hosts.map((h, i) => (
+        <g key={h}>
+          <rect x={rHX - 30} y={hostY[i] - 13} width="60" height="26" rx="13" fill={G} opacity="0.15" stroke={G} strokeWidth="0.8" />
+          <text x={rHX} y={hostY[i] + 4} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G}>{h}</text>
+        </g>
+      ))}
+
+      {/* MCP hub */}
+      <circle cx={rMX} cy="128" r="26" fill={G} opacity="0.85" />
+      <text x={rMX} y="124" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={BG} letterSpacing="1">MCP</text>
+      <text x={rMX} y="136" textAnchor="middle" fontFamily="monospace" fontSize="6.5" fill={BG} opacity="0.8">protocol</text>
+
+      {/* Tool nodes */}
+      {tools.map((t, i) => (
+        <g key={t}>
+          <rect x={rTX - 30} y={toolY[i] - 13} width="60" height="26" rx="2" fill={GL} opacity="0.15" stroke={GL} strokeWidth="0.8" />
+          <text x={rTX} y={toolY[i] + 4} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={GL}>{t}</text>
+        </g>
+      ))}
+
+      {/* Count label */}
+      <text x="547" y="250" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G}>3 + 4 = 7 connections · any new host works instantly</text>
+    </svg>
+  )
+}
+
+export function MCPCapabilityLayersDiagram() {
+  const G = '#1A4D3A', GL = '#3D7A60', BG = '#F5F4F0', BG2 = '#EDEAE4'
+  const BORDER = '#C9C6BE', TEXT = '#0A0A0A', MUTED = '#7A7872', AMBER = '#D4890A'
+
+  const panelW = 200
+  const panelGap = 24
+  const startX = (720 - (3 * panelW + 2 * panelGap)) / 2
+
+  const panels = [
+    {
+      layer: 'LAYER 1',
+      title: 'CONNECT',
+      color: MUTED,
+      desc: 'Tools and data.\nOne call, one result.',
+      detail: 'Standard tool calling.\nThe layer everyone\nknows and uses first.',
+      example: 'search_docs(query)\nread_file(path)',
+    },
+    {
+      layer: 'LAYER 2',
+      title: 'COMPOSE',
+      color: GL,
+      desc: 'Multiple servers,\none coherent task.',
+      detail: 'Figma → Supabase\n→ GitHub → Slack\nin a single session,\nno custom glue code.',
+      example: 'Compounding leverage\nwith each new server',
+    },
+    {
+      layer: 'LAYER 3',
+      title: 'INTERACT',
+      color: G,
+      desc: 'Real UI, not\njust text output.',
+      detail: 'MCP Apps (SEP-1865):\ncharts, forms, pickers\nrendered inline.\nBidirectional.',
+      example: 'Stabilised Jan 2026',
+    },
+  ]
+
+  return (
+    <svg viewBox="0 0 720 280" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="280" fill={BG2} />
+      <text x="360" y="18" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="2">WHAT MCP ENABLES · THREE LAYERS</text>
+
+      {panels.map((p, i) => {
+        const x = startX + i * (panelW + panelGap)
+        const isTop = p.color === G
+        const isMid = p.color === GL
+        return (
+          <g key={p.title}>
+            <rect x={x} y="28" width={panelW} height="226" rx="3" fill={BG} stroke={p.color} strokeWidth={isTop ? 1.5 : 1} />
+            <rect x={x} y="28" width={panelW} height="34" rx="3" fill={p.color} opacity={isTop ? 0.85 : isMid ? 0.65 : 0.35} />
+            <text x={x + panelW / 2} y="42" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={isTop ? BG : MUTED} letterSpacing="1">{p.layer}</text>
+            <text x={x + panelW / 2} y="55" textAnchor="middle" fontFamily="monospace" fontSize="9" fill={isTop ? BG : TEXT} letterSpacing="2">{p.title}</text>
+
+            {/* Visual icon area */}
+            <rect x={x + 16} y="72" width={panelW - 32} height="52" rx="2" fill={p.color} opacity="0.07" />
+            {p.desc.split('\n').map((line, li) => (
+              <text key={li} x={x + panelW / 2} y={92 + li * 14} textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={p.color} opacity="0.9">{line}</text>
+            ))}
+
+            {/* Detail lines */}
+            {p.detail.split('\n').map((line, li) => (
+              <text key={li} x={x + panelW / 2} y={142 + li * 13} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>{line}</text>
+            ))}
+
+            {/* Example / bottom label */}
+            <rect x={x + 12} y="220" width={panelW - 24} height="24" rx="2" fill={p.color} opacity="0.08" />
+            {p.example.split('\n').map((line, li) => (
+              <text key={li} x={x + panelW / 2} y={232 + li * 11} textAnchor="middle" fontFamily="monospace" fontSize="7" fill={p.color} opacity="0.8">{line}</text>
+            ))}
+
+            {/* Arrow between panels */}
+            {i < 2 && (
+              <g>
+                <line x1={x + panelW + 4} y1="141" x2={x + panelW + panelGap - 4} y2="141" stroke={GL} strokeWidth="1.2" markerEnd="url(#mcpArr)" />
+              </g>
+            )}
+          </g>
+        )
+      })}
+
+      <defs>
+        <marker id="mcpArr" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill={GL} />
+        </marker>
+      </defs>
+
+      <text x="360" y="272" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED} letterSpacing="1">VALUE COMPOUNDS WITH EACH CONNECTED SERVER · COMPOSITION IS WHERE THE LEVERAGE LIVES</text>
+    </svg>
+  )
+}
+
+export function MCPTimelineDiagram() {
+  const G = '#1A4D3A', GL = '#3D7A60', BG = '#F5F4F0', BG2 = '#EDEAE4'
+  const BORDER = '#C9C6BE', TEXT = '#0A0A0A', MUTED = '#7A7872', AMBER = '#D4890A'
+
+  const events = [
+    { date: 'Nov 2024', label: 'Initial release\nopen-sourced by\nAnthropic', highlight: false },
+    { date: 'Jun 2025', label: 'Servers formalised\nas OAuth Resource\nServers (RFC 8707)', highlight: false },
+    { date: 'Sep 2025', label: 'MCP Registry\nlaunches\n~2,000 servers', highlight: false },
+    { date: 'Nov 2025', label: 'Agent loops,\nMCP Apps proposed\n(SEP-1865)', highlight: false },
+    { date: 'Dec 2025', label: 'Linux Foundation\nOpenAI + Block\njoin as co-founders', highlight: true },
+    { date: 'Jan 2026', label: 'MCP Apps\nstabilises\nClaude, VS Code…', highlight: false },
+    { date: 'Jul 2026', label: 'Largest revision:\nstateless core\nhardened OAuth', highlight: true },
+  ]
+
+  const n = events.length
+  const padX = 48
+  const lineY = 100
+  const totalW = 720 - padX * 2
+  const step = totalW / (n - 1)
+
+  return (
+    <svg viewBox="0 0 720 210" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="210" fill={BG2} />
+      <text x="360" y="18" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="2">MCP TIMELINE · NOV 2024 → JUL 2026</text>
+
+      {/* Base line */}
+      <line x1={padX} y1={lineY} x2={720 - padX} y2={lineY} stroke={BORDER} strokeWidth="1.2" />
+
+      {events.map((ev, i) => {
+        const x = padX + i * step
+        const isLast = i === n - 1
+        const aboveBelow = i % 2 === 0 ? 'above' : 'below'
+        const dotY = lineY
+        const textY = aboveBelow === 'above' ? lineY - 16 : lineY + 20
+        const dateY = aboveBelow === 'above' ? lineY - 64 : lineY + 68
+        const c = ev.highlight ? G : (i >= 4 ? GL : MUTED)
+
+        return (
+          <g key={ev.date}>
+            {/* Connector tick */}
+            <line x1={x} y1={lineY - 6} x2={x} y2={lineY + 6} stroke={c} strokeWidth={ev.highlight ? 2 : 1} />
+            {/* Dot */}
+            <circle cx={x} cy={dotY} r={ev.highlight ? 6 : 4} fill={c} opacity={ev.highlight ? 0.9 : 0.5} />
+            {/* Date label */}
+            <text x={x} y={aboveBelow === 'above' ? lineY - 76 : lineY + 80} textAnchor="middle" fontFamily="monospace" fontSize="7" fill={c} fontWeight={ev.highlight ? '700' : '400'}>{ev.date}</text>
+            {/* Event label lines */}
+            {ev.label.split('\n').map((line, li) => {
+              const baseY = aboveBelow === 'above' ? lineY - 62 + li * 12 : lineY + 20 + li * 12
+              return (
+                <text key={li} x={x} y={baseY} textAnchor="middle" fontFamily="monospace" fontSize="7" fill={ev.highlight ? G : MUTED}>{line}</text>
+              )
+            })}
+          </g>
+        )
+      })}
+
+      <text x="360" y="204" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED} letterSpacing="1">97M+ MONTHLY SDK DOWNLOADS · VENDOR-NEUTRAL SINCE DEC 2025</text>
+    </svg>
+  )
+}

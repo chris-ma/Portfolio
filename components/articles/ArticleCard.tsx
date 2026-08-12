@@ -23,6 +23,7 @@ import {
   AIUsageTypologyDiagram,
   CalibrationVsAccuracyDiagram,
   PlatformEngagementDiagram,
+  MCPInteropDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface ArticleCardProps {
@@ -113,6 +114,9 @@ function DiagramWrapper({ children }: { children: React.ReactNode }) {
 }
 
 function ArticleVisual({ slug, category, index }: { slug: string; category: string; index: number }) {
+  if (slug === 'mcp-model-context-protocol') {
+    return <DiagramWrapper><MCPInteropDiagram /></DiagramWrapper>
+  }
   if (slug === 'social-media-algorithms-kpis') {
     return <DiagramWrapper><PlatformEngagementDiagram /></DiagramWrapper>
   }
