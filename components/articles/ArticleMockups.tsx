@@ -2230,3 +2230,141 @@ export function TwoPassDiagram() {
     </svg>
   )
 }
+
+// ─── MVP Traction illustrations ───────────────────────────────────────────────
+
+export function ValidationSequenceDiagram() {
+  const SW = 150, SH = 78, GAP = 8, STEP_Y = 32
+  const steps = [
+    { label: 'Problem',     sub2: 'Validation',   detail: '15–20 interviews, repeated patterns',   fill: G,    op: 0.88 },
+    { label: 'Solution',    sub2: 'Verification', detail: 'Landing page · prototype · narrow POC', fill: GL,   op: 0.82 },
+    { label: 'Market',      sub2: 'Viability',    detail: 'Segment size + reachability',           fill: MUTED, op: 0.75 },
+    { label: 'Willingness', sub2: 'to Pay',       detail: 'Hardest signal. Strongest proof.',      fill: AMBER, op: 0.92 },
+  ]
+  const tx = 16 + 4 * (SW + GAP)
+  const ty = 16 + 3 * STEP_Y + SH - 42
+  return (
+    <svg viewBox="0 0 720 256" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="256" fill={BG} />
+      {steps.map((s, i) => {
+        const x = 16 + i * (SW + GAP)
+        const y = 16 + i * STEP_Y
+        return (
+          <g key={i}>
+            <rect x={x} y={y} width={SW} height={SH} rx="3" fill={s.fill} fillOpacity={s.op} />
+            <text x={x + 10} y={y + 18} fontFamily="monospace" fontSize="9" fontWeight="700" fill="#fff" opacity="0.5">0{i + 1}</text>
+            <text x={x + 10} y={y + 34} fontFamily="system-ui, sans-serif" fontSize="10.5" fontWeight="700" fill="#fff">{s.label}</text>
+            <text x={x + 10} y={y + 49} fontFamily="system-ui, sans-serif" fontSize="10.5" fontWeight="700" fill="#fff" opacity="0.9">{s.sub2}</text>
+            <text x={x + 10} y={y + 65} fontFamily="system-ui, sans-serif" fontSize="7.5" fill="#fff" opacity="0.7">{s.detail}</text>
+          </g>
+        )
+      })}
+      <text x={16 + SW + GAP / 2} y={36} textAnchor="middle" fontFamily="monospace" fontSize="6" fill={DANGER} opacity="0.65">most</text>
+      <text x={16 + SW + GAP / 2} y={46} textAnchor="middle" fontFamily="monospace" fontSize="6" fill={DANGER} opacity="0.65">die →</text>
+      <rect x={tx} y={ty} width={54} height={42} rx="3" fill={G} />
+      <text x={tx + 27} y={ty + 16} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fontWeight="700" fill="#fff" letterSpacing="1">TRAC</text>
+      <text x={tx + 27} y={ty + 30} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fontWeight="700" fill="#fff" letterSpacing="1">TION</text>
+      <text x="360" y="232" textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={MUTED} opacity="0.5" letterSpacing="1">FAST NO = GENUINE WIN</text>
+      <text x="360" y="246" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED} opacity="0.3" letterSpacing="1">EACH STEP IS A FILTER — MOST IDEAS SHOULD DIE AT 01</text>
+    </svg>
+  )
+}
+
+export function MVPScopeVisual() {
+  const CX = 360, CY = 128
+  return (
+    <svg viewBox="0 0 720 280" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="280" fill={BG} />
+      <ellipse cx={CX} cy={CY} rx="326" ry="104" fill="none" stroke={BORDER} strokeWidth="0.75" strokeDasharray="3 5" strokeOpacity="0.45" />
+      <text x={CX} y={CY - 108} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.35" letterSpacing="1">FULL VISION</text>
+      <ellipse cx={CX} cy={CY} rx="228" ry="74" fill="none" stroke={G} strokeWidth="1" strokeDasharray="6 3" strokeOpacity="0.35" />
+      <text x={CX} y={CY - 78} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED} opacity="0.5">Admin tooling · multi-role · analytics · edge cases</text>
+      <ellipse cx={CX} cy={CY} rx="140" ry="46" fill={G} fillOpacity="0.12" stroke={G} strokeWidth="1.5" strokeOpacity="0.65" />
+      <text x={CX} y={CY - 22} textAnchor="middle" fontFamily="monospace" fontSize="7" fill={G} opacity="0.5" letterSpacing="2">MVP CORE</text>
+      <text x={CX} y={CY - 6} textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill={G} letterSpacing="0.5">ONE USER TYPE</text>
+      <text x={CX} y={CY + 10} textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill={G} letterSpacing="0.5">ONE JOB</text>
+      <text x={CX} y={CY + 26} textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill={G} letterSpacing="0.5">ONE WORKFLOW</text>
+      <line x1="120" y1="248" x2="600" y2="248" stroke={BORDER} strokeWidth="0.75" strokeOpacity="0.5" />
+      <text x={CX} y="262" textAnchor="middle" fontFamily="monospace" fontSize="9" fill={G} opacity="0.65" letterSpacing="0.5">90 days concept → live MVP</text>
+      <text x={CX} y="276" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9" fill={MUTED} opacity="0.5">One complete workflow beats several partial ones.</text>
+    </svg>
+  )
+}
+
+export function TractionMetricsDiagram() {
+  const CW = 340, CH = 105, GAP = 8
+  const ROW2 = 82
+  const ROW3 = ROW2 + CH + GAP
+  const barTotalW = 286
+
+  // Burn multiple zone widths (scale 0–6)
+  const bmGreen = Math.round(barTotalW * (1.5 / 6))
+  const bmAmber = Math.round(barTotalW * (3.5 / 6))
+  const bmRed   = barTotalW - bmGreen - bmAmber
+
+  // CAC payback (scale 0–36 months)
+  const cacMarkW = Math.round(barTotalW * (18 / 36))
+
+  return (
+    <svg viewBox="0 0 720 308" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="308" fill={BG} />
+
+      {/* ── Hero strip ── */}
+      <rect x="16" y="16" width="688" height="50" rx="3" fill={G} fillOpacity="0.9" />
+      <text x="36" y="50" fontFamily="system-ui, sans-serif" fontSize="28" fontWeight="700" fill="#fff">127%</text>
+      <text x="132" y="43" fontFamily="monospace" fontSize="8" fill="#fff" opacity="0.55" letterSpacing="1">NRR</text>
+      <polyline points="165,54 205,46 248,42 292,36 336,39 382,32 428,26 474,22 520,28" fill="none" stroke="#fff" strokeWidth="1.5" strokeOpacity="0.55" />
+      <text x="694" y="34" textAnchor="end" fontFamily="monospace" fontSize="7.5" fill="#fff" opacity="0.55" letterSpacing="0.5">ONE HERO METRIC</text>
+      <text x="694" y="47" textAnchor="end" fontFamily="monospace" fontSize="7.5" fill="#fff" opacity="0.55" letterSpacing="0.5">FULL WIDTH · FIRST</text>
+      <text x="694" y="60" textAnchor="end" fontFamily="monospace" fontSize="7" fill="#fff" opacity="0.3">not buried in a table</text>
+
+      {/* ── TL: Activation ── */}
+      <rect x="16" y={ROW2} width={CW} height={CH} rx="3" fill={BG2} stroke={BORDER} strokeWidth="0.75" />
+      <text x="28" y={ROW2 + 18} fontFamily="monospace" fontSize="8.5" fontWeight="700" fill={G} opacity="0.7" letterSpacing="1.5">ACTIVATION</text>
+      <rect x="28" y={ROW2 + 28} width={240} height={18} rx="2" fill={G} fillOpacity="0.2" />
+      <text x="34" y={ROW2 + 41} fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.7">SIGNED UP</text>
+      <text x="272" y={ROW2 + 41} fontFamily="monospace" fontSize="7.5" fill={MUTED} opacity="0.6">100%</text>
+      <rect x="28" y={ROW2 + 55} width={156} height={18} rx="2" fill={G} fillOpacity="0.6" />
+      <text x="34" y={ROW2 + 68} fontFamily="monospace" fontSize="7.5" fill="#fff" opacity="0.9">ACTIVE</text>
+      <text x="188" y={ROW2 + 68} fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.8">~65%</text>
+      <text x="28" y={ROW2 + 96} fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED} opacity="0.6">Signed up ≠ used. That gap is the real signal.</text>
+
+      {/* ── TR: Retention NRR ── */}
+      <rect x={364} y={ROW2} width={CW} height={CH} rx="3" fill={BG2} stroke={BORDER} strokeWidth="0.75" />
+      <text x="376" y={ROW2 + 18} fontFamily="monospace" fontSize="8.5" fontWeight="700" fill={G} opacity="0.7" letterSpacing="1">NET REVENUE RETENTION</text>
+      <line x1="376" y1={ROW2 + 75} x2="692" y2={ROW2 + 75} stroke={BORDER} strokeWidth="0.5" strokeOpacity="0.5" />
+      <line x1="376" y1={ROW2 + 60} x2="692" y2={ROW2 + 60} stroke={AMBER} strokeWidth="0.75" strokeDasharray="4 3" strokeOpacity="0.7" />
+      <text x="378" y={ROW2 + 57} fontFamily="monospace" fontSize="6.5" fill={AMBER} opacity="0.8">100% floor</text>
+      <polyline points={`394,${ROW2+72} 440,${ROW2+65} 490,${ROW2+55} 550,${ROW2+50} 608,${ROW2+43} 668,${ROW2+38}`} fill="none" stroke={G} strokeWidth="2" strokeOpacity="0.7" />
+      <text x="676" y={ROW2 + 36} fontFamily="monospace" fontSize="7" fill={G} opacity="0.85">106%</text>
+      <text x="376" y={ROW2 + 96} fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED} opacity="0.6">Below 100% = serious flag at Series A.</text>
+
+      {/* ── BL: Burn Multiple ── */}
+      <rect x="16" y={ROW3} width={CW} height={CH} rx="3" fill={BG2} stroke={BORDER} strokeWidth="0.75" />
+      <text x="28" y={ROW3 + 18} fontFamily="monospace" fontSize="8.5" fontWeight="700" fill={G} opacity="0.7" letterSpacing="1.5">BURN MULTIPLE</text>
+      <rect x="28" y={ROW3 + 48} width={barTotalW} height={18} rx="3" fill={BORDER} fillOpacity="0.4" />
+      <rect x="28" y={ROW3 + 48} width={bmGreen} height={18} rx="3" fill={G} fillOpacity="0.75" />
+      <rect x={28 + bmGreen} y={ROW3 + 48} width={bmAmber} height={18} fill={AMBER} fillOpacity="0.4" />
+      <rect x={28 + bmGreen + bmAmber} y={ROW3 + 48} width={bmRed} height={18} rx="3" fill={DANGER} fillOpacity="0.6" />
+      <text x={28 + bmGreen / 2} y={ROW3 + 61} textAnchor="middle" fontFamily="monospace" fontSize="7" fill="#fff" fontWeight="700">{'<'}1.5×</text>
+      <text x={28 + bmGreen + bmAmber + bmRed / 2} y={ROW3 + 61} textAnchor="middle" fontFamily="monospace" fontSize="7" fill="#fff" fontWeight="700">{'>'}5×</text>
+      <text x="28" y={ROW3 + 80} fontFamily="monospace" fontSize="7" fill={MUTED} opacity="0.5">0</text>
+      <text x={28 + barTotalW / 2} y={ROW3 + 80} textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED} opacity="0.5">3×</text>
+      <text x={28 + barTotalW} y={ROW3 + 80} textAnchor="end" fontFamily="monospace" fontSize="7" fill={MUTED} opacity="0.5">6+</text>
+      <text x="28" y={ROW3 + 96} fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED} opacity="0.6">{'<'}1.5× = market pulling. {'>'}5× = pushing uphill.</text>
+
+      {/* ── BR: CAC Payback ── */}
+      <rect x={364} y={ROW3} width={CW} height={CH} rx="3" fill={BG2} stroke={BORDER} strokeWidth="0.75" />
+      <text x="376" y={ROW3 + 18} fontFamily="monospace" fontSize="8.5" fontWeight="700" fill={G} opacity="0.7" letterSpacing="1.5">CAC PAYBACK</text>
+      <rect x="376" y={ROW3 + 48} width={barTotalW} height={18} rx="3" fill={BORDER} fillOpacity="0.4" />
+      <rect x="376" y={ROW3 + 48} width={cacMarkW} height={18} rx="3" fill={G} fillOpacity="0.55" />
+      <rect x={376 + cacMarkW} y={ROW3 + 48} width={barTotalW - cacMarkW} height={18} rx="3" fill={DANGER} fillOpacity="0.45" />
+      <line x1={376 + cacMarkW} y1={ROW3 + 42} x2={376 + cacMarkW} y2={ROW3 + 72} stroke={AMBER} strokeWidth="1.5" strokeDasharray="2 2" />
+      <text x={376 + cacMarkW} y={ROW3 + 40} textAnchor="middle" fontFamily="monospace" fontSize="6.5" fill={AMBER} opacity="0.9">18mo</text>
+      <text x={376 + cacMarkW} y={ROW3 + 82} textAnchor="middle" fontFamily="monospace" fontSize="6.5" fill={AMBER} opacity="0.8">Series A limit</text>
+      <text x="376" y={ROW3 + 80} fontFamily="monospace" fontSize="7" fill={MUTED} opacity="0.5">0</text>
+      <text x={376 + barTotalW} y={ROW3 + 80} textAnchor="end" fontFamily="monospace" fontSize="7" fill={MUTED} opacity="0.5">36mo</text>
+      <text x="376" y={ROW3 + 96} fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED} opacity="0.6">Over 18 months = hard stop at Series A.</text>
+    </svg>
+  )
+}

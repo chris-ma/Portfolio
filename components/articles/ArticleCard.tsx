@@ -17,6 +17,7 @@ import {
   EEATFramework,
   SwapTestDiagram,
   DesignFundamentalsGrid,
+  ValidationSequenceDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface ArticleCardProps {
@@ -107,6 +108,9 @@ function DiagramWrapper({ children }: { children: React.ReactNode }) {
 }
 
 function ArticleVisual({ slug, category, index }: { slug: string; category: string; index: number }) {
+  if (slug === 'mvp-traction-validation') {
+    return <DiagramWrapper><ValidationSequenceDiagram /></DiagramWrapper>
+  }
   if (slug === 'design-taste-frontend') {
     return <DiagramWrapper><SwapTestDiagram /></DiagramWrapper>
   }

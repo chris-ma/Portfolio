@@ -13,6 +13,7 @@ import {
   RLSStateDiagram, OWASPTopTenVisual, RLSPolicyDiagram,
   SlopPatternVisual, EEATFramework, WritingWorkflowDiagram,
   SwapTestDiagram, DesignFundamentalsGrid, TwoPassDiagram,
+  ValidationSequenceDiagram, MVPScopeVisual, TractionMetricsDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface PageProps {
@@ -41,6 +42,9 @@ export default function ArticlePage({ params }: PageProps) {
     month: 'long',
     day: 'numeric',
   })
+
+  if (article.slug === 'mvp-traction-validation')
+    return <MVPTractionArticle article={article} formattedDate={formattedDate} />
 
   if (article.slug === 'design-taste-frontend')
     return <DesignTasteArticle article={article} formattedDate={formattedDate} />
@@ -85,6 +89,330 @@ export default function ArticlePage({ params }: PageProps) {
   }
 
   notFound()
+}
+
+function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+
+        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+          PROOF<br />
+          <span className="text-brand-cobalt">FIRST.</span>
+        </h1>
+
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+          {article!.subtitle}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 py-14 space-y-16">
+
+        {/* Lede */}
+        <section>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+            Building has gotten cheap. AI-assisted engineering has collapsed the cost of shipping software, which means the scarce resource has inverted. It is no longer &ldquo;can you build it.&rdquo; It is &ldquo;can you prove anyone actually wants it, fast, before you spend real time and credibility on the wrong thing.&rdquo;
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            Both investors and internal stakeholders have adjusted accordingly. A deck full of vision does not move either audience anymore. Evidence does. 2026 is the year of proof over promises.
+          </p>
+        </section>
+
+        {/* Section 01 — Three things */}
+        <section>
+          <SectionHeading number="01" title="Three things that are not the same thing" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Conflating these is the single most common strategic error at this stage. Each one proves something different, and understanding what each one does not prove is more useful than understanding what it does.
+          </p>
+
+          <div className="mt-8 border border-brand-concrete divide-y divide-brand-concrete">
+            <div className="grid grid-cols-3 divide-x divide-brand-concrete bg-brand-graphite/40">
+              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-muted">Term</span></div>
+              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-muted">Proves</span></div>
+              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-muted">Does not prove</span></div>
+            </div>
+            {[
+              {
+                term: 'Proof of Concept',
+                proves: 'The idea is technically possible — it can be built.',
+                not: 'Nothing about whether anyone wants it.',
+              },
+              {
+                term: 'MVP',
+                proves: 'A specific segment gets real value from the smallest working version.',
+                not: 'Not the full vision. Deliberately incomplete everywhere except the one core job.',
+              },
+              {
+                term: 'Traction',
+                proves: 'Repeatable demand exists — people come back, pay, or refer without being pushed.',
+                not: 'Not a spike, a vanity number, or a one-time launch bump.',
+              },
+            ].map(({ term, proves, not }) => (
+              <div key={term} className="grid grid-cols-3 divide-x divide-brand-concrete">
+                <div className="px-4 py-4">
+                  <span className="font-sans font-semibold text-sm text-brand-black">{term}</span>
+                </div>
+                <div className="px-4 py-4">
+                  <p className="font-sans text-sm text-brand-black/70 leading-relaxed">{proves}</p>
+                </div>
+                <div className="px-4 py-4">
+                  <p className="font-sans text-sm text-brand-muted leading-relaxed italic">{not}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            A POC without traction is theory. An MVP without traction is a beta nobody has proven anyone wants. Traction is the actual finish line. Everything before it exists to get you there as cheaply and quickly as possible.
+          </p>
+        </section>
+
+        {/* Section 02 — Validation sequence */}
+        <section>
+          <SectionHeading number="02" title="The four-step validation sequence" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Run these in order. Each step is a filter. Most ideas should die at Problem Validation, and that is the system working correctly, not failing.
+          </p>
+
+          <div className="mt-8">
+            <ValidationSequenceDiagram />
+          </div>
+
+          <div className="mt-8 space-y-5">
+            {[
+              {
+                n: '01',
+                head: 'Problem Validation',
+                body: '15–20 structured interviews with a specific segment. If you are not hearing repeated patterns by interview 20, the segment is defined too broadly. Narrow it and rerun.',
+              },
+              {
+                n: '02',
+                head: 'Solution Verification',
+                body: 'Does your proposed solution actually resolve the validated problem? A landing page, clickable prototype, or narrow POC earns its keep here: cheap to build, fast to falsify.',
+              },
+              {
+                n: '03',
+                head: 'Market Viability',
+                body: 'Is the addressable segment large enough, and reachable enough, to be worth pursuing? This is the filter most teams run first. Run it third.',
+              },
+              {
+                n: '04',
+                head: 'Willingness to Pay',
+                body: 'The hardest and most honest signal. People will say they like an idea in an interview. Far fewer will hand over a card number — or, internally, reallocate their own team\'s hours toward it.',
+              },
+            ].map(({ n, head, body }) => (
+              <div key={n} className="flex gap-5 items-start border-b border-brand-concrete pb-5 last:border-b-0">
+                <span className="font-display text-3xl text-brand-cobalt/20 flex-shrink-0 w-10 leading-none">{n}</span>
+                <div>
+                  <h4 className="font-sans font-semibold text-brand-black mb-2">{head}</h4>
+                  <p className="font-sans text-sm text-brand-black/70 leading-relaxed">{body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <Callout label="The mindset shift" className="mt-8">
+            <p className="font-sans text-sm text-brand-black/75 leading-relaxed">
+              Success in this phase is measured by how fast you can invalidate a bad idea, not confirm a good one. Every week spent building on an unvalidated assumption is a week you cannot get back. A fast &ldquo;no&rdquo; is a genuine win.
+            </p>
+          </Callout>
+        </section>
+
+        {/* Section 03 — Scoping the MVP */}
+        <section>
+          <SectionHeading number="03" title="Scoping the MVP" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            A strong MVP scope in practice: one user type, one core job, one complete end-to-end workflow, using only the services required to make that one workflow function in production. Everything else looks strategic on a roadmap and is almost always waste at this stage.
+          </p>
+
+          <div className="mt-8">
+            <MVPScopeVisual />
+          </div>
+
+          <div className="mt-8 space-y-4">
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Target 90 days, concept to live MVP</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">If it is taking meaningfully longer, that is usually a sign of over-building or of avoiding an uncomfortable truth about the idea, rather than a genuinely hard technical problem.</p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">No-code and low-code are a legitimate MVP</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">A landing page with a specific value-proposition headline and a working signup or waitlist flow is a valid first MVP. Do not hire engineers to validate the &ldquo;what&rdquo; and &ldquo;why.&rdquo;</p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">AI-assisted engineering: use for scaffolding, not decisions</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Let AI handle boilerplate, drafts, migrations, and repetitive scaffolding. Keep the architectural decisions — data model, auth, RLS policy design, payment integration — as deliberate human calls. Treating AI-generated first-draft output as production-ready is where hidden defects concentrate, and those decisions are exactly the ones that get expensive to unwind later.</p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">One complete workflow beats several partial ones</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">A user who can go start-to-finish through the one thing that matters gives you a real signal. A user poking at three half-finished features gives you noise.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 04 — Traction metrics */}
+        <section>
+          <SectionHeading number="04" title="Traction metrics that actually mean something" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            The rule that separates a real traction result from a vanity one: waitlists, a Product Hunt spike, and social follower counts tell an investor nothing on their own. Repeatable demand is what they are actually looking for. Proof that a specific segment comes back, pays, or refers others without being pushed each time.
+          </p>
+
+          <div className="mt-8">
+            <TractionMetricsDiagram />
+          </div>
+
+          <div className="mt-8 space-y-4">
+            {[
+              {
+                metric: 'Activation',
+                desc: 'Do people who sign up actually use the product, or do they sign up and vanish? This gap — signed up vs. actively used — is the first real signal, and it is almost always worse than the founder thinks.',
+              },
+              {
+                metric: 'Retention (NRR)',
+                desc: 'Do they come back? Do they keep paying? Median Net Revenue Retention for venture-backed B2B SaaS sits around 106%. Dropping below 100% is a serious flag in Series A conversations, regardless of how fast top-line growth looks.',
+              },
+              {
+                metric: 'Growth rate, not size',
+                desc: 'A smaller company growing fast consistently beats a larger one growing slowly in how investors weigh these numbers against each other. Size alone is noise without the trendline.',
+              },
+              {
+                metric: 'Burn multiple',
+                desc: 'Cash burned divided by net new revenue. Under roughly 1.5× signals the market is genuinely pulling your product forward. Above roughly 5× signals you are pushing it uphill.',
+              },
+              {
+                metric: 'CAC payback period',
+                desc: 'The time it takes acquisition cost to pay itself back in revenue. Over roughly 18 months is treated as a hard stop at Series A in the current funding climate, regardless of everything else.',
+              },
+            ].map(({ metric, desc }) => (
+              <div key={metric} className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+                <span className="font-sans font-semibold text-sm text-brand-black block mb-1">{metric}</span>
+                <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 space-y-4">
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              How to present it: one hero metric, full-width, with a trendline — not buried in a table. Stack two or three supporting proofs underneath. Investors reportedly spend roughly three times longer on the traction slide than any other page in a seed deck, and decide whether to keep listening within the first 20 seconds of seeing it. The hero number needs to be the strongest thing you have, put first.
+            </p>
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              Paid pilots are the strongest available proof point. Someone reallocating real money is qualitatively different evidence from someone saying yes in an interview. A signed pilot beats a waitlist of a thousand signups.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 05 — Intrapreneurship track */}
+        <section>
+          <SectionHeading number="05" title="The intrapreneurship track" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Same underlying discipline, different audience and different currency. You are not raising capital — you are winning internal sponsorship, budget, and protected time against competing priorities.
+          </p>
+
+          <div className="mt-6 space-y-4">
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              Stage-Gate is the dominant internal model: progress is reviewed at defined milestones, unravelling a Value Hypothesis, a Business Hypothesis, and a Growth Hypothesis in sequence. Most organisations need the sense of control that milestone review provides — pure &ldquo;move fast and don&apos;t ask&rdquo; does not survive contact with a budget owner.
+            </p>
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              You often have resources a startup founder does not: existing customer data, existing distribution channels, regulatory cover, technical infrastructure already in place. This can get you to traction faster than an equivalent external startup — but only if you use those advantages deliberately rather than defaulting to building everything from scratch.
+            </p>
+          </div>
+
+          <div className="mt-8">
+            <h3 className="font-sans font-semibold text-brand-black mb-4">What internal &ldquo;traction&rdquo; looks like before there is external revenue</h3>
+            <div className="space-y-3">
+              {[
+                'A senior sponsor who can actually unblock resources and shield the initiative from bureaucratic drag. Equivalent to a lead investor.',
+                'A pilot with a real internal team or a friendly external customer, with actual usage data — not just a positive meeting.',
+                'Budget or headcount reallocated toward the initiative specifically, not left as a side project on spare time. An internal team giving up their hours is a stronger signal than one saying they like the idea.',
+                'Learning velocity tracked as an explicit outcome. Reward systems that only value short-term output will quietly kill genuine experimentation.',
+              ].map((item, i) => (
+                <div key={i} className="flex gap-4 items-start">
+                  <span className="font-sans text-[11px] font-semibold text-brand-cobalt flex-shrink-0 mt-0.5 w-5">{i + 1}.</span>
+                  <p className="font-sans text-sm text-brand-black/70 leading-relaxed">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-8">
+            <h3 className="font-sans font-semibold text-brand-black mb-4">Three guardrails</h3>
+            <div className="space-y-3">
+              {[
+                'Decentralise decision rights to a small, accountable team early. Layered approvals are not caution — they are inertia dressed up as governance.',
+                'Reframe failed experiments explicitly as disproved hypotheses. This is both more accurate and the only way learning velocity survives a performance-review cycle.',
+                'Ring-fence budget before you need it. Organisations that pre-allocate incubation funding during normal budgeting report meaningfully smoother internal venture launches than those fighting for it project by project.',
+              ].map((text, i) => (
+                <div key={i} className="flex gap-4 items-start border-l-2 border-brand-cobalt/20 pl-4 py-1">
+                  <p className="font-sans text-sm text-brand-black/70 leading-relaxed">{text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section 06 — Checklist */}
+        <section>
+          <SectionHeading number="06" title="Before you build anything further" />
+          <Callout label="Quick-reference checklist">
+            <ul className="space-y-3 mt-2">
+              {[
+                'Have I validated the problem with 15–20 real conversations, or am I still assuming it?',
+                'Does my current scope cover one user type, one job, one complete workflow — or has it quietly grown?',
+                'Is my strongest evidence a genuine commitment (money, time, budget) or just positive sentiment?',
+                'Am I measuring repeatable demand, or a one-time spike I\'m mistaking for a trend?',
+                'If this isn\'t gaining real traction, would I have the discipline to say so — to myself, and to whoever is sponsoring it?',
+              ].map((q, i) => (
+                <li key={i} className="flex gap-3 font-sans text-sm text-brand-black/70 leading-relaxed">
+                  <span className="text-brand-cobalt/50 flex-shrink-0 mt-0.5">□</span>
+                  {q}
+                </li>
+              ))}
+            </ul>
+          </Callout>
+        </section>
+
+        {/* Closing */}
+        <section>
+          <p className="font-sans text-lg text-brand-black/75 leading-relaxed border-t border-brand-concrete pt-10">
+            The finish line is not a shipped product. It is repeatable demand. Everything else is progress toward it — not a substitute for it.
+          </p>
+        </section>
+
+        {/* Footer */}
+        <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
+          <Link href="/#notes" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+            ← All Field Notes
+          </Link>
+          <div className="flex flex-wrap gap-2">
+            {article!.tags.map((tag) => (
+              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/60 border border-brand-cobalt/20 px-2 py-0.5">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </footer>
+      </div>
+    </div>
+  )
 }
 
 function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {

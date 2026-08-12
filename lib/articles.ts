@@ -11,6 +11,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'mvp-traction-validation',
+    title: 'Proof First',
+    subtitle: "Building has gotten cheap. Attention hasn't. The four-step sequence that gets you to traction before you run out of either.",
+    category: 'Strategy',
+    date: '2026-08-12',
+    readTime: '11 min read',
+    tags: ['MVP', 'Traction', 'Startups', 'Validation', 'Product Strategy'],
+    excerpt:
+      "A POC without traction is theory. An MVP without traction is a beta nobody's proven anyone wants. Traction is the actual finish line — everything before it exists to get you there as cheaply and quickly as possible.",
+  },
+  {
     slug: 'design-taste-frontend',
     title: 'The Swap Test',
     subtitle: 'Taste is pattern recognition, not talent. The deliberate practice that builds it, and the diagnostic that keeps your work from being a default.',
