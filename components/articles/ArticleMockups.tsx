@@ -2368,3 +2368,144 @@ export function TractionMetricsDiagram() {
     </svg>
   )
 }
+
+// ─── Marketing Funnel illustrations ────────────────────────────────────────────
+
+export function FunnelStageDiagram() {
+  const CX = 360
+  const stages = [
+    { label: 'AWARENESS',     mindset: 'exploratory', metric: 'Reach · CPM',       fill: G,     w: 555, op: 0.88 },
+    { label: 'CONSIDERATION', mindset: 'comparing',   metric: 'MQL → SQL rate',    fill: GL,    w: 455, op: 0.82 },
+    { label: 'CONVERSION',    mindset: 'deciding',    metric: 'CPA · close rate',  fill: AMBER, w: 348, op: 0.88 },
+    { label: 'LOYALTY',       mindset: 'validating',  metric: 'NRR · renewal',     fill: GL,    w: 240, op: 0.72 },
+    { label: 'ADVOCACY',      mindset: 'vouching',    metric: 'Referral · NPS',    fill: G,     w: 142, op: 0.86 },
+  ]
+  const SH = 44, GAP = 5, startY = 20
+  return (
+    <svg viewBox="0 0 720 296" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="296" fill={BG} />
+      <line x1="648" y1="10" x2="648" y2="266" stroke={BORDER} strokeWidth="0.5" strokeOpacity="0.4" />
+      <text x="714" y="12" textAnchor="end" fontFamily="monospace" fontSize="6.5" fill={MUTED} opacity="0.4" letterSpacing="1">PRIMARY METRIC</text>
+      {stages.map((s, i) => {
+        const y = startY + i * (SH + GAP)
+        const x = CX - s.w / 2
+        const midY = y + SH / 2 + 5
+        return (
+          <g key={i}>
+            <rect x={x} y={y} width={s.w} height={SH} rx="3" fill={s.fill} fillOpacity={s.op} />
+            <text x={x + 10} y={midY} fontFamily="monospace" fontSize="8" fontWeight="700" fill="#fff" opacity="0.38">0{i + 1}</text>
+            <text x={x + 30} y={midY} fontFamily="monospace" fontSize="6.5" fill="#fff" opacity="0.32">{s.mindset}</text>
+            <text x={CX} y={midY} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="11" fontWeight="700" fill="#fff" letterSpacing="0.5">{s.label}</text>
+            <text x="714" y={midY} textAnchor="end" fontFamily="monospace" fontSize="7" fill={MUTED} opacity="0.65">{s.metric}</text>
+          </g>
+        )
+      })}
+      <text x={CX} y="278" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} opacity="0.45" letterSpacing="1">ADVOCACY FEEDS AWARENESS — A LOOP, NOT A LINE</text>
+      <text x={CX} y="292" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED} opacity="0.4">Expansion ARR is 40%+ of new ARR for B2B SaaS above $50M — Loyalty and Advocacy are revenue stages</text>
+    </svg>
+  )
+}
+
+export function ScoringGapDiagram() {
+  const BAR_MAX = 220
+  const staticPcts  = [5, 5, 90]
+  const causalPcts  = [35, 30, 35]
+  const stages = ['TOFU', 'MOFU', 'BOFU']
+  return (
+    <svg viewBox="0 0 720 230" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="230" fill={BG} />
+
+      {/* ── Left: Static scoring ── */}
+      <rect x="16" y="16" width="308" height="186" rx="3" fill={BG2} stroke={BORDER} strokeWidth="0.75" />
+      <rect x="16" y="16" width="308" height="32" rx="3" fill={MUTED} fillOpacity="0.12" />
+      <text x="170" y="37" textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill={MUTED} letterSpacing="1">STATIC SCORING</text>
+      {['Title match', 'Company size', 'Industry tag', 'Geography'].map((sig, i) => (
+        <g key={sig}>
+          <rect x="30" y={62 + i * 24} width="8" height="8" rx="1" fill={MUTED} fillOpacity="0.25" />
+          <text x="46" y={73 + i * 24} fontFamily="system-ui, sans-serif" fontSize="9" fill={MUTED} opacity="0.7">{sig}</text>
+        </g>
+      ))}
+      <text x="30" y="158" fontFamily="monospace" fontSize="7" fill={MUTED} opacity="0.55">MQL → SQL CONVERSION RATE</text>
+      <rect x="30" y="164" width={BAR_MAX} height="18" rx="2" fill={MUTED} fillOpacity="0.1" />
+      <rect x="30" y="164" width={Math.round(BAR_MAX * 0.14)} height="18" rx="2" fill={MUTED} fillOpacity="0.45" />
+      <text x={30 + Math.round(BAR_MAX * 0.14) + 6} y="177" fontFamily="monospace" fontSize="9" fontWeight="700" fill={MUTED} opacity="0.7">13–15%</text>
+      <text x="170" y="212" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED} opacity="0.5">Demographic data alone. Measures fit, not intent.</text>
+
+      {/* ── Right: Behavioural scoring ── */}
+      <rect x="396" y="16" width="308" height="186" rx="3" fill={BG2} stroke={G} strokeWidth="0.75" strokeOpacity="0.5" />
+      <rect x="396" y="16" width="308" height="32" rx="3" fill={G} fillOpacity="0.1" />
+      <text x="550" y="37" textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill={G} letterSpacing="1">BEHAVIOURAL SCORING</text>
+      {['Pricing page visit', 'Downloaded guide', 'Webinar attendance', 'Demo request'].map((sig, i) => (
+        <g key={sig}>
+          <rect x="410" y={62 + i * 24} width="8" height="8" rx="1" fill={G} fillOpacity="0.5" />
+          <text x="426" y={73 + i * 24} fontFamily="system-ui, sans-serif" fontSize="9" fill={TEXT} opacity="0.8">{sig}</text>
+        </g>
+      ))}
+      <text x="410" y="158" fontFamily="monospace" fontSize="7" fill={G} opacity="0.6">MQL → SQL CONVERSION RATE</text>
+      <rect x="410" y="164" width={BAR_MAX} height="18" rx="2" fill={MUTED} fillOpacity="0.1" />
+      <rect x="410" y="164" width={Math.round(BAR_MAX * 0.395)} height="18" rx="2" fill={G} fillOpacity="0.65" />
+      <text x={410 + Math.round(BAR_MAX * 0.395) + 6} y="177" fontFamily="monospace" fontSize="9" fontWeight="700" fill={G} opacity="0.9">39–40%</text>
+      <text x="550" y="212" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={G} opacity="0.55">Engagement signal. Measures intent, not just fit.</text>
+
+      {/* ── Center gap label ── */}
+      <text x="360" y="108" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="28" fontWeight="700" fill={G} opacity="0.12">3×</text>
+      <text x="360" y="126" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} opacity="0.5" letterSpacing="1">GAP</text>
+      <text x="360" y="143" textAnchor="middle" fontFamily="monospace" fontSize="6.5" fill={MUTED} opacity="0.5">engineering,</text>
+      <text x="360" y="154" textAnchor="middle" fontFamily="monospace" fontSize="6.5" fill={MUTED} opacity="0.5">not content</text>
+    </svg>
+  )
+}
+
+export function AttributionDiagram() {
+  const BAR_MAX = 220
+  const stages = ['TOFU', 'MOFU', 'BOFU']
+  const lastClick = [4, 6, 90]
+  const causal    = [35, 30, 35]
+  return (
+    <svg viewBox="0 0 720 228" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="228" fill={BG} />
+
+      {/* ── Left: Last-click ── */}
+      <rect x="16" y="16" width="316" height="182" rx="3" fill={BG2} stroke={DANGER} strokeWidth="0.75" strokeOpacity="0.4" />
+      <rect x="16" y="16" width="316" height="32" rx="3" fill={DANGER} fillOpacity="0.08" />
+      <text x="174" y="37" textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill={DANGER} opacity="0.75" letterSpacing="1">LAST-CLICK ATTRIBUTION</text>
+      {stages.map((stage, i) => {
+        const barW = Math.max(Math.round((lastClick[i] / 100) * BAR_MAX), 4)
+        const y = 62 + i * 36
+        const color = i === 2 ? DANGER : MUTED
+        const op    = i === 2 ? 0.65  : 0.25
+        return (
+          <g key={stage}>
+            <text x="30" y={y + 12} fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.6">{stage}</text>
+            <rect x="72" y={y} width={BAR_MAX} height="18" rx="2" fill={MUTED} fillOpacity="0.1" />
+            <rect x="72" y={y} width={barW} height="18" rx="2" fill={color} fillOpacity={op} />
+            <text x={72 + barW + 6} y={y + 13} fontFamily="monospace" fontSize="8" fill={color} opacity={i === 2 ? 0.8 : 0.4}>{lastClick[i]}%</text>
+          </g>
+        )
+      })}
+      <text x="174" y="183" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={DANGER} opacity="0.65">Systematically over-credits BOFU.</text>
+      <text x="174" y="196" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED} opacity="0.5">Awareness and nurture look worthless.</text>
+      <text x="174" y="214" textAnchor="middle" fontFamily="monospace" fontSize="6.5" fill={MUTED} opacity="0.35">where most teams still are in 2026</text>
+
+      {/* ── Right: Causal / MMM ── */}
+      <rect x="388" y="16" width="316" height="182" rx="3" fill={BG2} stroke={G} strokeWidth="0.75" strokeOpacity="0.5" />
+      <rect x="388" y="16" width="316" height="32" rx="3" fill={G} fillOpacity="0.08" />
+      <text x="546" y="37" textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill={G} opacity="0.8" letterSpacing="1">CAUSAL / MMM</text>
+      {stages.map((stage, i) => {
+        const barW = Math.round((causal[i] / 100) * BAR_MAX)
+        const y = 62 + i * 36
+        return (
+          <g key={stage}>
+            <text x="402" y={y + 12} fontFamily="monospace" fontSize="8" fill={MUTED} opacity="0.6">{stage}</text>
+            <rect x="444" y={y} width={BAR_MAX} height="18" rx="2" fill={MUTED} fillOpacity="0.1" />
+            <rect x="444" y={y} width={barW} height="18" rx="2" fill={G} fillOpacity="0.55" />
+            <text x={444 + barW + 6} y={y + 13} fontFamily="monospace" fontSize="8" fill={G} opacity="0.75">{causal[i]}%</text>
+          </g>
+        )
+      })}
+      <text x="546" y="183" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={G} opacity="0.7">Distributed credit. Accurate stage-level view.</text>
+      <text x="546" y="196" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED} opacity="0.5">Shows what is actually driving pipeline.</text>
+      <text x="546" y="214" textAnchor="middle" fontFamily="monospace" fontSize="6.5" fill={G} opacity="0.35">Marketing Mix Modelling · incrementality testing</text>
+    </svg>
+  )
+}

@@ -18,6 +18,7 @@ import {
   SwapTestDiagram,
   DesignFundamentalsGrid,
   ValidationSequenceDiagram,
+  FunnelStageDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface ArticleCardProps {
@@ -108,6 +109,9 @@ function DiagramWrapper({ children }: { children: React.ReactNode }) {
 }
 
 function ArticleVisual({ slug, category, index }: { slug: string; category: string; index: number }) {
+  if (slug === 'marketing-funnel-engineering') {
+    return <DiagramWrapper><FunnelStageDiagram /></DiagramWrapper>
+  }
   if (slug === 'mvp-traction-validation') {
     return <DiagramWrapper><ValidationSequenceDiagram /></DiagramWrapper>
   }

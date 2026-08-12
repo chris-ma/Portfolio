@@ -14,6 +14,7 @@ import {
   SlopPatternVisual, EEATFramework, WritingWorkflowDiagram,
   SwapTestDiagram, DesignFundamentalsGrid, TwoPassDiagram,
   ValidationSequenceDiagram, MVPScopeVisual, TractionMetricsDiagram,
+  FunnelStageDiagram, ScoringGapDiagram, AttributionDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface PageProps {
@@ -42,6 +43,9 @@ export default function ArticlePage({ params }: PageProps) {
     month: 'long',
     day: 'numeric',
   })
+
+  if (article.slug === 'marketing-funnel-engineering')
+    return <MarketingFunnelArticle article={article} formattedDate={formattedDate} />
 
   if (article.slug === 'mvp-traction-validation')
     return <MVPTractionArticle article={article} formattedDate={formattedDate} />
@@ -89,6 +93,255 @@ export default function ArticlePage({ params }: PageProps) {
   }
 
   notFound()
+}
+
+function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+
+        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+          THE<br />
+          <span className="text-brand-cobalt">MISSING</span><br />
+          MIDDLE.
+        </h1>
+
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+          {article!.subtitle}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 py-14 space-y-16">
+
+        {/* Lede */}
+        <section>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+            The funnel model has a design flaw everyone knows about and almost nobody fixes: it implies buyers move in one direction through a fixed sequence. Real buyers loop. They re-enter. They jump from BOFU back to TOFU when a competitor changes their pricing, or when the person who was championing your product gets a new job. McKinsey&rsquo;s Customer Decision Journey was built specifically as a corrective to this, and the practitioner consensus in 2026 has caught up with it.
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            The funnel still earns its keep as a planning and measurement scaffold. It forces distinct content, channels, and metrics per stage. But the operating model underneath it needs to assume non-linear movement, not a straight pipe. That framing resolves the apparent contradiction in treating each stage as a separable engineering problem while accepting that buyers will not cooperate with your PowerPoint slides.
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            A second structural change is reshaping the top of the funnel specifically. Around 60% of Google searches now end without a click. Buyers are getting their first answers inside ChatGPT, Gemini, and Perplexity before they ever reach brand-owned content. That share of awareness is happening on a surface you do not control and cannot put a pixel on, which is why AEO and GEO work is now a parallel TOFU investment rather than a side project.
+          </p>
+        </section>
+
+        {/* Section 01 — Five-stage overview */}
+        <section>
+          <SectionHeading number="01" title="The five-stage model" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Most current B2B and SaaS practice runs five stages: Awareness, Consideration, Conversion, Loyalty, and Advocacy. TOFU, MOFU, and BOFU are practitioner shorthand for the first three. The post-purchase stages matter more than most teams treat them: expansion ARR represents over 40% of new ARR for SaaS companies above $50M, so &ldquo;done at the sale&rdquo; means leaving compounding growth on the table. Only about a third of companies actively optimise each stage independently. The rest treat the whole thing as one undifferentiated pipeline, and wonder where qualified buyers went.
+          </p>
+
+          <div className="mt-8">
+            <FunnelStageDiagram />
+          </div>
+
+          <div className="mt-8 border border-brand-concrete divide-y divide-brand-concrete">
+            <div className="grid grid-cols-3 divide-x divide-brand-concrete bg-brand-graphite/40">
+              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-muted">Stage</span></div>
+              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-muted">Buyer mindset</span></div>
+              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-muted">Primary metric</span></div>
+            </div>
+            {[
+              { stage: 'Awareness', mindset: 'Exploratory — looking for education, not a product', metric: 'Reach / CPM / organic traffic' },
+              { stage: 'Consideration', mindset: 'Comparing — evaluating you against alternatives', metric: 'MQL → SQL rate, engagement depth' },
+              { stage: 'Conversion', mindset: 'Deciding — needs the practical mechanics of yes', metric: 'CPA / ROAS / lead response time' },
+              { stage: 'Loyalty', mindset: 'Validating — did this deliver what it promised?', metric: 'NRR / adoption depth / renewal rate' },
+              { stage: 'Advocacy', mindset: 'Vouching — willing to recommend, if asked well', metric: 'Referral rate / NPS / UGC volume' },
+            ].map(({ stage, mindset, metric }) => (
+              <div key={stage} className="grid grid-cols-3 divide-x divide-brand-concrete">
+                <div className="px-4 py-4">
+                  <span className="font-sans font-semibold text-sm text-brand-black">{stage}</span>
+                </div>
+                <div className="px-4 py-4">
+                  <p className="font-sans text-sm text-brand-black/70 leading-relaxed">{mindset}</p>
+                </div>
+                <div className="px-4 py-4">
+                  <p className="font-sans text-sm text-brand-muted leading-relaxed font-mono text-[12px]">{metric}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 02 — TOFU */}
+        <section>
+          <SectionHeading number="02" title="Awareness — the metric most teams get wrong" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            TOFU buyers have a problem, or a symptom of one. They are not looking for your product, your demo, or your brand name. They want education. The job of awareness-stage content is to reach them on the surfaces where they are already looking and to give them something genuinely useful.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+            The single most common practitioner mistake at this stage is applying a bottom-funnel metric to top-of-funnel spend. Judging TOFU content by conversion rate, ROAS, or CPA is the wrong scoreboard entirely. Those metrics belong further down. Applying them here produces one of two outcomes: spend gets cut on channels that are doing their actual job, or content gets pushed toward premature pitching to generate trackable conversions from cold audiences who are not ready for them. Either way, awareness atrophies.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+            The right metrics for a healthy TOFU are reach, impressions, organic traffic volume, and content engagement. A BOFU-style call to action shown to a cold TOFU audience measurably reduces engagement because it mismatches intent. That is not a copywriting problem. It is a stage-confusion problem.
+          </p>
+
+          <Callout label="The AEO dimension" className="mt-8">
+            <p className="font-sans text-sm text-brand-black/75 leading-relaxed">
+              Around 60% of Google searches now end without a click. A meaningful share of first-touch awareness is happening inside AI answer engines that your standard GA4 and GSC reporting cannot see. Citation tracking, structured schema, and answer-engine-specific content architecture are now TOFU investments, not a side project. If your SAGE-style citation data and your organic traffic trend are diverging, that is the gap.
+            </p>
+          </Callout>
+        </section>
+
+        {/* Section 03 — MOFU */}
+        <section>
+          <SectionHeading number="03" title="Consideration — where qualified buyers go cold" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            MOFU buyers know the problem is real and are actively comparing solutions. They do not need more education about the category. They need proof that you specifically are the right choice, and help building an internal case for it.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+            This is the stage most teams under-invest in. The pattern is consistent: a team builds strong TOFU reach and a sharp BOFU conversion push, then leaves the middle thin. Qualified prospects stall in the gap, cool off, and eventually show up in a lost-deal report attributed to &ldquo;went with a competitor&rdquo; or &ldquo;went dark.&rdquo; The fix is almost never more content. It is a scoring and nurture engineering problem.
+          </p>
+
+          <div className="mt-8">
+            <ScoringGapDiagram />
+          </div>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-8">
+            The data on this is unambiguous. MQL-to-SQL conversion averages 13–15% for teams using static demographic and firmographic scoring. Teams using genuine behavioural scoring run 39–40%. That is not a marginal improvement. It is a 3x gap driven almost entirely by which signals are being weighted. A lead score built on job title, company size, and industry tag is profiling, not scoring. Pricing page visits, guide downloads, webinar completions, and demo requests are the actual intent signals.
+          </p>
+
+          <div className="mt-8 space-y-4">
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Content shape shifts at MOFU</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Case studies, comparison content, webinars, product-led demos, and structured email nurture. Material that helps someone build an internal case, not material that re-explains the problem they already understand.</p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Behavioural scoring in Marketo</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">The audit question worth running: what percentage of your current lead score is built on engagement signal versus static attributes? If the answer is below 50%, that is where the MQL-to-SQL gap lives.</p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">AI-driven nurture sequencing</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">The 2026 upgrade to static drip sequences: trigger the next piece of content off actual engagement signal. Viewed pricing page, then send a comparison guide. Downloaded the guide, then invite to a webinar. One static sequence for everyone, regardless of behaviour, is leaving MOFU on manual.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 04 — BOFU */}
+        <section>
+          <SectionHeading number="04" title="Conversion — process and tooling, not content" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            BOFU buyers are deciding. They need the practical specifics: cost, implementation timeline, contract terms, proof of outcome. They are not discovering you at this point. The job is removing friction from a decision they are already working toward.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+            The most under-discussed lever at this stage is follow-up speed. Responding to an inbound lead within five minutes makes a team roughly 21 times more likely to qualify that lead compared to slower response times. The number is striking enough to warrant a moment of attention. This is not a content fix, a better case study, or a stronger CTA. It is a process and tooling fix. Response time is infrastructure, and most teams treat it as a soft metric.
+          </p>
+
+          <div className="mt-8 space-y-4">
+            <div className="border-l-2 border-amber-500/50 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Retargeting over prospecting</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">At BOFU you are not trying to find new people. You are removing friction for people who are already most of the way there. Tightly controlled ABO-style retargeting, not broad prospecting.</p>
+            </div>
+            <div className="border-l-2 border-amber-500/50 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Remove ambiguity explicitly</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Ambiguity at BOFU costs you the deal. Clear pricing, clear implementation timeline, ROI case studies, guarantees, and direct comparisons. The buyer is actively looking for a reason to say yes or a reason to hesitate. Do not give them the hesitation by accident.</p>
+            </div>
+            <div className="border-l-2 border-amber-500/50 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">BOFU metrics: CPA, ROAS, close rate, sales-cycle length, lead-response time</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">These are the metrics that belong at BOFU. If they are being applied to TOFU spend, that is a measurement problem upstream.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 05 — Loyalty + Advocacy */}
+        <section>
+          <SectionHeading number="05" title="Loyalty and Advocacy — where compounding growth lives" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            The conventional funnel ends at Conversion. For most SaaS businesses running at meaningful scale, that is the wrong finish line. Expansion ARR now represents over 40% of new ARR for companies above $50M. Net Revenue Retention above 100% means the existing customer base is growing without any new logos, and the compounding effect of that on a growth trajectory is materially different from what CAC-driven acquisition alone produces.
+          </p>
+
+          <div className="mt-8 space-y-4">
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Loyalty: onboarding quality is the leading indicator</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">A rocky first 30, 60, 90 days is the single strongest predictor of early churn, independent of how good the product actually is. The engineering job here is proactive, usage-based outreach: a customer under-using a paid feature, a customer approaching a plan limit. Those triggers should fire before churn risk appears in a lagging retention number.</p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Advocacy rarely happens spontaneously at scale</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">It needs a deliberate mechanism: referral programmes, case-study requests timed to a genuine recent win, review prompts triggered by a high in-app satisfaction signal rather than sent on a blanket schedule. The timing matters as much as the ask.</p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Advocacy feeds Awareness — the loop closes here</span>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Reviews, referrals, and user-generated proof feed directly back into Stage 1. This is why &ldquo;funnel&rdquo; is a slightly misleading shape for the mature model. The bottom genuinely does feed the top, and teams that treat post-purchase stages as cost centres are compounding the wrong direction.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 06 — Connective layer + Attribution */}
+        <section>
+          <SectionHeading number="06" title="The connective layer — attribution and measurement" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            A funnel engineered stage-by-stage but never connected end-to-end just moves the bottleneck around. The two disciplines that matter more here than any single stage tactic are unified measurement across stages and an honest attribution model.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+            A dashboard that shows TOFU traffic and BOFU revenue as separate reports with no connective tissue can tell you that each stage looks healthy but cannot actually diagnose where the leak is. The exec, waterfall, and diagnostic-layer structure is not organisational habit. It is the minimum information architecture required to run the funnel as a system rather than five independent silos.
+          </p>
+
+          <div className="mt-8">
+            <AttributionDiagram />
+          </div>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-8">
+            Attribution model choice is more consequential than most teams treat it. Last-Click systematically over-credits BOFU and under-credits the awareness and nurture work that built the pipeline in the first place. A team running Last-Click attribution will consistently under-invest in TOFU and MOFU, because those stages show up poorly on the scoreboard they are actually being measured against.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+            The 2026 shift practitioners are making: moving toward causal models, specifically Marketing Mix Modelling and incrementality testing. These can distinguish which stage-level spend is actually driving outcomes versus which is riding along with demand that would have existed anyway. Last-Click cannot make that distinction. The practical starting point is not replacing your current attribution overnight, but identifying the two or three channels where Last-Click is most likely to be mismeasuring contribution, and running an incrementality test on those.
+          </p>
+
+          <Callout label="Quick reference" className="mt-10">
+            <div className="border border-brand-concrete divide-y divide-brand-concrete mt-2">
+              <div className="grid grid-cols-3 divide-x divide-brand-concrete bg-brand-graphite/40">
+                <div className="px-3 py-2"><span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-muted">Stage</span></div>
+                <div className="px-3 py-2"><span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-muted">Primary metric</span></div>
+                <div className="px-3 py-2"><span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-muted">Most common mistake</span></div>
+              </div>
+              {[
+                { stage: 'Awareness', metric: 'Reach / CPM / organic traffic', mistake: 'Judging TOFU content by conversion rate' },
+                { stage: 'Consideration', metric: 'MQL → SQL rate, engagement depth', mistake: 'Neglecting MOFU nurture entirely' },
+                { stage: 'Conversion', metric: 'CPA / ROAS / lead response time', mistake: 'Slow follow-up on qualified leads' },
+                { stage: 'Loyalty', metric: 'NRR / adoption depth / renewal rate', mistake: 'Treating the sale as the finish line' },
+                { stage: 'Advocacy', metric: 'Referral rate / NPS / UGC volume', mistake: 'Expecting it to happen without a mechanism' },
+              ].map(({ stage, metric, mistake }) => (
+                <div key={stage} className="grid grid-cols-3 divide-x divide-brand-concrete">
+                  <div className="px-3 py-3"><span className="font-sans font-semibold text-xs text-brand-black">{stage}</span></div>
+                  <div className="px-3 py-3"><p className="font-sans text-xs text-brand-muted font-mono">{metric}</p></div>
+                  <div className="px-3 py-3"><p className="font-sans text-xs text-brand-black/65 italic leading-snug">{mistake}</p></div>
+                </div>
+              ))}
+            </div>
+          </Callout>
+        </section>
+
+        {/* Closing */}
+        <section className="border-t border-brand-concrete pt-10">
+          <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+            The funnel is not broken. The assumption that it runs in a straight line is.
+          </p>
+        </section>
+      </div>
+    </div>
+  )
 }
 
 function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {

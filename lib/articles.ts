@@ -11,6 +11,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'marketing-funnel-engineering',
+    title: 'The Missing Middle',
+    subtitle: 'Most funnels have a top and a bottom. The MOFU gap is where qualified buyers go cold — and that is an engineering problem, not a content problem.',
+    category: 'Strategy',
+    date: '2026-08-12',
+    readTime: '10 min read',
+    tags: ['Marketing Funnel', 'TOFU MOFU BOFU', 'Marketo', 'MQL', 'Growth Marketing'],
+    excerpt:
+      "Only a third of companies actively optimise their funnel stage by stage. The rest treat the whole thing as one undifferentiated pipeline — and wonder where qualified buyers went.",
+  },
+  {
     slug: 'mvp-traction-validation',
     title: 'Proof First',
     subtitle: "Building has gotten cheap. Attention hasn't. The four-step sequence that gets you to traction before you run out of either.",
