@@ -2,19 +2,25 @@
 
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 
 const navLinks = [
-  { label: 'Work',    href: '#work' },
-  { label: 'About',   href: '#about' },
-  { label: 'Process', href: '#process' },
-  { label: 'Notes',   href: '#notes' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Work',    anchor: 'work' },
+  { label: 'About',   anchor: 'about' },
+  { label: 'Process', anchor: 'process' },
+  { label: 'Notes',   anchor: 'notes' },
+  { label: 'Contact', anchor: 'contact' },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const { scrollY } = useScroll()
+  const pathname = usePathname()
+  const isHome = pathname === '/'
+
+  const href = (anchor: string) => isHome ? `#${anchor}` : `/#${anchor}`
+  const logoHref = isHome ? '#' : '/'
 
   useMotionValueEvent(scrollY, 'change', (v) => {
     setScrolled(v > 60)
@@ -27,7 +33,7 @@ export default function Navbar() {
       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
     >
       {/* Monogram */}
-      <a href="#" className="font-display text-2xl text-brand-black tracking-tight hover:text-brand-cobalt transition-colors duration-300">
+      <a href={logoHref} className="font-display text-2xl text-brand-black tracking-tight hover:text-brand-cobalt transition-colors duration-300">
         CM
       </a>
 
@@ -36,7 +42,7 @@ export default function Navbar() {
         {navLinks.map((link) => (
           <a
             key={link.label}
-            href={link.href}
+            href={href(link.anchor)}
             className="font-sans text-xs tracking-[0.18em] uppercase text-brand-muted hover:text-brand-black transition-colors duration-300 relative group"
           >
             {link.label}
@@ -44,7 +50,7 @@ export default function Navbar() {
           </a>
         ))}
         <a
-          href="#contact"
+          href={href('contact')}
           className="font-sans text-xs tracking-[0.18em] uppercase px-5 py-2.5 border border-brand-cobalt text-brand-cobalt hover:bg-brand-cobalt hover:text-brand-white transition-all duration-300"
         >
           Get in touch
@@ -85,7 +91,7 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <a
               key={link.label}
-              href={link.href}
+              href={href(link.anchor)}
               className="font-display text-4xl text-brand-black hover:text-brand-cobalt transition-colors duration-300"
               onClick={() => setMenuOpen(false)}
             >
@@ -93,7 +99,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#contact"
+            href={href('contact')}
             className="font-sans text-xs tracking-[0.18em] uppercase px-5 py-3 border border-brand-cobalt text-brand-cobalt text-center"
             onClick={() => setMenuOpen(false)}
           >
