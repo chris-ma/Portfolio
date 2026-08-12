@@ -17,6 +17,7 @@ import {
   FunnelStageDiagram, ScoringGapDiagram, AttributionDiagram,
   JourneyMapVisual, CXMetricsDiagram, DataUnificationDiagram,
   AIUsageTypologyDiagram, WellbeingBoundaryDiagram, UsageRhythmDiagram,
+  CalibrationVsAccuracyDiagram, PromptTechniquesRanking, TwoStepVerificationDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface PageProps {
@@ -45,6 +46,9 @@ export default function ArticlePage({ params }: PageProps) {
     month: 'long',
     day: 'numeric',
   })
+
+  if (article.slug === 'ai-hallucination-reduction')
+    return <HallucinationArticle article={article} formattedDate={formattedDate} />
 
   if (article.slug === 'ai-self-improvement-wellbeing')
     return <SelfImprovementArticle article={article} formattedDate={formattedDate} />
@@ -103,11 +107,318 @@ export default function ArticlePage({ params }: PageProps) {
   notFound()
 }
 
+function HallucinationArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+
+        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+          CONFIDENT<br />
+          AND<br />
+          <span className="text-brand-cobalt">WRONG.</span>
+        </h1>
+
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+          {article!.subtitle}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 py-14 space-y-16">
+
+        {/* Lede */}
+        <section>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+            A model that hallucinates 5% of the time does not fail 5% of the time. Every answer it gives is suspect. Every downstream decision built on its output inherits that uncertainty silently — because the model did not flag it. The confident wrong answer is the failure mode. The hedged, partial answer that admits a gap is not a failure at all.
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            On the AA-Omniscience hallucination benchmark, Claude 4.1 Opus scored 0% hallucination. Not because it got everything right, but because it refused to answer when it was uncertain rather than guessing. That data point is the whole argument: the winning move is often not answering. Every technique in this guide is structurally the same move — pushing a model toward admitting uncertainty rather than filling gaps with plausible-sounding invention.
+          </p>
+        </section>
+
+        {/* Section 01 — The reframe */}
+        <section>
+          <SectionHeading number="01" title="Accuracy vs calibration — why the distinction matters" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            The standard framing is accuracy: how often does the model get it right? The sharper framing is calibration: does the model know what it knows? A model that is right 95% of the time and silently wrong 5% of the time is less useful than one that is right 80% of the time and honest about the remaining 20% — because the honest model flags exactly where to double-check, and the overconfident one poisons the decisions you build on it.
+          </p>
+
+          <div className="mt-8">
+            <CalibrationVsAccuracyDiagram />
+          </div>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            This reframe changes what you are optimising for. You are not trying to make the model answer more confidently. You are trying to make it honest about its own uncertainty. A model that says &ldquo;I cannot answer this with confidence&rdquo; has done exactly the right thing. A model that answers anyway, fluently and wrongly, has done the most damaging thing.
+          </p>
+        </section>
+
+        {/* Section 02 — Why hallucinations happen */}
+        <section>
+          <SectionHeading number="02" title="Why hallucinations happen" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            LLMs do not &ldquo;know&rdquo; facts the way a person does. They predict the statistically most likely next token given training data and context. Hallucination is not a rare malfunction; it is a predictable output of a system optimised for fluency rather than for auditing its own claims. Two specific triggers explain most real-world failures.
+          </p>
+
+          <div className="mt-8 space-y-5">
+            {[
+              {
+                label: 'Vague prompts invite creative guessing',
+                body: 'When a prompt is underspecified, the model has to infer intent and fill gaps. It fills them with plausible-sounding content rather than admitting the gap exists. The narrower and more explicit the scope, the less room the model has to invent.',
+              },
+              {
+                label: 'Models try too hard to answer',
+                body: 'Left unconstrained, a model will attempt an answer even when it genuinely lacks the information to give one accurately — because refusing is not the default behaviour. You have to explicitly override that default. Without that override, the model will always lean toward an answer over an admission of uncertainty.',
+              },
+            ].map(({ label, body }) => (
+              <div key={label} className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+                <span className="font-sans font-semibold text-sm text-brand-black block mb-2">{label}</span>
+                <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Both triggers point to the same fix: remove the ambiguity, and explicitly authorise the model to say it does not know.
+          </p>
+        </section>
+
+        {/* Section 03 — The 11 techniques */}
+        <section>
+          <SectionHeading number="03" title="The 11 techniques, ranked by leverage" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Every technique below is structurally the same: a way of narrowing the space the model has to guess in, or of giving it explicit permission to refuse rather than invent. Ranked by consistent real-world impact.
+          </p>
+
+          <div className="mt-8">
+            <PromptTechniquesRanking />
+          </div>
+
+          <div className="mt-8 space-y-5">
+            {[
+              {
+                rank: '01',
+                label: 'Ground it in source material and restrict explicitly',
+                body: 'The single highest-leverage move: give the model something to point to, and tell it to use only that. "Using ONLY the information in the following document, answer the question below. If the document doesn\'t contain the answer, say so explicitly." This is the same principle as RAG applied at the prompt level — grounding beats recall every time.',
+              },
+              {
+                rank: '02',
+                label: 'Authorise "I don\'t know" directly',
+                body: '"If you are not confident in your answer based on the information provided, respond with \'I cannot answer this with confidence\' rather than guessing." This single instruction targets the actual failure mode — attempting an answer past the point of real knowledge — rather than trying to improve accuracy after the fact. It consistently outperforms every other single-instruction approach.',
+              },
+              {
+                rank: '03',
+                label: 'Be maximally specific',
+                body: 'Weak: "Tell me about recent AI regulations." Better: "Summarise major EU AI Act developments announced between January 2025 and March 2026, citing only publicly documented events." Specificity narrows the space the model has to guess in. A vague scope is an invitation to fill gaps; a narrow, dated, sourced scope leaves much less room for invention.',
+              },
+              {
+                rank: '04',
+                label: 'Separate knowns from unknowns before answering',
+                body: '"List the known facts. Then list the unknowns. Then provide an answer using only the known facts." Forcing this separation as an explicit step catches the model before it blends genuine information with inferred filler. The blending is what makes hallucinated content hard to spot — it reads identically to the real content around it.',
+              },
+              {
+                rank: '05',
+                label: 'Use chain-of-thought reasoning',
+                body: 'Reasoning explicitly, in view, reduces the logic gaps and unsupported leaps that produce fabrication mid-answer. It is harder for a model to quietly invent a fact when it has to show the reasoning chain that supposedly led there. Particularly effective for anything with logical steps or multi-part conclusions.',
+              },
+              {
+                rank: '06',
+                label: 'Require sources and confidence levels per claim',
+                body: 'Per-claim accountability rather than an overall confidence gesture. One practitioner report in a news-analysis context cited roughly a 40% hallucination reduction from requiring sources and confidence levels attached to each individual claim. Treat that figure as directional rather than guaranteed, but the mechanism is sound.',
+              },
+              {
+                rank: '07',
+                label: 'Constrain the output format',
+                body: 'A strict template or schema reduces the wiggle room a model has to pad an answer with unsupported content. "Respond only in this structure: {root_cause, supporting_evidence, confidence_level, recommended_next_step}. Do not speculate beyond the evidence provided." Less room to be creative is less room to hallucinate.',
+              },
+            ].map(({ rank, label, body }) => (
+              <div key={rank} className="border border-brand-concrete p-5">
+                <div className="flex items-start gap-4">
+                  <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-muted flex-shrink-0 mt-1">{rank}</span>
+                  <div>
+                    <span className="font-sans font-semibold text-sm text-brand-black block mb-2">{label}</span>
+                    <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{body}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 04 — Verification pass */}
+        <section>
+          <SectionHeading number="04" title="The verification pass — auditing, not retrying" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Techniques 08 through 11 are all variations on verification — having the model check its own output. The critical distinction is that verification is structurally different from generation. Asking a model to try harder produces a more confident version of the same answer. Asking it to audit its output puts it in a different mode entirely.
+          </p>
+
+          <div className="mt-8">
+            <TwoStepVerificationDiagram />
+          </div>
+
+          <div className="mt-8 space-y-5">
+            {[
+              {
+                rank: '08',
+                label: 'Two-step verification pass',
+                body: 'Step 1: original question. Step 2: "Review your answer above. Identify any claims you\'re less than 90% confident about. Note any logical inconsistencies. Flag anywhere you might be filling a gap with plausible-sounding but unverified information. Provide an overall confidence score." This surfaces uncertainty the model did not flag on the first pass — a genuinely different check from just asking it to try harder.',
+              },
+              {
+                rank: '09',
+                label: 'Anchor to a real output example',
+                body: 'When format matters, provide one real example and say "follow this format closely." Anchoring to a concrete sample measurably improves accuracy over a purely verbal description of the desired format. The model has a specific target rather than an interpreted one.',
+              },
+              {
+                rank: '10',
+                label: 'Set a system-level behavioural boundary',
+                body: '"You are a factual assistant. Never fabricate citations, statistics, or events. If information is unavailable, clearly state uncertainty. Prefer accuracy over completeness." A standing instruction set once at the system level is more reliable than restating the same constraint in every individual prompt — and it applies to every interaction in the session rather than just one.',
+              },
+              {
+                rank: '11',
+                label: 'Lower the temperature',
+                body: 'If you are working via API or a tool with configurable settings: high temperature (0.8–1.0) trades accuracy for creativity and randomness; low temperature (0.0–0.2) trades creativity for determinism and factual consistency. For anything where accuracy matters more than novelty, low temperature is the right default.',
+              },
+            ].map(({ rank, label, body }) => (
+              <div key={rank} className="border border-brand-concrete p-5">
+                <div className="flex items-start gap-4">
+                  <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-muted flex-shrink-0 mt-1">{rank}</span>
+                  <div>
+                    <span className="font-sans font-semibold text-sm text-brand-black block mb-2">{label}</span>
+                    <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{body}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 05 — What doesn't work */}
+        <section>
+          <SectionHeading number="05" title="What doesn't work as well as it sounds" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Three approaches that feel intuitive but consistently underperform:
+          </p>
+
+          <div className="mt-6 space-y-4">
+            {[
+              {
+                label: 'Just asking "are you sure?"',
+                body: 'Without the structured verification pattern from technique 08, a bare "are you sure?" often just produces a confident restatement. The model treats it as a prompt to justify its answer, not to re-examine it. Structure the audit — don\'t just ask for one.',
+              },
+              {
+                label: 'Longer prompts without more specificity',
+                body: 'More words without more grounding or a tighter scope does not reduce hallucination. It can increase it, by giving the model more surface area to misinterpret intent from. Length is not a proxy for precision.',
+              },
+              {
+                label: 'Prioritising completeness over accuracy',
+                body: 'A prompt that implicitly rewards a full, comprehensive-sounding answer pushes the model toward filling gaps to look thorough. Explicitly stating that a partial, honest answer beats a complete but padded one changes this incentive directly. "Prefer accuracy over completeness" is one of the most underused instructions in a system prompt.',
+              },
+            ].map(({ label, body }) => (
+              <div key={label} className="border-l-2 border-brand-concrete pl-4 py-1">
+                <span className="font-sans font-semibold text-sm text-brand-black block mb-2">{label}</span>
+                <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 06 — Production practices */}
+        <section>
+          <SectionHeading number="06" title="Production and workflow-level practices" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Per-prompt techniques reduce hallucination. Architectural choices eliminate the root cause. For anything recurring — a regular workflow, a tool you are building, a report you produce weekly — these apply alongside the prompting layer, not instead of it.
+          </p>
+
+          <div className="mt-8 border border-brand-concrete divide-y divide-brand-concrete">
+            {[
+              {
+                label: 'RAG as an architectural fix',
+                body: 'Grounding responses in a real retrieval source addresses the root cause rather than mitigating symptoms per-prompt. The model cannot hallucinate information that was retrieved rather than recalled. Worth the setup cost for any knowledge-intensive recurring workflow.',
+              },
+              {
+                label: 'Transparency with whoever uses the output',
+                body: 'Label AI-assisted output as such and make clear it can be wrong. This matters for your own content writing and client-facing work as much as it does for a production system. The reader\'s expectation calibrates how they use the output.',
+              },
+              {
+                label: 'Log and review — don\'t just trust',
+                body: 'You cannot fix what you do not measure. For any recurring AI-assisted workflow, keep a running note of the specific claims or outputs that turned out to be wrong. This is what lets you refine your prompting pattern over time rather than repeating the same failure mode.',
+              },
+              {
+                label: 'Fact-check anything load-bearing, always',
+                body: 'No prompting technique gets you to zero. Treat every technique in this guide as risk reduction, not elimination. Anything a hallucination would actually cost you — a client deliverable, a financial decision, a technical specification — requires independent verification regardless of how confident the output sounds.',
+              },
+            ].map(({ label, body }) => (
+              <div key={label} className="px-5 py-4">
+                <span className="font-sans font-semibold text-sm text-brand-black block mb-1.5">{label}</span>
+                <p className="font-sans text-sm text-brand-muted leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 07 — Combined prompt pattern */}
+        <section>
+          <SectionHeading number="07" title="The combined prompt pattern" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            A single template that stacks the highest-leverage techniques together. Use this as a starting point and strip back anything the context does not require.
+          </p>
+
+          <Callout label="Combined pattern" className="mt-6">
+            <CodeBlock>{`You are a factual assistant. Using ONLY the information in [provided material], answer the following question: [question].
+
+Reason step-by-step before your final answer. For each claim, note your confidence level (high / medium / low). If any part cannot be answered with confidence from the provided material, state that explicitly rather than guessing. Do not fabricate citations, statistics, or events.`}</CodeBlock>
+          </Callout>
+
+          <p className="font-sans text-sm text-brand-muted leading-relaxed mt-5">
+            The pattern stacks five techniques: system-level refusal boundary, explicit grounding restriction, chain-of-thought, per-claim confidence labelling, and explicit authorisation to admit uncertainty. In practice, even one or two of these applied consistently makes a real difference. The full stack is for high-stakes outputs where the cost of a confident wrong answer is high.
+          </p>
+        </section>
+
+        {/* Closing */}
+        <section className="border-t border-brand-concrete pt-10">
+          <p className="font-sans text-base text-brand-black/60 leading-relaxed italic">
+            Every technique here is the same move: shrink the space the model has to guess in, and explicitly give it permission to say it does not know.
+          </p>
+        </section>
+
+      </div>
+
+      {/* Footer nav */}
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-brand-concrete pt-10">
+        <Link
+          href="/articles"
+          className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
+        >
+          ← Field Notes
+        </Link>
+      </div>
+    </div>
+  )
+}
+
 function SelfImprovementArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
     <div className="bg-brand-white min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
@@ -322,7 +633,7 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
   return (
     <div className="bg-brand-white min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
@@ -577,7 +888,7 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
   return (
     <div className="bg-brand-white min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
@@ -826,7 +1137,7 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
   return (
     <div className="bg-brand-white min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
@@ -1130,7 +1441,7 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
 
         {/* Footer */}
         <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
-          <Link href="/#notes" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
             ← All Field Notes
           </Link>
           <div className="flex flex-wrap gap-2">
@@ -1150,7 +1461,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
   return (
     <div className="bg-brand-white min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
@@ -1440,7 +1751,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
       </div>
 
       <footer className="max-w-[900px] mx-auto px-6 md:px-10 py-10 border-t border-brand-concrete mt-6">
-        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
           ← All Field Notes
         </Link>
         <div className="flex flex-wrap gap-2 mt-6">
@@ -1459,7 +1770,7 @@ function ContentWritingArticle({ article, formattedDate }: { article: ReturnType
   return (
     <div className="bg-brand-white min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
@@ -1713,7 +2024,7 @@ Inflated vocabulary standing in for a real claim
       </div>
 
       <footer className="max-w-[900px] mx-auto px-6 md:px-10 py-10 border-t border-brand-concrete mt-6">
-        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
           ← All Field Notes
         </Link>
         <div className="flex flex-wrap gap-2 mt-6">
@@ -1732,7 +2043,7 @@ function AppSecurityArticle({ article, formattedDate }: { article: ReturnType<ty
   return (
     <div className="bg-brand-white min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
@@ -2094,7 +2405,7 @@ CREATE POLICY "users update own profile" ON profiles
         {/* Back link */}
         <div className="border-t border-brand-concrete pt-8">
           <Link
-            href="/#notes"
+            href="/articles"
             className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
           >
             ← Back to Field Notes
@@ -2110,7 +2421,7 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
   return (
     <div className="bg-brand-white min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
@@ -2409,7 +2720,7 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
 
         {/* Footer */}
         <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
-          <Link href="/#notes" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
             ← All Field Notes
           </Link>
           <div className="flex flex-wrap gap-2">
@@ -2471,7 +2782,7 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
   return (
     <div className="bg-brand-white min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
@@ -2811,7 +3122,7 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
         </section>
 
         <div className="border-t border-brand-concrete pt-8">
-          <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
             ← Back to Field Notes
           </Link>
         </div>
@@ -2867,7 +3178,7 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
   return (
     <div className="bg-brand-white min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
@@ -3189,7 +3500,7 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
         </section>
 
         <div className="border-t border-brand-concrete pt-8">
-          <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
             ← Back to Field Notes
           </Link>
         </div>
@@ -3265,7 +3576,7 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
       {/* Back nav */}
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
         <Link
-          href="/#notes"
+          href="/articles"
           className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
         >
           ← Field Notes
@@ -3489,7 +3800,7 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
         {/* Back link */}
         <div className="border-t border-brand-concrete pt-8">
           <Link
-            href="/#notes"
+            href="/articles"
             className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
           >
             ← Back to Field Notes
@@ -3528,7 +3839,7 @@ function PKMArticle({ article, formattedDate }: { article: ReturnType<typeof get
       {/* Back nav */}
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
         <Link
-          href="/#notes"
+          href="/articles"
           className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
         >
           ← Field Notes
@@ -3836,7 +4147,7 @@ tags: []
         {/* Back link */}
         <div className="border-t border-brand-concrete pt-8">
           <Link
-            href="/#notes"
+            href="/articles"
             className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
           >
             ← Back to Field Notes
@@ -3851,7 +4162,7 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
   return (
     <div className="bg-brand-white min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
@@ -4103,7 +4414,7 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
 
         {/* Footer */}
         <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
-          <Link href="/#notes" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
             ← All Field Notes
           </Link>
           <div className="flex flex-wrap gap-2">
@@ -4145,7 +4456,7 @@ function HermesArticle({ article, formattedDate }: { article: ReturnType<typeof 
   return (
     <div className="bg-brand-white min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
@@ -4364,7 +4675,7 @@ hermes gateway install   # install as a systemd service (runs on reboot)`}</Code
 
         {/* Footer */}
         <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
-          <Link href="/#notes" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
             ← All Field Notes
           </Link>
           <div className="flex flex-wrap gap-2">
@@ -4395,7 +4706,7 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
   return (
     <div className="bg-brand-white min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/#notes" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
@@ -4630,7 +4941,7 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
 
         {/* Footer */}
         <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
-          <Link href="/#notes" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
             ← All Field Notes
           </Link>
           <div className="flex flex-wrap gap-2">

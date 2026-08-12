@@ -2872,3 +2872,170 @@ export function UsageRhythmDiagram() {
     </svg>
   )
 }
+
+// ── AI Hallucination Reduction Diagrams ──────────────────────────────────────
+
+export function CalibrationVsAccuracyDiagram() {
+  const G = '#1A4D3A', GL = '#3D7A60', BG = '#F5F4F0', BG2 = '#EDEAE4'
+  const BORDER = '#C9C6BE', TEXT = '#0A0A0A', MUTED = '#7A7872', DANGER = '#C0392B', AMBER = '#D4890A'
+  const panelW = 300, gap = 40, padX = 40, padY = 28
+
+  return (
+    <svg viewBox="0 0 720 280" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="280" fill={BG2} />
+
+      {/* Divider label */}
+      <text x="360" y="20" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="2">ACCURACY-FOCUSED vs CALIBRATION-FOCUSED</text>
+
+      {/* ── Left panel: Accuracy model ── */}
+      <rect x={padX} y={padY + 8} width={panelW} height={220} rx="3" fill={BG} stroke={BORDER} strokeWidth="1" />
+      <text x={padX + panelW / 2} y={padY + 26} textAnchor="middle" fontFamily="monospace" fontSize="9" fill={MUTED} letterSpacing="1">ACCURACY-FOCUSED</text>
+
+      {/* 95% correct block */}
+      <rect x={padX + 20} y={padY + 44} width={panelW - 40} height={110} rx="2" fill={GL} opacity="0.18" />
+      <rect x={padX + 20} y={padY + 44} width={panelW - 40} height={110} rx="2" fill="none" stroke={GL} strokeWidth="1" />
+      <text x={padX + panelW / 2} y={padY + 90} textAnchor="middle" fontFamily="monospace" fontSize="28" fontWeight="700" fill={G}>95%</text>
+      <text x={padX + panelW / 2} y={padY + 110} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} letterSpacing="1">CONFIDENT · CORRECT</text>
+      <text x={padX + panelW / 2} y={padY + 126} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>answers delivered with certainty</text>
+
+      {/* 5% wrong block — danger */}
+      <rect x={padX + 20} y={padY + 162} width={panelW - 40} height={52} rx="2" fill={DANGER} opacity="0.12" />
+      <rect x={padX + 20} y={padY + 162} width={panelW - 40} height={52} rx="2" fill="none" stroke={DANGER} strokeWidth="1" opacity="0.5" />
+      <text x={padX + panelW / 2} y={padY + 183} textAnchor="middle" fontFamily="monospace" fontSize="18" fontWeight="700" fill={DANGER}>5%</text>
+      <text x={padX + panelW / 2} y={padY + 200} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={DANGER} letterSpacing="1">SILENTLY WRONG</text>
+      <text x={padX + panelW / 2} y={padY + 212} textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED}>poisons every downstream decision</text>
+
+      {/* ── Right panel: Calibration model ── */}
+      <rect x={padX + panelW + gap} y={padY + 8} width={panelW} height={220} rx="3" fill={BG} stroke={BORDER} strokeWidth="1" />
+      <text x={padX + panelW + gap + panelW / 2} y={padY + 26} textAnchor="middle" fontFamily="monospace" fontSize="9" fill={MUTED} letterSpacing="1">CALIBRATION-FOCUSED</text>
+
+      {/* 80% answered block */}
+      <rect x={padX + panelW + gap + 20} y={padY + 44} width={panelW - 40} height={90} rx="2" fill={G} opacity="0.14" />
+      <rect x={padX + panelW + gap + 20} y={padY + 44} width={panelW - 40} height={90} rx="2" fill="none" stroke={G} strokeWidth="1" />
+      <text x={padX + panelW + gap + panelW / 2} y={padY + 88} textAnchor="middle" fontFamily="monospace" fontSize="24" fontWeight="700" fill={G}>80%</text>
+      <text x={padX + panelW + gap + panelW / 2} y={padY + 108} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} letterSpacing="1">CONFIDENT · VERIFIED</text>
+
+      {/* 20% refused block — amber */}
+      <rect x={padX + panelW + gap + 20} y={padY + 142} width={panelW - 40} height={72} rx="2" fill={AMBER} opacity="0.12" />
+      <rect x={padX + panelW + gap + 20} y={padY + 142} width={panelW - 40} height={72} rx="2" fill="none" stroke={AMBER} strokeWidth="1" opacity="0.5" />
+      <text x={padX + panelW + gap + panelW / 2} y={padY + 167} textAnchor="middle" fontFamily="monospace" fontSize="18" fontWeight="700" fill={AMBER}>20%</text>
+      <text x={padX + panelW + gap + panelW / 2} y={padY + 184} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={AMBER} letterSpacing="1">"I CANNOT ANSWER THIS"</text>
+      <text x={padX + panelW + gap + panelW / 2} y={padY + 198} textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED}>flags exactly where to double-check</text>
+      <text x={padX + panelW + gap + panelW / 2} y={padY + 209} textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED}>AA-Omniscience: 0% hallucination</text>
+
+      {/* Bottom label */}
+      <text x="360" y="272" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED} letterSpacing="1">THE WINNING MOVE IS OFTEN NOT ANSWERING · CALIBRATION &gt; ACCURACY</text>
+    </svg>
+  )
+}
+
+export function PromptTechniquesRanking() {
+  const G = '#1A4D3A', GL = '#3D7A60', BG = '#F5F4F0', BG2 = '#EDEAE4'
+  const BORDER = '#C9C6BE', TEXT = '#0A0A0A', MUTED = '#7A7872', AMBER = '#D4890A'
+
+  const techniques = [
+    { rank: 1, label: 'Ground in source material — restrict explicitly', tier: 'top',    barW: 220 },
+    { rank: 2, label: 'Authorise "I don\'t know" explicitly',            tier: 'top',    barW: 210 },
+    { rank: 3, label: 'Maximum specificity — narrow scope, dated',       tier: 'top',    barW: 198 },
+    { rank: 4, label: 'Separate knowns from unknowns before answering',  tier: 'mid',    barW: 172 },
+    { rank: 5, label: 'Chain-of-thought — show the reasoning',           tier: 'mid',    barW: 160 },
+    { rank: 6, label: 'Require sources + confidence per claim',          tier: 'mid',    barW: 148 },
+    { rank: 7, label: 'Constrained output format or schema',             tier: 'mid',    barW: 136 },
+    { rank: 8, label: 'Two-step verification pass',                      tier: 'mid',    barW: 124 },
+    { rank: 9, label: 'Anchor to a real output example',                 tier: 'low',    barW: 104 },
+    { rank: 10, label: 'System-level refusal boundary',                   tier: 'low',    barW: 92 },
+    { rank: 11, label: 'Lower temperature (0.0–0.2)',                     tier: 'low',    barW: 76 },
+  ]
+
+  const rowH = 20, startY = 36, labelX = 52
+
+  const tierColor = (tier: string) => tier === 'top' ? G : tier === 'mid' ? GL : MUTED
+
+  return (
+    <svg viewBox="0 0 720 272" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="272" fill={BG2} />
+      <text x="360" y="18" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="2">11 TECHNIQUES · RANKED BY LEVERAGE</text>
+
+      {/* Column headers */}
+      <text x={labelX} y={startY - 4} fontFamily="monospace" fontSize="7" fill={MUTED} letterSpacing="1">TECHNIQUE</text>
+      <text x={labelX + 320} y={startY - 4} fontFamily="monospace" fontSize="7" fill={MUTED} letterSpacing="1">LEVERAGE</text>
+
+      {techniques.map((t, i) => {
+        const y = startY + i * rowH
+        const c = tierColor(t.tier)
+        const isTop = t.tier === 'top'
+        return (
+          <g key={t.rank}>
+            {/* Row bg */}
+            <rect x={28} y={y} width={664} height={rowH - 1} fill={i % 2 === 0 ? BG : BG2} />
+            {/* Rank */}
+            <text x={40} y={y + 13} fontFamily="monospace" fontSize="7.5" fill={MUTED}>{String(t.rank).padStart(2, '0')}</text>
+            {/* Label */}
+            <text x={labelX} y={y + 13} fontFamily="monospace" fontSize="7.5" fill={isTop ? TEXT : MUTED} fontWeight={isTop ? '600' : '400'}>{t.label}</text>
+            {/* Bar */}
+            <rect x={labelX + 300} y={y + 4} width={t.barW} height={11} rx="1" fill={c} opacity={isTop ? 0.7 : t.tier === 'mid' ? 0.45 : 0.25} />
+          </g>
+        )
+      })}
+
+      {/* Tier labels on right */}
+      <text x={692} y={startY + 30} textAnchor="end" fontFamily="monospace" fontSize="7" fill={G} letterSpacing="1">TOP</text>
+      <text x={692} y={startY + 114} textAnchor="end" fontFamily="monospace" fontSize="7" fill={GL} letterSpacing="1">MID</text>
+      <text x={692} y={startY + 186} textAnchor="end" fontFamily="monospace" fontSize="7" fill={MUTED} letterSpacing="1">LOW</text>
+
+      {/* Tier dividers */}
+      <line x1={28} y1={startY + rowH * 3} x2={692} y2={startY + rowH * 3} stroke={BORDER} strokeWidth="0.8" strokeDasharray="4 3" />
+      <line x1={28} y1={startY + rowH * 8} x2={692} y2={startY + rowH * 8} stroke={BORDER} strokeWidth="0.8" strokeDasharray="4 3" />
+
+      <text x="360" y="265" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED} letterSpacing="1">EACH TECHNIQUE PUSHES THE MODEL TOWARD: ADMIT UNCERTAINTY · DON'T FILL GAPS</text>
+    </svg>
+  )
+}
+
+export function TwoStepVerificationDiagram() {
+  const G = '#1A4D3A', GL = '#3D7A60', BG = '#F5F4F0', BG2 = '#EDEAE4'
+  const BORDER = '#C9C6BE', TEXT = '#0A0A0A', MUTED = '#7A7872', AMBER = '#D4890A'
+
+  return (
+    <svg viewBox="0 0 720 228" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="228" fill={BG2} />
+      <text x="360" y="18" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="2">TWO-STEP VERIFICATION · GENERATE THEN AUDIT</text>
+
+      {/* Step 1 box */}
+      <rect x="44" y="32" width="260" height="148" rx="3" fill={BG} stroke={G} strokeWidth="1" opacity="0.9" />
+      <rect x="44" y="32" width="260" height="28" rx="3" fill={G} opacity="0.8" />
+      <text x="174" y="51" textAnchor="middle" fontFamily="monospace" fontSize="9" fill={BG} letterSpacing="2">STEP 1 · GENERATE</text>
+      <text x="174" y="84" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="1">MODEL AS GENERATOR</text>
+      <text x="174" y="104" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={TEXT}>Answers the question.</text>
+      <text x="174" y="120" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={TEXT}>Produces full response.</text>
+      <text x="174" y="136" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={TEXT}>Fluency-optimised mode —</text>
+      <text x="174" y="152" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={TEXT}>fills gaps without flagging.</text>
+      <text x="174" y="168" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED}>original question → first-pass answer</text>
+
+      {/* Arrow */}
+      <line x1="316" y1="106" x2="400" y2="106" stroke={GL} strokeWidth="1.5" markerEnd="url(#tsva)" />
+      <text x="358" y="98" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={GL} letterSpacing="1">FEED</text>
+      <text x="358" y="118" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={GL} letterSpacing="1">BACK</text>
+      <defs>
+        <marker id="tsva" markerWidth="7" markerHeight="7" refX="7" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 Z" fill={GL} />
+        </marker>
+      </defs>
+
+      {/* Step 2 box */}
+      <rect x="412" y="32" width="264" height="148" rx="3" fill={BG} stroke={AMBER} strokeWidth="1" opacity="0.9" />
+      <rect x="412" y="32" width="264" height="28" rx="3" fill={AMBER} opacity="0.75" />
+      <text x="544" y="51" textAnchor="middle" fontFamily="monospace" fontSize="9" fill={BG} letterSpacing="2">STEP 2 · AUDIT</text>
+      <text x="544" y="84" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="1">MODEL AS AUDITOR</text>
+      <text x="544" y="104" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={TEXT}>Review your answer above.</text>
+      <text x="544" y="120" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={TEXT}>Flag claims under 90% confident.</text>
+      <text x="544" y="136" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={TEXT}>Note logical inconsistencies.</text>
+      <text x="544" y="152" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={TEXT}>Score your overall confidence.</text>
+      <text x="544" y="168" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED}>structurally different task from generating</text>
+
+      {/* Key insight strip */}
+      <rect x="44" y="192" width="632" height="26" rx="2" fill={G} opacity="0.08" stroke={G} strokeWidth="0.8" />
+      <text x="360" y="208" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} letterSpacing="1">AUDITING IS NOT "TRY HARDER" — IT IS A DIFFERENT COGNITIVE MODE · "ARE YOU SURE?" WITHOUT STRUCTURE JUST PRODUCES A CONFIDENT RESTATEMENT</text>
+    </svg>
+  )
+}

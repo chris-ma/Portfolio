@@ -11,6 +11,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'ai-hallucination-reduction',
+    title: 'Confident and Wrong',
+    subtitle: 'A model that confidently hallucinates poisons every decision built on its output. The 11 techniques that push AI toward calibration — knowing what it knows.',
+    category: 'Engineering',
+    date: '2026-08-12',
+    readTime: '9 min read',
+    tags: ['Hallucinations', 'Prompt Engineering', 'AI Reliability', 'RAG', 'Calibration'],
+    excerpt:
+      'On the AA-Omniscience benchmark, Claude 4.1 Opus scored 0% hallucination by refusing to answer when uncertain. The winning move is often not answering. Every technique here is a way of pushing a model toward that same behaviour.',
+  },
+  {
     slug: 'ai-self-improvement-wellbeing',
     title: 'The Deciding Factor',
     subtitle: "The 2026 research on AI and wellbeing is consistent on one point: structure separates genuine growth from a comfortable loop that goes nowhere.",
