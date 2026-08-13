@@ -27,6 +27,7 @@ import {
   N8NMCPBridgeDiagram,
   ModelLandscapeDiagram,
   AttackSuccessRateDiagram,
+  OSINTCycleDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface ArticleCardProps {
@@ -117,6 +118,9 @@ function DiagramWrapper({ children }: { children: React.ReactNode }) {
 }
 
 function ArticleVisual({ slug, category, index }: { slug: string; category: string; index: number }) {
+  if (slug === 'osint-ai-intelligence') {
+    return <DiagramWrapper><OSINTCycleDiagram /></DiagramWrapper>
+  }
   if (slug === 'prompt-injection-llm-security') {
     return <DiagramWrapper><AttackSuccessRateDiagram /></DiagramWrapper>
   }

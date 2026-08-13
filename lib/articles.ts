@@ -11,6 +11,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'osint-ai-intelligence',
+    title: 'Already Public',
+    subtitle: 'OSINT is the structured practice of finding your own exposure before someone with worse intentions does. AI has changed the scale — the four-stage process, and the ethical boundaries, have not.',
+    category: 'Engineering',
+    date: '2026-08-13',
+    readTime: '9 min read',
+    tags: ['OSINT', 'Threat Intelligence', 'Competitive Intelligence', 'AI Security', 'Attack Surface'],
+    excerpt:
+      'The information your organisation has exposed is already visible to anyone who knows how to look. Security teams use OSINT to find it first. The same techniques, aimed differently, describe reconnaissance before an attack. That dual-use reality is what makes ethical framing load-bearing, not decorative.',
+  },
+  {
     slug: 'prompt-injection-llm-security',
     title: 'The Same Channel',
     subtitle: "LLMs process instructions and data through the same channel with no built-in separation. OWASP's LLM Top 10 has held prompt injection at #1 for two consecutive editions. Here is why — and the layered defense that actually works.",

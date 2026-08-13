@@ -36,7 +36,6 @@ export async function POST(req: NextRequest) {
         container: 'mp3',
         encoding: 'mp3',
         sample_rate: 44100,
-        bit_rate: 128000,
       },
       language: 'en',
     }),

@@ -4112,3 +4112,127 @@ export function DefenseStackDiagram() {
     </svg>
   )
 }
+
+export function OSINTCycleDiagram() {
+  const stages = [
+    { label: 'COLLECT', sub: 'raw public data', line1: 'social media · DNS/WHOIS', line2: 'public records · breach DBs' },
+    { label: 'PROCESS', sub: 'structure + filter', line1: 'normalise · deduplicate', line2: 'tag by relevance + source' },
+    { label: 'ANALYSE', sub: 'correlate + interpret', line1: 'cross-reference · pattern match', line2: 'place in context' },
+    { label: 'DISTRIBUTE', sub: 'decision-ready', line1: 'to whoever needs to act', line2: 'in a format they can use' },
+  ]
+  const BW = 144, BH = 72, GAP = 28, SX = 18, Y = 50
+  const fills = [G+'18', G+'22', AMBER+'22', G+'30']
+  const borders = [G+'50', G+'60', AMBER+'60', G+'90']
+  return (
+    <svg viewBox="0 0 720 172" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="172" fill={BG} />
+      <text x="360" y="14" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="1">4-STAGE INTELLIGENCE PROCESS — COLLECTION TO ACTION</text>
+      {stages.map((s, i) => {
+        const x = SX + i * (BW + GAP)
+        const cx = x + BW / 2
+        return (
+          <g key={i}>
+            <rect x={x} y={Y} width={BW} height={BH} fill={fills[i]} stroke={borders[i]} strokeWidth="1" rx="2" />
+            <text x={cx} y={Y+17} textAnchor="middle" fontFamily="monospace" fontSize="10" fill={TEXT} fontWeight="700" letterSpacing="1">{s.label}</text>
+            <text x={cx} y={Y+30} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} fontWeight="600">{s.sub}</text>
+            <text x={cx} y={Y+44} textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED}>{s.line1}</text>
+            <text x={cx} y={Y+55} textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED}>{s.line2}</text>
+          </g>
+        )
+      })}
+      {[0, 1, 2].map(i => {
+        const x1 = SX + (i + 1) * BW + i * GAP
+        const x2 = x1 + GAP
+        const ay = Y + BH / 2
+        return (
+          <g key={`a${i}`}>
+            <line x1={x1} y1={ay} x2={x2-6} y2={ay} stroke={BORDER} strokeWidth="1.5" />
+            <polygon points={`${x2-8},${ay-4} ${x2},${ay} ${x2-8},${ay+4}`} fill={BORDER} />
+          </g>
+        )
+      })}
+      <text x="360" y="166" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED} letterSpacing="0.8">
+        Skipping analysis — going collection → conclusion — is the most common failure mode
+      </text>
+    </svg>
+  )
+}
+
+export function IntelDisciplinesMap() {
+  const disciplines = [
+    { code: 'OSINT', name: 'Open-Source Intelligence', note: 'this workbook · the foundation', hl: 'primary' },
+    { code: 'CTI', name: 'Cyber Threat Intelligence', note: 'built directly on OSINT', hl: 'secondary' },
+    { code: 'FININT', name: 'Financial Intelligence', note: 'heavy OSINT overlap', hl: 'minor' },
+    { code: 'GEOINT', name: 'Geospatial Intelligence', note: 'supply chain, market analysis', hl: 'minor' },
+    { code: 'HUMINT', name: 'Human Sources', note: 'OSINT corroborates', hl: null },
+    { code: 'TECHINT', name: 'Technical Intelligence', note: 'competitor capability', hl: null },
+    { code: 'IMINT', name: 'Imagery Intelligence', note: 'subset of GEOINT', hl: null },
+    { code: 'SIGINT', name: 'Signals Intelligence', note: 'gov/mil domain only', hl: null },
+    { code: 'MASINT', name: 'Measurement & Signature', note: 'highly specialised, gov/def', hl: null },
+  ]
+  const CW = 220, CH = 50, MGAP = 8, MARGIN = 22, RGAP = 8
+  return (
+    <svg viewBox="0 0 720 228" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="228" fill={BG} />
+      <text x="360" y="14" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="1">THE INTELLIGENCE DISCIPLINES — OSINT AND CTI ARE MOST DIRECTLY BUSINESS-RELEVANT</text>
+      {disciplines.map((d, i) => {
+        const col = i % 3
+        const row = Math.floor(i / 3)
+        const x = MARGIN + col * (CW + MGAP)
+        const y = 24 + row * (CH + RGAP)
+        let fill = BG2, stroke = BORDER, codeColor = TEXT, nameColor = MUTED, noteColor = MUTED
+        if (d.hl === 'primary') { fill = G; stroke = G; codeColor = '#FFF'; nameColor = '#FFFFFFAA'; noteColor = '#FFFFFF88' }
+        else if (d.hl === 'secondary') { fill = AMBER+'28'; stroke = AMBER+'70'; codeColor = TEXT }
+        else if (d.hl === 'minor') { fill = G+'12'; stroke = G+'38' }
+        return (
+          <g key={i}>
+            <rect x={x} y={y} width={CW} height={CH} fill={fill} stroke={stroke} strokeWidth="1" rx="2" />
+            <text x={x+10} y={y+16} fontFamily="monospace" fontSize="9.5" fill={codeColor} fontWeight="700" letterSpacing="0.5">{d.code}</text>
+            <text x={x+10} y={y+29} fontFamily="monospace" fontSize="7.5" fill={d.hl === 'primary' ? '#FFFFFFAA' : MUTED}>{d.name}</text>
+            <text x={x+10} y={y+43} fontFamily="monospace" fontSize="7" fill={d.hl === 'primary' ? '#FFFFFF88' : noteColor} fontStyle="italic">{d.note}</text>
+          </g>
+        )
+      })}
+      <text x="360" y="223" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED} letterSpacing="0.8">
+        OSINT cross-validates across all nine — corroborating human sources, verifying financial disclosures, confirming infrastructure claims
+      </text>
+    </svg>
+  )
+}
+
+export function OSINTApplicationsDiagram() {
+  const apps = [
+    { area: 'CYBERSECURITY / CTI', what: 'Exposed assets · leaked creds · threat actor infrastructure', ai1: 'Continuous monitoring across Pastebin, GitHub, breach forums,', ai2: 'and deep-web disclosure sites — no manual process matches scale', accent: DANGER },
+    { area: 'COMPETITIVE INTEL', what: 'Social listening · sentiment analysis · citation tracking', ai1: 'NLP across unstructured competitor and market signals at scale;', ai2: 'AEO/GEO citation tracking is a direct instance of this discipline', accent: G },
+    { area: 'FRAUD / FININT', what: 'Corporate filings · ownership structures · AML case work', ai1: 'Pattern detection across registries, disclosures, adverse media —', ai2: 'correlations a human analyst would take far longer to surface', accent: AMBER },
+    { area: 'MISINFORMATION', what: 'Deepfake detection · claim verification · media authentication', ai1: 'NLP flags likely-synthetic content at a scale manual review cannot;', ai2: 'detection vs generation is an active, ongoing arms race', accent: AMBER },
+    { area: 'DUE DILIGENCE', what: 'Vendor · partner · acquisition vetting from public filings', ai1: 'Surface litigation history, adverse media, and regulatory risk', ai2: 'faster than manual research — feeding into vendor-review workflows', accent: G },
+    { area: 'GEOSPATIAL', what: 'Location-based public data · supply chain · site selection', ai1: 'Correlates disparate location signals at scale — primarily for', ai2: 'supply-chain risk, market analysis, and infrastructure exposure', accent: MUTED },
+  ]
+  const CW = 334, CH = 78, CGAP = 12, MARGIN = 20, RGAP = 10
+  return (
+    <svg viewBox="0 0 720 300" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="300" fill={BG} />
+      <text x="360" y="14" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="1">SIX APPLICATION AREAS — WHAT AI SPECIFICALLY ADDS TO EACH</text>
+      {apps.map((a, i) => {
+        const col = i % 2
+        const row = Math.floor(i / 2)
+        const x = MARGIN + col * (CW + CGAP)
+        const y = 22 + row * (CH + RGAP)
+        return (
+          <g key={i}>
+            <rect x={x} y={y} width={CW} height={CH} fill={BG2} stroke={BORDER} strokeWidth="1" rx="2" />
+            <rect x={x} y={y} width={3} height={CH} fill={a.accent} rx="1" />
+            <text x={x+12} y={y+14} fontFamily="monospace" fontSize="8.5" fill={TEXT} fontWeight="700" letterSpacing="0.5">{a.area}</text>
+            <text x={x+12} y={y+27} fontFamily="monospace" fontSize="7.5" fill={TEXT}>{a.what}</text>
+            <text x={x+12} y={y+44} fontFamily="monospace" fontSize="7" fill={MUTED}>AI {'→'} {a.ai1}</text>
+            <text x={x+12} y={y+55} fontFamily="monospace" fontSize="7" fill={MUTED}>{a.ai2}</text>
+          </g>
+        )
+      })}
+      <text x="360" y="296" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED} letterSpacing="0.8">
+        Wiz · Bitsight · ShadowDragon · Web Asha Technologies — 2026 OSINT practitioner guides
+      </text>
+    </svg>
+  )
+}

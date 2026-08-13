@@ -23,6 +23,7 @@ import {
   PlatformComparisonDiagram, WorkflowVsAgentDiagram, N8NMCPBridgeDiagram,
   ModelLandscapeDiagram, RiskMatrixDiagram, DeploymentPathDiagram,
   DirectVsIndirectDiagram, AttackSuccessRateDiagram, DefenseStackDiagram,
+  OSINTCycleDiagram, IntelDisciplinesMap, OSINTApplicationsDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface PageProps {
@@ -51,6 +52,9 @@ export default function ArticlePage({ params }: PageProps) {
     month: 'long',
     day: 'numeric',
   })
+
+  if (article.slug === 'osint-ai-intelligence')
+    return <OSINTArticle article={article} formattedDate={formattedDate} />
 
   if (article.slug === 'prompt-injection-llm-security')
     return <PromptInjectionArticle article={article} formattedDate={formattedDate} />
@@ -6101,6 +6105,126 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
           ← Field Notes
         </Link>
       </div>
+    </div>
+  )
+}
+
+function OSINTArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+      <article className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-24">
+        {/* Header */}
+        <header className="mb-12">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt font-medium">{article!.category}</span>
+            <span className="text-brand-border">·</span>
+            <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted">{formattedDate}</span>
+            <span className="text-brand-border">·</span>
+            <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted">{article!.readTime}</span>
+          </div>
+          <h1 className="font-display text-[clamp(52px,8vw,96px)] leading-[0.88] tracking-[-0.03em] text-brand-black mb-8 uppercase">
+            ALREADY<br />PUBLIC.
+          </h1>
+          <p className="font-sans text-[15px] leading-[1.7] text-brand-muted max-w-[600px]">
+            {article!.subtitle}
+          </p>
+          <div className="flex flex-wrap gap-2 mt-6">
+            {article!.tags.map(tag => (
+              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted border border-brand-border px-2 py-1">{tag}</span>
+            ))}
+          </div>
+        </header>
+
+        {/* Lede */}
+        <p className="font-sans text-[15px] leading-[1.75] text-brand-black mb-8">
+          Information your organisation has exposed is already visible to anyone who knows how to look. Security teams call the practice of finding it OSINT — open-source intelligence. The same techniques used to monitor your own exposure are used to map a target before an attack. That dual-use reality is not a disclaimer at the end of a methodology document. It is the reason ethical and legal framing is load-bearing here, not decorative.
+        </p>
+
+        {/* 01 — What OSINT actually is */}
+        <SectionHeading number="01" title="What OSINT actually is" />
+        <p className="font-sans text-[15px] leading-[1.75] text-brand-black mb-6">
+          Open-source intelligence is the structured practice of collecting, analysing, and interpreting publicly or commercially available information to produce actionable insight. Not covert collection, which is a different discipline and a different legal category entirely. &quot;Open source&quot; means legally accessible: social media, public records, news archives, company filings, DNS and WHOIS records, technical infrastructure metadata, breach-disclosure databases.
+        </p>
+        <div className="my-8">
+          <OSINTCycleDiagram />
+        </div>
+        <p className="font-sans text-[15px] leading-[1.75] text-brand-black mb-6">
+          OSINT is a collection method, not the finished product. Threat intelligence, competitive intelligence, and due diligence are the broader disciplines that combine OSINT with proprietary data, internal context, and analytical judgment to produce something a decision-maker can act on. A raw search result is a data point. Intelligence is that data point placed in context, corroborated, and connected to a decision.
+        </p>
+        <p className="font-sans text-[15px] leading-[1.75] text-brand-black mb-8">
+          The most common way OSINT work goes wrong: skipping straight from collection to conclusion without the analysis and corroboration steps. The four-stage process exists specifically to prevent that failure mode.
+        </p>
+
+        {/* 02 — The nine disciplines */}
+        <SectionHeading number="02" title="The nine intelligence disciplines" />
+        <p className="font-sans text-[15px] leading-[1.75] text-brand-black mb-6">
+          OSINT is one of nine recognised intelligence disciplines. In most business and security contexts, its real value is as a corroboration layer across others — validating what a human source says, cross-referencing financial records against public disclosures, confirming a threat actor&apos;s claimed infrastructure actually exists.
+        </p>
+        <div className="my-8">
+          <IntelDisciplinesMap />
+        </div>
+        <p className="font-sans text-[15px] leading-[1.75] text-brand-black mb-8">
+          CTI and FININT have the most direct OSINT overlap in a business context. GEOINT is relevant for supply-chain risk and market analysis. The rest — SIGINT, MASINT — are government and defence domains. Treating OSINT findings as complete on their own, without cross-referencing, is a consistent source of false conclusions in practice.
+        </p>
+
+        {/* 03 — How AI changes each area */}
+        <SectionHeading number="03" title="How AI changes each application area" />
+        <p className="font-sans text-[15px] leading-[1.75] text-brand-black mb-6">
+          AI-assisted OSINT has matured fastest in cybersecurity and threat intelligence, but the same capability shifts are happening across every application area. The underlying change is consistent: AI handles the volume problem that made continuous monitoring impractical and surfaces relationships across disconnected sources that no single search would reveal.
+        </p>
+        <div className="my-8">
+          <OSINTApplicationsDiagram />
+        </div>
+        <p className="font-sans text-[15px] leading-[1.75] text-brand-black mb-8">
+          One practical framing worth holding onto across all six areas: the same category of technique that a security team uses to find their own organisation&apos;s exposure is what an attacker uses for reconnaissance. The discipline is the same. The target and the intent are what differ.
+        </p>
+
+        {/* 04 — What AI adds mechanically */}
+        <SectionHeading number="04" title="What AI adds, mechanism by mechanism" />
+        <div className="space-y-4 mb-8">
+          {[
+            { label: 'Scale', body: 'AI-assisted crawlers and monitoring tools process volumes of public data no manual process could keep pace with. This is the single biggest practical shift — turning what used to be periodic manual searches into continuous monitoring.' },
+            { label: 'Pattern discovery across disconnected sources', body: 'Link-analysis tooling surfaces relationships between entities that would not be visible from any single source. Maltego-style platforms run automated transforms across 100+ data sources to map connections between infrastructure, domains, and threat actors — work that used to be manual graph-building.' },
+            { label: 'Natural-language querying', body: 'Being able to ask a plain-language question against a large corpus of scraped public content, rather than constructing complex boolean search strings, has meaningfully lowered the skill floor for getting useful results from OSINT work.' },
+            { label: 'Faster verification and corroboration', body: 'What used to require manually cross-checking multiple sources can now be partially automated. The corroboration step still requires human judgment — but the volume of sources that can be checked in parallel has changed significantly.' },
+            { label: 'The contamination problem', body: 'AI-generated content is now a contaminant in the public data that OSINT tools search against. Search results increasingly include AI-generated material that needs its own verification, not just the original claim. This is a genuine, growing complication that does not yet have a clean solution.' },
+          ].map(({ label, body }) => (
+            <div key={label} className="border-l-2 border-brand-cobalt pl-5">
+              <p className="font-sans text-[13px] tracking-[0.1em] uppercase text-brand-cobalt mb-1">{label}</p>
+              <p className="font-sans text-[15px] leading-[1.7] text-brand-black">{body}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* 05 — Ethical and legal boundaries */}
+        <SectionHeading number="05" title="Ethical and legal boundaries" />
+        <p className="font-sans text-[15px] leading-[1.75] text-brand-black mb-6">
+          Every credible source in this discipline treats legal and ethical boundaries as a stated, load-bearing part of the methodology — not an optional add-on. The following five principles are consistent across the practitioner literature.
+        </p>
+        <Callout label="Five core principles">
+          <div className="space-y-3">
+            {[
+              'Define clear objectives before collecting anything. Know specifically what question you are trying to answer and why. Open-ended collection — "let us see what we can find on this person or company" — is where ethical and legal problems start.',
+              'Respect platform terms of service and applicable privacy law. What is technically accessible is not automatically legal or appropriate to collect and use. This varies by jurisdiction and by what the information will be used for.',
+              'Corroborate before concluding. Multiple independent sources reduce false positives. A single, unverified public data point should never be the sole basis for a real decision — a hiring decision, a partnership, an accusation.',
+              'Individuals are a different category from organisations and infrastructure. Public-facing corporate information, published research, infrastructure exposure, and brand mentions are the legitimate core of business OSINT. Anything that starts to look like profiling a specific private individual — their movements, relationships, habits — requires a real, specific legal and ethical basis before proceeding.',
+              'The same techniques serve very different purposes depending on who uses them and why. Intent, authorisation, and defined scope matter as much as the technique itself.',
+            ].map((p, i) => (
+              <p key={i} className="font-sans text-[14px] leading-[1.7] text-brand-black">{i + 1}. {p}</p>
+            ))}
+          </div>
+        </Callout>
+
+        {/* Closing */}
+        <p className="font-sans text-[15px] leading-[1.75] text-brand-black mt-10">
+          The information is there either way. The question is whether you look before someone else does.
+        </p>
+      </article>
     </div>
   )
 }
