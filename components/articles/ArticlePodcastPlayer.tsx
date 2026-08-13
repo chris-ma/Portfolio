@@ -46,7 +46,7 @@ export default function ArticlePodcastPlayer({ title, readTime }: Props) {
 
   const chunksRef = useRef<string[]>([])
   const chunkIndexRef = useRef(0)
-  const cacheRef = useRef<Map<number, string>>(new Map()) // index → blob URL
+  const cacheRef = useRef<Map<number, string>>(new Map())
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const activeRef = useRef(false)
   const speedRef = useRef(1)
@@ -67,7 +67,6 @@ export default function ArticlePodcastPlayer({ title, readTime }: Props) {
         return
       }
 
-      // Pre-fetch next chunk in background
       const prefetchIdx = idx + 1
       if (prefetchIdx < chunks.length && !cacheRef.current.has(prefetchIdx)) {
         fetchAudio(chunks[prefetchIdx])
@@ -75,7 +74,6 @@ export default function ArticlePodcastPlayer({ title, readTime }: Props) {
           .catch(() => {})
       }
 
-      // Get or fetch current chunk
       let url = cacheRef.current.get(idx)
       if (!url) {
         setStatus('loading')
@@ -210,32 +208,36 @@ export default function ArticlePodcastPlayer({ title, readTime }: Props) {
         }
       `}</style>
 
-      <div className="max-w-[900px] mx-auto px-6 md:px-10 py-10">
+      <div className="w-full px-4 sm:px-6 md:px-10 py-5 sm:py-8 md:max-w-[900px] md:mx-auto">
+
         {/* Label row */}
-        <div className="flex items-center gap-3 mb-6">
+        <div className="flex items-center gap-3 mb-4">
           <div
-            className={`w-2 h-2 rounded-full transition-colors duration-500 ${isPlaying ? 'bg-[#1A4D3A]' : 'bg-[#1A4D3A]/40'}`}
+            className={`w-2 h-2 rounded-full flex-shrink-0 transition-colors duration-500 ${isPlaying ? 'bg-[#1A4D3A]' : 'bg-[#1A4D3A]/40'}`}
           />
           <span className="font-mono text-[10px] tracking-[0.2em] text-[#7A7872] uppercase">
             Field Notes &middot; Listen
           </span>
-          <span className="font-mono text-[9px] text-[#7A7872]/50 hidden sm:block">
+          <span className="font-mono text-[9px] text-[#7A7872]/50 ml-auto hidden sm:block">
             Cartesia Sonic-2
           </span>
-          {status === 'error' && (
-            <span className="font-mono text-[10px] text-red-400/80 truncate max-w-[300px]">
-              {errorMsg || 'TTS error'}
-            </span>
-          )}
         </div>
 
-        {/* Player row */}
-        <div className="flex items-center gap-5 md:gap-8">
-          {/* Play / Pause */}
+        {/* Error message — full width row */}
+        {status === 'error' && errorMsg && (
+          <div className="mb-4 font-mono text-[10px] text-red-400/80 leading-relaxed break-words">
+            {errorMsg}
+          </div>
+        )}
+
+        {/* Main player row */}
+        <div className="flex items-center gap-4 sm:gap-5 md:gap-8">
+
+          {/* Play / Pause button */}
           <button
             onClick={isPlaying ? handlePause : handlePlay}
             disabled={isLoading || status === 'error'}
-            className="w-14 h-14 rounded-full bg-[#1A4D3A] flex items-center justify-center flex-shrink-0 hover:bg-[#3D7A60] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+            className="w-14 h-14 rounded-full bg-[#1A4D3A] flex items-center justify-center flex-shrink-0 hover:bg-[#3D7A60] active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
             aria-label={isPlaying ? 'Pause' : isLoading ? 'Loading' : 'Play'}
           >
             {isLoading ? (
@@ -252,22 +254,22 @@ export default function ArticlePodcastPlayer({ title, readTime }: Props) {
             )}
           </button>
 
-          {/* Middle */}
+          {/* Middle: title + waveform + progress */}
           <div className="flex-1 min-w-0">
-            <div className="flex items-baseline justify-between gap-2 mb-0.5">
-              <p className="font-display text-[#F5F4F0] text-[22px] leading-none truncate tracking-wide">
+            <div className="flex items-baseline justify-between gap-2 mb-1">
+              <p className="font-display text-[#F5F4F0] text-[18px] sm:text-[22px] leading-none truncate tracking-wide">
                 {title.toUpperCase()}
               </p>
-              <span className="font-mono text-[10px] text-[#7A7872] flex-shrink-0 hidden sm:block">
+              <span className="font-mono text-[10px] text-[#7A7872] flex-shrink-0">
                 ~{listenMinutes} min
               </span>
             </div>
-            <p className="font-mono text-[11px] text-[#7A7872] mb-4">
+            <p className="font-mono text-[10px] sm:text-[11px] text-[#7A7872] mb-3">
               {speed}× &middot;{' '}
               {status === 'idle'
                 ? 'Ready'
                 : status === 'loading'
-                  ? 'Generating audio…'
+                  ? 'Generating…'
                   : status === 'error'
                     ? 'Error'
                     : status === 'done'
@@ -278,7 +280,7 @@ export default function ArticlePodcastPlayer({ title, readTime }: Props) {
             </p>
 
             {/* Waveform */}
-            <div className="flex items-end gap-[3px] h-7 mb-3" aria-hidden="true">
+            <div className="flex items-end gap-[3px] h-6 sm:h-7 mb-3" aria-hidden="true">
               {WAVEFORM_HEIGHTS.map((h, i) => {
                 const barProgress = i / WAVEFORM_HEIGHTS.length
                 const isDone = hasStarted && progress / 100 > barProgress
@@ -307,8 +309,8 @@ export default function ArticlePodcastPlayer({ title, readTime }: Props) {
             </div>
           </div>
 
-          {/* Speed + stop */}
-          <div className="flex-shrink-0 flex flex-col items-end gap-1.5">
+          {/* Speed selector — desktop only (vertical column) */}
+          <div className="hidden sm:flex flex-col items-end gap-1.5 flex-shrink-0">
             <div className="flex flex-col gap-1">
               {SPEEDS.map((s) => (
                 <button
@@ -333,6 +335,33 @@ export default function ArticlePodcastPlayer({ title, readTime }: Props) {
             )}
           </div>
         </div>
+
+        {/* Mobile bottom row: speed buttons + stop */}
+        <div className="flex items-center justify-between mt-4 sm:hidden">
+          <div className="flex items-center gap-1">
+            {SPEEDS.map((s) => (
+              <button
+                key={s}
+                onClick={() => handleSpeed(s)}
+                className={`font-mono text-[11px] px-2.5 py-1.5 rounded transition-colors ${
+                  speed === s ? 'bg-[#1A4D3A] text-[#F5F4F0]' : 'text-[#7A7872]'
+                }`}
+              >
+                {s}×
+              </button>
+            ))}
+          </div>
+          {hasStarted && (
+            <button
+              onClick={handleStop}
+              className="font-mono text-[11px] text-[#7A7872]/60 px-2 py-1.5"
+              aria-label="Stop"
+            >
+              ■ stop
+            </button>
+          )}
+        </div>
+
       </div>
     </div>
   )

@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
 
-const DEFAULT_VOICE_ID = 'a0e99841-438c-4a64-b679-ae501e7d6091' // Barbora — natural, neutral
+const DEFAULT_VOICE_ID = '694f9389-aac1-45b6-b726-9d9369183238' // Stella Densen — natural English
 
 export async function POST(req: NextRequest) {
   const apiKey = process.env.CARTESIA_API_KEY
