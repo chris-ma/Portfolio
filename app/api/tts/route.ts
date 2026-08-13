@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
 
   if (!res.ok) {
     const body = await res.text()
-    return new Response(JSON.stringify({ error: 'TTS upstream error', detail: body }), {
+    return new Response(JSON.stringify({ error: 'TTS upstream error', detail: `Cartesia ${res.status}: ${body}` }), {
       status: 502,
       headers: { 'Content-Type': 'application/json' },
     })

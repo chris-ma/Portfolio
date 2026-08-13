@@ -31,7 +31,7 @@ async function fetchAudio(text: string): Promise<string> {
   })
   if (!res.ok) {
     const err = await res.json().catch(() => ({ error: 'TTS failed' }))
-    throw new Error(err.error || 'TTS failed')
+    throw new Error(err.detail || err.error || 'TTS failed')
   }
   const blob = await res.blob()
   return URL.createObjectURL(blob)
