@@ -11,6 +11,28 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'prompt-injection-llm-security',
+    title: 'The Same Channel',
+    subtitle: "LLMs process instructions and data through the same channel with no built-in separation. OWASP's LLM Top 10 has held prompt injection at #1 for two consecutive editions. Here is why — and the layered defense that actually works.",
+    category: 'Engineering',
+    date: '2026-08-13',
+    readTime: '9 min read',
+    tags: ['Prompt Injection', 'LLM Security', 'OWASP', 'AI Agents', 'Defense in Depth'],
+    excerpt:
+      "You can't patch your way out of prompt injection. It exploits how LLMs fundamentally work — no built-in separation between instructions and data. The Anthropic system card puts it concretely: 4.7% attack success at one attempt, 63% at a hundred. Defense in depth is not optional.",
+  },
+  {
+    slug: 'chinese-llms-open-weight',
+    title: 'East of Closed',
+    subtitle: 'Four of the five leading open-weight models in 2026 come from Chinese labs. The capability gap with Western frontier models is closed. Here is what to actually evaluate — and what most of the discourse is pointing at incorrectly.',
+    category: 'Engineering',
+    date: '2026-08-13',
+    readTime: '10 min read',
+    tags: ['DeepSeek', 'Qwen', 'Kimi', 'GLM', 'Open-Weight LLMs', 'AI Risk'],
+    excerpt:
+      'Open-source no longer means second-best. GLM-5 outperforms Gemini 3 Pro on SWE-bench Verified. The question in 2026 is not whether Chinese models are good enough to consider — it is which one, for which job, and whether you are self-hosting or using a hosted API. Those two deployment paths carry completely different risk profiles.',
+  },
+  {
     slug: 'n8n-process-automation',
     title: 'Not a Pipe',
     subtitle: 'Zapier, Make, and n8n have settled into three distinct positions. The more important shift is what all three have stopped being.',

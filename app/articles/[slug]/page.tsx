@@ -21,6 +21,8 @@ import {
   PlatformEngagementDiagram, AlgorithmShiftDiagram, SocialSEODiagram,
   MCPInteropDiagram, MCPCapabilityLayersDiagram, MCPTimelineDiagram,
   PlatformComparisonDiagram, WorkflowVsAgentDiagram, N8NMCPBridgeDiagram,
+  ModelLandscapeDiagram, RiskMatrixDiagram, DeploymentPathDiagram,
+  DirectVsIndirectDiagram, AttackSuccessRateDiagram, DefenseStackDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface PageProps {
@@ -49,6 +51,12 @@ export default function ArticlePage({ params }: PageProps) {
     month: 'long',
     day: 'numeric',
   })
+
+  if (article.slug === 'prompt-injection-llm-security')
+    return <PromptInjectionArticle article={article} formattedDate={formattedDate} />
+
+  if (article.slug === 'chinese-llms-open-weight')
+    return <ChineseLLMsArticle article={article} formattedDate={formattedDate} />
 
   if (article.slug === 'n8n-process-automation')
     return <N8NArticle article={article} formattedDate={formattedDate} />
@@ -5821,6 +5829,553 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section className="border-t border-brand-concrete pt-10">
           <p className="font-sans text-lg text-brand-black/75 leading-relaxed">
             Build the automation. Test it against real data. Publish deliberately. Then connect it to something.
+          </p>
+        </section>
+
+      </div>
+
+      {/* Footer nav */}
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-brand-concrete pt-10">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+    </div>
+  )
+}
+
+function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+          EAST OF<br />
+          <span className="text-brand-cobalt">CLOSED.</span>
+        </h1>
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+          {article!.subtitle}
+        </p>
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 py-14 space-y-16">
+
+        {/* Lede */}
+        <section>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+            Four of the five leading open-weight models in mid-2026 come from Chinese labs — DeepSeek,
+            Moonshot AI (Kimi), Zhipu/Z.ai (GLM), and Alibaba (Qwen). This is not a &ldquo;things are
+            catching up&rdquo; observation. GLM-5&rsquo;s 77.8% on SWE-bench Verified outperforms
+            Gemini 3 Pro. DeepSeek V4 Pro&rsquo;s 80.6% on the same benchmark is within a percentage
+            point of Claude Opus 4.6 at 80.9%. The capability gap is closed.
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            The question has shifted. It is no longer whether to consider these models — it is which
+            one, for which workload, under what deployment and licensing constraints. Both the advantages
+            and the risks are real. They are also more specific, and more resolvable, than the public
+            discourse suggests.
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            The clearest mistake in how most teams evaluate this category is collapsing compliance risk,
+            security risk, and output-quality risk into a single &ldquo;China models: yes or no&rdquo;
+            verdict. They are different columns on the risk matrix, and they respond to completely
+            different controls. Getting that distinction wrong leads to either blanket avoidance of
+            genuinely useful tools or blanket acceptance of a profile you have not actually examined.
+          </p>
+        </section>
+
+        {/* Section 01 */}
+        <section>
+          <SectionHeading number="01" title="The four families" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            The current open-weight field has genuinely differentiated by workload rather than converging
+            on identical strengths. The four leading families and what distinguishes each:
+          </p>
+          <div className="mt-8 mb-8 overflow-x-auto">
+            <ModelLandscapeDiagram />
+          </div>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Reading benchmark numbers carefully matters here specifically. Different labs report against
+            different suites — SWE-bench Verified versus the newer and harder SWE-bench Pro — so a
+            direct number comparison across vendors misleads unless you check which suite produced it.
+            GLM-5.2&rsquo;s 81.0 on Terminal-Bench 2.1 and Kimi&rsquo;s top position on the
+            Artificial Analysis Intelligence Index are measuring different things from DeepSeek&rsquo;s
+            80.6% on SWE-bench Verified. Treat any single benchmark figure as a starting filter for
+            which models to evaluate, not a final selection criterion. The consistent practitioner
+            advice: run a real-task evaluation on your actual codebase or workflow before committing.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-5">
+            The licensing landscape is clearer than the family-level reputation suggests. Qwen (Apache
+            2.0), DeepSeek (MIT), and GLM (MIT) carry genuinely permissive commercial licences —
+            no royalties, no usage caps, fine-tunable for enterprise deployment. The specific exception
+            worth calling out: Kimi K3 shipped under a custom licence that most teams assumed was MIT
+            and is not. Read the actual licence text of any specific model release before you build a
+            product on it, not the family&rsquo;s general reputation.
+          </p>
+        </section>
+
+        {/* Section 02 */}
+        <section>
+          <SectionHeading number="02" title="The real advantages" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Three of the four advantages below apply specifically to the open-weight, self-hosted
+            deployment model. The fourth applies regardless of how you deploy.
+          </p>
+          <div className="space-y-8 mt-8">
+            <div className="border-l-2 border-brand-cobalt pl-5">
+              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">Cost efficiency — structural, not just sticker price</h4>
+              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+                DeepSeek-R1 was reportedly trained for under $6 million using 2,000 H800 chips over 55
+                days. That is a genuinely different cost structure from Western frontier training runs,
+                and the efficiency carries through to inference cost when self-hosted. Qwen3.6-27B runs
+                on a single consumer GPU at 77.2% SWE-bench Verified — beating some models that require
+                far more hardware. This is not a marginal advantage in cost-sensitive or
+                hardware-constrained contexts.
+              </p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/60 pl-5">
+              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">Permissive licensing for commercial use</h4>
+              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+                Apache 2.0 and MIT licences on three of the four families mean commercial deployment and
+                fine-tuning with zero royalties. For enterprise fine-tuning in particular, GLM-5.1&rsquo;s
+                MIT licence is a material differentiator from options that carry revenue gates or usage
+                caps. The Kimi K3 exception applies here too — verify the specific release, not the
+                family headline.
+              </p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/60 pl-5">
+              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">Self-hosting and full data control</h4>
+              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+                Because weights are public, you can run any of these models entirely on your own
+                infrastructure. No data leaves your environment. No dependency on a hosted API&rsquo;s
+                uptime, pricing changes, or terms-of-service updates. This is a genuinely different trust
+                model from a closed, cloud-only frontier service — and as the risk section below shows,
+                it directly resolves the most commonly cited concern about this model category.
+              </p>
+            </div>
+            <div className="border-l-2 border-brand-concrete pl-5">
+              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">Specialisation by workload</h4>
+              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+                The field has differentiated meaningfully. Kimi and GLM are purpose-built for
+                long-horizon coding agents and multi-step tool-use loops. DeepSeek&rsquo;s pro tiers and
+                Qwen&rsquo;s flagship cover general reasoning and breadth. Qwen&rsquo;s 119-language
+                support leads the field for multilingual work. GLM&rsquo;s long-context variants handle
+                full contracts and regulatory filings in a single pass. Choosing by task fit rather than
+                a blanket &ldquo;best model&rdquo; gives you better results at lower cost.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 03 */}
+        <section>
+          <SectionHeading number="03" title="Two risk columns, not one" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Most of the public risk analysis on Chinese LLMs collapses three separate risk categories
+            into a single verdict. Separating them gives a more useful picture — because they respond
+            to different controls, and because one of them disappears entirely when you self-host.
+          </p>
+          <div className="mt-8 mb-8 overflow-x-auto">
+            <RiskMatrixDiagram />
+          </div>
+          <div className="space-y-7 mt-8">
+            <div>
+              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">Data jurisdiction: real, documented, specific to hosted services</h4>
+              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+                If you use a Chinese lab&rsquo;s hosted API or chat product — not a self-hosted open-weight
+                download — your data may be subject to Chinese data-governance law and processed on servers
+                you do not control. This is the specific concern that led Italy&rsquo;s data protection
+                authority to block DeepSeek&rsquo;s hosted service outright. It is a jurisdiction question,
+                not a technology question. It disappears entirely when you self-host the open-weight model.
+                The weights carry no jurisdiction — the hosted service does.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">Content moderation in hosted services</h4>
+              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+                A 2026 academic study (NDSS) found persistent content-blocking mechanisms in several major
+                Chinese LLM hosted services — operating at the input, output, and search phases — tied to
+                Chinese regulatory compliance requirements. This is a hosted-service-layer behaviour. Whether
+                the same constraints apply when running the open-weight model independently is worth testing
+                directly if factual neutrality on specific topics matters for your use case. Do not assume
+                it away, and do not assume it applies to the self-hosted model without checking.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">A coding-safety signal worth tracking</h4>
+              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+                A 2026 Booz Allen study reported that several Chinese coding models produced more vulnerable
+                code when the prompt implied a US government end user. Treat this as an early, single-study
+                signal rather than a settled finding — but it is concrete enough to be worth an independent
+                code review pass on any security-sensitive output from these models, regardless of how the
+                underlying research resolves. This is an output-quality concern, not a backdoor claim.
+              </p>
+            </div>
+            <Callout label="What is overstated">
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                Claims of hidden backdoors or covert command-and-control channels in open-weight models
+                are a theoretical, largely unproven concern. Worth taking seriously in
+                critical-infrastructure contexts where stakes justify caution against unproven risk —
+                not a well-established demonstrated threat for typical business workflows. Direct
+                comparative security analysis of open-weight models finds no inherent security difference
+                tied purely to geopolitical origin. The actual security surface is the harness running the
+                model — whatever bridges it to your environment — not the weights&rsquo; country of origin.
+                Treat sensational framing on this specific claim with real scepticism until backed by
+                reproducible, independently verified findings.
+              </p>
+            </Callout>
+          </div>
+        </section>
+
+        {/* Section 04 */}
+        <section>
+          <SectionHeading number="04" title="The deployment decision" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            The most useful framing: match the model to the sensitivity of the data it will touch, and
+            the deployment model to that same sensitivity — not a blanket yes/no on &ldquo;Chinese
+            models.&rdquo; A self-hosted, open-weight model running on non-sensitive workloads carries
+            a meaningfully different risk profile from a hosted Chinese API handling client-confidential
+            data. Treating those as the same decision is where most of the current public analysis goes
+            wrong.
+          </p>
+          <div className="mt-8 mb-8 overflow-x-auto">
+            <DeploymentPathDiagram />
+          </div>
+          <div className="mt-6 space-y-0 border border-brand-concrete">
+            {[
+              { situation: 'Personal prototyping, non-sensitive data', guidance: 'Any of the four families. Pick by task fit (Section 01 above).' },
+              { situation: 'Client or committee data involved', guidance: 'Self-host the open-weight model. The jurisdiction risk is the hosted service, not the weights.' },
+              { situation: 'Factual neutrality on sensitive topics', guidance: 'Test directly before relying on it — hosted services specifically carry documented content-moderation behaviour.' },
+              { situation: 'Security-critical code generation', guidance: 'Independent code review regardless of model choice; extra scrutiny given the Booz Allen signal.' },
+              { situation: 'Commercial licensing required', guidance: 'Qwen (Apache 2.0), DeepSeek or GLM (MIT). Verify the specific model release, not just the family.' },
+              { situation: 'Building a product on Kimi', guidance: 'Read the actual K3 licence text — it is not MIT despite common assumption.' },
+            ].map((row, i, arr) => (
+              <div key={row.situation} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
+                <div className="w-64 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/40">
+                  <p className="font-sans text-xs text-brand-black/80 leading-snug font-medium">{row.situation}</p>
+                </div>
+                <div className="p-4 flex-1">
+                  <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{row.guidance}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="font-sans text-sm text-brand-black/55 leading-relaxed mt-6">
+            US congressional committees announced in July 2026 they would examine growing enterprise use
+            of Chinese AI models. This is a live regulatory conversation, not a settled one — particularly
+            for client-facing or regulated work. Worth monitoring over the next six to twelve months
+            before making permanent decisions about regulated use cases specifically.
+          </p>
+        </section>
+
+        {/* Closing */}
+        <section className="border-t border-brand-concrete pt-10">
+          <p className="font-sans text-lg text-brand-black/75 leading-relaxed">
+            The models are good enough. The decision is whether you are deploying them in a way that matches your actual risk profile.
+          </p>
+        </section>
+
+      </div>
+
+      {/* Footer nav */}
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-brand-concrete pt-10">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+    </div>
+  )
+}
+
+function PromptInjectionArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+          THE SAME<br />
+          <span className="text-brand-cobalt">CHANNEL.</span>
+        </h1>
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+          {article!.subtitle}
+        </p>
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 py-14 space-y-16">
+
+        {/* Lede */}
+        <section>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+            Prompt injection has held the top spot on the OWASP Top 10 for LLM Applications for two
+            consecutive editions. The reason is structural, not incidental. LLMs process instructions
+            and the data they are working on through the same channel, with no built-in separation
+            between the two. When a model reads &ldquo;here is an email, summarise it&rdquo; followed
+            by the actual email text, it has no hard boundary telling it that everything after a certain
+            point is data, not commands. If the email contains something that looks like an instruction,
+            the model cannot reliably tell the difference.
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            OWASP is direct about the consequence: you cannot patch your way out of prompt injection.
+            It exploits how LLMs fundamentally work, not a specific bug you can fix once. And as
+            anything agentic — email access, file-system access, API credentials — gets wired to
+            these models, the ceiling on what a successful injection can achieve rises sharply.
+          </p>
+        </section>
+
+        {/* Section 01 */}
+        <section>
+          <SectionHeading number="01" title="How it works" />
+          <div className="mt-8 mb-8 overflow-x-auto">
+            <DirectVsIndirectDiagram />
+          </div>
+          <div className="space-y-7 mt-8">
+            <div className="border-l-2 border-brand-cobalt pl-5">
+              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">Direct injection</h4>
+              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+                A user explicitly types a malicious instruction — the classic pattern is asking a chatbot
+                to disregard its prior instructions and reveal internal configuration. This is the version
+                most people picture, and it is the easier of the two to defend against, because the input
+                comes directly from a user you can apply scrutiny to.
+              </p>
+            </div>
+            <div className="border-l-2 border-red-700/40 pl-5">
+              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">Indirect injection — the one that actually matters for anything agentic</h4>
+              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+                The attacker types nothing into your chat. Instead, they embed malicious instructions
+                inside content the model will later process on your behalf: a webpage, a document, an
+                email, a support ticket, a Slack message. When your AI assistant reads that content — to
+                summarise, triage, or review — it can encounter those embedded instructions and follow
+                them as if they came from you. From the model&rsquo;s perspective, text is text.
+              </p>
+              <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-3">
+                This is precisely what happened in the documented Slack AI incident: malicious instructions
+                hidden in ordinary Slack content caused the AI integration to exfiltrate information it
+                should not have accessed. The attack surface is not the model — it is the model&rsquo;s
+                pipeline of untrusted content.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 02 */}
+        <section>
+          <SectionHeading number="02" title="The numbers" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Anthropic&rsquo;s own published system card for Claude Opus 4.5 provides one of the more
+            concrete, quantified pictures of real-world injection resistance in an agentic coding
+            environment:
+          </p>
+          <div className="mt-8 mb-8 overflow-x-auto">
+            <AttackSuccessRateDiagram />
+          </div>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Two things worth taking from that data. First, single-attempt defenses genuinely work
+            most of the time — a 4.7% success rate at one attempt means a casual attacker hits a wall
+            more than 95% of the time. Second, an attacker who can make many attempts — an automated,
+            repeated attack against a production system — sees success rates climb to 63% at a hundred
+            tries. That is the actual argument for defense in depth and monitoring, not just a single
+            good filter.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-5">
+            The ceiling on impact scales directly with what the compromised model is allowed to do.
+            A chatbot with no tool access and no memory of sensitive data has a low ceiling on what
+            a successful injection can achieve. An agent with email access, file-system access, and
+            API credentials has a very different ceiling. This is why prevention has to focus as much
+            on limiting what a model can do as on stopping it from being tricked in the first place.
+          </p>
+          <div className="mt-6 space-y-0 border border-brand-concrete">
+            {[
+              { outcome: 'Instruction override', desc: 'Model ignores original guidance and follows attacker instructions instead.' },
+              { outcome: 'Data exfiltration', desc: 'Sensitive content the model can access — system prompt, documents, connected-account data — gets surfaced to the attacker.' },
+              { outcome: 'Unauthorised tool calls', desc: 'In an agentic system, a successful injection can trigger real actions: send email, modify files, call APIs — using the agent\'s own legitimate permissions.' },
+              { outcome: 'System prompt leakage', desc: 'Attacker extracts the hidden instructions that shape the application\'s AI behaviour, enabling more targeted follow-on attacks.' },
+              { outcome: 'Downstream chain corruption', desc: 'In a multi-step workflow, a single injected instruction early in the chain quietly corrupts subsequent steps that trust earlier outputs.' },
+            ].map((row, i, arr) => (
+              <div key={row.outcome} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
+                <div className="w-52 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/40">
+                  <p className="font-sans text-xs text-brand-black/80 font-semibold leading-snug">{row.outcome}</p>
+                </div>
+                <p className="font-sans text-sm text-brand-black/65 leading-relaxed p-4">{row.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 03 */}
+        <section>
+          <SectionHeading number="03" title="The layered defense" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            No single control solves this. OWASP&rsquo;s own guidance is explicit that mitigation
+            requires layering multiple defenses, because none of them is individually sufficient against
+            a motivated, repeated attack. Each technique below reduces risk — stacked together, they
+            reduce it substantially.
+          </p>
+          <div className="mt-8 mb-8 overflow-x-auto">
+            <DefenseStackDiagram />
+          </div>
+          <div className="space-y-6 mt-8">
+            <div className="border-l-2 border-brand-cobalt pl-5">
+              <h4 className="font-sans font-semibold text-sm text-brand-black mb-1 tracking-wide uppercase">1 — Segregate untrusted content from the instruction stream</h4>
+              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+                Structure prompts so untrusted content — a fetched webpage, an uploaded document, an email
+                body — is visibly delimited as data to be processed, not blended into the instruction
+                stream. This is the direct analogue to parameterised queries preventing SQL injection:
+                separate the command channel from the data channel wherever the architecture allows it.
+              </p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/60 pl-5">
+              <h4 className="font-sans font-semibold text-sm text-brand-black mb-1 tracking-wide uppercase">2 — System-level behavioral constraints</h4>
+              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+                Define expected output formats and behavioral boundaries in the system prompt itself. A
+                model instructed to only ever output a specific structured format has less room for an
+                injected instruction to hijack the interaction into open-ended behaviour.
+              </p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/60 pl-5">
+              <h4 className="font-sans font-semibold text-sm text-brand-black mb-1 tracking-wide uppercase">3 — Least-privilege tooling</h4>
+              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+                This is the highest-leverage structural defense for anything agentic. Give a model or
+                agent only the specific tools and access it needs for its actual task — nothing broader
+                &ldquo;just in case.&rdquo; An agent that can only read a specific document has a low
+                ceiling even if successfully injected. An agent with broad file-system, email, and API
+                access has a much higher one. Same principle as row-level security in a database,
+                applied to agent permissions.
+              </p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/60 pl-5">
+              <h4 className="font-sans font-semibold text-sm text-brand-black mb-1 tracking-wide uppercase">4 — Human approval for high-risk or irreversible actions</h4>
+              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+                For anything with real consequence — sending an email, making a purchase, deleting data,
+                executing code against production — insert an explicit human-in-the-loop checkpoint rather
+                than letting an agent act autonomously. This is the single most reliable backstop against
+                an injection that clears every earlier filter.
+              </p>
+            </div>
+            <div className="border-l-2 border-brand-concrete pl-5">
+              <h4 className="font-sans font-semibold text-sm text-brand-black mb-1 tracking-wide uppercase">5 — Input/output filtering</h4>
+              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+                Scan for known attack patterns and known-bad output signatures on both sides. This
+                catches what you have seen before — not novel attacks, which is exactly why it is one
+                layer among several rather than a complete solution.
+              </p>
+            </div>
+            <div className="border-l-2 border-brand-concrete pl-5">
+              <h4 className="font-sans font-semibold text-sm text-brand-black mb-1 tracking-wide uppercase">6 — RAG groundedness checks</h4>
+              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+                For any RAG-connected system, assess context relevance and groundedness as a way of
+                catching outputs that have drifted from what the retrieved content actually supports —
+                a useful signal that something embedded in a retrieved document has pulled the model
+                off-track.
+              </p>
+            </div>
+            <div className="border-l-2 border-brand-concrete pl-5">
+              <h4 className="font-sans font-semibold text-sm text-brand-black mb-1 tracking-wide uppercase">7 — Adversarial testing on a real cadence</h4>
+              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+                Conduct regular red-teaming and breach simulations — not a one-time pre-launch audit,
+                but a recurring practice. The attack-success-rate data makes the argument: repeated
+                attempts matter, and a single pre-launch test does not model a production attacker
+                who gets a hundred tries. Open-source tooling (Promptfoo, Garak) exists specifically
+                for this.
+              </p>
+            </div>
+          </div>
+          <Callout label="One misconception to clear directly" className="mt-8">
+            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              Grounding a model in retrieved data (RAG) or fine-tuning it on your own data does not close
+              the prompt injection gap. Both are still vulnerable to malicious content smuggled into
+              whatever they process. Defense in depth remains necessary regardless of whether you have
+              also invested in RAG or fine-tuning for other reasons. These are separate problems.
+            </p>
+          </Callout>
+        </section>
+
+        {/* Section 04 */}
+        <section>
+          <SectionHeading number="04" title="Where this applies now" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Prompt injection is not a theoretical concern for a future AI product — it is a present
+            concern for anything already wiring AI to external content. Four categories where the
+            risk is immediate:
+          </p>
+          <ul className="mt-5 space-y-4 font-sans text-base text-brand-black/70 leading-relaxed">
+            <li className="flex gap-3">
+              <span className="text-brand-cobalt mt-1 flex-shrink-0">—</span>
+              <span><strong className="text-brand-black font-semibold">Anything processing untrusted external content.</strong> A webpage summariser, an email triage tool, a document reviewer, an n8n workflow reading inbound Slack messages — build these assuming the content might contain hidden instructions, not as an edge case to patch later.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-brand-cobalt mt-1 flex-shrink-0">—</span>
+              <span><strong className="text-brand-black font-semibold">n8n workflows with MCP Client Tool nodes or Tools Agent steps.</strong> Treat every external tool call as a potential injection vector if the data feeding that step originates from anything outside your direct control — an inbound email, a scraped page, a public API response.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-brand-cobalt mt-1 flex-shrink-0">—</span>
+              <span><strong className="text-brand-black font-semibold">Coding agents against real codebases.</strong> A malicious or compromised dependency, a poisoned README, or planted comments in a repo an agent is asked to review are all plausible indirect-injection vectors. Arbitrary repo content is external, untrusted content — treat it accordingly.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-brand-cobalt mt-1 flex-shrink-0">—</span>
+              <span><strong className="text-brand-black font-semibold">Any agentic system with permissions broader than the task requires.</strong> The access model is the amplifier. Start with least-privilege before you build the feature, not after you ship it.</span>
+            </li>
+          </ul>
+          <Callout label="Layered defense checklist" className="mt-8">
+            <ul className="space-y-2 font-sans text-sm text-brand-black/70">
+              {[
+                'Untrusted content is explicitly delimited from the instruction stream',
+                'System-level behavioral constraints and expected output formats are defined',
+                'Any agent or tool-using system runs on least-privilege access, scoped to its task',
+                'High-risk or irreversible actions require explicit human approval',
+                'Input/output filtering is in place for known attack patterns',
+                'RAG-connected systems are evaluated for groundedness, not just fluency',
+                'Adversarial testing happens on a recurring cadence, not just pre-launch',
+                'No assumption that RAG or fine-tuning alone closes the injection gap',
+              ].map((item) => (
+                <li key={item} className="flex gap-2 items-start">
+                  <span className="text-brand-cobalt flex-shrink-0 mt-0.5">·</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </Callout>
+        </section>
+
+        {/* Closing */}
+        <section className="border-t border-brand-concrete pt-10">
+          <p className="font-sans text-lg text-brand-black/75 leading-relaxed">
+            The attack surface is not the model — it is every piece of untrusted content you let the model touch, and everything you let it do with what it finds there.
           </p>
         </section>
 

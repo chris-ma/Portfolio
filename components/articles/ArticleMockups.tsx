@@ -3845,3 +3845,270 @@ export function N8NMCPBridgeDiagram() {
     </svg>
   )
 }
+
+export function ModelLandscapeDiagram() {
+  const MODELS = [
+    { lab: 'DeepSeek AI',  family: 'V4 / V4-Pro',    score: '80.6%', sub: 'SWE-bench Verified',  lic: 'MIT',        licOk: true,  s1: '· Coding leader',         s2: '· Structural cost efficiency', s3: '· Strongest self-host use',  foot: 'Cost-sensitive self-hosting', hi: true  },
+    { lab: 'Alibaba',      family: 'Qwen 3.6–3.8',   score: '119',   sub: 'languages supported', lic: 'Apache 2.0', licOk: true,  s1: '· 119 languages',         s2: '· Runs on consumer GPU',      s3: '· MCP-native tool-calling',  foot: 'Multilingual · small hardware', hi: false },
+    { lab: 'Moonshot AI',  family: 'Kimi K2.6 / K3', score: '#1',    sub: 'open-weight AAII',    lic: 'Custom ⚠',   licOk: false, s1: '· Long-horizon agents',   s2: '· Sub-agent parallelism',     s3: '· Built for tool-use loops', foot: 'Long-horizon agentic coding', hi: false },
+    { lab: 'Zhipu / Z.ai', family: 'GLM-4.6 / 5.x', score: '81.0',  sub: 'Terminal-Bench 2.1',  lic: 'MIT',        licOk: true,  s1: '· Terminal-bench leader',  s2: '· 1M-token context',          s3: '· Day-to-day coding value',  foot: 'Docs · terminals · coding', hi: false },
+  ]
+  return (
+    <svg viewBox="0 0 720 306" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="306" fill={BG} />
+      {MODELS.map((m, i) => {
+        const x = 16 + i * 174
+        return (
+          <g key={i}>
+            <rect x={x} y={8} width={166} height={282} fill={BG} stroke={m.hi ? G : BORDER} strokeWidth={m.hi ? 2 : 1} />
+            <rect x={x} y={8} width={166} height={58} fill={m.hi ? G : BG2} />
+            <text x={x+10} y={25} fontFamily="monospace" fontSize="7" fill={m.hi ? BG+'88' : MUTED} letterSpacing="1">{m.lab.toUpperCase()}</text>
+            <text x={x+10} y={50} fontFamily="monospace" fontSize="13" fontWeight="700" fill={m.hi ? BG : TEXT}>{m.family}</text>
+            <text x={x+10} y={96} fontFamily="monospace" fontSize="28" fontWeight="700" fill={m.hi ? G : TEXT}>{m.score}</text>
+            <text x={x+10} y={111} fontFamily="monospace" fontSize="7" fill={MUTED}>{m.sub}</text>
+            <line x1={x+10} y1={118} x2={x+156} y2={118} stroke={BORDER} strokeWidth="1" />
+            <rect x={x+10} y={125} width={70} height={15} rx="2" fill={m.licOk ? G+'25' : AMBER+'30'} />
+            <text x={x+45} y={136} fontFamily="monospace" fontSize="7.5" fill={m.licOk ? G : AMBER} textAnchor="middle" fontWeight="700">{m.lic}</text>
+            <text x={x+10} y={163} fontFamily="monospace" fontSize="8" fill={MUTED}>{m.s1}</text>
+            <text x={x+10} y={178} fontFamily="monospace" fontSize="8" fill={MUTED}>{m.s2}</text>
+            <text x={x+10} y={193} fontFamily="monospace" fontSize="8" fill={MUTED}>{m.s3}</text>
+            <rect x={x} y={252} width={166} height={38} fill={m.hi ? G+'18' : BG2} />
+            <line x1={x} y1={252} x2={x+166} y2={252} stroke={m.hi ? G+'50' : BORDER} strokeWidth="1" />
+            <text x={x+10} y={265} fontFamily="monospace" fontSize="6.5" fill={MUTED} letterSpacing="0.8">BEST FOR</text>
+            <text x={x+10} y={281} fontFamily="monospace" fontSize="8" fill={m.hi ? G : TEXT}>{m.foot}</text>
+          </g>
+        )
+      })}
+      <text x="360" y="301" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED} letterSpacing="1" opacity="0.6">CHINESE OPEN-WEIGHT LEADERS · MID-2026</text>
+    </svg>
+  )
+}
+
+export function RiskMatrixDiagram() {
+  const MX = 80, MY = 16, MW = 606, MH = 226
+  const HX = MX + MW / 2   // 383
+  const HY = MY + MH / 2   // 129
+  return (
+    <svg viewBox="0 0 720 280" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="280" fill={BG} />
+      {/* TL: self-hosted + high sensitivity = MODERATE (amber) */}
+      <rect x={MX} y={MY} width={MW/2} height={MH/2} fill={AMBER+'22'} />
+      <text x={MX+14} y={MY+28} fontFamily="monospace" fontSize="14" fontWeight="700" fill={AMBER}>MODERATE</text>
+      <text x={MX+14} y={MY+46} fontFamily="monospace" fontSize="8" fill={TEXT} opacity="0.65">Verify content-moderation behavior</text>
+      <text x={MX+14} y={MY+60} fontFamily="monospace" fontSize="8" fill={TEXT} opacity="0.65">for your specific topics.</text>
+      <text x={MX+14} y={MY+76} fontFamily="monospace" fontSize="8" fill={G} opacity="0.9">Jurisdiction risk: eliminated.</text>
+      {/* TR: hosted + high sensitivity = HIGH (red) */}
+      <rect x={HX} y={MY} width={MW/2} height={MH/2} fill={DANGER+'20'} />
+      <text x={HX+14} y={MY+28} fontFamily="monospace" fontSize="14" fontWeight="700" fill={DANGER}>HIGH</text>
+      <text x={HX+14} y={MY+46} fontFamily="monospace" fontSize="8" fill={TEXT} opacity="0.65">Data law jurisdiction applies.</text>
+      <text x={HX+14} y={MY+60} fontFamily="monospace" fontSize="8" fill={TEXT} opacity="0.65">Content moderation embedded.</text>
+      <text x={HX+14} y={MY+76} fontFamily="monospace" fontSize="8" fill={DANGER} opacity="0.9">Not for client-confidential data.</text>
+      {/* BL: self-hosted + low sensitivity = LOW (green) */}
+      <rect x={MX} y={HY} width={MW/2} height={MH/2} fill={G+'20'} />
+      <text x={MX+14} y={HY+28} fontFamily="monospace" fontSize="14" fontWeight="700" fill={G}>LOW</text>
+      <text x={MX+14} y={HY+46} fontFamily="monospace" fontSize="8" fill={TEXT} opacity="0.65">Best option. No data leaves</text>
+      <text x={MX+14} y={HY+60} fontFamily="monospace" fontSize="8" fill={TEXT} opacity="0.65">your infrastructure.</text>
+      <text x={MX+14} y={HY+76} fontFamily="monospace" fontSize="8" fill={G} opacity="0.9">Full control. Strongest profile.</text>
+      {/* BR: hosted + low sensitivity = LOW-MODERATE (amber) */}
+      <rect x={HX} y={HY} width={MW/2} height={MH/2} fill={AMBER+'14'} />
+      <text x={HX+14} y={HY+28} fontFamily="monospace" fontSize="14" fontWeight="700" fill={AMBER}>LOW–MOD</text>
+      <text x={HX+14} y={HY+46} fontFamily="monospace" fontSize="8" fill={TEXT} opacity="0.65">Acceptable for non-sensitive</text>
+      <text x={HX+14} y={HY+60} fontFamily="monospace" fontSize="8" fill={TEXT} opacity="0.65">or exploratory work.</text>
+      <text x={HX+14} y={HY+76} fontFamily="monospace" fontSize="8" fill={AMBER} opacity="0.9">Jurisdiction concern remains.</text>
+      {/* Grid */}
+      <rect x={MX} y={MY} width={MW} height={MH} fill="none" stroke={BORDER} strokeWidth="1.5" />
+      <line x1={HX} y1={MY} x2={HX} y2={MY+MH} stroke={BORDER} strokeWidth="1.5" />
+      <line x1={MX} y1={HY} x2={MX+MW} y2={HY} stroke={BORDER} strokeWidth="1.5" />
+      {/* X-axis labels */}
+      <text x={MX+MW/4} y={MY+MH+18} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="0.8">SELF-HOSTED (OPEN-WEIGHT)</text>
+      <text x={HX+MW/4} y={MY+MH+18} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="0.8">HOSTED SERVICE (API / CHAT)</text>
+      {/* Y-axis labels rotated */}
+      <text x={MX-10} y={MY+MH/4} textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED} transform={`rotate(-90 ${MX-10} ${MY+MH/4})`}>HIGH SENSITIVITY</text>
+      <text x={MX-10} y={HY+MH/4} textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED} transform={`rotate(-90 ${MX-10} ${HY+MH/4})`}>LOW SENSITIVITY</text>
+    </svg>
+  )
+}
+
+export function DeploymentPathDiagram() {
+  const LX = 20, RX = 380, CW = 300
+  return (
+    <svg viewBox="0 0 720 200" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="200" fill={BG} />
+      {/* Left: Self-hosted */}
+      <rect x={LX} y={8} width={CW} height={30} fill={G} />
+      <text x={LX+CW/2} y={27} textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill={BG} letterSpacing="0.8">OPEN-WEIGHT · SELF-HOSTED</text>
+      <rect x={LX} y={46} width={CW} height={32} fill={BG2} stroke={BORDER} strokeWidth="1" />
+      <text x={LX+CW/2} y={66} textAnchor="middle" fontFamily="monospace" fontSize="9" fill={TEXT}>Download model weights</text>
+      <line x1={LX+CW/2} y1={78} x2={LX+CW/2} y2={90} stroke={G} strokeWidth="1.5" />
+      <polygon points={`${LX+CW/2-4},87 ${LX+CW/2+4},87 ${LX+CW/2},93`} fill={G} />
+      <rect x={LX} y={92} width={CW} height={32} fill={BG2} stroke={BORDER} strokeWidth="1" />
+      <text x={LX+CW/2} y={112} textAnchor="middle" fontFamily="monospace" fontSize="9" fill={TEXT}>Runs on your own servers</text>
+      <line x1={LX+CW/2} y1={124} x2={LX+CW/2} y2={136} stroke={G} strokeWidth="1.5" />
+      <polygon points={`${LX+CW/2-4},133 ${LX+CW/2+4},133 ${LX+CW/2},139`} fill={G} />
+      <text x={LX+12} y={152} fontFamily="monospace" fontSize="8.5" fill={G}>+ No data jurisdiction</text>
+      <text x={LX+12} y={167} fontFamily="monospace" fontSize="8.5" fill={G}>+ Data stays in your infra</text>
+      <text x={LX+12} y={182} fontFamily="monospace" fontSize="8.5" fill={AMBER}>~ Test model output for your topics</text>
+      {/* Right: Hosted service */}
+      <rect x={RX} y={8} width={CW} height={30} fill={DANGER+'cc'} />
+      <text x={RX+CW/2} y={27} textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill={BG} letterSpacing="0.8">HOSTED API / CHAT PRODUCT</text>
+      <rect x={RX} y={46} width={CW} height={32} fill={BG2} stroke={BORDER} strokeWidth="1" />
+      <text x={RX+CW/2} y={66} textAnchor="middle" fontFamily="monospace" fontSize="9" fill={TEXT}>Send request to their API</text>
+      <line x1={RX+CW/2} y1={78} x2={RX+CW/2} y2={90} stroke={DANGER} strokeWidth="1.5" />
+      <polygon points={`${RX+CW/2-4},87 ${RX+CW/2+4},87 ${RX+CW/2},93`} fill={DANGER} />
+      <rect x={RX} y={92} width={CW} height={32} fill={DANGER+'0d'} stroke={DANGER+'50'} strokeWidth="1" />
+      <text x={RX+CW/2} y={112} textAnchor="middle" fontFamily="monospace" fontSize="9" fill={TEXT}>Data on their servers (China)</text>
+      <line x1={RX+CW/2} y1={124} x2={RX+CW/2} y2={136} stroke={DANGER} strokeWidth="1.5" />
+      <polygon points={`${RX+CW/2-4},133 ${RX+CW/2+4},133 ${RX+CW/2},139`} fill={DANGER} />
+      <text x={RX+12} y={152} fontFamily="monospace" fontSize="8.5" fill={DANGER}>! Chinese data law jurisdiction</text>
+      <text x={RX+12} y={167} fontFamily="monospace" fontSize="8.5" fill={DANGER}>! Content moderation embedded</text>
+      <text x={RX+12} y={182} fontFamily="monospace" fontSize="8.5" fill={AMBER}>~ API pricing / terms can change</text>
+      {/* Centre divider */}
+      <line x1={350} y1={12} x2={350} y2={192} stroke={BORDER} strokeWidth="1" strokeDasharray="4 3" />
+    </svg>
+  )
+}
+
+export function DirectVsIndirectDiagram() {
+  const LX = 20, RX = 370, CW = 330, H = 250
+  const BOX_H = 32, BOX_R = 3
+  return (
+    <svg viewBox="0 0 720 260" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="260" fill={BG} />
+      {/* ── Left: Direct injection ── */}
+      <rect x={LX} y={8} width={CW} height={28} fill={G} />
+      <text x={LX+CW/2} y={26} textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill={BG} letterSpacing="1">DIRECT INJECTION</text>
+      {/* User box */}
+      <rect x={LX+20} y={46} width={CW-40} height={BOX_H} rx={BOX_R} fill={BG2} stroke={BORDER} strokeWidth="1" />
+      <text x={LX+CW/2} y={66} textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={TEXT}>User types into chat</text>
+      {/* Malicious instruction highlight */}
+      <rect x={LX+20} y={90} width={CW-40} height={38} rx={BOX_R} fill={DANGER+'18'} stroke={DANGER+'60'} strokeWidth="1" />
+      <text x={LX+CW/2} y={107} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={DANGER} fontWeight="700">MALICIOUS INSTRUCTION</text>
+      <text x={LX+CW/2} y={121} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED}>&quot;Ignore previous instructions and...&quot;</text>
+      {/* Arrow */}
+      <line x1={LX+CW/2} y1={130} x2={LX+CW/2} y2={148} stroke={DANGER} strokeWidth="1.5" />
+      <polygon points={`${LX+CW/2-4},145 ${LX+CW/2+4},145 ${LX+CW/2},151`} fill={DANGER} />
+      {/* Model */}
+      <rect x={LX+20} y={152} width={CW-40} height={BOX_H} rx={BOX_R} fill={G+'22'} stroke={G+'50'} strokeWidth="1" />
+      <text x={LX+CW/2} y={172} textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={TEXT}>LLM processes combined input</text>
+      {/* Arrow */}
+      <line x1={LX+CW/2} y1={186} x2={LX+CW/2} y2={200} stroke={MUTED} strokeWidth="1.5" />
+      <polygon points={`${LX+CW/2-4},197 ${LX+CW/2+4},197 ${LX+CW/2},203`} fill={MUTED} />
+      {/* Output */}
+      <rect x={LX+20} y={204} width={CW-40} height={BOX_H} rx={BOX_R} fill={DANGER+'12'} stroke={DANGER+'40'} strokeWidth="1" />
+      <text x={LX+CW/2} y={224} textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={DANGER}>Follows attacker instruction</text>
+      <text x={LX+CW/2} y={251} textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED}>Easier to detect — input comes directly from user</text>
+      {/* ── Right: Indirect injection ── */}
+      <rect x={RX} y={8} width={CW} height={28} fill={DANGER+'cc'} />
+      <text x={RX+CW/2} y={26} textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill={BG} letterSpacing="1">INDIRECT INJECTION</text>
+      {/* Attacker */}
+      <rect x={RX+20} y={46} width={CW-40} height={BOX_H} rx={BOX_R} fill={BG2} stroke={BORDER} strokeWidth="1" />
+      <text x={RX+CW/2} y={66} textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={TEXT}>Attacker embeds in external content</text>
+      {/* Arrow */}
+      <line x1={RX+CW/2} y1={80} x2={RX+CW/2} y2={88} stroke={MUTED} strokeWidth="1.5" />
+      <polygon points={`${RX+CW/2-4},85 ${RX+CW/2+4},85 ${RX+CW/2},91`} fill={MUTED} />
+      {/* Document */}
+      <rect x={RX+20} y={90} width={CW-40} height={38} rx={BOX_R} fill={DANGER+'18'} stroke={DANGER+'60'} strokeWidth="1" />
+      <text x={RX+CW/2} y={104} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>webpage · email · doc · Slack message</text>
+      <text x={RX+CW/2} y={120} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={DANGER} fontWeight="700">HIDDEN INSTRUCTION INSIDE CONTENT</text>
+      {/* Arrow */}
+      <line x1={RX+CW/2} y1={130} x2={RX+CW/2} y2={148} stroke={DANGER} strokeWidth="1.5" />
+      <polygon points={`${RX+CW/2-4},145 ${RX+CW/2+4},145 ${RX+CW/2},151`} fill={DANGER} />
+      {/* Model reading */}
+      <rect x={RX+20} y={152} width={CW-40} height={BOX_H} rx={BOX_R} fill={G+'22'} stroke={G+'50'} strokeWidth="1" />
+      <text x={RX+CW/2} y={172} textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={TEXT}>Agent reads content on your behalf</text>
+      {/* Arrow */}
+      <line x1={RX+CW/2} y1={186} x2={RX+CW/2} y2={200} stroke={DANGER} strokeWidth="1.5" />
+      <polygon points={`${RX+CW/2-4},197 ${RX+CW/2+4},197 ${RX+CW/2},203`} fill={DANGER} />
+      {/* Action */}
+      <rect x={RX+20} y={204} width={CW-40} height={BOX_H} rx={BOX_R} fill={DANGER+'20'} stroke={DANGER+'60'} strokeWidth="1" />
+      <text x={RX+CW/2} y={224} textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={DANGER}>Takes real action you never authorised</text>
+      <text x={RX+CW/2} y={251} textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED}>Harder to detect — you trusted the content source</text>
+      {/* Divider */}
+      <line x1={355} y1={12} x2={355} y2={244} stroke={BORDER} strokeWidth="1" strokeDasharray="4 3" />
+    </svg>
+  )
+}
+
+export function AttackSuccessRateDiagram() {
+  const chartX = 80, chartY = 20, chartW = 560, chartH = 180
+  const chartBottom = chartY + chartH
+  const maxVal = 80
+  const scale = chartH / maxVal
+  const bars = [
+    { label: '1 attempt',   pct: 4.7,  fill: G,      cx: 190 },
+    { label: '10 attempts', pct: 33.6, fill: AMBER,   cx: 360 },
+    { label: '100 attempts',pct: 63.0, fill: DANGER,  cx: 530 },
+  ]
+  const barW = 90
+  return (
+    <svg viewBox="0 0 720 250" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="250" fill={BG} />
+      {/* Y-axis gridlines */}
+      {[0, 20, 40, 60, 80].map((v) => {
+        const y = chartBottom - v * scale
+        return (
+          <g key={v}>
+            <line x1={chartX} y1={y} x2={chartX+chartW} y2={y} stroke={BORDER} strokeWidth="1" opacity="0.6" strokeDasharray={v===0?'none':'3 3'} />
+            <text x={chartX-8} y={y+4} textAnchor="end" fontFamily="monospace" fontSize="8" fill={MUTED}>{v}%</text>
+          </g>
+        )
+      })}
+      {/* Bars */}
+      {bars.map((b) => {
+        const barH = b.pct * scale
+        const barY = chartBottom - barH
+        return (
+          <g key={b.label}>
+            <rect x={b.cx-barW/2} y={barY} width={barW} height={barH} fill={b.fill} opacity="0.85" />
+            <text x={b.cx} y={barY-8} textAnchor="middle" fontFamily="monospace" fontSize="12" fontWeight="700" fill={b.fill}>{b.pct}%</text>
+            <text x={b.cx} y={chartBottom+16} textAnchor="middle" fontFamily="monospace" fontSize="9" fill={MUTED}>{b.label}</text>
+          </g>
+        )
+      })}
+      {/* Axis */}
+      <line x1={chartX} y1={chartY} x2={chartX} y2={chartBottom} stroke={BORDER} strokeWidth="1" />
+      <line x1={chartX} y1={chartBottom} x2={chartX+chartW} y2={chartBottom} stroke={BORDER} strokeWidth="1" />
+      <text x="360" y="237" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED} letterSpacing="0.8">
+        Indirect prompt-injection attack success · Claude Opus 4.5 · Agentic coding environment · Anthropic System Card
+      </text>
+    </svg>
+  )
+}
+
+export function DefenseStackDiagram() {
+  const layers = [
+    { label: 'Adversarial testing — recurring cadence, not just pre-launch', note: 'catches novel vectors', fill: G+'22', border: G+'50' },
+    { label: 'Input / output filtering for known attack patterns',            note: 'catches known signatures', fill: G+'1a', border: G+'40' },
+    { label: 'Human approval for high-risk or irreversible actions',          note: 'backstop against any injection', fill: AMBER+'22', border: AMBER+'50' },
+    { label: 'Least-privilege tooling — only what the task needs',            note: 'limits blast radius', fill: AMBER+'1a', border: AMBER+'40' },
+    { label: 'System-level behavioral constraints + output format rules',     note: 'reduces hijack surface', fill: G+'22', border: G+'50' },
+    { label: 'Segregate untrusted content from instruction stream',           note: 'command ≠ data channel', fill: G+'18', border: G+'40' },
+  ]
+  const LAYER_H = 36, GAP = 4, startY = 18, startX = 60
+  return (
+    <svg viewBox="0 0 720 280" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="280" fill={BG} />
+      <text x="360" y="14" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="1">DEFENSE IN DEPTH — NO SINGLE CONTROL IS SUFFICIENT</text>
+      {layers.map((l, i) => {
+        const y = startY + 10 + i * (LAYER_H + GAP)
+        const shrink = i * 10
+        const x = startX + shrink
+        const w = 600 - shrink * 2
+        return (
+          <g key={i}>
+            <rect x={x} y={y} width={w} height={LAYER_H} fill={l.fill} stroke={l.border} strokeWidth="1" rx="2" />
+            <text x={x+14} y={y+15} fontFamily="monospace" fontSize="8.5" fill={TEXT} fontWeight="600">{l.label}</text>
+            <text x={x+14} y={y+28} fontFamily="monospace" fontSize="7.5" fill={MUTED}>{l.note}</text>
+          </g>
+        )
+      })}
+      {/* ATTACK arrow from right */}
+      <text x="692" y="148" textAnchor="end" fontFamily="monospace" fontSize="8" fill={DANGER} letterSpacing="0.5">ATTACK</text>
+      <line x1={690} y1={154} x2={670} y2={154} stroke={DANGER} strokeWidth="2" />
+      <polygon points="672,150 660,154 672,158" fill={DANGER} />
+      <text x="360" y="275" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED} letterSpacing="0.8">
+        Stack from outermost (bottom) to innermost (top) · OWASP LLM Top 10 2025 — LLM01
+      </text>
+    </svg>
+  )
+}

@@ -25,6 +25,8 @@ import {
   PlatformEngagementDiagram,
   MCPInteropDiagram,
   N8NMCPBridgeDiagram,
+  ModelLandscapeDiagram,
+  AttackSuccessRateDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface ArticleCardProps {
@@ -115,6 +117,12 @@ function DiagramWrapper({ children }: { children: React.ReactNode }) {
 }
 
 function ArticleVisual({ slug, category, index }: { slug: string; category: string; index: number }) {
+  if (slug === 'prompt-injection-llm-security') {
+    return <DiagramWrapper><AttackSuccessRateDiagram /></DiagramWrapper>
+  }
+  if (slug === 'chinese-llms-open-weight') {
+    return <DiagramWrapper><ModelLandscapeDiagram /></DiagramWrapper>
+  }
   if (slug === 'n8n-process-automation') {
     return <DiagramWrapper><N8NMCPBridgeDiagram /></DiagramWrapper>
   }
