@@ -24,6 +24,7 @@ import {
   CalibrationVsAccuracyDiagram,
   PlatformEngagementDiagram,
   MCPInteropDiagram,
+  N8NMCPBridgeDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface ArticleCardProps {
@@ -114,6 +115,9 @@ function DiagramWrapper({ children }: { children: React.ReactNode }) {
 }
 
 function ArticleVisual({ slug, category, index }: { slug: string; category: string; index: number }) {
+  if (slug === 'n8n-process-automation') {
+    return <DiagramWrapper><N8NMCPBridgeDiagram /></DiagramWrapper>
+  }
   if (slug === 'mcp-model-context-protocol') {
     return <DiagramWrapper><MCPInteropDiagram /></DiagramWrapper>
   }

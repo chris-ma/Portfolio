@@ -3530,3 +3530,318 @@ export function MCPTimelineDiagram() {
     </svg>
   )
 }
+
+// ─── N8N / Process Automation Diagrams ──────────────────────────────────────
+
+export function PlatformComparisonDiagram() {
+  const BG2 = '#EDEAE4', G = '#1A4D3A', GL = '#3D7A60', MUTED = '#7A7872', TEXT = '#0A0A0A', BORDER = '#C9C6BE'
+  const cols = [
+    {
+      name: 'ZAPIER',
+      sub: 'NON-TECHNICAL',
+      theme: MUTED,
+      opacity: 0.18,
+      rows: ['8,000+ apps', 'Cloud only', '$30 / 750 tasks', 'Steps billed', 'separately', 'Growing AI depth'],
+      best: 'Simple · Fast · Low volume',
+    },
+    {
+      name: 'MAKE',
+      sub: 'VISUAL BUILDERS',
+      theme: GL,
+      opacity: 0.22,
+      rows: ['2,000+ apps', 'Cloud only', '$29 / 10k ops', 'Operations', 'bundled', 'Growing AI depth'],
+      best: 'Mid-complexity · Canvas',
+    },
+    {
+      name: 'N8N',
+      sub: 'FULL CONTROL',
+      theme: G,
+      opacity: 1,
+      rows: ['Any HTTP API', 'Self-hosted / cloud', 'Execution-based', 'Infra cost only', 'when self-hosted', 'Deepest AI + MCP'],
+      best: 'Technical · Data control',
+    },
+  ]
+  const colW = 210, colH = 262, startY = 14, gap = 14
+
+  return (
+    <svg viewBox="0 0 720 290" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="290" fill={BG2} />
+
+      {cols.map((col, ci) => {
+        const x = 15 + ci * (colW + gap)
+        const isN8N = ci === 2
+        return (
+          <g key={col.name}>
+            {/* Column background */}
+            <rect x={x} y={startY} width={colW} height={colH} rx="2"
+              fill={isN8N ? G : BG2}
+              stroke={isN8N ? G : BORDER}
+              strokeWidth={isN8N ? 0 : 1}
+              opacity={isN8N ? 1 : 1}
+            />
+            {/* Header bar */}
+            <rect x={x} y={startY} width={colW} height={46} rx="2"
+              fill={isN8N ? '#0A3325' : col.theme}
+              opacity={isN8N ? 1 : 0.85}
+            />
+            {/* Platform name */}
+            <text x={x + colW / 2} y={startY + 22} textAnchor="middle"
+              fontFamily="monospace" fontSize="13" fontWeight="700"
+              fill={isN8N ? '#F5F4F0' : '#F5F4F0'} letterSpacing="3">
+              {col.name}
+            </text>
+            <text x={x + colW / 2} y={startY + 37} textAnchor="middle"
+              fontFamily="monospace" fontSize="7" fill={isN8N ? '#3D7A60' : 'rgba(245,244,240,0.6)'} letterSpacing="2">
+              {col.sub}
+            </text>
+
+            {/* Divider rows */}
+            {['INTEGRATIONS', 'HOSTING', 'PRICING'].map((label, ri) => {
+              const rowY = startY + 52 + ri * 58
+              return (
+                <g key={label}>
+                  <line x1={x + 12} y1={rowY} x2={x + colW - 12} y2={rowY}
+                    stroke={isN8N ? 'rgba(245,244,240,0.12)' : BORDER} strokeWidth="0.5" />
+                  <text x={x + 14} y={rowY + 14} fontFamily="monospace" fontSize="7"
+                    fill={isN8N ? 'rgba(245,244,240,0.45)' : MUTED} letterSpacing="1.5">
+                    {label}
+                  </text>
+                  <text x={x + 14} y={rowY + 28} fontFamily="monospace" fontSize="9.5"
+                    fill={isN8N ? '#F5F4F0' : TEXT} fontWeight="600">
+                    {col.rows[ri * 2]}
+                  </text>
+                  {col.rows[ri * 2 + 1] && (
+                    <text x={x + 14} y={rowY + 42} fontFamily="monospace" fontSize="8.5"
+                      fill={isN8N ? 'rgba(245,244,240,0.65)' : MUTED}>
+                      {col.rows[ri * 2 + 1]}
+                    </text>
+                  )}
+                </g>
+              )
+            })}
+
+            {/* Best for footer */}
+            <rect x={x} y={startY + colH - 38} width={colW} height={38} rx="2"
+              fill={isN8N ? 'rgba(255,255,255,0.06)' : isN8N ? G : col.theme}
+              opacity={isN8N ? 1 : 0.1}
+            />
+            <line x1={x + 12} y1={startY + colH - 38} x2={x + colW - 12} y2={startY + colH - 38}
+              stroke={isN8N ? 'rgba(245,244,240,0.12)' : BORDER} strokeWidth="0.5" />
+            <text x={x + colW / 2} y={startY + colH - 18} textAnchor="middle"
+              fontFamily="monospace" fontSize="7.5"
+              fill={isN8N ? 'rgba(245,244,240,0.7)' : col.theme} letterSpacing="0.5">
+              {col.best}
+            </text>
+          </g>
+        )
+      })}
+
+      <text x="360" y="283" textAnchor="middle" fontFamily="monospace" fontSize="7"
+        fill={MUTED} letterSpacing="1.5" opacity="0.6">
+        AUTOMATION PLATFORM COMPARISON · 2026
+      </text>
+    </svg>
+  )
+}
+
+export function WorkflowVsAgentDiagram() {
+  const BG2 = '#EDEAE4', G = '#1A4D3A', GL = '#3D7A60', MUTED = '#7A7872', AMBER = '#D4890A', TEXT = '#0A0A0A', BORDER = '#C9C6BE'
+  const wfSteps = ['TRIGGER', 'TRANSFORM', 'NOTIFY', 'DONE']
+  const boxH = 38, boxW = 226, boxX = 34
+  const agentNodes = [
+    { label: 'OBSERVE', cx: 540, cy: 82 },
+    { label: 'REASON', cx: 622, cy: 150 },
+    { label: 'ACT', cx: 540, cy: 218 },
+    { label: 'SELECT', cx: 458, cy: 150 },
+  ]
+  const r = 28
+  const arrows = [
+    { x1: 569, y1: 97, x2: 605, y2: 130 },
+    { x1: 609, y1: 168, x2: 569, y2: 200 },
+    { x1: 511, y1: 203, x2: 477, y2: 171 },
+    { x1: 472, y1: 132, x2: 511, y2: 99 },
+  ]
+
+  return (
+    <svg viewBox="0 0 720 260" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="wva-arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M0,0.5 L6,3.5 L0,6.5 Z" fill={MUTED} />
+        </marker>
+        <marker id="wva-garr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M0,0.5 L6,3.5 L0,6.5 Z" fill={G} />
+        </marker>
+      </defs>
+      <rect width="720" height="260" fill={BG2} />
+
+      {/* Left: Fixed Workflow */}
+      <text x="157" y="28" textAnchor="middle" fontFamily="monospace" fontSize="10"
+        fill={MUTED} fontWeight="700" letterSpacing="2">FIXED WORKFLOW</text>
+
+      {wfSteps.map((step, i) => {
+        const y = 42 + i * (boxH + 11)
+        const isLast = i === wfSteps.length - 1
+        const isFade = i === 1 || i === 2
+        return (
+          <g key={step}>
+            <rect x={boxX} y={y} width={boxW} height={boxH} rx="2"
+              fill={isLast ? G : BG2}
+              stroke={isLast ? G : isFade ? BORDER : MUTED}
+              strokeWidth={isLast ? 0 : isFade ? 0.75 : 1}
+              opacity={isFade ? 0.55 : 1}
+            />
+            <text x={boxX + boxW / 2} y={y + boxH / 2 + 4} textAnchor="middle"
+              fontFamily="monospace" fontSize="10" fontWeight="700"
+              fill={isLast ? '#F5F4F0' : isFade ? MUTED : TEXT} letterSpacing="1.5">
+              {step}
+            </text>
+            {!isLast && (
+              <line x1={boxX + boxW / 2} y1={y + boxH + 1} x2={boxX + boxW / 2} y2={y + boxH + 10}
+                stroke={MUTED} strokeWidth="1.2" markerEnd="url(#wva-arr)" opacity="0.5" />
+            )}
+          </g>
+        )
+      })}
+
+      <text x="157" y="246" textAnchor="middle" fontFamily="monospace" fontSize="7.5"
+        fill={MUTED} opacity="0.7">Every branch scripted in advance</text>
+
+      {/* Divider */}
+      <line x1="352" y1="18" x2="352" y2="242" stroke={BORDER} strokeWidth="1" strokeDasharray="4 4" opacity="0.8" />
+
+      {/* Right: ReAct Agent */}
+      <text x="540" y="28" textAnchor="middle" fontFamily="monospace" fontSize="10"
+        fill={G} fontWeight="700" letterSpacing="2">REACT AGENT</text>
+
+      {/* Loop arrows */}
+      {arrows.map((a, i) => (
+        <line key={i} x1={a.x1} y1={a.y1} x2={a.x2} y2={a.y2}
+          stroke={G} strokeWidth="1.5" markerEnd="url(#wva-garr)" opacity="0.75" />
+      ))}
+
+      {/* Center hub */}
+      <circle cx="540" cy="150" r="18" fill={GL} opacity="0.12" stroke={GL} strokeWidth="0.5" />
+      <text x="540" y="147" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={G} letterSpacing="1">TOOLS</text>
+      <text x="540" y="158" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={G} letterSpacing="1">AVAIL.</text>
+
+      {/* Agent nodes */}
+      {agentNodes.map((n) => (
+        <g key={n.label}>
+          <circle cx={n.cx} cy={n.cy} r={r} fill={G} opacity="0.9" />
+          <text x={n.cx} y={n.cy + 4} textAnchor="middle"
+            fontFamily="monospace" fontSize="7.5" fontWeight="700"
+            fill="#F5F4F0" letterSpacing="0.5">
+            {n.label}
+          </text>
+        </g>
+      ))}
+
+      <text x="540" y="246" textAnchor="middle" fontFamily="monospace" fontSize="7.5"
+        fill={G} opacity="0.7">Reasons through unexpected cases</text>
+    </svg>
+  )
+}
+
+export function N8NMCPBridgeDiagram() {
+  const BG2 = '#EDEAE4', G = '#1A4D3A', GL = '#3D7A60', MUTED = '#7A7872', BORDER = '#C9C6BE'
+  const n8nX = 278, n8nY = 98, n8nW = 164, n8nH = 104
+  const n8nCX = n8nX + n8nW / 2
+
+  const leftItems = [
+    { label: 'CLAUDE DESKTOP', y: 80 },
+    { label: 'CURSOR / VS CODE', y: 128 },
+    { label: 'ENTERPRISE LLM', y: 176 },
+  ]
+  const rightItems = [
+    { label: 'SUPABASE', y: 80 },
+    { label: 'FIGMA MCP', y: 128 },
+    { label: 'SLACK / EMAIL', y: 176 },
+  ]
+  const boxW = 152, boxH = 34, lx = 22, rx = 546
+
+  return (
+    <svg viewBox="0 0 720 280" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="mcpb-in" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M0,0.5 L6,3.5 L0,6.5 Z" fill={GL} />
+        </marker>
+        <marker id="mcpb-out" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M0,0.5 L6,3.5 L0,6.5 Z" fill={MUTED} />
+        </marker>
+      </defs>
+      <rect width="720" height="280" fill={BG2} />
+
+      {/* Left side label */}
+      <text x={lx + boxW / 2} y="28" textAnchor="middle" fontFamily="monospace"
+        fontSize="8" fill={GL} fontWeight="700" letterSpacing="2">AS MCP SERVER</text>
+      <text x={lx + boxW / 2} y="42" textAnchor="middle" fontFamily="monospace"
+        fontSize="7" fill={MUTED}>AI hosts trigger your workflows</text>
+
+      {/* Right side label */}
+      <text x={rx + boxW / 2} y="28" textAnchor="middle" fontFamily="monospace"
+        fontSize="8" fill={MUTED} fontWeight="700" letterSpacing="2">AS MCP CLIENT</text>
+      <text x={rx + boxW / 2} y="42" textAnchor="middle" fontFamily="monospace"
+        fontSize="7" fill={MUTED}>Agents call external tools</text>
+
+      {/* Left boxes + arrows */}
+      {leftItems.map((item) => {
+        const boxMidY = item.y + boxH / 2
+        return (
+          <g key={item.label}>
+            <rect x={lx} y={item.y} width={boxW} height={boxH} rx="2"
+              fill={BG2} stroke={GL} strokeWidth="0.75" />
+            <text x={lx + boxW / 2} y={item.y + boxH / 2 + 4} textAnchor="middle"
+              fontFamily="monospace" fontSize="8" fill={G} letterSpacing="0.5">
+              {item.label}
+            </text>
+            {/* Arrow from left box to n8n */}
+            <line x1={lx + boxW + 2} y1={boxMidY} x2={n8nX - 3} y2={n8nY + n8nH / 2}
+              stroke={GL} strokeWidth="1.2" markerEnd="url(#mcpb-in)" opacity="0.7" strokeDasharray="5 3" />
+          </g>
+        )
+      })}
+
+      {/* Right boxes + arrows */}
+      {rightItems.map((item) => {
+        const boxMidY = item.y + boxH / 2
+        return (
+          <g key={item.label}>
+            <rect x={rx} y={item.y} width={boxW} height={boxH} rx="2"
+              fill={BG2} stroke={BORDER} strokeWidth="1" />
+            <text x={rx + boxW / 2} y={item.y + boxH / 2 + 4} textAnchor="middle"
+              fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="0.5">
+              {item.label}
+            </text>
+            {/* Arrow from n8n to right box */}
+            <line x1={n8nX + n8nW + 3} y1={n8nY + n8nH / 2} x2={rx - 3} y2={boxMidY}
+              stroke={MUTED} strokeWidth="1.2" markerEnd="url(#mcpb-out)" opacity="0.5" strokeDasharray="5 3" />
+          </g>
+        )
+      })}
+
+      {/* n8n central box */}
+      <rect x={n8nX} y={n8nY} width={n8nW} height={n8nH} rx="3" fill={G} />
+      <rect x={n8nX} y={n8nY} width={n8nW} height={32} rx="3" fill="rgba(0,0,0,0.25)" />
+      <rect x={n8nX} y={n8nY + 26} width={n8nW} height={6} fill="rgba(0,0,0,0.25)" />
+      <text x={n8nCX} y={n8nY + 21} textAnchor="middle" fontFamily="monospace"
+        fontSize="15" fontWeight="700" fill="#F5F4F0" letterSpacing="4">N8N</text>
+      <text x={n8nCX} y={n8nY + 50} textAnchor="middle" fontFamily="monospace"
+        fontSize="7.5" fill="rgba(245,244,240,0.65)" letterSpacing="2">WORKFLOW ENGINE</text>
+      <text x={n8nCX} y={n8nY + 67} textAnchor="middle" fontFamily="monospace"
+        fontSize="7" fill="rgba(245,244,240,0.45)">Tools Agent · ReAct</text>
+      <text x={n8nCX} y={n8nY + 82} textAnchor="middle" fontFamily="monospace"
+        fontSize="7" fill="rgba(245,244,240,0.45)">Publish / Save split</text>
+
+      {/* Bottom footnote */}
+      <text x="360" y="236" textAnchor="middle" fontFamily="monospace"
+        fontSize="7" fill={MUTED} letterSpacing="1" opacity="0.6">
+        n8n-mcp package: build workflows via conversation (prototyping only — review before Publish)
+      </text>
+
+      <text x="360" y="270" textAnchor="middle" fontFamily="monospace"
+        fontSize="7" fill={MUTED} letterSpacing="1.5" opacity="0.5">
+        N8N + MCP · BOTH SIDES OF THE BRIDGE
+      </text>
+    </svg>
+  )
+}

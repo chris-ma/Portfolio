@@ -11,6 +11,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'n8n-process-automation',
+    title: 'Not a Pipe',
+    subtitle: 'Zapier, Make, and n8n have settled into three distinct positions. The more important shift is what all three have stopped being.',
+    category: 'Engineering',
+    date: '2026-08-13',
+    readTime: '9 min read',
+    tags: ['n8n', 'Automation', 'Zapier', 'MCP', 'Workflow Engineering'],
+    excerpt:
+      'Classic automation follows a predetermined path. Every branch scripted in advance. An AI agent inside the same platform observes, reasons, picks a tool, acts, and decides what happens next. These two worlds are now wired directly together — and n8n is where that integration is most mature.',
+  },
+  {
     slug: 'mcp-model-context-protocol',
     title: 'One Protocol',
     subtitle: 'MCP is not a plugin format. It\'s vendor-neutral infrastructure — governed by the Linux Foundation, adopted across the industry, and the actual mechanism behind composable AI workflows.',

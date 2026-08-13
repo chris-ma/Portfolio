@@ -20,6 +20,7 @@ import {
   CalibrationVsAccuracyDiagram, PromptTechniquesRanking, TwoStepVerificationDiagram,
   PlatformEngagementDiagram, AlgorithmShiftDiagram, SocialSEODiagram,
   MCPInteropDiagram, MCPCapabilityLayersDiagram, MCPTimelineDiagram,
+  PlatformComparisonDiagram, WorkflowVsAgentDiagram, N8NMCPBridgeDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface PageProps {
@@ -48,6 +49,9 @@ export default function ArticlePage({ params }: PageProps) {
     month: 'long',
     day: 'numeric',
   })
+
+  if (article.slug === 'n8n-process-automation')
+    return <N8NArticle article={article} formattedDate={formattedDate} />
 
   if (article.slug === 'mcp-model-context-protocol')
     return <MCPArticle article={article} formattedDate={formattedDate} />
@@ -5558,6 +5562,275 @@ function FailureMode({ n, title, desc }: { n: number; title: string; desc: strin
       <div>
         <h4 className="font-sans font-semibold text-sm text-brand-black mb-1">{title}</h4>
         <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{desc}</p>
+      </div>
+    </div>
+  )
+}
+
+function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+
+        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+          NOT A<br />
+          <span className="text-brand-cobalt">PIPE.</span>
+        </h1>
+
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+          {article!.subtitle}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 py-14 space-y-16">
+
+        {/* Lede */}
+        <section>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+            The three automation platforms have arrived at clear positions. Zapier is the fast path for
+            non-technical teams with simple, low-volume needs. Make is the visual canvas for mid-complexity
+            work with generous operation pricing. n8n is the choice for teams that want total control over
+            data, cost, and AI integration depth — open-source, self-hostable, execution-based pricing.
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            That market settling is context. The actual 2026 story is different: all three platforms have
+            stopped being deterministic trigger-action pipes and started becoming genuine AI orchestration
+            layers. That shift changes not just which tool you pick — it changes what you build with them
+            and how you think about scoping the work.
+          </p>
+        </section>
+
+        {/* Section 01 */}
+        <section>
+          <SectionHeading number="01" title="Three platforms, three different contracts" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Zapier&rsquo;s structural advantage is integration breadth — 8,000+ apps — and the ability to
+            deploy something simple in under an hour without touching code. The cost model gets expensive
+            fast: each step in a workflow is counted separately, so a three-step automation uses three
+            tasks. At real volume, this adds up. If the automation is simple, low-volume, and the priority
+            is speed without code, Zapier remains the fastest path.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+            Make operates on a visual canvas with genuine parallel branching, 2,000+ integrations, and an
+            operations model that bundles generously — roughly 10,000 operations for $29/month. Right fit
+            for mid-complexity workflows where the visual builder is doing real work: mapping out a
+            branching process that would be difficult to reason about as text.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+            n8n is the choice for anything that needs total data control, deep AI integration, or cost
+            predictability at scale. Open-source, self-hostable, execution-based pricing, and the ability
+            to reach virtually any API via custom HTTP calls. If the automation involves AI agents that need
+            to reason across steps rather than execute a fixed sequence, n8n is where the tooling is most mature.
+          </p>
+
+          <div className="mt-8 overflow-x-auto">
+            <PlatformComparisonDiagram />
+          </div>
+
+          <Callout label="The deciding variable">
+            None of these is universally correct. The question is not which platform has more features — it
+            is who is building the automation and what they actually need to control. A non-technical team
+            that needs something live this week should not be self-hosting n8n. A technical team that needs
+            to keep sensitive data off external clouds should not be on Zapier.
+          </Callout>
+        </section>
+
+        {/* Section 02 */}
+        <section>
+          <SectionHeading number="02" title="From pipe to reasoning layer" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Classic automation follows a predetermined path. The workflow decides nothing — you decide
+            everything in advance, the trigger fires, and the sequence executes. Each branch has to be
+            scripted before the workflow runs. If something falls outside the branches you anticipated,
+            the automation either fails or hits your error handler, which only catches errors you thought
+            to handle.
+          </p>
+
+          <div className="mt-8 mb-8 overflow-x-auto">
+            <WorkflowVsAgentDiagram />
+          </div>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            An AI agent inside the same platform works differently. It observes the current context,
+            reasons about what action fits, selects from the tools available to it, acts, observes the
+            result, and decides what happens next. No predetermined path. If a database query returns an
+            unexpected shape, the agent can reason about whether to retry, fall back to a different source,
+            or surface the ambiguity. The workflow did not have to anticipate it in advance.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+            The practical implication is not that every automation should use an agent node. It is that
+            the distinction now exists and can be applied deliberately. Deterministic sequences — webhook
+            fires, data transforms, sends notification — belong in fixed workflow nodes, where they run
+            predictably and cheaply. Steps that involve genuine ambiguity: deciding which of several
+            actions fits an edge case, handling a response format you could not script for in advance.
+            That is where agent reasoning earns its overhead.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+            n8n 2.0 codified this maturity with the Publish vs. Save split. Save is draft mode: test
+            against realistic data without touching the live webhook. Publish creates an immutable
+            production version. This is standard CI/CD practice applied to automation workflows — useful
+            because the stakes of a live workflow running against real client data with an untested change
+            are real.
+          </p>
+        </section>
+
+        {/* Section 03 */}
+        <section>
+          <SectionHeading number="03" title="n8n and MCP: both sides of the bridge" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            n8n&rsquo;s most significant 2026 development is that it can now sit on both sides of an MCP
+            relationship simultaneously — as a server that exposes workflows to external AI clients, and
+            as a client that calls external MCP tools from inside a running workflow.
+          </p>
+
+          <div className="mt-8 mb-8 overflow-x-auto">
+            <N8NMCPBridgeDiagram />
+          </div>
+
+          <div className="space-y-6 mt-6">
+            <div className="border-l-2 border-brand-cobalt pl-5">
+              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">n8n as MCP Server</h4>
+              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+                Any n8n workflow can be exposed as a callable tool to an external AI host — Claude Desktop,
+                Cursor, a custom enterprise LLM. The AI reasons through a task and natively triggers your
+                workflow to take real-world action, without a custom API wrapper for that specific client.
+                Build a CRM search workflow once; it becomes callable by any MCP-compatible assistant
+                going forward.
+              </p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/50 pl-5">
+              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">n8n as MCP Client</h4>
+              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+                Internal n8n agents can dynamically discover and call external MCP tools mid-workflow,
+                using the MCP Client Tool node with an SSE endpoint. An n8n agent handling a support
+                ticket can call out to an external documentation search tool mid-workflow — the same way
+                a Claude agent would — without any custom integration between the two systems.
+              </p>
+            </div>
+            <div className="border-l-2 border-brand-concrete pl-5">
+              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">The n8n-mcp package</h4>
+              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+                A third mode: expose n8n&rsquo;s own workflow management API to Claude or Cursor, so you
+                can describe an automation in natural language and have the model build the actual workflow
+                via API calls rather than dragging nodes. Genuinely useful for prototyping — &ldquo;create
+                a workflow that runs at 9am, checks Supabase for failed jobs, and emails a summary&rdquo;
+                — but the underlying n8n API changes between releases. Treat AI-authored workflows as a
+                starting point to review, not production-ready automations to publish directly.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 04 */}
+        <section>
+          <SectionHeading number="04" title="The filter before you build" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Not every repetitive task deserves automation, and not every automatable task is worth the
+            setup cost. Four questions that filter before you start:
+          </p>
+
+          <div className="mt-6 space-y-0 border border-brand-concrete">
+            {[
+              {
+                n: '01',
+                q: 'Is it genuinely repetitive?',
+                a: 'A one-off data migration needs a script, not a maintained workflow with error handling, monitoring, and future updates. The overhead of an automation only pays for itself if the task runs repeatedly.',
+              },
+              {
+                n: '02',
+                q: 'Can you state the trigger and success condition in one sentence each?',
+                a: 'Ambiguous trigger conditions are the main source of workflows that fire at the wrong time. Ambiguous success conditions mean you cannot tell when the workflow is broken.',
+              },
+              {
+                n: '03',
+                q: 'Does this step require judgment, or will it always execute the same way?',
+                a: 'The Tools Agent node and ReAct execution exist for genuine decision points — steps where the right action depends on context that cannot be scripted in advance. A step that was always going to do the same thing regardless of context belongs in a fixed node, not an agent loop.',
+              },
+              {
+                n: '04',
+                q: 'What is the failure notification?',
+                a: 'A workflow that silently breaks at 3am and nobody notices until a client complains is worse than not automating the task at all. Pair every automation with a real failure alert — Slack, email, something someone actively checks.',
+              },
+            ].map((item, i, arr) => (
+              <div key={item.n} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
+                <div className="w-14 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/50 flex items-start justify-center pt-5">
+                  <span className="font-display text-2xl text-brand-cobalt/30">{item.n}</span>
+                </div>
+                <div className="p-4 flex-1">
+                  <h4 className="font-sans font-semibold text-sm text-brand-black leading-snug mb-2">{item.q}</h4>
+                  <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{item.a}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 05 */}
+        <section>
+          <SectionHeading number="05" title="Where this applies immediately" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            A few categories where the workflow discipline from this workbook maps directly to real tasks:
+          </p>
+          <ul className="mt-5 space-y-4 font-sans text-base text-brand-black/70 leading-relaxed">
+            <li className="flex gap-3">
+              <span className="text-brand-cobalt mt-1 flex-shrink-0">—</span>
+              <span><strong className="text-brand-black font-semibold">Recurring reporting.</strong> A workflow that pulls data from analytics tools on a schedule and drops a formatted summary into Slack or email is a textbook n8n use case — deterministic, clear trigger, clear output, nothing that requires agent reasoning.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-brand-cobalt mt-1 flex-shrink-0">—</span>
+              <span><strong className="text-brand-black font-semibold">Platform handoffs.</strong> Campaign page publishing, lead routing between Marketo and Salesforce, or any multi-platform data movement with a clear trigger and clear destination is exactly the kind of work n8n handles cleanly without an agent node.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-brand-cobalt mt-1 flex-shrink-0">—</span>
+              <span><strong className="text-brand-black font-semibold">Content distribution.</strong> A scheduled workflow that checks for new assets and cross-posts or queues them for review is low-risk, high-leverage, and a practical first automation to actually Publish — not just test.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-brand-cobalt mt-1 flex-shrink-0">—</span>
+              <span><strong className="text-brand-black font-semibold">Notification sequences.</strong> Reminders, expiry alerts, meeting triggers — genuinely repetitive, clear-trigger, clear-outcome work. No AI agent node needed. The agent overhead would be pure waste on a deterministic task.</span>
+            </li>
+          </ul>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            The connecting thread: n8n&rsquo;s MCP Server capability means any workflow you build becomes
+            callable from Claude or Cursor directly. n8n&rsquo;s MCP Client capability means it can call
+            out to any MCP server already in your stack mid-workflow. Worth designing new workflows with
+            that two-way bridge in mind rather than treating n8n as an island.
+          </p>
+        </section>
+
+        {/* Closing */}
+        <section className="border-t border-brand-concrete pt-10">
+          <p className="font-sans text-lg text-brand-black/75 leading-relaxed">
+            Build the automation. Test it against real data. Publish deliberately. Then connect it to something.
+          </p>
+        </section>
+
+      </div>
+
+      {/* Footer nav */}
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-brand-concrete pt-10">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
       </div>
     </div>
   )
