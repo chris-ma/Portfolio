@@ -28,6 +28,8 @@ import {
   ModelLandscapeDiagram,
   AttackSuccessRateDiagram,
   OSINTCycleDiagram,
+  PerceptionAccuracyDiagram,
+  EmailFlowPriorityDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface ArticleCardProps {
@@ -118,6 +120,12 @@ function DiagramWrapper({ children }: { children: React.ReactNode }) {
 }
 
 function ArticleVisual({ slug, category, index }: { slug: string; category: string; index: number }) {
+  if (slug === 'data-visualization-charts') {
+    return <DiagramWrapper><PerceptionAccuracyDiagram /></DiagramWrapper>
+  }
+  if (slug === 'email-marketing-automation') {
+    return <DiagramWrapper><EmailFlowPriorityDiagram /></DiagramWrapper>
+  }
   if (slug === 'osint-ai-intelligence') {
     return <DiagramWrapper><OSINTCycleDiagram /></DiagramWrapper>
   }
