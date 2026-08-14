@@ -24,6 +24,8 @@ import {
   ModelLandscapeDiagram, RiskMatrixDiagram, DeploymentPathDiagram,
   DirectVsIndirectDiagram, AttackSuccessRateDiagram, DefenseStackDiagram,
   OSINTCycleDiagram, IntelDisciplinesMap, OSINTApplicationsDiagram,
+  PerceptionAccuracyDiagram, PartialPeriodDiagram, ForecastBandDiagram, OneHighlightColorDiagram,
+  EmailROIComparisonDiagram, RevenueConcentrationDiagram, EmailFlowPriorityDiagram, DeliverabilityStackDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface PageProps {
@@ -126,6 +128,14 @@ export default function ArticlePage({ params }: PageProps) {
 
   if (article.slug === 'hermes-agent-persistent-ai') {
     return <HermesArticle article={article} formattedDate={formattedDate} />
+  }
+
+  if (article.slug === 'data-visualization-charts') {
+    return <DataVizArticle article={article} formattedDate={formattedDate} />
+  }
+
+  if (article.slug === 'email-marketing-automation') {
+    return <EmailMarketingArticle article={article} formattedDate={formattedDate} />
   }
 
   notFound()
@@ -5451,6 +5461,607 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
               <MetricRow signal="Cost per completed task" meaning="The number that should actually inform budgeting" />
               <MetricRow signal="Model tier vs. task complexity" meaning="Whether spend is matched to actual need" last />
             </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
+          <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+            ← All Field Notes
+          </Link>
+          <div className="flex flex-wrap gap-2">
+            {article!.tags.map((tag) => (
+              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/60 border border-brand-cobalt/20 px-2 py-0.5">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </footer>
+      </div>
+    </div>
+  )
+}
+
+// ─── Data Visualization Article ────────────────────────────────────────────────
+
+function DataVizArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+
+        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+          BEFORE<br />
+          THE<br />
+          <span className="text-brand-cobalt">CHART.</span>
+        </h1>
+
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+          {article!.subtitle}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 py-14 space-y-16">
+
+        {/* Lede */}
+        <section>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+            The failure mode in most dashboards isn&rsquo;t the chart library or the color palette. It&rsquo;s that the question was never written down before the building started. &ldquo;Show performance&rdquo; sends you in the wrong direction before you&rsquo;ve opened a tool. &ldquo;Did the Q3 campaign hit its CPA target&rdquo; resolves most downstream design questions automatically — the chart type, what to cut, what to highlight, and what the headline should say.
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            Write the business question in one sentence before picking a chart type. If you can&rsquo;t, the visual isn&rsquo;t ready to build. This sounds obvious and is routinely skipped — which is why most bad dashboards aren&rsquo;t bad because of technology or design skill. They&rsquo;re bad because no one wrote down what decision the chart was supposed to inform.
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            Accuracy and readability are separate requirements, not substitutes for each other. A chart can be beautifully designed and still misleading. A technically correct chart can still be unreadable. Both bars have to clear.
+          </p>
+        </section>
+
+        {/* Section 01 — Perception */}
+        <section>
+          <SectionHeading number="01" title="Why some chart choices are wrong, not just unpopular" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Chart choice isn&rsquo;t a matter of style. It&rsquo;s grounded in how human visual perception actually works. The relevant concept is preattentive processing — the visual judgment that happens before conscious attention kicks in. Different encodings engage this mechanism differently. Some produce accurate judgments at a glance. Others are systematically misjudged, regardless of how well-designed the chart is.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+            Length on a common scale — the bar chart — is the most reliable encoding available. Two bars plotted on the same axis: the difference reads immediately and accurately. This is why bar charts dominate good analytical work. Not as a default, but as a deliberate match between task and encoding.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+            Area is reliably underestimated. When comparing circles, humans consistently misjudge the ratio — a bubble representing twice the value of another looks like maybe 1.5×. This isn&rsquo;t a fixable design problem. It&rsquo;s a property of how the visual system processes area. Treemaps and bubble charts are weak tools for precise comparison, not just unfashionable ones.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+            Angle is the worst encoding for comparison beyond two or three categories. With more than three slices, angle differences become genuinely unreadable, and errors compound as the number of categories grows. Pie charts aren&rsquo;t bad for aesthetic reasons. They&rsquo;re bad because the question &ldquo;how do these compare?&rdquo; cannot be accurately answered by looking at angles.
+          </p>
+
+          <div className="mt-8 border border-brand-concrete">
+            <PerceptionAccuracyDiagram />
+          </div>
+          <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+            The same two values — 72 and 45 — encoded three different ways. Only one reads accurately at a glance.
+          </p>
+
+          <div className="mt-8">
+            <p className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-cobalt mb-5">Practical selection guide</p>
+            <div className="border border-brand-concrete divide-y divide-brand-concrete">
+              {[
+                { task: 'Comparing categories', chart: 'Bar chart' },
+                { task: 'Change over time', chart: 'Line chart' },
+                { task: 'Part-to-whole (2–3 items only)', chart: 'Stacked bar — not pie' },
+                { task: 'Distribution', chart: 'Histogram or box plot' },
+                { task: 'Correlation between two variables', chart: 'Scatter plot' },
+                { task: 'Hierarchical proportion', chart: 'Table or sorted bar chart before reaching for a treemap' },
+              ].map(({ task, chart }, i) => (
+                <div key={i} className="grid grid-cols-2 px-4 py-3">
+                  <span className="font-sans text-sm text-brand-black/70">{task}</span>
+                  <span className="font-sans text-sm text-brand-cobalt font-medium">{chart}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section 02 — Honesty rules */}
+        <section>
+          <SectionHeading number="02" title="The honesty rules — each one describes a real mistake" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            These aren&rsquo;t stylistic preferences. Each describes a specific, common error that changes what a chart says — silently, without requiring any design intent.
+          </p>
+
+          <div className="mt-8 space-y-8">
+
+            <div>
+              <p className="font-sans font-semibold text-brand-black text-base mb-2">Don&rsquo;t connect a line across missing data</p>
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                A connected line makes an implicit claim: a value existed for every point along it. When data is missing — a tracking script went down, an integration broke, an event wasn&rsquo;t captured — connecting across that gap invents a trend that was never measured. Break the line, or mark the gap explicitly. The alternative is a chart that lies by continuity.
+              </p>
+            </div>
+
+            <div>
+              <p className="font-sans font-semibold text-brand-black text-base mb-2">Don&rsquo;t let a partial period read as a complete one</p>
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                Six days of July plotted alongside six complete prior months creates a visual collapse that isn&rsquo;t happening. The bar is low because it contains six days of data, not because July underperformed. Every live dashboard that includes the current period needs one of three interventions: shade the partial bar differently, label it &ldquo;in progress,&rdquo; or exclude it until the period closes.
+              </p>
+              <div className="mt-5 border border-brand-concrete">
+                <PartialPeriodDiagram />
+              </div>
+              <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+                Same data — June with 6 of 30 days collected. One version misleads; the other informs.
+              </p>
+            </div>
+
+            <div>
+              <p className="font-sans font-semibold text-brand-black text-base mb-2">Don&rsquo;t drop a forecast&rsquo;s confidence range</p>
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                Any statistical forecast carries real uncertainty the model can quantify and report. Showing only the point estimate and omitting the confidence interval removes the only part of the forecast that was honest about its own limits. A narrow band is reassuring. A wide band is information — the reader deserves to know how uncertain the projection is. Both are more useful than a single line drawn through unknowns.
+              </p>
+              <div className="mt-5 border border-brand-concrete">
+                <ForecastBandDiagram />
+              </div>
+              <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+                The confidence range isn&rsquo;t decoration — it&rsquo;s the honest part of the forecast.
+              </p>
+            </div>
+
+            <div>
+              <p className="font-sans font-semibold text-brand-black text-base mb-2">Use color to focus attention, not to fill the legend</p>
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                One accent color on a muted base does more work than five colors competing for attention. Gray context bars, one cobalt bar for what matters this period. This single change — requiring no other redesign — is the fastest upgrade available for any executive-facing dashboard. The insight becomes visible without narration.
+              </p>
+              <div className="mt-5 border border-brand-concrete">
+                <OneHighlightColorDiagram />
+              </div>
+              <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+                Same six bars. The right version guides the eye without requiring a legend.
+              </p>
+            </div>
+
+            <div>
+              <p className="font-sans font-semibold text-brand-black text-base mb-2">Label directly — don&rsquo;t outsource meaning to a legend</p>
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                A legend forces the reader&rsquo;s eye to travel between data and key — a round trip with every new data point. Labels placed on or next to the data eliminate that friction entirely. This is especially important for line charts with multiple series: a label at the end of each line costs nothing and removes a constant cognitive tax from the reader.
+              </p>
+            </div>
+
+            <div>
+              <p className="font-sans font-semibold text-brand-black text-base mb-2">Remove anything that competes with the main insight</p>
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                Gridlines, decorative borders, 3D effects, and unused legends are each a small tax on the reader&rsquo;s attention. They accumulate. A chart that has had decorative elements stripped out isn&rsquo;t &ldquo;minimalist&rdquo; — it&rsquo;s a chart where the data has more room. Every element that doesn&rsquo;t serve the one question this chart answers is in competition with it.
+              </p>
+            </div>
+
+          </div>
+        </section>
+
+        {/* Section 03 — Dashboard level */}
+        <section>
+          <SectionHeading number="03" title="Dashboard-level design — beyond the single chart" />
+
+          <div className="mt-6 space-y-6">
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <p className="font-sans font-semibold text-sm text-brand-black mb-2">One question per view</p>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+                The most underused principle in dashboard design. Every view should answer exactly one business question, with the answer placed prominently above the fold. Multiple questions crammed into one screen shift the prioritization burden to the viewer — which slows decisions and increases the chance they leave with the wrong takeaway. The question shouldn&rsquo;t be implicit in the charts. It should be stated, in plain language, before the charts begin.
+              </p>
+            </div>
+
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <p className="font-sans font-semibold text-sm text-brand-black mb-2">Interactivity should be used, not just available</p>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+                Tooltips, drill-downs, and cross-filtering are valuable when they&rsquo;re actually used. Review interaction data periodically: if a filter or drill-down is never clicked, remove it. Unused interactivity adds cognitive overhead without adding analytical value — and it&rsquo;s the easiest thing to accumulate without noticing, because it feels like adding capability when it&rsquo;s actually adding noise.
+              </p>
+            </div>
+
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <p className="font-sans font-semibold text-sm text-brand-black mb-2">Animation is for state change, not decoration</p>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+                Motion should communicate that something changed — a filter applied, a value updated. Animation that exists for visual interest distracts from the data and creates a genuine accessibility barrier for users with motion sensitivity. If removing an animation doesn&rsquo;t make the chart harder to understand, the animation shouldn&rsquo;t be there.
+              </p>
+            </div>
+
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <p className="font-sans font-semibold text-sm text-brand-black mb-2">Mobile requires rearrangement, not rescaling</p>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+                Charts that simply shrink on mobile become unreadable rather than smaller. The layout needs to genuinely reflow — which means designing for it explicitly as a separate layout state, not treating it as a scaling problem to handle automatically.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 04 — AI */}
+        <section>
+          <SectionHeading number="04" title="AI in the visualization workflow" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            The shift worth understanding: AI tools now handle a meaningful share of the mechanical work — cleaning data, selecting chart types, detecting anomalies, generating written summaries — from natural-language descriptions alone. Typing &ldquo;show sales trends for the last six months&rdquo; produces a working chart in most modern BI tools, with the AI selecting the format and often surfacing an initial insight. The genuine benefit is removing the setup cost between raw data and a first-draft visual, freeing time for the judgment calls described in sections 1 through 3.
+          </p>
+
+          <Callout label="Where AI-generated charts need real caution" className="mt-8">
+            <div className="space-y-4">
+              <div>
+                <p className="font-sans text-sm font-semibold text-brand-black mb-1">SQL hallucination</p>
+                <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                  An AI generating SQL from scratch can silently compute &ldquo;revenue&rdquo; or &ldquo;conversion&rdquo; using an assumption that doesn&rsquo;t match your team&rsquo;s agreed definition. An AI grounded in an explicit semantic layer — pre-agreed, governed metric definitions — is materially more trustworthy than one improvising from a raw prompt. A metric that seems right but isn&rsquo;t damages trust in the whole dashboard faster than any single right answer can rebuild it.
+                </p>
+              </div>
+              <div>
+                <p className="font-sans text-sm font-semibold text-brand-black mb-1">Summary scope</p>
+                <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                  Any AI-written chart summary should be treated as provisional until you&rsquo;ve confirmed the date range and filters it used. A summary that doesn&rsquo;t state its own scope can&rsquo;t be verified. An unverified metric shared upward is a metric that may be wrong — and wrong numbers erode trust in the whole dashboard, not just the one number.
+                </p>
+              </div>
+              <div>
+                <p className="font-sans text-sm font-semibold text-brand-black mb-1">AI forecasts — same honesty rules apply</p>
+                <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                  An AI-generated predictive overlay that drops its own confidence interval is making exactly the mistake described in Section 2 — automated. The honesty rules don&rsquo;t carry an AI exemption. If the model can report uncertainty (it almost always can), the chart should show it.
+                </p>
+              </div>
+            </div>
+          </Callout>
+        </section>
+
+        {/* Section 05 — Build sequence */}
+        <section>
+          <SectionHeading number="05" title="The build sequence" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Before opening any tool, write the business question in one sentence. Then:
+          </p>
+
+          <div className="mt-8 border border-brand-concrete divide-y divide-brand-concrete">
+            {[
+              { num: '01', step: 'Write the question', detail: 'One sentence. If you can\'t write it, the visual isn\'t ready to build.' },
+              { num: '02', step: 'Choose chart type from the perception table', detail: 'Match the encoding to the question. Not from habit, not from what looks interesting.' },
+              { num: '03', step: 'Build the honest version first', detail: 'Gaps shown as gaps. Partial periods marked. Forecasts shown with their confidence range.' },
+              { num: '04', step: 'Apply the one-highlight-color rule', detail: 'Gray for context. One accent for what matters this period. No other colors.' },
+              { num: '05', step: 'Cut everything that doesn\'t serve the question', detail: 'Gridlines, decorative borders, unused legends. Each one is attention drawn away from the data.' },
+              { num: '06', step: 'Verify any AI-generated content', detail: 'Metric definition. Date range and filters used. Don\'t trust the summary before checking its scope.' },
+              { num: '07', step: 'Show it to someone outside the room', detail: 'Teams that ship readable dashboards treat a confusing chart type as a defect, not a preference. Fresh eyes catch it before deployment does.' },
+            ].map(({ num, step, detail }) => (
+              <div key={num} className="px-5 py-4 flex gap-5">
+                <span className="font-display text-3xl text-brand-cobalt/20 flex-shrink-0 leading-none mt-1">{num}</span>
+                <div>
+                  <p className="font-sans font-semibold text-sm text-brand-black mb-1">{step}</p>
+                  <p className="font-sans text-sm text-brand-muted leading-relaxed">{detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Honesty checklist */}
+        <section>
+          <SectionHeading number="—" title="The honesty checklist" />
+          <div className="mt-6 bg-brand-graphite border border-brand-concrete p-6 space-y-3">
+            {[
+              'No line connects across a real data gap without a visible break or explicit note',
+              'No partial / in-progress period is shown as if it were complete',
+              'Any forecast shows its confidence range, not only the point estimate',
+              'Color is used to highlight the one thing that matters — not to decorate',
+              'Chart type matches how the data is actually perceived (length > area > angle, wherever precision matters)',
+              'Every view answers exactly one stated business question',
+              'Any AI-generated metric or summary has been checked against a governed definition before being shared',
+            ].map((item, i) => (
+              <div key={i} className="flex gap-3 items-start">
+                <span className="text-brand-cobalt font-sans text-xs mt-0.5 flex-shrink-0">□</span>
+                <span className="font-sans text-sm text-brand-black/75 leading-relaxed">{item}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
+          <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+            ← All Field Notes
+          </Link>
+          <div className="flex flex-wrap gap-2">
+            {article!.tags.map((tag) => (
+              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/60 border border-brand-cobalt/20 px-2 py-0.5">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </footer>
+      </div>
+    </div>
+  )
+}
+
+// ─── Email Marketing Article ────────────────────────────────────────────────────
+
+function EmailMarketingArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+
+        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+          THE<br />
+          <span className="text-brand-cobalt">2%</span><br />
+          LEVER.
+        </h1>
+
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+          {article!.subtitle}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 py-14 space-y-16">
+
+        {/* Lede */}
+        <section>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+            Email returns $36–$42 for every dollar spent in 2026. Paid search returns $2. Social advertising, $2.80. Display, $1.35. The gap isn&rsquo;t narrowing — it&rsquo;s widening, because AI personalization compounds the return on the channel that already had the highest return. 59% of marketers name email their single most effective revenue channel.
+          </p>
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+            The concentration finding inside that number is the more useful one: roughly 2% of send volume — the automated, behavior-triggered flows — generates 41% of total email revenue. Campaigns and newsletters are real work with real but comparatively thin payback. The welcome series, booking confirmation, and win-back flow are where the leverage actually sits. If you build one thing, the data is explicit about which three.
+          </p>
+
+          <div className="mt-8 border border-brand-concrete">
+            <EmailROIComparisonDiagram />
+          </div>
+          <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+            ROI per $1 spent — 2026 benchmarks. Sources: Angarum Media, Litmus, DMA, Omnisend, Klaviyo.
+          </p>
+        </section>
+
+        {/* Section 01 — Metrics */}
+        <section>
+          <SectionHeading number="01" title="The metrics that matter — and the one that doesn&rsquo;t anymore" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            Open rate is now a directional health check, not a real KPI. Apple&rsquo;s Mail Privacy Protection pre-fetches images for a large share of opens regardless of whether a human actually read the email — structurally inflating the metric in a way that cannot be corrected for. Continuing to optimise primarily against open rate is optimising against a number that no longer means what it used to. This isn&rsquo;t a temporary quirk. MPP is a permanent shift in what &ldquo;open rate&rdquo; measures.
+          </p>
+
+          <div className="mt-8 border border-brand-concrete divide-y divide-brand-concrete">
+            <div className="grid grid-cols-3 bg-brand-graphite px-4 py-3">
+              <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted">Metric</span>
+              <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted">2026 Benchmark</span>
+              <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted">Status</span>
+            </div>
+            {[
+              { metric: 'Open rate (all-industry)', benchmark: '21–31% (MPP-adjusted)', status: 'Directional only', dim: true },
+              { metric: 'Automated flow open rate', benchmark: '48–68%', status: 'Strong signal', dim: false },
+              { metric: 'Welcome email open rate', benchmark: '~35%', status: 'Best-performing type', dim: false },
+              { metric: 'Click-to-open rate (CTOR)', benchmark: 'Rising — primary engagement KPI', status: 'Anchor decisions here', dim: false },
+              { metric: 'CTR (current)', benchmark: '~3.5% → 4.5% by 2030', status: 'Trending up', dim: false },
+              { metric: 'Bounce rate ceiling', benchmark: '< 2%', status: 'Guardrail metric', dim: false },
+              { metric: 'Unsubscribe ceiling', benchmark: '< 0.5%', status: 'Guardrail metric', dim: false },
+            ].map(({ metric, benchmark, status, dim }) => (
+              <div key={metric} className="grid grid-cols-3 px-4 py-3">
+                <span className={`font-sans text-sm ${dim ? 'text-brand-muted line-through' : 'text-brand-black/75'}`}>{metric}</span>
+                <span className="font-sans text-sm text-brand-black/60">{benchmark}</span>
+                <span className={`font-sans text-sm font-medium ${dim ? 'text-brand-muted' : 'text-brand-cobalt'}`}>{status}</span>
+              </div>
+            ))}
+          </div>
+
+          <Callout label="The two guardrail metrics" className="mt-6">
+            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              Bounce rate above 2% and unsubscribe rate above 0.5% are the numbers that, if they slip, put every other metric at risk. A deliverability problem suppresses your real engagement numbers before you ever see the effect in clicks or revenue — which is exactly what makes it dangerous. These don&rsquo;t need to be optimised. They need to be maintained below their ceilings, and monitored every send.
+            </p>
+          </Callout>
+        </section>
+
+        {/* Section 02 — Deliverability */}
+        <section>
+          <SectionHeading number="02" title="Deliverability — the precondition everything else sits on" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            If deliverability is broken, no amount of copywriting or AI personalization matters. The email never reaches an inbox. This is worth stating plainly because it&rsquo;s treated as a technical checkbox when it&rsquo;s actually the foundation that everything else depends on.
+          </p>
+
+          <div className="mt-8 border border-brand-concrete">
+            <DeliverabilityStackDiagram />
+          </div>
+          <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+            Deliverability layers in order of priority — each one is a precondition for the next.
+          </p>
+
+          <div className="mt-8 space-y-5">
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <p className="font-sans font-semibold text-sm text-brand-black mb-2">Full authentication is table stakes</p>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+                SPF, DKIM, and DMARC set to enforcement — not just monitoring mode — are the baseline mailbox providers now expect. Monitoring mode means you&rsquo;re observing failures without blocking them. Enforcement is what actually protects sender reputation and passes the mailbox providers&rsquo; increasingly AI-driven filtering.
+              </p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <p className="font-sans font-semibold text-sm text-brand-black mb-2">List hygiene compounds into deliverability</p>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+                Continued sends to unengaged contacts signal to mailbox providers that your list is poorly managed — and that signal damages sender reputation for all your sends, not just the ones to those contacts. A smaller, genuinely engaged list consistently outperforms a larger, stale one on every metric that matters, including reach. Suppressing unengaged contacts isn&rsquo;t a concession; it&rsquo;s how you protect the audience that does engage.
+              </p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <p className="font-sans font-semibold text-sm text-brand-black mb-2">AI-drafted volume is a live deliverability variable</p>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+                As AI-generated email becomes the norm, mailbox providers are adjusting relevance filtering in response. The specific risk: a large volume of similarly-structured, AI-generated sends can trigger pattern detection that affects inbox placement. This isn&rsquo;t a solved problem. If a significant share of your sends are AI-drafted, it&rsquo;s worth monitoring as a risk factor rather than assuming current placement rates will hold.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 03 — Flows */}
+        <section>
+          <SectionHeading number="03" title="The five flows — in the order they pay back" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            The 2%-drives-41% concentration finding has a direct implication for build priority. Campaigns and newsletters get attention because they&rsquo;re visible and scheduled. Automated lifecycle flows get neglected because they require upfront engineering work and then largely run unnoticed. The data says the unnoticed work is the leverage.
+          </p>
+
+          <div className="mt-8 border border-brand-concrete overflow-hidden">
+            <EmailFlowPriorityDiagram />
+          </div>
+
+          <div className="mt-10 space-y-8">
+
+            <div>
+              <div className="flex items-baseline gap-3 mb-3">
+                <span className="font-display text-4xl text-brand-cobalt/30">01</span>
+                <p className="font-sans font-semibold text-base text-brand-black">Welcome series</p>
+              </div>
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                Three to five emails over 7–14 days: introduction → product education → value reinforcement. The highest-performing automated flow type by open rate (~35%), for an obvious reason: it reaches people at peak interest, right after they opted in. The attention window is real and finite. A welcome sequence that doesn&rsquo;t exist is leaving the highest-engagement moment in the entire subscriber lifecycle with nothing in it.
+              </p>
+            </div>
+
+            <div>
+              <div className="flex items-baseline gap-3 mb-3">
+                <span className="font-display text-4xl text-brand-cobalt/30">02</span>
+                <p className="font-sans font-semibold text-base text-brand-black">Booking / conversion confirmation</p>
+              </div>
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                Confirmation touches are high-open, high-trust moments — the reader has just completed an action and expects communication. This makes them the best time to reinforce the decision, cross-sell adjacent offerings, or prime the next step in the lifecycle. They&rsquo;re consistently under-built relative to their actual value, because they feel like operational emails rather than marketing emails. That distinction doesn&rsquo;t matter to the reader.
+              </p>
+            </div>
+
+            <div>
+              <div className="flex items-baseline gap-3 mb-3">
+                <span className="font-display text-4xl text-brand-cobalt/30">03</span>
+                <p className="font-sans font-semibold text-base text-brand-black">Win-back / re-engagement</p>
+              </div>
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                This flow does double work: it recovers revenue from contacts whose engagement has dropped, and it protects deliverability by identifying which contacts to suppress before they become a reputation liability. A re-engagement sequence that converts inactive subscribers back to active ones improves deliverability while recovering revenue. One that doesn&rsquo;t convert identifies exactly who to remove from the active list — which also improves deliverability. It&rsquo;s useful regardless of outcome.
+              </p>
+            </div>
+
+            <div>
+              <div className="flex items-baseline gap-3 mb-3">
+                <span className="font-display text-4xl text-brand-cobalt/30">04</span>
+                <p className="font-sans font-semibold text-base text-brand-black">Abandoned action recovery</p>
+              </div>
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                Classic abandoned cart recovery has expanded to include browse abandonment, wishlist reminders, and multi-step nurture that addresses specific purchase hesitations rather than sending a single generic reminder. In a B2B or campaign context, the direct analog is a form-start-without-completion or a content-download-without-follow-through trigger. The underlying logic is identical: someone expressed intent and didn&rsquo;t complete. Automated follow-up on that signal consistently recovers near-miss conversions.
+              </p>
+            </div>
+
+            <div>
+              <div className="flex items-baseline gap-3 mb-3">
+                <span className="font-display text-4xl text-brand-cobalt/30">05</span>
+                <p className="font-sans font-semibold text-base text-brand-black">Behavioral MOFU nurture</p>
+              </div>
+              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                Triggering the next email off actual behavior — viewed pricing → send comparison content; downloaded a guide → invite to webinar — rather than running one static drip for everyone is what closes the middle-funnel gap. This is squarely a marketing automation problem, not a content problem. The content may already exist. What&rsquo;s missing is the behavioral trigger logic that delivers the right content to someone who just demonstrated specific intent.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 04 — AI personalization */}
+        <section>
+          <SectionHeading number="04" title="AI personalization — what it moves, and what to watch" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+            The lift figures from AI personalization in email are real and consistent across multiple sources, even where the exact percentages vary by methodology and list type.
+          </p>
+
+          <div className="mt-6 bg-brand-graphite border border-brand-concrete p-6 grid grid-cols-2 gap-4">
+            {[
+              { stat: '+26%', label: 'Open rate lift from AI-optimised subject lines vs manually written' },
+              { stat: '+14%', label: 'Additional lift from AI send-time optimisation, stacking on the above' },
+              { stat: '3.75%', label: 'Average click rate from AI product/content recommendations (top: 8.79%)' },
+              { stat: 'up to 6×', label: 'More transactions from personalised sends vs generic — across multiple sources' },
+            ].map(({ stat, label }) => (
+              <div key={stat} className="border border-brand-concrete bg-brand-white p-4">
+                <span className="font-display text-4xl text-brand-cobalt block mb-2">{stat}</span>
+                <p className="font-sans text-xs text-brand-black/60 leading-relaxed">{label}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="font-sans text-sm text-brand-muted mt-4 leading-relaxed">
+            Treat specific figures as benchmarks to validate against your own A/B test data, not as guaranteed results. The directional finding — AI personalization meaningfully improves performance — is well-supported. Whether the exact lifts hold for your list and industry requires your own test data to confirm.
+          </p>
+
+          <div className="mt-8 space-y-5">
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <p className="font-sans font-semibold text-sm text-brand-black mb-2">Differentiation is shifting from using AI to using it well</p>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+                61% of enterprise email programs are projected to use AI for at least one element of campaign creation by late 2026, with adoption projected toward 97% by 2030. Simply using AI in email is moving from advantage to baseline expectation. The differentiation increasingly sits in avoiding the failure mode: AI-generated email at scale that doesn&rsquo;t clear the same quality bar as human-written email creates &ldquo;AI slop&rdquo; at volume — which triggers both reader disengagement and, increasingly, filtering from mailbox providers.
+              </p>
+            </div>
+            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
+              <p className="font-sans font-semibold text-sm text-brand-black mb-2">Zero-party data is the fuel AI personalization depends on</p>
+              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+                AI personalization is only as good as the data it personalises on. Quiz funnels and direct preference-capture mechanisms — where a person tells you explicitly what they want, rather than having behavior inferred — are the highest-yield way to collect zero-party data. As cookieless tracking erodes behavioral inference across the web, zero-party data collected through email interactions becomes increasingly valuable. The channel that collects the preference is also the channel that benefits from it.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 05 — Practical audit */}
+        <section>
+          <SectionHeading number="05" title="The practical audit — where to look first" />
+
+          <div className="mt-6 border border-brand-concrete divide-y divide-brand-concrete">
+            {[
+              {
+                check: 'Which of the five flows actually exist — and in what order they were built',
+                why: 'If a newsletter program got more attention than the welcome/confirmation/win-back trio, that\'s the gap to close first. Per the 2%-drives-41% finding, the order of build priority is not arbitrary.',
+              },
+              {
+                check: 'Whether primary reporting leads with open rate or CTOR',
+                why: 'Shifting from open rate to CTOR and revenue-per-send as primary metrics is a low-effort, high-clarity change that directly prevents MPP inflation from quietly misleading any stakeholder report that leads with opens.',
+              },
+              {
+                check: 'Authentication status — SPF / DKIM / DMARC on enforcement, not monitoring',
+                why: 'This is a concrete, checkable item, not a strategy question. If deliverability numbers look soft, authentication is the highest-leverage fix to check first.',
+              },
+              {
+                check: 'Whether behavioral triggers exist in the MOFU nurture flow',
+                why: 'A static drip sequence for everyone is not behavioral nurture. If the next email in the sequence doesn\'t change based on what the contact just did, the behavioral trigger layer doesn\'t exist yet.',
+              },
+              {
+                check: 'Whether AI-drafted subject lines are being A/B tested against human-written baselines',
+                why: 'The ~26% average lift is well-supported across sources. Averages don\'t guarantee it holds for your specific list and industry. Your own A/B data is what confirms (or doesn\'t confirm) the benchmark in your context.',
+              },
+            ].map(({ check, why }, i) => (
+              <div key={i} className="px-5 py-5">
+                <p className="font-sans font-semibold text-sm text-brand-black mb-2">{check}</p>
+                <p className="font-sans text-sm text-brand-muted leading-relaxed">{why}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Closing */}
+        <section className="border-t border-brand-concrete pt-10">
+          <p className="font-sans text-lg text-brand-black/75 leading-relaxed">
+            The channel with the highest ROI also has the highest concentration of returns in the smallest slice of its activity. That 2% of send volume — the automated flows — is where the build priority belongs. Everything else is diminishing returns until those exist.
+          </p>
+
+          <div className="mt-8 border border-brand-concrete">
+            <RevenueConcentrationDiagram />
           </div>
         </section>
 

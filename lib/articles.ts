@@ -242,6 +242,28 @@ export const articles: Article[] = [
       'The benchmark numbers are close. The bill isn\'t. What the $155 vs $15 refactor test actually tells you about which tool to reach for, and when.',
   },
   {
+    slug: 'data-visualization-charts',
+    title: 'Before the Chart',
+    subtitle: "Most bad dashboards aren't built with bad intentions — they're built with unasked questions. The perception science, honesty rules, and build sequence that change that.",
+    category: 'Strategy',
+    date: '2026-08-14',
+    readTime: '11 min read',
+    tags: ['Data Visualization', 'Dashboards', 'Chart Design', 'BI Tools', 'GA4'],
+    excerpt:
+      "Most bad dashboards aren't bad because of the chart library or the color palette. They're bad because nobody wrote down what decision the visual was supposed to inform before building started. One sentence changes that — and most of the downstream design decisions resolve themselves.",
+  },
+  {
+    slug: 'email-marketing-automation',
+    title: 'The 2% Lever',
+    subtitle: '2% of send volume — the automated, behavior-triggered flows — generates 41% of total email revenue. The five flows worth building, in the order they pay back.',
+    category: 'Strategy',
+    date: '2026-08-14',
+    readTime: '10 min read',
+    tags: ['Email Marketing', 'Marketing Automation', 'Marketo', 'Deliverability', 'Lifecycle'],
+    excerpt:
+      "Email delivers $36–$42 per $1 spent — ahead of paid search, social, and display combined. The concentration is starker still: 2% of send volume drives 41% of email revenue. That 2% is the automated lifecycle flows. Everything else is diminishing returns until those exist.",
+  },
+  {
     slug: 'wispr-obsidian-notion-pkm-stack',
     title: 'Capture → Think → Coordinate',
     subtitle: 'Three tools, three distinct jobs. The PKM stack that actually holds together.',

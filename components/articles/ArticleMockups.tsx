@@ -4236,3 +4236,446 @@ export function OSINTApplicationsDiagram() {
     </svg>
   )
 }
+
+// ── Data Visualization diagrams ───────────────────────────────────────────────
+
+export function PerceptionAccuracyDiagram() {
+  const barData = [72, 45]
+  const maxH = 110
+  const baseline = 195
+  return (
+    <svg viewBox="0 0 720 270" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="270" fill={BG} />
+      <text x="360" y="18" textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={MUTED} letterSpacing="1">
+        VISUAL ENCODING — HOW HUMAN PERCEPTION JUDGES THESE AT A GLANCE
+      </text>
+
+      {/* Panel dividers */}
+      <line x1="240" y1="30" x2="240" y2="245" stroke={BORDER} strokeWidth="1" strokeDasharray="3 3" />
+      <line x1="480" y1="30" x2="480" y2="245" stroke={BORDER} strokeWidth="1" strokeDasharray="3 3" />
+
+      {/* ── PANEL 1: BAR CHART (length) ── */}
+      <rect x="14" y="30" width="74" height="15" rx="2" fill={G} />
+      <text x="51" y="41" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={BG} letterSpacing="0.5">ACCURATE ✓</text>
+
+      {barData.map((v, i) => {
+        const h = (v / 100) * maxH
+        const x = 55 + i * 70
+        return (
+          <g key={i}>
+            <rect x={x} y={baseline - h} width={42} height={h} fill={G} opacity={i === 0 ? 0.82 : 0.32} />
+            <text x={x + 21} y={baseline - h - 5} textAnchor="middle" fontFamily="monospace" fontSize="10" fill={TEXT} fontWeight="700">{v}</text>
+          </g>
+        )
+      })}
+      <line x1="40" y1={baseline} x2="200" y2={baseline} stroke={BORDER} strokeWidth="1" />
+      <text x="76" y={baseline + 13} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED}>A</text>
+      <text x="146" y={baseline + 13} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED}>B</text>
+
+      <text x="120" y="235" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={TEXT} fontWeight="700">LENGTH / POSITION</text>
+      <text x="120" y="248" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>judged correctly at a glance</text>
+
+      {/* ── PANEL 2: BUBBLE CHART (area) ── */}
+      <rect x="252" y="30" width="74" height="15" rx="2" fill={MUTED} />
+      <text x="289" y="41" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={BG} letterSpacing="0.5">MISJUDGED ✗</text>
+
+      {/* r ∝ sqrt(value): r72=50, r45=39 */}
+      <circle cx="315" cy="148" r="50" fill={G} opacity="0.72" />
+      <circle cx="415" cy="158" r="39" fill={G} opacity="0.28" />
+      <text x="315" y="152" textAnchor="middle" fontFamily="monospace" fontSize="11" fill={BG} fontWeight="700">72</text>
+      <text x="415" y="162" textAnchor="middle" fontFamily="monospace" fontSize="11" fill={TEXT} fontWeight="700">45</text>
+
+      <text x="360" y="235" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={TEXT} fontWeight="700">AREA</text>
+      <text x="360" y="248" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>size difference is reliably underestimated</text>
+
+      {/* ── PANEL 3: PIE CHART (angle) ── */}
+      <rect x="492" y="30" width="74" height="15" rx="2" fill={MUTED} opacity="0.7" />
+      <text x="529" y="41" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={BG} letterSpacing="0.5">UNRELIABLE ✗</text>
+
+      {/* 72% slice: center (600,148) r=55, start top (600,93), end at 169.2° */}
+      {/* end: x=600+55*cos(169.2°)=600-54=546, y=148+55*sin(169.2°)=148+10=158 */}
+      <path d="M 600 148 L 600 93 A 55 55 0 1 1 546 158 Z" fill={G} opacity="0.78" />
+      <path d="M 600 148 L 546 158 A 55 55 0 0 1 600 93 Z" fill={G} opacity="0.22" />
+
+      {/* 72% label inside big slice: midpoint at ~39.6° → (627,167) */}
+      <text x="626" y="170" textAnchor="middle" fontFamily="monospace" fontSize="9.5" fill={BG} fontWeight="700">72%</text>
+      {/* 28% label — outside slice at upper left */}
+      <line x1="557" y1="112" x2="542" y2="99" stroke={MUTED} strokeWidth="1" />
+      <text x="535" y="96" textAnchor="end" fontFamily="monospace" fontSize="9.5" fill={TEXT} fontWeight="700">28%</text>
+
+      <text x="600" y="235" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={TEXT} fontWeight="700">ANGLE</text>
+      <text x="600" y="248" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>worst encoding for precise comparison</text>
+    </svg>
+  )
+}
+
+export function PartialPeriodDiagram() {
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
+  const fullValues = [88, 92, 85, 90, 87, 34]  // Jun = 6 days only
+  const maxH = 110
+  const baseline = 195
+  const barW = 28
+  const gap = 14
+
+  const barX = (i: number, offsetX: number) => offsetX + i * (barW + gap)
+
+  return (
+    <svg viewBox="0 0 720 265" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="265" fill={BG} />
+
+      {/* Panel labels */}
+      <text x="180" y="18" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="0.8">WITHOUT PARTIAL-PERIOD HANDLING</text>
+      <text x="540" y="18" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="0.8">WITH PARTIAL-PERIOD HANDLING</text>
+      <line x1="360" y1="24" x2="360" y2="248" stroke={BORDER} strokeWidth="1" strokeDasharray="3 3" />
+
+      {/* ── LEFT PANEL (wrong) ── */}
+      {fullValues.map((v, i) => {
+        const h = (v / 92) * maxH
+        const x = barX(i, 28)
+        const isPartial = i === 5
+        return (
+          <g key={i}>
+            <rect x={x} y={baseline - h} width={barW} height={h} fill={G} opacity={isPartial ? 0.75 : 0.72} />
+            <text x={x + barW / 2} y={baseline + 13} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>{months[i]}</text>
+          </g>
+        )
+      })}
+      <line x1="18" y1={baseline} x2="330" y2={baseline} stroke={BORDER} strokeWidth="1" />
+
+      {/* "Drop?!" annotation */}
+      <line x1="240" y1={baseline - (87/92)*maxH - 5} x2="270" y2={baseline - (34/92)*maxH - 5} stroke="#E8836A" strokeWidth="1.5" strokeDasharray="4 2" />
+      <text x="270" y={baseline - (34/92)*maxH - 15} fontFamily="monospace" fontSize="8" fill="#E8836A" fontWeight="700">–63%?</text>
+      <text x="270" y={baseline - (34/92)*maxH - 5} fontFamily="monospace" fontSize="7" fill="#E8836A">Not a drop — 6 of 30 days</text>
+
+      {/* ── RIGHT PANEL (corrected) ── */}
+      {fullValues.map((v, i) => {
+        const h = (v / 92) * maxH
+        const x = barX(i, 378)
+        const isPartial = i === 5
+        return (
+          <g key={i}>
+            {isPartial ? (
+              <>
+                <rect x={x} y={baseline - h} width={barW} height={h} fill="none" stroke={G} strokeWidth="1.5" strokeDasharray="4 3" />
+                <rect x={x} y={baseline - h} width={barW} height={h} fill={G} opacity={0.12} />
+              </>
+            ) : (
+              <rect x={x} y={baseline - h} width={barW} height={h} fill={G} opacity={0.72} />
+            )}
+            <text x={x + barW / 2} y={baseline + 13} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>{months[i]}</text>
+          </g>
+        )
+      })}
+      <line x1="368" y1={baseline} x2="680" y2={baseline} stroke={BORDER} strokeWidth="1" />
+
+      {/* "In progress" label */}
+      {(() => {
+        const h = (34 / 92) * maxH
+        const x = barX(5, 378)
+        return (
+          <g>
+            <line x1={x + barW / 2} y1={baseline - h - 6} x2={x + barW / 2} y2={baseline - h - 22} stroke={G} strokeWidth="1" />
+            <text x={x + barW / 2} y={baseline - h - 25} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} fontWeight="700">↗ In progress</text>
+          </g>
+        )
+      })()}
+
+      <text x="180" y="250" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>June reads as a collapse</text>
+      <text x="540" y="250" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>June is clearly partial data</text>
+    </svg>
+  )
+}
+
+export function ForecastBandDiagram() {
+  // Historical: 8 months. Forecast: 3 months.
+  const hist = [45, 52, 48, 58, 63, 71, 68, 78]
+  const fcast = [84, 91, 96]
+  const upper = [92, 103, 114]
+  const lower = [76, 79, 78]
+
+  const minV = 38, maxV = 120
+  const yScale = (v: number) => 195 - ((v - minV) / (maxV - minV)) * 150
+  const baseline = 195
+
+  // x positions: panel width 360, margin 20, step = (360-40)/10 = 32
+  const step = 30
+  const xL = (i: number) => 22 + i * step        // left panel
+  const xR = (i: number) => 382 + i * step       // right panel
+
+  const histPtsL = hist.map((v, i) => `${xL(i)},${yScale(v)}`).join(' ')
+  const fcstPtsL = [hist[7], ...fcast].map((v, i) => `${xL(7 + i)},${yScale(v)}`).join(' ')
+
+  const histPtsR = hist.map((v, i) => `${xR(i)},${yScale(v)}`).join(' ')
+  const fcstPtsR = [hist[7], ...fcast].map((v, i) => `${xR(7 + i)},${yScale(v)}`).join(' ')
+
+  // band polygon (right panel)
+  const bandPoly = [
+    `${xR(7)},${yScale(78)}`,
+    `${xR(8)},${yScale(upper[0])}`,
+    `${xR(9)},${yScale(upper[1])}`,
+    `${xR(10)},${yScale(upper[2])}`,
+    `${xR(10)},${yScale(lower[2])}`,
+    `${xR(9)},${yScale(lower[1])}`,
+    `${xR(8)},${yScale(lower[0])}`,
+    `${xR(7)},${yScale(78)}`,
+  ].join(' ')
+
+  return (
+    <svg viewBox="0 0 720 250" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="250" fill={BG} />
+
+      <text x="180" y="15" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="0.8">FORECAST — POINT ESTIMATE ONLY</text>
+      <text x="540" y="15" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="0.8">FORECAST — WITH CONFIDENCE RANGE</text>
+      <line x1="360" y1="20" x2="360" y2="228" stroke={BORDER} strokeWidth="1" strokeDasharray="3 3" />
+
+      {/* Baselines */}
+      <line x1="14" y1={baseline} x2="342" y2={baseline} stroke={BORDER} strokeWidth="1" />
+      <line x1="374" y1={baseline} x2="706" y2={baseline} stroke={BORDER} strokeWidth="1" />
+
+      {/* Historical divider lines */}
+      <line x1={xL(7)} y1={22} x2={xL(7)} y2={baseline} stroke={BORDER} strokeWidth="1" strokeDasharray="2 3" opacity="0.6" />
+      <line x1={xR(7)} y1={22} x2={xR(7)} y2={baseline} stroke={BORDER} strokeWidth="1" strokeDasharray="2 3" opacity="0.6" />
+
+      {/* LEFT PANEL */}
+      <polyline points={histPtsL} fill="none" stroke={G} strokeWidth="2" />
+      <polyline points={fcstPtsL} fill="none" stroke={G} strokeWidth="1.5" strokeDasharray="5 3" opacity="0.75" />
+
+      {/* RIGHT PANEL */}
+      <polygon points={bandPoly} fill={G} opacity="0.12" />
+      <polyline points={histPtsR} fill="none" stroke={G} strokeWidth="2" />
+      <polyline points={fcstPtsR} fill="none" stroke={G} strokeWidth="1.5" strokeDasharray="5 3" opacity="0.75" />
+      {/* upper/lower bound lines */}
+      <polyline
+        points={[`${xR(7)},${yScale(78)}`, `${xR(8)},${yScale(upper[0])}`, `${xR(9)},${yScale(upper[1])}`, `${xR(10)},${yScale(upper[2])}`].join(' ')}
+        fill="none" stroke={G} strokeWidth="1" strokeDasharray="2 2" opacity="0.4"
+      />
+      <polyline
+        points={[`${xR(7)},${yScale(78)}`, `${xR(8)},${yScale(lower[0])}`, `${xR(9)},${yScale(lower[1])}`, `${xR(10)},${yScale(lower[2])}`].join(' ')}
+        fill="none" stroke={G} strokeWidth="1" strokeDasharray="2 2" opacity="0.4"
+      />
+
+      {/* Annotations */}
+      <text x={xL(7) + 8} y="38" fontFamily="monospace" fontSize="7.5" fill={MUTED}>forecast →</text>
+      <text x={xR(7) + 8} y="38" fontFamily="monospace" fontSize="7.5" fill={MUTED}>forecast →</text>
+      <text x={xR(10) - 4} y={yScale(upper[2]) - 5} textAnchor="end" fontFamily="monospace" fontSize="7" fill={MUTED}>upper</text>
+      <text x={xR(10) - 4} y={yScale(lower[2]) + 11} textAnchor="end" fontFamily="monospace" fontSize="7" fill={MUTED}>lower</text>
+
+      <text x="180" y="238" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>Drops the only honest part of the forecast</text>
+      <text x="540" y="238" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>Shows real uncertainty — narrow or wide, it is information</text>
+    </svg>
+  )
+}
+
+export function OneHighlightColorDiagram() {
+  const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Q3']
+  const heights = [86, 102, 82, 108, 91, 106]
+  const beforeColors = ['#E8836A', '#F0B429', '#38B2AC', '#9F7AEA', '#ED8936', '#63B3ED']
+  const baseline = 195
+  const barW = 30
+  const gap = 12
+  const startL = 30
+  const startR = 390
+
+  const barX = (i: number, start: number) => start + i * (barW + gap)
+
+  return (
+    <svg viewBox="0 0 720 255" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="255" fill={BG} />
+
+      <text x="180" y="15" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="0.8">BEFORE — SIX COLORS COMPETING</text>
+      <text x="540" y="15" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="0.8">AFTER — GRAY CONTEXT, ONE ACCENT</text>
+      <line x1="360" y1="20" x2="360" y2="228" stroke={BORDER} strokeWidth="1" strokeDasharray="3 3" />
+
+      {/* Before */}
+      {heights.map((h, i) => (
+        <g key={i}>
+          <rect x={barX(i, startL)} y={baseline - h} width={barW} height={h} fill={beforeColors[i]} opacity="0.82" />
+          <text x={barX(i, startL) + barW / 2} y={baseline + 13} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>{labels[i]}</text>
+        </g>
+      ))}
+      <line x1="20" y1={baseline} x2="340" y2={baseline} stroke={BORDER} strokeWidth="1" />
+
+      {/* After */}
+      {heights.map((h, i) => {
+        const isCurrentPeriod = i === 5
+        return (
+          <g key={i}>
+            <rect
+              x={barX(i, startR)}
+              y={baseline - h}
+              width={barW}
+              height={h}
+              fill={isCurrentPeriod ? G : BORDER}
+              opacity={isCurrentPeriod ? 0.9 : 0.55}
+            />
+            <text x={barX(i, startR) + barW / 2} y={baseline + 13} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={isCurrentPeriod ? G : MUTED}>{labels[i]}</text>
+          </g>
+        )
+      })}
+      <line x1="380" y1={baseline} x2="700" y2={baseline} stroke={BORDER} strokeWidth="1" />
+
+      {/* "Q3" callout on right */}
+      {(() => {
+        const i = 5
+        const h = heights[i]
+        const x = barX(i, startR)
+        return (
+          <g>
+            <line x1={x + barW / 2} y1={baseline - h - 6} x2={x + barW / 2} y2={baseline - h - 20} stroke={G} strokeWidth="1" />
+            <text x={x + barW / 2} y={baseline - h - 23} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} fontWeight="700">↑ Q3</text>
+          </g>
+        )
+      })()}
+
+      <text x="180" y="240" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>Every bar demands attention</text>
+      <text x="540" y="240" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>The eye goes straight to what matters</text>
+    </svg>
+  )
+}
+
+// ── Email Marketing diagrams ───────────────────────────────────────────────────
+
+export function EmailROIComparisonDiagram() {
+  const channels = [
+    { label: 'Email', roi: 39, color: G },
+    { label: 'Paid Search', roi: 2, color: BORDER },
+    { label: 'Social Ads', roi: 2.8, color: BORDER },
+    { label: 'Display', roi: 1.35, color: BORDER },
+  ]
+  const maxROI = 42
+  const maxBarW = 480
+  const baseline = 50
+  const rowH = 48
+
+  return (
+    <svg viewBox="0 0 720 240" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="240" fill={BG} />
+      <text x="360" y="18" textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={MUTED} letterSpacing="1">
+        RETURN PER $1 SPENT — 2026 BENCHMARKS
+      </text>
+
+      {channels.map((ch, i) => {
+        const barW = (ch.roi / maxROI) * maxBarW
+        const y = 32 + i * rowH
+        const isEmail = i === 0
+        return (
+          <g key={i}>
+            <text x="120" y={y + 16} textAnchor="end" fontFamily="monospace" fontSize="9.5" fill={isEmail ? TEXT : MUTED} fontWeight={isEmail ? '700' : '400'}>{ch.label}</text>
+            <rect x="130" y={y + 4} width={barW} height="20" fill={ch.color} opacity={isEmail ? 0.85 : 0.45} rx="1" />
+            <text x={130 + barW + 8} y={y + 18} fontFamily="monospace" fontSize="10" fill={isEmail ? G : MUTED} fontWeight={isEmail ? '700' : '400'}>
+              ${ch.roi}
+            </text>
+          </g>
+        )
+      })}
+
+      <text x="360" y="228" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>
+        Sources: Angarum Media 2026 Benchmark Report (Litmus, DMA, Omnisend, Klaviyo)
+      </text>
+    </svg>
+  )
+}
+
+export function RevenueConcentrationDiagram() {
+  return (
+    <svg viewBox="0 0 720 240" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="240" fill={BG} />
+      <text x="360" y="18" textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={MUTED} letterSpacing="1">
+        WHERE EMAIL REVENUE ACTUALLY COMES FROM
+      </text>
+
+      {/* Two large proportion blocks */}
+      {/* Left: 2% of sends */}
+      <rect x="60" y="35" width="130" height="170" fill={G} opacity="0.85" rx="2" />
+      <text x="125" y="108" textAnchor="middle" fontFamily="monospace" fontSize="32" fill={BG} fontWeight="700">2%</text>
+      <text x="125" y="130" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={BG} opacity="0.8">of send volume</text>
+      <text x="125" y="143" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={BG} opacity="0.7">(automated flows)</text>
+
+      {/* Arrow */}
+      <text x="220" y="126" textAnchor="middle" fontFamily="monospace" fontSize="20" fill={G} opacity="0.6">→</text>
+
+      {/* Right: 41% of revenue */}
+      <rect x="260" y="35" width="400" height="170" fill={G} opacity="0.15" stroke={G} strokeWidth="1.5" rx="2" />
+      <rect x="260" y="35" width="164" height="170" fill={G} opacity="0.12" rx="2" />
+      <text x="460" y="108" textAnchor="middle" fontFamily="monospace" fontSize="32" fill={G} fontWeight="700">41%</text>
+      <text x="460" y="130" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={TEXT} opacity="0.8">of total email revenue</text>
+
+      {/* Label: remaining 98% of sends */}
+      <text x="125" y="220" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>automated flows</text>
+      <text x="460" y="220" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>remaining 59% from campaigns + newsletters</text>
+    </svg>
+  )
+}
+
+export function EmailFlowPriorityDiagram() {
+  const flows = [
+    { rank: '01', name: 'Welcome Series', open: '~35%', note: 'Highest open rate of any automated flow. Peak interest right after opt-in.', accent: true },
+    { rank: '02', name: 'Booking / Confirmation', open: '~55–65%', note: 'High-trust, high-attention moment. Consistently under-built.', accent: false },
+    { rank: '03', name: 'Win-Back / Re-Engagement', open: '~28–40%', note: 'Revenue recovery + list hygiene simultaneously.', accent: false },
+    { rank: '04', name: 'Abandoned Action Recovery', open: '~42%', note: 'Directly recovers near-miss conversions.', accent: false },
+    { rank: '05', name: 'Behavioral MOFU Nurture', open: '~38%', note: 'Triggered by action, not schedule. Closes the funnel gap.', accent: false },
+  ]
+  const rowH = 38
+  const topY = 28
+
+  return (
+    <svg viewBox="0 0 720 228" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="228" fill={BG} />
+
+      {/* Header row */}
+      <rect x="0" y="0" width="720" height="24" fill={BG2} />
+      <text x="34" y="15" fontFamily="monospace" fontSize="7.5" fill={MUTED} letterSpacing="0.8">#</text>
+      <text x="70" y="15" fontFamily="monospace" fontSize="7.5" fill={MUTED} letterSpacing="0.8">FLOW</text>
+      <text x="440" y="15" fontFamily="monospace" fontSize="7.5" fill={MUTED} letterSpacing="0.8">AVG OPEN</text>
+      <text x="520" y="15" fontFamily="monospace" fontSize="7.5" fill={MUTED} letterSpacing="0.8">WHY IT MATTERS</text>
+
+      {flows.map(({ rank, name, open, note, accent }, i) => {
+        const y = topY + i * rowH
+        return (
+          <g key={rank}>
+            <rect x="0" y={y} width="720" height={rowH} fill={accent ? `${G}12` : i % 2 === 0 ? BG : BG2} />
+            {accent && <rect x="0" y={y} width="3" height={rowH} fill={G} />}
+            <text x="34" y={y + rowH / 2 + 4} fontFamily="monospace" fontSize="8.5" fill={accent ? G : MUTED}>{rank}</text>
+            <text x="70" y={y + rowH / 2 + 4} fontFamily="monospace" fontSize="9" fill={accent ? TEXT : TEXT} fontWeight={accent ? '700' : '400'}>{name}</text>
+            <text x="440" y={y + rowH / 2 + 4} fontFamily="monospace" fontSize="8.5" fill={accent ? G : MUTED}>{open}</text>
+            <text x="520" y={y + rowH / 2 + 4} fontFamily="monospace" fontSize="7.5" fill={MUTED}>{note}</text>
+          </g>
+        )
+      })}
+    </svg>
+  )
+}
+
+export function DeliverabilityStackDiagram() {
+  const layers = [
+    { label: 'SPF · DKIM · DMARC (enforcement mode)', status: 'foundation', note: 'Table stakes. Without enforcement, reputation signals are ignored.' },
+    { label: 'List Hygiene — Remove unengaged contacts', status: 'required', note: 'Continued sends to non-responsive addresses damages sender reputation.' },
+    { label: 'Bounce < 2%  ·  Unsubscribe < 0.5%', status: 'guardrail', note: 'These slip first. When they slip, every other metric is suppressed.' },
+    { label: 'Engagement-Based Segmentation', status: 'leverage', note: 'Send only to those who opened/clicked in the last 90–180 days.' },
+  ]
+
+  const colors: Record<string, string> = { foundation: G, required: GL, guardrail: MUTED, leverage: BORDER }
+  const rowH = 46
+
+  return (
+    <svg viewBox="0 0 720 215" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="215" fill={BG} />
+      <text x="360" y="16" textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={MUTED} letterSpacing="1">
+        DELIVERABILITY — LAYERS IN ORDER OF PRIORITY
+      </text>
+
+      {layers.map(({ label, status, note }, i) => {
+        const y = 26 + i * rowH
+        const col = colors[status]
+        return (
+          <g key={i}>
+            <rect x="14" y={y} width="692" height={rowH - 4} fill={BG2} rx="2" />
+            <rect x="14" y={y} width="4" height={rowH - 4} fill={col} rx="1" />
+            <text x="28" y={y + 16} fontFamily="monospace" fontSize="9" fill={TEXT} fontWeight="600">{label}</text>
+            <text x="28" y={y + 30} fontFamily="monospace" fontSize="7.5" fill={MUTED}>{note}</text>
+          </g>
+        )
+      })}
+    </svg>
+  )
+}
