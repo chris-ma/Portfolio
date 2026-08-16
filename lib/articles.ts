@@ -11,6 +11,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'api-rate-limits-design',
+    title: 'Before the 429',
+    subtitle: "The rate limit isn't the problem. Hitting it without a plan is. The four-pattern stack that keeps you under the ceiling — and what to do when you're not.",
+    category: 'Engineering',
+    date: '2026-08-15',
+    readTime: '10 min read',
+    tags: ['API', 'Rate Limiting', 'REST', 'GraphQL', 'Backoff'],
+    excerpt:
+      "Most engineers discover rate limits by hitting them. The header that tells you how close you are to the wall has been there the whole time. The four-pattern stack — cache, batch, read headers, backoff — covers 95% of the problem before a 429 ever fires.",
+  },
+  {
     slug: 'data-visualization-charts',
     title: 'Before the Chart',
     subtitle: "Most bad dashboards aren't built with bad intentions — they're built with unasked questions. The perception science, honesty rules, and build sequence that change that.",

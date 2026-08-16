@@ -4679,3 +4679,228 @@ export function DeliverabilityStackDiagram() {
     </svg>
   )
 }
+
+// ── API Architecture Diagram ──────────────────────────────────────────────────
+export function APIArchitectureDiagram() {
+  const cols = [
+    { label: 'REST', bestFor: 'Public / partner-facing APIs. Safe default for anything external.', tradeOff: 'Can over- or under-fetch vs what the client actually needs.', highlight: true },
+    { label: 'GraphQL', bestFor: 'Front-end teams needing flexible queries across deeply nested data.', tradeOff: 'Caching is genuinely harder — single endpoint defeats URL-based CDN.', highlight: false },
+    { label: 'gRPC', bestFor: 'Internal, high-throughput service-to-service where you own both ends.', tradeOff: 'Not browser-native. Wrong fit for any public-facing API.', highlight: false },
+    { label: 'tRPC', bestFor: 'Single TypeScript team owning both client and server.', tradeOff: 'Poor fit the moment external or non-TypeScript clients need access.', highlight: false },
+  ]
+  const colW = 160
+  const colGap = 20
+  const startX = 20
+  const h = 200
+
+  return (
+    <svg viewBox="0 0 720 200" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height={h} fill={BG} />
+      <text x="360" y="14" textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={MUTED} letterSpacing="1">
+        API STYLE — PICK BY USE CASE, NOT BY DEFAULT
+      </text>
+
+      {cols.map(({ label, bestFor, tradeOff, highlight }, i) => {
+        const x = startX + i * (colW + colGap)
+        return (
+          <g key={i}>
+            <rect x={x} y={22} width={colW} height={h - 30} rx="2"
+              fill={highlight ? G : BG2}
+              stroke={highlight ? G : BORDER}
+              strokeWidth="1" />
+            {/* Label */}
+            <text x={x + colW / 2} y={44} textAnchor="middle"
+              fontFamily="monospace" fontSize="12" fontWeight="700"
+              fill={highlight ? '#fff' : TEXT}>{label}</text>
+            {/* Divider */}
+            <line x1={x + 10} y1={52} x2={x + colW - 10} y2={52}
+              stroke={highlight ? 'rgba(255,255,255,0.25)' : BORDER} strokeWidth="0.75" />
+            {/* BEST FOR label */}
+            <text x={x + 10} y={65} fontFamily="monospace" fontSize="7"
+              fill={highlight ? 'rgba(255,255,255,0.6)' : MUTED} letterSpacing="0.8">BEST FOR</text>
+            {/* Best-for text wrapped manually */}
+            {wrapText(bestFor, 20).map((line, li) => (
+              <text key={li} x={x + 10} y={76 + li * 12} fontFamily="monospace" fontSize="8"
+                fill={highlight ? 'rgba(255,255,255,0.9)' : TEXT}>{line}</text>
+            ))}
+            {/* TRADE-OFF label */}
+            <text x={x + 10} y={130} fontFamily="monospace" fontSize="7"
+              fill={highlight ? 'rgba(255,255,255,0.6)' : MUTED} letterSpacing="0.8">TRADE-OFF</text>
+            {wrapText(tradeOff, 20).map((line, li) => (
+              <text key={li} x={x + 10} y={141 + li * 12} fontFamily="monospace" fontSize="8"
+                fill={highlight ? 'rgba(255,255,255,0.75)' : MUTED}>{line}</text>
+            ))}
+          </g>
+        )
+      })}
+
+      {/* Safe default callout */}
+      <text x="100" y={h - 5} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill="#fff" opacity="0.7">
+        ← safe default
+      </text>
+    </svg>
+  )
+}
+
+function wrapText(text: string, maxChars: number): string[] {
+  const words = text.split(' ')
+  const lines: string[] = []
+  let current = ''
+  for (const word of words) {
+    if ((current + ' ' + word).trim().length > maxChars) {
+      if (current) lines.push(current)
+      current = word
+    } else {
+      current = (current + ' ' + word).trim()
+    }
+  }
+  if (current) lines.push(current)
+  return lines
+}
+
+// ── Backoff Jitter Diagram ────────────────────────────────────────────────────
+export function BackoffJitterDiagram() {
+  const AMBER = '#D4890A'
+  // Simulate 5 clients retrying at t=1,2,4,8 seconds
+  // No jitter: all aligned at exact intervals
+  // Full jitter: scattered within the window
+  const noJitterClients = [
+    [1, 2, 4, 8],
+    [1, 2, 4, 8],
+    [1, 2, 4, 8],
+    [1, 2, 4, 8],
+    [1, 2, 4, 8],
+  ]
+  const jitterClients = [
+    [0.7, 1.5, 3.2, 6.8],
+    [1.1, 2.3, 4.8, 7.5],
+    [0.9, 1.8, 3.7, 8.2],
+    [1.3, 2.6, 5.2, 6.2],
+    [0.5, 1.2, 3.9, 7.9],
+  ]
+
+  const panelW = 310
+  const panelH = 130
+  const topY = 30
+  const scaleX = (t: number) => (t / 9) * (panelW - 20) + 10
+  const clientColors = [G, GL, MUTED, BORDER, AMBER]
+
+  return (
+    <svg viewBox="0 0 720 190" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="190" fill={BG} />
+      <text x="360" y="14" textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={MUTED} letterSpacing="1">
+        BACKOFF STRATEGY — WHY JITTER MATTERS
+      </text>
+
+      {/* Left panel — no jitter */}
+      <rect x="14" y={topY} width={panelW} height={panelH} fill={BG2} rx="2" stroke={BORDER} strokeWidth="0.75" />
+      <text x={14 + panelW / 2} y={topY + 14} textAnchor="middle" fontFamily="monospace" fontSize="9" fill={TEXT} fontWeight="600">
+        EXPONENTIAL BACKOFF — NO JITTER
+      </text>
+      <text x={14 + panelW / 2} y={topY + 25} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>
+        All clients retry simultaneously → thundering herd
+      </text>
+      {/* Axis */}
+      <line x1={24} y1={topY + panelH - 18} x2={24 + panelW - 20} y2={topY + panelH - 18} stroke={BORDER} strokeWidth="0.75" />
+      {[1, 2, 4, 8].map((t) => (
+        <text key={t} x={14 + scaleX(t)} y={topY + panelH - 7} textAnchor="middle" fontFamily="monospace" fontSize="6.5" fill={MUTED}>{t}s</text>
+      ))}
+      {noJitterClients.map((attempts, ci) => (
+        attempts.map((t, ai) => (
+          <rect key={`nj-${ci}-${ai}`}
+            x={14 + scaleX(t) - 2}
+            y={topY + 32 + ci * 13}
+            width={4} height={9}
+            fill={clientColors[ci]} opacity="0.85" rx="1" />
+        ))
+      ))}
+      {/* Spike annotation */}
+      {[1, 2, 4, 8].map((t) => (
+        <line key={`spike-${t}`}
+          x1={14 + scaleX(t)} y1={topY + 30}
+          x2={14 + scaleX(t)} y2={topY + panelH - 20}
+          stroke={MUTED} strokeWidth="0.5" strokeDasharray="2,2" opacity="0.4" />
+      ))}
+
+      {/* Right panel — full jitter */}
+      <rect x={14 + panelW + 22} y={topY} width={panelW} height={panelH} fill={BG2} rx="2" stroke={G} strokeWidth="1" />
+      <text x={14 + panelW + 22 + panelW / 2} y={topY + 14} textAnchor="middle" fontFamily="monospace" fontSize="9" fill={G} fontWeight="600">
+        FULL JITTER BACKOFF
+      </text>
+      <text x={14 + panelW + 22 + panelW / 2} y={topY + 25} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>
+        Random spread within window → load distributed
+      </text>
+      <line x1={14 + panelW + 32} y1={topY + panelH - 18} x2={14 + panelW + 22 + panelW - 10} y2={topY + panelH - 18} stroke={BORDER} strokeWidth="0.75" />
+      {[1, 2, 4, 8].map((t) => (
+        <text key={t} x={14 + panelW + 22 + scaleX(t)} y={topY + panelH - 7} textAnchor="middle" fontFamily="monospace" fontSize="6.5" fill={MUTED}>{t}s</text>
+      ))}
+      {jitterClients.map((attempts, ci) => (
+        attempts.map((t, ai) => (
+          <rect key={`jit-${ci}-${ai}`}
+            x={14 + panelW + 22 + scaleX(t) - 2}
+            y={topY + 32 + ci * 13}
+            width={4} height={9}
+            fill={clientColors[ci]} opacity="0.85" rx="1" />
+        ))
+      ))}
+
+      {/* AWS finding footnote */}
+      <text x="360" y="180" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED}>
+        AWS research: Full Jitter reduced total call count by 50%+ vs non-jittered backoff under contention from 100 simultaneous clients
+      </text>
+    </svg>
+  )
+}
+
+// ── Rate Limit Four-Pattern Stack ─────────────────────────────────────────────
+export function RateLimitStackDiagram() {
+  const AMBER = '#D4890A'
+  const bands = [
+    { label: 'CACHE', sublabel: 'Avoid the call entirely', note: 'If data doesn\'t change every second, don\'t fetch it every second.', fill: G, textColor: '#fff' },
+    { label: 'BATCH + QUEUE', sublabel: 'Consolidate and spread', note: 'One batch call beats 100 individual ones. Spread non-urgent requests evenly across the window.', fill: GL, textColor: '#fff' },
+    { label: 'READ HEADERS', sublabel: 'Know your position before you\'re rejected', note: 'X-RateLimit-Remaining on every response — not just 429s. IETF draft-11: RateLimit / RateLimit-Policy (2026).', fill: BG2, textColor: TEXT },
+    { label: 'BACKOFF', sublabel: 'Jittered · Capped · Circuit-breaker backstop', note: 'Retry-After first. Exponential + jitter if absent. Cap at 3–5 attempts. Circuit breaker for sustained throttling.', fill: BG2, textColor: TEXT },
+  ]
+
+  const bandH = 38
+  const startY = 24
+  const bandW = 690
+
+  return (
+    <svg viewBox="0 0 720 202" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="202" fill={BG} />
+      <text x="360" y="14" textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={MUTED} letterSpacing="1">
+        FOUR-PATTERN STACK — ALL FOUR TOGETHER, NOT ONE IN ISOLATION
+      </text>
+
+      {bands.map(({ label, sublabel, note, fill, textColor }, i) => {
+        const y = startY + i * (bandH + 4)
+        const labelCol = i < 2 ? '#fff' : TEXT
+        const noteCol = i < 2 ? 'rgba(255,255,255,0.75)' : MUTED
+        const numBg = i < 2 ? 'rgba(255,255,255,0.2)' : BG
+        const numFill = i < 2 ? '#fff' : G
+        return (
+          <g key={i}>
+            <rect x="16" y={y} width={bandW} height={bandH} rx="2" fill={fill} />
+            {/* Number badge */}
+            <rect x="24" y={y + bandH / 2 - 10} width="20" height="20" rx="10" fill={numBg} />
+            <text x="34" y={y + bandH / 2 + 4} textAnchor="middle" fontFamily="monospace" fontSize="10" fontWeight="700" fill={numFill}>{i + 1}</text>
+            {/* Label + sublabel */}
+            <text x="54" y={y + 14} fontFamily="monospace" fontSize="9.5" fontWeight="700" fill={labelCol}>{label}</text>
+            <text x="54" y={y + 25} fontFamily="monospace" fontSize="7.5" fill={noteCol}>{sublabel}</text>
+            {/* Note */}
+            <text x="320" y={y + bandH / 2 + 4} fontFamily="monospace" fontSize="7.5" fill={noteCol}>{note}</text>
+          </g>
+        )
+      })}
+
+      {/* Arrow connecting layers */}
+      {[0, 1, 2].map((i) => {
+        const y = startY + i * (bandH + 4) + bandH
+        return (
+          <text key={i} x="360" y={y + 4} textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED}>↓</text>
+        )
+      })}
+    </svg>
+  )
+}

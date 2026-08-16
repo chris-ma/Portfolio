@@ -26,6 +26,7 @@ import {
   OSINTCycleDiagram, IntelDisciplinesMap, OSINTApplicationsDiagram,
   PerceptionAccuracyDiagram, PartialPeriodDiagram, ForecastBandDiagram, OneHighlightColorDiagram,
   EmailROIComparisonDiagram, RevenueConcentrationDiagram, EmailFlowPriorityDiagram, DeliverabilityStackDiagram,
+  APIArchitectureDiagram, BackoffJitterDiagram, RateLimitStackDiagram,
 } from '@/components/articles/ArticleMockups'
 
 interface PageProps {
@@ -54,6 +55,9 @@ export default function ArticlePage({ params }: PageProps) {
     month: 'long',
     day: 'numeric',
   })
+
+  if (article.slug === 'api-rate-limits-design')
+    return <APIArticle article={article} formattedDate={formattedDate} />
 
   if (article.slug === 'osint-ai-intelligence')
     return <OSINTArticle article={article} formattedDate={formattedDate} />
@@ -5477,6 +5481,201 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
             ))}
           </div>
         </footer>
+      </div>
+    </div>
+  )
+}
+
+// ─── API Rate Limits Article ───────────────────────────────────────────────────
+
+function APIArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      {/* Hero */}
+      <div className="border-b border-brand-concrete/40 pb-10 pt-8 px-6 md:px-10 max-w-[900px] mx-auto">
+        <div className="flex items-center gap-3 mb-6">
+          <Link href="/articles" className="font-mono text-[11px] tracking-[0.15em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors">
+            ← Articles
+          </Link>
+          <span className="text-brand-concrete">·</span>
+          <span className="font-mono text-[11px] tracking-[0.15em] uppercase text-brand-cobalt">{article!.category}</span>
+        </div>
+        <h1 className="font-display text-[clamp(3.5rem,10vw,7rem)] leading-none tracking-tight text-brand-black mb-6">
+          BEFORE / THE 429.
+        </h1>
+        <p className="font-sans text-lg text-brand-muted max-w-[600px] leading-relaxed mb-6">{article!.subtitle}</p>
+        <div className="flex flex-wrap items-center gap-4 text-brand-muted font-mono text-[11px]">
+          <span>{formattedDate}</span>
+          <span>·</span>
+          <span>{article!.readTime}</span>
+          <span>·</span>
+          <div className="flex flex-wrap gap-2">
+            {article!.tags.map((tag) => (
+              <span key={tag} className="border border-brand-cobalt/30 text-brand-cobalt/70 px-2 py-0.5 text-[10px] tracking-[0.12em] uppercase">{tag}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Body */}
+      <div className="px-6 md:px-10 max-w-[900px] mx-auto py-10 space-y-12">
+
+        {/* Lede */}
+        <p className="font-sans text-xl text-brand-black/80 leading-relaxed max-w-[680px]">
+          Rate limits are infrastructure. Every API you consume has one, and every API you build should have one. The engineers who treat them as an edge case discover that assumption in production — usually at the worst moment. The engineers who understand them in advance never do.
+        </p>
+
+        {/* Section 01 — Architecture choice */}
+        <section>
+          <SectionHeading number="01" title="Choosing the right style before you start" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+            REST, GraphQL, gRPC, tRPC — the "which one" conversation happens before a line is written, and it matters because the answer shapes everything downstream: caching behaviour, client flexibility, typing guarantees, and who can consume the result. The honest framing in 2026 is that REST vs GraphQL is no longer a binary — most mature organisations use both, picking per use case. The genuinely new element is MCP-based consumption for AI agents, which sits alongside all three as a fourth option, not a replacement for any of them.
+          </p>
+          <div className="my-8">
+            <APIArchitectureDiagram />
+          </div>
+          <div className="space-y-5 border-l-2 border-brand-cobalt/20 pl-6">
+            <div>
+              <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-brand-cobalt mb-1">The practical rule</p>
+              <p className="font-sans text-sm text-brand-black/75 leading-relaxed">REST is the safe default for anything public or partner-facing. Reach for GraphQL specifically when front-end complexity — deeply nested, highly variable data needs across different client types — genuinely justifies the added query-complexity cost. Not by default. gRPC is an internal-infrastructure decision, not a public-API one.</p>
+            </div>
+            <div>
+              <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-brand-cobalt mb-1">Design fundamentals that hold regardless of style</p>
+              <ul className="font-sans text-sm text-brand-black/75 leading-relaxed space-y-1.5 list-none">
+                <li><span className="text-brand-cobalt mr-2">—</span>Resources are nouns, not verbs. <span className="font-mono text-[12px] text-brand-cobalt/80">/users</span> not <span className="font-mono text-[12px] text-brand-cobalt/80">/getUsers</span>. HTTP methods already express the action.</li>
+                <li><span className="text-brand-cobalt mr-2">—</span>Version deliberately. Breaking changes go in a new version path (<span className="font-mono text-[12px] text-brand-cobalt/80">/v2/</span>), with the old version kept live on a communicated deprecation timeline.</li>
+                <li><span className="text-brand-cobalt mr-2">—</span>Paginate with cursors, not offsets, for any dataset that grows or changes frequently. Offset pagination breaks when rows shift mid-page.</li>
+                <li><span className="text-brand-cobalt mr-2">—</span>Return structured errors that explain <em>what</em> went wrong, not just <em>that</em> something failed. RFC 9457 (Problem Details for HTTP APIs) is the current standard worth adopting.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 02 — Reading rate limit headers */}
+        <section>
+          <SectionHeading number="02" title="Reading the wall before you hit it" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+            Most modern APIs expose their limits directly in response headers. The engineers who only check these on a 429 are doing it wrong — by then, the wall has already been hit. The right practice is to read these on every response, so you can proactively slow down before the limit fires.
+          </p>
+          <CodeBlock>{`X-RateLimit-Limit: 100
+X-RateLimit-Remaining: 0
+X-RateLimit-Reset: 1643723400
+Retry-After: 60`}</CodeBlock>
+          <p className="font-sans text-sm text-brand-black/75 leading-relaxed mt-5 mb-2">
+            One thing worth knowing: the header convention is currently in transition. The <span className="font-mono text-[12px] text-brand-cobalt/80">X-RateLimit-*</span> prefix most engineers treat as "the standard" is actually legacy — IETF draft-11 (May 2026) defines a real standard using <span className="font-mono text-[12px] text-brand-cobalt/80">RateLimit</span> and <span className="font-mono text-[12px] text-brand-cobalt/80">RateLimit-Policy</span> fields instead. Cloudflare adopted the new standard in late 2025. GitHub and Stripe still use the legacy vendor-prefixed headers as of this writing.
+          </p>
+          <p className="font-sans text-sm text-brand-black/75 leading-relaxed">
+            Write client code that tolerates this divergence. Check for both rather than hard-coding one header format.
+          </p>
+        </section>
+
+        {/* Section 03 — Handling rate limits */}
+        <section>
+          <SectionHeading number="03" title="The standard handling pattern, in order" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+            When a 429 fires, there is a correct order of operations. Most implementations get parts of it right. Few get all of it right.
+          </p>
+          <div className="space-y-4 mb-8">
+            {[
+              { n: '1', title: 'Catch 429 explicitly', body: "Don't let it surface as a generic network failure or an unhandled exception. It needs its own branch." },
+              { n: '2', title: 'Read Retry-After first', body: 'If the header is present, wait exactly that long. The server is telling you the answer — use it.' },
+              { n: '3', title: 'If no Retry-After, use exponential backoff with jitter', body: 'Start at 1–2 seconds, double each attempt (1s → 2s → 4s → 8s...), add randomised jitter on top of each wait.' },
+              { n: '4', title: 'Cap retries at 3–5 attempts', body: 'Surface a proper error if all retries fail. A silently dropped request is a data-integrity bug waiting to be discovered much later.' },
+              { n: '5', title: 'If 429s are frequent, the fix is upstream', body: 'Audit your actual request volume, add a queue, or reduce polling frequency. Retry logic handles the exception — it should not be relied on to handle a structurally too-high request rate.' },
+            ].map(({ n, title, body }) => (
+              <div key={n} className="flex gap-4">
+                <span className="font-mono text-[11px] text-brand-cobalt/60 pt-0.5 flex-shrink-0 w-4">{n}</span>
+                <div>
+                  <p className="font-mono text-[12px] text-brand-black/80 font-semibold mb-0.5">{title}</p>
+                  <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="my-8">
+            <BackoffJitterDiagram />
+          </div>
+          <div className="space-y-4 mt-6">
+            <div className="border-l-2 border-brand-cobalt/20 pl-6">
+              <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-brand-cobalt mb-1">Rate limiting vs throttling</p>
+              <p className="font-sans text-sm text-brand-black/75 leading-relaxed">Rate limiting sets a hard cap and rejects excess requests outright (429). Throttling is softer — it slows requests down via delay or queuing rather than rejecting them. Rate limiting suits programmatic API access, where the client is expected to implement backoff logic. Throttling suits user-facing endpoints, where a slow response is a better experience than a hard failure.</p>
+            </div>
+            <div className="border-l-2 border-amber-500/40 pl-6">
+              <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-amber-600 mb-1">Circuit breaker</p>
+              <p className="font-sans text-sm text-brand-black/75 leading-relaxed">A circuit breaker is the backstop for sustained throttling, not just retry logic. If an API is throttling heavily and consistently rather than briefly, a circuit breaker that stops sending requests entirely for a cooldown period prevents sustained throttling from becoming a full outage on your end.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 04 — Maximising quota */}
+        <section>
+          <SectionHeading number="04" title="Getting more done within the limits you have" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+            The four patterns below compose into a stack. Each one removes a category of unnecessary requests or handles the remainder more gracefully. All four together, not any single one in isolation, is what actually moves the needle.
+          </p>
+          <div className="my-8">
+            <RateLimitStackDiagram />
+          </div>
+          <div className="grid md:grid-cols-2 gap-5 mt-6">
+            {[
+              { label: 'Cache before you call', body: "The single most effective lever. If data doesn't change every second, don't fetch it every second. In-memory caching, Redis, or even simple local storage for anything that updates on a known cadence removes calls entirely rather than just handling them more gracefully." },
+              { label: 'Batch instead of looping', body: 'A loop making 100 individual API calls where a batch endpoint could fetch the same data in one call is both slower and burns quota unnecessarily. Check whether the API you are using offers a batch or bulk endpoint before defaulting to per-item calls.' },
+              { label: 'Weight expensive operations', body: 'Some providers charge different costs for different operation types — GitHub is the commonly cited example, where writes cost more quota than reads. Understand your specific provider\'s actual cost model. Optimising against the wrong cost model wastes effort.' },
+              { label: 'Use the higher-tier auth method', body: 'GitHub Apps get materially higher rate limits than personal access tokens (15,000 requests/hour vs 5,000) for the exact same underlying work. Check whether your provider offers a higher-throughput auth path before assuming your current limit is fixed.' },
+            ].map(({ label, body }) => (
+              <div key={label} className="border border-brand-concrete/40 p-4">
+                <p className="font-mono text-[11px] tracking-[0.12em] uppercase text-brand-cobalt mb-2">{label}</p>
+                <p className="font-sans text-sm text-brand-black/70 leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
+          <p className="font-sans text-sm text-brand-black/65 leading-relaxed mt-5">
+            Monitor proactively, not reactively. Track quota usage against known limits before you hit them, with alerting on a real threshold — 80% of quota consumed, for example. This is the difference between catching a problem in a dashboard and catching it in a production incident.
+          </p>
+        </section>
+
+        {/* Section 05 — Alternatives */}
+        <section>
+          <SectionHeading number="05" title="Alternatives worth knowing about" />
+          <div className="space-y-5">
+            {[
+              { label: 'GraphQL as a BFF over REST', body: 'Rather than replacing REST outright, a common 2026 pattern uses GraphQL specifically as an aggregation layer in front of several REST services, giving front-end clients precise field selection without requiring every underlying service to be rewritten in GraphQL.' },
+              { label: 'gRPC for internal, high-throughput work', body: "If you're building service-to-service communication you fully control on both ends, gRPC's strong typing and performance profile are a genuine upgrade over REST for that specific internal use case — even while REST remains the right public-facing choice." },
+              { label: 'tRPC for single-team TypeScript stacks', body: 'Worth knowing about specifically because it removes an entire category of API-contract-drift bugs — client and server share actual types, not just a documented schema — when the team building both ends is the same team.' },
+              { label: 'MCP as a genuinely different consumption model', body: 'Rather than a human-facing API a developer calls from code, MCP exposes tools to an AI agent directly, with the protocol handling auth, discovery, and interaction patterns in a standardised way. This is not a replacement for REST, GraphQL, or gRPC — it is a parallel consumption layer specifically for AI-agent access, and it is the fastest-growing alternative in the sense that it is genuinely new rather than a repackaging of an older idea.' },
+            ].map(({ label, body }) => (
+              <div key={label} className="flex gap-4 border-l-2 border-brand-cobalt/20 pl-5">
+                <div>
+                  <p className="font-mono text-[12px] text-brand-cobalt/80 font-semibold mb-1">{label}</p>
+                  <p className="font-sans text-sm text-brand-black/70 leading-relaxed">{body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Callout — pre-build checklist */}
+        <Callout label="Quick reference">
+          <div className="space-y-2">
+            {[
+              ['Cache', 'Avoid making a call at all for data that does not need to be fresh.'],
+              ['Batch / Queue', 'Consolidate and spread remaining calls rather than bursting.'],
+              ['Read headers', 'Know your real-time position against the limit before you are rejected.'],
+              ['Backoff (jittered, capped)', 'Handle rejection gracefully, without making the underlying problem worse.'],
+              ['Circuit breaker', 'Stop sending entirely during sustained throttling rather than retrying in a loop.'],
+            ].map(([pattern, desc]) => (
+              <div key={pattern} className="flex gap-3">
+                <span className="font-mono text-[11px] text-brand-cobalt min-w-[160px] flex-shrink-0">{pattern}</span>
+                <span className="font-sans text-sm text-brand-black/70">{desc}</span>
+              </div>
+            ))}
+          </div>
+        </Callout>
+
+        {/* Closing */}
+        <p className="font-sans text-base text-brand-black/60 leading-relaxed border-t border-brand-concrete/30 pt-8 max-w-[600px]">
+          The header that tells you how close you are to the wall has been there the whole time. The four-pattern stack is not complicated — it is just the discipline of reading it before the 429 fires, and knowing what to do when it does.
+        </p>
       </div>
     </div>
   )
