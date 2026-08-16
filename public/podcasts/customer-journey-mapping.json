@@ -1,0 +1,87 @@
+{
+  "title": "Not a Poster",
+  "slug": "customer-journey-mapping",
+  "duration_estimate": "6-8 min",
+  "turns": [
+    {
+      "speaker": "host",
+      "text": "Forrester's 2026 research on journey mapping opens with a claim that most journey maps fail not because they're badly drawn, but because of what they're treated as. What's the fundamental mistake?"
+    },
+    {
+      "speaker": "expert",
+      "text": "They're treated as a one-time deliverable, a workshop output that gets printed and pinned to a wall. Forrester's finding is that the organisations getting durable value treat customer journey management as a continuously fed operating model. The ones that don't get cut at the next budget cycle."
+    },
+    {
+      "speaker": "host",
+      "text": "The article is firm about scope. Why does it argue so hard for mapping one journey rather than the whole customer experience?"
+    },
+    {
+      "speaker": "expert",
+      "text": "A first-purchase journey, an onboarding journey, and a renewal journey are three different maps with three different owners and three different failure points. Mapping all of them at once produces something too vague to act on. A well-scoped map of one journey that changes behaviour is worth more than a sweeping map of five that sits in a shared drive."
+    },
+    {
+      "speaker": "host",
+      "text": "Most teams would go straight to a workshop or commission new research first. What does the article recommend instead?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Pull the data you already have. GA4, Salesforce, support ticket history, existing survey data. The most consistent practitioner finding is that internal teams are reliably wrong about where friction actually lives, because they experience the product from the inside. External data corrects for that before you spend anything on new research."
+    },
+    {
+      "speaker": "host",
+      "text": "Surveys seem like the obvious data source. Why isn't solicited data sufficient?"
+    },
+    {
+      "speaker": "expert",
+      "text": "People answer the question you asked, not necessarily the thing that actually matters to them. Unsolicited data, such as support tickets, review text, call transcripts, and session recordings, surfaces friction customers didn't think to mention because you never asked about it directly. That's often where the real problem lives."
+    },
+    {
+      "speaker": "host",
+      "text": "Most maps show a single forward flow. What's the argument for designing around non-linear paths?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Customers loop. A subscription customer might cycle back through evaluation when a competitor changes pricing or when their internal champion gets a new job. McKinsey's Customer Decision Journey was built as a corrective to the linear funnel assumption. A map that can't represent the paths customers actually take can't tell you where they actually get stuck."
+    },
+    {
+      "speaker": "host",
+      "text": "NPS, CSAT, and CES are treated as interchangeable in most organisations. Are they?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Using them interchangeably is the single most common CX measurement mistake. NPS measures relationship sentiment, it tells you if there's a problem somewhere. CSAT measures interaction quality at a specific touchpoint. CES diagnoses friction. Using NPS alone to diagnose a specific broken flow is like using a fever to diagnose which organ is infected."
+    },
+    {
+      "speaker": "host",
+      "text": "There's a point about the highest-volume friction point versus the highest-value one. Why do they rarely coincide?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The touchpoint generating the most complaints is not automatically worth fixing first. You have to weigh it against how many customers pass through that touchpoint and how much revenue or retention risk sits on the other side. High-volume friction and high-value friction are different problems requiring different prioritisation."
+    },
+    {
+      "speaker": "host",
+      "text": "Forrester identifies one differentiator between journey work that compounds and work that gets quietly deprioritised. What is it?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Whether the platform connects voice of customer, analytics, business intelligence, and delivery tooling into one operating system. When those are separate tools requiring manual translation between them, journey insight never reaches the team that could act on it. That's where initiatives quietly die, not from lack of insight but from the insight getting stranded."
+    },
+    {
+      "speaker": "host",
+      "text": "When a fix is actually made based on the map, should the customers who experienced that friction be told?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The article is specific about this. The highest-trust version of we heard you is telling the specific customers who experienced the friction what changed, not a generic release note but a targeted message to the segment the friction affected. That's what actually builds Advocacy-stage behaviour: the feeling that the feedback went somewhere real."
+    },
+    {
+      "speaker": "host",
+      "text": "The article closes with: the map is only as good as what it changes. What does a map actually need to do to change something?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Findings have to be routed to the specific team that can act on them, and CX ownership has to be cross-functional from the start. A map that identifies a handoff failure between marketing and support only creates change if both teams see the same map and agree on the same fix. A map that lives inside one team's tooling rarely survives a budget conversation outside that team."
+    }
+  ]
+}

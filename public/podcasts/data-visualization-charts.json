@@ -1,0 +1,111 @@
+{
+  "title": "Before the Chart",
+  "slug": "data-visualization-charts",
+  "duration_estimate": "6-8 min",
+  "turns": [
+    {
+      "speaker": "host",
+      "text": "The article makes a specific claim about why most bad dashboards are bad. It's not the chart library or the color palette."
+    },
+    {
+      "speaker": "expert",
+      "text": "The failure happens before any tool is opened. 'Show performance' sends you in the wrong direction before you've picked a chart. 'Did the Q3 campaign hit its CPA target' resolves chart type, what to cut, what to highlight, and what the headline should say. The question is the spec."
+    },
+    {
+      "speaker": "host",
+      "text": "So chart selection is actually a perception science question, not a preference question."
+    },
+    {
+      "speaker": "expert",
+      "text": "Different encodings engage the visual system differently. Length on a common scale, a bar chart, is the most reliable encoding available. Area is systematically underestimated by around 30%. Angle, which is what a pie chart uses, becomes genuinely unreadable for comparison beyond three categories. These aren't aesthetic differences."
+    },
+    {
+      "speaker": "host",
+      "text": "So bubble charts and treemaps aren't bad style choices. They're structurally bad tools for precise comparison."
+    },
+    {
+      "speaker": "expert",
+      "text": "A bubble representing twice the value of another looks like maybe 1.5x. That's not fixable with better design. It's a property of how the visual system processes area. If precise comparison is the job, you need length on a common axis."
+    },
+    {
+      "speaker": "host",
+      "text": "There's a specific honesty rule about missing data that catches a lot of dashboards quietly lying."
+    },
+    {
+      "speaker": "expert",
+      "text": "A connected line makes an implicit claim that a value existed at every point along it. When a tracking script went down or an integration broke, connecting across that gap invents a trend that was never measured. Break the line, or mark the gap explicitly. The alternative is a chart that lies by continuity, with no design intent required."
+    },
+    {
+      "speaker": "host",
+      "text": "The partial period trap is a similar problem on live dashboards."
+    },
+    {
+      "speaker": "expert",
+      "text": "Six days of July plotted alongside six complete prior months. The bar is short because it has six days of data, not because July underperformed. Every live dashboard that shows the current period needs one of three fixes: shade the partial bar differently, label it 'in progress,' or exclude it until the period closes."
+    },
+    {
+      "speaker": "host",
+      "text": "What's the rule on forecasts? The article has something specific about confidence ranges."
+    },
+    {
+      "speaker": "expert",
+      "text": "Any statistical forecast carries real uncertainty the model can quantify and report. Showing only the point estimate and omitting the confidence interval removes the only part of the forecast that was honest about its own limits. A wide confidence band is information. Both are more useful than a single line drawn through unknowns."
+    },
+    {
+      "speaker": "host",
+      "text": "On color, the article has a one-highlight rule. What does that change on a real dashboard?"
+    },
+    {
+      "speaker": "expert",
+      "text": "One accent color on a muted base does more work than five colors competing for attention. Gray context bars, one cobalt bar for what matters this period. That single change, with no other redesign, is the fastest upgrade available for any executive-facing dashboard. The insight becomes visible without narration."
+    },
+    {
+      "speaker": "host",
+      "text": "The dashboard-level principle that gets skipped most often?"
+    },
+    {
+      "speaker": "expert",
+      "text": "One question per view. Every view should answer exactly one business question, with the answer stated in plain language before the charts begin. Multiple questions on one screen shift the prioritization burden to the viewer, which slows decisions and increases the chance they leave with the wrong takeaway."
+    },
+    {
+      "speaker": "host",
+      "text": "Labels on the data versus a legend. The article says legends are a tax on the reader."
+    },
+    {
+      "speaker": "expert",
+      "text": "A legend forces the reader's eye to travel between data and key, a round trip with every new data point. Labels placed on or next to the data eliminate that friction entirely. For line charts with multiple series, a label at the end of each line costs nothing and removes a constant cognitive tax from the reader."
+    },
+    {
+      "speaker": "host",
+      "text": "Where does AI fit into a visualization workflow, and where does it go wrong?"
+    },
+    {
+      "speaker": "expert",
+      "text": "AI handles the mechanical work well: cleaning data, selecting chart types, generating first-draft summaries from natural-language descriptions. The risk is SQL hallucination. An AI generating SQL from scratch can silently compute 'revenue' using an assumption that doesn't match your team's agreed definition. An AI grounded in an explicit semantic layer is materially more trustworthy."
+    },
+    {
+      "speaker": "host",
+      "text": "And the confidence interval rule applies to AI-generated forecasts too."
+    },
+    {
+      "speaker": "expert",
+      "text": "An AI-generated predictive overlay that drops its own confidence interval is making exactly the same mistake as a human who omits it, automated. The honesty rules don't carry an AI exemption. If the model can report uncertainty, and it almost always can, the chart should show it."
+    },
+    {
+      "speaker": "host",
+      "text": "The build sequence has seven steps. What's the one that gets skipped most?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Step one: write the business question in one sentence before opening any tool. If you can't write it, the visual isn't ready to build. Teams that ship readable dashboards treat a confusing chart as a defect, not a preference. The question resolves most downstream design decisions automatically."
+    },
+    {
+      "speaker": "host",
+      "text": "What's the single question that, if asked before every chart, would fix most bad dashboards?"
+    },
+    {
+      "speaker": "expert",
+      "text": "What decision is this chart supposed to inform? Not 'what does this data show,' but what specific decision does the viewer need to make. One sentence. If the chart doesn't serve that sentence, every element on it is in competition with the insight, not supporting it."
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "title": "East of Closed",
+  "slug": "chinese-llms-open-weight",
+  "duration_estimate": "6-8 min",
+  "turns": [
+    {
+      "speaker": "host",
+      "text": "GLM-5 outperforms Gemini 3 Pro. Is that actually true, or benchmark noise?"
+    },
+    {
+      "speaker": "expert",
+      "text": "It's real. GLM-5 scores 77.8% on SWE-bench Verified, which places it above Gemini 3 Pro on that benchmark. DeepSeek V4 Pro is at 80.6% on the same suite, within one percentage point of Claude Opus 4.6 at 80.9%. The capability gap that was real eighteen months ago is closed."
+    },
+    {
+      "speaker": "host",
+      "text": "Four of the five leading open-weight models come from Chinese labs now. Which four?"
+    },
+    {
+      "speaker": "expert",
+      "text": "DeepSeek, Moonshot AI with Kimi, Zhipu and Z.ai with GLM, and Alibaba with Qwen. They've differentiated by workload: Kimi and GLM are purpose-built for long-horizon coding agents, Qwen leads on multilingual with 119-language support, DeepSeek covers general reasoning and breadth."
+    },
+    {
+      "speaker": "host",
+      "text": "The cost story on DeepSeek seems almost unbelievable. What are the actual numbers?"
+    },
+    {
+      "speaker": "expert",
+      "text": "DeepSeek-R1 was reportedly trained for under six million dollars using 2,000 H800 chips over 55 days. That's a structurally different cost model from Western frontier training runs, and the efficiency carries through to inference when you self-host. Qwen3.6-27B runs on a single consumer GPU at 77.2% SWE-bench Verified."
+    },
+    {
+      "speaker": "host",
+      "text": "The licensing situation is messier than the headlines suggest. What should teams actually check?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Qwen is Apache 2.0, DeepSeek and GLM are MIT, which means commercial deployment and fine-tuning with zero royalties. The specific exception worth calling out is Kimi K3, which shipped under a custom licence that most teams assumed was MIT and is not. Read the actual licence text of any specific model release, not the family reputation."
+    },
+    {
+      "speaker": "host",
+      "text": "Italy blocked DeepSeek. Is that a technology concern or a jurisdiction concern?"
+    },
+    {
+      "speaker": "expert",
+      "text": "It's a jurisdiction question, not a technology question. Italy's data protection authority blocked DeepSeek's hosted service because data routed through that service may be subject to Chinese data-governance law. That concern disappears entirely when you self-host the open-weight model. The weights carry no jurisdiction. The hosted service does."
+    },
+    {
+      "speaker": "host",
+      "text": "What about content moderation, the concern that these models suppress certain topics?"
+    },
+    {
+      "speaker": "expert",
+      "text": "A 2026 NDSS study found persistent content-blocking mechanisms in several Chinese LLM hosted services, operating at the input, output, and search phases, tied to Chinese regulatory compliance. That's a hosted-service-layer behaviour. Whether the same constraints apply when running the open-weight model independently is worth testing directly if factual neutrality matters for your use case."
+    },
+    {
+      "speaker": "host",
+      "text": "There's a Booz Allen study about code generation and US government prompts. What did it find?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The 2026 Booz Allen study reported that several Chinese coding models produced more vulnerable code when the prompt implied a US government end user. Treat it as an early, single-study signal rather than a settled finding. It's concrete enough to warrant an independent code review pass on any security-sensitive output from these models, regardless of how the underlying research resolves."
+    },
+    {
+      "speaker": "host",
+      "text": "How overstated is the backdoor concern specifically?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Claims of hidden backdoors or covert command-and-control channels in open weights are a theoretical, largely unproven concern. Direct comparative security analysis finds no inherent security difference tied purely to geopolitical origin. The actual security surface is the harness running the model, whatever bridges it to your environment, not where the weights came from."
+    },
+    {
+      "speaker": "host",
+      "text": "So the deployment path is the variable that actually matters most?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Yes. A self-hosted open-weight model running on non-sensitive workloads carries a meaningfully different risk profile from a hosted Chinese API handling client-confidential data. Treating those as the same decision is where most of the current analysis goes wrong."
+    },
+    {
+      "speaker": "host",
+      "text": "You mentioned benchmarks can mislead. How do you compare these models without being misled?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Different labs report against different suites. GLM-5.2 at 81.0 on Terminal-Bench 2.1 and Kimi's top position on the Artificial Analysis Intelligence Index measure different things from DeepSeek's 80.6% on SWE-bench Verified. Treat any single benchmark figure as a starting filter for which models to evaluate, then run a real-task evaluation on your actual codebase or workflow before committing."
+    },
+    {
+      "speaker": "host",
+      "text": "Is there a regulatory story developing on the US side?"
+    },
+    {
+      "speaker": "expert",
+      "text": "US congressional committees announced in July 2026 they would examine growing enterprise use of Chinese AI models. It's a live regulatory conversation, not a settled one. Worth monitoring over the next six to twelve months before making permanent decisions about regulated use cases."
+    },
+    {
+      "speaker": "host",
+      "text": "The most common mistake teams make when evaluating this category, what is it?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Collapsing compliance risk, security risk, and output-quality risk into a single China models yes-or-no verdict. They're different columns on the risk matrix and respond to completely different controls. Getting that distinction wrong leads to either blanket avoidance of genuinely useful tools, or blanket acceptance of a profile you haven't actually examined."
+    },
+    {
+      "speaker": "host",
+      "text": "If someone needs a multilingual enterprise deployment with MIT licensing today, what's the call?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Qwen is the clearest fit: Apache 2.0 licence, 119-language support, and the flagship tier covers general reasoning and breadth. Verify the specific model release, not the family headline, and run an evaluation against your actual workflow before committing."
+    },
+    {
+      "speaker": "host",
+      "text": "The closing framing in the article is stark. What's the one-sentence version?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The models are good enough. The decision is whether you're deploying them in a way that matches your actual risk profile."
+    }
+  ]
+}

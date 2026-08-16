@@ -1,0 +1,103 @@
+{
+  "title": "One Protocol",
+  "slug": "mcp-model-context-protocol",
+  "duration_estimate": "6-8 min",
+  "turns": [
+    {
+      "speaker": "host",
+      "text": "Before MCP, every AI product had to build its own GitHub integration. How bad was that problem actually?"
+    },
+    {
+      "speaker": "expert",
+      "text": "It was quadratic. N tools each maintaining N connectors to the same services. MCP flips the model: one server built for GitHub works with Claude, ChatGPT, Cursor, VS Code, or any other MCP-compatible host, with no additional work on the server side."
+    },
+    {
+      "speaker": "host",
+      "text": "97 million monthly downloads on the Python and TypeScript SDKs alone. How did it reach that scale in under two years?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The governance shift helped. In December 2025, Anthropic donated MCP to the Agentic AI Foundation under the Linux Foundation, with OpenAI and Block joining as co-founders and AWS, Google, Microsoft, Cloudflare, GitHub, and Bloomberg as supporting members. That made it genuinely vendor-neutral infrastructure rather than a single company's protocol others had adopted."
+    },
+    {
+      "speaker": "host",
+      "text": "What are the three capability layers, and which one do most people miss?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Layer 1 is tools, standard function calls. Layer 2 is compose: because every server speaks the same protocol, one agent session can chain calls across genuinely unrelated services, Figma to Supabase to GitHub to Slack inside one coherent task, without custom glue. Layer 3 is MCP Apps, which most people never reach, letting a server return an actual interactive UI inside the chat rather than just text."
+    },
+    {
+      "speaker": "host",
+      "text": "What are MCP Apps and when did they stabilize?"
+    },
+    {
+      "speaker": "expert",
+      "text": "MCP Apps, specified under SEP-1865, stabilized in January 2026. Previously an MCP server could only return text or structured JSON. MCP Apps lets the server return a real interactive interface, a dashboard, a chart, a configuration wizard, rendered inline in the chat with bidirectional interaction. Content runs in sandboxed iframes and all UI-to-host communication is loggable JSON-RPC."
+    },
+    {
+      "speaker": "host",
+      "text": "Sampling is the one layer that actually requires trust negotiation. What is it and why does the trust model matter?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Sampling lets a server request that the client's own model generate text as part of a task. The client controls model selection, can review and edit the prompt, and can deny the request outright. The server never sees the API key. That's materially different from a plugin that gets handed a key and runs unsupervised."
+    },
+    {
+      "speaker": "host",
+      "text": "The MCP Registry launched in September 2025. What's in it?"
+    },
+    {
+      "speaker": "expert",
+      "text": "It reached nearly 2,000 server entries within months: databases, design systems, code repositories, project management, monitoring, payments, and dozens of other categories. The practical implication is that before writing a custom integration for anything, you should check the registry first. The odds a maintained MCP server already exists are genuinely high."
+    },
+    {
+      "speaker": "host",
+      "text": "The July 2026 revision is described as the largest since launch. What changed structurally?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The core was restructured to be stateless. A remote MCP server that previously needed sticky sessions and a shared session store can now run behind a plain round-robin load balancer. That's an infrastructure-level change that makes MCP viable as real production infrastructure for multi-user products, not just developer tooling."
+    },
+    {
+      "speaker": "host",
+      "text": "What's the deprecation situation teams need to know about right now?"
+    },
+    {
+      "speaker": "expert",
+      "text": "A formal 12-month minimum deprecation policy came in with the July 2026 revision. Dynamic Client Registration is formally deprecated and on a 12-month removal clock. The migration path is to Client ID Metadata Documents, which also carries a protocol-level fix for credential reuse across authorization servers. Doing that migration now avoids a forced one later."
+    },
+    {
+      "speaker": "host",
+      "text": "The November 2025 spec added server-side agent loops. What does that unlock?"
+    },
+    {
+      "speaker": "expert",
+      "text": "It means an MCP server itself can run genuinely agentic behaviour: reasoning, multi-step tool use, sampling calls back to the client's model. Combined with the Tasks extension for long-running poll-based work, this makes MCP a real substrate for agentic workflow patterns rather than a plain tool-calling layer underneath them."
+    },
+    {
+      "speaker": "host",
+      "text": "The value is in composition, not just connection count. Can you make that concrete?"
+    },
+    {
+      "speaker": "expert",
+      "text": "One server with one client is a convenience. Four servers connected to the same session means a single task can pull design data from Figma, cross-reference it against a Supabase table, open a GitHub issue, and post a Slack summary, all inside one coherent agent session. The leverage is in chaining them inside a task, not in having them available and calling them one at a time."
+    },
+    {
+      "speaker": "host",
+      "text": "Who should be paying closest attention to MCP in 2026?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Any team building workflows that cross more than two SaaS products, and any team building AI tooling that wants to stay vendor-agnostic. The protocol is the interoperability layer, which means capability built on it travels across whatever AI tooling you use next rather than being locked into a single product's plugin ecosystem."
+    },
+    {
+      "speaker": "host",
+      "text": "What's the simplest practical way to start?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Check the MCP Registry before writing any custom integration. At nearly 2,000 entries and growing, the odds a maintained server already exists for the tool you need are genuinely high. Start with composition: connect a few servers to one session and build the chained workflow before worrying about the advanced layers."
+    }
+  ]
+}

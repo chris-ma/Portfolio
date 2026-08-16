@@ -1,0 +1,87 @@
+{
+  "title": "The Open Door",
+  "slug": "app-security-rls-owasp",
+  "duration_estimate": "6-8 min",
+  "turns": [
+    {
+      "speaker": "host",
+      "text": "The article opens with a January 2026 incident called Moltbook. What actually happened there?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Moltbook shipped with their Supabase database completely unsecured. No breach, no sophisticated attack. Anyone who copied the project URL could make a raw HTTP request and read 1.5 million API keys. Every manual test passed. The app functioned perfectly. The database was just sitting there."
+    },
+    {
+      "speaker": "host",
+      "text": "How widespread is that kind of gap?"
+    },
+    {
+      "speaker": "expert",
+      "text": "A 2025 analysis found 10.3% of tested AI-scaffolded apps exposed vulnerable Supabase endpoints due to missing or misconfigured Row Level Security. The functional correctness and access control are different concerns, and only one of them shows up in a manual click-through."
+    },
+    {
+      "speaker": "host",
+      "text": "The Supabase anon key ships inside the JavaScript bundle. Isn't that already a problem before you even touch RLS?"
+    },
+    {
+      "speaker": "expert",
+      "text": "That's the key misconception. The anon key is public by intent. Supabase designed it to be visible in browser dev tools. It's safe for exactly one reason: Row Level Security. With RLS correctly in place, the anon key can only do what your policies explicitly allow. Without it, it's a skeleton key to your entire public schema."
+    },
+    {
+      "speaker": "host",
+      "text": "RLS has three states. Can you walk through them?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Off is the default on every new Supabase table: fully public, anyone with your anon key can read or write everything, no authentication required. On with no policies is the opposite failure: the table is fully locked, including from your own app. On with real policies is where you want to be: access scoped to what you explicitly permit."
+    },
+    {
+      "speaker": "host",
+      "text": "The article says there's a SQL query that would have caught every incident mentioned. What is it?"
+    },
+    {
+      "speaker": "expert",
+      "text": "SELECT schemaname, tablename, rowsecurity FROM pg_tables WHERE schemaname is 'public' AND rowsecurity is false. Every table that query returns is publicly readable and writable through the REST and GraphQL APIs right now, regardless of what your frontend appears to enforce. Takes five minutes."
+    },
+    {
+      "speaker": "host",
+      "text": "There's a warning about testing from the Supabase SQL editor. Why is that a trap?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The SQL editor runs as an elevated role that bypasses RLS entirely. Testing a policy there tells you nothing about what a real user can actually do. Test from the client SDK, logged in as different real accounts. Testing as yourself while you're also the database admin is how policies that do nothing ship to production looking correct."
+    },
+    {
+      "speaker": "host",
+      "text": "What about UPDATE policies specifically? The article calls that a common mistake in generated code."
+    },
+    {
+      "speaker": "expert",
+      "text": "UPDATE policies need both USING and WITH CHECK clauses. USING governs reads, WITH CHECK governs writes. Without both, a user can read their own row but silently overwrite it with another user's data. AI-generated code often includes only one clause, and it looks complete until you test cross-user writes."
+    },
+    {
+      "speaker": "host",
+      "text": "What's the service_role key situation?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The service_role key bypasses RLS completely: full database access, no restrictions. It should never appear in client-side code. The three most common leak paths are using the NEXT_PUBLIC_ prefix, which ships the key straight into the browser bundle; committing it to a repo even briefly; and logging it at server boot or in an error response from an Edge Function."
+    },
+    {
+      "speaker": "host",
+      "text": "If a service_role key has already leaked, what's the recovery?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Rotate it immediately in the Supabase dashboard, then audit query logs for anything that couldn't plausibly have come from your own app. There's no patching a leaked service_role key. Rotation is the only recovery."
+    },
+    {
+      "speaker": "host",
+      "text": "So the practical order of operations: what do you do first when you own a Supabase project right now?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Run the pg_tables query. See what's open. Enable RLS on every exposed table and write real policies before touching anything else. OWASP A01 Broken Access Control has been the top risk for four years running, and missing RLS is exactly where it lands in Supabase apps. That query takes five minutes and would have caught the Moltbook incident and every other one cited in the article."
+    }
+  ]
+}

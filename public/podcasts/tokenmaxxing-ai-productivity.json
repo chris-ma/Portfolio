@@ -1,0 +1,87 @@
+{
+  "title": "The Wrong Scoreboard",
+  "slug": "tokenmaxxing-ai-productivity",
+  "duration_estimate": "6-8 min",
+  "turns": [
+    {
+      "speaker": "host",
+      "text": "A Meta employee built an internal leaderboard ranking colleagues by tokens processed. How did that go?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The leaderboard was called 'Claudeonomics.' Top performers earned badges with titles like 'Cache Wizard' and 'Model Connoisseur.' The highest-ranked individual averaged 281 billion tokens. The Information reported on it in April 2026 and the leaderboard was taken down two days later."
+    },
+    {
+      "speaker": "host",
+      "text": "Why would anyone think token volume was a useful measure of productivity in the first place?"
+    },
+    {
+      "speaker": "expert",
+      "text": "It was actually a rational starting point. Organizations wanted a visible signal that teams were adopting AI. Token counts happen to be one of the only AI inputs every provider meters cleanly, so it was the easiest number to put on a dashboard. Easy to measure and good proxy for the thing you care about are two different things."
+    },
+    {
+      "speaker": "host",
+      "text": "What behavior did the leaderboard actually produce?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Engineers padding prompts, running redundant parallel agents, routing everything through frontier-tier models regardless of task complexity. An internal audit of roughly 100,000 prompt logs found approximately 65% of queries were simple definitional questions or minor refactors: work that didn't need expensive tokens, but got them anyway because the default was always the most powerful endpoint available."
+    },
+    {
+      "speaker": "host",
+      "text": "That 65% figure is striking. What were those people actually asking for?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Simple definitional questions and minor refactors that a lighter, faster model handles identically. The cost came from routing habit, not task complexity. Once the leaderboard existed, routing everything to the frontier model became a way to run up the score, not a deliberate choice."
+    },
+    {
+      "speaker": "host",
+      "text": "Is this Goodhart's Law playing out?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Directly. When a measure becomes a target, it ceases to be a good measure. Goodhart's Law has been applied to school test scores and hospital wait times. AI token leaderboards were always going to produce the same outcome: behavior optimized for the number, not for the work the number was supposed to represent."
+    },
+    {
+      "speaker": "host",
+      "text": "The article says Amazon and Atlassian built similar dashboards. Is this a widespread problem?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Widespread enough that it has a named counter-practice: valuemaxxing. Optimizing for outcomes per dollar spent, rather than volume for its own sake. The signal distinction is straightforward: genuine skill shows up as tokens per good outcome going down, not up."
+    },
+    {
+      "speaker": "host",
+      "text": "What metrics should actually be on the dashboard instead?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Five that matter: tasks completed and shipped, iterations to acceptable output, cost per completed task, model tier used versus task complexity, and total tokens only as a denominator paired with an outcome numerator. The framing is tasks completed per dollar, not tokens processed."
+    },
+    {
+      "speaker": "host",
+      "text": "What does 'iterations to acceptable output' actually measure?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Prompt and context quality. A tighter, better-scoped context package consistently outperforms four parallel agents running against a vague prompt, using a fraction of the tokens to reach an acceptable result. Falling iteration count at stable or falling cost is the actual skill signal."
+    },
+    {
+      "speaker": "host",
+      "text": "The article has a specific warning about extended thinking mode in Claude Code. What's the issue?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Extended thinking is billed as output tokens at a real premium. The recommendation is to cap it or drop the effort tier for tasks that don't require deep reasoning. Routine scripting and minor refactors don't need the same reasoning budget as a genuine multi-file architecture decision. The cost difference is not marginal."
+    },
+    {
+      "speaker": "host",
+      "text": "The article says mastery looks like a downward slope, not a leaderboard position. What does that slope actually measure?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Cost per completed task, week over week. The transition from training spend to steady state should be visible on a graph: high early cost dropping as the workflow gets engineered and context packages get tighter. If that slope isn't visible six weeks into a repeatable task, the workflow hasn't been built yet. Track that line, not the raw token number that preceded it."
+    }
+  ]
+}

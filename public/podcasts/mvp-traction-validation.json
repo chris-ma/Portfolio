@@ -1,0 +1,87 @@
+{
+  "title": "Proof First",
+  "slug": "mvp-traction-validation",
+  "duration_estimate": "6-8 min",
+  "turns": [
+    {
+      "speaker": "host",
+      "text": "The article argues that the scarce resource in 2026 has inverted. It's no longer building, it's proving. What changed?"
+    },
+    {
+      "speaker": "expert",
+      "text": "AI-assisted engineering has collapsed the cost of shipping software, which means anyone can build. The question that now separates viable ideas from expensive mistakes is whether you can prove repeatable demand exists before you spend real time and credibility on the wrong thing. Both investors and internal stakeholders have adjusted accordingly."
+    },
+    {
+      "speaker": "host",
+      "text": "POC, MVP, and traction are often used interchangeably. The article says conflating them is the most common strategic error at this stage. What does each one actually prove?"
+    },
+    {
+      "speaker": "expert",
+      "text": "A POC proves the idea is technically possible. An MVP proves a specific segment gets real value from the smallest working version. Traction proves repeatable demand: people come back, pay, or refer without being pushed. A POC without traction is theory. An MVP without traction is a beta nobody's proven anyone wants."
+    },
+    {
+      "speaker": "host",
+      "text": "The four-step validation sequence has to be run in order. Why does the order matter?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Because each step is a filter, and running them out of order wastes the most expensive resource you have. Most teams run Market Viability first, asking how big is this market, before confirming the problem is real or that their solution resolves it. The sequence is Problem Validation, Solution Verification, Market Viability, then Willingness to Pay."
+    },
+    {
+      "speaker": "host",
+      "text": "Willingness to Pay is listed as the hardest signal. Why?"
+    },
+    {
+      "speaker": "expert",
+      "text": "People will say they like an idea in an interview. Far fewer will hand over a card number, or in an internal context, reallocate their own team's hours toward it. Positive sentiment is not proof of willingness to pay. A signed paid pilot is. The article is explicit: a signed pilot beats a waitlist of a thousand signups as evidence."
+    },
+    {
+      "speaker": "host",
+      "text": "What does tight MVP scope actually look like?"
+    },
+    {
+      "speaker": "expert",
+      "text": "One user type, one core job, one complete end-to-end workflow, using only the services required to make that one workflow function in production. The target is 90 days from concept to live MVP. If it's taking meaningfully longer, that's usually a sign of over-building or avoiding an uncomfortable truth about the idea, not a genuinely hard technical problem."
+    },
+    {
+      "speaker": "host",
+      "text": "What separates a real traction result from a vanity number?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Waitlists, a Product Hunt spike, and social follower counts tell an investor nothing on their own. The five metrics that matter are activation (signed up versus actually used), net revenue retention, growth rate with a trendline, burn multiple, and CAC payback period. Repeatable demand, not a one-time launch bump."
+    },
+    {
+      "speaker": "host",
+      "text": "What's the burn multiple threshold, and why is it more informative than raw revenue growth?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Cash burned divided by net new revenue. Under roughly 1.5x signals the market is genuinely pulling your product forward. Above roughly 5x signals you're pushing it uphill regardless of how fast revenue is growing. And a CAC payback period over 18 months is treated as a hard stop at Series A in the current funding climate, regardless of everything else."
+    },
+    {
+      "speaker": "host",
+      "text": "There's a specific claim about how investors actually read a seed deck."
+    },
+    {
+      "speaker": "expert",
+      "text": "Investors reportedly spend roughly three times longer on the traction slide than any other page, and decide whether to keep listening within the first 20 seconds of seeing it. The hero metric needs to be your strongest number, presented first with a trendline, not buried in a table. Two or three supporting proofs underneath."
+    },
+    {
+      "speaker": "host",
+      "text": "The intrapreneurship section argues that internal ventures have an advantage startups don't. What is it, and what stops most internal teams from using it?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Existing customer data, distribution channels, regulatory cover, and technical infrastructure already in place. The advantage is real. But most internal teams default to building everything from scratch, which means they compete against startups without the startup's speed. The ones that use existing assets deliberately can get to traction faster than an equivalent external company."
+    },
+    {
+      "speaker": "host",
+      "text": "The article closes with: the finish line is not a shipped product. It's repeatable demand. What's the discipline required to hold that line?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The discipline is being willing to call a fast no a genuine win. Every week building on an unvalidated assumption is a week you can't get back. The validation sequence exists to kill bad ideas cheaply, not to justify the ones you already have. Most ideas should die at Problem Validation, and that's the system working correctly, not failing."
+    }
+  ]
+}

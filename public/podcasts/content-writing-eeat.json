@@ -1,0 +1,87 @@
+{
+  "title": "The Last 50%",
+  "slug": "content-writing-eeat",
+  "duration_estimate": "6-8 min",
+  "turns": [
+    {
+      "speaker": "host",
+      "text": "The article is called 'The Last 50%.' What is that referring to?"
+    },
+    {
+      "speaker": "expert",
+      "text": "AI handles the first half well: structure, outline, rough pass. The last 50%, where trust actually lives, is specificity, originality, and editorial judgment. That part can't be delegated, and skipping it is the actual failure."
+    },
+    {
+      "speaker": "host",
+      "text": "But hasn't Google been cracking down on AI-generated content?"
+    },
+    {
+      "speaker": "expert",
+      "text": "That's the misread. Google never penalized AI content specifically. It ranked it the same way it always ranked everything: does it demonstrate real experience and expertise? The penalty is a reader penalty, not an algorithm penalty. Edelman's 2025 study found 73% of consumers can spot AI slop, and 61% say it lowers their trust in the source."
+    },
+    {
+      "speaker": "host",
+      "text": "'AI slop' was literally the American Dialect Society's Word of the Year in 2025. What makes something slop versus legitimate AI-assisted writing?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Not the tool used. Slop is a specific failure pattern: no point of view, structural padding substituted for substance, generic phrasing that could have come from any source, and nothing that proves someone actually did the thing being written about. It's the cluster that signals it, not any single word."
+    },
+    {
+      "speaker": "host",
+      "text": "The article lists specific verbal tells. What are the patterns that give it away?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Four clusters: throat-clearing openers like 'In today's fast-paced world,' hedge-stacking phrases like 'can potentially' and 'it's worth noting that,' empty transitions like 'that being said' and 'moving forward,' and inflated vocabulary like 'delve,' 'elevate,' 'robust,' 'seamless' used in place of an actual claim."
+    },
+    {
+      "speaker": "host",
+      "text": "So what does the six-step fix actually start with?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Start with your own voice before opening the prompt box. Record yourself talking through the idea, or write an unstructured brain dump first. That raw material is what keeps the eventual piece from starting life as a generic take on the topic."
+    },
+    {
+      "speaker": "host",
+      "text": "And then AI comes in?"
+    },
+    {
+      "speaker": "expert",
+      "text": "At step two: outlines, H2 and H3 scaffolding, topic-cluster brainstorming, turning a long document into a summary, expanding a keyword list. That's where AI is genuinely strongest and where it saves real time. Step three is writing or heavily rewriting the actual sentences yourself."
+    },
+    {
+      "speaker": "host",
+      "text": "What's the single most effective thing a writer can add to defeat the slop read?"
+    },
+    {
+      "speaker": "expert",
+      "text": "One detail only they could know. A specific result, an actual number, an opinion they're willing to defend, a first-hand observation. That single move does more to defeat both slop-perception and algorithmic demotion than any amount of line-editing."
+    },
+    {
+      "speaker": "host",
+      "text": "The article treats fact-checking AI contributions as serious. How serious?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Treat every AI-sourced fact as unverified until you've checked it yourself. Hallucinated statistics and fabricated citations are a normal failure mode, not an edge case. Citing a made-up number while writing about trust is the kind of thing that ends reputations."
+    },
+    {
+      "speaker": "host",
+      "text": "What's E-E-A-T, and why does it keep coming up here?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Google's quality framework: Experience, Expertise, Authoritativeness, Trustworthiness. The four components collapse to one practical question: does this content contain something that could only have come from actually doing the thing? Generic best-practices content, however well-structured, is exactly what E-E-A-T is designed to rank below something narrower but real."
+    },
+    {
+      "speaker": "host",
+      "text": "The article ends with 'the writing is the thinking.' Is there a practical test for whether you've done the thinking?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Before publishing, read it aloud once. Clichéd AI-pattern phrasing is far more audible than it is visible on a screen. Cut anything that sounds like it's clearing its throat before saying something. And check: does any sentence survive purely because it sounds good? If yes, delete it. Length that isn't earning its place is the single most common slop signal."
+    }
+  ]
+}

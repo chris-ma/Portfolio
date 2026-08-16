@@ -1,0 +1,119 @@
+{
+  "title": "Already Public",
+  "slug": "osint-ai-intelligence",
+  "duration_estimate": "6-8 min",
+  "turns": [
+    {
+      "speaker": "host",
+      "text": "The title of this article is 'Already Public.' What's the core claim?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The information your organization has exposed is already visible to anyone who knows how to look. Security teams use OSINT to find it first. The same techniques, aimed differently, describe reconnaissance before an attack. That dual-use reality is what makes ethical framing load-bearing here, not decorative."
+    },
+    {
+      "speaker": "host",
+      "text": "There's a common misconception that OSINT means hacking or covert access. What does it actually cover?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Strictly publicly or commercially available information: social media, public records, news archives, company filings, DNS and WHOIS records, technical infrastructure metadata, breach-disclosure databases. Open-source means legally accessible. Covert collection is a different discipline and a different legal category entirely."
+    },
+    {
+      "speaker": "host",
+      "text": "The four-stage cycle exists specifically to prevent a failure mode. What's the failure mode?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The most common way OSINT work goes wrong is skipping straight from collection to conclusion without the analysis and corroboration steps. A raw search result is a data point. Intelligence is that data point placed in context, corroborated across multiple independent sources, and connected to a decision someone can act on."
+    },
+    {
+      "speaker": "host",
+      "text": "OSINT is one of nine recognized intelligence disciplines. How does it relate to the others?"
+    },
+    {
+      "speaker": "expert",
+      "text": "In most business and security contexts, OSINT's real value is as a corroboration layer across other disciplines. CTI and FININT have the most direct overlap. Treating OSINT findings as complete on their own, without cross-referencing, is a consistent source of false conclusions in practice."
+    },
+    {
+      "speaker": "host",
+      "text": "What's the single biggest practical shift AI has brought to OSINT work?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Scale. AI-assisted crawlers and monitoring tools process volumes of public data no manual process could keep pace with. That turns what used to be periodic manual searches into continuous monitoring. Maltego-style platforms now run automated transforms across 100-plus data sources to map connections between infrastructure, domains, and threat actors."
+    },
+    {
+      "speaker": "host",
+      "text": "Natural-language querying also changed who can effectively do this work."
+    },
+    {
+      "speaker": "expert",
+      "text": "Being able to ask a plain-language question against a large corpus of scraped public content, rather than constructing complex Boolean search strings, meaningfully lowered the skill floor for getting useful results. The technique is the same. The barrier to entry is different."
+    },
+    {
+      "speaker": "host",
+      "text": "But AI has also introduced a contamination problem into the very data OSINT tools search against."
+    },
+    {
+      "speaker": "expert",
+      "text": "AI-generated content is now a contaminant in the public data OSINT tools search against. Search results increasingly include AI-generated material that needs its own verification, not just the original claim. This isn't a solved problem. It's a genuine, growing complication that doesn't yet have a clean solution."
+    },
+    {
+      "speaker": "host",
+      "text": "Link analysis is another area where AI changed the math significantly."
+    },
+    {
+      "speaker": "expert",
+      "text": "What used to be manual graph-building, connecting infrastructure nodes, domains, and threat actors by hand, can now be partially automated. The corroboration step still requires human judgment. But the volume of sources that can be checked in parallel has changed significantly. Relationships that would never have been visible from any single search now surface automatically."
+    },
+    {
+      "speaker": "host",
+      "text": "On the ethics side, there's a clear distinction in the article between profiling organizations and profiling individuals."
+    },
+    {
+      "speaker": "expert",
+      "text": "Public-facing corporate information, published research, infrastructure exposure, and brand mentions are the legitimate core of business OSINT. Anything that starts to look like profiling a specific private individual, their movements, relationships, and habits, requires a real specific legal and ethical basis before proceeding. That's where the legal and ethical exposure actually is."
+    },
+    {
+      "speaker": "host",
+      "text": "One of the five core principles is: define objectives before collecting anything. Why is that specifically load-bearing?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Open-ended collection, 'let's see what we can find on this person or company,' is where ethical and legal problems start. Knowing specifically what question you're trying to answer and why disciplines the scope before you're looking at information you had no legitimate reason to collect. The objective defines the boundary."
+    },
+    {
+      "speaker": "host",
+      "text": "Corroborate before concluding is another principle. What's the risk of skipping it?"
+    },
+    {
+      "speaker": "expert",
+      "text": "A single unverified public data point should never be the sole basis for a real decision, whether that's a hiring decision, a partnership, or an accusation. Multiple independent sources reduce false positives. That step still requires human judgment, even with AI making the volume of sources that can be checked in parallel much larger."
+    },
+    {
+      "speaker": "host",
+      "text": "GEOINT is listed as relevant for supply-chain risk. That's a less obvious application."
+    },
+    {
+      "speaker": "expert",
+      "text": "Geospatial intelligence crosses into OSINT territory when it draws on publicly available satellite imagery, shipping data, and location metadata. For supply-chain risk and market analysis, that data is increasingly accessible through commercial sources. SIGINT and MASINT, by contrast, are government and defense domains with no meaningful business-context overlap."
+    },
+    {
+      "speaker": "host",
+      "text": "What does the article mean when it says intent, authorization, and defined scope matter as much as the technique itself?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The same search that a security team runs on their own organization is the same search an attacker runs on a target. The technique is identical. The discipline is identical. What differs is who is doing it, whether they have authorization, and what they intend to do with the result. The dual-use reality means the technique alone doesn't determine the ethics."
+    },
+    {
+      "speaker": "host",
+      "text": "What's the closing framing the article lands on?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The information is there either way. The question is whether you look before someone else does. Security teams that run regular OSINT on their own exposure find the gaps while they still control what happens with that information. The alternative is finding out when someone with different intentions already has."
+    }
+  ]
+}

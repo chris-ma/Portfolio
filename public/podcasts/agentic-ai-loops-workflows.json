@@ -1,0 +1,87 @@
+{
+  "title": "Stop Building Agents",
+  "slug": "agentic-ai-loops-workflows",
+  "duration_estimate": "6-8 min",
+  "turns": [
+    {
+      "speaker": "host",
+      "text": "The article opens with a provocative claim: most things marketed as AI agents are not actually agents. What are they?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Workflows. Fixed sequences of LLM calls with predefined branching logic and deterministic execution paths. Calling that an agent makes you engineer it wrong: you add complexity it doesn't need and remove predictability you were counting on."
+    },
+    {
+      "speaker": "host",
+      "text": "What's the practical test for telling a workflow from a genuine agent?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Can you enumerate the steps before you run them? If yes, build a workflow. If the right next step genuinely depends on what the previous step returned and you can't anticipate that in advance, that's when an agent earns its complexity."
+    },
+    {
+      "speaker": "host",
+      "text": "Anthropic's own taxonomy lists five workflow patterns. Which one surprises people most?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Orchestrator-workers, because it feels agentic. A central LLM dynamically breaks a task into pieces and delegates to worker LLMs. But it's still a workflow if the worker execution paths are predefined. The orchestrator decides; the workers execute."
+    },
+    {
+      "speaker": "host",
+      "text": "When do you actually need a real autonomous loop?"
+    },
+    {
+      "speaker": "expert",
+      "text": "When the task is exploratory and the right next step can't be known until the previous step returns. That's the ReAct loop: reason, act, observe, repeat. It recalibrates after every single step, which is its strength and its weakness."
+    },
+    {
+      "speaker": "host",
+      "text": "What's the alternative to ReAct for structured, long-horizon tasks?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Plan-and-execute. A planner LLM writes the full multi-step plan up front, then an executor runs each step in sequence. Less adaptive than ReAct but you get a coherent strategy before any irreversible action is taken. The right call when mid-stream drift is what you're most worried about."
+    },
+    {
+      "speaker": "host",
+      "text": "The article reports over-engineering as the most common production mistake. What does that look like?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Reaching for multi-agent orchestration or full autonomy on tasks that are actually fixed-sequence or simple classification problems. Anthropic reports this as the single most common mistake, not the reverse. Same applies to frameworks that hide what's actually happening underneath."
+    },
+    {
+      "speaker": "host",
+      "text": "How do you prevent loop-stuck behavior where the agent cycles without making progress?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Two things, both required: define an explicit done condition before writing any code, and add a hard step-count ceiling as a backstop. One without the other leaves a gap."
+    },
+    {
+      "speaker": "host",
+      "text": "Error compounding is another failure mode. What keeps it in check?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Grounding every step in real environment feedback: tool output, execution results, not just model reasoning. A model that only reasons from its own prior output will compound its own errors. Each autonomous step is a chance to drift further from the goal."
+    },
+    {
+      "speaker": "host",
+      "text": "What does the debate pattern for high-stakes decisions actually do?"
+    },
+    {
+      "speaker": "expert",
+      "text": "You spawn multiple agents with different stances and have them argue. A judge synthesizes the result. No single confident wrong answer goes unchallenged. It measurably reduces hallucination because wrong answers can't slide through without opposition."
+    },
+    {
+      "speaker": "host",
+      "text": "The build sequence is six steps in a specific order. Which step do teams most often skip?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Step one: stating the goal and the done condition before writing any code. If you can't state what success looks like, you're not ready to build the loop. A vague goal produces a loop that can never terminate correctly, and that's the failure mode teams discover in production."
+    }
+  ]
+}

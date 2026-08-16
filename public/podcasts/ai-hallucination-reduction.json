@@ -1,0 +1,143 @@
+{
+  "title": "Confident and Wrong",
+  "slug": "ai-hallucination-reduction",
+  "duration_estimate": "6-8 min",
+  "turns": [
+    {
+      "speaker": "host",
+      "text": "Claude 4.1 Opus scored 0% hallucination. How is that possible?"
+    },
+    {
+      "speaker": "expert",
+      "text": "It refused to answer when it was uncertain rather than guessing. On the AA-Omniscience hallucination benchmark, 0% doesn't mean it got everything right. It means it declined to produce an answer rather than fill a gap with a plausible-sounding invention. That's the entire argument in one data point: the winning move is often not answering."
+    },
+    {
+      "speaker": "host",
+      "text": "Why is the framing of accuracy versus calibration so important here?"
+    },
+    {
+      "speaker": "expert",
+      "text": "A model that's right 95% of the time and silently wrong 5% of the time is less useful than one that's right 80% and honest about the remaining 20%. The honest model flags exactly where to double-check. The overconfident one poisons the decisions you build on it, silently, because it didn't flag the uncertainty. You're not trying to make the model answer more confidently. You're trying to make it honest about what it doesn't know."
+    },
+    {
+      "speaker": "host",
+      "text": "Why do hallucinations happen in the first place? Is it a bug or something more fundamental?"
+    },
+    {
+      "speaker": "expert",
+      "text": "It's structural. LLMs predict the statistically most likely next token given training data and context. Hallucination is a predictable output of a system optimized for fluency rather than for auditing its own claims. Two triggers explain most real-world failures: vague prompts invite creative guessing because the model fills gaps rather than admitting they exist, and models try too hard to answer even when they genuinely lack the information."
+    },
+    {
+      "speaker": "host",
+      "text": "The highest-leverage technique in the ranked list is grounding the model in source material. What does that look like in practice?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Give the model something to point to and tell it to use only that. A prompt like: using only the information in the following document, answer the question below. If the document doesn't contain the answer, say so explicitly. This is the same principle as RAG applied at the prompt level. Grounding beats recall every time, because the model cannot hallucinate information that was retrieved rather than recalled."
+    },
+    {
+      "speaker": "host",
+      "text": "Technique two is authorizing the model to say it doesn't know. Why isn't that the default?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Refusing is not the default behaviour. Left unconstrained, a model will attempt an answer even when it genuinely lacks the information, because that's what the training dynamic rewards. A single instruction overrides it: if you're not confident in your answer based on the information provided, respond with I cannot answer this with confidence rather than guessing. That instruction consistently outperforms every other single-instruction approach for reducing hallucination."
+    },
+    {
+      "speaker": "host",
+      "text": "Specificity is technique three. What's the difference between a vague and a specific prompt in concrete terms?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Weak: tell me about recent AI regulations. Better: summarize major EU AI Act developments announced between January 2025 and March 2026, citing only publicly documented events. Specificity narrows the space the model has to guess in. A vague scope is an invitation to fill gaps. A narrow, dated, sourced scope leaves much less room for invention."
+    },
+    {
+      "speaker": "host",
+      "text": "Forcing the model to separate knowns from unknowns before answering. How does that catch hallucinations?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The instruction is: list the known facts, then list the unknowns, then provide an answer using only the known facts. Forcing that separation as an explicit step catches the model before it blends genuine information with inferred filler. The blending is what makes hallucinated content hard to spot: it reads identically to the real content around it. Making the separation explicit makes the gap visible."
+    },
+    {
+      "speaker": "host",
+      "text": "Requiring sources and confidence levels per claim. One practitioner cited a 40% reduction. Is that reliable?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Treat the 40% as directional rather than guaranteed. It came from a news-analysis context where per-claim accountability rather than an overall confidence gesture was the intervention. The mechanism is sound: attaching a source and confidence level to each individual claim, rather than one overall confidence gesture, surfaces which specific claims are weakest. The number will vary by domain and task."
+    },
+    {
+      "speaker": "host",
+      "text": "The two-step verification pass is technique eight. Why is that different from just asking the model to try harder?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Verification is structurally different from generation. Asking a model to try harder produces a more confident version of the same answer. The audit prompt reads: review your answer above. Identify any claims you're less than 90% confident about. Note any logical inconsistencies. Flag anywhere you might be filling a gap with plausible-sounding but unverified information. Provide an overall confidence score. That puts the model in a different mode entirely and surfaces uncertainty it didn't flag on the first pass."
+    },
+    {
+      "speaker": "host",
+      "text": "Temperature is technique eleven. When should teams actually adjust it?"
+    },
+    {
+      "speaker": "expert",
+      "text": "If you're working via API or a tool with configurable settings: high temperature, 0.8 to 1.0, trades accuracy for creativity and randomness. Low temperature, 0.0 to 0.2, trades creativity for determinism and factual consistency. For anything where accuracy matters more than novelty, low temperature is the right default. It's the lowest-effort intervention with a real and consistent effect."
+    },
+    {
+      "speaker": "host",
+      "text": "RAG with poor retrieval is worse than no RAG. That's a counterintuitive claim. Why?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Poor retrieval adds latency and cost while producing ungrounded answers, but now with a citation attached to give them unearned authority. A hallucinated answer without a citation is visibly uncertain. A hallucinated answer with a citation looks authoritative. The citation is the problem: it gives the output a false grounding that makes it harder to catch and more likely to be acted on."
+    },
+    {
+      "speaker": "host",
+      "text": "What doesn't work as well as it sounds? Starting with just asking are you sure."
+    },
+    {
+      "speaker": "expert",
+      "text": "Without the structured verification pattern, a bare are you sure often produces a confident restatement. The model treats it as a prompt to justify its answer, not re-examine it. You need to structure the audit. Ask it to identify specific claims below 90% confidence, flag logical inconsistencies, note where it might be guessing. That's a different request, and it gets a different result."
+    },
+    {
+      "speaker": "host",
+      "text": "Longer prompts without more specificity can actually increase hallucination. How?"
+    },
+    {
+      "speaker": "expert",
+      "text": "More words without more grounding or a tighter scope gives the model more surface area to misinterpret intent from. Length is not a proxy for precision. A vague 500-word prompt is still a vague prompt. The intervention that works is narrowing the scope and grounding in source material, not adding more words to describe what you want."
+    },
+    {
+      "speaker": "host",
+      "text": "The combined prompt pattern stacks five techniques. What are they?"
+    },
+    {
+      "speaker": "expert",
+      "text": "System-level refusal boundary, explicit grounding restriction, chain-of-thought, per-claim confidence labelling, and explicit authorization to admit uncertainty. The template reads: you are a factual assistant. Using only the information in the provided material, answer the following question. Reason step-by-step before your final answer. For each claim, note your confidence level. If any part cannot be answered with confidence, state that explicitly rather than guessing."
+    },
+    {
+      "speaker": "host",
+      "text": "Setting a system-level behavioral boundary once. Why is that more reliable than restating it per prompt?"
+    },
+    {
+      "speaker": "expert",
+      "text": "A standing instruction set at the system level applies to every interaction in the session rather than just one. It's more reliable because you can't forget to include it, and it doesn't add length to individual prompts. The core instruction is: never fabricate citations, statistics, or events. If information is unavailable, clearly state uncertainty. Prefer accuracy over completeness."
+    },
+    {
+      "speaker": "host",
+      "text": "Prefer accuracy over completeness is described as one of the most underused instructions in a system prompt. Why does it work?"
+    },
+    {
+      "speaker": "expert",
+      "text": "A prompt that implicitly rewards a full, comprehensive-sounding answer pushes the model toward filling gaps to look thorough. Explicitly stating that a partial, honest answer beats a complete but padded one changes that incentive directly. The model stops treating incompleteness as a failure to avoid and starts treating honesty about gaps as the correct output."
+    },
+    {
+      "speaker": "host",
+      "text": "The closing principle is the same for all 11 techniques. What is it?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Shrink the space the model has to guess in, and explicitly give it permission to say it doesn't know. Every technique is a variation on that same move, from grounding in source material to lowering the temperature. No prompting technique gets you to zero. Treat all of these as risk reduction, not elimination. Anything a hallucination would actually cost you requires independent verification regardless of how confident the output sounds."
+    }
+  ]
+}

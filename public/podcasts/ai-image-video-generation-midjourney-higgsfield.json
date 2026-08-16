@@ -1,0 +1,87 @@
+{
+  "title": "Not Prompting. Directing.",
+  "slug": "ai-image-video-generation-midjourney-higgsfield",
+  "duration_estimate": "6-8 min",
+  "turns": [
+    {
+      "speaker": "host",
+      "text": "The article's opening claim is that the biggest quality jump in AI video isn't a better model. What is it?"
+    },
+    {
+      "speaker": "expert",
+      "text": "It's using the camera preset menu as a director would: picking a specific move for a specific narrative reason, rather than defaulting to Static and hoping the prompt carries the shot. The output gap between those two approaches is larger than the gap between most model versions."
+    },
+    {
+      "speaker": "host",
+      "text": "Midjourney and Higgsfield are often compared as competitors. Are they?"
+    },
+    {
+      "speaker": "expert",
+      "text": "They're complementary. Midjourney V8.2 is built around image quality and aesthetic sensibility: stills, art direction, composition. Higgsfield is a director's console layered over 30-plus underlying models, with 70-plus named, one-click camera presets as its actual product. You use Midjourney to build the frame. You use Higgsfield to move it."
+    },
+    {
+      "speaker": "host",
+      "text": "What models does Higgsfield actually route across, and when does each one apply?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Kling 3.0 for photorealistic human motion and character-driven scenes. Veo 3.1 for atmospheric and outdoor scenes with native audio generation. Seedance 2.0 for multi-shot narrative sequences. Wan 2.6 for restyling existing footage, video-to-video transfer without reshooting. Sora 2, MiniMax Hailuo, and Higgsfield's own Soul and Cinema models round out the roster."
+    },
+    {
+      "speaker": "host",
+      "text": "Midjourney's Draft Mode is described as a workflow, not a feature. What's the actual workflow?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Generate 8 to 12 low-quality variants at roughly a quarter of standard credit cost. Pick the strongest 2 or 3 compositions. Then render those at full quality. Running full renders on your first pass is the expensive way to explore. Most of the value is in finding the right composition before spending premium credits."
+    },
+    {
+      "speaker": "host",
+      "text": "V8.2's Personalisation feature reads your accumulated ratings and moodboard. How much does that actually change output?"
+    },
+    {
+      "speaker": "expert",
+      "text": "It skews generation toward your taste based on what you've rated highly. The more you've interacted with the tool, the more the output reflects your specific aesthetic rather than Midjourney's defaults. The --sref parameter works separately: it defines the aesthetic of a generation while the prompt defines the subject. Those are two distinct levers."
+    },
+    {
+      "speaker": "host",
+      "text": "Soul ID is Higgsfield's character persistence system. How reliable is it really?"
+    },
+    {
+      "speaker": "expert",
+      "text": "'Will never drift' is marketing, not guarantee, especially across many sequential generations. Treat it as a strong anchor, not a lock. For anything you need to look identical across multiple shots, Soul ID plus reference images is more reliable than text re-description alone. Text drifts; reference locking doesn't."
+    },
+    {
+      "speaker": "host",
+      "text": "What are the three camera moves worth knowing immediately from the preset library?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Dolly is the camera physically moving toward or away from the subject on a track: different from zoom because the whole camera moves and changes perspective relationships. Orbit arcs the camera around a fixed subject. Push is a simulated zoom applied in post rather than physical camera movement. Those three cover the majority of deliberate motion in the preset library."
+    },
+    {
+      "speaker": "host",
+      "text": "The cinematography vocabulary section goes into film school territory. Which terms actually transfer into AI prompting?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Shallow depth of field paired with 35mm or 85mm focal length shorthand signals the look immediately. Anamorphic gets you horizontal lens flares and oval bokeh: the film-versus-digital distinction in one word. Dutch angle signals unease and disorientation, but the article flags it as one of the most misused moves: reserve it for genuine tension."
+    },
+    {
+      "speaker": "host",
+      "text": "God rays and volumetric light come up. What makes those work versus floating loosely in the prompt?"
+    },
+    {
+      "speaker": "expert",
+      "text": "They need a specific light source to anchor them. Through a warehouse window, through forest canopy. Volumetric light floating in the prompt without a source produces inconsistent results. Paired with a specific origin point, it's one of the most reliable atmospheric effects in both tools."
+    },
+    {
+      "speaker": "host",
+      "text": "The article ends on the distinction between prompting and directing. What separates them in a single sentence?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Prompting describes what you want and hopes the model interprets it well. Directing picks a specific camera move for a specific narrative reason, the same way a cinematographer makes a deliberate choice. Higgsfield's 70-plus named presets are the vocabulary of that craft. The preset menu isn't a convenience feature. It's the difference between output that looks generated and output that looks directed."
+    }
+  ]
+}

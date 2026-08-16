@@ -1,0 +1,87 @@
+{
+  "title": "The Missing Middle",
+  "slug": "marketing-funnel-engineering",
+  "duration_estimate": "6-8 min",
+  "turns": [
+    {
+      "speaker": "host",
+      "text": "The article opens with a stat that only about a third of companies optimise each funnel stage independently. What are the other two-thirds doing instead?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Treating the whole pipeline as one undifferentiated thing, then wondering where qualified buyers went. Each stage has a different buyer mindset, a different primary metric, and different content requirements. Running a single playbook across all five stages is why most funnels have a leak they can't locate."
+    },
+    {
+      "speaker": "host",
+      "text": "The article claims that around 60% of Google searches now end without a click. What does that mean for top-of-funnel strategy?"
+    },
+    {
+      "speaker": "expert",
+      "text": "A meaningful share of first-touch awareness is happening inside ChatGPT, Gemini, and Perplexity before buyers ever reach brand-owned content. Your standard GA4 and GSC reporting can't see that traffic. Citation tracking, structured schema, and answer-engine-specific content architecture are now TOFU investments, not side projects."
+    },
+    {
+      "speaker": "host",
+      "text": "The most common TOFU mistake isn't a content problem. What is it?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Applying a bottom-funnel metric to top-of-funnel spend. Judging TOFU content by conversion rate, ROAS, or CPA produces two bad outcomes: spend gets cut on channels that are doing their actual job, or content gets pushed toward premature pitching to generate trackable numbers from cold audiences who aren't ready. The right TOFU metrics are reach, impressions, organic traffic, and engagement."
+    },
+    {
+      "speaker": "host",
+      "text": "MOFU is called the missing middle. Why is it consistently the most underfunded stage?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Teams build strong TOFU reach and a sharp BOFU conversion push, then leave the middle thin. Qualified prospects stall in the gap, cool off, and show up in lost-deal reports attributed to went dark or went with a competitor. The fix is almost never more content. It's a scoring and nurture engineering problem."
+    },
+    {
+      "speaker": "host",
+      "text": "There's a specific conversion gap depending on how you score leads. What are the numbers?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Teams using static demographic and firmographic scoring average 13 to 15% MQL-to-SQL conversion. Teams using genuine behavioural scoring run 39 to 40%. That's roughly a 3x gap driven almost entirely by which signals are weighted. Job title and company size are profiling, not scoring. Pricing page visits, guide downloads, webinar completions, and demo requests are the actual intent signals."
+    },
+    {
+      "speaker": "host",
+      "text": "At the conversion stage, there's a claim about follow-up speed that seems almost too stark."
+    },
+    {
+      "speaker": "expert",
+      "text": "Responding to an inbound lead within five minutes makes a team roughly 21 times more likely to qualify that lead compared to slower response times. This is not a content fix or a better CTA. It's a process and tooling fix. Response time is infrastructure, and most teams treat it as a soft metric."
+    },
+    {
+      "speaker": "host",
+      "text": "The conventional funnel ends at conversion. What's the case for Loyalty and Advocacy being where compounding growth actually lives?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Expansion ARR represents over 40% of new ARR for SaaS companies above $50 million. Net Revenue Retention above 100% means the existing customer base is growing without any new logos. Teams that treat post-purchase stages as cost centres are compounding the wrong direction, and Advocacy feeds directly back into Awareness, which is why the funnel is a slightly misleading shape for the mature model."
+    },
+    {
+      "speaker": "host",
+      "text": "The attribution section identifies last-click as a structural problem. What specifically does it get wrong?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Last-click systematically over-credits BOFU and under-credits the awareness and nurture work that built the pipeline. A team running last-click attribution will consistently under-invest in TOFU and MOFU, because those stages look poor on the scoreboard they're actually being measured against. The measurement model is incentivising the wrong behaviour."
+    },
+    {
+      "speaker": "host",
+      "text": "Advocacy is listed as a stage that needs a deliberate mechanism. What does that look like?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Advocacy rarely happens spontaneously at scale. It needs referral programs, case study requests timed to a genuine recent win, and review prompts triggered by a high in-app satisfaction signal rather than sent on a blanket schedule. The timing matters as much as the ask. And when Advocacy fires, it feeds directly back into Awareness, which is why the funnel is a slightly misleading shape for the mature model."
+    },
+    {
+      "speaker": "host",
+      "text": "The closing line is: the funnel is not broken. The assumption that it runs in a straight line is. What's the practical implication of that?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Buyers loop. They re-enter stages. The operating model underneath the funnel has to assume non-linear movement while still treating each stage as a separable engineering problem with its own metric and its own fix. The funnel earns its keep as a planning scaffold. The mistake is treating it as a description of how buyers actually move."
+    }
+  ]
+}

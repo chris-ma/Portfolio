@@ -1,0 +1,87 @@
+{
+  "title": "The Swap Test",
+  "slug": "design-taste-frontend",
+  "duration_estimate": "6-8 min",
+  "turns": [
+    {
+      "speaker": "host",
+      "text": "The article opens with a claim that taste is not talent and not something you're born with. What is it?"
+    },
+    {
+      "speaker": "expert",
+      "text": "A trained pattern-recognition skill, built the same way any other pattern-recognition skill is built: repeated exposure to good and bad examples, paired with the discipline of naming why one beats the other. Designers who appear to just have an eye spent years doing this, usually without calling it training."
+    },
+    {
+      "speaker": "host",
+      "text": "What's the Swap Test, and why is it the article's central diagnostic?"
+    },
+    {
+      "speaker": "expert",
+      "text": "You swap the logo and copy for an unrelated brand. If the design still makes sense with that substitution, it didn't come from the subject. It came from a default. The test surfaces whether the choices in a design were made because the brief required them or because the designer reached for a familiar template."
+    },
+    {
+      "speaker": "host",
+      "text": "The article names three specific defaults that are ubiquitous right now. What are they?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Warm cream backgrounds with a serif display face and a terracotta accent. Near-black with one acid-green accent. Broadsheet layouts with hairline rules and dense columns. None are wrong in themselves. What makes them a problem is that they get reached for regardless of the subject rather than chosen because the specific brief called for them."
+    },
+    {
+      "speaker": "host",
+      "text": "If passive scrolling through inspiration doesn't build taste, what actually does?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Four practices that compound. Breaking down designs you respond to using the same checklist every time, which builds a real pattern library rather than a vague collection of things you admired. Redesigning something that already exists with a real constraint. Imitating deliberately and interrogating the imitation. And building colour theory and typography fundamentals alongside the practice."
+    },
+    {
+      "speaker": "host",
+      "text": "The breakdown checklist covers six dimensions. What are they?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Colour: how many, what relationship, what's doing the work versus what's neutral. Typography: how many faces, what roles, what the size and weight contrast is doing. Balance: where the eye lands first and why. Spacing: systematic or arbitrary. Consistency: does the same element behave the same way everywhere. Tone: does the copy match the visual register or fight it."
+    },
+    {
+      "speaker": "host",
+      "text": "Typography is described as the largest single leverage point. What makes it that powerful relative to other choices?"
+    },
+    {
+      "speaker": "expert",
+      "text": "One display face plus one body face, used with a consistent scale and maximum contrast in the type itself, does more work than almost any other single decision. Most interface problems are solved by contrast, size, and spacing used deliberately, long before you need a clever idea. Restraint in the palette, real contrast in the structure."
+    },
+    {
+      "speaker": "host",
+      "text": "The two-pass process separates structure from polish. What happens in each pass?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Pass one is a named token system: four to six hex values stated explicitly, a characterful display face with restraint, a complementary body face, a rough wireframe to compare structural ideas before committing pixels, and the single signature element the design will be remembered by. Pass two is the interrogation: for every choice, would you make the same choice for an unrelated brief? If yes, that choice came from a default, not from the subject."
+    },
+    {
+      "speaker": "host",
+      "text": "Spend boldness in exactly one place. That's a strong constraint. What's the reasoning?"
+    },
+    {
+      "speaker": "expert",
+      "text": "A design with five bold ideas competing for attention reads as less confident than one with a single bold idea and total restraint everywhere else. The signature element carries the risk. Everything around it needs to be quiet and disciplined. And the article adds one more rule: before calling something finished, look once more and remove one thing."
+    },
+    {
+      "speaker": "host",
+      "text": "Copy is described as design material, not an afterthought. What's the strongest case for that?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Generic copy makes even a well-executed visual system read as hollow. And inconsistent naming erodes trust in a whole interface faster than almost anything visual. If a button says Publish and the result says Submitted, that small inconsistency breaks the mental model a user is quietly building. Specific beats clever every time."
+    },
+    {
+      "speaker": "host",
+      "text": "The closing line is: the test is whether the design could belong to anyone, or whether it could only be this. How should someone actually apply that?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Run the Swap Test literally before shipping anything. Drop in a competitor's logo and copy. If the design still makes sense, go back and find which choices came from default and which came from the brief. Competent design executes a template well. Distinctive design makes choices that could only belong to this specific subject. The test tells you which one you built."
+    }
+  ]
+}

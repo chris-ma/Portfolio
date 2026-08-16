@@ -1,0 +1,87 @@
+{
+  "title": "Retrieve First",
+  "slug": "rag-retrieval-augmented-generation",
+  "duration_estimate": "6-8 min",
+  "turns": [
+    {
+      "speaker": "host",
+      "text": "The article makes a counterintuitive claim at the top: bad RAG is worse than no RAG. How?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Bad retrieval adds latency and cost while producing an ungrounded answer, and now that answer has a citation attached to give it unearned authority. You've made the hallucination more convincing, not less."
+    },
+    {
+      "speaker": "host",
+      "text": "How does RAG differ from fine-tuning? People conflate those two constantly."
+    },
+    {
+      "speaker": "expert",
+      "text": "Fine-tuning changes model behavior: tone, format, task specialization. RAG changes what facts the model has access to. RAG is also faster and cheaper to update, you swap or add documents rather than retraining, which matters most when the underlying information changes frequently."
+    },
+    {
+      "speaker": "host",
+      "text": "The pipeline is seven steps. Where do most production failures actually happen?"
+    },
+    {
+      "speaker": "expert",
+      "text": "In the three steps before the LLM call: chunking strategy, embedding quality, and retrieval precision. The generation step is what most people optimize first. It's usually the wrong place to start."
+    },
+    {
+      "speaker": "host",
+      "text": "What's the problem with fixed-size chunking, the default most people use?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The chunk boundary is arbitrary, so it frequently falls mid-sentence, severing context and making the extracted chunk ambiguous. Semantic chunking starts a new chunk when similarity between adjacent sentences drops below a threshold, so boundaries correspond to where meaning actually shifts."
+    },
+    {
+      "speaker": "host",
+      "text": "The article says hybrid retrieval is now the production default. What does that mean?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Running dense vector search and sparse keyword search, BM25, in parallel and merging the results before reranking. Vector search finds conceptually related content. Keyword search catches exact terms and proper names that embeddings can blur by collapsing similar-sounding but distinct things."
+    },
+    {
+      "speaker": "host",
+      "text": "What does the reranking step actually add beyond the initial retrieval?"
+    },
+    {
+      "speaker": "expert",
+      "text": "A secondary model reorders the retrieved candidates by relevance before the final set goes to the LLM. Common pattern: retrieve top 20, rerank down to 3 to 5. First-pass vector similarity is a rough filter, not a precise one. Reranking pools over 100 rarely pays off."
+    },
+    {
+      "speaker": "host",
+      "text": "HyDE sounds backwards: generating a hypothetical answer before you even retrieve. Why does it work?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The hypothetical answer contains domain language the user's original question likely lacks. You embed and retrieve using that, rather than the raw query. It works well for knowledge-intensive queries where user vocabulary doesn't match the document vocabulary."
+    },
+    {
+      "speaker": "host",
+      "text": "Adaptive RAG routes queries to different pipelines. Is that becoming standard?"
+    },
+    {
+      "speaker": "expert",
+      "text": "It's emerging as the sensible default for production systems in 2026. Simple factual questions go to fast vector RAG. Complex multi-step questions go to agentic RAG. Relationship questions go to GraphRAG. Most real-world queries are simple and don't need the expensive path."
+    },
+    {
+      "speaker": "host",
+      "text": "What three things should you actually measure to know if your RAG system works?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Retrieval quality, whether chunks are actually relevant to the query; faithfulness, whether the generated answer reflects those chunks or drifted from them; and answer relevance, whether the final answer addresses what was actually asked. RAGAS is a commonly used open framework for scoring all three."
+    },
+    {
+      "speaker": "host",
+      "text": "What's the most durable lesson for someone building their first RAG system?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Fix retrieval before you touch generation. A well-chunked, hybrid-retrieved, reranked candidate set fed to a mediocre prompt will outperform a beautifully crafted prompt fed bad chunks. Start with hybrid retrieval plus a reranker. Measure retrieval quality. Only add complexity once metrics prove the simpler approach genuinely falls short."
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "title": "The Three Gates",
+  "slug": "aeo-three-gate-diagnostic",
+  "duration_estimate": "6-8 min",
+  "turns": [
+    {
+      "speaker": "host",
+      "text": "The article says AEO isn't a visibility problem, it's a mechanism problem. What's the distinction?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Most content optimization treats AI visibility like search ranking: quality, relevance, authority. Those things matter, but they're only evaluated after the engine has decided to open your page. Get eliminated before that decision and quality is irrelevant."
+    },
+    {
+      "speaker": "host",
+      "text": "What is query fan-out, and why does it matter for how content gets selected?"
+    },
+    {
+      "speaker": "expert",
+      "text": "A human types a messy, multi-part question. The engine translates it into several clean, query-shaped searches. Each returns its own candidate source list. Three decisions follow: which candidates to open, which pages to extract from, which chunks to use in composing the answer. Three places to fail."
+    },
+    {
+      "speaker": "host",
+      "text": "Gate 2, Chosen, is described as the most common failure. What makes it so hard to fix?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The engine makes a click decision based only on what's visible without opening the page: URL, title, snippet, sometimes a freshness date. If your title signals brand story rather than utility, the engine won't click through regardless of what's inside. You can have great content and a well-optimized page and still fail here."
+    },
+    {
+      "speaker": "host",
+      "text": "BrightEdge data shows AI engines are opening fewer candidate results per query over time. What does that mean in practice?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Selection at Gate 2 is getting more competitive. The cover is doing more work than it used to. Optimizing the inside without optimizing title and snippet is now a more consequential mistake than it was even a year ago."
+    },
+    {
+      "speaker": "host",
+      "text": "What's Gate 3, Extractable, and what's its symptom?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The engine found you, clicked through, but couldn't pull a clean answer chunk. The symptom: being cited but your content not appearing in the actual answer. The culprits are answers buried in JavaScript-rendered content, hidden in accordions or tabs, or locked in images with no surrounding text."
+    },
+    {
+      "speaker": "host",
+      "text": "The article warns about conflating visibility score with visibility rank. What's the trap?"
+    },
+    {
+      "speaker": "expert",
+      "text": "A rising score with flat or falling rank means the category is growing but you're not capturing more of it. The chart goes up and right while your competitive position quietly gets worse. Track both, but optimize for rank."
+    },
+    {
+      "speaker": "host",
+      "text": "What are compound job queries and why do they concentrate citation opportunity?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Queries that combine multiple needs in a single ask: cooling and support, not just cooling. The engine has to be selective, so it picks the source that covers the combination best. Single-angle content loses. Most content is still written to rank on one keyword at a time, which is where the gap is."
+    },
+    {
+      "speaker": "host",
+      "text": "The SAGE loop has four stages. Which stage do teams default to incorrectly?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Generate, producing content, because it feels productive. Generating against the wrong gaps, or without measurement, is how you ship a lot and move nothing. Analyze comes first: run the three-gate diagnostic on your five lowest-visibility priority pages before writing anything new."
+    },
+    {
+      "speaker": "host",
+      "text": "How does AEM specifically create Gate 3 problems at scale?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Accordions and tabs are a common AEM pattern that block Gate 3. Answers buried inside them are invisible to extraction. That's a template-level problem, not a content-level one. Fix the template and it fixes every page using it simultaneously."
+    },
+    {
+      "speaker": "host",
+      "text": "For someone running the three-gate diagnostic today, what's the fastest first move?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Check GSC for crawl errors and index coverage on your five priority pages. That's Gate 1 done in under an hour. A crawl block or indexing gap is a one-step fix. A content positioning problem is a quarter of work. Eliminate the technical kills first, then diagnose Gate 2 and Gate 3 separately."
+    }
+  ]
+}

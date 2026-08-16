@@ -1,0 +1,87 @@
+{
+  "title": "The $140 Question",
+  "slug": "claude-code-vs-codex",
+  "duration_estimate": "6-8 min",
+  "turns": [
+    {
+      "speaker": "host",
+      "text": "The article opens with a documented test: the same Express.js refactor cost $155 with Claude Code and $15 with Codex. Same task, same passing outcome. How is that possible?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Claude Code burns 3 to 4 times more tokens per task than Codex on comparable benchmarks. Extended thinking is on by default and billed at 5 times the input token rate. Run that iteratively against large files and the bill compounds fast."
+    },
+    {
+      "speaker": "host",
+      "text": "But blind code-quality reviews preferred Claude Code 67% of the time versus Codex's 25%. Is the quality premium real?"
+    },
+    {
+      "speaker": "expert",
+      "text": "It's real, and it shows up in ways benchmarks don't capture: readability, consistency with existing patterns, whether the approach is one you'd have chosen yourself. Benchmarks are binary. The test passes or it doesn't. That 42-point gap in human preference doesn't show up in pass rates."
+    },
+    {
+      "speaker": "host",
+      "text": "On the benchmarks, Codex leads Terminal-Bench 2.0 but they're tied on SWE-bench Verified. What should we actually take from those numbers?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Terminal-Bench 2.0 has Codex at 82.7% versus Claude Code at 69.4%. SWE-bench Verified is 88.7% versus 88.6%. Those measure different tasks, so treat them as directional rather than directly comparable, and verify current figures before using them to justify budget decisions."
+    },
+    {
+      "speaker": "host",
+      "text": "The article calls context window the most durable differentiator. Why is 1M versus 200K tokens such a big deal?"
+    },
+    {
+      "speaker": "expert",
+      "text": "On a greenfield project with clean module boundaries the difference is irrelevant. On a three-year-old monolith with circular imports and undocumented global state, Claude Code can hold the full codebase graph while making a change. Codex has to sample it, and on a tightly coupled legacy codebase, that usually degrades the result."
+    },
+    {
+      "speaker": "host",
+      "text": "Context window is described as a structural fact, not a benchmark number. What does that distinction mean?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Benchmark scores shift with every model update. The 5-times difference in how much each agent can hold at once is structural. It won't narrow with a model release. That makes it the most reliable signal for task-fit decisions over time."
+    },
+    {
+      "speaker": "host",
+      "text": "The article frames the right comparison as cost against hours saved, not the two tools against each other. Can you give me the math?"
+    },
+    {
+      "speaker": "expert",
+      "text": "A $140 difference per refactor is noise if it replaces a day of senior engineering time. It isn't if you're running 50 tasks a week. The question is never which tool is cheaper in isolation. It's which workflow produces the better return on that specific class of work."
+    },
+    {
+      "speaker": "host",
+      "text": "When does Claude Code clearly win over Codex?"
+    },
+    {
+      "speaker": "expert",
+      "text": "When you're in the editor actively building something, context needs to span many files, and the iteration is conversational. You're steering, not queuing work. Deep legacy refactors where full-codebase context changes the outcome is the clearest case."
+    },
+    {
+      "speaker": "host",
+      "text": "And when does Codex win?"
+    },
+    {
+      "speaker": "expert",
+      "text": "When the task is well-defined enough to hand off unattended: dependency bumps, isolated type fixes, feature flags on a stable interface. It handles async PRs well precisely because the task spec does the steering, not a live conversation."
+    },
+    {
+      "speaker": "host",
+      "text": "The tip about checkpointing before stepping away from Claude Code stood out. Why does a cold session cause problems?"
+    },
+    {
+      "speaker": "expert",
+      "text": "A session that's gone cold accumulates confusion. The model tries to pick up mid-thought from stale context. Save progress to a doc, then /clear and restart with a compressed brief. You get better output and you reset the token counter."
+    },
+    {
+      "speaker": "host",
+      "text": "The three practical tips for reducing Claude Code costs include capping extended thinking. Why is that the highest-leverage one?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Extended thinking is on by default and billed at 5 times the input token rate. Using MAX_THINKING_TOKENS or the /effort command to drop it for tasks that don't need deep reasoning, most scripting and component work, makes a material difference. Default to Sonnet for routine tasks; reserve Opus for genuine multi-file architecture decisions where the extra comprehension justifies the cost."
+    }
+  ]
+}

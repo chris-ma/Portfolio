@@ -1,0 +1,87 @@
+{
+  "title": "Capture → Think → Coordinate",
+  "slug": "wispr-obsidian-notion-pkm-stack",
+  "duration_estimate": "6-8 min",
+  "turns": [
+    {
+      "speaker": "host",
+      "text": "The article says most PKM setups fail the same way: tools overlap, filing decisions happen mid-thought, maintenance debt compounds until the system collapses. What's the fix?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Explicit boundaries, not cleverness. Three tools, three distinct jobs: Wispr Flow for capture only, Obsidian for thinking and writing, Notion for anything that needs a status, a date, or a relation between things. No overlap."
+    },
+    {
+      "speaker": "host",
+      "text": "There's a one-question filing rule that's supposed to eliminate mid-thought decisions. What is it?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Does this need a status field? Yes goes to Notion. No goes to Obsidian. That's the whole decision. It removes the pause that kills capture habits."
+    },
+    {
+      "speaker": "host",
+      "text": "Wispr is described as a dictation engine, not a storage layer. What does that distinction change?"
+    },
+    {
+      "speaker": "expert",
+      "text": "It has no permanent home for content, only a path into Obsidian or Notion. The primary use case is dictating long Claude prompts and dumping raw ideas directly into the Obsidian inbox note. Volume over curation at capture time."
+    },
+    {
+      "speaker": "host",
+      "text": "The privacy mode note stands out. What's the actual risk with Wispr?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Audio and active-window screenshots are transmitted to Wispr's servers by default. Enable Privacy Mode before dictating anything client-confidential. That's a real setup step, not optional."
+    },
+    {
+      "speaker": "host",
+      "text": "The Obsidian vault uses four numbered folders. Why that structure?"
+    },
+    {
+      "speaker": "expert",
+      "text": "00-inbox, 10-projects, 20-areas, 30-library, 40-archive. The numbers sort deterministically. Everything lands in the inbox first, unprocessed. You never have to decide where something goes at capture time. That decision happens in the daily processing loop."
+    },
+    {
+      "speaker": "host",
+      "text": "The three Bases views are Inbox, Active Projects, and Stale. What's Stale doing?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Surfacing unprocessed notes older than 30 days: delete, file, or promote to a Notion row. Without it, the inbox becomes an archive and the whole flow breaks. It's the system's immune response to accumulation."
+    },
+    {
+      "speaker": "host",
+      "text": "The directional data flow rule is firm: Notion links to Obsidian, Obsidian never links back. Why does the direction matter so much?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Two-way sync creates conflicting updates. The moment you automate the reverse, you've built a maintenance loop that never resolves. Notion is read-only from the vault's perspective. Keep the direction strict and that problem can't occur."
+    },
+    {
+      "speaker": "host",
+      "text": "The 30-library folder is described as already being the ideal shape for feeding into Claude. Why?"
+    },
+    {
+      "speaker": "expert",
+      "text": "One markdown file per topic, headings as natural retrieval anchors, no exotic formatting. That's exactly what semantic chunking and retrieval need. The vault structure does double duty as a RAG-ready knowledge base."
+    },
+    {
+      "speaker": "host",
+      "text": "The build order is deliberate: Wispr plus Obsidian inbox first, then Notion, then Bases views, then agents last. What breaks if you skip ahead?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Each stage only works if the previous one has real data running through it. Agents added before there's actual data will break in ways that look like agent problems but are actually process problems. Week one: capture habit. Week two: Notion spine. Week three: Bases views. Agents come after that."
+    },
+    {
+      "speaker": "host",
+      "text": "The closing line says the goal isn't a perfect system but one that doesn't require willpower to maintain. Is that achievable?"
+    },
+    {
+      "speaker": "expert",
+      "text": "That's what the boundaries do. Each tool does one thing, the filing decision reduces to one question, and the daily processing loop is ten minutes. Clever systems require willpower. Simple ones don't. The inbox clears, the stale view catches stragglers, the Sunday review sets next actions. It runs."
+    }
+  ]
+}

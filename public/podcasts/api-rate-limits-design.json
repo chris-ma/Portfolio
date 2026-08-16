@@ -1,0 +1,103 @@
+{
+  "title": "Before the 429",
+  "slug": "api-rate-limits-design",
+  "duration_estimate": "6-8 min",
+  "turns": [
+    {
+      "speaker": "host",
+      "text": "Here's something most engineers find out the wrong way: the header that tells you how close you are to a rate limit has been there the whole time. You just weren't reading it."
+    },
+    {
+      "speaker": "expert",
+      "text": "X-RateLimit-Remaining is on every response. The mistake is treating it as something you only check after a 429 fires. By then you've already hit the wall. The right practice is to read it on every response and proactively slow down before the limit triggers."
+    },
+    {
+      "speaker": "host",
+      "text": "What does proactive slowdown actually look like?"
+    },
+    {
+      "speaker": "expert",
+      "text": "You track your real-time position against the ceiling and alert at 80% consumed, not 100%. That gap is where you throttle your request rate rather than waiting to handle rejections. It's the difference between never hitting the wall and managing the bounce."
+    },
+    {
+      "speaker": "host",
+      "text": "The header format itself is in transition right now. There's a new standard that most engineers haven't heard of."
+    },
+    {
+      "speaker": "expert",
+      "text": "IETF draft-11, ratified May 2026, replaces the X-RateLimit-* prefix with RateLimit and RateLimit-Policy fields. Cloudflare adopted it in late 2025. GitHub and Stripe still use the legacy vendor-prefixed headers as of now. Write client code that checks for both rather than hard-coding one format."
+    },
+    {
+      "speaker": "host",
+      "text": "When a 429 does fire, what's the correct order of operations? Most implementations get parts of it right but not all of it."
+    },
+    {
+      "speaker": "expert",
+      "text": "Catch the 429 explicitly, not as a generic network failure. Then read Retry-After first. If the header is present, wait exactly that long. If there's no Retry-After, fall back to exponential backoff with jitter, capped at 3 to 5 attempts, then surface a proper error."
+    },
+    {
+      "speaker": "host",
+      "text": "Why does jitter matter on top of exponential backoff? Can't you just double the wait each time?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Without jitter, every client retrying on the same schedule hits the wall again at the same moment. Full Jitter spreads the retry storm across time and reduces total calls by more than 50% compared to fixed-interval retries under the same load. It prevents the backoff itself from recreating the problem."
+    },
+    {
+      "speaker": "host",
+      "text": "There's a distinction between rate limiting and throttling that I think most people conflate."
+    },
+    {
+      "speaker": "expert",
+      "text": "Rate limiting is a hard cap. The 429 fires and the request is rejected outright. Throttling is softer: it slows or queues the request rather than refusing it. Rate limiting suits programmatic API access where the client handles backoff. Throttling suits user-facing endpoints where a slow response is a better experience than a hard failure."
+    },
+    {
+      "speaker": "host",
+      "text": "And when throttling becomes sustained rather than brief, there's a circuit breaker pattern."
+    },
+    {
+      "speaker": "expert",
+      "text": "A circuit breaker stops sending requests entirely for a cooldown period when the API is consistently throttling. Retry logic handles the exception case. It should not be the plan for a structurally too-high request rate. Those situations need a queue, reduced polling frequency, or a caching layer upstream."
+    },
+    {
+      "speaker": "host",
+      "text": "What's the fastest way to get more done within the limits you already have?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Cache first. If data doesn't change every second, don't fetch it every second. Then batch: check whether the API has a bulk endpoint before defaulting to per-item calls in a loop. A loop making 100 individual calls where one batch endpoint covers the same work burns quota for no reason."
+    },
+    {
+      "speaker": "host",
+      "text": "The auth method you're using can also change the ceiling, not just the code."
+    },
+    {
+      "speaker": "expert",
+      "text": "GitHub Apps get 15,000 requests per hour on the same underlying work that a personal access token caps at 5,000. That's a 3x increase for free, by switching the auth path. Check whether your provider offers a higher-throughput method before assuming your current limit is fixed."
+    },
+    {
+      "speaker": "host",
+      "text": "When does GraphQL actually earn its place over REST? The article is specific about when to reach for it."
+    },
+    {
+      "speaker": "expert",
+      "text": "REST is the right default for anything public or partner-facing. Reach for GraphQL specifically when deeply nested, variable data needs across different client types genuinely justify the added query complexity. Not by default. gRPC is an internal-infrastructure decision for service-to-service work you fully control on both ends."
+    },
+    {
+      "speaker": "host",
+      "text": "MCP is framed as a fourth option, not a replacement for any of those three."
+    },
+    {
+      "speaker": "expert",
+      "text": "MCP is a parallel consumption layer specifically for AI-agent access. It handles auth, discovery, and interaction patterns in a standardised way so agents can consume tools without custom integration for each one. It's the fastest-growing alternative in the sense that it's genuinely new, not a repackaging of REST or GraphQL."
+    },
+    {
+      "speaker": "host",
+      "text": "If someone is starting from zero on this, what's the minimum stack that handles 95% of the problem before a 429 ever fires?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Cache, batch, read headers on every response, and backoff with Full Jitter capped at a fixed retry count. Each pattern removes a category of unnecessary requests or handles the remainder more gracefully. All four together, not any single one in isolation, is what actually keeps you under the ceiling."
+    }
+  ]
+}

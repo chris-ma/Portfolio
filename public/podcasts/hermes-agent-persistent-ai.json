@@ -1,0 +1,87 @@
+{
+  "title": "The Agent That Remembers",
+  "slug": "hermes-agent-persistent-ai",
+  "duration_estimate": "6-8 min",
+  "turns": [
+    {
+      "speaker": "host",
+      "text": "Every AI tool resets between sessions. Hermes is built around the opposite premise. What does that look like in practice?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Hermes runs as a persistent daemon on your own hardware. Every session is indexed into a local SQLite database at ~/.hermes/state.db using FTS5 for full-text search. When you ask what you decided on the authentication schema three weeks ago, it's searching the actual historical record across every session you've ever run, not your current context window."
+    },
+    {
+      "speaker": "host",
+      "text": "Nous Research released this in February 2026 under MIT. What problem were they actually solving?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The re-explanation cost. Every time you open a chat tool you start from zero: your stack, your naming conventions, your project history, the decision you made last week and why. That's a product choice, not a technical constraint. Hermes runs against the opposite assumption: the agent already knows who you are every time you open a session."
+    },
+    {
+      "speaker": "host",
+      "text": "Storing every session sounds like it would get bloated and slow fast. How does Hermes handle that?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Memory is agent-curated, not a raw transcript dump. Hermes periodically reviews what it's logged and decides what's actually worth keeping: condensing, surfacing key decisions, archiving noise. Unlimited transcript accumulation gets expensive and slow quickly. Curated memory stays useful over time."
+    },
+    {
+      "speaker": "host",
+      "text": "The skill document system is the part that feels genuinely new. How does it work?"
+    },
+    {
+      "speaker": "expert",
+      "text": "When Hermes solves something non-trivial, it writes a SKILL.md file: a reusable, portable skill document that captures what it learned. The next time a similar problem comes up, it loads the relevant skill rather than re-solving from scratch. Forty-plus skills ship built-in, and the agentskills.io community hub extends that with a one-command install."
+    },
+    {
+      "speaker": "host",
+      "text": "Do the built-in skills actually matter, or is the whole point the ones the agent generates for you specifically?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The most useful skills are the ones the agent writes from your own work: calibrated to your specific stack, your naming conventions, your preferences. Those aren't generic. The built-ins are a starting point. The community hub adds coverage. But your own accumulated skills are the actual payoff of running a long-lived instance."
+    },
+    {
+      "speaker": "host",
+      "text": "There's a maintenance command called hermes curator. What happens without it?"
+    },
+    {
+      "speaker": "expert",
+      "text": "As a mature instance accumulates skills, overlap and redundancy creep in. Without periodic curation you end up with conflicting skill documents that slow retrieval and produce inconsistent behavior. The curator reviews agent-created skills, consolidates duplicates, archives stale entries, and protects anything you've pinned. Don't skip it."
+    },
+    {
+      "speaker": "host",
+      "text": "One gateway process serving twenty platforms. How does that work?"
+    },
+    {
+      "speaker": "expert",
+      "text": "A single hermes gateway process serves every connected platform simultaneously: Telegram, Discord, Slack, WhatsApp, Signal, email, and roughly a dozen more. Cross-platform continuity means you start a thread on your phone via Telegram, continue it in the terminal, pick it up in your IDE. Same session memory, same context, carried across every surface."
+    },
+    {
+      "speaker": "host",
+      "text": "The optional Honcho integration is described as 'dialectic user modeling.' What does that add?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Instead of re-inferring your working style, your tool preferences, and your project context each session, Honcho builds and maintains a persistent model of who you are across all sessions. The result is an agent that gets progressively better at working with you specifically, not better at generating text generally."
+    },
+    {
+      "speaker": "host",
+      "text": "What are the execution environment options, and when does each one apply?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Four options in increasing isolation: local terminal for trusted tasks you'd run manually, Docker with a read-only root filesystem and dropped capabilities for anything untrusted, SSH remote for production infrastructure without opening it to your local environment, and Modal or Singularity for compute-heavy cloud or HPC workloads."
+    },
+    {
+      "speaker": "host",
+      "text": "How does this compare to Claude Code? The article is direct about when one beats the other."
+    },
+    {
+      "speaker": "expert",
+      "text": "Claude Code is the sharper tool for active development sessions: deeper context engineering, better real-time coding, purpose-built for the pairing model where you're present. Hermes earns its setup overhead for recurring automation, multi-project context management, and unattended overnight tasks. Different tools, different jobs. If you're not doing the unattended work, the setup overhead doesn't pay off."
+    }
+  ]
+}
