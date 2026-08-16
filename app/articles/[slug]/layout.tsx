@@ -14,6 +14,7 @@ export default function ArticleLayout({ children, params }: LayoutProps) {
       <ArticlePodcastPlayer
         title={article?.title ?? ''}
         readTime={article?.readTime ?? '9 min read'}
+        slug={params.slug}
       />
     </>
   )
