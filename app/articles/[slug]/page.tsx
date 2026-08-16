@@ -185,11 +185,19 @@ function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Lede */}
         <section>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
-            The Model Context Protocol is an open standard, introduced by Anthropic in November 2024, that gives an AI model a universal way to connect to external tools, data, and services. One protocol instead of a custom integration per tool. It has since become the de facto standard across the industry — adopted by OpenAI, Google DeepMind, and Microsoft, with the Python and TypeScript SDKs alone seeing roughly 97 million monthly downloads.
+            The Model Context Protocol is an open standard, introduced by Anthropic in November 2024, that gives an AI model a universal way to connect to external tools, data, and services. One protocol instead of a custom integration per tool. It has since become the de facto standard across the industry, adopted by OpenAI, Google DeepMind, and Microsoft, with the Python and TypeScript SDKs alone seeing roughly 97 million monthly downloads.
           </p>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
-            In December 2025, Anthropic donated MCP to the Agentic AI Foundation under the Linux Foundation, with OpenAI and Block joining as co-founders and AWS, Google, Microsoft, Cloudflare, GitHub, and Bloomberg as supporting members. That governance shift matters practically: MCP is no longer a single vendor&rsquo;s protocol that others adopted. It is genuinely neutral infrastructure — which is part of why it is safe to build real workflows around, rather than treating it as a single-vendor bet.
+            In December 2025, Anthropic donated MCP to the Agentic AI Foundation under the Linux Foundation, with OpenAI and Block joining as co-founders and AWS, Google, Microsoft, Cloudflare, GitHub, and Bloomberg as supporting members. That governance shift matters practically: MCP is no longer a single vendor&rsquo;s protocol that others adopted. It is genuinely neutral infrastructure. That is part of why it is safe to build real workflows around, rather than treating it as a single-vendor bet.
           </p>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>MCP went from Anthropic&rsquo;s November 2024 release to Linux Foundation infrastructure in December 2025, with OpenAI, Google, Microsoft, and eight other organisations as co-founders or supporting members.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Python and TypeScript SDKs alone see roughly 97 million monthly downloads, making MCP the de facto cross-vendor standard for AI tool integration.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>One MCP server works with Claude, ChatGPT, Cursor, VS Code, and any compatible host: the server side requires no additional integration work per client.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Three capability layers cover most production needs: tools (actions), resources (read-only data), and sampling (LLM calls). Only sampling requires trust negotiation.</li>
+            </ul>
+          </Callout>
         </section>
 
         {/* Section 01 — The core advantage */}
@@ -405,14 +413,22 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Lede */}
         <section>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
-            Two things happened simultaneously in 2026 and they are directly related. Platforms became AI-ranked distribution engines rather than follower-count reach engines. And the volume of AI-produced content flooding every feed exploded — 87% of marketers used generative AI in at least one recurring workflow in Q1 2026, up from 51% two years prior.
+            Two things happened simultaneously in 2026 and they are directly related. Platforms became AI-ranked distribution engines rather than follower-count reach engines. And the volume of AI-produced content flooding every feed exploded: 87% of marketers used generative AI in at least one recurring workflow in Q1 2026, up from 51% two years prior.
           </p>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
             The result is a squeeze from both sides: getting seen now depends on satisfying an AI ranking system, and getting believed once seen is harder because every feed is flooded with AI-assisted content that mostly looks the same. Winning in social in 2026 means engineering for the algorithm and standing out from the flood it created. Those are really the same problem, applied at different points in the same funnel.
           </p>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
-            The connecting thread to any AEO or GEO work is not coincidental. Social platforms now run what practitioners are calling Social SEO — users type full questions into TikTok and Instagram search bars, and the algorithms scan captions, subtitles, and spoken audio for keyword relevance. The three-gate diagnostic applies almost unmodified: is it discoverable, does the hook earn the click, is the actual answer extractable from the audio or caption in the first three seconds.
+            The connecting thread to any AEO or GEO work is not coincidental. Social platforms now run what practitioners are calling Social SEO. Users type full questions into TikTok and Instagram search bars, and the algorithms scan captions, subtitles, and spoken audio for keyword relevance. The three-gate diagnostic applies almost unmodified: is it discoverable, does the hook earn the click, is the actual answer extractable from the audio or caption in the first three seconds.
           </p>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>87% of marketers used generative AI in at least one recurring workflow in Q1 2026, up from 51% two years prior, flooding feeds with AI-assisted content that looks identical.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Engagement rate by follower count is near-meaningless on algorithm-driven platforms. Use engagement rate by reach for organic reporting, engagement rate by impressions for paid.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Social SEO is real: TikTok and Instagram now scan captions, subtitles, and spoken audio for keyword relevance, making the three-gate AEO framework directly applicable.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>What actually predicts business outcomes sits deeper than likes and views: saves, qualified traffic, assisted conversions, and lead quality are the metrics that matter.</li>
+            </ul>
+          </Callout>
         </section>
 
         {/* Section 01 — The metric trap */}
@@ -677,11 +693,19 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
         {/* Lede */}
         <section>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
-            A model that hallucinates 5% of the time does not fail 5% of the time. Every answer it gives is suspect. Every downstream decision built on its output inherits that uncertainty silently — because the model did not flag it. The confident wrong answer is the failure mode. The hedged, partial answer that admits a gap is not a failure at all.
+            A model that hallucinates 5% of the time does not fail 5% of the time. Every answer it gives is suspect. Every downstream decision built on its output inherits that uncertainty silently, because the model did not flag it. The confident wrong answer is the failure mode. The hedged, partial answer that admits a gap is not a failure at all.
           </p>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
-            On the AA-Omniscience hallucination benchmark, Claude 4.1 Opus scored 0% hallucination. Not because it got everything right, but because it refused to answer when it was uncertain rather than guessing. That data point is the whole argument: the winning move is often not answering. Every technique in this guide is structurally the same move — pushing a model toward admitting uncertainty rather than filling gaps with plausible-sounding invention.
+            On the AA-Omniscience hallucination benchmark, Claude 4.1 Opus scored 0% hallucination. Not because it got everything right, but because it refused to answer when it was uncertain rather than guessing. That data point is the whole argument: the winning move is often not answering. Every technique in this guide is structurally the same move: pushing a model toward admitting uncertainty rather than filling gaps with plausible-sounding invention.
           </p>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>Claude 4.1 Opus scored 0% hallucination on the AA-Omniscience benchmark by refusing to answer when uncertain rather than guessing.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Calibration matters more than accuracy: a model that is right 80% of the time and honest about the remaining 20% is more useful than one that is right 95% and silently wrong 5%.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>RAG with poor retrieval is worse than no RAG: it adds latency and cost while producing ungrounded answers, now with a citation attached to give them unearned authority.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>The 11 techniques all share one structural logic: push the model toward admitting uncertainty rather than filling gaps with plausible-sounding invention.</li>
+            </ul>
+          </Callout>
         </section>
 
         {/* Section 01 — The reframe */}
@@ -984,14 +1008,22 @@ function SelfImprovementArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Lede */}
         <section>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
-            A 2026 narrative review published in Behavioral Sciences synthesised the actual research on AI and wellbeing. Its finding is not that AI helps or does not help. It is more precise than that: real short-term benefits exist — for anxiety, stress, loneliness, self-esteem, skill-building, and social confidence — but the results are inconsistent. The variable that explains the inconsistency is not which tool you use. It is the structure of the interaction, the kind of feedback it gives, and the broader context you are using it in.
+            A 2026 narrative review published in Behavioral Sciences synthesised the actual research on AI and wellbeing. Its finding is not that AI helps or does not help. It is more precise than that: real short-term benefits exist for anxiety, stress, loneliness, self-esteem, skill-building, and social confidence, but the results are inconsistent. The variable that explains the inconsistency is not which tool you use. It is the structure of the interaction, the kind of feedback it gives, and the broader context you are using it in.
           </p>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
-            AI companionship specifically was found to offer real but temporary emotional support — useful in the moment, not a substitute for the kind of connection that compounds over time. That distinction is the load-bearing idea beneath everything that follows.
+            AI companionship specifically was found to offer real but temporary emotional support: useful in the moment, not a substitute for the kind of connection that compounds over time. That distinction is the load-bearing idea beneath everything that follows.
           </p>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
             This is not a case for using AI more. It is a case for using it deliberately, in the places it actually helps, while staying honest about the places it does not.
           </p>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>A 2026 Behavioral Sciences narrative review found real short-term benefits from AI use across anxiety, stress, loneliness, self-esteem, and skill-building, but results are inconsistent.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Structure is the deciding variable: interactions with a clear goal and feedback loop consistently outperform open-ended, unstructured use regardless of which tool is used.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>AI companionship offers real but temporary emotional support: useful in the moment, not a substitute for the kind of connection that compounds over time.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Structured use (processing a specific situation, rehearsing a hard conversation, practising a specific skill) consistently outperforms passive Q&A or generalised emotional support.</li>
+            </ul>
+          </Callout>
         </section>
 
         {/* Section 01 — What the research says */}
@@ -1207,6 +1239,14 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
             This is the standard this guide is built to. Not journey maps as a deliverable. Journey management as an operating model.
           </p>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>Forrester&rsquo;s 2026 research shows the difference between successful and stalled journey mapping is treating it as a continuously fed operating model vs. a one-time deliverable that gets cut at the next budget cycle.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Scope one journey, not &ldquo;the whole customer experience.&rdquo; A well-scoped map of one journey that changes behaviour is worth more than a sweeping map of five that sits in a shared drive.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>NPS, CSAT, and CES answer different questions and are not interchangeable: NPS measures relationship sentiment, CSAT measures interaction quality, CES diagnoses friction.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Journey maps die when they are detached from live data. The work that compounds connects customer feedback directly to the operational metrics that trigger action.</li>
+            </ul>
+          </Callout>
         </section>
 
         {/* Section 01 — Scope */}
@@ -1462,6 +1502,14 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
             A second structural change is reshaping the top of the funnel specifically. Around 60% of Google searches now end without a click. Buyers are getting their first answers inside ChatGPT, Gemini, and Perplexity before they ever reach brand-owned content. That share of awareness is happening on a surface you do not control and cannot put a pixel on, which is why AEO and GEO work is now a parallel TOFU investment rather than a side project.
           </p>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>Only about a third of companies actively optimise each funnel stage independently. The rest treat the whole pipeline as undifferentiated and wonder where qualified buyers went.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Around 60% of Google searches now end without a click: TOFU awareness is increasingly captured inside AI tools before buyers ever reach brand-owned content.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Expansion ARR represents over 40% of new ARR for SaaS companies above $50M, making Loyalty and Advocacy the highest-leverage stages most teams underinvest in.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Applying a TOFU metric to a BOFU decision is the most common funnel measurement error. Each stage needs its own distinct primary KPI, not a single shared scoreboard.</li>
+            </ul>
+          </Callout>
         </section>
 
         {/* Section 01 — Five-stage overview */}
@@ -1707,6 +1755,14 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
             Both investors and internal stakeholders have adjusted accordingly. A deck full of vision does not move either audience anymore. Evidence does. 2026 is the year of proof over promises.
           </p>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>POC, MVP, and Traction prove fundamentally different things. Conflating them is the single most common strategic error at this stage.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>A burn multiple of 1.5&times; or below is the current investor threshold for efficient growth. Above 5&times; is operationally unsustainable regardless of revenue growth rate.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>106% net revenue retention is the Series A benchmark: expansion revenue from existing customers must cover churn, or the growth story does not hold.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>The four-step validation sequence exists to kill bad ideas cheaply, not to justify the ones you already have. Run it in order before committing to a full build.</li>
+            </ul>
+          </Callout>
         </section>
 
         {/* Section 01 — Three things */}
@@ -2028,7 +2084,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
         <section>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
             Taste is not talent. It is not a style you are born liking. It is a trained
-            pattern-recognition skill — built the same way any other pattern-recognition skill
+            pattern-recognition skill, built the same way any other pattern-recognition skill
             is built: repeated exposure to good and bad examples, paired with the discipline of
             naming why one beats the other. Designers who &ldquo;just have an eye&rdquo; spent years doing
             this, usually without calling it training.
@@ -2037,6 +2093,14 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
             The gap between &ldquo;I like this&rdquo; and &ldquo;this works because of X&rdquo; is the entire distance
             between having preferences and having taste. This is the workbook for crossing it.
           </p>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>Taste is a trained pattern-recognition skill, not an innate talent. It is built through repeated exposure to good and bad examples paired with the discipline of naming why one beats the other.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>The Swap Test is the core diagnostic: swap the logo and copy for an unrelated brand. If the design still makes sense, it came from a default, not from the subject.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Typography is the largest single leverage point in frontend design: one display face plus one body face, consistent scale, and maximum contrast in the type itself.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>The two-pass process separates structure (first pass) from polish (second pass). Skipping the first pass produces work that looks finished but cannot be improved systematically.</li>
+            </ul>
+          </Callout>
         </section>
 
         {/* Section 01 — Competent or distinctive */}
@@ -2338,7 +2402,7 @@ function ContentWritingArticle({ article, formattedDate }: { article: ReturnType
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
             The American Dialect Society named &ldquo;AI slop&rdquo; its 2025 Word of the Year.
             Merriam-Webster flagged it as a defining term of the era. Google never needed to
-            penalise AI-generated content specifically — it ranked it the same way it always
+            penalise AI-generated content specifically. It ranked it the same way it always
             ranked everything: does it demonstrate real experience, real expertise, and does it
             actually help the reader?
           </p>
@@ -2347,6 +2411,14 @@ function ContentWritingArticle({ article, formattedDate }: { article: ReturnType
             view, real specifics, and real editorial judgment are present in what ships. AI is a
             legitimate production tool. Skipping the thinking is the actual failure.
           </p>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>A 2025 Edelman study found 73% of consumers can spot AI slop and 61% say it lowers their trust in the source. That is a reader penalty, not an algorithm penalty.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>AI is a legitimate tool for the first 50% of content production. The last 50%, specificity, originality, editorial judgment, and first-hand examples, cannot be delegated.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Google ranks AI-generated content the same way it ranks everything: by whether it demonstrates real experience, expertise, and actually helps the reader.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>E-E-A-T signals that survive algorithmic scrutiny: named references, specific data, first-hand examples, and something that proves the author actually did the thing being written about.</li>
+            </ul>
+          </Callout>
         </section>
 
         {/* Section 1 — What slop actually is */}
@@ -2610,7 +2682,7 @@ function AppSecurityArticle({ article, formattedDate }: { article: ReturnType<ty
         <section>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
             In January 2026, a startup called Moltbook shipped with their Supabase database wide open.
-            No breach, no sophisticated attack — anyone who copied the project URL from the browser
+            No breach, no sophisticated attack: anyone who copied the project URL from the browser
             could make a raw HTTP request and read 1.5 million API keys. The app functioned perfectly.
             Every manual test passed. The database was just sitting there.
           </p>
@@ -2619,6 +2691,14 @@ function AppSecurityArticle({ article, formattedDate }: { article: ReturnType<ty
             creates by default: the gap between an app that <em>works</em> and an app that is <em>secured</em>.
             Nothing in the demo experience tells you the difference.
           </p>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>A 2025 analysis found 10.3% of tested AI-scaffolded apps exposed vulnerable Supabase endpoints due to missing or misconfigured Row Level Security.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Without RLS, the Supabase anon key (which ships inside your JavaScript bundle by design) is a skeleton key to your entire public schema accessible to anyone with a curl command.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Functional correctness and access control are different concerns. Only one shows up in a manual click-through. AI coding tools verify the former; you must verify the latter separately.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>OWASP LLM Top 10:2025 adds two new categories specific to AI systems: Unbounded Consumption and Vector and Embedding Weaknesses. Both are already exploitable in production.</li>
+            </ul>
+          </Callout>
         </section>
 
         {/* Section 1 — Why the demo lies */}
@@ -2999,6 +3079,14 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
             mistake isn't under-engineering AI systems. It's reaching for autonomous loops when a fixed
             workflow would have been cheaper, faster, and far more debuggable.
           </p>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>Anthropic&rsquo;s own engineering guidance: find the simplest solution possible and only increase complexity when a simpler workflow genuinely cannot do the job.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>The practical test: can you enumerate the steps before running them? If yes, build a workflow. If the right next step genuinely depends on what the previous step returned, that is when an agent earns its complexity.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Five workflow patterns cover the vast majority of production AI tasks: prompt chaining, routing, parallelisation, orchestrator-subagents, and evaluator-optimizer loops.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>The ReAct loop (reason, act, observe, repeat) is the correct mental model for genuine agents. Errors compound across steps in ways they cannot in a fixed workflow.</li>
+            </ul>
+          </Callout>
         </section>
 
         {/* Section 1 */}
@@ -3353,9 +3441,17 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
             </p>
             <p className="font-sans text-base text-brand-black/80 leading-relaxed">
               The pipeline is seven steps and conceptually simple. Getting retrieval right is not.
-              Most production mistakes aren&apos;t in the LLM call — they&apos;re in the three steps before it.
+              Most production mistakes aren&apos;t in the LLM call. They&apos;re in the three steps before it.
             </p>
           </div>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>RAG fixes stale training data and hallucination simultaneously by giving the model an actual source to draw from instead of generating plausible-sounding answers from memory.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Bad retrieval is worse than no RAG: it adds latency and cost while producing ungrounded answers, now with a citation attached to give them unearned authority.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Most production RAG failures happen in the three steps before the LLM call: chunking strategy, embedding quality, and retrieval precision, not in the generation step itself.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Hybrid retrieval (keyword plus semantic search) with a reranking step consistently outperforms pure vector search for production use cases with mixed query types.</li>
+            </ul>
+          </Callout>
         </section>
 
         {/* Section 01 — What RAG is */}
@@ -3752,6 +3848,14 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
               Treating them as one is why most AEO advice gives you motion without traction.
             </p>
           </div>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>Content failing Gate 2 (Chosen) is the most common AEO problem: the engine never clicked through because nothing in the snippet signalled a usable answer.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>BrightEdge data shows AI engines are opening a progressively smaller share of candidate results per query, making selection at Gate 2 increasingly competitive.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>The three-gate diagnostic maps to three distinct fixes: technical (Gate 1, Fetchable), snippet and title optimisation (Gate 2, Chosen), and content structure (Gate 3, Extractable).</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Traditional SEO optimises for ranking. AEO optimises for being opened, extracted from, and cited. These are three different mechanisms requiring three different interventions.</li>
+            </ul>
+          </Callout>
         </section>
 
         {/* Section 01 — The core reframe */}
@@ -4149,14 +4253,20 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
         <section>
           <div className="border-l-2 border-brand-cobalt pl-6 space-y-4">
             <p className="font-sans text-base text-brand-black/80 leading-relaxed">
-              In one documented Express.js refactor, Claude Code cost $155. Codex cost $15. Same task, same outcome —
-              a working, passing codebase — but one ran 10× the bill. That gap is real. So is the other direction:
-              blind code-quality reviews of the same output preferred Claude Code 67% of the time vs Codex&apos;s 25%.
+              In one documented Express.js refactor, Claude Code cost $155. Codex cost $15. Same task, same outcome: a working, passing codebase, but one ran 10&times; the bill. That gap is real. So is the other direction: blind code-quality reviews of the same output preferred Claude Code 67% of the time vs Codex&apos;s 25%.
             </p>
             <p className="font-sans text-base text-brand-black/80 leading-relaxed">
               Neither number wins the argument cleanly. They tell you what you&apos;re trading, not what to choose.
             </p>
           </div>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>In one documented Express.js refactor, Claude Code cost $155 vs Codex&rsquo;s $15 for the same passing outcome: a real 10&times; cost difference on an identical task.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Blind code-quality reviews of the same output preferred Claude Code 67% of the time vs Codex&rsquo;s 25%. The quality premium is real and so is the price premium.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Context window is the decisive technical differentiator: 1M tokens (Claude Code) vs 200K (Codex). On tightly coupled legacy codebases, Codex has to sample what Claude Code can hold whole.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Use Codex for well-scoped greenfield work. Use Claude Code for deep legacy refactors where full-codebase context changes the outcome.</li>
+            </ul>
+          </Callout>
         </section>
 
         {/* Section 01 — Context window */}
@@ -4413,9 +4523,17 @@ function PKMArticle({ article, formattedDate }: { article: ReturnType<typeof get
           <div className="border-l-2 border-brand-cobalt pl-6 mb-8">
             <p className="font-sans text-base text-brand-black/80 leading-relaxed">
               Most PKM setups fail the same way: tools overlap, filing decisions happen mid-thought, and
-              maintenance debt compounds until the system collapses. The fix is boundaries — not cleverness.
+              maintenance debt compounds until the system collapses. The fix is boundaries, not cleverness.
             </p>
           </div>
+          <Callout label="Key Takeaways" className="mb-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>Three tools, three distinct jobs: Wispr Flow (capture only), Obsidian (thinking and writing), Notion (anything that needs a status, date, or relation).</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>The filing rule that eliminates mid-thought decisions: does this need a status field? Yes goes to Notion. No goes to Obsidian.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Notion links out to Obsidian; Obsidian never links back to Notion. Directional data flow prevents the synchronisation overhead that collapses most PKM systems.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Wispr Flow&rsquo;s single function is capture as an input method. It has no permanent home for content, only a path into Obsidian or Notion.</li>
+            </ul>
+          </Callout>
 
           <Callout label="The Rule">
             <div className="space-y-2">
@@ -4732,7 +4850,7 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
           </div>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
             Midjourney and Higgsfield are not the same kind of tool in competition. One is built around
-            image quality and aesthetic sensibility — stills, art direction, composition. The other is
+            image quality and aesthetic sensibility: stills, art direction, composition. The other is
             a director's console layered over 30-plus third-party and in-house video models, with
             70-plus named, one-click camera presets as its actual product. You use Midjourney to build
             the frame. You use Higgsfield to move it.
@@ -4743,6 +4861,14 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
             the shot is the wrong workflow. Picking a deliberate camera move for a deliberate narrative
             reason is the right one.
           </p>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>Midjourney V8.2 is built around image quality and Personalisation. Higgsfield is a director&rsquo;s console over 30-plus video models with 70-plus named camera presets. They are not competing tools.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>The quality gap between usable AI video and something that looks directed is not model quality. It is intent: picking a deliberate camera move for a deliberate narrative reason.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Three camera moves worth knowing cold: Dolly (camera physically moves toward or away from subject), Orbit (camera arcs around a fixed subject), Push (simulated zoom applied in post).</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>The universal prompt formula structures every generation: subject, context, style, technical parameters, negative space. Adding all five eliminates most prompt ambiguity.</li>
+            </ul>
+          </Callout>
         </section>
 
         {/* Midjourney section */}
@@ -5025,7 +5151,7 @@ function HermesArticle({ article, formattedDate }: { article: ReturnType<typeof 
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
             Every time you open a chat tool, you start from zero. You re-explain your stack.
             You re-explain your project history, your naming conventions, your preferences, the decision you made
-            last week and why. The model has no memory of any of it — because session tools are designed
+            last week and why. The model has no memory of any of it, because session tools are designed
             to be stateless. That&rsquo;s a product choice, not a technical constraint. And for most
             active-session work, it&rsquo;s a reasonable one.
           </p>
@@ -5037,6 +5163,14 @@ function HermesArticle({ article, formattedDate }: { article: ReturnType<typeof 
             The setup overhead is real. What you get in return is an agent that already knows who you are
             every time you open a session.
           </p>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>Hermes Agent (Nous Research, MIT, February 2026) stores all memory locally in SQLite at ~/.hermes/state.db, indexed with FTS5 for full-text search across every session ever run.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Memory is agent-curated, not a raw transcript dump. Hermes periodically reviews what it has logged and decides what is worth keeping, so the system stays fast and useful over time.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>When Hermes solves a hard problem, it writes a reusable skill document. The next time a similar problem appears, it draws on the documented approach rather than reasoning from scratch.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Use Claude Code for active development sessions where you are present. Use Hermes for deep context accumulation and unattended background tasks that benefit from cross-session memory.</li>
+            </ul>
+          </Callout>
 
           <div className="mt-10 border border-brand-concrete">
             <HermesMemoryTimeline />
@@ -5272,8 +5406,8 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
         {/* Lede */}
         <section>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
-            In April 2026, The Information reported that a Meta employee had built an internal leaderboard —
-            nicknamed &ldquo;Claudeonomics&rdquo; — ranking colleagues by tokens processed and generated.
+            In April 2026, The Information reported that a Meta employee had built an internal leaderboard,
+            nicknamed &ldquo;Claudeonomics,&rdquo; ranking colleagues by tokens processed and generated.
             Top performers earned digital badges with titles like &ldquo;Cache Wizard&rdquo; and &ldquo;Model
             Connoisseur.&rdquo; The highest-ranked individual averaged 281 billion tokens. The leaderboard
             was taken down two days after the report.
@@ -5283,6 +5417,14 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
             that way, and what the people who built similar dashboards at Amazon, Atlassian, and a dozen
             other companies should have tracked instead.
           </p>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>Meta&rsquo;s internal &ldquo;Claudeonomics&rdquo; leaderboard peaked at 281 billion tokens for the highest-ranked individual and was pulled two days after The Information reported on it.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Tokenmaxxing measures consumption, not output. An internal audit of roughly 100,000 prompt logs found approximately 65% of queries were simple tasks that did not need expensive frontier-tier tokens.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Once a metric appears on a leaderboard, behaviour warps around it: padding prompts, redundant parallel agents, and routing every task through frontier models regardless of complexity.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>The corrective metric is tasks completed per dollar. It catches when the same outcome could have been reached with a cheaper model or a shorter, more precise prompt.</li>
+            </ul>
+          </Callout>
         </section>
 
         {/* Section 1 */}
@@ -5522,8 +5664,16 @@ function APIArticle({ article, formattedDate }: { article: ReturnType<typeof get
 
         {/* Lede */}
         <p className="font-sans text-xl text-brand-black/80 leading-relaxed max-w-[680px]">
-          Rate limits are infrastructure. Every API you consume has one, and every API you build should have one. The engineers who treat them as an edge case discover that assumption in production — usually at the worst moment. The engineers who understand them in advance never do.
+          Rate limits are infrastructure. Every API you consume has one, and every API you build should have one. The engineers who treat them as an edge case discover that assumption in production. The engineers who understand them in advance never do.
         </p>
+        <Callout label="Key Takeaways" className="mt-8">
+          <ul className="space-y-1.5 list-none">
+            <li><span className="text-brand-cobalt mr-2">—</span>Read rate limit headers on every response, not just on a 429. By the time a 429 fires, the wall has already been hit. Proactive slowdown prevents the limit from firing at all.</li>
+            <li><span className="text-brand-cobalt mr-2">—</span>IETF draft-11 (May 2026) defines a real standard using RateLimit and RateLimit-Policy fields. Most APIs still use legacy X-RateLimit-* prefixes. Write client code that tolerates both.</li>
+            <li><span className="text-brand-cobalt mr-2">—</span>Full Jitter combined with exponential backoff spreads retry storms across time, reducing total calls by 50%+ compared to fixed-interval retries under the same load.</li>
+            <li><span className="text-brand-cobalt mr-2">—</span>REST is the safe default for public or partner-facing APIs. Reach for GraphQL only when deeply nested, variable data needs across different client types genuinely justify the added query complexity.</li>
+          </ul>
+        </Callout>
 
         {/* Section 01 — Architecture choice */}
         <section>
@@ -5724,14 +5874,22 @@ function DataVizArticle({ article, formattedDate }: { article: ReturnType<typeof
         {/* Lede */}
         <section>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
-            The failure mode in most dashboards isn&rsquo;t the chart library or the color palette. It&rsquo;s that the question was never written down before the building started. &ldquo;Show performance&rdquo; sends you in the wrong direction before you&rsquo;ve opened a tool. &ldquo;Did the Q3 campaign hit its CPA target&rdquo; resolves most downstream design questions automatically — the chart type, what to cut, what to highlight, and what the headline should say.
+            The failure mode in most dashboards isn&rsquo;t the chart library or the color palette. It&rsquo;s that the question was never written down before the building started. &ldquo;Show performance&rdquo; sends you in the wrong direction before you&rsquo;ve opened a tool. &ldquo;Did the Q3 campaign hit its CPA target&rdquo; resolves most downstream design questions automatically: the chart type, what to cut, what to highlight, and what the headline should say.
           </p>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
-            Write the business question in one sentence before picking a chart type. If you can&rsquo;t, the visual isn&rsquo;t ready to build. This sounds obvious and is routinely skipped — which is why most bad dashboards aren&rsquo;t bad because of technology or design skill. They&rsquo;re bad because no one wrote down what decision the chart was supposed to inform.
+            Write the business question in one sentence before picking a chart type. If you can&rsquo;t, the visual isn&rsquo;t ready to build. This sounds obvious and is routinely skipped, which is why most bad dashboards aren&rsquo;t bad because of technology or design skill. They&rsquo;re bad because no one wrote down what decision the chart was supposed to inform.
           </p>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
             Accuracy and readability are separate requirements, not substitutes for each other. A chart can be beautifully designed and still misleading. A technically correct chart can still be unreadable. Both bars have to clear.
           </p>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>Write the business question in one sentence before picking a chart type. If you cannot, the visual is not ready to build.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Perception accuracy follows a clear hierarchy: position on a common scale (bar chart) is the most reliable encoding. Angle (pie) is systematically misjudged. Area (bubble) is consistently underestimated by roughly 30%.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>One high-contrast highlight colour per chart is enough. Multiple accent colours shift cognitive load from the data to decoding the colour legend.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>AI is useful for drafting, labelling, and layout. The business judgment about what to highlight and what to cut requires knowing what decision the chart is supposed to inform.</li>
+            </ul>
+          </Callout>
         </section>
 
         {/* Section 01 — Perception */}
@@ -6025,11 +6183,19 @@ function EmailMarketingArticle({ article, formattedDate }: { article: ReturnType
         {/* Lede */}
         <section>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
-            Email returns $36–$42 for every dollar spent in 2026. Paid search returns $2. Social advertising, $2.80. Display, $1.35. The gap isn&rsquo;t narrowing — it&rsquo;s widening, because AI personalization compounds the return on the channel that already had the highest return. 59% of marketers name email their single most effective revenue channel.
+            Email returns $36–$42 for every dollar spent in 2026. Paid search returns $2. Social advertising, $2.80. Display, $1.35. The gap isn&rsquo;t narrowing. It&rsquo;s widening, because AI personalization compounds the return on the channel that already had the highest return. 59% of marketers name email their single most effective revenue channel.
           </p>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
-            The concentration finding inside that number is the more useful one: roughly 2% of send volume — the automated, behavior-triggered flows — generates 41% of total email revenue. Campaigns and newsletters are real work with real but comparatively thin payback. The welcome series, booking confirmation, and win-back flow are where the leverage actually sits. If you build one thing, the data is explicit about which three.
+            The concentration finding inside that number is the more useful one: roughly 2% of send volume, the automated, behavior-triggered flows, generates 41% of total email revenue. Campaigns and newsletters are real work with real but comparatively thin payback. The welcome series, booking confirmation, and win-back flow are where the leverage actually sits. If you build one thing, the data is explicit about which three.
           </p>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>Email returns $36–$42 per dollar spent in 2026. Paid search returns $2. Social advertising, $2.80. The ROI gap is not narrowing.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Roughly 2% of send volume, the automated behavior-triggered flows, generates 41% of total email revenue. Build the welcome series, booking confirmation, and win-back flow before campaigns.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Open rate is now a directional health check, not a real KPI. Apple&rsquo;s Mail Privacy Protection pre-fetches images for a large share of opens regardless of whether a human actually read the email.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Deliverability is the floor everything else rests on: bounce rate must stay below 2% and unsubscribe rate below 0.5%, or domain reputation degrades and inboxing rates fall across the entire list.</li>
+            </ul>
+          </Callout>
 
           <div className="mt-8 border border-brand-concrete">
             <EmailROIComparisonDiagram />
@@ -6432,14 +6598,22 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
             The three automation platforms have arrived at clear positions. Zapier is the fast path for
             non-technical teams with simple, low-volume needs. Make is the visual canvas for mid-complexity
             work with generous operation pricing. n8n is the choice for teams that want total control over
-            data, cost, and AI integration depth — open-source, self-hostable, execution-based pricing.
+            data, cost, and AI integration depth: open-source, self-hostable, execution-based pricing.
           </p>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
             That market settling is context. The actual 2026 story is different: all three platforms have
             stopped being deterministic trigger-action pipes and started becoming genuine AI orchestration
-            layers. That shift changes not just which tool you pick — it changes what you build with them
+            layers. That shift changes not just which tool you pick. It changes what you build with them
             and how you think about scoping the work.
           </p>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>Three platforms, three contracts: Zapier (8,000+ integrations, simple non-technical deployments), Make (visual canvas, ~10,000 operations for $29/month), n8n (open-source, self-hostable, execution-based pricing, deepest AI integration).</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>All three platforms have shifted from deterministic trigger-action pipes to genuine AI orchestration layers. This changes what you build, not just which tool you pick.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>An AI Agent node inside n8n reasons across steps rather than executing a fixed sequence. This is the qualitative difference between routing and genuine agentic behaviour.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>n8n&rsquo;s MCP Client Tool integration means it can connect to any MCP server, extending its AI workflows to the full ecosystem of MCP-compatible tools and data sources.</li>
+            </ul>
+          </Callout>
         </section>
 
         {/* Section 01 */}
@@ -6695,14 +6869,14 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Lede */}
         <section>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
-            Four of the five leading open-weight models in mid-2026 come from Chinese labs — DeepSeek,
+            Four of the five leading open-weight models in mid-2026 come from Chinese labs: DeepSeek,
             Moonshot AI (Kimi), Zhipu/Z.ai (GLM), and Alibaba (Qwen). This is not a &ldquo;things are
             catching up&rdquo; observation. GLM-5&rsquo;s 77.8% on SWE-bench Verified outperforms
             Gemini 3 Pro. DeepSeek V4 Pro&rsquo;s 80.6% on the same benchmark is within a percentage
             point of Claude Opus 4.6 at 80.9%. The capability gap is closed.
           </p>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
-            The question has shifted. It is no longer whether to consider these models — it is which
+            The question has shifted. It is no longer whether to consider these models. It is which
             one, for which workload, under what deployment and licensing constraints. Both the advantages
             and the risks are real. They are also more specific, and more resolvable, than the public
             discourse suggests.
@@ -6714,6 +6888,14 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
             different controls. Getting that distinction wrong leads to either blanket avoidance of
             genuinely useful tools or blanket acceptance of a profile you have not actually examined.
           </p>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>Four of the five leading open-weight models in mid-2026 come from Chinese labs: DeepSeek, Moonshot AI (Kimi), Zhipu/Z.ai (GLM), and Alibaba (Qwen). The capability gap is closed.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>GLM-5&rsquo;s 77.8% on SWE-bench Verified outperforms Gemini 3 Pro. DeepSeek V4 Pro&rsquo;s 80.6% is within one percentage point of Claude Opus 4.6 at 80.9%.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Compliance risk, security risk, and output-quality risk are different columns on the risk matrix and respond to completely different controls. Collapsing them into a single verdict leads to either blanket avoidance or unexamined acceptance.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Deployment path is the primary risk variable: locally deployed open weights carry a different profile than API calls routed through a Chinese provider&rsquo;s infrastructure.</li>
+            </ul>
+          </Callout>
         </section>
 
         {/* Section 01 */}
@@ -6952,8 +7134,16 @@ function OSINTArticle({ article, formattedDate }: { article: ReturnType<typeof g
 
         {/* Lede */}
         <p className="font-sans text-[15px] leading-[1.75] text-brand-black mb-8">
-          Information your organisation has exposed is already visible to anyone who knows how to look. Security teams call the practice of finding it OSINT — open-source intelligence. The same techniques used to monitor your own exposure are used to map a target before an attack. That dual-use reality is not a disclaimer at the end of a methodology document. It is the reason ethical and legal framing is load-bearing here, not decorative.
+          Information your organisation has exposed is already visible to anyone who knows how to look. Security teams call the practice of finding it OSINT: open-source intelligence. The same techniques used to monitor your own exposure are used to map a target before an attack. That dual-use reality is not a disclaimer at the end of a methodology document. It is the reason ethical and legal framing is load-bearing here, not decorative.
         </p>
+        <Callout label="Key Takeaways" className="mb-8">
+          <ul className="space-y-1.5 list-none">
+            <li><span className="text-brand-cobalt mr-2">—</span>OSINT covers legally accessible public data: social media, public records, news archives, company filings, DNS/WHOIS records, technical infrastructure metadata, and breach-disclosure databases.</li>
+            <li><span className="text-brand-cobalt mr-2">—</span>The same techniques a security team uses to find their own organisation&rsquo;s exposure are what an attacker uses for reconnaissance. Dual-use is the reason ethical framing is load-bearing, not decorative.</li>
+            <li><span className="text-brand-cobalt mr-2">—</span>The four-stage cycle (Planning, Collection, Processing/Analysis, Dissemination) exists to prevent the most common failure: skipping straight from collection to conclusion without corroboration.</li>
+            <li><span className="text-brand-cobalt mr-2">—</span>OSINT is one of nine recognised intelligence disciplines. In business and security contexts, its primary value is as a corroboration layer for other sources, not as a standalone intelligence product.</li>
+          </ul>
+        </Callout>
 
         {/* 01 — What OSINT actually is */}
         <SectionHeading number="01" title="What OSINT actually is" />
@@ -7086,10 +7276,18 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
           </p>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
             OWASP is direct about the consequence: you cannot patch your way out of prompt injection.
-            It exploits how LLMs fundamentally work, not a specific bug you can fix once. And as
-            anything agentic — email access, file-system access, API credentials — gets wired to
-            these models, the ceiling on what a successful injection can achieve rises sharply.
+            It exploits how LLMs fundamentally work, not a specific bug you can fix once. As anything
+            agentic gets wired to these models, email access, file-system access, API credentials, the
+            ceiling on what a successful injection can achieve rises sharply.
           </p>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>Prompt injection has held the OWASP Top 10 for LLM Applications #1 spot for two consecutive editions because it exploits how LLMs fundamentally work, not a specific bug.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>At one injection attempt the success rate is 4.7%. At one hundred attempts it climbs to 63%. This is the argument for defense in depth and monitoring, not just a single good filter.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>The ceiling on impact scales directly with what the compromised model is allowed to do. An agent with email, file-system, and API access has a much higher ceiling than a read-only chatbot.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>You cannot patch your way out of prompt injection. Mitigation requires layering: content segregation, least-privilege tooling, human approval for irreversible actions, input/output filtering, and regular red-teaming.</li>
+            </ul>
+          </Callout>
         </section>
 
         {/* Section 01 */}
