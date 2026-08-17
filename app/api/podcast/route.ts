@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server'
 import { readFileSync } from 'fs'
 import { join } from 'path'
-import urlMap from '../../../public/podcast-audio-urls.json'
+import { list, put } from '@vercel/blob'
 
 export const maxDuration = 60
 
@@ -55,13 +55,17 @@ export async function GET(req: NextRequest) {
     })
   }
 
-  // Serve pre-generated audio from Vercel Blob if available
-  const prebuiltUrl = (urlMap as Record<string, string>)[slug]
-  if (prebuiltUrl) {
-    return Response.redirect(prebuiltUrl, 302)
+  // Check Vercel Blob for previously generated audio
+  try {
+    const { blobs } = await list({ prefix: `podcasts/${slug}.wav`, limit: 1 })
+    if (blobs.length > 0) {
+      return Response.redirect(blobs[0].url, 302)
+    }
+  } catch {
+    // Blob not configured — fall through to live generation
   }
 
-  // Fall back to live Gemini TTS generation
+  // Live Gemini TTS generation
   const apiKey = process.env.GOOGLE_AI_API_KEY
   if (!apiKey) {
     return new Response(JSON.stringify({ error: 'Podcast not configured' }), {
@@ -139,12 +143,21 @@ export async function GET(req: NextRequest) {
   const contentType = isPcm ? 'audio/wav' : mimeType
   const audioBuffer = Buffer.from(isPcm ? pcmToWav(raw) : raw)
 
-  return new Response(audioBuffer, {
-    headers: {
-      'Content-Type': contentType,
-      'Content-Length': audioBuffer.length.toString(),
-      'Cache-Control': 'no-store',
-      'X-Audio-Mime': mimeType || '(empty)',
-    },
-  })
+  // Upload to Blob so future plays are instant CDN redirects
+  try {
+    const blob = await put(`podcasts/${slug}.wav`, audioBuffer, {
+      access: 'public',
+      contentType: 'audio/wav',
+    })
+    return Response.redirect(blob.url, 302)
+  } catch {
+    // Blob upload failed — stream directly as fallback
+    return new Response(audioBuffer, {
+      headers: {
+        'Content-Type': contentType,
+        'Content-Length': audioBuffer.length.toString(),
+        'Cache-Control': 'no-store',
+      },
+    })
+  }
 }
