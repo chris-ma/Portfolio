@@ -9,7 +9,7 @@
     },
     {
       "speaker": "expert",
-      "text": "Email returns $36 to $42 for every dollar spent in 2026. Paid search returns $2. Social advertising, $2.80. Display, $1.35. Fifty-nine percent of marketers name email their single most effective revenue channel. AI personalization compounds the return on the channel that already had the highest return."
+      "text": "Email returns $36 to $42 for every dollar spent in 2026. Paid search returns $2. Social advertising, $2.80. Display, $1.35. Fifty-nine percent of marketers name email their single most effective revenue channel. The gap isn't narrowing."
     },
     {
       "speaker": "host",
@@ -17,7 +17,7 @@
     },
     {
       "speaker": "expert",
-      "text": "Roughly 2% of send volume, the automated behavior-triggered flows, generates 41% of total email revenue. Campaigns and newsletters produce real but comparatively thin returns. The welcome series, booking confirmation, and win-back flow are where the leverage actually sits. If you build one thing, the data is explicit about which three."
+      "text": "Roughly 2% of send volume, the automated behavior-triggered flows, generates 41% of total email revenue. Campaigns and newsletters produce real but comparatively thin returns. The welcome series, booking confirmation, and win-back flow are where the leverage sits. The data is explicit about which three to build first."
     },
     {
       "speaker": "host",
@@ -25,7 +25,7 @@
     },
     {
       "speaker": "expert",
-      "text": "Apple's Mail Privacy Protection pre-fetches images for a large share of opens regardless of whether a human actually read the email. That structurally inflates the metric in a way you cannot correct for. Automated flow open rates still carry signal at 48 to 68%. The all-industry rate at 21 to 31% is directional only. CTOR is now the primary engagement KPI to anchor decisions on."
+      "text": "Apple's Mail Privacy Protection pre-fetches images for a large share of opens regardless of whether a human actually read the email. That structurally inflates the metric in a way you cannot correct for. Automated flow open rates still carry signal at 48 to 68%. The all-industry rate at 21 to 31% is directional only. CTOR is now the primary engagement KPI."
     },
     {
       "speaker": "host",
@@ -33,7 +33,7 @@
     },
     {
       "speaker": "expert",
-      "text": "Bounce rate above 2% and unsubscribe rate above 0.5% damage sender reputation for all sends, not just those to the problem contacts. A deliverability problem suppresses your real engagement numbers before you ever see it in clicks or revenue, which is exactly what makes it dangerous. You fix a symptom you haven't seen yet."
+      "text": "Bounce rate above 2% and unsubscribe rate above 0.5% damage sender reputation for all sends, not just those to the problem contacts. A deliverability problem suppresses your real engagement numbers before you ever see it in clicks or revenue, which is exactly what makes it dangerous."
     },
     {
       "speaker": "host",
@@ -41,7 +41,7 @@
     },
     {
       "speaker": "expert",
-      "text": "SPF, DKIM, and DMARC set to monitoring means you observe failures without blocking them. Enforcement is what actually protects sender reputation and passes mailbox providers' increasingly AI-driven filtering. Having DMARC configured in monitoring mode is not the same as being protected. This is the concrete checkable item to look at first when deliverability numbers look soft."
+      "text": "SPF, DKIM, and DMARC in monitoring mode means you observe failures without blocking them. Enforcement is what actually protects sender reputation and passes mailbox providers' increasingly AI-driven filtering. Having DMARC configured in monitoring mode is not the same as being protected."
     },
     {
       "speaker": "host",
@@ -49,11 +49,11 @@
     },
     {
       "speaker": "expert",
-      "text": "Three to five emails over 7 to 14 days covering introduction, product education, and value reinforcement. The roughly 35% open rate happens because it reaches people at peak interest, right after they opted in. The attention window is real and finite. A welcome sequence that doesn't exist leaves the highest-engagement moment in the entire subscriber lifecycle with nothing in it."
+      "text": "Three to five emails over 7 to 14 days covering introduction, product education, and value reinforcement. The roughly 35% open rate happens because it reaches people at peak interest, right after they opted in. The attention window is real and finite. A welcome sequence that doesn't exist leaves the highest-engagement moment in the subscriber lifecycle empty."
     },
     {
       "speaker": "host",
-      "text": "The win-back flow has an unusual double function that isn't obvious."
+      "text": "The win-back flow has an unusual double function that isn't obvious at first."
     },
     {
       "speaker": "expert",
@@ -69,27 +69,19 @@
     },
     {
       "speaker": "host",
-      "text": "AI adoption in email is heading toward 97% by 2030. Does that mean the advantage disappears?"
+      "text": "AI adoption in email is heading toward 97% by 2030. Does the advantage disappear as everyone uses it?"
     },
     {
       "speaker": "expert",
-      "text": "The advantage shifts from using AI to using it well. Sixty-one percent of enterprise email programs are already using AI for at least one campaign element. At scale, similarly structured AI-generated sends can trigger pattern detection in mailbox providers' filters, affecting inbox placement. The differentiation now is avoiding 'AI slop' at volume."
+      "text": "The advantage shifts from using AI to using it well. Sixty-one percent of enterprise email programs are already using AI for at least one campaign element. At scale, similarly structured AI-generated sends can trigger pattern detection in mailbox providers' filters. The differentiation now is not producing 'AI slop' at volume."
     },
     {
       "speaker": "host",
-      "text": "Zero-party data comes up as the fuel for AI personalization. What's the highest-yield way to collect it?"
+      "text": "Zero-party data comes up as the fuel AI personalization depends on. What's the highest-yield way to collect it?"
     },
     {
       "speaker": "expert",
-      "text": "Quiz funnels and direct preference-capture mechanisms, where a person tells you explicitly what they want rather than having behavior inferred, give you the highest-quality signal. As cookieless tracking erodes behavioral inference across the web, zero-party data collected through email interactions becomes increasingly valuable. The channel that collects the preference also benefits from it."
-    },
-    {
-      "speaker": "host",
-      "text": "The abandoned action flow has expanded beyond just abandoned carts."
-    },
-    {
-      "speaker": "expert",
-      "text": "Browse abandonment, wishlist reminders, and multi-step nurture that addresses specific purchase hesitations rather than a single generic reminder. In a B2B context, the direct analog is a form-start-without-completion or a content-download-without-follow-through trigger. The underlying logic is identical: someone expressed intent and didn't complete. Automated follow-up consistently recovers near-miss conversions."
+      "text": "Quiz funnels and direct preference-capture mechanisms, where a person tells you explicitly what they want rather than having behavior inferred, give you the highest-quality signal. As cookieless tracking erodes behavioral inference across the web, zero-party data collected through email interactions becomes increasingly valuable."
     },
     {
       "speaker": "host",
@@ -97,7 +89,15 @@
     },
     {
       "speaker": "expert",
-      "text": "Triggering the next email off actual behavior. Viewed pricing sends comparison content. Downloaded a guide invites to a webinar. If the next email in the sequence doesn't change based on what the contact just did, the behavioral trigger layer doesn't exist yet. This is a marketing automation problem, not a content problem. The content may already exist."
+      "text": "Triggering the next email off actual behavior. Viewed pricing sends comparison content. Downloaded a guide invites to a webinar. If the next email in the sequence doesn't change based on what the contact just did, the behavioral trigger layer doesn't exist yet. This is a marketing automation problem, not a content problem."
+    },
+    {
+      "speaker": "host",
+      "text": "List hygiene is framed as a deliverability lever, not a list-management chore."
+    },
+    {
+      "speaker": "expert",
+      "text": "Continued sends to unengaged contacts signal to mailbox providers that your list is poorly managed, and that signal damages reputation for all sends, not just those to unengaged contacts. A smaller, genuinely engaged list consistently outperforms a larger, stale one on every metric that matters, including reach."
     },
     {
       "speaker": "host",
@@ -105,15 +105,15 @@
     },
     {
       "speaker": "expert",
-      "text": "Check which of the five flows actually exist and in what order they were built. If the newsletter program got more attention than the welcome, confirmation, and win-back trio, that's the gap to close first. Then shift primary reporting from open rate to CTOR and revenue per send. Those two changes, before anything else, reorient the program toward what the data says actually matters."
+      "text": "Check which of the five flows actually exist and in what order they were built. If the newsletter program got more attention than the welcome, confirmation, and win-back trio, that's the gap to close first. Then shift primary reporting from open rate to CTOR and revenue per send."
     },
     {
       "speaker": "host",
-      "text": "There's a framing at the end of the article about where the real leverage is concentrated."
+      "text": "The closing framing is that everything else is diminishing returns until those automated flows exist."
     },
     {
       "speaker": "expert",
-      "text": "The channel with the highest ROI also has the highest concentration of returns in the smallest slice of its activity. That 2% of send volume is where the build priority belongs. Everything else is diminishing returns until the automated flows exist. Campaigns get attention because they're visible and scheduled. The flows get neglected because they run unnoticed after setup. The data says the unnoticed work is the leverage."
+      "text": "Campaigns get attention because they're visible and scheduled. Automated flows get neglected because they run unnoticed after setup. That 2% of send volume is where the build priority belongs. The data says the unnoticed work is the leverage."
     }
   ]
 }

@@ -9,7 +9,7 @@
     },
     {
       "speaker": "expert",
-      "text": "LLMs process instructions and the data they're working on through the same channel, with no built-in separation between the two. When a model reads 'here is an email, summarize it' followed by the email text, it has no hard boundary telling it everything after a certain point is data, not commands. If the email contains something that looks like an instruction, the model cannot reliably tell the difference."
+      "text": "LLMs process instructions and the data they're working on through the same channel, with no built-in separation between the two. When a model reads 'here is an email, summarize it' followed by the actual email text, it has no hard boundary telling it that everything after a certain point is data, not commands. If the email contains something that looks like an instruction, the model cannot reliably tell the difference."
     },
     {
       "speaker": "host",
@@ -17,7 +17,7 @@
     },
     {
       "speaker": "expert",
-      "text": "Direct injection, where the user explicitly types the malicious instruction, is harder to execute because the input comes from a user you can scrutinize directly. Indirect injection is the one that matters for anything agentic. The attacker types nothing into your interface. They embed instructions inside content the model will later process, a webpage, a document, an email, a Slack message."
+      "text": "Direct injection, where the user explicitly types the malicious instruction, is harder to execute because the input comes from a user you can apply scrutiny to. Indirect injection is the one that matters for anything agentic. The attacker types nothing into your interface. They embed instructions inside content the model will later process, a webpage, a document, an email, a Slack message."
     },
     {
       "speaker": "host",
@@ -41,11 +41,11 @@
     },
     {
       "speaker": "expert",
-      "text": "Exactly. And the ceiling on what a successful injection can achieve scales directly with what the compromised model is allowed to do. A chatbot with no tool access has a low ceiling. An agent with email access, file-system access, and API credentials has a much higher one. Prevention has to focus as much on limiting what a model can do as on stopping it from being tricked."
+      "text": "And the ceiling on what a successful injection can achieve scales directly with what the compromised model is allowed to do. A chatbot with no tool access has a low ceiling. An agent with email access, file-system access, and API credentials has a much higher one. Prevention has to focus as much on limiting what a model can do as on stopping it from being tricked."
     },
     {
       "speaker": "host",
-      "text": "OWASP is direct about something important here: you cannot patch your way out of this."
+      "text": "OWASP is direct about this: you cannot patch your way out of prompt injection."
     },
     {
       "speaker": "expert",
@@ -69,7 +69,7 @@
     },
     {
       "speaker": "host",
-      "text": "For irreversible actions specifically, there's a backstop that's more reliable than any filter."
+      "text": "For irreversible actions specifically, there's a backstop more reliable than any filter."
     },
     {
       "speaker": "expert",
@@ -81,27 +81,27 @@
     },
     {
       "speaker": "expert",
-      "text": "Instruction override, data exfiltration, unauthorized tool calls using the agent's own legitimate permissions, system prompt leakage enabling more targeted follow-on attacks, and downstream chain corruption where a single injected instruction early in a multi-step workflow quietly corrupts subsequent steps that trust earlier outputs."
+      "text": "Instruction override, data exfiltration, unauthorized tool calls using the agent's own legitimate permissions, system prompt leakage enabling more targeted follow-on attacks, and downstream chain corruption, where a single injected instruction early in a multi-step workflow quietly corrupts subsequent steps that trust earlier outputs."
     },
     {
       "speaker": "host",
-      "text": "There's a misconception that RAG or fine-tuning on your own data closes this gap."
+      "text": "There's a misconception the article addresses directly: that RAG or fine-tuning on your own data closes this gap."
     },
     {
       "speaker": "expert",
-      "text": "Both are still vulnerable to malicious content smuggled into whatever they process. Fine-tuning changes what the model knows. RAG changes what it retrieves. Neither changes the fact that untrusted content passes through the same channel as instructions. Defense in depth remains necessary regardless of whether you've also invested in RAG or fine-tuning for other reasons. These are separate problems."
+      "text": "Both are still vulnerable to malicious content smuggled into whatever they process. Fine-tuning changes what the model knows. RAG changes what it retrieves. Neither changes the fact that untrusted content passes through the same channel as instructions. Defense in depth remains necessary regardless. These are separate problems."
     },
     {
       "speaker": "host",
-      "text": "Input and output filtering covers known attack patterns, but has a specific limitation."
+      "text": "Input and output filtering has a specific limitation that makes it one layer rather than a solution."
     },
     {
       "speaker": "expert",
-      "text": "It catches what you've seen before. Novel attacks get through, which is exactly why it's one layer among several rather than a complete solution. Pair it with content segregation and least-privilege tooling and it adds real value. Treat it as the whole answer and you've built a defense that fails on the first technique it hasn't seen."
+      "text": "It catches what you've seen before. Novel attacks get through, which is exactly why it's one layer among several rather than a complete solution. Pair it with content segregation and least-privilege tooling and it adds real value. Treat it as the whole answer and you have a defense that fails on the first technique it hasn't seen."
     },
     {
       "speaker": "host",
-      "text": "The testing side also needs a regular cadence. A pre-launch audit isn't the right model."
+      "text": "The testing side needs a regular cadence. A pre-launch audit isn't the right model."
     },
     {
       "speaker": "expert",
@@ -113,7 +113,7 @@
     },
     {
       "speaker": "expert",
-      "text": "Anything processing untrusted external content: a webpage summarizer, an email triage tool, a document reviewer, an n8n workflow reading inbound Slack messages. Build these assuming the content might contain hidden instructions, not as an edge case to patch later. Every external tool call in an agentic workflow is a potential injection vector if the data feeding that step originates from anything outside your direct control."
+      "text": "Anything processing untrusted external content: a webpage summarizer, an email triage tool, a document reviewer, an n8n workflow reading inbound Slack messages. Build these assuming the content might contain hidden instructions. Every external tool call in an agentic workflow is a potential injection vector if the data feeding that step originates from anything outside your direct control."
     }
   ]
 }

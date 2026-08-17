@@ -25,7 +25,7 @@
     },
     {
       "speaker": "expert",
-      "text": "That's the figure. LinkedIn sits at 5.20% average overall, but carousels pull well above that at 21.77% median, highest of any format on any platform tracked. Instagram carousels also outperform Reels significantly, at 6.90% versus Reels at 3.31%, against an overall Instagram average of 0.48%."
+      "text": "That's the figure. LinkedIn sits at 5.20% average overall, but carousels pull well above that at 21.77% median. Instagram carousels also significantly outperform Reels: 6.90% versus Reels at 3.31%, against an overall Instagram average of just 0.48%."
     },
     {
       "speaker": "host",
@@ -33,39 +33,39 @@
     },
     {
       "speaker": "expert",
-      "text": "It tells you that watch time and completion rate are the primary quality signals the algorithm reads, above raw view count. Short, high-retention content consistently beats longer content with high drop-off across TikTok, Reels, and Shorts. The hook in the first three seconds is doing algorithmic work, not just narrative work: it proves to the distribution system that the content is worth showing more people."
+      "text": "Watch time and completion rate are the primary quality signals, above raw view count. Short, high-retention content consistently beats longer content with high drop-off across TikTok, Reels, and Shorts. The hook in the first three seconds is doing algorithmic work before it does any narrative work: it proves to the distribution system that the content is worth showing more people."
     },
     {
       "speaker": "host",
-      "text": "87% of marketers used generative AI in Q1 2026. What does that mean for organic performance?"
+      "text": "87% of marketers used generative AI in Q1 2026, up from 51% two years prior. What does that mean for organic performance?"
     },
     {
       "speaker": "expert",
-      "text": "It means generic AI-assisted content is now the baseline everyone has, not a differentiator. On a platform flooded with it, the specific first-hand detail is what actually separates a post from the noise. The brands winning with AI are using it to remove production bottlenecks, not to replace the editorial judgment about what's worth making."
+      "text": "Generic AI-assisted content is now the baseline everyone has, not a differentiator. On a platform flooded with it, the specific first-hand detail is what actually separates a post from the noise. The brands winning with AI are using it to remove production bottlenecks, not to replace the editorial judgment about what's worth making."
     },
     {
       "speaker": "host",
-      "text": "Saves, qualified traffic, assisted conversions. Why do those matter more than likes?"
+      "text": "Why do saves and qualified traffic matter more than likes?"
     },
     {
       "speaker": "expert",
-      "text": "Raw engagement, likes and views, is becoming less predictive every quarter because platforms got too good at generating lightweight, low-friction interaction. What's actually predictive now sits further down: saves, qualified traffic, assisted conversions, return visits, lead quality. A lower engagement number tied to genuine intent is often worth more than a higher one driven by broad, low-commitment entertainment reach."
+      "text": "Raw engagement, likes and views, is becoming less predictive every quarter because platforms got too good at generating lightweight, low-friction interaction. What's actually predictive now sits further down: saves, qualified traffic, assisted conversions, lead quality. A lower engagement number tied to genuine intent is often worth more than a higher one driven by broad, low-commitment entertainment reach."
     },
     {
       "speaker": "host",
-      "text": "Threads gets 42% engagement lift from responsiveness. That's higher than any other platform tracked?"
+      "text": "Threads gets a 42% engagement lift from responsiveness. That's higher than any other platform tracked?"
     },
     {
       "speaker": "expert",
-      "text": "Yes, 42% is the highest lift from comment reply engagement of any platform tracked, compared to roughly 30% on LinkedIn and 21% on Instagram. It's also one of the highest-leverage, lowest-cost actions available across all platforms. Most teams still treat replying to comments as an afterthought rather than a standing workflow habit."
+      "text": "Yes, 42% is the highest lift from comment reply engagement of any platform tracked, compared to roughly 30% on LinkedIn and 21% on Instagram. It's also one of the highest-leverage, lowest-cost actions available. Most teams still treat replying to comments as an afterthought rather than a standing workflow habit."
     },
     {
       "speaker": "host",
-      "text": "Social SEO is the idea that TikTok and Instagram are search engines now. Is that actually playing out?"
+      "text": "Social SEO, the idea that TikTok and Instagram are search engines now. Is that actually playing out?"
     },
     {
       "speaker": "expert",
-      "text": "Users are typing full questions directly into TikTok and Instagram search bars rather than starting on Google. Both platforms scan captions, on-screen text, and spoken audio transcripts for keyword relevance. Saying a keyword out loud in the first three seconds of a video measurably improves search ranking within the platform. The three-gate AEO framework maps almost directly: discoverable, chosen, extractable."
+      "text": "Users are typing full questions directly into TikTok and Instagram search bars rather than starting on Google. Both platforms scan captions, on-screen text, and spoken audio transcripts for keyword relevance. Saying a keyword out loud in the first three seconds of a video measurably improves search ranking within the platform."
     },
     {
       "speaker": "host",
@@ -73,7 +73,7 @@
     },
     {
       "speaker": "expert",
-      "text": "Posts with outbound links are consistently deprioritized because platforms optimize for in-app time. A genuinely useful carousel or a complete answer in the caption now outperforms content built primarily as a funnel to a landing page. Social is increasingly a destination for top and middle of funnel content, not a pipe to somewhere else. The full value has to live inside the post."
+      "text": "Posts with outbound links are consistently deprioritized because platforms optimize for in-app time. A genuinely useful carousel or a complete answer in the caption now outperforms content built primarily as a funnel to a landing page. Social is increasingly a destination for top and middle of funnel content, not a pipe to somewhere else."
     },
     {
       "speaker": "host",
@@ -85,43 +85,11 @@
     },
     {
       "speaker": "host",
-      "text": "You mentioned LinkedIn is the meaningful exception to the followers-don't-matter rule. Why?"
-    },
-    {
-      "speaker": "expert",
-      "text": "LinkedIn's algorithm still gives measurable weight to the follower relationship, which is why follower growth rate remains a KPI worth tracking specifically on that platform. On Instagram or TikTok, growing a following has diminishing returns relative to content quality. LinkedIn is the one place where the traditional audience-building logic still holds."
-    },
-    {
-      "speaker": "host",
       "text": "UK active social posting rates fell from 61% to 49% since 2024. What's driving that?"
     },
     {
       "speaker": "expert",
-      "text": "Roughly two-thirds of US teens now use an AI chatbot at least sometimes for things social media used to provide. Social platforms are increasingly competing with AI interfaces for raw discretionary attention. The UK posting-rate drop reflects a broader shift where passive consumption continues but active participation, posting, sharing, and commenting, is declining."
-    },
-    {
-      "speaker": "host",
-      "text": "If you had to name one metric per platform that actually matters, what's the list?"
-    },
-    {
-      "speaker": "expert",
-      "text": "On TikTok: average view duration and completion rate in the first 24 hours, not raw view count. On Instagram: saves and the carousel engagement rate specifically. On LinkedIn: carousel engagement and lead quality over raw CTR. On YouTube: average view duration, the primary algorithmic ranking signal above view count. On Threads: reply rate."
-    },
-    {
-      "speaker": "host",
-      "text": "The X benchmark of 0.12% average engagement. What's the practical implication for teams still investing there?"
-    },
-    {
-      "speaker": "expert",
-      "text": "Set expectations accordingly and don't judge X numbers against any other platform. It's the lowest-engagement major platform by a significant margin. The implication isn't necessarily to abandon it, but to calibrate what success looks like rather than comparing its numbers to LinkedIn carousels or TikTok completion rates."
-    },
-    {
-      "speaker": "host",
-      "text": "Write captions like mini-answers. Can you make that concrete?"
-    },
-    {
-      "speaker": "expert",
-      "text": "Social SEO rewards content that resolves a specific question in the caption itself. A caption that answers what someone typed into TikTok search outperforms a vague tagline. Same discipline as AEO applied to a caption field: the answer has to be extractable without clicking through. Say the search term aloud in the first three seconds of any video, because audio transcripts are actively scanned."
+      "text": "Roughly two-thirds of US teens now use an AI chatbot at least sometimes for things social media used to provide. Social platforms are increasingly competing with AI interfaces for raw discretionary attention. The drop reflects a broader shift where passive consumption continues but active participation is declining."
     },
     {
       "speaker": "host",
@@ -129,15 +97,7 @@
     },
     {
       "speaker": "expert",
-      "text": "Using AI for production speed and skipping the editorial judgment about what's worth making and why. The AI produces roughly the first half of the work. The differentiated, trust-earning half is still a human editorial call. On a platform flooded with AI-assisted content that mostly looks the same, the specific first-hand detail is the only thing that actually separates a post from the noise."
-    },
-    {
-      "speaker": "host",
-      "text": "What's the smallest change a team can make this week that would have the highest return?"
-    },
-    {
-      "speaker": "expert",
-      "text": "Reply to your own comments as a standing habit, not an afterthought. It's one of the highest-lift, lowest-cost levers available: up to 30% engagement lift on LinkedIn, 21% on Instagram, 42% on Threads. Most teams still skip it because it doesn't feel like strategy, but the algorithm reads it as a quality signal."
+      "text": "Using AI for production speed and skipping the editorial judgment about what's worth making and why. The AI produces roughly the first half of the work. The differentiated, trust-earning half is still a human editorial call. On a platform flooded with AI-assisted content that mostly looks the same, the specific first-hand detail is the only differentiator."
     },
     {
       "speaker": "host",
@@ -145,7 +105,7 @@
     },
     {
       "speaker": "expert",
-      "text": "Three to five primary KPIs tied to an actual business goal. For a growth goal: reach, engagement rate by reach, follower growth rate. For a revenue goal: CTR, conversion rate, social ROI. One primary KPI is genuinely enough; everything else is context, not a second scoreboard. A 40-metric dashboard is not a strategy."
+      "text": "Three to five primary KPIs tied to an actual business goal. For a growth goal: reach, engagement rate by reach, follower growth rate. For a revenue goal: CTR, conversion rate, social ROI. One primary KPI is genuinely enough. A 40-metric dashboard is not a strategy, and never benchmark across platforms: a 0.5% engagement rate is healthy on Instagram and a warning sign on TikTok."
     }
   ]
 }

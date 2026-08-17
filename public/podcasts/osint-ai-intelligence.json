@@ -5,7 +5,7 @@
   "turns": [
     {
       "speaker": "host",
-      "text": "The title of this article is 'Already Public.' What's the core claim?"
+      "text": "The title of this article is 'Already Public.' What's the core claim it's making?"
     },
     {
       "speaker": "expert",
@@ -25,11 +25,11 @@
     },
     {
       "speaker": "expert",
-      "text": "The most common way OSINT work goes wrong is skipping straight from collection to conclusion without the analysis and corroboration steps. A raw search result is a data point. Intelligence is that data point placed in context, corroborated across multiple independent sources, and connected to a decision someone can act on."
+      "text": "The most common way OSINT work goes wrong is skipping straight from collection to conclusion without the analysis and corroboration steps. A raw search result is a data point. Intelligence is that data point placed in context, corroborated across multiple independent sources, and connected to a decision someone can actually act on."
     },
     {
       "speaker": "host",
-      "text": "OSINT is one of nine recognized intelligence disciplines. How does it relate to the others?"
+      "text": "OSINT is one of nine recognized intelligence disciplines. How does it sit relative to the others?"
     },
     {
       "speaker": "expert",
@@ -61,19 +61,11 @@
     },
     {
       "speaker": "host",
-      "text": "Link analysis is another area where AI changed the math significantly."
+      "text": "On the ethics side, the article draws a clear distinction between profiling organizations and profiling individuals."
     },
     {
       "speaker": "expert",
-      "text": "What used to be manual graph-building, connecting infrastructure nodes, domains, and threat actors by hand, can now be partially automated. The corroboration step still requires human judgment. But the volume of sources that can be checked in parallel has changed significantly. Relationships that would never have been visible from any single search now surface automatically."
-    },
-    {
-      "speaker": "host",
-      "text": "On the ethics side, there's a clear distinction in the article between profiling organizations and profiling individuals."
-    },
-    {
-      "speaker": "expert",
-      "text": "Public-facing corporate information, published research, infrastructure exposure, and brand mentions are the legitimate core of business OSINT. Anything that starts to look like profiling a specific private individual, their movements, relationships, and habits, requires a real specific legal and ethical basis before proceeding. That's where the legal and ethical exposure actually is."
+      "text": "Public-facing corporate information, published research, infrastructure exposure, and brand mentions are the legitimate core of business OSINT. Anything that starts to look like profiling a specific private individual, their movements, relationships, and habits, requires a real specific legal and ethical basis before proceeding. That's where the legal exposure actually is."
     },
     {
       "speaker": "host",
@@ -81,7 +73,7 @@
     },
     {
       "speaker": "expert",
-      "text": "Open-ended collection, 'let's see what we can find on this person or company,' is where ethical and legal problems start. Knowing specifically what question you're trying to answer and why disciplines the scope before you're looking at information you had no legitimate reason to collect. The objective defines the boundary."
+      "text": "Open-ended collection, 'let's see what we can find on this person or company,' is where ethical and legal problems start. Knowing specifically what question you're trying to answer and why disciplines the scope before you're looking at information you had no legitimate reason to collect."
     },
     {
       "speaker": "host",
@@ -89,23 +81,31 @@
     },
     {
       "speaker": "expert",
-      "text": "A single unverified public data point should never be the sole basis for a real decision, whether that's a hiring decision, a partnership, or an accusation. Multiple independent sources reduce false positives. That step still requires human judgment, even with AI making the volume of sources that can be checked in parallel much larger."
+      "text": "A single unverified public data point should never be the sole basis for a real decision, whether that's a hiring decision, a partnership, or an accusation. Multiple independent sources reduce false positives. With AI making the volume of sources checkable in parallel much larger, the corroboration step still requires human judgment."
     },
     {
       "speaker": "host",
-      "text": "GEOINT is listed as relevant for supply-chain risk. That's a less obvious application."
+      "text": "What does it mean in practice that OSINT is a collection method, not the finished product?"
     },
     {
       "speaker": "expert",
-      "text": "Geospatial intelligence crosses into OSINT territory when it draws on publicly available satellite imagery, shipping data, and location metadata. For supply-chain risk and market analysis, that data is increasingly accessible through commercial sources. SIGINT and MASINT, by contrast, are government and defense domains with no meaningful business-context overlap."
+      "text": "Threat intelligence, competitive intelligence, and due diligence are the broader disciplines that combine OSINT with proprietary data, internal context, and analytical judgment to produce something a decision-maker can act on. A raw search result is a data point. That data point placed in context, corroborated and connected to a decision, is intelligence."
     },
     {
       "speaker": "host",
-      "text": "What does the article mean when it says intent, authorization, and defined scope matter as much as the technique itself?"
+      "text": "Platform terms of service are listed as a genuine constraint, not a formality."
     },
     {
       "speaker": "expert",
-      "text": "The same search that a security team runs on their own organization is the same search an attacker runs on a target. The technique is identical. The discipline is identical. What differs is who is doing it, whether they have authorization, and what they intend to do with the result. The dual-use reality means the technique alone doesn't determine the ethics."
+      "text": "What is technically accessible is not automatically legal or appropriate to collect and use. This varies by jurisdiction and by what the information will be used for. Respecting platform terms of service and applicable privacy law is one of the five core principles precisely because the technical capability to access something doesn't answer the question of whether you should."
+    },
+    {
+      "speaker": "host",
+      "text": "What's the framing that holds across all six application areas of AI-assisted OSINT?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The same category of technique that a security team uses to find their own organization's exposure is what an attacker uses for reconnaissance. The discipline is identical. The target and the intent are what differ. Intent, authorization, and defined scope matter as much as the technique itself."
     },
     {
       "speaker": "host",
