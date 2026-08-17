@@ -1,6 +1,7 @@
 import { NextRequest } from 'next/server'
 import { readFileSync } from 'fs'
 import { join } from 'path'
+import urlMap from '../../../public/podcast-audio-urls.json'
 
 export const maxDuration = 60
 
@@ -32,7 +33,7 @@ function pcmToWav(pcm: Buffer, sampleRate = 24000, channels = 1, bitDepth = 16):
   wav.write('WAVE', 8)
   wav.write('fmt ', 12)
   wav.writeUInt32LE(16, 16)
-  wav.writeUInt16LE(1, 20)                                       // PCM format
+  wav.writeUInt16LE(1, 20)
   wav.writeUInt16LE(channels, 22)
   wav.writeUInt32LE(sampleRate, 24)
   wav.writeUInt32LE(sampleRate * channels * (bitDepth / 8), 28)
@@ -45,19 +46,26 @@ function pcmToWav(pcm: Buffer, sampleRate = 24000, channels = 1, bitDepth = 16):
 }
 
 export async function GET(req: NextRequest) {
-  const apiKey = process.env.GOOGLE_AI_API_KEY
-  if (!apiKey) {
-    return new Response(JSON.stringify({ error: 'Podcast not configured' }), {
-      status: 503,
-      headers: { 'Content-Type': 'application/json' },
-    })
-  }
-
   const { searchParams } = new URL(req.url)
   const slug = searchParams.get('slug')
   if (!slug || !/^[a-z0-9-]+$/.test(slug)) {
     return new Response(JSON.stringify({ error: 'Invalid slug' }), {
       status: 400,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }
+
+  // Serve pre-generated audio from Vercel Blob if available
+  const prebuiltUrl = (urlMap as Record<string, string>)[slug]
+  if (prebuiltUrl) {
+    return Response.redirect(prebuiltUrl, 302)
+  }
+
+  // Fall back to live Gemini TTS generation
+  const apiKey = process.env.GOOGLE_AI_API_KEY
+  if (!apiKey) {
+    return new Response(JSON.stringify({ error: 'Podcast not configured' }), {
+      status: 503,
       headers: { 'Content-Type': 'application/json' },
     })
   }
@@ -127,7 +135,6 @@ export async function GET(req: NextRequest) {
   const mimeType: string = inlineData?.mimeType ?? ''
   const mimeTypeLower = mimeType.toLowerCase()
 
-  // Wrap raw PCM in WAV so browsers can decode it (case-insensitive check)
   const isPcm = mimeTypeLower.includes('l16') || mimeTypeLower.includes('pcm') || mimeType === ''
   const contentType = isPcm ? 'audio/wav' : mimeType
   const audioBuffer = Buffer.from(isPcm ? pcmToWav(raw) : raw)
