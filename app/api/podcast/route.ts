@@ -2,6 +2,8 @@ import { NextRequest } from 'next/server'
 import { readFileSync } from 'fs'
 import { join } from 'path'
 
+export const maxDuration = 60
+
 interface DialogueTurn {
   speaker: 'host' | 'expert'
   text: string
@@ -14,11 +16,32 @@ interface PodcastScript {
   turns: DialogueTurn[]
 }
 
-// Build dialogue text with speaker tags for Gemini multi-speaker TTS
 function buildDialogueText(turns: DialogueTurn[]): string {
   return turns
     .map((t) => `${t.speaker === 'host' ? 'Host' : 'Expert'}: ${t.text}`)
     .join('\n')
+}
+
+// Gemini TTS returns raw 24kHz 16-bit mono PCM. Browsers can't play raw PCM,
+// so we wrap it in a minimal WAV container before sending.
+function pcmToWav(pcm: Buffer, sampleRate = 24000, channels = 1, bitDepth = 16): Buffer {
+  const dataSize = pcm.length
+  const wav = Buffer.allocUnsafe(44 + dataSize)
+  wav.write('RIFF', 0)
+  wav.writeUInt32LE(36 + dataSize, 4)
+  wav.write('WAVE', 8)
+  wav.write('fmt ', 12)
+  wav.writeUInt32LE(16, 16)
+  wav.writeUInt16LE(1, 20)                                       // PCM format
+  wav.writeUInt16LE(channels, 22)
+  wav.writeUInt32LE(sampleRate, 24)
+  wav.writeUInt32LE(sampleRate * channels * (bitDepth / 8), 28)
+  wav.writeUInt16LE(channels * (bitDepth / 8), 32)
+  wav.writeUInt16LE(bitDepth, 34)
+  wav.write('data', 36)
+  wav.writeUInt32LE(dataSize, 40)
+  pcm.copy(wav, 44)
+  return wav
 }
 
 export async function GET(req: NextRequest) {
@@ -91,8 +114,8 @@ export async function GET(req: NextRequest) {
 
   const data = await geminiRes.json()
 
-  // Gemini returns audio as base64-encoded inline data
-  const audioData = data?.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data
+  const inlineData = data?.candidates?.[0]?.content?.parts?.[0]?.inlineData
+  const audioData: string | undefined = inlineData?.data
   if (!audioData) {
     return new Response(JSON.stringify({ error: 'No audio in Gemini response' }), {
       status: 502,
@@ -100,10 +123,18 @@ export async function GET(req: NextRequest) {
     })
   }
 
-  const audioBuffer = Buffer.from(audioData, 'base64')
+  const raw = Buffer.from(audioData, 'base64')
+  const mimeType: string = inlineData?.mimeType ?? ''
+
+  // Wrap raw PCM in WAV so browsers can decode it
+  const isPcm = mimeType.includes('L16') || mimeType.includes('pcm') || mimeType === ''
+  const contentType = isPcm ? 'audio/wav' : mimeType
+  // Buffer.from() strips the generic ArrayBufferLike parameter so Response accepts it
+  const audioBuffer = Buffer.from(isPcm ? pcmToWav(raw) : raw)
+
   return new Response(audioBuffer, {
     headers: {
-      'Content-Type': 'audio/mpeg',
+      'Content-Type': contentType,
       'Content-Length': audioBuffer.length.toString(),
       'Cache-Control': 'no-store',
     },
