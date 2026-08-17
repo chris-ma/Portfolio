@@ -28,6 +28,7 @@ import {
   EmailROIComparisonDiagram, RevenueConcentrationDiagram, EmailFlowPriorityDiagram, DeliverabilityStackDiagram,
   APIArchitectureDiagram, BackoffJitterDiagram, RateLimitStackDiagram,
 } from '@/components/articles/ArticleMockups'
+import RecommendedReading from '@/components/articles/RecommendedReading'
 
 interface PageProps {
   params: { slug: string }
@@ -357,6 +358,12 @@ function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof get
           </p>
         </section>
 
+        <RecommendedReading items={[
+          { title: 'Model Context Protocol Documentation', author: 'Anthropic · anthropic.com', type: 'Article', description: 'The canonical specification and developer guide for MCP — covers the full message schema, transport options, and tool definition format.' },
+          { title: 'Toolformer: Language Models Can Teach Themselves to Use Tools', author: 'Schick et al. · arXiv 2023', type: 'Paper', description: 'The research that established tool use as a first-class capability for language models, directly preceding the protocol standardization effort.' },
+          { title: 'Designing Web APIs', author: 'Brenda Jin, Saurabh Sahni & Amir Shevat · O\'Reilly Media', type: 'Book', description: 'Practical patterns for API design that translate cleanly to the server-side of MCP implementations — schema design, versioning, error handling.' },
+        ]} />
+
       </div>
 
       {/* Footer nav */}
@@ -636,6 +643,12 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
             The algorithm distributes based on interest graph relevance, not audience size — which means the work is now in earning distribution on every post, not accumulating it once.
           </p>
         </section>
+
+        <RecommendedReading items={[
+          { title: 'Influence: The Psychology of Persuasion', author: 'Robert Cialdini · Harper Business', type: 'Book', description: 'The six principles of influence — reciprocity, commitment, social proof, authority, liking, scarcity — are the mechanics behind every algorithm\'s engagement signal.' },
+          { title: 'Contagious: Why Things Catch On', author: 'Jonah Berger · Simon & Schuster', type: 'Book', description: 'A Wharton professor\'s STEPPS framework for virality — Social Currency, Triggers, Emotion, Public, Practical Value, Stories — grounded in empirical research.' },
+          { title: 'Engagement as a Design Metric', author: 'MIT Technology Review', type: 'Article', description: 'A critical examination of how platforms optimise for engagement and what that optimisation actually measures — important context for reading any platform analytics.' },
+        ]} />
 
       </div>
 
@@ -952,6 +965,12 @@ Reason step-by-step before your final answer. For each claim, note your confiden
           </p>
         </section>
 
+        <RecommendedReading items={[
+          { title: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks', author: 'Lewis et al. · NeurIPS 2020', type: 'Paper', description: 'The original RAG paper from Facebook AI Research — establishes the architecture that remains the dominant approach for grounding LLMs in factual sources.' },
+          { title: 'TruthfulQA: Measuring How Models Mimic Human Falsehoods', author: 'Lin et al. · ACL 2022', type: 'Paper', description: 'Introduces the benchmark that exposes how LLMs replicate popular misconceptions and why perplexity-based evaluation misses truthfulness entirely.' },
+          { title: 'Weapons of Math Destruction', author: 'Cathy O\'Neil · Crown Publishers', type: 'Book', description: 'A data scientist\'s account of what happens when algorithmic outputs are treated as ground truth — essential critical context for any AI deployment.' },
+        ]} />
+
       </div>
 
       {/* Footer nav */}
@@ -1185,6 +1204,12 @@ function SelfImprovementArticle({ article, formattedDate }: { article: ReturnTyp
             The tool is not the deciding factor. The structure is.
           </p>
         </section>
+
+        <RecommendedReading items={[
+          { title: 'Deep Work', author: 'Cal Newport · Grand Central Publishing', type: 'Book', description: 'The case for protecting blocks of distraction-free concentration as the scarcest and most valuable professional resource — now more relevant in an AI-assisted world.' },
+          { title: 'Four Thousand Weeks', author: 'Oliver Burkeman · Farrar, Straus and Giroux', type: 'Book', description: 'A philosophical reframe of productivity: you will never do everything, so the question is which constraints to accept — pairs directly with any AI leverage argument.' },
+          { title: 'Claude\'s Model Spec', author: 'Anthropic · anthropic.com', type: 'Article', description: 'Anthropic\'s public document on how Claude is trained to behave — the clearest published articulation of what responsible AI self-improvement actually means.' },
+        ]} />
       </div>
     </div>
   )
@@ -1448,6 +1473,12 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
             The map is only as good as what it changes.
           </p>
         </section>
+
+        <RecommendedReading items={[
+          { title: 'This Is Service Design Doing', author: 'Stickdorn, Hormess, Lawrence & Schneider · O\'Reilly Media', type: 'Book', description: 'The most comprehensive practitioner handbook on service design — journey mapping, blueprinting, research synthesis, and implementation all covered with field-tested methods.' },
+          { title: 'Jobs to Be Done: Theory to Practice', author: 'Anthony Ulwick · Idea Bite Press', type: 'Book', description: 'The quantitative complement to qualitative journey work — JTBD provides the \'why\' that prevents journey maps from becoming outputs with no outcome.' },
+          { title: 'The Lean UX', author: 'Jeff Gothelf & Josh Seiden · O\'Reilly Media', type: 'Book', description: 'Integrates UX research (including journey work) into agile product cycles so insights actually ship — closes the gap between discovery and delivery.' },
+        ]} />
       </div>
     </div>
   )
@@ -1705,6 +1736,12 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
             The funnel is not broken. The assumption that it runs in a straight line is.
           </p>
         </section>
+
+        <RecommendedReading items={[
+          { title: 'Predictably Irrational', author: 'Dan Ariely · Harper Perennial', type: 'Book', description: 'Behavioural economics experiments that explain why standard funnel assumptions about rational buyers are wrong, and what actually moves people to act.' },
+          { title: 'Traction: How Any Startup Can Achieve Explosive Customer Growth', author: 'Gabriel Weinberg & Justin Mares', type: 'Book', description: 'A systematic framework for finding the acquisition channel that will move the needle — tests 19 channels against a Bullseye method rather than guessing.' },
+          { title: 'Hooked: How to Build Habit-Forming Products', author: 'Nir Eyal · Portfolio/Penguin', type: 'Book', description: 'The Hook model (Trigger → Action → Variable Reward → Investment) maps directly onto retention engineering in the lower funnel.' },
+        ]} />
       </div>
     </div>
   )
@@ -2024,6 +2061,12 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
           </p>
         </section>
 
+        <RecommendedReading items={[
+          { title: 'The Lean Startup', author: 'Eric Ries · Crown Business', type: 'Book', description: 'The book that codified build-measure-learn as a discipline — the MVP concept originated here, including the critical distinction between validated and vanity learning.' },
+          { title: 'Zero to One', author: 'Peter Thiel & Blake Masters · Crown Business', type: 'Book', description: 'Contrarian takes on competition, monopoly, and distribution that challenge the standard advice — particularly the chapter on sales as an engineering problem.' },
+          { title: 'The Mom Test', author: 'Rob Fitzpatrick · CreateSpace', type: 'Book', description: 'The most practical guide to customer interviews — teaches you to ask questions that surface real intent rather than polite encouragement.' },
+        ]} />
+
         {/* Footer */}
         <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
           <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
@@ -2341,6 +2384,12 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
           </p>
         </section>
 
+        <RecommendedReading items={[
+          { title: 'The Design of Everyday Things', author: 'Don Norman · Basic Books', type: 'Book', description: 'The foundational text on human-centred design — affordances, signifiers, and feedback loops that explain why some interfaces feel obvious and others feel broken.' },
+          { title: 'Refactoring UI', author: 'Adam Wathan & Steve Schoger', type: 'Book', description: 'Practical visual design for developers: specific rules for spacing, typography, colour, and hierarchy that produce professional results without formal design training.' },
+          { title: 'Grid Systems in Graphic Design', author: 'Josef Müller-Brockmann · Niggli Verlag', type: 'Book', description: 'The original systematic treatment of typographic grids — understanding this makes every layout decision intentional rather than intuitive.' },
+        ]} />
+
       </div>
 
       <footer className="max-w-[900px] mx-auto px-6 md:px-10 py-10 border-t border-brand-concrete mt-6">
@@ -2621,6 +2670,12 @@ Inflated vocabulary standing in for a real claim
             The writing is the thinking. Skip that part, and it shows.
           </p>
         </section>
+
+        <RecommendedReading items={[
+          { title: 'They Ask You Answer', author: 'Marcus Sheridan · Wiley', type: 'Book', description: 'A revenue-first approach to content: answer every question your customers ask, with full transparency — the method behind River Pools becoming the most-visited pool site on the internet.' },
+          { title: 'Google Search Quality Rater Guidelines', author: 'Google · google.com/search/docs', type: 'Article', description: 'The actual document Google\'s human quality raters use — reading it directly tells you what E-E-A-T means in practice, not in interpretation.' },
+          { title: 'Building a StoryBrand', author: 'Donald Miller · HarperCollins Leadership', type: 'Book', description: 'Seven-part narrative framework that clarifies brand messaging — prevents the expert\'s curse from making content incomprehensible to the audience it\'s meant to help.' },
+        ]} />
 
       </div>
 
@@ -3011,6 +3066,12 @@ CREATE POLICY "users update own profile" ON profiles
           </p>
         </section>
 
+        <RecommendedReading items={[
+          { title: 'OWASP Top 10', author: 'OWASP Foundation · owasp.org', type: 'Article', description: 'The definitive ranked list of critical web application security risks, updated regularly by the open security community — the baseline for any security review.' },
+          { title: 'The Web Application Hacker\'s Handbook', author: 'Stuttard & Pinto · Wiley', type: 'Book', description: 'Comprehensive attack-and-defend coverage of SQL injection, authentication flaws, access control, and CSRF — understanding the attack is the prerequisite for the defence.' },
+          { title: 'Security Engineering', author: 'Ross Anderson · Wiley', type: 'Book', description: 'The most thorough academic treatment of building secure systems, covering cryptography, protocols, and psychology of security failure — freely available online.' },
+        ]} />
+
         {/* Back link */}
         <div className="border-t border-brand-concrete pt-8">
           <Link
@@ -3334,6 +3395,12 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
             ))}
           </div>
         </section>
+
+        <RecommendedReading items={[
+          { title: 'ReAct: Synergizing Reasoning and Acting in Language Models', author: 'Yao et al. · arXiv 2022', type: 'Paper', description: 'The paper that established the Reason + Act loop as a viable LLM architecture — the conceptual foundation for every agent framework built since.' },
+          { title: 'Thinking, Fast and Slow', author: 'Daniel Kahneman · Farrar, Straus and Giroux', type: 'Book', description: 'The cognitive science behind when to trust fast intuitive outputs versus slow deliberate reasoning — maps directly onto when to use single-shot LLM calls versus multi-step agent loops.' },
+          { title: 'Agents', author: 'Lilian Weng · lilianweng.github.io', type: 'Article', description: 'The most widely cited technical overview of LLM agent architectures — planning, memory, tool use, and multi-agent coordination explained with both diagrams and implementation detail.' },
+        ]} />
 
         {/* Footer */}
         <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
@@ -3746,6 +3813,12 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
           </p>
         </section>
 
+        <RecommendedReading items={[
+          { title: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks', author: 'Lewis et al. · NeurIPS 2020', type: 'Paper', description: 'The original RAG paper — establishes the retriever-generator architecture and shows it outperforms parametric models on open-domain QA while remaining updateable without retraining.' },
+          { title: 'Dense Passage Retrieval for Open-Domain Question Answering', author: 'Karpukhin et al. · EMNLP 2020', type: 'Paper', description: 'Introduces the bi-encoder retrieval approach that powers most production RAG systems — shows dense retrieval substantially outperforms BM25 on knowledge tasks.' },
+          { title: 'Speech and Language Processing', author: 'Daniel Jurafsky & James Martin · Stanford University (draft)', type: 'Book', description: 'The standard NLP textbook, with up-to-date chapters on dense retrieval, vector semantics, and language model architecture — freely available at web.stanford.edu/~jurafsky/slp3.' },
+        ]} />
+
         <div className="border-t border-brand-concrete pt-8">
           <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
             ← Back to Field Notes
@@ -4132,6 +4205,12 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
           </p>
         </section>
 
+        <RecommendedReading items={[
+          { title: 'They Ask You Answer', author: 'Marcus Sheridan · Wiley', type: 'Book', description: 'The method that anticipated answer-engine optimisation before the term existed — full transparency, direct answers, and genuine expertise as the content strategy.' },
+          { title: 'How Google Search Works', author: 'Google Search Central · developers.google.com', type: 'Article', description: 'Google\'s own explanation of crawling, indexing, and ranking — reading primary source documentation removes the guesswork from optimisation decisions.' },
+          { title: 'Content Chemistry', author: 'Andy Crestodina · Orbit Media Studios', type: 'Book', description: 'A data-driven content marketing handbook from someone who has surveyed thousands of bloggers annually for a decade — grounded in evidence rather than theory.' },
+        ]} />
+
         <div className="border-t border-brand-concrete pt-8">
           <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
             ← Back to Field Notes
@@ -4435,6 +4514,12 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
             it&apos;s which workflow fits what you&apos;re building today.
           </p>
         </section>
+
+        <RecommendedReading items={[
+          { title: 'Evaluating Large Language Models Trained on Code (HumanEval)', author: 'Chen et al. · arXiv 2021', type: 'Paper', description: 'The paper that introduced the HumanEval benchmark and established code generation as a measurable LLM capability — the methodology behind most subsequent coding benchmarks.' },
+          { title: 'The Impact of AI on Developer Productivity: Evidence from GitHub Copilot', author: 'Peng et al. · arXiv 2023', type: 'Paper', description: 'A controlled experiment showing Copilot users completed tasks 55% faster — the most rigorous published study on AI-assisted coding productivity to date.' },
+          { title: 'A Philosophy of Software Design', author: 'John Ousterhout · Yaknyam Press', type: 'Book', description: 'The clearest articulation of what good code design actually means — essential for evaluating AI-generated code rather than accepting it uncritically.' },
+        ]} />
 
         {/* Back link */}
         <div className="border-t border-brand-concrete pt-8">
@@ -4791,6 +4876,12 @@ tags: []
           </p>
         </section>
 
+        <RecommendedReading items={[
+          { title: 'Building a Second Brain', author: 'Tiago Forte · Atria Books', type: 'Book', description: 'The PARA method (Projects, Areas, Resources, Archive) for organising digital notes — the framework most compatible with Obsidian\'s folder and tag structure.' },
+          { title: 'How to Take Smart Notes', author: 'Sönke Ahrens · Independently Published', type: 'Book', description: 'An explanation of Niklas Luhmann\'s Zettelkasten method — the practice behind Obsidian\'s linked-thinking design and the origin of the evergreen note concept.' },
+          { title: 'Getting Things Done', author: 'David Allen · Penguin Books', type: 'Book', description: 'The capture-clarify-organise-reflect-engage workflow that complements any PKM system — particularly relevant to the inbox and action-item layer of a multi-tool stack.' },
+        ]} />
+
         {/* Back link */}
         <div className="border-t border-brand-concrete pt-8">
           <Link
@@ -5067,6 +5158,12 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
           </div>
         </section>
 
+        <RecommendedReading items={[
+          { title: 'Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding (Imagen)', author: 'Saharia et al. · Google Research, arXiv 2022', type: 'Paper', description: 'The research behind Google\'s Imagen model — explains how cascaded diffusion with large language model conditioning produces coherent, detailed images from text.' },
+          { title: 'The Creativity Code', author: 'Marcus du Sautoy · Harvard University Press', type: 'Book', description: 'An Oxford mathematician examines whether machines can genuinely create — covers generative art, music, and language with both technical precision and philosophical depth.' },
+          { title: 'Ways of Seeing', author: 'John Berger · Penguin Modern Classics', type: 'Book', description: 'The foundational text on how cultural context shapes visual interpretation — essential for understanding what it means to direct rather than simply prompt an image model.' },
+        ]} />
+
         {/* Footer */}
         <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
           <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
@@ -5335,6 +5432,12 @@ hermes gateway install   # install as a systemd service (runs on reboot)`}</Code
             </p>
           </Callout>
         </section>
+
+        <RecommendedReading items={[
+          { title: 'MemGPT: Towards LLMs as Operating Systems', author: 'Packer et al. · arXiv 2023', type: 'Paper', description: 'The research prototype that formalized the idea of giving LLMs a tiered memory system — main context as RAM, external storage as disk — directly influencing persistent agent design.' },
+          { title: 'Building Effective Agents', author: 'Anthropic · anthropic.com/research', type: 'Article', description: 'Anthropic\'s published guidance on agent architecture patterns — covers memory, tool use, and orchestration with concrete implementation examples.' },
+          { title: 'The Alignment Problem', author: 'Brian Christian · W. W. Norton', type: 'Book', description: 'A journalist\'s clear-eyed account of what it actually takes to make AI systems do what we want — grounding reading before deploying any autonomous agent.' },
+        ]} />
 
         {/* Footer */}
         <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
@@ -5610,6 +5713,12 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
           </div>
         </section>
 
+        <RecommendedReading items={[
+          { title: 'Deep Work', author: 'Cal Newport · Grand Central Publishing', type: 'Book', description: 'The intellectual case for protecting distraction-free concentration — the argument that depth, not volume, is the unit of knowledge work productivity.' },
+          { title: 'Thinking, Fast and Slow', author: 'Daniel Kahneman · Farrar, Straus and Giroux', type: 'Book', description: 'System 1 and System 2 thinking — the cognitive science foundation for understanding when to offload to AI versus when human judgment is non-negotiable.' },
+          { title: 'Measuring Developer Productivity', author: 'McKinsey & Company · mckinsey.com', type: 'Article', description: 'A rigorous look at what productivity metrics actually capture versus what they miss — useful calibration for anyone tempted to measure AI leverage by tokens per hour.' },
+        ]} />
+
         {/* Footer */}
         <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
           <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
@@ -5826,6 +5935,12 @@ Retry-After: 60`}</CodeBlock>
         <p className="font-sans text-base text-brand-black/60 leading-relaxed border-t border-brand-concrete/30 pt-8 max-w-[600px]">
           The header that tells you how close you are to the wall has been there the whole time. The four-pattern stack is not complicated — it is just the discipline of reading it before the 429 fires, and knowing what to do when it does.
         </p>
+
+        <RecommendedReading items={[
+          { title: 'Designing Distributed Systems', author: 'Brendan Burns · O\'Reilly Media', type: 'Book', description: 'Patterns and idioms for container-based distributed systems, covering rate limiting, load balancing, and fault tolerance.' },
+          { title: 'Rate Limiting, Cells, and GCRA', author: 'Stripe Engineering Blog', type: 'Article', description: 'How Stripe implements token-bucket rate limiting in production, with the math behind Generic Cell Rate Algorithm.' },
+          { title: 'The Art of Scalability', author: 'Martin Abbott & Michael Fisher · Addison-Wesley', type: 'Book', description: 'A practical framework for scaling people, process, and technology — including quota and throttle design at each scale dimension.' },
+        ]} />
       </div>
     </div>
   )
@@ -6121,6 +6236,12 @@ function DataVizArticle({ article, formattedDate }: { article: ReturnType<typeof
             ))}
           </div>
         </section>
+
+        <RecommendedReading items={[
+          { title: 'The Visual Display of Quantitative Information', author: 'Edward Tufte · Graphics Press', type: 'Book', description: 'The definitive text on data graphics. Tufte\'s data-ink ratio principle alone changes how you evaluate every chart you produce.' },
+          { title: 'Storytelling with Data', author: 'Cole Nussbaumer Knaflic · Wiley', type: 'Book', description: 'Practical guide to turning spreadsheets into narratives that drive decisions — focused on business audiences, not academic ones.' },
+          { title: 'How Charts Lie', author: 'Alberto Cairo · W. W. Norton', type: 'Book', description: 'A journalist and visualization researcher explains the seven ways charts mislead, and how to read them critically.' },
+        ]} />
 
         {/* Footer */}
         <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
@@ -6429,6 +6550,12 @@ function EmailMarketingArticle({ article, formattedDate }: { article: ReturnType
             <RevenueConcentrationDiagram />
           </div>
         </section>
+
+        <RecommendedReading items={[
+          { title: 'Permission Marketing', author: 'Seth Godin · Simon & Schuster', type: 'Book', description: 'The foundational argument that earned attention outperforms interruption marketing — written in 1999, more relevant now than ever.' },
+          { title: 'Email Marketing Rules', author: 'Chad White · CreateSpace', type: 'Book', description: 'A structured playbook covering subscriber acquisition, segmentation, lifecycle flows, and deliverability from a senior industry analyst.' },
+          { title: 'Building a StoryBrand', author: 'Donald Miller · HarperCollins Leadership', type: 'Book', description: 'A seven-part messaging framework that clarifies copy at every funnel stage — applies directly to subject lines and nurture sequences.' },
+        ]} />
 
         {/* Footer */}
         <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
@@ -6820,6 +6947,12 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
           </p>
         </section>
 
+        <RecommendedReading items={[
+          { title: 'Work the System', author: 'Sam Carpenter · Greenleaf Book Group', type: 'Book', description: 'A systems-thinking manifesto for small business owners — argues that documenting and optimizing processes is the only durable growth strategy.' },
+          { title: 'The E-Myth Revisited', author: 'Michael Gerber · HarperCollins', type: 'Book', description: 'The classic case for systematizing every repeatable task so the business runs on procedures rather than heroics.' },
+          { title: 'Thinking in Systems', author: 'Donella Meadows · Chelsea Green Publishing', type: 'Book', description: 'The foundational text on systems dynamics — teaches you to see feedback loops and leverage points, which is exactly how good automation is designed.' },
+        ]} />
+
       </div>
 
       {/* Footer nav */}
@@ -7089,6 +7222,12 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
           </p>
         </section>
 
+        <RecommendedReading items={[
+          { title: 'DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning', author: 'DeepSeek AI · arXiv 2025', type: 'Paper', description: 'The full technical report behind DeepSeek-R1 — shows exactly how a Chinese lab matched frontier reasoning at a fraction of the reported cost.' },
+          { title: 'The Coming Wave', author: 'Mustafa Suleyman · Crown Currency', type: 'Book', description: 'By the co-founder of DeepMind and current CEO of Microsoft AI — a serious argument about AI containment that doesn\'t flinch from the geopolitical dimension.' },
+          { title: 'On the Measure of Intelligence', author: 'François Chollet · arXiv 2019', type: 'Paper', description: 'Reframes what we mean by AI capability and benchmarking — useful context for evaluating open-weight model claims with appropriate skepticism.' },
+        ]} />
+
       </div>
 
       {/* Footer nav */}
@@ -7224,6 +7363,12 @@ function OSINTArticle({ article, formattedDate }: { article: ReturnType<typeof g
         <p className="font-sans text-[15px] leading-[1.75] text-brand-black mt-10">
           The information is there either way. The question is whether you look before someone else does.
         </p>
+
+        <RecommendedReading items={[
+          { title: 'Open Source Intelligence Techniques', author: 'Michael Bazzell · IntelTechniques', type: 'Book', description: 'The practitioner\'s handbook for OSINT: search operators, metadata extraction, social graph analysis, and investigative workflows.' },
+          { title: 'The Art of Invisibility', author: 'Kevin Mitnick · Little, Brown and Company', type: 'Book', description: 'The world\'s most famous hacker explains what data you leave behind and how adversaries collect it — essential threat-model reading.' },
+          { title: 'Adversarial Examples Are Not Easily Detected', author: 'Carlini & Wagner · ACM CCS 2017', type: 'Paper', description: 'Seminal paper showing that AI-based detection systems are themselves vulnerable to targeted manipulation — directly relevant to AI-augmented OSINT.' },
+        ]} />
       </article>
     </div>
   )
@@ -7510,6 +7655,12 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
             The attack surface is not the model — it is every piece of untrusted content you let the model touch, and everything you let it do with what it finds there.
           </p>
         </section>
+
+        <RecommendedReading items={[
+          { title: 'OWASP Top 10 for Large Language Model Applications', author: 'OWASP Foundation · owasp.org', type: 'Article', description: 'The industry-standard risk list for LLM deployments, with prompt injection ranked #1. Essential reading before shipping any LLM-powered feature.' },
+          { title: 'Prompt Injection Attacks Against GPT-3', author: 'Perez & Ribeiro · arXiv 2022', type: 'Paper', description: 'The first systematic study of prompt injection as an attack class, establishing the taxonomy that the security community now uses.' },
+          { title: 'Security Engineering', author: 'Ross Anderson · Wiley', type: 'Book', description: 'The most comprehensive textbook on building secure systems. The chapters on protocol failures translate directly to LLM input/output design.' },
+        ]} />
 
       </div>
 
