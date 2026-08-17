@@ -125,11 +125,11 @@ export async function GET(req: NextRequest) {
 
   const raw = Buffer.from(audioData, 'base64')
   const mimeType: string = inlineData?.mimeType ?? ''
+  const mimeTypeLower = mimeType.toLowerCase()
 
-  // Wrap raw PCM in WAV so browsers can decode it
-  const isPcm = mimeType.includes('L16') || mimeType.includes('pcm') || mimeType === ''
+  // Wrap raw PCM in WAV so browsers can decode it (case-insensitive check)
+  const isPcm = mimeTypeLower.includes('l16') || mimeTypeLower.includes('pcm') || mimeType === ''
   const contentType = isPcm ? 'audio/wav' : mimeType
-  // Buffer.from() strips the generic ArrayBufferLike parameter so Response accepts it
   const audioBuffer = Buffer.from(isPcm ? pcmToWav(raw) : raw)
 
   return new Response(audioBuffer, {
@@ -137,6 +137,7 @@ export async function GET(req: NextRequest) {
       'Content-Type': contentType,
       'Content-Length': audioBuffer.length.toString(),
       'Cache-Control': 'no-store',
+      'X-Audio-Mime': mimeType || '(empty)',
     },
   })
 }

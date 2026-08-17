@@ -14,9 +14,12 @@ const WAVEFORM_HEIGHTS = [10, 18, 14, 22, 12, 20, 16, 24, 10, 18, 22, 14, 20, 16
 
 type Status = 'idle' | 'loading' | 'playing' | 'paused' | 'done' | 'error'
 
+// In-memory cache only — blob URLs are valid for the document lifetime only,
+// so sessionStorage is wrong here (stale URLs survive page refresh).
+const blobCache = new Map<string, string>()
+
 async function fetchPodcastAudio(slug: string): Promise<string> {
-  const cacheKey = `podcast-blob-${slug}`
-  const cached = sessionStorage.getItem(cacheKey)
+  const cached = blobCache.get(slug)
   if (cached) return cached
 
   const res = await fetch(`/api/podcast?slug=${slug}`)
@@ -26,7 +29,7 @@ async function fetchPodcastAudio(slug: string): Promise<string> {
   }
   const blob = await res.blob()
   const url = URL.createObjectURL(blob)
-  try { sessionStorage.setItem(cacheKey, url) } catch { /* storage full */ }
+  blobCache.set(slug, url)
   return url
 }
 
