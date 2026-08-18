@@ -1,1 +1,26 @@
-{}
+{
+  "aeo-three-gate-diagnostic": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/aeo-three-gate-diagnostic.wav",
+  "agentic-ai-loops-workflows": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/agentic-ai-loops-workflows.wav",
+  "ai-hallucination-reduction": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/ai-hallucination-reduction.wav",
+  "ai-image-video-generation-midjourney-higgsfield": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/ai-image-video-generation-midjourney-higgsfield.wav",
+  "ai-self-improvement-wellbeing": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/ai-self-improvement-wellbeing.wav",
+  "api-rate-limits-design": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/api-rate-limits-design.wav",
+  "app-security-rls-owasp": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/app-security-rls-owasp.wav",
+  "chinese-llms-open-weight": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/chinese-llms-open-weight.wav",
+  "claude-code-vs-codex": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/claude-code-vs-codex.wav",
+  "content-writing-eeat": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/content-writing-eeat.wav",
+  "customer-journey-mapping": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/customer-journey-mapping.wav",
+  "data-visualization-charts": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/data-visualization-charts.wav",
+  "design-taste-frontend": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/design-taste-frontend.wav",
+  "email-marketing-automation": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/email-marketing-automation.wav",
+  "hermes-agent-persistent-ai": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/hermes-agent-persistent-ai.wav",
+  "marketing-funnel-engineering": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/marketing-funnel-engineering.wav",
+  "mcp-model-context-protocol": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/mcp-model-context-protocol.wav",
+  "mvp-traction-validation": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/mvp-traction-validation.wav",
+  "n8n-process-automation": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/n8n-process-automation.wav",
+  "osint-ai-intelligence": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/osint-ai-intelligence.wav",
+  "prompt-injection-llm-security": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/prompt-injection-llm-security.wav",
+  "rag-retrieval-augmented-generation": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/rag-retrieval-augmented-generation.wav",
+  "tokenmaxxing-ai-productivity": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/tokenmaxxing-ai-productivity.wav",
+  "wispr-obsidian-notion-pkm-stack": "https://tppltfbvatsb000d.private.blob.vercel-storage.com/podcasts/wispr-obsidian-notion-pkm-stack.wav"
+}
