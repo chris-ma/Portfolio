@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server'
-import { list } from '@vercel/blob'
+import { list, issueSignedToken, presignUrl } from '@vercel/blob'
 
 export const maxDuration = 30
 
@@ -16,8 +16,18 @@ export async function GET(req: NextRequest) {
   try {
     const { blobs } = await list({ prefix: `podcasts/${slug}.wav`, limit: 1 })
     if (blobs.length > 0) {
-      // downloadUrl is a signed URL valid for 600 s — works for private stores
-      return Response.redirect(blobs[0].downloadUrl, 302)
+      const blob = blobs[0]
+      const signedToken = await issueSignedToken({
+        pathname: blob.pathname,
+        operations: ['get'],
+        validUntil: Date.now() + 10 * 60 * 1000,
+      })
+      const { presignedUrl: audioUrl } = await presignUrl(signedToken, {
+        operation: 'get',
+        pathname: blob.pathname,
+        access: 'private',
+      })
+      return Response.redirect(audioUrl, 302)
     }
   } catch {
     // Blob not configured or auth error
