@@ -119,7 +119,7 @@ async function generateForSlug(slug) {
 
   console.log(`  → Uploading to Vercel Blob (${(audioBuffer.length / 1024 / 1024).toFixed(1)} MB)...`)
   const blob = await put(`podcasts/${slug}.wav`, audioBuffer, {
-    access: 'public',
+    access: 'private',
     contentType,
     token: BLOB_READ_WRITE_TOKEN,
   })

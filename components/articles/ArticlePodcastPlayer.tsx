@@ -24,11 +24,12 @@ async function fetchPodcastAudio(slug: string): Promise<string> {
 
   const res = await fetch(`/api/podcast?slug=${slug}`)
   if (!res.ok) {
-    const err = await res.json().catch(() => ({ error: 'Podcast failed' }))
-    throw new Error(err.detail || err.error || 'Podcast generation failed')
+    const err = await res.json().catch(() => ({ error: 'Podcast not available' }))
+    throw new Error(err.error || 'Podcast not available')
   }
-  const blob = await res.blob()
-  const url = URL.createObjectURL(blob)
+  // res.url is the final CDN URL after the 302 redirect — use it directly for streaming
+  const url = res.url
+  res.body?.cancel().catch(() => {})
   blobCache.set(slug, url)
   return url
 }
@@ -70,13 +71,11 @@ export default function ArticlePodcastPlayer({ title, slug }: Props) {
     try {
       url = await fetchPodcastAudio(slug)
     } catch (e: unknown) {
-      const msg = e instanceof Error ? e.message : 'Podcast generation failed'
+      const msg = e instanceof Error ? e.message : 'Podcast not available'
       setErrorMsg(
-        msg.includes('not configured')
-          ? 'Add GOOGLE_AI_API_KEY to your environment variables to enable podcast mode.'
-          : msg.includes('Script not found')
-            ? 'Podcast script not yet generated for this article.'
-            : msg
+        msg.includes('not yet available')
+          ? 'Audio coming soon — check back in a bit.'
+          : msg
       )
       setStatus('error')
       return
@@ -216,8 +215,8 @@ export default function ArticlePodcastPlayer({ title, slug }: Props) {
             </div>
             <p className="font-mono text-[10px] sm:text-[11px] text-[#7A7872] mb-3">
               {speed}× &middot;{' '}
-              {status === 'idle' ? 'Two speakers · tap to generate'
-                : status === 'loading' ? 'Generating dialogue…'
+              {status === 'idle' ? 'Two speakers · tap to play'
+                : status === 'loading' ? 'Loading audio…'
                 : status === 'error' ? 'Error'
                 : status === 'done' ? 'Complete'
                 : status === 'paused' ? 'Paused'
