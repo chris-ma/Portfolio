@@ -22,14 +22,23 @@ async function fetchPodcastAudio(slug: string): Promise<string> {
   const cached = blobCache.get(slug)
   if (cached) return cached
 
-  const res = await fetch(`/api/podcast?slug=${slug}`)
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({ error: 'Podcast not available' }))
-    throw new Error(err.error || 'Podcast not available')
+  // redirect:'manual' lets us detect 302 vs 503 without triggering cross-origin CORS
+  // on the Vercel Blob CDN URL that the route redirects to.
+  const res = await fetch(`/api/podcast?slug=${slug}`, { redirect: 'manual' })
+  if (res.type !== 'opaqueredirect') {
+    // No redirect → route returned 503 or an error
+    let errMsg = 'Podcast not available'
+    if (res.status === 503 || res.status === 0) {
+      try {
+        const body = await res.clone().json()
+        errMsg = body.error || errMsg
+      } catch { /* non-JSON body */ }
+    }
+    throw new Error(errMsg)
   }
-  // res.url is the final CDN URL after the 302 redirect — use it directly for streaming
-  const url = res.url
-  res.body?.cancel().catch(() => {})
+  // Audio exists — use the API URL as the audio src so the <audio> element
+  // follows the redirect natively (no CORS restriction on audio elements).
+  const url = `/api/podcast?slug=${slug}`
   blobCache.set(slug, url)
   return url
 }
