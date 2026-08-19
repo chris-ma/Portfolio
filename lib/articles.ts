@@ -11,6 +11,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'small-business-acquisition',
+    title: 'Skip Year Zero',
+    subtitle: 'Six million US businesses are changing hands by 2035. The ETA playbook for finding them, filtering them, and where AI actually compresses the work.',
+    category: 'Strategy',
+    date: '2026-08-19',
+    readTime: '12 min read',
+    tags: ['ETA', 'Business Acquisition', 'Search Fund', 'Due Diligence', 'AI Deal Sourcing', 'SBA'],
+    excerpt:
+      "Roughly 6 million US small businesses are expected to change ownership by 2035 as Baby Boomer owners retire — representing $5 trillion in enterprise value. 70% have no formal succession plan. That gap is the structural reason buying an existing profitable business has become a real, taught career path. Here is the playbook.",
+  },
+  {
     slug: 'automation-strategy',
     title: 'Not the Bots',
     subtitle: 'Isolated bots automating individual steps are not automation. The maturity ladder, the process-mining discipline, and the connective layer that changes the ROI calculation.',

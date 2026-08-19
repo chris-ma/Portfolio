@@ -5188,3 +5188,129 @@ export function OrchestratedVsIsolatedDiagram() {
     </svg>
   )
 }
+
+export function SilverTsunamiDiagram() {
+  const WARN = '#D4890A'
+  return (
+    <svg viewBox="0 0 720 240" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="240" fill={BG} />
+      <line x1="240" y1="16" x2="240" y2="192" stroke={BORDER} strokeWidth="1" />
+      <line x1="480" y1="16" x2="480" y2="192" stroke={BORDER} strokeWidth="1" />
+
+      {/* Left column — 6M */}
+      <rect x="0" y="16" width="240" height="176" fill={BG} />
+      <text x="120" y="90" textAnchor="middle" fontFamily="monospace" fontSize="58" fontWeight="700" fill={TEXT} opacity="0.88">6M</text>
+      <text x="120" y="112" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9.5" fill={MUTED} letterSpacing="0.5">businesses changing hands</text>
+      <text x="120" y="128" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9.5" fill={MUTED} letterSpacing="0.5">by 2035</text>
+
+      {/* Center column — $5T (green tint) */}
+      <rect x="240" y="16" width="240" height="176" fill={G} fillOpacity="0.07" />
+      <text x="360" y="90" textAnchor="middle" fontFamily="monospace" fontSize="58" fontWeight="700" fill={G} opacity="0.88">$5T</text>
+      <text x="360" y="112" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9.5" fill={MUTED} letterSpacing="0.5">enterprise value</text>
+      <text x="360" y="128" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9.5" fill={MUTED} letterSpacing="0.5">in play</text>
+
+      {/* Right column — 70% (amber tint) */}
+      <rect x="480" y="16" width="240" height="176" fill={WARN} fillOpacity="0.07" />
+      <text x="600" y="90" textAnchor="middle" fontFamily="monospace" fontSize="58" fontWeight="700" fill={WARN} opacity="0.88">70%</text>
+      <text x="600" y="112" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9.5" fill={MUTED} letterSpacing="0.5">no formal</text>
+      <text x="600" y="128" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9.5" fill={MUTED} letterSpacing="0.5">succession plan</text>
+
+      <line x1="40" y1="200" x2="680" y2="200" stroke={BORDER} strokeWidth="1" />
+      <text x="360" y="218" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED}>The Silver Tsunami — the structural reason ETA became a real, taught career path.</text>
+    </svg>
+  )
+}
+
+export function ETAPathsDiagram() {
+  const WARN = '#D4890A'
+  return (
+    <svg viewBox="0 0 720 284" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="284" fill={BG} />
+
+      {/* Left column — Funded Search */}
+      <rect x="16" y="16" width="328" height="240" rx="3" fill={G} fillOpacity="0.07" stroke={G} strokeOpacity="0.25" strokeWidth="1" />
+      <text x="180" y="38" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} letterSpacing="1.5">FUNDED SEARCH / SEARCH FUND</text>
+      <line x1="40" y1="46" x2="320" y2="46" stroke={G} strokeOpacity="0.2" strokeWidth="1" />
+
+      {[
+        { key: 'Equity',     val: '20–30% vested, tied to performance' },
+        { key: 'Financing',  val: 'Investors back search + acquisition' },
+        { key: 'Upside',     val: 'Institutional support, network, capital' },
+        { key: 'Downside',   val: 'Significant dilution, reporting to LPs' },
+        { key: 'Timeline',   val: '2–4 year search; 5–7 year hold typical' },
+        { key: 'Best for',   val: 'First-time buyers wanting structured path' },
+      ].map((row, i) => (
+        <g key={i}>
+          <text x="40" y={70 + i * 30} fontFamily="system-ui, sans-serif" fontSize="8.5" fontWeight="600" fill={G} opacity="0.85">{row.key}</text>
+          <text x="40" y={84 + i * 30} fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED}>{row.val}</text>
+        </g>
+      ))}
+
+      {/* Right column — Self-Funded */}
+      <rect x="376" y="16" width="328" height="240" rx="3" fill={WARN} fillOpacity="0.07" stroke={WARN} strokeOpacity="0.25" strokeWidth="1" />
+      <text x="540" y="38" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={WARN} letterSpacing="1.5">SELF-FUNDED / SBA-BACKED</text>
+      <line x1="400" y1="46" x2="680" y2="46" stroke={WARN} strokeOpacity="0.2" strokeWidth="1" />
+
+      {[
+        { key: 'Equity',     val: 'Most or all equity retained' },
+        { key: 'Financing',  val: 'SBA loan or leveraged debt against business' },
+        { key: 'Upside',     val: 'Full ownership, no LP reporting' },
+        { key: 'Downside',   val: 'Personal guarantee, leveraged balance sheet' },
+        { key: 'Timeline',   val: 'Faster close possible; search is self-directed' },
+        { key: 'Best for',   val: 'Operators who want full control + full upside' },
+      ].map((row, i) => (
+        <g key={i}>
+          <text x="400" y={70 + i * 30} fontFamily="system-ui, sans-serif" fontSize="8.5" fontWeight="600" fill={WARN} opacity="0.85">{row.key}</text>
+          <text x="400" y={84 + i * 30} fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED}>{row.val}</text>
+        </g>
+      ))}
+
+      {/* VS divider */}
+      <text x="360" y="144" textAnchor="middle" fontFamily="monospace" fontSize="13" fontWeight="700" fill={TEXT} opacity="0.3">vs.</text>
+
+      <text x="360" y="272" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED}>Both paths work. The choice turns on risk tolerance, equity appetite, and how much external support you need.</text>
+    </svg>
+  )
+}
+
+export function AIDealSourceDiagram() {
+  const WARN = '#D4890A'
+  const rows = [
+    { task: 'Deal sourcing & buy box',        desc: 'Pattern discovery across public signals, listing platforms, direct outreach', strength: 'Strong',          color: G    },
+    { task: 'Due diligence — first pass',     desc: '10× speed on contract/financial review; every finding needs independent verify', strength: 'Strong',     color: G    },
+    { task: 'Industry & market research',     desc: 'Compress days of margin/trend research into a usable first pass',             strength: 'Strong',          color: G    },
+    { task: 'Valuation',                      desc: 'Synthesize multiples and comps quickly — useful second opinion only',          strength: 'Second opinion', color: WARN },
+    { task: 'Owner outreach drafting',        desc: 'Genuinely personalized, researched messaging — not templated blasts',         strength: 'Strong',          color: G    },
+    { task: 'Final negotiation & legal',      desc: 'Requires human judgment, licensed professionals — AI does not substitute',    strength: 'Human only',      color: '#B0372A' },
+  ]
+  return (
+    <svg viewBox="0 0 720 292" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="292" fill={BG} />
+
+      {/* Header */}
+      <rect x="0" y="0" width="720" height="28" fill={BG2} />
+      <text x="16" y="18" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="1.5">TASK</text>
+      <text x="220" y="18" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="1.5">AI ROLE</text>
+      <text x="580" y="18" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="1.5">LEVERAGE</text>
+      <line x1="0" y1="28" x2="720" y2="28" stroke={BORDER} strokeWidth="1" />
+
+      {rows.map((row, i) => (
+        <g key={i}>
+          <rect x="0" y={28 + i * 44} width="720" height="44" fill={i % 2 === 1 ? BG2 : 'transparent'} fillOpacity="0.5" />
+          <line x1="0" y1={28 + (i + 1) * 44} x2="720" y2={28 + (i + 1) * 44} stroke={BORDER} strokeWidth="0.5" strokeOpacity="0.5" />
+
+          <text x="16" y={52 + i * 44} fontFamily="system-ui, sans-serif" fontSize="9.5" fontWeight="600" fill={TEXT} opacity="0.85">{row.task}</text>
+          <text x="220" y={52 + i * 44} fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED}>{row.desc.length > 54 ? row.desc.slice(0, 54) : row.desc}</text>
+          {row.desc.length > 54 && (
+            <text x="220" y={66 + i * 44} fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED}>{row.desc.slice(54)}</text>
+          )}
+
+          <rect x="570" y={36 + i * 44} width="130" height="18" rx="9" fill={row.color} fillOpacity="0.12" stroke={row.color} strokeOpacity="0.35" strokeWidth="1" />
+          <text x="635" y={49 + i * 44} textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={row.color} fontWeight="600" letterSpacing="0.5">{row.strength.toUpperCase()}</text>
+        </g>
+      ))}
+
+      <text x="360" y="286" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED}>AI compresses research and first-pass review. Human judgment and licensed professionals are non-negotiable at the decision stage.</text>
+    </svg>
+  )
+}

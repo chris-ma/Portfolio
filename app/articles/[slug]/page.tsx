@@ -28,6 +28,7 @@ import {
   EmailROIComparisonDiagram, RevenueConcentrationDiagram, EmailFlowPriorityDiagram, DeliverabilityStackDiagram,
   APIArchitectureDiagram, BackoffJitterDiagram, RateLimitStackDiagram,
   AutomationLadderDiagram, ProcessMiningDiagram, OrchestratedVsIsolatedDiagram,
+  SilverTsunamiDiagram, ETAPathsDiagram, AIDealSourceDiagram,
 } from '@/components/articles/ArticleMockups'
 import RecommendedReading from '@/components/articles/RecommendedReading'
 
@@ -146,6 +147,10 @@ export default function ArticlePage({ params }: PageProps) {
 
   if (article.slug === 'automation-strategy') {
     return <AutomationStrategyArticle article={article} formattedDate={formattedDate} />
+  }
+
+  if (article.slug === 'small-business-acquisition') {
+    return <SmallBusinessAcquisitionArticle article={article} formattedDate={formattedDate} />
   }
 
   notFound()
@@ -8047,6 +8052,237 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
       </div>
 
       {/* Footer nav */}
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-brand-concrete pt-10">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+    </div>
+  )
+}
+
+function SmallBusinessAcquisitionArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+        <h1 className="font-display text-7xl md:text-9xl lg:text-[120px] text-brand-black leading-none tracking-tightest mb-4">
+          SKIP<br />YEAR<br /><span className="text-brand-cobalt">ZERO.</span>
+        </h1>
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">{article!.subtitle}</p>
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted border border-brand-concrete px-2.5 py-1">{tag}</span>
+          ))}
+        </div>
+      </header>
+
+      <article className="max-w-[720px] mx-auto px-6 md:px-10 py-16 space-y-16">
+
+        <section>
+          <div className="border-l-2 border-brand-cobalt pl-6 space-y-4">
+            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+              Starting a business from scratch means spending the first one to three years on problems that have nothing to do with your actual proposition: finding initial customers, surviving zero revenue, validating assumptions that may or may not hold. Most of that time is spent proving something already proven by every existing business in your target market.
+            </p>
+            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+              ETA — Entrepreneurship Through Acquisition — is the practice of skipping that. Buy a business that already has customers, proven cash flow, and real operating history. Skip Year Zero entirely and start operating on day one. It is a genuine, taught career path now, with Stanford, Harvard, and INSEAD running dedicated programs — and the structural backdrop for it has never been better.
+            </p>
+          </div>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>~6 million US small businesses are expected to change hands by 2035 as Baby Boomer owners retire. 70% have no formal succession plan. That gap is the structural opportunity.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Two structural paths: funded search funds (20–30% equity, institutional backing) vs. self-funded/SBA (full equity, personal guarantee). Different risk profiles, different best fits.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>The two hardest, most valuable screening filters: recurring revenue percentage and owner-independence. Both take real digging to verify honestly.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>AI genuinely compresses deal sourcing, first-pass diligence, and market research. It does not substitute for a valuation professional or legal counsel at the decision stage.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Relationship and trust factor into who gets first access to a deal — many retiring owners actively prefer an individual operator over PE. Price is not the only variable.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Write an explicit buy box before looking at a single listing. The discipline that catches bad deals is the constraint you set at the start, not the diligence you run after falling in love with one.</li>
+            </ul>
+          </Callout>
+        </section>
+
+        <section>
+          <SectionHeading number="01" title="The demographic window" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            Roughly six million small and medium-sized US businesses are expected to change ownership by 2035 as Baby Boomer owners retire. That represents as much as $5 trillion in enterprise value — and per the 2026 State of Main Street report, 70% of these owners have no formal succession plan. The ETA community calls this the &ldquo;Silver Tsunami,&rdquo; and it is the structural reason buying an existing business has become a serious, institutionally-recognized career path rather than a niche curiosity.
+          </p>
+          <figure className="my-8">
+            <div className="border border-brand-concrete overflow-hidden"><SilverTsunamiDiagram /></div>
+            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">The scale of the succession gap driving the ETA opportunity in 2026.</figcaption>
+          </figure>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            The phenomenon is global — the same founder succession gap shows up in the UK, Australia, Kenya, and Nigeria&rsquo;s owner-operated business populations. But the US market is the deepest and most liquid, with the most developed search fund infrastructure, the widest access to SBA financing, and the most mature broker and advisor ecosystem.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            One dynamic worth understanding before you start: many retiring founders are actively motivated to sell to an energetic individual operator who will preserve what they built and protect existing employees — rather than to a private equity firm intent on stripping costs and flipping. Relationship and trust genuinely factor into who gets first access to a deal, which means you are not purely competing on price against institutional capital.
+          </p>
+        </section>
+
+        <section>
+          <SectionHeading number="02" title="The two structural paths" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            ETA splits into two structurally different models. They share the same basic proposition — buy an existing profitable business, operate it, grow it — but they differ fundamentally on capital structure, equity outcome, and risk exposure.
+          </p>
+          <figure className="my-8">
+            <div className="border border-brand-concrete overflow-hidden"><ETAPathsDiagram /></div>
+            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">Funded search and self-funded ETA — same destination, structurally different tradeoffs.</figcaption>
+          </figure>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            The honest numbers on funded search: search funds have returned a reported 35.1% IRR across 681 tracked funds — a genuinely strong risk-adjusted return, materially better than early-stage venture capital according to Stanford&rsquo;s longitudinal data. But more than half of searches fail to result in an acquisition at all. Read both numbers together: the return profile for deals that do close is excellent; the base rate of actually closing is genuinely uncertain. This is a multi-year undertaking with real attrition, not a guaranteed path.
+          </p>
+          <div className="bg-brand-graphite border border-brand-concrete p-5 mt-6">
+            <p className="font-sans text-sm font-semibold text-brand-black/85 mb-1">Which path fits?</p>
+            <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+              Funded search makes sense when you want institutional support, network, and capital, and are willing to accept significant equity dilution. Self-funded makes sense when you want full ownership and control, have access to debt financing, and can tolerate the personal guarantee a leveraged balance sheet implies. Neither is universally better — the choice turns on risk tolerance and equity appetite.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <SectionHeading number="03" title="What to actually screen for" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            Consistent across every serious ETA source, two filters matter more than anything else and are also the hardest to verify honestly: recurring revenue percentage and owner-independence. A business with 80% recurring revenue and a management team that can run without the founder is a fundamentally different acquisition than one with 80% project work and a founder whose personal relationships generate every dollar.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+            The practical problem: a seller has natural incentive to overstate how systemized the business already is. The recurring revenue percentage may rest on month-to-month contracts with a single large customer. The &ldquo;strong management team&rdquo; may dissolve the moment the founder&rsquo;s personal referral network stops feeding it. Both claims benefit from corroboration against multiple independent sources.
+          </p>
+          <div className="space-y-0 border border-brand-concrete">
+            <div className="border-b border-brand-concrete bg-brand-graphite px-4 py-3">
+              <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-cobalt">Revenue quality — diagnostic questions</p>
+            </div>
+            {[
+              { q: 'What percentage is genuinely recurring?', a: 'Get the contracts. Is it a long-term service agreement or a nominal subscription the customer can cancel monthly?' },
+              { q: 'Is the recurring revenue concentration risk?', a: 'If one customer accounts for 40% of recurring revenue, that customer IS the business. What happens if they leave?' },
+              { q: 'Is the revenue figure audited or self-reported?', a: 'Reviewed financials are better than compiled. Audited are best. Self-reported figures in a deal pitch are a starting point, not a fact.' },
+              { q: 'What is the contract term and renewal history?', a: 'Multi-year contracts with historically high renewal rates are very different from auto-renewing 30-day terms.' },
+            ].map(({ q, a }, i, arr) => (
+              <div key={i} className={`px-4 py-3 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
+                <p className="font-sans text-sm font-semibold text-brand-black/85 mb-0.5">{q}</p>
+                <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{a}</p>
+              </div>
+            ))}
+          </div>
+          <div className="space-y-0 border border-brand-concrete mt-4">
+            <div className="border-b border-brand-concrete bg-brand-graphite px-4 py-3">
+              <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-cobalt">Owner-independence — diagnostic questions</p>
+            </div>
+            {[
+              { q: 'Does the seller personally own the key customer relationships?', a: 'If yes, plan for a substantial transition period with earnout incentives — and still model for churn.' },
+              { q: 'What happens on day 31 post-close?', a: 'Walk through a specific week. If the answer is "the seller" more than twice, the business is not yet independent.' },
+              { q: 'Are there documented systems and processes?', a: 'Written SOPs are not proof of independence, but their absence is a signal. An undocumented business depends on a person.' },
+              { q: 'Can the team hire without the founder?', a: 'If the founder is the face for every hire, that network leaves with them at close.' },
+            ].map(({ q, a }, i, arr) => (
+              <div key={i} className={`px-4 py-3 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
+                <p className="font-sans text-sm font-semibold text-brand-black/85 mb-0.5">{q}</p>
+                <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{a}</p>
+              </div>
+            ))}
+          </div>
+          <div className="bg-brand-graphite border-l-4 border-amber-600/50 pl-5 pr-4 py-4 mt-6">
+            <p className="font-sans text-sm text-brand-black/80 leading-relaxed">
+              <span className="font-semibold">The corroboration rule:</span> every material claim a seller makes about recurring revenue or owner-independence should be verifiable from at least two sources independent of the seller — contracts, customer interviews, employee tenure data, financial statements. The claim is a hypothesis; diligence is how you test it.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <SectionHeading number="04" title="Where AI actually helps" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            The AI deal-sourcing and diligence tooling that exists today was largely built for institutional PE and investment banking — PitchBook-scale budgets, enterprise data rooms. But the underlying capability translates down to individual buyer scale, even without the enterprise price tag.
+          </p>
+          <figure className="my-8">
+            <div className="border border-brand-concrete overflow-hidden"><AIDealSourceDiagram /></div>
+            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">AI leverage by task — where it compresses work vs. where professional judgment is non-negotiable.</figcaption>
+          </figure>
+          <div className="space-y-5 mt-6">
+            {[
+              { head: 'Deal sourcing', body: 'AI-powered discovery can surface targets that traditional listings and broker relationships miss — cross-referencing public signals like industry classification, employee count trends, and regulatory filings. For an individual buyer, the practical version is using AI-assisted research to build and prioritize a genuine buy box, then working through listing platforms and direct outreach, rather than passively browsing what a broker surfaces.' },
+              { head: 'Market research and industry context', body: 'A research session can compress what used to be days of manual industry work — typical margins for a specific trade, consolidation trends, regional demand patterns, regulatory quirks — into a genuine first pass. Real research acceleration, not a substitute for talking to practitioners.' },
+              { head: 'Due diligence — first pass', body: 'This is the highest-leverage application. Feeding financial statements, lease agreements, and contracts into a structured analysis session with explicit instructions to flag inconsistencies, unusual terms, and owner-dependency signals compresses review dramatically. One 2026 practitioner-benchmarked figure puts AI-assisted contract review at roughly 10× a manual pass. The critical discipline: every AI-surfaced finding is a hypothesis to verify independently, not a conclusion.' },
+              { head: 'Valuation sanity check', body: "AI can synthesize multiple valuation approaches — revenue multiples, EBITDA multiples, comparable transaction data — faster than manual comp-building. Useful as a second opinion against a broker's asking price. Not a substitute for a real accountant or M&A advisor's judgment on the actual negotiated number." },
+              { head: 'Owner outreach', body: "Drafting genuinely personalized, respectful outreach to business owners — not a templated cold-email blast — is a real, practical use. Tone matters enormously: a retiring owner deciding who to trust with their life's work responds differently to a specific, evidently-researched message than to something generic." },
+            ].map(({ head, body }, i) => (
+              <div key={i} className="flex gap-5 border-l-2 border-brand-cobalt/20 pl-5">
+                <div>
+                  <p className="font-sans text-base font-semibold text-brand-black/85">{head}</p>
+                  <p className="font-sans text-base text-brand-black/65 leading-relaxed mt-1">{body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="bg-brand-graphite border border-brand-concrete p-5 mt-8">
+            <p className="font-sans text-sm font-semibold text-brand-black/85 mb-1">The speed trap</p>
+            <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+              AI-assisted speed is a genuine advantage — and a genuine risk if it creates false confidence. An AI-assisted first pass through financials or contracts is a useful accelerant. Treat every AI-surfaced finding as something to verify independently before it factors into a real decision. A material acquisition still warrants a real accountant or M&A advisor&rsquo;s involvement — AI compresses the research time, it does not replace the professional judgment.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <SectionHeading number="05" title="A practical search sequence" />
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+            The sequence that consistently produces better deals than passive listing-browsing: write a buy box first, stress-test it against market data, source beyond public listings, screen fast, diligence deep only on real finalists, verify every material claim independently, and bring in professional judgment before any binding step. In that order, without skipping.
+          </p>
+          <div className="space-y-0 border border-brand-concrete">
+            {[
+              { step: '01', label: 'Write an explicit buy box', detail: "Industry, revenue range, geography, owner-dependency tolerance, deal size relative to your actual financing capacity. Write it before looking at a single listing. Constraints set before you fall in love with a deal are the ones that actually protect you." },
+              { step: '02', label: 'Stress-test the buy box', detail: "Use AI-assisted research to validate the box against real market data — typical multiples for the target industry, consolidation trends, regional demand. If the numbers don't support the thesis, adjust the box before committing search time to it." },
+              { step: '03', label: 'Source beyond public listings', detail: 'Direct outreach to owners in the target profile — informed by genuine research into their specific business — tends to surface less-competitive deals than only responding to public listings. The best deals are often not publicly listed.' },
+              { step: '04', label: 'Screen fast, diligence deep on finalists only', detail: 'Use AI-assisted first-pass review to filter quickly across many opportunities. Reserve deep manual and professional diligence for the small number that clear the initial bar. Time spent deep-diligencing a deal that fails the buy box is wasted.' },
+              { step: '05', label: 'Verify every material claim independently', detail: 'Recurring revenue percentage, owner-dependency, technology debt — verify against at least two sources independent of the seller before treating any claim as a fact. The diligence discipline that catches deals that look clean on the surface.' },
+              { step: '06', label: 'Bring in real professionals before any binding step', detail: "Accountant, M&A advisor, lawyer — before LOI signature, before exclusivity, before anything that constrains your options. AI compresses the research and first-pass analysis time. It does not replace the professional sign-off a real transaction warrants." },
+            ].map(({ step, label, detail }, i, arr) => (
+              <div key={i} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
+                <div className="w-14 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/50 flex items-start justify-center">
+                  <span className="font-mono text-xs text-brand-cobalt/60 mt-0.5">{step}</span>
+                </div>
+                <div className="p-4">
+                  <p className="font-sans text-sm font-semibold text-brand-black/85 mb-1">{label}</p>
+                  <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8"><CodeBlock>{`BUY BOX TEMPLATE
+────────────────────────────────────
+Industry:          [Target sector(s) — be specific]
+Revenue range:     $[X]M – $[Y]M trailing twelve months
+EBITDA floor:      $[Z]K minimum (matches your debt service capacity)
+Geography:         [State / metro / radius from your location]
+Recurring rev:     ≥ [X]% of total revenue
+Owner-dependency:  [Acceptable / Tolerable with transition / Deal-breaker]
+Deal size:         Up to $[A]M purchase price
+Financing:         [SBA 7(a) / search fund / seller financing mix]
+Timeline:          Close within [X] months of LOI
+Exclusion list:    [Industries, revenue models, customer concentrations to avoid]
+────────────────────────────────────
+DO NOT ENGAGE with any deal that fails ≥ 2 of these criteria.`}</CodeBlock></div>
+        </section>
+
+        <section className="border-t border-brand-concrete pt-10">
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+            The businesses that fit are out there. The ones that don&rsquo;t will waste your time systematically — and the most dangerous ones are the ones that almost fit. Write the buy box before you look at a single listing, use AI to compress the research, and then bring in the human judgment that actually closes it. The structural window is genuinely open; the discipline is in not letting a specific deal override the constraints you set before you found it.
+          </p>
+        </section>
+
+        <RecommendedReading items={[
+          { title: 'HBR Guide to Buying a Small Business', author: 'Richard Ruback & Royce Yudkoff — Harvard Business Review Press', type: 'Book', description: 'The canonical academic text on ETA — the source that put search funds on the Harvard Business School curriculum. Essential grounding before any acquisition search.' },
+          { title: 'Buy Then Build', author: 'Walker Deibel — Lioncrest Publishing', type: 'Book', description: 'The practitioner handbook for self-funded ETA: how to find, evaluate, finance, and close a business acquisition without institutional backing. More operational than the HBR guide.' },
+          { title: 'Search Fund Primer', author: 'Stanford Graduate School of Business', type: 'Article', description: 'The source for the 35.1% IRR and 681-fund dataset cited throughout — updated periodically, freely available, the most rigorous longitudinal data on search fund outcomes.' },
+        ]} />
+
+      </article>
+
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-brand-concrete pt-10">
         <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
           ← Field Notes
