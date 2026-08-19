@@ -11,6 +11,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'automation-strategy',
+    title: 'Not the Bots',
+    subtitle: 'Isolated bots automating individual steps are not automation. The maturity ladder, the process-mining discipline, and the connective layer that changes the ROI calculation.',
+    category: 'Systems',
+    date: '2026-08-19',
+    readTime: '11 min read',
+    tags: ['Automation', 'Hyperautomation', 'RPA', 'Process Mining', 'AI Agents', 'ROI'],
+    excerpt:
+      "Fewer than 20% of large enterprises actually measure their automation initiatives properly. Most programs are running isolated bots — automating tasks, not processes. The maturity ladder, the process-mining discipline, and the single biggest lever: a shared orchestration layer that connects the steps.",
+  },
+  {
     slug: 'design-taste-frontend',
     title: 'The Swap Test',
     subtitle: 'Taste is pattern recognition, not talent. The deliberate practice that builds it, and the diagnostic that keeps your work from being a default.',

@@ -5016,3 +5016,175 @@ export function RateLimitStackDiagram() {
     </svg>
   )
 }
+
+// ─── Automation Strategy illustrations ────────────────────────────────────────
+
+export function AutomationLadderDiagram() {
+  const rows = [
+    {
+      label: 'RPA', sub: 'Repeats rules',
+      what: ['Structured, rule-based steps at the UI or data layer.', 'Click here, copy this, paste there.'],
+      breaks: ['Input format changes', 'even slightly.'],
+      op: 0,
+    },
+    {
+      label: 'IPA', sub: 'Handles variation',
+      what: ['Extends RPA with OCR, NLP, and ML to handle', 'unstructured or varied inputs.'],
+      breaks: ['Genuinely novel or', 'open-ended judgment calls.'],
+      op: 0.05,
+    },
+    {
+      label: 'APA', sub: 'Exercises judgment',
+      what: ['Autonomous agents that plan, self-correct, and pursue', 'a goal rather than following a fixed script.'],
+      breaks: ['Needs real guardrails —', 'flexibility is also the risk vector.'],
+      op: 0.09,
+    },
+    {
+      label: 'HYPER', sub: 'End-to-end',
+      what: ['RPA + IPA + process mining + AI agents connected', 'through one shared orchestration layer.'],
+      breaks: ['Governance and measurement', 'discipline, not the technology.'],
+      op: 0.14,
+    },
+  ]
+  const ROW_H = 66, START_Y = 50
+  return (
+    <svg viewBox="0 0 720 330" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="330" fill={BG} />
+      <text x="360" y="24" textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={MUTED} letterSpacing="2">THE AUTOMATION MATURITY LADDER</text>
+      <line x1="16" y1="44" x2="704" y2="44" stroke={BORDER} strokeWidth="0.5" />
+      <text x="100" y="40" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED} letterSpacing="1">RUNG</text>
+      <text x="352" y="40" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED} letterSpacing="1">WHAT IT HANDLES</text>
+      <text x="612" y="40" textAnchor="middle" fontFamily="monospace" fontSize="7" fill={MUTED} letterSpacing="1">BREAKS WHEN</text>
+      <line x1="184" y1="36" x2="184" y2={START_Y + 4 * ROW_H + 2} stroke={BORDER} strokeWidth="0.5" />
+      <line x1="520" y1="36" x2="520" y2={START_Y + 4 * ROW_H + 2} stroke={BORDER} strokeWidth="0.5" />
+      {rows.map((r, i) => {
+        const y = START_Y + i * ROW_H
+        const mid = y + ROW_H / 2
+        return (
+          <g key={i}>
+            <rect x="16" y={y} width="688" height={ROW_H - 1} fill={G} fillOpacity={r.op} />
+            <rect x="16" y={y} width="688" height={ROW_H - 1} fill="none" stroke={BORDER} strokeWidth="0.5" />
+            <text x="100" y={mid - 4} textAnchor="middle" fontFamily="monospace" fontSize="14" fontWeight="700" fill={G} opacity="0.85">{r.label}</text>
+            <text x="100" y={mid + 13} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED}>{r.sub}</text>
+            <text x="194" y={mid - 5} fontFamily="system-ui, sans-serif" fontSize="9" fill={TEXT} opacity="0.8">{r.what[0]}</text>
+            <text x="194" y={mid + 9} fontFamily="system-ui, sans-serif" fontSize="9" fill={TEXT} opacity="0.65">{r.what[1]}</text>
+            <text x="530" y={mid - 5} fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED}>{r.breaks[0]}</text>
+            <text x="530" y={mid + 9} fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED}>{r.breaks[1]}</text>
+          </g>
+        )
+      })}
+      <text x="360" y="318" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED} letterSpacing="1">DON&apos;T DEFAULT TO THE MOST SOPHISTICATED OPTION — MATCH THE RUNG TO THE TASK</text>
+    </svg>
+  )
+}
+
+export function ProcessMiningDiagram() {
+  const WARN = '#D4890A'
+  return (
+    <svg viewBox="0 0 720 258" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="258" fill={BG} />
+      <line x1="360" y1="18" x2="360" y2="220" stroke={BORDER} strokeWidth="1" strokeDasharray="4,3" />
+
+      {/* LEFT — Assumed */}
+      <text x="180" y="30" textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={G} letterSpacing="1.5">ASSUMED PROCESS</text>
+      {['Define', 'Review', 'Approve'].map((label, i) => {
+        const x = 24 + i * 98
+        return (
+          <g key={i}>
+            <rect x={x} y="48" width="78" height="38" rx="3" fill={G} fillOpacity="0.10" stroke={G} strokeOpacity="0.3" strokeWidth="1" />
+            <text x={x + 39} y="72" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="10" fontWeight="600" fill={G} opacity="0.85">{label}</text>
+            {i < 2 && <text x={x + 83} y="70" textAnchor="middle" fontFamily="monospace" fontSize="11" fill={G} opacity="0.4">›</text>}
+          </g>
+        )
+      })}
+      <text x="180" y="118" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED}>3 steps. Documented once.</text>
+      <text x="180" y="132" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED}>Handed to the automation team.</text>
+
+      {/* RIGHT — Real */}
+      <text x="540" y="30" textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={WARN} letterSpacing="1.5">REAL PROCESS</text>
+      {['Define', 'Review', 'Approve'].map((label, i) => {
+        const x = 376 + i * 96
+        return (
+          <g key={i}>
+            <rect x={x} y="48" width="76" height="38" rx="3" fill={WARN} fillOpacity="0.08" stroke={WARN} strokeOpacity="0.4" strokeWidth="1" />
+            <text x={x + 38} y="72" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="10" fontWeight="600" fill={WARN} opacity="0.9">{label}</text>
+            {i < 2 && <text x={x + 81} y="70" textAnchor="middle" fontFamily="monospace" fontSize="11" fill={WARN} opacity="0.4">›</text>}
+          </g>
+        )
+      })}
+      {/* Loop-back arc: from Review top to Define top */}
+      <path d="M 490 48 C 490 22 414 22 414 48" fill="none" stroke={WARN} strokeWidth="1.2" strokeDasharray="3,2" strokeOpacity="0.75" />
+      <polygon points="414,48 408,38 420,38" fill={WARN} fillOpacity="0.75" />
+      <text x="452" y="18" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="7.5" fill={WARN} opacity="0.85">Clarify (×avg 3)</text>
+      {/* Workaround box under Review */}
+      <line x1="490" y1="86" x2="482" y2="106" stroke={WARN} strokeWidth="1" strokeDasharray="3,2" strokeOpacity="0.55" />
+      <rect x="444" y="106" width="88" height="28" rx="3" fill={WARN} fillOpacity="0.05" stroke={WARN} strokeOpacity="0.3" strokeWidth="1" strokeDasharray="3,2" />
+      <text x="488" y="124" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={WARN} opacity="0.85">Manual bypass</text>
+      <text x="488" y="148" textAnchor="middle" fontFamily="monospace" fontSize="6.5" fill={WARN} opacity="0.5">added 2023 — undocumented</text>
+      {/* Escalation box under Approve */}
+      <line x1="586" y1="86" x2="598" y2="106" stroke={WARN} strokeWidth="1" strokeDasharray="3,2" strokeOpacity="0.55" />
+      <rect x="558" y="106" width="80" height="28" rx="3" fill={WARN} fillOpacity="0.05" stroke={WARN} strokeOpacity="0.3" strokeWidth="1" strokeDasharray="3,2" />
+      <text x="598" y="124" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={WARN} opacity="0.85">Escalate</text>
+      <text x="598" y="148" textAnchor="middle" fontFamily="monospace" fontSize="6.5" fill={WARN} opacity="0.5">exists since 2021 — no docs</text>
+
+      <text x="360" y="238" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED}>Automating the assumed process instead of the real one is a common, avoidable failure mode.</text>
+    </svg>
+  )
+}
+
+export function OrchestratedVsIsolatedDiagram() {
+  const WARN = '#D4890A'
+  return (
+    <svg viewBox="0 0 720 238" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="238" fill={BG} />
+      <line x1="360" y1="18" x2="360" y2="200" stroke={BORDER} strokeWidth="1" strokeDasharray="4,3" />
+
+      {/* LEFT — Task Automation */}
+      <text x="180" y="30" textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={WARN} letterSpacing="1.5">TASK AUTOMATION</text>
+      {[
+        { label: 'Extract',   x: 22  },
+        { label: 'Transform', x: 130 },
+        { label: 'Load',      x: 254 },
+      ].map((box, i) => (
+        <g key={i}>
+          <rect x={box.x} y="48" width="72" height="36" rx="3" fill={WARN} fillOpacity="0.07" stroke={WARN} strokeOpacity="0.35" strokeWidth="1" />
+          <text x={box.x + 36} y="70" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9.5" fontWeight="600" fill={WARN} opacity="0.85">{box.label}</text>
+        </g>
+      ))}
+      {/* Human hand-off connectors */}
+      {[{ x: 94, label: 'HUMAN' }, { x: 202, label: 'HUMAN' }].map((gap, i) => (
+        <g key={i}>
+          <rect x={gap.x} y="57" width="36" height="18" rx="9" fill={WARN} fillOpacity="0.14" stroke={WARN} strokeOpacity="0.3" strokeWidth="1" />
+          <text x={gap.x + 18} y="70" textAnchor="middle" fontFamily="monospace" fontSize="6" fill={WARN} opacity="0.9">{gap.label}</text>
+        </g>
+      ))}
+      <text x="180" y="115" textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={WARN} opacity="0.85">≈20% of available value captured</text>
+      <text x="180" y="131" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED}>Steps are automated. The process is not.</text>
+
+      {/* RIGHT — Process Automation */}
+      <text x="540" y="30" textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={G} letterSpacing="1.5">PROCESS AUTOMATION</text>
+      {[
+        { label: 'Extract',   x: 376 },
+        { label: 'Transform', x: 472 },
+        { label: 'Load',      x: 568 },
+      ].map((box, i) => (
+        <g key={i}>
+          <rect x={box.x} y="48" width="72" height="36" rx="3" fill={G} fillOpacity="0.10" stroke={G} strokeOpacity="0.3" strokeWidth="1" />
+          <text x={box.x + 36} y="70" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9.5" fontWeight="600" fill={G} opacity="0.85">{box.label}</text>
+          {i < 2 && <text x={box.x + 76} y="69" textAnchor="middle" fontFamily="monospace" fontSize="11" fill={G} opacity="0.55">›</text>}
+        </g>
+      ))}
+      {/* Orchestration layer band */}
+      <rect x="376" y="96" width="264" height="20" rx="3" fill={G} fillOpacity="0.10" stroke={G} strokeOpacity="0.2" strokeWidth="1" />
+      <text x="508" y="110" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} opacity="0.85" letterSpacing="1">SHARED ORCHESTRATION LAYER</text>
+      {/* Connect boxes to layer */}
+      {[412, 508, 604].map((cx, i) => (
+        <line key={i} x1={cx} y1="84" x2={cx} y2="96" stroke={G} strokeWidth="1" strokeOpacity="0.3" />
+      ))}
+      <text x="540" y="144" textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={G} opacity="0.85">Full process ROI captured</text>
+      <text x="540" y="160" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED}>Each step&apos;s output feeds the next directly.</text>
+
+      <text x="360" y="218" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED}>The connective layer between steps is what separates task automation from process automation.</text>
+    </svg>
+  )
+}

@@ -27,6 +27,7 @@ import {
   PerceptionAccuracyDiagram, PartialPeriodDiagram, ForecastBandDiagram, OneHighlightColorDiagram,
   EmailROIComparisonDiagram, RevenueConcentrationDiagram, EmailFlowPriorityDiagram, DeliverabilityStackDiagram,
   APIArchitectureDiagram, BackoffJitterDiagram, RateLimitStackDiagram,
+  AutomationLadderDiagram, ProcessMiningDiagram, OrchestratedVsIsolatedDiagram,
 } from '@/components/articles/ArticleMockups'
 import RecommendedReading from '@/components/articles/RecommendedReading'
 
@@ -143,7 +144,331 @@ export default function ArticlePage({ params }: PageProps) {
     return <EmailMarketingArticle article={article} formattedDate={formattedDate} />
   }
 
+  if (article.slug === 'automation-strategy') {
+    return <AutomationStrategyArticle article={article} formattedDate={formattedDate} />
+  }
+
   notFound()
+}
+
+function AutomationStrategyArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      {/* Back nav */}
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link
+          href="/articles"
+          className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
+        >
+          ← Field Notes
+        </Link>
+      </div>
+
+      {/* Header */}
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">
+            {article!.category}
+          </span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+
+        <h1 className="font-display text-7xl md:text-9xl lg:text-[120px] text-brand-black leading-none tracking-tightest mb-4">
+          NOT<br />
+          THE<br />
+          <span className="text-brand-cobalt">BOTS.</span>
+        </h1>
+
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+          {article!.subtitle}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted border border-brand-concrete px-2.5 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      {/* Body */}
+      <article className="max-w-[720px] mx-auto px-6 md:px-10 py-16 space-y-16">
+
+        {/* Lede */}
+        <section>
+          <div className="border-l-2 border-brand-cobalt pl-6 space-y-4">
+            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+              Most automation programs have a silent ceiling. Individual steps get automated — a data-entry bot here,
+              a notification trigger there — but the hand-offs between them stay human. That&rsquo;s task automation.
+              It captures a fraction of the value of what&rsquo;s actually possible, and it&rsquo;s where most programs stop.
+            </p>
+            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+              The gap between task automation and process automation is a single thing: a shared orchestration layer
+              that passes output from one step directly into the next, without a human in between. Everything else —
+              the maturity ladder, the process-mining discipline, the AI agents — is in service of closing that gap.
+            </p>
+          </div>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>Four distinct rungs in the maturity ladder: RPA → IPA → APA → Hyperautomation. Most tasks sit on rung one.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Don&rsquo;t default to the most sophisticated option. Rule-based, stable tasks are well served by plain automation — adding AI agents adds cost and unpredictability without value.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Start with process mining: the assumed process and the real process routinely diverge. Automating the wrong one is a common, avoidable failure.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>In 2026, AI agents are deciding <em>which</em> workflow to execute based on context — not just executing a fixed script. Reserve this for steps that require genuine judgment.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Fewer than 20% of large enterprises actually measure their automation ROI properly. Real results are achievable — but not automatic.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>The single biggest lever: connect steps through a shared orchestration layer. Isolated bots with human hand-offs between them capture a fraction of the value.</li>
+            </ul>
+          </Callout>
+        </section>
+
+        {/* Section 01 — The maturity ladder */}
+        <section>
+          <SectionHeading number="01" title="The maturity ladder" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            Automation isn&rsquo;t one thing — it&rsquo;s a ladder, and knowing which rung a given task sits on
+            determines which tool and which level of investment actually fit. The most common mistake named directly
+            across multiple 2026 industry reports: reaching for the wrong rung, either under-investing (leaving
+            human judgment where the task is fully rule-based) or over-investing (adding AI agents to a task that
+            a simple trigger-action workflow handles perfectly well).
+          </p>
+
+          <figure className="my-8">
+            <div className="border border-brand-concrete overflow-hidden">
+              <AutomationLadderDiagram />
+            </div>
+            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+              Four rungs, four different cost and risk profiles. Most production tasks sit at RPA.
+            </figcaption>
+          </figure>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            A perfectly structured, rule-based, rarely-changing task — data entry from a fixed-format form — is
+            genuinely well-served by plain RPA. Reaching for an AI agent there adds cost, latency, and
+            unpredictability without adding value. The right question is not &ldquo;what&rsquo;s the most
+            powerful tool available?&rdquo; but &ldquo;what does this task actually require?&rdquo;
+          </p>
+
+          <div className="space-y-0 border border-brand-concrete">
+            {[
+              { label: 'Stable, rule-based', detail: 'Plain RPA or workflow automation (n8n, Zapier, Make). No AI needed — it adds cost and fragility without value.' },
+              { label: 'Bounded variation', detail: 'IPA: OCR, NLP, or ML to handle format variation within a known set of patterns. Still deterministic at the process level.' },
+              { label: 'Genuine judgment', detail: 'APA: autonomous agents where multiple plausible next actions exist. Use sparingly, with human-approval checkpoints on high-stakes decisions.' },
+              { label: 'Multi-step process', detail: 'Hyperautomation: connect the above rungs via a shared orchestration layer. The connective tissue is the value multiplier.' },
+            ].map(({ label, detail }, i, arr) => (
+              <div key={i} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
+                <div className="w-44 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/50">
+                  <span className="font-sans font-semibold text-sm text-brand-cobalt leading-snug block">{label}</span>
+                </div>
+                <p className="font-sans text-sm text-brand-black/70 p-4 leading-relaxed">{detail}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 02 — Process mining */}
+        <section>
+          <SectionHeading number="02" title="Process mining first" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            Starting an automation program without first mapping the real process is described bluntly, across
+            multiple 2026 sources, as building infrastructure without a site survey. Process mining discovers
+            how a process actually runs today — from real system event logs, objectively, at scale — rather
+            than relying on someone&rsquo;s memory of how it&rsquo;s supposed to work.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+            The assumed process and the real process routinely diverge. A workflow that&rsquo;s supposed to take
+            three steps often has quietly grown five, with exceptions and manual workarounds nobody wrote down.
+            Automating the assumed version instead of the real one is a common, avoidable failure mode: you end
+            up automating something that doesn&rsquo;t match what people actually do.
+          </p>
+
+          <figure className="my-8">
+            <div className="border border-brand-concrete overflow-hidden">
+              <ProcessMiningDiagram />
+            </div>
+            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+              The assumed process is always cleaner than the real one. Automate the real one.
+            </figcaption>
+          </figure>
+
+          <Callout label="Practical translation">
+            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              Without enterprise process-mining software, the same discipline applies at any scale: before
+              automating anything important, trace it end-to-end as it actually runs — every manual step, every
+              exception, every person who touches it — rather than from a mental model of how it&rsquo;s supposed
+              to work. Write it out. The gaps between &ldquo;supposed to&rdquo; and &ldquo;actually does&rdquo;
+              are where automations break.
+            </p>
+          </Callout>
+        </section>
+
+        {/* Section 03 — Where AI agents actually fit */}
+        <section>
+          <SectionHeading number="03" title="Where AI agents actually fit" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            The 2026 shift, stated precisely: AI agents are moving from executing predefined workflows to
+            <em> deciding which workflow to execute</em> — based on context, priority, and business rules —
+            sensing process signals continuously and adjusting, rather than running a fixed script on a fixed
+            trigger.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+            Concrete examples already in production: customer service agents analysing inquiry complexity and
+            routing accordingly; supply chain agents adjusting inventory policy based on live demand signals;
+            financial agents approving routine transactions while automatically escalating genuine exceptions.
+            The common thread is <em>concentrating human attention on decisions that actually need it</em>, not
+            removing human judgment from the loop.
+          </p>
+
+          <div className="mt-6 space-y-5">
+            {[
+              {
+                head: 'Is the next action genuinely ambiguous?',
+                body: 'If there are multiple plausible next actions and the right one depends on context, an agent is appropriate. If only one action makes sense at each step, a fixed workflow is cheaper and more reliable.',
+              },
+              {
+                head: 'Does the task require sensing live signals?',
+                body: 'Agents excel at monitoring and reacting to changing conditions — demand spikes, exception patterns, anomalies. A cron job cannot do this; an agent can.',
+              },
+              {
+                head: 'Are the guardrails in place?',
+                body: 'The same flexibility that makes APA powerful makes it riskier unsupervised. Every agentic step handling high-stakes decisions needs a human-approval checkpoint until the pattern is proven reliable.',
+              },
+              {
+                head: 'Is generative AI a step, not just a layer?',
+                body: 'Content generation, code scaffolding, and documentation increasingly happen automatically as steps inside larger automated processes. When an automated pipeline generates its own documentation without a human checkpoint, any errors compound silently at scale — the hallucination-reduction discipline applies here especially.',
+              },
+            ].map(({ head, body }, i) => (
+              <div key={i} className="flex gap-5 border-l-2 border-brand-cobalt/20 pl-5">
+                <div>
+                  <p className="font-sans text-base font-semibold text-brand-black/85">{head}</p>
+                  <p className="font-sans text-base text-brand-black/65 leading-relaxed mt-1">{body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 04 — ROI discipline */}
+        <section>
+          <SectionHeading number="04" title="ROI discipline" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            Fewer than 20% of large enterprises have actually mastered measuring their automation initiatives
+            properly — meaning the majority are running automation programs without a reliable read on whether
+            they&rsquo;re actually working. Real, achievable numbers exist when it&rsquo;s done properly:
+            20–40% cost reduction, roughly 40% faster process completion, sub-12-month payback. But the framing
+            across every credible source is consistent: <strong className="text-brand-black">the ROI is real but not automatic.</strong>
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+            It depends specifically on picking the right processes, actually fixing the underlying process before
+            automating it (automating a broken process just executes the brokenness faster), and measuring
+            rigorously rather than assuming success from activity.
+          </p>
+
+          <CodeBlock>{`1. Baseline the current process first
+   — time, cost, error rate — before touching it.
+   Without a real baseline, "did automation help?" is a guess.
+
+2. Fix the process, then automate it.
+   An automated version of a broken process is a faster,
+   more consistent way to produce the same bad outcome.
+
+3. Measure the same metrics after, on a real cadence.
+   Processes drift. An automation that worked at launch
+   can silently degrade as the underlying data shifts.
+
+4. Treat governance as part of the ROI calculation.
+   A connected, governed ecosystem consistently outperforms
+   the same technologies run as disconnected point solutions.`}</CodeBlock>
+        </section>
+
+        {/* Section 05 — The decision sequence */}
+        <section>
+          <SectionHeading number="05" title="The decision sequence" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+            The difference between a program that compounds over time and one that stalls at scattered bots is
+            whether each automated step is connected to the next — or left as another isolated island with a
+            human hand-off on each side.
+          </p>
+
+          <figure className="mb-10">
+            <div className="border border-brand-concrete overflow-hidden">
+              <OrchestratedVsIsolatedDiagram />
+            </div>
+            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+              Same three automated steps — the orchestration layer is the difference.
+            </figcaption>
+          </figure>
+
+          <div className="space-y-0 border border-brand-concrete">
+            {[
+              { n: '1', label: 'Trace the real process', detail: 'Before deciding anything — don\'t automate your assumption of the workflow. Map every step, exception, and manual hand-off as they actually occur.' },
+              { n: '2', label: 'Classify each step', detail: 'Rule-based and stable → RPA. Bounded variation → IPA. Genuine judgment among several plausible next actions → APA only.' },
+              { n: '3', label: 'Baseline cost, time, error rate', detail: 'For whatever you\'re about to automate. Without a real baseline, "did it help?" is unanswerable.' },
+              { n: '4', label: 'Match tooling to the classification', detail: 'Not to whatever\'s most impressive. Plain automation for stable steps, AI-assisted for bounded variation, agentic only where judgment is genuinely required.' },
+              { n: '5', label: 'Connect steps via shared orchestration', detail: 'Rather than leaving human hand-offs between automated pieces. This is the single biggest lever separating task automation from process automation.' },
+              { n: '6', label: 'Set a review cadence', detail: 'Not a launch-and-forget deployment. Re-measure against the baseline periodically, and treat drift as expected, not exceptional.' },
+            ].map(({ n, label, detail }, i, arr) => (
+              <div key={i} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
+                <div className="w-10 flex-shrink-0 flex items-start justify-center pt-4 border-r border-brand-concrete bg-brand-graphite/50">
+                  <span className="font-display text-2xl text-brand-cobalt/30">{n}</span>
+                </div>
+                <div className="flex-1 p-4">
+                  <span className="font-sans font-semibold text-sm text-brand-black block mb-1">{label}</span>
+                  <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Closing */}
+        <section className="border-t border-brand-concrete pt-10">
+          <p className="font-sans text-base text-brand-black/70 leading-relaxed max-w-prose">
+            A governance cadence and a shared orchestration layer are not overhead on top of automation. They
+            are the mechanism that determines whether automation compounds or stalls. The bots are the easy
+            part — the connective tissue between them is the actual work.
+          </p>
+        </section>
+
+        <RecommendedReading items={[
+          {
+            title: 'Work the System',
+            author: 'Sam Carpenter — Greenleaf Book Group',
+            type: 'Book',
+            description: 'The case for documenting and systematizing every process before attempting to optimize or automate it — the prerequisite discipline for any automation program.',
+          },
+          {
+            title: 'The Phoenix Project',
+            author: 'Gene Kim, Kevin Behr, George Spafford — IT Revolution Press',
+            type: 'Book',
+            description: 'A novel about DevOps and operational discipline that remains the clearest treatment of why process visibility — knowing what is actually happening — must precede improvement.',
+          },
+          {
+            title: 'Gartner Hyperautomation Market Guide',
+            author: 'Gartner Research',
+            type: 'Article',
+            description: 'The industry benchmark defining hyperautomation as an architectural strategy rather than a tool category — the source for the enterprise adoption and ROI figures cited throughout.',
+          },
+        ]} />
+
+        {/* Back link */}
+        <div className="border-t border-brand-concrete pt-8">
+          <Link
+            href="/articles"
+            className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
+          >
+            ← Back to Field Notes
+          </Link>
+        </div>
+      </article>
+    </div>
+  )
 }
 
 function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
