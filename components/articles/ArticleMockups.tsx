@@ -2213,7 +2213,6 @@ export function TwoPassDiagram() {
       <text x="503" y="115" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9" fill={G} fontWeight="600">If yes → revise. Name what changed and why.</text>
 
       <text x="376" y="146" fontFamily="system-ui, sans-serif" fontSize="9" fill={MUTED}>Only once the plan holds up does it earn the right to build.</text>
-      <text x="376" y="158" fontFamily="system-ui, sans-serif" fontSize="9" fill={MUTED}>Only once the plan holds up does it earn the right to build.</text>
 
       {/* Arrow down */}
       <text x="506" y="196" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="22" fill={BORDER}>&#8595;</text>
@@ -2226,6 +2225,119 @@ export function TwoPassDiagram() {
       {/* Footer note */}
       <text x="360" y="284" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9" fill={MUTED}>
         One bold idea with total restraint around it reads more confident than five ideas competing.
+      </text>
+    </svg>
+  )
+}
+
+export function StudyMethodDiagram() {
+  const CX = 360, CY = 168
+  return (
+    <svg viewBox="0 0 720 346" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="346" fill={BG} />
+      <defs>
+        <marker id="sdArr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill={G} opacity="0.4" />
+        </marker>
+      </defs>
+
+      {/* ── TL: Break down ── */}
+      <rect x="16" y="16" width="320" height="140" rx="4" fill={G} fillOpacity="0.06" stroke={G} strokeWidth="1" strokeOpacity="0.3" />
+      <rect x="16" y="16" width="320" height="28" rx="4" fill={G} fillOpacity="0.12" />
+      <text x="26" y="34" fontFamily="system-ui, sans-serif" fontSize="8" fontWeight="700" fill={G} letterSpacing="1.2" opacity="0.7">BREAK DOWN</text>
+      <text x="10" y="76" fontFamily="system-ui, sans-serif" fontSize="12" fill={G} opacity="0.25" dx="318" textAnchor="end">◎</text>
+      <text x="28" y="64" fontFamily="system-ui, sans-serif" fontSize="10" fontWeight="600" fill={TEXT} opacity="0.8">Run the checklist</text>
+      <text x="28" y="82" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={TEXT} opacity="0.55">Colour · Type · Balance · Spacing ·</text>
+      <text x="28" y="96" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={TEXT} opacity="0.55">Consistency · Tone — on every design</text>
+      <text x="28" y="110" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={TEXT} opacity="0.55">you respond to, every time.</text>
+
+      {/* ── TR: Redesign ── */}
+      <rect x="384" y="16" width="320" height="140" rx="4" fill={G} fillOpacity="0.06" stroke={G} strokeWidth="1" strokeOpacity="0.3" />
+      <rect x="384" y="16" width="320" height="28" rx="4" fill={G} fillOpacity="0.12" />
+      <text x="394" y="34" fontFamily="system-ui, sans-serif" fontSize="8" fontWeight="700" fill={G} letterSpacing="1.2" opacity="0.7">REDESIGN</text>
+      <text x="394" y="64" fontFamily="system-ui, sans-serif" fontSize="10" fontWeight="600" fill={TEXT} opacity="0.8">Rebuild something real</text>
+      <text x="394" y="82" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={TEXT} opacity="0.55">Pick a page with a specific problem —</text>
+      <text x="394" y="96" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={TEXT} opacity="0.55">your own past work. Every choice must</text>
+      <text x="394" y="110" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={TEXT} opacity="0.55">be justified against a real constraint.</text>
+
+      {/* ── BR: Imitate + Interrogate ── */}
+      <rect x="384" y="196" width="320" height="140" rx="4" fill={G} fillOpacity="0.06" stroke={G} strokeWidth="1" strokeOpacity="0.3" />
+      <rect x="384" y="196" width="320" height="28" rx="4" fill={G} fillOpacity="0.12" />
+      <text x="394" y="214" fontFamily="system-ui, sans-serif" fontSize="8" fontWeight="700" fill={G} letterSpacing="1.2" opacity="0.7">IMITATE + INTERROGATE</text>
+      <text x="394" y="244" fontFamily="system-ui, sans-serif" fontSize="10" fontWeight="600" fill={TEXT} opacity="0.8">Copy, then ask why</text>
+      <text x="394" y="262" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={TEXT} opacity="0.55">Copy a card or button layout. Then:</text>
+      <text x="394" y="276" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={TEXT} opacity="0.55">why this font, why this spacing,</text>
+      <text x="394" y="290" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={TEXT} opacity="0.55">why this colour and not an adjacent one?</text>
+
+      {/* ── BL: Build theory ── */}
+      <rect x="16" y="196" width="320" height="140" rx="4" fill={G} fillOpacity="0.06" stroke={G} strokeWidth="1" strokeOpacity="0.3" />
+      <rect x="16" y="196" width="320" height="28" rx="4" fill={G} fillOpacity="0.12" />
+      <text x="26" y="214" fontFamily="system-ui, sans-serif" fontSize="8" fontWeight="700" fill={G} letterSpacing="1.2" opacity="0.7">BUILD THEORY</text>
+      <text x="28" y="244" fontFamily="system-ui, sans-serif" fontSize="10" fontWeight="600" fill={TEXT} opacity="0.8">Explain, not just recognise</text>
+      <text x="28" y="262" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={TEXT} opacity="0.55">Colour theory and typography fundamentals</text>
+      <text x="28" y="276" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={TEXT} opacity="0.55">are what let you say why it works —</text>
+      <text x="28" y="290" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={TEXT} opacity="0.55">not just that it does.</text>
+
+      {/* Center label */}
+      <rect x={CX - 72} y={CY - 20} width="144" height="40" rx="20" fill={G} fillOpacity="0.88" />
+      <text x={CX} y={CY + 3} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fontWeight="700" fill="#fff" letterSpacing="1.5">DELIBERATE</text>
+      <text x={CX} y={CY + 16} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fontWeight="700" fill="#fff" letterSpacing="1.5">PRACTICE</text>
+
+      {/* Clockwise cycle arrows */}
+      <path d="M336 148 C345 158 345 178 336 188" fill="none" stroke={G} strokeWidth="1.5" strokeOpacity="0.35" markerEnd="url(#sdArr)" />
+      <path d="M384 188 C375 178 375 158 384 148" fill="none" stroke={G} strokeWidth="1.5" strokeOpacity="0.35" markerEnd="url(#sdArr)" />
+    </svg>
+  )
+}
+
+export function AIDesignDefaultsDiagram() {
+  const WARN = '#D4890A'
+  const defaults = [
+    'warm cream + serif + terracotta',
+    'near-black + acid-green accent',
+    'broadsheet + hairline rules',
+  ]
+  return (
+    <svg viewBox="0 0 720 280" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="280" fill={BG} />
+
+      {/* Left: default cluster */}
+      <rect x="16" y="16" width="290" height="220" rx="4" fill={WARN} fillOpacity="0.05" stroke={WARN} strokeWidth="1" strokeOpacity="0.4" />
+      <rect x="16" y="16" width="290" height="28" rx="4" fill={WARN} fillOpacity="0.12" />
+      <text x="26" y="34" fontFamily="system-ui, sans-serif" fontSize="8" fontWeight="700" fill={WARN} letterSpacing="1.5">DEFAULT CLUSTER</text>
+      <text x="290" y="34" textAnchor="end" fontFamily="system-ui, sans-serif" fontSize="10" fill={WARN} opacity="0.5">⚠</text>
+
+      {defaults.map((d, i) => (
+        <g key={i}>
+          <rect x="26" y={60 + i * 50} width="268" height="34" rx="3" fill={WARN} fillOpacity="0.07" stroke={WARN} strokeWidth="0.8" strokeOpacity="0.2" />
+          <text x="36" y={82 + i * 50} fontFamily="system-ui, sans-serif" fontSize="9" fill={TEXT} opacity="0.7">{d}</text>
+          <text x="280" y={82 + i * 50} textAnchor="end" fontFamily="system-ui, sans-serif" fontSize="10" fill={WARN} opacity="0.4">⚠</text>
+        </g>
+      ))}
+
+      <text x="161" y="218" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={WARN} opacity="0.7">fits any brief — which means it fits none</text>
+
+      {/* Center: swap test arrow */}
+      <text x="360" y="120" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="22" fill={BORDER}>&#8594;</text>
+      <rect x="316" y="128" width="88" height="20" rx="3" fill={G} fillOpacity="0.08" />
+      <text x="360" y="142" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fontWeight="700" fill={G} letterSpacing="1">THE SWAP TEST</text>
+
+      {/* Right: subject-driven */}
+      <rect x="414" y="16" width="290" height="220" rx="4" fill={G} fillOpacity="0.06" stroke={G} strokeWidth="1" strokeOpacity="0.4" />
+      <rect x="414" y="16" width="290" height="28" rx="4" fill={G} fillOpacity="0.85" />
+      <text x="424" y="34" fontFamily="system-ui, sans-serif" fontSize="8" fontWeight="700" fill="#fff" letterSpacing="1.5">SUBJECT-DRIVEN</text>
+      <text x="696" y="34" textAnchor="end" fontFamily="system-ui, sans-serif" fontSize="10" fill="#fff" opacity="0.7">✓</text>
+
+      <rect x="424" y="60" width="268" height="110" rx="3" fill={G} fillOpacity="0.08" />
+      <text x="558" y="100" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="11" fontWeight="600" fill={G} opacity="0.7">Choices that could only</text>
+      <text x="558" y="116" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="11" fontWeight="600" fill={G} opacity="0.7">belong to this brief.</text>
+      <text x="558" y="146" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9" fill={MUTED}>Passes the swap test.</text>
+
+      <text x="558" y="218" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={G} opacity="0.7">wouldn&apos;t make sense for an unrelated brand</text>
+
+      {/* Bottom caption */}
+      <text x="360" y="260" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED}>
+        AI models and designers without trained taste cluster on statistically safe defaults. The swap test catches both.
       </text>
     </svg>
   )

@@ -12,7 +12,7 @@ import {
   HermesMemoryTimeline, SkillFlywheel, GatewayHubSpoke, HermesVsClaudeComparison,
   RLSStateDiagram, OWASPTopTenVisual, RLSPolicyDiagram,
   SlopPatternVisual, EEATFramework, WritingWorkflowDiagram,
-  SwapTestDiagram, DesignFundamentalsGrid, TwoPassDiagram,
+  SwapTestDiagram, DesignFundamentalsGrid, TwoPassDiagram, StudyMethodDiagram, AIDesignDefaultsDiagram,
   ValidationSequenceDiagram, MVPScopeVisual, TractionMetricsDiagram,
   FunnelStageDiagram, ScoringGapDiagram, AttributionDiagram,
   JourneyMapVisual, CXMetricsDiagram, DataUnificationDiagram,
@@ -2126,15 +2126,15 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Lede */}
         <section>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
-            Taste is not talent. It is not a style you are born liking. It is a trained
-            pattern-recognition skill, built the same way any other pattern-recognition skill
-            is built: repeated exposure to good and bad examples, paired with the discipline of
-            naming why one beats the other. Designers who &ldquo;just have an eye&rdquo; spent years doing
-            this, usually without calling it training.
+            Taste is not talent. It is not a style you were born liking. It is a trained
+            pattern-recognition skill — built the same way any skill is built: repeated
+            exposure to good and bad examples, paired with the discipline of naming{' '}
+            <em>why</em> one beats the other. Designers who &ldquo;just have an eye&rdquo; spent
+            years doing this. They just didn&rsquo;t call it training.
           </p>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
-            The gap between &ldquo;I like this&rdquo; and &ldquo;this works because of X&rdquo; is the entire distance
-            between having preferences and having taste. This is the workbook for crossing it.
+            The gap between &ldquo;I like this&rdquo; and &ldquo;this works because of X&rdquo; is the
+            entire distance between having preferences and having taste.
           </p>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
@@ -2142,6 +2142,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
               <li><span className="text-brand-cobalt mr-2">—</span>The Swap Test is the core diagnostic: swap the logo and copy for an unrelated brand. If the design still makes sense, it came from a default, not from the subject.</li>
               <li><span className="text-brand-cobalt mr-2">—</span>Typography is the largest single leverage point in frontend design: one display face plus one body face, consistent scale, and maximum contrast in the type itself.</li>
               <li><span className="text-brand-cobalt mr-2">—</span>The two-pass process separates structure (first pass) from polish (second pass). Skipping the first pass produces work that looks finished but cannot be improved systematically.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>AI-generated design defaults to the same handful of looks for the same reason untrained designers do: they are statistically safe. The swap test catches this too.</li>
             </ul>
           </Callout>
         </section>
@@ -2214,6 +2215,10 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="mt-8">
+            <StudyMethodDiagram />
           </div>
 
           <div className="mt-8">
@@ -2351,9 +2356,59 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
           </div>
         </section>
 
-        {/* Section 06 — Self-check */}
+        {/* Section 06 — AI-design filter */}
         <section>
-          <SectionHeading number="06" title="Before calling it finished" />
+          <SectionHeading number="06" title="The AI-design filter" />
+          <div className="space-y-4 mt-6">
+            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+              The same default-vs-choice test from Section 01 is what you should run on
+              AI-generated design output before accepting it. AI models cluster on the same
+              handful of looks for the same reason designers without trained taste do — they
+              are statistically safe, broadly inoffensive defaults, not decisions made for a
+              specific subject.
+            </p>
+          </div>
+
+          <div className="mt-8">
+            <AIDesignDefaultsDiagram />
+          </div>
+
+          <div className="mt-8 space-y-5">
+            {[
+              {
+                head: 'Does the palette relate to the subject, or is it a safe default?',
+                body: 'Warm cream and terracotta fits almost any brief. So does near-black with one acid accent. If the palette would work for an unrelated brand, it has not been designed for this one.',
+              },
+              {
+                head: 'Is there one deliberate signature element?',
+                body: 'Or is everything competing equally for attention? AI output tends toward uniform emphasis — bold choices everywhere, which reads as no choices at all.',
+              },
+              {
+                head: 'Does the type pairing feel chosen?',
+                body: 'Or is it the same two families that show up everywhere? The same high-contrast serif display over a neutral sans-serif body is the visual equivalent of a stock-photo hero.',
+              },
+              {
+                head: 'Is motion serving the content, or signalling its origin?',
+                body: 'Decorative animation that exists to look polished — without communicating anything — is one of the clearest tells. Motion should earn its place the same way any other design element does.',
+              },
+              {
+                head: 'Would it survive having the logo swapped?',
+                body: 'Run the same test you run on your own work. If the answer is yes, accept the output as a starting structure — then design it.',
+              },
+            ].map(({ head, body }, i) => (
+              <div key={i} className="flex gap-5 border-l-2 border-brand-cobalt/20 pl-5">
+                <div>
+                  <p className="font-sans text-base font-semibold text-brand-black/85">{head}</p>
+                  <p className="font-sans text-base text-brand-black/65 leading-relaxed mt-1">{body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 07 — Self-check */}
+        <section>
+          <SectionHeading number="07" title="Before calling it finished" />
           <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
             Run this checklist before shipping anything:
           </p>
@@ -2380,7 +2435,9 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Closing */}
         <section>
           <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
-            The test is whether the design could belong to anyone — or whether it could only be this.
+            A template executed well is not design — it is production. The swap test is how
+            you tell the difference, on your own work and on everything a model generates for
+            you. If it survives the swap, it hasn&rsquo;t been designed yet.
           </p>
         </section>
 
