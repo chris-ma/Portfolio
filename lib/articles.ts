@@ -11,6 +11,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'design-taste-frontend',
+    title: 'The Swap Test',
+    subtitle: 'Taste is pattern recognition, not talent. The deliberate practice that builds it, and the diagnostic that keeps your work from being a default.',
+    category: 'Creative',
+    date: '2026-08-12',
+    readTime: '10 min read',
+    tags: ['Design', 'UI Design', 'Typography', 'Visual Design', 'Figma'],
+    excerpt:
+      "Swap the logo and copy for an unrelated brand. If the design still makes sense, it wasn't designed for this brief — it's a default. That single test is the difference between competent and distinctive work.",
+  },
+  {
     slug: 'api-rate-limits-design',
     title: 'Before the 429',
     subtitle: "The rate limit isn't the problem. Hitting it without a plan is. The four-pattern stack that keeps you under the ceiling — and what to do when you're not.",
@@ -163,17 +174,6 @@ export const articles: Article[] = [
     tags: ['MVP', 'Traction', 'Startups', 'Validation', 'Product Strategy'],
     excerpt:
       "A POC without traction is theory. An MVP without traction is a beta nobody's proven anyone wants. Traction is the actual finish line — everything before it exists to get you there as cheaply and quickly as possible.",
-  },
-  {
-    slug: 'design-taste-frontend',
-    title: 'The Swap Test',
-    subtitle: 'Taste is pattern recognition, not talent. The deliberate practice that builds it, and the diagnostic that keeps your work from being a default.',
-    category: 'Creative',
-    date: '2026-08-12',
-    readTime: '10 min read',
-    tags: ['Design', 'UI Design', 'Typography', 'Visual Design', 'Figma'],
-    excerpt:
-      "Swap the logo and copy for an unrelated brand. If the design still makes sense, it wasn't designed for this brief — it's a default. That single test is the difference between competent and distinctive work.",
   },
   {
     slug: 'content-writing-eeat',
