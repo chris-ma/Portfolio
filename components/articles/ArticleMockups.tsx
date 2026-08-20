@@ -5314,3 +5314,156 @@ export function AIDealSourceDiagram() {
     </svg>
   )
 }
+
+export function DiagnosticSprintDiagram() {
+  const WARN = '#D4890A'
+  return (
+    <svg viewBox="0 0 720 262" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="262" fill={BG} />
+
+      {/* Left — Pre-work */}
+      <rect x="16" y="16" width="210" height="210" rx="3" fill={G} fillOpacity="0.07" stroke={G} strokeOpacity="0.25" strokeWidth="1" />
+      <text x="121" y="36" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} letterSpacing="1.5">PRE-WORK</text>
+      <line x1="40" y1="44" x2="208" y2="44" stroke={G} strokeOpacity="0.2" strokeWidth="1" />
+      {[
+        'Async intake questionnaire',
+        'Existing dashboards + reporting',
+        'AI synthesis of client docs',
+        'Public signals vs. stated goals',
+      ].map((item, i) => (
+        <g key={i}>
+          <circle cx="36" cy={64 + i * 36} r="3" fill={G} fillOpacity="0.5" />
+          <text x="46" y={68 + i * 36} fontFamily="system-ui, sans-serif" fontSize="8.5" fill={TEXT} opacity="0.75">{item}</text>
+        </g>
+      ))}
+      <text x="121" y="204" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED}>Before the first meeting</text>
+
+      {/* Arrow 1 */}
+      <text x="240" y="125" textAnchor="middle" fontFamily="monospace" fontSize="16" fill={G} opacity="0.4">›</text>
+
+      {/* Center — Sprint */}
+      <rect x="258" y="16" width="204" height="210" rx="3" fill={BG2} stroke={BORDER} strokeWidth="1" />
+      <text x="360" y="36" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={TEXT} opacity="0.55" letterSpacing="1.5">SPRINT CONVERSATION</text>
+      <line x1="278" y1="44" x2="444" y2="44" stroke={BORDER} strokeWidth="1" />
+      {[
+        '40–60 min structured session',
+        'Hypotheses from pre-work tested',
+        'No basic fact-gathering',
+        'Push back on the framing',
+      ].map((item, i) => (
+        <g key={i}>
+          <circle cx="278" cy={64 + i * 36} r="3" fill={MUTED} fillOpacity="0.5" />
+          <text x="288" y={68 + i * 36} fontFamily="system-ui, sans-serif" fontSize="8.5" fill={TEXT} opacity="0.75">{item}</text>
+        </g>
+      ))}
+      <text x="360" y="204" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED}>Test, not inform</text>
+
+      {/* Arrow 2 */}
+      <text x="478" y="125" textAnchor="middle" fontFamily="monospace" fontSize="16" fill={WARN} opacity="0.5">›</text>
+
+      {/* Right — Output */}
+      <rect x="494" y="16" width="210" height="210" rx="3" fill={WARN} fillOpacity="0.07" stroke={WARN} strokeOpacity="0.25" strokeWidth="1" />
+      <text x="599" y="36" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={WARN} letterSpacing="1.5">OUTPUT</text>
+      <line x1="514" y1="44" x2="686" y2="44" stroke={WARN} strokeOpacity="0.2" strokeWidth="1" />
+      <text x="514" y="74" fontFamily="system-ui, sans-serif" fontSize="8.5" fontWeight="600" fill={TEXT} opacity="0.85">One falsifiable problem statement</text>
+      <text x="514" y="92" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED}>Specific and testable.</text>
+      <text x="514" y="106" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED}>Stated so the client can</text>
+      <text x="514" y="120" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED}>push back on it.</text>
+      <text x="514" y="148" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED} fontStyle="italic">If it can&apos;t be stated in one</text>
+      <text x="514" y="162" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED} fontStyle="italic">sentence, the diagnostic</text>
+      <text x="514" y="176" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED} fontStyle="italic">phase isn&apos;t finished.</text>
+      <text x="599" y="204" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED}>Not a list. One statement.</text>
+
+      <text x="360" y="248" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED}>Front-load the intake. Spend the meeting on diagnosis, not information gathering.</text>
+    </svg>
+  )
+}
+
+export function VendorPartnerDiagram() {
+  const WARN = '#D4890A'
+  const vendorRows = [
+    { key: 'Relationship', val: 'Ends at delivery' },
+    { key: 'Pricing',      val: 'Per deliverable / project' },
+    { key: 'Stance',       val: 'Executes what\'s requested' },
+    { key: 'Re-engagement', val: 'New RFP required' },
+    { key: 'Credit',       val: 'The deliverable looks good' },
+  ]
+  const partnerRows = [
+    { key: 'Relationship', val: 'Continues after delivery' },
+    { key: 'Pricing',      val: 'Retained / ongoing access' },
+    { key: 'Stance',       val: 'Says no when diagnosis doesn\'t match' },
+    { key: 'Re-engagement', val: 'Brings the next problem before asked' },
+    { key: 'Credit',       val: 'Makes the client\'s team look good' },
+  ]
+  return (
+    <svg viewBox="0 0 720 284" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="284" fill={BG} />
+
+      {/* Left — Vendor */}
+      <rect x="16" y="16" width="328" height="240" rx="3" fill={WARN} fillOpacity="0.07" stroke={WARN} strokeOpacity="0.25" strokeWidth="1" />
+      <text x="180" y="38" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={WARN} letterSpacing="1.5">VENDOR</text>
+      <line x1="40" y1="46" x2="320" y2="46" stroke={WARN} strokeOpacity="0.2" strokeWidth="1" />
+      {vendorRows.map((row, i) => (
+        <g key={i}>
+          <text x="40" y={70 + i * 36} fontFamily="system-ui, sans-serif" fontSize="8.5" fontWeight="600" fill={WARN} opacity="0.85">{row.key}</text>
+          <text x="40" y={84 + i * 36} fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED}>{row.val}</text>
+        </g>
+      ))}
+
+      {/* Right — Partner */}
+      <rect x="376" y="16" width="328" height="240" rx="3" fill={G} fillOpacity="0.07" stroke={G} strokeOpacity="0.25" strokeWidth="1" />
+      <text x="540" y="38" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} letterSpacing="1.5">PARTNER</text>
+      <line x1="400" y1="46" x2="680" y2="46" stroke={G} strokeOpacity="0.2" strokeWidth="1" />
+      {partnerRows.map((row, i) => (
+        <g key={i}>
+          <text x="400" y={70 + i * 36} fontFamily="system-ui, sans-serif" fontSize="8.5" fontWeight="600" fill={G} opacity="0.85">{row.key}</text>
+          <text x="400" y={84 + i * 36} fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED}>{row.val}</text>
+        </g>
+      ))}
+
+      {/* VS divider */}
+      <text x="360" y="144" textAnchor="middle" fontFamily="monospace" fontSize="13" fontWeight="700" fill={TEXT} opacity="0.3">vs.</text>
+
+      <text x="360" y="272" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED}>The pricing structure is itself a signal of which relationship you&apos;re actually offering.</text>
+    </svg>
+  )
+}
+
+export function AIConsultingRiskDiagram() {
+  const WARN = '#D4890A'
+  const RED = '#B0372A'
+  const rows = [
+    { risk: 'Hallucinated citations',  mitigation: 'Verify every AI-surfaced fact independently before any client-facing delivery. No exceptions.', severity: 'CRITICAL', color: RED  },
+    { risk: 'Client data handling',    mitigation: 'Know where data resides, whether it trains models. Be able to state this clearly when asked.', severity: 'HIGH',     color: WARN },
+    { risk: 'PI coverage gap',         mitigation: 'Existing professional indemnity may not cover AI-generated errors. Have a direct conversation with your insurer.', severity: 'HIGH', color: WARN },
+    { risk: 'Model rationalization',   mitigation: 'Explain why each approach was chosen — including when simpler was the right call. Credibility requires specificity.', severity: 'MODERATE', color: GL },
+  ]
+  return (
+    <svg viewBox="0 0 720 250" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="250" fill={BG} />
+
+      {/* Header */}
+      <rect x="0" y="0" width="720" height="28" fill={BG2} />
+      <text x="16" y="18" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="1.5">RISK</text>
+      <text x="220" y="18" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="1.5">MITIGATION</text>
+      <text x="580" y="18" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="1.5">SEVERITY</text>
+      <line x1="0" y1="28" x2="720" y2="28" stroke={BORDER} strokeWidth="1" />
+
+      {rows.map((row, i) => (
+        <g key={i}>
+          <rect x="0" y={28 + i * 44} width="720" height="44" fill={i % 2 === 1 ? BG2 : 'transparent'} fillOpacity="0.5" />
+          <line x1="0" y1={28 + (i + 1) * 44} x2="720" y2={28 + (i + 1) * 44} stroke={BORDER} strokeWidth="0.5" strokeOpacity="0.5" />
+          <text x="16" y={52 + i * 44} fontFamily="system-ui, sans-serif" fontSize="9.5" fontWeight="600" fill={TEXT} opacity="0.85">{row.risk}</text>
+          <text x="220" y={52 + i * 44} fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED}>{row.mitigation.length > 58 ? row.mitigation.slice(0, 58) : row.mitigation}</text>
+          {row.mitigation.length > 58 && (
+            <text x="220" y={66 + i * 44} fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED}>{row.mitigation.slice(58)}</text>
+          )}
+          <rect x="565" y={36 + i * 44} width="140" height="18" rx="9" fill={row.color} fillOpacity="0.12" stroke={row.color} strokeOpacity="0.35" strokeWidth="1" />
+          <text x="635" y={49 + i * 44} textAnchor="middle" fontFamily="monospace" fontSize="7" fill={row.color} fontWeight="600" letterSpacing="0.5">{row.severity}</text>
+        </g>
+      ))}
+
+      <text x="360" y="242" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED}>Deloitte AU partially refunded AU$440K after AI-generated fabricated court citations reached a client deliverable.</text>
+    </svg>
+  )
+}

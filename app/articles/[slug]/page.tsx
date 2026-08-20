@@ -29,6 +29,7 @@ import {
   APIArchitectureDiagram, BackoffJitterDiagram, RateLimitStackDiagram,
   AutomationLadderDiagram, ProcessMiningDiagram, OrchestratedVsIsolatedDiagram,
   SilverTsunamiDiagram, ETAPathsDiagram, AIDealSourceDiagram,
+  DiagnosticSprintDiagram, VendorPartnerDiagram, AIConsultingRiskDiagram,
 } from '@/components/articles/ArticleMockups'
 import RecommendedReading from '@/components/articles/RecommendedReading'
 
@@ -151,6 +152,10 @@ export default function ArticlePage({ params }: PageProps) {
 
   if (article.slug === 'small-business-acquisition') {
     return <SmallBusinessAcquisitionArticle article={article} formattedDate={formattedDate} />
+  }
+
+  if (article.slug === 'consulting-ai-augmented') {
+    return <ConsultingArticle article={article} formattedDate={formattedDate} />
   }
 
   notFound()
@@ -8279,6 +8284,260 @@ DO NOT ENGAGE with any deal that fails ≥ 2 of these criteria.`}</CodeBlock></d
           { title: 'HBR Guide to Buying a Small Business', author: 'Richard Ruback & Royce Yudkoff — Harvard Business Review Press', type: 'Book', description: 'The canonical academic text on ETA — the source that put search funds on the Harvard Business School curriculum. Essential grounding before any acquisition search.' },
           { title: 'Buy Then Build', author: 'Walker Deibel — Lioncrest Publishing', type: 'Book', description: 'The practitioner handbook for self-funded ETA: how to find, evaluate, finance, and close a business acquisition without institutional backing. More operational than the HBR guide.' },
           { title: 'Search Fund Primer', author: 'Stanford Graduate School of Business', type: 'Article', description: 'The source for the 35.1% IRR and 681-fund dataset cited throughout — updated periodically, freely available, the most rigorous longitudinal data on search fund outcomes.' },
+        ]} />
+
+      </article>
+
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-brand-concrete pt-10">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+    </div>
+  )
+}
+
+function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+          ← Field Notes
+        </Link>
+      </div>
+
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+        <h1 className="font-display text-7xl md:text-9xl lg:text-[120px] text-brand-black leading-none tracking-tightest mb-4">
+          THE<br />REAL<br /><span className="text-brand-cobalt">PROBLEM.</span>
+        </h1>
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">{article!.subtitle}</p>
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted border border-brand-concrete px-2.5 py-1">{tag}</span>
+          ))}
+        </div>
+      </header>
+
+      <article className="max-w-[720px] mx-auto px-6 md:px-10 py-16 space-y-16">
+
+        {/* Lede */}
+        <section>
+          <div className="border-l-2 border-brand-cobalt pl-6 space-y-4">
+            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+              The problem a client brings you is almost never the problem. It&rsquo;s the symptom they noticed — the thing that broke the surface. The actual mechanism producing it is usually a layer deeper, and often requires a completely different fix than the one the client already has in mind.
+            </p>
+            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+              The first job in any consulting engagement is separating those two things. Not starting with the solution. Not proposing a framework. Diagnosing — specifically, producing one falsifiable statement of what&rsquo;s actually broken and why. Everything else follows from whether that statement is right.
+            </p>
+          </div>
+
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>The slow-audit model (6–12 month discovery) is structurally obsolete. Time-to-value is the metric that matters; fast, structured diagnostic sprints are the credible alternative.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>The stated problem is rarely the root cause. The first real job is separating the symptom the client noticed from the mechanism actually producing it.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>AI genuinely compresses intake synthesis and first-pass analysis — but every AI-surfaced pattern is a hypothesis to validate in conversation, not a finding to present as settled.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>A technically excellent solution the client&rsquo;s team can&rsquo;t run after you leave is a failed engagement. Match the solution to the organization&rsquo;s real capacity, not an idealized one.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>A vendor executes what&rsquo;s requested. A partner says no when the requested solution doesn&rsquo;t match the diagnosis. That uncomfortable moment is precisely what earns durable trust.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Deloitte AU partially refunded AU$440K after AI-generated fabricated citations reached a client deliverable. Every AI-surfaced fact in client-facing work gets independently verified before delivery — no exceptions.</li>
+            </ul>
+          </Callout>
+        </section>
+
+        {/* Section 01 */}
+        <section>
+          <SectionHeading number="01" title="The presenting problem is rarely the actual one" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            A request to &ldquo;improve our website conversion rate&rdquo; might actually be a positioning problem, a targeting problem, or a genuinely broken product-market fit that no landing page fix will solve. A request to &ldquo;help us with team communication&rdquo; might be a trust problem, a structure problem, or a strategy problem that no Slack configuration will touch. The first real job of diagnosis is separating the symptom the client noticed from the mechanism actually producing it — and not accepting the client&rsquo;s internal theory of their own problem at face value.
+          </p>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+            The traditional consulting response to this was a long, slow audit — 6 to 12 months of discovery, workshops, and stakeholder interviews that became expensive, and whose delay itself functioned as a real competitive cost. In 2026, that model is being described as structurally obsolete. The credible alternative is a fast, structured diagnostic sprint — deliberately compressed, using pre-work to bypass the slow discovery phase entirely.
+          </p>
+
+          <figure className="my-8">
+            <div className="border border-brand-concrete overflow-hidden"><DiagnosticSprintDiagram /></div>
+            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">The sprint structure — front-load intake, spend the meeting on diagnosis, output one falsifiable statement.</figcaption>
+          </figure>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            The sprint works by front-loading structured, asynchronous intake before the first real conversation — a written questionnaire, existing dashboards, current reporting. AI-assisted synthesis of that intake material can compress what used to take a week of reading and note-taking into a structured brief: what the client says their problem is, what their own data actually shows, where the two diverge. The meeting time then goes to genuine diagnosis rather than basic fact-gathering.
+          </p>
+
+          <div className="bg-brand-graphite border-l-4 border-brand-cobalt/30 pl-5 pr-4 py-4 mt-6">
+            <p className="font-sans text-sm text-brand-black/80 leading-relaxed">
+              <span className="font-semibold">The output of this stage is a single, falsifiable problem statement</span> — not a list of ten possible issues, not a framework deck, not a methodology overview. One specific, testable statement of what&rsquo;s actually broken and why, stated in a form the client can push back on. If the diagnosis can&rsquo;t be stated in one clear sentence, the diagnostic phase isn&rsquo;t finished yet, regardless of how much material has been gathered.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 02 */}
+        <section>
+          <SectionHeading number="02" title="Frame before solving" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            Once the diagnosis holds — once there&rsquo;s a falsifiable problem statement both sides agree is testable — the next failure mode is jumping straight to solution design without setting the frame. Two things have to happen before any solution work starts.
+          </p>
+
+          <div className="space-y-0 border border-brand-concrete mb-6">
+            <div className="border-b border-brand-concrete bg-brand-graphite px-4 py-3">
+              <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-cobalt">Before any solution work begins</p>
+            </div>
+            {[
+              { q: 'Co-design with the people who will live with the solution', a: 'A fix imposed without genuine input from the team executing it day-to-day faces real adoption resistance regardless of how sound the strategy is. Involvement in shaping the solution is not a courtesy — it\'s the mechanism by which the solution survives after you leave.' },
+              { q: 'Set explicit, measurable success criteria', a: 'State what "working" will actually look like in measurable terms before building anything. Not as a formality — because it\'s what lets both sides recognize a real result later instead of arguing about whether it happened.' },
+            ].map(({ q, a }, i, arr) => (
+              <div key={i} className={`px-4 py-3 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
+                <p className="font-sans text-sm font-semibold text-brand-black/85 mb-0.5">{q}</p>
+                <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{a}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            There&rsquo;s a third framing discipline specific to AI-augmented consulting: be transparent about what AI will and won&rsquo;t touch in the engagement. If AI tooling is part of how you work — research synthesis, first-pass analysis, drafting — say so plainly, and be equally direct about where it isn&rsquo;t being used.
+          </p>
+
+          <div className="space-y-4 mt-4">
+            {[
+              { head: 'Where AI contributed', body: 'Intake synthesis, first-pass analysis, draft materials — name it specifically.' },
+              { head: 'Where AI wasn\'t used', body: 'Judgment calls, anything client-confidential, the final recommendation itself.' },
+              { head: 'Why transparency matters', body: 'A consultant who is vague about where AI touched the work reads as less trustworthy, not more sophisticated. Clients in 2026 are trained to ask this question.' },
+            ].map(({ head, body }, i) => (
+              <div key={i} className="flex gap-5 border-l-2 border-brand-cobalt/20 pl-5">
+                <div>
+                  <p className="font-sans text-base font-semibold text-brand-black/85">{head}</p>
+                  <p className="font-sans text-base text-brand-black/65 leading-relaxed mt-1">{body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 03 */}
+        <section>
+          <SectionHeading number="03" title="Analysis that actually holds up" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            The most common failure mode in the analysis stage is generic output — a recommendation that looks like it could apply to any organization in the same industry, because it was built on general best practice rather than the client&rsquo;s actual data. The credible 2026 standard is RAG-style analysis: build a structured reference set from the client&rsquo;s own documents, reporting, and history, and have any AI-assisted analysis draw from that specific material rather than general training knowledge.
+          </p>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+            Framework selection follows the same discipline: pick the one that fits the specific diagnosis from Section 01, not the one you default to. A CDJ-style journey map, a funnel-stage breakdown, a Stage-Gate structure — the right choice is the one that actually explains the data, not the one most familiar. AI-assisted first passes can genuinely help test a diagnosis against several structural lenses quickly, letting you see which framework explains the data best before committing to build the recommendation around it.
+          </p>
+
+          <div className="space-y-0 border border-brand-concrete">
+            <div className="border-b border-brand-concrete bg-brand-graphite px-4 py-3">
+              <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-cobalt">Framework selection — the discipline</p>
+            </div>
+            {[
+              { framework: 'CDJ journey map', fits: 'Diagnosis is a broken customer experience or friction point along a defined path', when_not: 'When the problem is structural or financial — mapping a journey doesn\'t fix the economics' },
+              { framework: 'Funnel-stage breakdown', fits: 'Diagnosis is a conversion or retention problem with clear quantitative stages', when_not: 'When the problem is pre-funnel (audience targeting, positioning) — the funnel starts too late' },
+              { framework: 'Stage-Gate model', fits: 'Diagnosis is a prioritization or pipeline management problem in a multi-initiative org', when_not: 'When speed is the constraint — gate reviews slow things down deliberately' },
+            ].map(({ framework, fits, when_not }, i, arr) => (
+              <div key={i} className={`grid grid-cols-3 gap-0 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
+                <div className="p-3 border-r border-brand-concrete bg-brand-graphite/30">
+                  <p className="font-sans text-xs font-semibold text-brand-cobalt">{framework}</p>
+                </div>
+                <div className="p-3 border-r border-brand-concrete">
+                  <p className="font-sans text-xs text-brand-black/65 leading-relaxed">{fits}</p>
+                </div>
+                <div className="p-3">
+                  <p className="font-sans text-xs text-brand-black/50 leading-relaxed">{when_not}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="bg-brand-graphite border border-brand-concrete p-5 mt-6">
+            <p className="font-sans text-sm font-semibold text-brand-black/85 mb-1">The subtraction discipline</p>
+            <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+              The differentiated move at this stage isn&rsquo;t generating more analysis. It&rsquo;s cutting everything that doesn&rsquo;t serve the one recommendation that actually matters. A 40-slide deck covering every possible angle is weaker, not stronger, than a tight, specific recommendation with the reasoning shown. AI-assisted drafting makes it easy to generate comprehensive-looking material; the actual skill is knowing what to leave out.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 04 */}
+        <section>
+          <SectionHeading number="04" title="Implementation that survives your exit" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            A technically excellent solution the client&rsquo;s team can&rsquo;t actually operate after you leave is a failed engagement, regardless of how sound the strategy was. &ldquo;It&rsquo;s a good plan&rdquo; and &ldquo;this organization can actually run it&rdquo; are different bars, and both have to clear.
+          </p>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+            Two implementation disciplines matter most for survivability. First, phase the rollout: start any new process, system, or recommendation in a mode where it <em>suggests</em> actions for human review before it&rsquo;s trusted to act autonomously. This reduces resistance to change, catches early mistakes before they compound, and gives the client&rsquo;s team a genuine on-ramp rather than a disruptive cutover. Second, track leading indicators rather than waiting for the lagging outcome metric — define the faster signals (adoption rate, early usage data, first-week engagement with a new tool) that will tell you within weeks, not months, whether the implementation is on track.
+          </p>
+
+          <figure className="my-8">
+            <div className="border border-brand-concrete overflow-hidden"><VendorPartnerDiagram /></div>
+            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">The vendor and partner models are structurally different relationships, not just different positioning language.</figcaption>
+          </figure>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            The goal of any AI-assisted implementation is augmenting the client&rsquo;s team, not replacing it — freeing people from repetitive execution to focus on judgment, relationship, and oversight work. A team that understands and can operate what was built is the mechanism by which a solution survives after you leave. A team that was handed a black box is not.
+          </p>
+        </section>
+
+        {/* Section 05 */}
+        <section>
+          <SectionHeading number="05" title="What earns partner status" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+            Partner status isn&rsquo;t positioning language. It&rsquo;s a set of specific, observable behaviors that distinguish an ongoing advisory relationship from a bounded project transaction. Five of them are worth naming explicitly.
+          </p>
+
+          <div className="space-y-0 border border-brand-concrete mb-8">
+            {[
+              { n: '01', label: 'Stay close after the formal deliverable ships', detail: 'A vendor\'s relationship ends at delivery; a partner\'s continues. Check in on the leading indicators from Section 04, be available when the next bottleneck surfaces, treat the engagement as the start of an ongoing diagnostic relationship rather than a one-off transaction.' },
+              { n: '02', label: 'Bring the next problem before being asked', detail: 'The advisory value increasingly sits in diagnosing bottlenecks in an existing setup — meaning a genuine partner keeps watching for what\'s about to become the next constraint, rather than waiting for a new RFP to re-engage.' },
+              { n: '03', label: 'Say no to the wrong ask', detail: 'A vendor executes whatever\'s requested; a partner pushes back when the requested solution doesn\'t match the actual diagnosis. This is genuinely uncomfortable in the moment and is precisely what earns durable trust over a vendor relationship\'s shorter half-life.' },
+              { n: '04', label: 'Make the client\'s team look good, not just the deliverable', detail: 'Credit and visibility for the client team\'s own contribution to a successful implementation builds the goodwill that turns into the next engagement, the referral, and the retained relationship.' },
+              { n: '05', label: 'Price and structure the relationship to reflect this', detail: 'A vendor engagement is priced per deliverable; a partner relationship is more often structured as retained, ongoing access. The pricing model itself is a signal of which relationship you\'re actually offering.' },
+            ].map(({ n, label, detail }, i, arr) => (
+              <div key={i} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
+                <div className="w-14 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/50 flex items-start justify-center">
+                  <span className="font-mono text-xs text-brand-cobalt/60 mt-0.5">{n}</span>
+                </div>
+                <div className="p-4">
+                  <p className="font-sans text-sm font-semibold text-brand-black/85 mb-1">{label}</p>
+                  <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+            AI risk management deserves its own discipline, not a footnote. The failure mode is real and has already happened publicly. In 2026, treating this as seriously as any other part of the methodology is the minimum standard for credibility.
+          </p>
+
+          <figure className="my-8">
+            <div className="border border-brand-concrete overflow-hidden"><AIConsultingRiskDiagram /></div>
+            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">AI risk register for consulting work — four categories, two at high or critical severity.</figcaption>
+          </figure>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            The Deloitte Australia case is the non-abstract version of what happens when AI risk isn&rsquo;t treated seriously: an AU$440,000 government contract partially refunded after an AI-generated report included fabricated court quotes and references. Well-formatted, confident-looking output is not evidence of accuracy. Independent verification before any client-facing delivery isn&rsquo;t optional — it&rsquo;s what separates a credible practice from a liability.
+          </p>
+        </section>
+
+        {/* Closing */}
+        <section className="border-t border-brand-concrete pt-10">
+          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+            A vendor executes whatever&rsquo;s requested and leaves when the invoice is paid. A partner pushes back when the requested solution doesn&rsquo;t match the actual diagnosis — genuinely uncomfortable in the moment, and precisely what earns the trust that outlasts any single project. The diagnostic discipline is what makes the difference possible. It only works if you actually do it first.
+          </p>
+        </section>
+
+        <RecommendedReading items={[
+          { title: 'The Trusted Advisor', author: 'David Maister, Charles Green & Robert Galford — Free Press', type: 'Book', description: 'The foundational text on the advisor relationship model. The trust equation it introduces — credibility + reliability + intimacy over self-orientation — is still the best framework for understanding what partner-level credibility actually requires.' },
+          { title: 'Flawless Consulting', author: 'Peter Block — Pfeiffer', type: 'Book', description: 'The canonical practitioner guide to engaging clients authentically: getting to the real problem, structuring the engagement for genuine ownership rather than dependency, and avoiding the patterns that keep consultants in a permanent vendor position.' },
+          { title: 'The McKinsey Way', author: 'Ethan Rasiel — McGraw-Hill', type: 'Book', description: 'The practitioner\'s guide to hypothesis-first, structured problem-solving as a consulting methodology. The diagnostic discipline this article builds on — start with a falsifiable hypothesis, test it, revise — is exactly what this book teaches at practitioner level.' },
         ]} />
 
       </article>

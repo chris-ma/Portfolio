@@ -11,6 +11,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'consulting-ai-augmented',
+    title: 'The Real Problem',
+    subtitle: "The stated problem is almost never the actual one. The diagnostic-sprint model, AI's role at each stage, and what it actually takes to move from vendor to partner.",
+    category: 'Strategy',
+    date: '2026-08-20',
+    readTime: '11 min read',
+    tags: ['Consulting', 'AI Augmentation', 'Diagnosis', 'Strategy', 'Fractional'],
+    excerpt:
+      "The problem a client brings you is almost never the problem. It's the symptom they noticed. The actual mechanism is a layer deeper — and requires a completely different fix. Here's the diagnostic-sprint model, where AI genuinely compresses the work, and the specific behaviors that earn partner status over a vendor relationship's shorter half-life.",
+  },
+  {
     slug: 'small-business-acquisition',
     title: 'Skip Year Zero',
     subtitle: 'Six million US businesses are changing hands by 2035. The ETA playbook for finding them, filtering them, and where AI actually compresses the work.',
