@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Bebas_Neue, Space_Grotesk, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/nav/Navbar'
+import GrainOverlay from '@/components/ui/GrainOverlay'
 
 /*
   LUXURY BOOK CLOTH — direction contract — Taschen, Phaidon, Penguin Modern Classics
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Navbar />
         {children}
+        <GrainOverlay />
       {/* impeccable-live-start */}
 <script src="http://localhost:8400/live.js?token=00cfb7ac-b52c-48a0-8166-7a7e2e6bc835"></script>
 {/* impeccable-live-end */}

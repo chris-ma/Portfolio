@@ -92,6 +92,27 @@ body {
   }
 }
 
+/* ── Grain overlay ────────────────────────────────────────────────────────────── */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background-size: 200px 200px;
+  opacity: 0.038;
+  mix-blend-mode: overlay;
+  animation: grainShift 0.65s steps(1) infinite;
+}
+
+@keyframes grainShift {
+  0%   { background-position:   0px   0px; }
+  16%  { background-position: -32px -22px; }
+  33%  { background-position:  22px -44px; }
+  50%  { background-position: -44px  28px; }
+  66%  { background-position:  28px  14px; }
+  83%  { background-position: -16px -36px; }
+}
+
 /* ── Utilities ────────────────────────────────────────────────────────────────── */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

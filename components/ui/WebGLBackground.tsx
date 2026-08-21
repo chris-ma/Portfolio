@@ -72,22 +72,22 @@ void main() {
 
   float f = fbm(uv + 2.2 * r + t * 0.2);
 
-  // Colour palette — warm cream to Aston Martin forest green
-  vec3 cream      = vec3(0.961, 0.949, 0.940);  // #F5F2ED
-  vec3 greenDeep  = vec3(0.102, 0.302, 0.227);  // #1A4D3A
-  vec3 greenMid   = vec3(0.239, 0.478, 0.376);  // #3D7A60
+  // Colour palette — Book Cloth: deep slate ground with barely-visible gold warmth
+  vec3 deep  = vec3(0.051, 0.122, 0.157);  // #0D1F28 bk-deep
+  vec3 slate = vec3(0.110, 0.200, 0.251);  // #1C3340 bk-slate
+  vec3 warm  = vec3(0.831, 0.686, 0.431);  // #D4AF6E bk-gold
 
-  // Blend — keep green influence subtle so text stays readable
+  // Blend — fabric formations in slate, gold warmth barely perceptible at peaks
   float t1 = smoothstep(0.35, 0.65, f);
-  float t2 = smoothstep(0.60, 0.85, f);
+  float t2 = smoothstep(0.68, 0.90, f);
 
-  vec3 col = cream;
-  col = mix(col, greenMid,  t1 * 0.20);
-  col = mix(col, greenDeep, t2 * 0.12);
+  vec3 col = deep;
+  col = mix(col, slate, t1 * 0.60);
+  col = mix(col, warm,  t2 * 0.07);  // barely visible — foil catching ambient light
 
-  // Gentle vignette — slightly deeper at edges
+  // Vignette — edges pull toward bk-deep, reinforces depth
   vec2 vig = (gl_FragCoord.xy / u_resolution.xy) * 2.0 - 1.0;
-  float vignette = 1.0 - dot(vig, vig) * 0.08;
+  float vignette = 1.0 - dot(vig, vig) * 0.18;
   col *= vignette;
 
   fragColor = vec4(col, 1.0);
