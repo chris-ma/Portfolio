@@ -139,7 +139,7 @@ export default function ArticlePodcastPlayer({ title, slug }: Props) {
   const isLoading = status === 'loading'
 
   return (
-    <div data-podcast-player="true" className="bg-[#0A0A0A] border-t-2 border-[#D4890A]/40">
+    <div data-podcast-player="true" className="bg-bk-deep border-t border-bk-gold/30">
       <style>{`
         @keyframes podcastWave {
           0%, 100% { transform: scaleY(0.35); }
@@ -150,18 +150,18 @@ export default function ArticlePodcastPlayer({ title, slug }: Props) {
         }
         .podcast-bar-active {
           animation: podcastWave 0.75s ease-in-out infinite;
-          background-color: #D4890A;
+          background-color: #D4AF6E;
         }
         .podcast-bar-idle {
-          background-color: rgba(212, 137, 10, 0.2);
+          background-color: rgba(212, 175, 110, 0.2);
         }
         .podcast-bar-done {
-          background-color: rgba(212, 137, 10, 0.45);
+          background-color: rgba(212, 175, 110, 0.45);
         }
         .podcast-spinner {
           animation: podcastSpin 0.8s linear infinite;
-          border: 2px solid rgba(255,255,255,0.2);
-          border-top-color: #D4890A;
+          border: 2px solid rgba(212, 175, 110, 0.2);
+          border-top-color: #D4AF6E;
           border-radius: 50%;
           width: 18px;
           height: 18px;
@@ -173,12 +173,12 @@ export default function ArticlePodcastPlayer({ title, slug }: Props) {
         {/* Label row */}
         <div className="flex items-center gap-3 mb-4">
           <div
-            className={`w-2 h-2 rounded-full flex-shrink-0 transition-colors duration-500 ${isPlaying ? 'bg-[#D4890A]' : 'bg-[#D4890A]/30'}`}
+            className={`w-2 h-2 rounded-full flex-shrink-0 transition-colors duration-500 ${isPlaying ? 'bg-[#D4AF6E]' : 'bg-[#D4AF6E]/30'}`}
           />
           <span className="font-mono text-[10px] tracking-[0.2em] text-[#7A7872] uppercase">
             Field Notes · Podcast
           </span>
-          <span className="ml-auto font-mono text-[8px] text-[#D4890A]/50 tracking-[0.12em] uppercase">
+          <span className="ml-auto font-mono text-[8px] text-[#D4AF6E]/50 tracking-[0.12em] uppercase">
             Host + Expert · Gemini TTS
           </span>
         </div>
@@ -197,7 +197,7 @@ export default function ArticlePodcastPlayer({ title, slug }: Props) {
           <button
             onClick={isPlaying ? handlePause : handlePlay}
             disabled={isLoading || status === 'error'}
-            className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed transition-all bg-[#D4890A] hover:bg-[#B8750A]"
+            className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed transition-all bg-[#D4AF6E] hover:bg-[#B8956E]"
             aria-label={isPlaying ? 'Pause' : isLoading ? 'Loading' : 'Play'}
           >
             {isLoading ? (
@@ -254,9 +254,9 @@ export default function ArticlePodcastPlayer({ title, slug }: Props) {
             </div>
 
             {/* Progress track */}
-            <div className="h-[2px] bg-[#D4890A]/15 rounded-full overflow-hidden">
+            <div className="h-[2px] bg-[#D4AF6E]/15 rounded-full overflow-hidden">
               <div
-                className="h-full bg-[#D4890A] transition-all duration-500 ease-out"
+                className="h-full bg-[#D4AF6E] transition-all duration-500 ease-out"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -270,7 +270,7 @@ export default function ArticlePodcastPlayer({ title, slug }: Props) {
                   key={s}
                   onClick={() => handleSpeed(s)}
                   className={`font-mono text-[10px] px-2 py-0.5 rounded-sm transition-colors ${
-                    speed === s ? 'bg-[#D4890A] text-[#F5F4F0]' : 'text-[#7A7872] hover:text-[#F5F4F0]'
+                    speed === s ? 'bg-[#D4AF6E] text-[#F5F4F0]' : 'text-[#7A7872] hover:text-[#F5F4F0]'
                   }`}
                 >
                   {s}×
@@ -291,7 +291,7 @@ export default function ArticlePodcastPlayer({ title, slug }: Props) {
                 <a
                   href={podcastUrl}
                   download={`${slug}-podcast.mp3`}
-                  className="font-mono text-[9px] text-[#D4890A]/60 hover:text-[#D4890A] transition-colors"
+                  className="font-mono text-[9px] text-[#D4AF6E]/60 hover:text-[#D4AF6E] transition-colors"
                 >
                   ↓ save
                 </a>
@@ -308,7 +308,7 @@ export default function ArticlePodcastPlayer({ title, slug }: Props) {
                 key={s}
                 onClick={() => handleSpeed(s)}
                 className={`font-mono text-[11px] px-2.5 py-1.5 rounded transition-colors ${
-                  speed === s ? 'bg-[#D4890A] text-[#F5F4F0]' : 'text-[#7A7872]'
+                  speed === s ? 'bg-[#D4AF6E] text-[#F5F4F0]' : 'text-[#7A7872]'
                 }`}
               >
                 {s}×
@@ -320,7 +320,7 @@ export default function ArticlePodcastPlayer({ title, slug }: Props) {
               <a
                 href={podcastUrl}
                 download={`${slug}-podcast.mp3`}
-                className="font-mono text-[11px] text-[#D4890A]/70 px-2 py-1.5"
+                className="font-mono text-[11px] text-[#D4AF6E]/70 px-2 py-1.5"
               >
                 ↓ save
               </a>

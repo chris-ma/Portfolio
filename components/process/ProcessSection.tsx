@@ -1,14 +1,18 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { fadeUp, staggerContainer } from '@/lib/motion'
-import SectionLabel from '@/components/ui/SectionLabel'
+import { fadeUp, staggerContainer, rowReveal } from '@/lib/motion'
 
-const steps = [
+const steps: {
+  number: string
+  title: string
+  description: string
+  tags: string[]
+}[] = [
   {
     number: '01',
-    title: 'Understand the Signal',
-    description: 'Every brief starts with context: market, audience, cultural moment. I dig into what is actually happening before deciding what to build.',
+    title: 'Understand the Brief',
+    description: 'Every engagement starts with context: market, audience, cultural moment. I dig into what is actually happening before deciding what to build.',
     tags: ['Research', 'Strategy', 'Briefing'],
   },
   {
@@ -33,13 +37,13 @@ const steps = [
     number: '05',
     title: 'Measure and Evolve',
     description: 'Data informs iteration. Performance reporting, A/B signals, and cultural feedback loops feed back into the next build cycle.',
-    tags: ['Analytics', 'Optimization', 'Iteration'],
+    tags: ['Analytics', 'Optimisation', 'Iteration'],
   },
 ]
 
 export default function ProcessSection() {
   return (
-    <section id="process" className="section-padding px-6 md:px-10 lg:px-16 bg-brand-graphite">
+    <section id="process" className="section-padding px-6 md:px-10 lg:px-16 bg-bk-deep">
       {/* Header */}
       <motion.div
         className="mb-16"
@@ -48,15 +52,18 @@ export default function ProcessSection() {
         viewport={{ once: true, margin: '-10%' }}
         variants={staggerContainer}
       >
-        <motion.div variants={fadeUp} className="mb-4">
-          <SectionLabel>How I Work</SectionLabel>
-        </motion.div>
         <motion.h2
           variants={fadeUp}
-          className="font-display text-[clamp(3rem,8vw,7rem)] leading-none text-brand-black"
+          className="font-book font-bold text-bk-gold leading-none"
+          style={{ fontSize: 'clamp(2.5rem, 7vw, 6rem)' }}
         >
-          PROCESS
+          Approach
         </motion.h2>
+        <motion.div variants={fadeUp} className="mt-4">
+          <span className="font-mono text-[9px] tracking-[0.25em] uppercase text-bk-muted">
+            Process · {steps.length} Stages
+          </span>
+        </motion.div>
       </motion.div>
 
       {/* Steps */}
@@ -69,30 +76,33 @@ export default function ProcessSection() {
         {steps.map((step) => (
           <motion.div
             key={step.number}
-            variants={fadeUp}
-            className="group border-t border-brand-concrete py-8 grid grid-cols-1 md:grid-cols-[6rem_1fr_auto] gap-4 md:gap-8 items-start hover:border-brand-cobalt/50 transition-colors duration-500"
+            variants={rowReveal}
+            className="group border-t border-bk-rule/60 py-8 md:py-10 grid grid-cols-[3rem_1fr] md:grid-cols-[3rem_1fr_auto] gap-4 md:gap-8 items-start hover:border-bk-gold/30 transition-colors duration-300"
           >
             {/* Step number */}
-            <div className="font-display text-5xl text-brand-cobalt/20 group-hover:text-brand-cobalt/50 transition-colors duration-300 leading-none">
+            <span className="font-mono text-[10px] tracking-[0.2em] text-bk-gold/50 group-hover:text-bk-gold transition-colors duration-200 pt-1">
               {step.number}
-            </div>
+            </span>
 
             {/* Content */}
             <div>
-              <h3 className="font-display text-2xl md:text-3xl text-brand-black group-hover:text-brand-cobalt transition-colors duration-300 mb-3">
+              <h3
+                className="font-book text-bk-parchment group-hover:text-bk-gold transition-colors duration-200 leading-tight mb-3"
+                style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)' }}
+              >
                 {step.title}
               </h3>
-              <p className="font-sans text-sm text-brand-muted leading-relaxed max-w-xl">
+              <p className="font-sans text-sm text-bk-muted leading-relaxed max-w-xl">
                 {step.description}
               </p>
             </div>
 
             {/* Tags */}
-            <div className="flex flex-wrap md:flex-col gap-2 md:items-end">
+            <div className="flex flex-wrap md:flex-col gap-2 md:items-end pt-1">
               {step.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted/70 whitespace-nowrap"
+                  className="font-mono text-[9px] tracking-[0.18em] uppercase text-bk-muted/50 whitespace-nowrap"
                 >
                   {tag}
                 </span>
@@ -100,9 +110,7 @@ export default function ProcessSection() {
             </div>
           </motion.div>
         ))}
-
-        {/* Last border */}
-        <motion.div variants={fadeUp} className="border-t border-brand-concrete" />
+        <motion.div variants={fadeUp} className="border-t border-bk-rule/60" />
       </motion.div>
     </section>
   )

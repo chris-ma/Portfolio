@@ -168,41 +168,41 @@ export default function ArticlePage({ params }: PageProps) {
 
 function AutomationStrategyArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       {/* Back nav */}
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
         <Link
           href="/articles"
-          className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
+          className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200"
         >
           ← Field Notes
         </Link>
       </div>
 
       {/* Header */}
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">
             {article!.category}
           </span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
 
-        <h1 className="font-display text-7xl md:text-9xl lg:text-[120px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-7xl md:text-9xl lg:text-[120px] text-bk-parchment leading-none tracking-normal mb-4">
           NOT<br />
           THE<br />
-          <span className="text-brand-cobalt">BOTS.</span>
+          <span className="text-bk-gold">BOTS.</span>
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted border border-brand-concrete px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-muted border border-bk-rule px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -214,13 +214,13 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
 
         {/* Lede */}
         <section>
-          <div className="border-l-2 border-brand-cobalt pl-6 space-y-4">
-            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+          <div className="border-l-2 border-bk-gold pl-6 space-y-4">
+            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
               Most automation programs have a silent ceiling. Individual steps get automated — a data-entry bot here,
               a notification trigger there — but the hand-offs between them stay human. That&rsquo;s task automation.
               It captures a fraction of the value of what&rsquo;s actually possible, and it&rsquo;s where most programs stop.
             </p>
-            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
               The gap between task automation and process automation is a single thing: a shared orchestration layer
               that passes output from one step directly into the next, without a human in between. Everything else —
               the maturity ladder, the process-mining discipline, the AI agents — is in service of closing that gap.
@@ -228,12 +228,12 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
           </div>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>Four distinct rungs in the maturity ladder: RPA → IPA → APA → Hyperautomation. Most tasks sit on rung one.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Don&rsquo;t default to the most sophisticated option. Rule-based, stable tasks are well served by plain automation — adding AI agents adds cost and unpredictability without value.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Start with process mining: the assumed process and the real process routinely diverge. Automating the wrong one is a common, avoidable failure.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>In 2026, AI agents are deciding <em>which</em> workflow to execute based on context — not just executing a fixed script. Reserve this for steps that require genuine judgment.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Fewer than 20% of large enterprises actually measure their automation ROI properly. Real results are achievable — but not automatic.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>The single biggest lever: connect steps through a shared orchestration layer. Isolated bots with human hand-offs between them capture a fraction of the value.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Four distinct rungs in the maturity ladder: RPA → IPA → APA → Hyperautomation. Most tasks sit on rung one.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Don&rsquo;t default to the most sophisticated option. Rule-based, stable tasks are well served by plain automation — adding AI agents adds cost and unpredictability without value.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Start with process mining: the assumed process and the real process routinely diverge. Automating the wrong one is a common, avoidable failure.</li>
+              <li><span className="text-bk-gold mr-2">—</span>In 2026, AI agents are deciding <em>which</em> workflow to execute based on context — not just executing a fixed script. Reserve this for steps that require genuine judgment.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Fewer than 20% of large enterprises actually measure their automation ROI properly. Real results are achievable — but not automatic.</li>
+              <li><span className="text-bk-gold mr-2">—</span>The single biggest lever: connect steps through a shared orchestration layer. Isolated bots with human hand-offs between them capture a fraction of the value.</li>
             </ul>
           </Callout>
         </section>
@@ -242,7 +242,7 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
         <section>
           <SectionHeading number="01" title="The maturity ladder" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             Automation isn&rsquo;t one thing — it&rsquo;s a ladder, and knowing which rung a given task sits on
             determines which tool and which level of investment actually fit. The most common mistake named directly
             across multiple 2026 industry reports: reaching for the wrong rung, either under-investing (leaving
@@ -251,33 +251,33 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
           </p>
 
           <figure className="my-8">
-            <div className="border border-brand-concrete overflow-hidden">
+            <div className="border border-bk-rule overflow-hidden">
               <AutomationLadderDiagram />
             </div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
               Four rungs, four different cost and risk profiles. Most production tasks sit at RPA.
             </figcaption>
           </figure>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             A perfectly structured, rule-based, rarely-changing task — data entry from a fixed-format form — is
             genuinely well-served by plain RPA. Reaching for an AI agent there adds cost, latency, and
             unpredictability without adding value. The right question is not &ldquo;what&rsquo;s the most
             powerful tool available?&rdquo; but &ldquo;what does this task actually require?&rdquo;
           </p>
 
-          <div className="space-y-0 border border-brand-concrete">
+          <div className="space-y-0 border border-bk-rule">
             {[
               { label: 'Stable, rule-based', detail: 'Plain RPA or workflow automation (n8n, Zapier, Make). No AI needed — it adds cost and fragility without value.' },
               { label: 'Bounded variation', detail: 'IPA: OCR, NLP, or ML to handle format variation within a known set of patterns. Still deterministic at the process level.' },
               { label: 'Genuine judgment', detail: 'APA: autonomous agents where multiple plausible next actions exist. Use sparingly, with human-approval checkpoints on high-stakes decisions.' },
               { label: 'Multi-step process', detail: 'Hyperautomation: connect the above rungs via a shared orchestration layer. The connective tissue is the value multiplier.' },
             ].map(({ label, detail }, i, arr) => (
-              <div key={i} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
-                <div className="w-44 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/50">
-                  <span className="font-sans font-semibold text-sm text-brand-cobalt leading-snug block">{label}</span>
+              <div key={i} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-bk-rule' : ''}`}>
+                <div className="w-44 flex-shrink-0 p-4 border-r border-bk-rule bg-bk-deep/50">
+                  <span className="font-sans font-semibold text-sm text-bk-gold leading-snug block">{label}</span>
                 </div>
-                <p className="font-sans text-sm text-brand-black/70 p-4 leading-relaxed">{detail}</p>
+                <p className="font-sans text-sm text-bk-parchment/70 p-4 leading-relaxed">{detail}</p>
               </div>
             ))}
           </div>
@@ -287,13 +287,13 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
         <section>
           <SectionHeading number="02" title="Process mining first" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             Starting an automation program without first mapping the real process is described bluntly, across
             multiple 2026 sources, as building infrastructure without a site survey. Process mining discovers
             how a process actually runs today — from real system event logs, objectively, at scale — rather
             than relying on someone&rsquo;s memory of how it&rsquo;s supposed to work.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
             The assumed process and the real process routinely diverge. A workflow that&rsquo;s supposed to take
             three steps often has quietly grown five, with exceptions and manual workarounds nobody wrote down.
             Automating the assumed version instead of the real one is a common, avoidable failure mode: you end
@@ -301,16 +301,16 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
           </p>
 
           <figure className="my-8">
-            <div className="border border-brand-concrete overflow-hidden">
+            <div className="border border-bk-rule overflow-hidden">
               <ProcessMiningDiagram />
             </div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
               The assumed process is always cleaner than the real one. Automate the real one.
             </figcaption>
           </figure>
 
           <Callout label="Practical translation">
-            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+            <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
               Without enterprise process-mining software, the same discipline applies at any scale: before
               automating anything important, trace it end-to-end as it actually runs — every manual step, every
               exception, every person who touches it — rather than from a mental model of how it&rsquo;s supposed
@@ -324,13 +324,13 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
         <section>
           <SectionHeading number="03" title="Where AI agents actually fit" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             The 2026 shift, stated precisely: AI agents are moving from executing predefined workflows to
             <em> deciding which workflow to execute</em> — based on context, priority, and business rules —
             sensing process signals continuously and adjusting, rather than running a fixed script on a fixed
             trigger.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
             Concrete examples already in production: customer service agents analysing inquiry complexity and
             routing accordingly; supply chain agents adjusting inventory policy based on live demand signals;
             financial agents approving routine transactions while automatically escalating genuine exceptions.
@@ -357,10 +357,10 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
                 body: 'Content generation, code scaffolding, and documentation increasingly happen automatically as steps inside larger automated processes. When an automated pipeline generates its own documentation without a human checkpoint, any errors compound silently at scale — the hallucination-reduction discipline applies here especially.',
               },
             ].map(({ head, body }, i) => (
-              <div key={i} className="flex gap-5 border-l-2 border-brand-cobalt/20 pl-5">
+              <div key={i} className="flex gap-5 border-l-2 border-bk-gold/20 pl-5">
                 <div>
-                  <p className="font-sans text-base font-semibold text-brand-black/85">{head}</p>
-                  <p className="font-sans text-base text-brand-black/65 leading-relaxed mt-1">{body}</p>
+                  <p className="font-sans text-base font-semibold text-bk-parchment/85">{head}</p>
+                  <p className="font-sans text-base text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
                 </div>
               </div>
             ))}
@@ -371,14 +371,14 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
         <section>
           <SectionHeading number="04" title="ROI discipline" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             Fewer than 20% of large enterprises have actually mastered measuring their automation initiatives
             properly — meaning the majority are running automation programs without a reliable read on whether
             they&rsquo;re actually working. Real, achievable numbers exist when it&rsquo;s done properly:
             20–40% cost reduction, roughly 40% faster process completion, sub-12-month payback. But the framing
-            across every credible source is consistent: <strong className="text-brand-black">the ROI is real but not automatic.</strong>
+            across every credible source is consistent: <strong className="text-bk-parchment">the ROI is real but not automatic.</strong>
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
             It depends specifically on picking the right processes, actually fixing the underlying process before
             automating it (automating a broken process just executes the brokenness faster), and measuring
             rigorously rather than assuming success from activity.
@@ -405,22 +405,22 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
         <section>
           <SectionHeading number="05" title="The decision sequence" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
             The difference between a program that compounds over time and one that stalls at scattered bots is
             whether each automated step is connected to the next — or left as another isolated island with a
             human hand-off on each side.
           </p>
 
           <figure className="mb-10">
-            <div className="border border-brand-concrete overflow-hidden">
+            <div className="border border-bk-rule overflow-hidden">
               <OrchestratedVsIsolatedDiagram />
             </div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
               Same three automated steps — the orchestration layer is the difference.
             </figcaption>
           </figure>
 
-          <div className="space-y-0 border border-brand-concrete">
+          <div className="space-y-0 border border-bk-rule">
             {[
               { n: '1', label: 'Trace the real process', detail: 'Before deciding anything — don\'t automate your assumption of the workflow. Map every step, exception, and manual hand-off as they actually occur.' },
               { n: '2', label: 'Classify each step', detail: 'Rule-based and stable → RPA. Bounded variation → IPA. Genuine judgment among several plausible next actions → APA only.' },
@@ -429,13 +429,13 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
               { n: '5', label: 'Connect steps via shared orchestration', detail: 'Rather than leaving human hand-offs between automated pieces. This is the single biggest lever separating task automation from process automation.' },
               { n: '6', label: 'Set a review cadence', detail: 'Not a launch-and-forget deployment. Re-measure against the baseline periodically, and treat drift as expected, not exceptional.' },
             ].map(({ n, label, detail }, i, arr) => (
-              <div key={i} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
-                <div className="w-10 flex-shrink-0 flex items-start justify-center pt-4 border-r border-brand-concrete bg-brand-graphite/50">
-                  <span className="font-display text-2xl text-brand-cobalt/30">{n}</span>
+              <div key={i} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-bk-rule' : ''}`}>
+                <div className="w-10 flex-shrink-0 flex items-start justify-center pt-4 border-r border-bk-rule bg-bk-deep/50">
+                  <span className="font-book font-bold text-2xl text-bk-gold/30">{n}</span>
                 </div>
                 <div className="flex-1 p-4">
-                  <span className="font-sans font-semibold text-sm text-brand-black block mb-1">{label}</span>
-                  <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{detail}</p>
+                  <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">{label}</span>
+                  <p className="font-sans text-sm text-bk-parchment/60 leading-relaxed">{detail}</p>
                 </div>
               </div>
             ))}
@@ -443,8 +443,8 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
         </section>
 
         {/* Closing */}
-        <section className="border-t border-brand-concrete pt-10">
-          <p className="font-sans text-base text-brand-black/70 leading-relaxed max-w-prose">
+        <section className="border-t border-bk-rule pt-10">
+          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed max-w-prose">
             A governance cadence and a shared orchestration layer are not overhead on top of automation. They
             are the mechanism that determines whether automation compounds or stalls. The bots are the easy
             part — the connective tissue between them is the actual work.
@@ -473,10 +473,10 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
         ]} />
 
         {/* Back link */}
-        <div className="border-t border-brand-concrete pt-8">
+        <div className="border-t border-bk-rule pt-8">
           <Link
             href="/articles"
-            className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
+            className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200"
           >
             ← Back to Field Notes
           </Link>
@@ -488,33 +488,33 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
 
 function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
 
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
 
-        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
           ONE<br />
-          <span className="text-brand-cobalt">PROTOCOL.</span>
+          <span className="text-bk-gold">PROTOCOL.</span>
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/70 border border-bk-gold/25 px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -525,18 +525,18 @@ function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof get
 
         {/* Lede */}
         <section>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
             The Model Context Protocol is an open standard, introduced by Anthropic in November 2024, that gives an AI model a universal way to connect to external tools, data, and services. One protocol instead of a custom integration per tool. It has since become the de facto standard across the industry, adopted by OpenAI, Google DeepMind, and Microsoft, with the Python and TypeScript SDKs alone seeing roughly 97 million monthly downloads.
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             In December 2025, Anthropic donated MCP to the Agentic AI Foundation under the Linux Foundation, with OpenAI and Block joining as co-founders and AWS, Google, Microsoft, Cloudflare, GitHub, and Bloomberg as supporting members. That governance shift matters practically: MCP is no longer a single vendor&rsquo;s protocol that others adopted. It is genuinely neutral infrastructure. That is part of why it is safe to build real workflows around, rather than treating it as a single-vendor bet.
           </p>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>MCP went from Anthropic&rsquo;s November 2024 release to Linux Foundation infrastructure in December 2025, with OpenAI, Google, Microsoft, and eight other organisations as co-founders or supporting members.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Python and TypeScript SDKs alone see roughly 97 million monthly downloads, making MCP the de facto cross-vendor standard for AI tool integration.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>One MCP server works with Claude, ChatGPT, Cursor, VS Code, and any compatible host: the server side requires no additional integration work per client.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Three capability layers cover most production needs: tools (actions), resources (read-only data), and sampling (LLM calls). Only sampling requires trust negotiation.</li>
+              <li><span className="text-bk-gold mr-2">—</span>MCP went from Anthropic&rsquo;s November 2024 release to Linux Foundation infrastructure in December 2025, with OpenAI, Google, Microsoft, and eight other organisations as co-founders or supporting members.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Python and TypeScript SDKs alone see roughly 97 million monthly downloads, making MCP the de facto cross-vendor standard for AI tool integration.</li>
+              <li><span className="text-bk-gold mr-2">—</span>One MCP server works with Claude, ChatGPT, Cursor, VS Code, and any compatible host: the server side requires no additional integration work per client.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Three capability layers cover most production needs: tools (actions), resources (read-only data), and sampling (LLM calls). Only sampling requires trust negotiation.</li>
             </ul>
           </Callout>
         </section>
@@ -544,7 +544,7 @@ function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Section 01 — The core advantage */}
         <section>
           <SectionHeading number="01" title="The core advantage — build once, work with everything" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Before MCP, every AI product that wanted to integrate with GitHub had to build and maintain its own GitHub integration. Every tool, its own connector. The result was n different tools each maintaining n different connectors to the same services — a quadratic problem getting worse as both sides of the market grew. MCP flips the model: a server built for GitHub works with Claude, ChatGPT, Cursor, VS Code, or any other MCP-compatible host, with no additional integration work on the server side.
           </p>
 
@@ -552,19 +552,19 @@ function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof get
             <MCPInteropDiagram />
           </div>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             The MCP Registry, launched September 2025, reached nearly 2,000 server entries within months — tools for databases, design systems, code repositories, project management, monitoring, payments, and dozens of other categories. The practical implication: before writing a custom integration for anything, check the registry. The odds a maintained MCP server already exists are genuinely high.
           </p>
 
           <Callout label="Security model" className="mt-6">
-            <p className="font-sans text-sm text-brand-black/75 leading-relaxed">OAuth 2.0, TLS, sandboxing, and explicit consent flows are part of the protocol specification, not something each integration has to invent. As of the June 2025 spec, MCP servers are formally classified as OAuth Resource Servers with mandated Resource Indicators (RFC 8707) — a protocol-level fix for token misuse, not a best-practice suggestion left to each implementer. The July 2026 revision hardened this further with RFC 9207 issuer validation and a shift from Dynamic Client Registration to Client ID Metadata Documents specifically to prevent credential reuse across authorisation servers.</p>
+            <p className="font-sans text-sm text-bk-parchment/75 leading-relaxed">OAuth 2.0, TLS, sandboxing, and explicit consent flows are part of the protocol specification, not something each integration has to invent. As of the June 2025 spec, MCP servers are formally classified as OAuth Resource Servers with mandated Resource Indicators (RFC 8707) — a protocol-level fix for token misuse, not a best-practice suggestion left to each implementer. The July 2026 revision hardened this further with RFC 9207 issuer validation and a shift from Dynamic Client Registration to Client ID Metadata Documents specifically to prevent credential reuse across authorisation servers.</p>
           </Callout>
         </section>
 
         {/* Section 02 — What MCP enables */}
         <section>
           <SectionHeading number="02" title="What MCP actually enables — three layers most people never reach" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Most casual MCP usage stays at Layer 1: connect a tool, call a function, get a result. The leverage that compounds is in Layers 2 and 3.
           </p>
 
@@ -587,9 +587,9 @@ function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof get
                 body: 'MCP Apps (SEP-1865, stabilised January 2026) is the single biggest expansion of what MCP can do beyond data retrieval. Previously, an MCP server could only return text or structured JSON for the model to summarise back in prose. MCP Apps lets a server return an actual interactive interface — a dashboard, a chart, a configuration wizard, a form — rendered inline in the chat, with real bidirectional interaction. Servers declare UI resources via a ui:// URI scheme; all content runs in sandboxed iframes; all UI-to-host communication is loggable JSON-RPC. Supported in Claude web and desktop, VS Code Insiders, Goose, and Postman as of early 2026.',
               },
             ].map(({ label, body }) => (
-              <div key={label} className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-                <span className="font-sans font-semibold text-sm text-brand-black block mb-2">{label}</span>
-                <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{body}</p>
+              <div key={label} className="border-l-2 border-bk-gold/30 pl-4 py-1">
+                <span className="font-sans font-semibold text-sm text-bk-parchment block mb-2">{label}</span>
+                <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">{body}</p>
               </div>
             ))}
           </div>
@@ -598,14 +598,14 @@ function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Section 03 — Agentic capabilities */}
         <section>
           <SectionHeading number="03" title="Agentic loops, sampling, and human-in-the-loop by design" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             The November 2025 spec release added server-side agent loops as a formal capability — meaning an MCP server itself can run genuinely agentic behaviour: reasoning, multi-step tool use, sampling calls to the client&rsquo;s model. Combined with the Tasks extension for long-running, poll-based work, this is what makes MCP a real substrate for agentic workflow patterns rather than a plain tool-calling layer underneath them.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-5">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-5">
             Two primitives — sampling and elicitation — exist specifically so a server can request something from the user or model without ever seeing raw credentials or bypassing user control. Sampling lets a server ask the client&rsquo;s own model to generate text as part of a task, but the client controls model selection, can review and edit the prompt, and can deny the request outright. The server never sees the API key. This is a materially different trust model from a plugin that just gets handed a key and runs unsupervised.
           </p>
 
-          <div className="mt-6 border border-brand-concrete divide-y divide-brand-concrete">
+          <div className="mt-6 border border-bk-rule divide-y divide-brand-concrete">
             {[
               {
                 label: 'Sampling',
@@ -621,8 +621,8 @@ function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof get
               },
             ].map(({ label, body }) => (
               <div key={label} className="px-5 py-4">
-                <span className="font-sans font-semibold text-sm text-brand-black block mb-1.5">{label}</span>
-                <p className="font-sans text-sm text-brand-muted leading-relaxed">{body}</p>
+                <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1.5">{label}</span>
+                <p className="font-sans text-sm text-bk-muted leading-relaxed">{body}</p>
               </div>
             ))}
           </div>
@@ -631,7 +631,7 @@ function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Section 04 — Timeline */}
         <section>
           <SectionHeading number="04" title="From Anthropic's 2024 release to Linux Foundation infrastructure" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             The pace of the MCP specification has been unusually fast for a protocol that is supposed to be stable infrastructure. The July 2026 release — described by its own authors as the largest revision since launch — restructured the core to be stateless: a remote MCP server that previously needed sticky sessions and a shared session store can now run behind a plain round-robin load balancer. That is an infrastructure-level change that makes MCP viable as real production infrastructure for multi-user products, not just developer tooling.
           </p>
 
@@ -639,7 +639,7 @@ function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof get
             <MCPTimelineDiagram />
           </div>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             The formal 12-month minimum deprecation policy, introduced alongside the July 2026 revision, is worth noting for anything production-facing. Deprecated features — including Roots, the original Sampling specification, and Logging as previously specified — are on a 12-month removal clock. If you are building on older patterns, particularly Dynamic Client Registration, the migration to Client ID Metadata Documents is the correct path now rather than a forced one later.
           </p>
         </section>
@@ -648,7 +648,7 @@ function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="05" title="Using MCP well — the practical guidance" />
 
-          <div className="mt-6 border border-brand-concrete divide-y divide-brand-concrete">
+          <div className="mt-6 border border-bk-rule divide-y divide-brand-concrete">
             {[
               {
                 num: '01',
@@ -677,23 +677,23 @@ function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof get
               },
             ].map(({ num, rule, detail }) => (
               <div key={num} className="px-5 py-4 flex gap-5">
-                <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-muted flex-shrink-0 mt-0.5">{num}</span>
+                <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-bk-muted flex-shrink-0 mt-0.5">{num}</span>
                 <div>
-                  <span className="font-sans font-semibold text-sm text-brand-black block mb-1">{rule}</span>
-                  <p className="font-sans text-sm text-brand-muted leading-relaxed">{detail}</p>
+                  <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">{rule}</span>
+                  <p className="font-sans text-sm text-bk-muted leading-relaxed">{detail}</p>
                 </div>
               </div>
             ))}
           </div>
 
           <Callout label="One caveat" className="mt-6">
-            <p className="font-sans text-sm text-brand-black/75 leading-relaxed">MCP is an actively evolving standard — the July 2026 release is the largest revision since launch. Confirm current spec version and host support against modelcontextprotocol.io before building anything you depend on long-term. The 12-month deprecation policy is the new protection against surprise breaking changes, but it only applies forward from July 2026.</p>
+            <p className="font-sans text-sm text-bk-parchment/75 leading-relaxed">MCP is an actively evolving standard — the July 2026 release is the largest revision since launch. Confirm current spec version and host support against modelcontextprotocol.io before building anything you depend on long-term. The 12-month deprecation policy is the new protection against surprise breaking changes, but it only applies forward from July 2026.</p>
           </Callout>
         </section>
 
         {/* Closing */}
-        <section className="border-t border-brand-concrete pt-10">
-          <p className="font-sans text-base text-brand-black/60 leading-relaxed italic">
+        <section className="border-t border-bk-rule pt-10">
+          <p className="font-sans text-base text-bk-parchment/60 leading-relaxed italic">
             The protocol is the interoperability layer — which means the capability you build today travels across whatever AI tooling you use next, rather than being locked into a single product&rsquo;s plugin ecosystem.
           </p>
         </section>
@@ -707,10 +707,10 @@ function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof get
       </div>
 
       {/* Footer nav */}
-      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-brand-concrete pt-10">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-bk-rule pt-10">
         <Link
           href="/articles"
-          className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
+          className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200"
         >
           ← Field Notes
         </Link>
@@ -721,34 +721,34 @@ function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof get
 
 function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
 
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
 
-        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
           NO<br />
-          <span className="text-brand-cobalt">FOLLOWERS</span><br />
+          <span className="text-bk-gold">FOLLOWERS</span><br />
           REQUIRED.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/70 border border-bk-gold/25 px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -759,21 +759,21 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
 
         {/* Lede */}
         <section>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
             Two things happened simultaneously in 2026 and they are directly related. Platforms became AI-ranked distribution engines rather than follower-count reach engines. And the volume of AI-produced content flooding every feed exploded: 87% of marketers used generative AI in at least one recurring workflow in Q1 2026, up from 51% two years prior.
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             The result is a squeeze from both sides: getting seen now depends on satisfying an AI ranking system, and getting believed once seen is harder because every feed is flooded with AI-assisted content that mostly looks the same. Winning in social in 2026 means engineering for the algorithm and standing out from the flood it created. Those are really the same problem, applied at different points in the same funnel.
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             The connecting thread to any AEO or GEO work is not coincidental. Social platforms now run what practitioners are calling Social SEO. Users type full questions into TikTok and Instagram search bars, and the algorithms scan captions, subtitles, and spoken audio for keyword relevance. The three-gate diagnostic applies almost unmodified: is it discoverable, does the hook earn the click, is the actual answer extractable from the audio or caption in the first three seconds.
           </p>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>87% of marketers used generative AI in at least one recurring workflow in Q1 2026, up from 51% two years prior, flooding feeds with AI-assisted content that looks identical.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Engagement rate by follower count is near-meaningless on algorithm-driven platforms. Use engagement rate by reach for organic reporting, engagement rate by impressions for paid.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Social SEO is real: TikTok and Instagram now scan captions, subtitles, and spoken audio for keyword relevance, making the three-gate AEO framework directly applicable.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>What actually predicts business outcomes sits deeper than likes and views: saves, qualified traffic, assisted conversions, and lead quality are the metrics that matter.</li>
+              <li><span className="text-bk-gold mr-2">—</span>87% of marketers used generative AI in at least one recurring workflow in Q1 2026, up from 51% two years prior, flooding feeds with AI-assisted content that looks identical.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Engagement rate by follower count is near-meaningless on algorithm-driven platforms. Use engagement rate by reach for organic reporting, engagement rate by impressions for paid.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Social SEO is real: TikTok and Instagram now scan captions, subtitles, and spoken audio for keyword relevance, making the three-gate AEO framework directly applicable.</li>
+              <li><span className="text-bk-gold mr-2">—</span>What actually predicts business outcomes sits deeper than likes and views: saves, qualified traffic, assisted conversions, and lead quality are the metrics that matter.</li>
             </ul>
           </Callout>
         </section>
@@ -781,7 +781,7 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 01 — The metric trap */}
         <section>
           <SectionHeading number="01" title="The metric trap — and which numbers actually predict anything" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Every platform surfaces the metric that flatters it. Instagram highlights reach. TikTok flaunts view counts. LinkedIn emphasises impressions. None of these are wrong to look at — they are just not KPIs on their own. Treat every number as diagnostic, laddering up to an actual business goal, and pick a small number of primary KPIs per campaign. One is genuinely enough. Everything else is context, not a second scoreboard.
           </p>
 
@@ -800,9 +800,9 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
                 body: 'Applying a TOFU metric to a BOFU decision is a classic funnel engineering mistake. The same error runs in reverse on social: treating high vanity engagement as proof of business impact when the signal that matters sits one layer deeper — did it generate a qualified action, not just a frictionless tap.',
               },
             ].map(({ label, body }) => (
-              <div key={label} className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-                <span className="font-sans font-semibold text-sm text-brand-black block mb-2">{label}</span>
-                <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{body}</p>
+              <div key={label} className="border-l-2 border-bk-gold/30 pl-4 py-1">
+                <span className="font-sans font-semibold text-sm text-bk-parchment block mb-2">{label}</span>
+                <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">{body}</p>
               </div>
             ))}
           </div>
@@ -811,7 +811,7 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 02 — Platform benchmarks */}
         <section>
           <SectionHeading number="02" title="Platform benchmarks — the 2026 numbers and what to actually track" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Treat every figure below as a directional gut-check against your own numbers, not a target. They vary meaningfully by industry, follower tier, and format, and social benchmarks age faster than almost any other marketing data category. The most important rule: never benchmark across platforms. A 0.5% engagement rate on Instagram is healthy. The same number on TikTok is a warning sign.
           </p>
 
@@ -819,11 +819,11 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
             <PlatformEngagementDiagram />
           </div>
 
-          <div className="mt-8 border border-brand-concrete divide-y divide-brand-concrete">
-            <div className="grid grid-cols-3 divide-x divide-brand-concrete bg-brand-graphite/40">
-              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-muted">Platform</span></div>
-              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-muted">Best format</span></div>
-              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-muted">What to actually track</span></div>
+          <div className="mt-8 border border-bk-rule divide-y divide-brand-concrete">
+            <div className="grid grid-cols-3 divide-x divide-brand-concrete bg-bk-deep/40">
+              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-bk-muted">Platform</span></div>
+              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-bk-muted">Best format</span></div>
+              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-bk-muted">What to actually track</span></div>
             </div>
             {[
               {
@@ -858,9 +858,9 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
               },
             ].map(({ platform, format, track }, i) => (
               <div key={i} className="grid grid-cols-3 divide-x divide-brand-concrete">
-                <div className="px-4 py-3"><p className="font-sans text-sm text-brand-black/75 font-medium">{platform}</p></div>
-                <div className="px-4 py-3"><p className="font-sans text-sm text-brand-muted leading-relaxed">{format}</p></div>
-                <div className="px-4 py-3"><p className="font-sans text-sm text-brand-muted leading-relaxed">{track}</p></div>
+                <div className="px-4 py-3"><p className="font-sans text-sm text-bk-parchment/75 font-medium">{platform}</p></div>
+                <div className="px-4 py-3"><p className="font-sans text-sm text-bk-muted leading-relaxed">{format}</p></div>
+                <div className="px-4 py-3"><p className="font-sans text-sm text-bk-muted leading-relaxed">{track}</p></div>
               </div>
             ))}
           </div>
@@ -869,7 +869,7 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 03 — How the algorithm works now */}
         <section>
           <SectionHeading number="03" title="How the algorithm works now — and what that demands of you" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Every major platform — LinkedIn, Instagram, YouTube, Facebook, X — now uses AI to determine who sees what, based on individual relevance rather than chronology or follower relationship. A post from three days ago can outperform one from three hours ago if the algorithm judges it more relevant to a specific viewer. Growing a following is necessary. It is no longer sufficient.
           </p>
 
@@ -892,9 +892,9 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
                 body: 'LinkedIn is the meaningful exception to the "followers don\'t matter" rule. Its algorithm still gives measurable weight to the follower relationship, which is why follower growth rate remains one of the KPIs worth tracking specifically on that platform — unlike Instagram or TikTok, where growing a following has diminishing returns relative to content quality.',
               },
             ].map(({ label, body }) => (
-              <div key={label} className="border border-brand-concrete p-5">
-                <span className="font-sans font-semibold text-sm text-brand-black block mb-2">{label}</span>
-                <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{body}</p>
+              <div key={label} className="border border-bk-rule p-5">
+                <span className="font-sans font-semibold text-sm text-bk-parchment block mb-2">{label}</span>
+                <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">{body}</p>
               </div>
             ))}
           </div>
@@ -903,7 +903,7 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 04 — Social SEO */}
         <section>
           <SectionHeading number="04" title="Social SEO — captions as crawlable pages" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Users increasingly type full questions directly into TikTok and Instagram search bars rather than starting on Google. The platforms scan captions, on-screen text, and spoken audio transcripts for keyword relevance — which means a caption written like a mini-answer to a specific question outperforms a vague tagline, and saying the keyword out loud in the first three seconds of a video measurably improves search ranking within the platform.
           </p>
 
@@ -926,9 +926,9 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
                 body: 'The full value has to live inside the post, not behind a link. Posts with outbound links are consistently deprioritised, because platforms are optimising for in-app time. A genuinely useful carousel or a complete answer in the caption now outperforms content built primarily as a funnel to a landing page. Social is increasingly a destination for TOFU and MOFU content, not just a pipe to somewhere else.',
               },
             ].map(({ label, body }) => (
-              <div key={label} className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-                <span className="font-sans font-semibold text-sm text-brand-black block mb-2">{label}</span>
-                <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{body}</p>
+              <div key={label} className="border-l-2 border-bk-gold/30 pl-4 py-1">
+                <span className="font-sans font-semibold text-sm text-bk-parchment block mb-2">{label}</span>
+                <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">{body}</p>
               </div>
             ))}
           </div>
@@ -937,13 +937,13 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 05 — AI and the content flood */}
         <section>
           <SectionHeading number="05" title="AI collapsed production cost — which raises the bar, not lowers it" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             59% of creators now use generative AI to streamline content creation. Most audiences see AI-assisted images, captions, and video without any visible label. The brands actually winning with this shift are using AI to remove production bottlenecks — not to replace the editorial judgment about what is worth making and why.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-5">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-5">
             Generic AI-assisted content is now the baseline everyone has, not a differentiator. On a platform flooded with it, the specific, first-hand detail is what actually separates a post from the noise — not production speed. This is the same finding as the content-writing workbook: AI produces roughly the first half of the work. The differentiated, trust-earning half is still a human editorial call. Skipping that half is visible, on social more than anywhere.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-5">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-5">
             There is also a longer-term trend worth tracking: roughly two-thirds of U.S. teens now use an AI chatbot at least sometimes for things social media used to provide. UK adult active posting, sharing, and commenting rates have fallen from 61% to 49% since 2024. Social platforms are increasingly competing with AI interfaces for raw discretionary attention — worth being aware of as the landscape continues to shift.
           </p>
         </section>
@@ -951,11 +951,11 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 06 — Practical playbook */}
         <section>
           <SectionHeading number="06" title="The practical playbook" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Eight rules that hold regardless of which platform you are optimising for in 2026.
           </p>
 
-          <div className="mt-6 border border-brand-concrete divide-y divide-brand-concrete">
+          <div className="mt-6 border border-bk-rule divide-y divide-brand-concrete">
             {[
               { num: '01', rule: 'Pick 3–5 primary KPIs tied to an actual goal, not a 40-metric dashboard', detail: 'Growth goal → reach, engagement rate, follower growth rate. Revenue goal → CTR, conversion rate, social ROI. One primary KPI is enough; everything else is context.' },
               { num: '02', rule: 'Benchmark against your own platform and industry — never across platforms', detail: 'A 0.5% engagement rate is healthy on Instagram and a warning sign on TikTok. The numbers are not comparable.' },
@@ -967,10 +967,10 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
               { num: '08', rule: 'Use AI for production volume — keep the differentiated judgment human', detail: 'On a platform flooded with generative content, the specific first-hand detail is the differentiator. Production speed is table stakes. Editorial judgment is not.' },
             ].map(({ num, rule, detail }) => (
               <div key={num} className="px-5 py-4 flex gap-5">
-                <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-muted flex-shrink-0 mt-0.5">{num}</span>
+                <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-bk-muted flex-shrink-0 mt-0.5">{num}</span>
                 <div>
-                  <span className="font-sans font-semibold text-sm text-brand-black block mb-1">{rule}</span>
-                  <p className="font-sans text-sm text-brand-muted leading-relaxed">{detail}</p>
+                  <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">{rule}</span>
+                  <p className="font-sans text-sm text-bk-muted leading-relaxed">{detail}</p>
                 </div>
               </div>
             ))}
@@ -978,8 +978,8 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
         </section>
 
         {/* Closing */}
-        <section className="border-t border-brand-concrete pt-10">
-          <p className="font-sans text-base text-brand-black/60 leading-relaxed italic">
+        <section className="border-t border-bk-rule pt-10">
+          <p className="font-sans text-base text-bk-parchment/60 leading-relaxed italic">
             The algorithm distributes based on interest graph relevance, not audience size — which means the work is now in earning distribution on every post, not accumulating it once.
           </p>
         </section>
@@ -993,10 +993,10 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
       </div>
 
       {/* Footer nav */}
-      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-brand-concrete pt-10">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-bk-rule pt-10">
         <Link
           href="/articles"
-          className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
+          className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200"
         >
           ← Field Notes
         </Link>
@@ -1007,34 +1007,34 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
 
 function HallucinationArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
 
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
 
-        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
           CONFIDENT<br />
           AND<br />
-          <span className="text-brand-cobalt">WRONG.</span>
+          <span className="text-bk-gold">WRONG.</span>
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/70 border border-bk-gold/25 px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -1045,18 +1045,18 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
 
         {/* Lede */}
         <section>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
             A model that hallucinates 5% of the time does not fail 5% of the time. Every answer it gives is suspect. Every downstream decision built on its output inherits that uncertainty silently, because the model did not flag it. The confident wrong answer is the failure mode. The hedged, partial answer that admits a gap is not a failure at all.
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             On the AA-Omniscience hallucination benchmark, Claude 4.1 Opus scored 0% hallucination. Not because it got everything right, but because it refused to answer when it was uncertain rather than guessing. That data point is the whole argument: the winning move is often not answering. Every technique in this guide is structurally the same move: pushing a model toward admitting uncertainty rather than filling gaps with plausible-sounding invention.
           </p>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>Claude 4.1 Opus scored 0% hallucination on the AA-Omniscience benchmark by refusing to answer when uncertain rather than guessing.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Calibration matters more than accuracy: a model that is right 80% of the time and honest about the remaining 20% is more useful than one that is right 95% and silently wrong 5%.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>RAG with poor retrieval is worse than no RAG: it adds latency and cost while producing ungrounded answers, now with a citation attached to give them unearned authority.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>The 11 techniques all share one structural logic: push the model toward admitting uncertainty rather than filling gaps with plausible-sounding invention.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Claude 4.1 Opus scored 0% hallucination on the AA-Omniscience benchmark by refusing to answer when uncertain rather than guessing.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Calibration matters more than accuracy: a model that is right 80% of the time and honest about the remaining 20% is more useful than one that is right 95% and silently wrong 5%.</li>
+              <li><span className="text-bk-gold mr-2">—</span>RAG with poor retrieval is worse than no RAG: it adds latency and cost while producing ungrounded answers, now with a citation attached to give them unearned authority.</li>
+              <li><span className="text-bk-gold mr-2">—</span>The 11 techniques all share one structural logic: push the model toward admitting uncertainty rather than filling gaps with plausible-sounding invention.</li>
             </ul>
           </Callout>
         </section>
@@ -1064,7 +1064,7 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
         {/* Section 01 — The reframe */}
         <section>
           <SectionHeading number="01" title="Accuracy vs calibration — why the distinction matters" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             The standard framing is accuracy: how often does the model get it right? The sharper framing is calibration: does the model know what it knows? A model that is right 95% of the time and silently wrong 5% of the time is less useful than one that is right 80% of the time and honest about the remaining 20% — because the honest model flags exactly where to double-check, and the overconfident one poisons the decisions you build on it.
           </p>
 
@@ -1072,7 +1072,7 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
             <CalibrationVsAccuracyDiagram />
           </div>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             This reframe changes what you are optimising for. You are not trying to make the model answer more confidently. You are trying to make it honest about its own uncertainty. A model that says &ldquo;I cannot answer this with confidence&rdquo; has done exactly the right thing. A model that answers anyway, fluently and wrongly, has done the most damaging thing.
           </p>
         </section>
@@ -1080,7 +1080,7 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
         {/* Section 02 — Why hallucinations happen */}
         <section>
           <SectionHeading number="02" title="Why hallucinations happen" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             LLMs do not &ldquo;know&rdquo; facts the way a person does. They predict the statistically most likely next token given training data and context. Hallucination is not a rare malfunction; it is a predictable output of a system optimised for fluency rather than for auditing its own claims. Two specific triggers explain most real-world failures.
           </p>
 
@@ -1095,14 +1095,14 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
                 body: 'Left unconstrained, a model will attempt an answer even when it genuinely lacks the information to give one accurately — because refusing is not the default behaviour. You have to explicitly override that default. Without that override, the model will always lean toward an answer over an admission of uncertainty.',
               },
             ].map(({ label, body }) => (
-              <div key={label} className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-                <span className="font-sans font-semibold text-sm text-brand-black block mb-2">{label}</span>
-                <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{body}</p>
+              <div key={label} className="border-l-2 border-bk-gold/30 pl-4 py-1">
+                <span className="font-sans font-semibold text-sm text-bk-parchment block mb-2">{label}</span>
+                <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">{body}</p>
               </div>
             ))}
           </div>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Both triggers point to the same fix: remove the ambiguity, and explicitly authorise the model to say it does not know.
           </p>
         </section>
@@ -1110,7 +1110,7 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
         {/* Section 03 — The 11 techniques */}
         <section>
           <SectionHeading number="03" title="The 11 techniques, ranked by leverage" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Every technique below is structurally the same: a way of narrowing the space the model has to guess in, or of giving it explicit permission to refuse rather than invent. Ranked by consistent real-world impact.
           </p>
 
@@ -1156,12 +1156,12 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
                 body: 'A strict template or schema reduces the wiggle room a model has to pad an answer with unsupported content. "Respond only in this structure: {root_cause, supporting_evidence, confidence_level, recommended_next_step}. Do not speculate beyond the evidence provided." Less room to be creative is less room to hallucinate.',
               },
             ].map(({ rank, label, body }) => (
-              <div key={rank} className="border border-brand-concrete p-5">
+              <div key={rank} className="border border-bk-rule p-5">
                 <div className="flex items-start gap-4">
-                  <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-muted flex-shrink-0 mt-1">{rank}</span>
+                  <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-bk-muted flex-shrink-0 mt-1">{rank}</span>
                   <div>
-                    <span className="font-sans font-semibold text-sm text-brand-black block mb-2">{label}</span>
-                    <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{body}</p>
+                    <span className="font-sans font-semibold text-sm text-bk-parchment block mb-2">{label}</span>
+                    <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">{body}</p>
                   </div>
                 </div>
               </div>
@@ -1172,7 +1172,7 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
         {/* Section 04 — Verification pass */}
         <section>
           <SectionHeading number="04" title="The verification pass — auditing, not retrying" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Techniques 08 through 11 are all variations on verification — having the model check its own output. The critical distinction is that verification is structurally different from generation. Asking a model to try harder produces a more confident version of the same answer. Asking it to audit its output puts it in a different mode entirely.
           </p>
 
@@ -1203,12 +1203,12 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
                 body: 'If you are working via API or a tool with configurable settings: high temperature (0.8–1.0) trades accuracy for creativity and randomness; low temperature (0.0–0.2) trades creativity for determinism and factual consistency. For anything where accuracy matters more than novelty, low temperature is the right default.',
               },
             ].map(({ rank, label, body }) => (
-              <div key={rank} className="border border-brand-concrete p-5">
+              <div key={rank} className="border border-bk-rule p-5">
                 <div className="flex items-start gap-4">
-                  <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-muted flex-shrink-0 mt-1">{rank}</span>
+                  <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-bk-muted flex-shrink-0 mt-1">{rank}</span>
                   <div>
-                    <span className="font-sans font-semibold text-sm text-brand-black block mb-2">{label}</span>
-                    <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{body}</p>
+                    <span className="font-sans font-semibold text-sm text-bk-parchment block mb-2">{label}</span>
+                    <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">{body}</p>
                   </div>
                 </div>
               </div>
@@ -1219,7 +1219,7 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
         {/* Section 05 — What doesn't work */}
         <section>
           <SectionHeading number="05" title="What doesn't work as well as it sounds" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Three approaches that feel intuitive but consistently underperform:
           </p>
 
@@ -1238,9 +1238,9 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
                 body: 'A prompt that implicitly rewards a full, comprehensive-sounding answer pushes the model toward filling gaps to look thorough. Explicitly stating that a partial, honest answer beats a complete but padded one changes this incentive directly. "Prefer accuracy over completeness" is one of the most underused instructions in a system prompt.',
               },
             ].map(({ label, body }) => (
-              <div key={label} className="border-l-2 border-brand-concrete pl-4 py-1">
-                <span className="font-sans font-semibold text-sm text-brand-black block mb-2">{label}</span>
-                <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{body}</p>
+              <div key={label} className="border-l-2 border-bk-rule pl-4 py-1">
+                <span className="font-sans font-semibold text-sm text-bk-parchment block mb-2">{label}</span>
+                <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">{body}</p>
               </div>
             ))}
           </div>
@@ -1249,11 +1249,11 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
         {/* Section 06 — Production practices */}
         <section>
           <SectionHeading number="06" title="Production and workflow-level practices" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Per-prompt techniques reduce hallucination. Architectural choices eliminate the root cause. For anything recurring — a regular workflow, a tool you are building, a report you produce weekly — these apply alongside the prompting layer, not instead of it.
           </p>
 
-          <div className="mt-8 border border-brand-concrete divide-y divide-brand-concrete">
+          <div className="mt-8 border border-bk-rule divide-y divide-brand-concrete">
             {[
               {
                 label: 'RAG as an architectural fix',
@@ -1273,8 +1273,8 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
               },
             ].map(({ label, body }) => (
               <div key={label} className="px-5 py-4">
-                <span className="font-sans font-semibold text-sm text-brand-black block mb-1.5">{label}</span>
-                <p className="font-sans text-sm text-brand-muted leading-relaxed">{body}</p>
+                <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1.5">{label}</span>
+                <p className="font-sans text-sm text-bk-muted leading-relaxed">{body}</p>
               </div>
             ))}
           </div>
@@ -1283,7 +1283,7 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
         {/* Section 07 — Combined prompt pattern */}
         <section>
           <SectionHeading number="07" title="The combined prompt pattern" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             A single template that stacks the highest-leverage techniques together. Use this as a starting point and strip back anything the context does not require.
           </p>
 
@@ -1293,14 +1293,14 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
 Reason step-by-step before your final answer. For each claim, note your confidence level (high / medium / low). If any part cannot be answered with confidence from the provided material, state that explicitly rather than guessing. Do not fabricate citations, statistics, or events.`}</CodeBlock>
           </Callout>
 
-          <p className="font-sans text-sm text-brand-muted leading-relaxed mt-5">
+          <p className="font-sans text-sm text-bk-muted leading-relaxed mt-5">
             The pattern stacks five techniques: system-level refusal boundary, explicit grounding restriction, chain-of-thought, per-claim confidence labelling, and explicit authorisation to admit uncertainty. In practice, even one or two of these applied consistently makes a real difference. The full stack is for high-stakes outputs where the cost of a confident wrong answer is high.
           </p>
         </section>
 
         {/* Closing */}
-        <section className="border-t border-brand-concrete pt-10">
-          <p className="font-sans text-base text-brand-black/60 leading-relaxed italic">
+        <section className="border-t border-bk-rule pt-10">
+          <p className="font-sans text-base text-bk-parchment/60 leading-relaxed italic">
             Every technique here is the same move: shrink the space the model has to guess in, and explicitly give it permission to say it does not know.
           </p>
         </section>
@@ -1314,10 +1314,10 @@ Reason step-by-step before your final answer. For each claim, note your confiden
       </div>
 
       {/* Footer nav */}
-      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-brand-concrete pt-10">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-bk-rule pt-10">
         <Link
           href="/articles"
-          className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
+          className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200"
         >
           ← Field Notes
         </Link>
@@ -1328,34 +1328,34 @@ Reason step-by-step before your final answer. For each claim, note your confiden
 
 function SelfImprovementArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
 
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
 
-        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
           THE<br />
-          <span className="text-brand-cobalt">DECIDING</span><br />
+          <span className="text-bk-gold">DECIDING</span><br />
           FACTOR.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/70 border border-bk-gold/25 px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -1366,21 +1366,21 @@ function SelfImprovementArticle({ article, formattedDate }: { article: ReturnTyp
 
         {/* Lede */}
         <section>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
             A 2026 narrative review published in Behavioral Sciences synthesised the actual research on AI and wellbeing. Its finding is not that AI helps or does not help. It is more precise than that: real short-term benefits exist for anxiety, stress, loneliness, self-esteem, skill-building, and social confidence, but the results are inconsistent. The variable that explains the inconsistency is not which tool you use. It is the structure of the interaction, the kind of feedback it gives, and the broader context you are using it in.
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             AI companionship specifically was found to offer real but temporary emotional support: useful in the moment, not a substitute for the kind of connection that compounds over time. That distinction is the load-bearing idea beneath everything that follows.
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             This is not a case for using AI more. It is a case for using it deliberately, in the places it actually helps, while staying honest about the places it does not.
           </p>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>A 2026 Behavioral Sciences narrative review found real short-term benefits from AI use across anxiety, stress, loneliness, self-esteem, and skill-building, but results are inconsistent.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Structure is the deciding variable: interactions with a clear goal and feedback loop consistently outperform open-ended, unstructured use regardless of which tool is used.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>AI companionship offers real but temporary emotional support: useful in the moment, not a substitute for the kind of connection that compounds over time.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Structured use (processing a specific situation, rehearsing a hard conversation, practising a specific skill) consistently outperforms passive Q&A or generalised emotional support.</li>
+              <li><span className="text-bk-gold mr-2">—</span>A 2026 Behavioral Sciences narrative review found real short-term benefits from AI use across anxiety, stress, loneliness, self-esteem, and skill-building, but results are inconsistent.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Structure is the deciding variable: interactions with a clear goal and feedback loop consistently outperform open-ended, unstructured use regardless of which tool is used.</li>
+              <li><span className="text-bk-gold mr-2">—</span>AI companionship offers real but temporary emotional support: useful in the moment, not a substitute for the kind of connection that compounds over time.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Structured use (processing a specific situation, rehearsing a hard conversation, practising a specific skill) consistently outperforms passive Q&A or generalised emotional support.</li>
             </ul>
           </Callout>
         </section>
@@ -1388,14 +1388,14 @@ function SelfImprovementArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 01 — What the research says */}
         <section>
           <SectionHeading number="01" title="What the research actually found" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             The Behavioral Sciences review covered AI-facilitated interventions across wellbeing, education, interpersonal skill development, and AI companionship. The consistent pattern: structured interactions produced real short-term benefit; unstructured use produced much weaker and less consistent results. The difference was not model quality or tool choice. It was whether the interaction had a clear goal and a clear feedback loop.
           </p>
 
-          <div className="mt-8 border border-brand-concrete divide-y divide-brand-concrete">
-            <div className="grid grid-cols-2 divide-x divide-brand-concrete bg-brand-graphite/40">
-              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-muted">Where structured use produced real benefit</span></div>
-              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-muted">Where results were weaker or inconsistent</span></div>
+          <div className="mt-8 border border-bk-rule divide-y divide-brand-concrete">
+            <div className="grid grid-cols-2 divide-x divide-brand-concrete bg-bk-deep/40">
+              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-bk-muted">Where structured use produced real benefit</span></div>
+              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-bk-muted">Where results were weaker or inconsistent</span></div>
             </div>
             {[
               { left: 'Processing a specific stressful situation or decision', right: 'Open-ended venting with no structure or goal' },
@@ -1404,13 +1404,13 @@ function SelfImprovementArticle({ article, formattedDate }: { article: ReturnTyp
               { left: 'Rehearsing a hard conversation or social scenario', right: 'Avoidance of the real conversation via AI proxy' },
             ].map(({ left, right }, i) => (
               <div key={i} className="grid grid-cols-2 divide-x divide-brand-concrete">
-                <div className="px-4 py-3"><p className="font-sans text-sm text-brand-black/70 leading-relaxed">{left}</p></div>
-                <div className="px-4 py-3"><p className="font-sans text-sm text-brand-muted leading-relaxed">{right}</p></div>
+                <div className="px-4 py-3"><p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">{left}</p></div>
+                <div className="px-4 py-3"><p className="font-sans text-sm text-bk-muted leading-relaxed">{right}</p></div>
               </div>
             ))}
           </div>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             The review treats these as moderately reliable findings rather than settled consensus — this is an actively developing research area, and specific results vary by context, population, and how tightly the study controlled for confounders. Use the pattern as a calibration tool rather than a guarantee.
           </p>
         </section>
@@ -1418,7 +1418,7 @@ function SelfImprovementArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 02 — Three modes */}
         <section>
           <SectionHeading number="02" title="Three modes of use — and why most people only have one" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Most AI use is task-directed. Draft this, fix that, build this. That mode is useful and it is also the only mode most people ever use. The two modes that produce the most growth are almost never on anyone&rsquo;s regular schedule.
           </p>
 
@@ -1441,49 +1441,49 @@ function SelfImprovementArticle({ article, formattedDate }: { article: ReturnTyp
                 body: 'The highest-leverage and least-used mode. A periodic session — weekly or monthly — where you externalise your own reasoning and have it reflected back: what actually worked, what did not, what pattern keeps repeating. This is not a task session. It uses the same tool for a different purpose: noticing your own patterns rather than just executing against them. Most people skip this entirely.',
               },
             ].map(({ label, body }) => (
-              <div key={label} className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-                <span className="font-sans font-semibold text-sm text-brand-black block mb-2">{label}</span>
-                <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{body}</p>
+              <div key={label} className="border-l-2 border-bk-gold/30 pl-4 py-1">
+                <span className="font-sans font-semibold text-sm text-bk-parchment block mb-2">{label}</span>
+                <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">{body}</p>
               </div>
             ))}
           </div>
 
           <Callout label="Practical setup" className="mt-8">
-            <p className="font-sans text-sm text-brand-black/75 leading-relaxed">Three session types, three different purposes. One task-directed (already happening). One learning-directed — a specific named gap, not general browsing, on a real weekly cadence. One reflection-directed — what pattern keeps repeating this month — on a real monthly cadence, not &ldquo;whenever I remember.&rdquo;</p>
+            <p className="font-sans text-sm text-bk-parchment/75 leading-relaxed">Three session types, three different purposes. One task-directed (already happening). One learning-directed — a specific named gap, not general browsing, on a real weekly cadence. One reflection-directed — what pattern keeps repeating this month — on a real monthly cadence, not &ldquo;whenever I remember.&rdquo;</p>
           </Callout>
         </section>
 
         {/* Section 03 — Opportunity */}
         <section>
           <SectionHeading number="03" title="Using AI to open up more opportunity" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             The same principle applies here as in content and AEO work: opportunity flows to whoever has a specific, findable point of view, not generic competence. AI can help you produce more and faster. The thing that actually opens doors is still specific, real expertise made visible. The tool collapses the production cost. The substance has to come from somewhere else.
           </p>
 
           <div className="mt-8 space-y-4">
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Lower the cost of showing your work</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Writing up a finished project into something shareable — a case study, a write-up, a talk outline — used to be the part that got skipped because it took too long after the actual work was done. AI collapses that cost. The value in the output is still in the specific detail only you could add, not the volume of what gets produced. AI-generated case study text without your actual numbers, decisions, and reasoning is indistinguishable from noise.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">Lower the cost of showing your work</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">Writing up a finished project into something shareable — a case study, a write-up, a talk outline — used to be the part that got skipped because it took too long after the actual work was done. AI collapses that cost. The value in the output is still in the specific detail only you could add, not the volume of what gets produced. AI-generated case study text without your actual numbers, decisions, and reasoning is indistinguishable from noise.</p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Rehearse, not just draft</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Before a real pitch, negotiation, or difficult conversation, running the actual scenario — including the specific pushback you expect — is a meaningfully different use than asking for advice in the abstract. This is closer to deliberate practice than to consultation. The research finding on rehearsal as a structured interaction is relevant here: the benefit is in the specificity of the scenario, not in the general question.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">Rehearse, not just draft</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">Before a real pitch, negotiation, or difficult conversation, running the actual scenario — including the specific pushback you expect — is a meaningfully different use than asking for advice in the abstract. This is closer to deliberate practice than to consultation. The research finding on rehearsal as a structured interaction is relevant here: the benefit is in the specificity of the scenario, not in the general question.</p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Widen the search radius deliberately</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Ask explicitly for adjacent fields, unfamiliar framings, or categories of opportunity you would not have thought to search for. AI-assisted research can surface the actual landscape of a space — rates, positioning, what the market calls a role, who is hiring for it — faster than manually piecing it together from individual searches.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">Widen the search radius deliberately</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">Ask explicitly for adjacent fields, unfamiliar framings, or categories of opportunity you would not have thought to search for. AI-assisted research can surface the actual landscape of a space — rates, positioning, what the market calls a role, who is hiring for it — faster than manually piecing it together from individual searches.</p>
             </div>
           </div>
 
           <Callout label="The caution worth naming directly" className="mt-8">
-            <p className="font-sans text-sm text-brand-black/75 leading-relaxed">None of this replaces the actual work of reaching out to people, showing up, and building real relationships in your field. AI can prepare you for the conversation. It cannot have the conversation for you. Heavy AI use that substitutes for real outreach and relationship-building produces activity that feels productive but does not compound into an actual network. The two feel similar from the inside. They are not.</p>
+            <p className="font-sans text-sm text-bk-parchment/75 leading-relaxed">None of this replaces the actual work of reaching out to people, showing up, and building real relationships in your field. AI can prepare you for the conversation. It cannot have the conversation for you. Heavy AI use that substitutes for real outreach and relationship-building produces activity that feels productive but does not compound into an actual network. The two feel similar from the inside. They are not.</p>
           </Callout>
         </section>
 
         {/* Section 04 — Wellbeing boundary */}
         <section>
           <SectionHeading number="04" title="Where it genuinely helps — and where the real risk sits" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             The research on AI and wellbeing is where people most want a clear answer and where the evidence is most genuinely mixed. The honest version: structured use can help with real things. The risks are also real, not hypothetical, and they are worth being specific about.
           </p>
 
@@ -1492,17 +1492,17 @@ function SelfImprovementArticle({ article, formattedDate }: { article: ReturnTyp
           </div>
 
           <div className="mt-10 space-y-5">
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">The companionship drift risk</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">The review is specific on this point: AI companionship provides real but temporary emotional benefit. The risk is not using AI when you are stressed. It is letting AI use quietly substitute for the slower, harder work of building or maintaining real human relationships — because the AI is always available, always responsive, and never having its own bad day. That asymmetry is real and worth noticing.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">The companionship drift risk</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">The review is specific on this point: AI companionship provides real but temporary emotional benefit. The risk is not using AI when you are stressed. It is letting AI use quietly substitute for the slower, harder work of building or maintaining real human relationships — because the AI is always available, always responsive, and never having its own bad day. That asymmetry is real and worth noticing.</p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Not therapy</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Using AI for mental health literacy — understanding a condition, a term, a coping technique in plain language — is a different thing from using it as treatment. The line between the two gets blurry exactly when someone is struggling most. Anything approaching a genuine mental health crisis is where a static, well-meaning response from a tool is a poor substitute for a professional who can actually intervene.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">Not therapy</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">Using AI for mental health literacy — understanding a condition, a term, a coping technique in plain language — is a different thing from using it as treatment. The line between the two gets blurry exactly when someone is struggling most. Anything approaching a genuine mental health crisis is where a static, well-meaning response from a tool is a poor substitute for a professional who can actually intervene.</p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">The echo chamber problem</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">A chatbot that is agreeable by design can quietly reinforce whatever you already believe — including unhelpful patterns. A tendency to catastrophise, a grudge, an avoidant instinct. A productive use pushes back and offers a genuinely different angle. A use that just validates whatever you already feel is an echo chamber of one. These feel different from the inside if you are paying attention.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">The echo chamber problem</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">A chatbot that is agreeable by design can quietly reinforce whatever you already believe — including unhelpful patterns. A tendency to catastrophise, a grudge, an avoidant instinct. A productive use pushes back and offers a genuinely different angle. A use that just validates whatever you already feel is an echo chamber of one. These feel different from the inside if you are paying attention.</p>
             </div>
           </div>
         </section>
@@ -1510,7 +1510,7 @@ function SelfImprovementArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 05 — Rhythm */}
         <section>
           <SectionHeading number="05" title="A practical weekly rhythm" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             A concrete way to run all of this without it becoming another thing to manage. Four cadences, each with a distinct purpose. The ongoing one is not a scheduled session — it is a standing question.
           </p>
 
@@ -1519,28 +1519,28 @@ function SelfImprovementArticle({ article, formattedDate }: { article: ReturnTyp
           </div>
 
           <div className="mt-8 space-y-3">
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">On the daily cadence</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">The task-directed mode you already have. No structure needed here — it is already running.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">On the daily cadence</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">The task-directed mode you already have. No structure needed here — it is already running.</p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">On the weekly reflection</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Twenty minutes. What actually worked this week. What did not. One pattern you noticed. The value is in the regularity, not in any individual session. The habit of externalising your reasoning on a fixed cadence is the thing that compounds, not the quality of any single reflection.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">On the weekly reflection</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">Twenty minutes. What actually worked this week. What did not. One pattern you noticed. The value is in the regularity, not in any individual session. The habit of externalising your reasoning on a fixed cadence is the thing that compounds, not the quality of any single reflection.</p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">On the monthly shareable</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">One piece of real work, turned into something that can help someone else. Strip anything private. Post the general version. This is the lowest-cost high-leverage community contribution available, and it requires nothing you have not already done — only the step of making it legible to someone outside your own head.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">On the monthly shareable</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">One piece of real work, turned into something that can help someone else. Strip anything private. Post the general version. This is the lowest-cost high-leverage community contribution available, and it requires nothing you have not already done — only the step of making it legible to someone outside your own head.</p>
             </div>
             <div className="border-l-2 border-amber-500/50 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">On the standing check</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Not a session. A question: am I reaching for AI right now instead of a specific person I would otherwise talk to, or in addition to one? Sometimes the answer is genuinely fine. The point is to be honest about which it is rather than letting the decision happen by default.</p>
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">On the standing check</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">Not a session. A question: am I reaching for AI right now instead of a specific person I would otherwise talk to, or in addition to one? Sometimes the answer is genuinely fine. The point is to be honest about which it is rather than letting the decision happen by default.</p>
             </div>
           </div>
         </section>
 
         {/* Closing */}
-        <section className="border-t border-brand-concrete pt-10">
-          <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+        <section className="border-t border-bk-rule pt-10">
+          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
             The tool is not the deciding factor. The structure is.
           </p>
         </section>
@@ -1557,34 +1557,34 @@ function SelfImprovementArticle({ article, formattedDate }: { article: ReturnTyp
 
 function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
 
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
 
-        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
           NOT<br />
           A<br />
-          <span className="text-brand-cobalt">POSTER.</span>
+          <span className="text-bk-gold">POSTER.</span>
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/70 border border-bk-gold/25 px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -1595,21 +1595,21 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
 
         {/* Lede */}
         <section>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
             Forrester&rsquo;s 2026 buyer research on journey mapping makes one point that should reframe the whole exercise: journey maps have historically been static artifacts. A workshop output, a poster, a one-time deliverable. And that is exactly why most journey mapping work stalls, fails to scale, and struggles to demonstrate ROI. It gets cut in the next budget cycle.
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             The organisations that are getting durable value from this work treat customer journey management as an operating model, not a document. Structured and unstructured customer data, operational KPIs, and financial metrics feed the same system continuously, rather than a map that gets printed once. Where the data and metrics stay disconnected, journey work remains anecdotal. And anecdotal work is the first thing cut.
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             This is the standard this guide is built to. Not journey maps as a deliverable. Journey management as an operating model.
           </p>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>Forrester&rsquo;s 2026 research shows the difference between successful and stalled journey mapping is treating it as a continuously fed operating model vs. a one-time deliverable that gets cut at the next budget cycle.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Scope one journey, not &ldquo;the whole customer experience.&rdquo; A well-scoped map of one journey that changes behaviour is worth more than a sweeping map of five that sits in a shared drive.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>NPS, CSAT, and CES answer different questions and are not interchangeable: NPS measures relationship sentiment, CSAT measures interaction quality, CES diagnoses friction.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Journey maps die when they are detached from live data. The work that compounds connects customer feedback directly to the operational metrics that trigger action.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Forrester&rsquo;s 2026 research shows the difference between successful and stalled journey mapping is treating it as a continuously fed operating model vs. a one-time deliverable that gets cut at the next budget cycle.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Scope one journey, not &ldquo;the whole customer experience.&rdquo; A well-scoped map of one journey that changes behaviour is worth more than a sweeping map of five that sits in a shared drive.</li>
+              <li><span className="text-bk-gold mr-2">—</span>NPS, CSAT, and CES answer different questions and are not interchangeable: NPS measures relationship sentiment, CSAT measures interaction quality, CES diagnoses friction.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Journey maps die when they are detached from live data. The work that compounds connects customer feedback directly to the operational metrics that trigger action.</li>
             </ul>
           </Callout>
         </section>
@@ -1617,30 +1617,30 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 01 — Scope */}
         <section>
           <SectionHeading number="01" title="Scope it tight, or fix nothing" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Pick one journey, not &ldquo;the whole customer experience.&rdquo; A first-purchase journey, an onboarding journey, and a renewal journey are three different maps with three different owners and three different failure points. Trying to map all of them at once produces something too vague to act on.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
             State these four things explicitly before gathering a single data point. Without them, the map will drift to reflect what is easy to measure rather than what the business actually needs to understand.
           </p>
 
-          <div className="mt-8 border border-brand-concrete divide-y divide-brand-concrete">
-            <div className="grid grid-cols-4 divide-x divide-brand-concrete bg-brand-graphite/40">
+          <div className="mt-8 border border-bk-rule divide-y divide-brand-concrete">
+            <div className="grid grid-cols-4 divide-x divide-brand-concrete bg-bk-deep/40">
               {['WHO', 'WHAT', 'WHEN', 'WHY'].map(h => (
                 <div key={h} className="px-4 py-3">
-                  <span className="font-display text-xl text-brand-cobalt/40">{h}</span>
+                  <span className="font-book font-bold text-xl text-bk-gold/40">{h}</span>
                 </div>
               ))}
             </div>
             <div className="grid grid-cols-4 divide-x divide-brand-concrete">
-              <div className="px-4 py-4"><p className="font-sans text-sm text-brand-black/70 leading-relaxed">Which specific persona or segment. Not &ldquo;all customers.&rdquo;</p></div>
-              <div className="px-4 py-4"><p className="font-sans text-sm text-brand-black/70 leading-relaxed">Which journey. For example: &ldquo;trial signup to first paid conversion.&rdquo;</p></div>
-              <div className="px-4 py-4"><p className="font-sans text-sm text-brand-black/70 leading-relaxed">The actual time window this journey covers.</p></div>
-              <div className="px-4 py-4"><p className="font-sans text-sm text-brand-black/70 leading-relaxed">What decision or improvement this map exists to inform.</p></div>
+              <div className="px-4 py-4"><p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">Which specific persona or segment. Not &ldquo;all customers.&rdquo;</p></div>
+              <div className="px-4 py-4"><p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">Which journey. For example: &ldquo;trial signup to first paid conversion.&rdquo;</p></div>
+              <div className="px-4 py-4"><p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">The actual time window this journey covers.</p></div>
+              <div className="px-4 py-4"><p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">What decision or improvement this map exists to inform.</p></div>
             </div>
           </div>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Tight scope is not a limitation. It is the thing that makes the work actionable. A well-scoped map of one journey that actually changes behaviour is worth more than a sweeping map of five journeys that sits in a shared drive.
           </p>
         </section>
@@ -1648,10 +1648,10 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 02 — Real data */}
         <section>
           <SectionHeading number="02" title="Build from real data, not assumptions" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             The most consistent finding across current practitioner guidance: internal teams are reliably wrong about where the actual friction lives, because they experience the product from the inside. A journey map built from internal assumptions tends to reflect the product team&rsquo;s mental model of the experience rather than the one customers actually have.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
             The fix is not more research. It is pulling the data you already have before commissioning anything new. GA4, Salesforce, support ticket history, and existing survey data cover most of what you need for a first working draft. Most teams skip this step and go straight to a workshop.
           </p>
 
@@ -1660,17 +1660,17 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
           </div>
 
           <div className="mt-8 space-y-4">
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Include both solicited and unsolicited data</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Solicited feedback (surveys, structured interviews) is useful but incomplete on its own. People answer the question you asked, not necessarily the thing that actually matters to them. Unsolicited data (support tickets, review text, call transcripts, session recordings) surfaces friction customers did not think to mention because you did not ask about it directly.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">Include both solicited and unsolicited data</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">Solicited feedback (surveys, structured interviews) is useful but incomplete on its own. People answer the question you asked, not necessarily the thing that actually matters to them. Unsolicited data (support tickets, review text, call transcripts, session recordings) surfaces friction customers did not think to mention because you did not ask about it directly.</p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Detail the micro-interactions, not just the headline stages</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Not just Awareness, Consideration, Purchase — the specific page that causes hesitation, the specific email that gets ignored, the specific support interaction that escalates frustration. Session recordings and heatmaps earn their place here. They show you the step nobody thought to mention in an interview.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">Detail the micro-interactions, not just the headline stages</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">Not just Awareness, Consideration, Purchase — the specific page that causes hesitation, the specific email that gets ignored, the specific support interaction that escalates frustration. Session recordings and heatmaps earn their place here. They show you the step nobody thought to mention in an interview.</p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Validate before treating the map as finished</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Cross-check the drafted map against a fresh sample of real behavioural and feedback data before publishing it as the reference version. A map built from six-month-old assumptions is a liability rather than an asset.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">Validate before treating the map as finished</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">Cross-check the drafted map against a fresh sample of real behavioural and feedback data before publishing it as the reference version. A map built from six-month-old assumptions is a liability rather than an asset.</p>
             </div>
           </div>
         </section>
@@ -1678,7 +1678,7 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 03 — Non-linear map */}
         <section>
           <SectionHeading number="03" title="Design for the non-linear path" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Customers loop. They re-enter stages. A subscription customer might cycle back through evaluation multiple times over a relationship — when a competitor changes pricing, when the internal champion gets a new job, when a new feature makes them reconsider what they are paying for. A map that only shows a single forward path misrepresents how returning and long-tenure customers actually behave.
           </p>
 
@@ -1686,10 +1686,10 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
             <JourneyMapVisual />
           </div>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-8">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-8">
             This is the same principle underlying the McKinsey Customer Decision Journey model: the corrective to the linear funnel is not that stages are wrong, but that the assumption of unidirectional movement is wrong. On the acquisition side, a buyer who reaches Consideration may loop back to Awareness when a competitor shifts the category definition. On the post-purchase side, an Onboarding customer who hits friction may re-enter Consideration — evaluating whether to stay with you or switch.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
             Designing the map to accommodate this explicitly is not a complexity exercise. It is an accuracy exercise. A map that cannot represent the paths your customers actually take cannot tell you where they actually get stuck.
           </p>
         </section>
@@ -1697,7 +1697,7 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 04 — KPIs */}
         <section>
           <SectionHeading number="04" title="The right metric for the right question" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             NPS, CSAT, and CES are each answering a different question. Using them interchangeably is the single most common CX measurement mistake, because it produces data that is too blunt to act on.
           </p>
 
@@ -1705,25 +1705,25 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
             <CXMetricsDiagram />
           </div>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-8">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-8">
             The practical rule: NPS tells you if there is a problem somewhere in the relationship. CES and CSAT, measured at specific touchpoints, tell you where. Relying on NPS alone to diagnose a specific broken flow is like using a fever to diagnose which organ is infected. It tells you something is wrong, not what to fix.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
             A touchpoint that causes the most complaints is not automatically the one worth fixing first. Weigh it against how many customers actually pass through that touchpoint and how much value, in revenue or retention risk, sits on the other side of it. The highest-volume friction point and the highest-value friction point are rarely the same thing.
           </p>
 
           <div className="mt-8 space-y-4">
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Set KPIs against your mapping goals, not generically</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">A KPI set that does not map back to what a specific journey exists to inform will drift into vanity tracking over time. Each phase should have a KPI that actually matches what that phase is meant to diagnose.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">Set KPIs against your mapping goals, not generically</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">A KPI set that does not map back to what a specific journey exists to inform will drift into vanity tracking over time. Each phase should have a KPI that actually matches what that phase is meant to diagnose.</p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Track behavioural and financial KPIs together</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Subscriber acquisition cost, churn rate, and customer lifetime value read very differently in combination than in isolation. A low CAC next to a high early-churn rate is a different problem than a high CAC next to strong retention — but a dashboard that shows them on separate tabs makes that connection easy to miss.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">Track behavioural and financial KPIs together</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">Subscriber acquisition cost, churn rate, and customer lifetime value read very differently in combination than in isolation. A low CAC next to a high early-churn rate is a different problem than a high CAC next to strong retention — but a dashboard that shows them on separate tabs makes that connection easy to miss.</p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Tie journey work to financial accountability explicitly</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Journey initiatives with green KPIs still lose internal prioritisation battles if no one has connected those KPIs to revenue, cost, or retention impact in a way finance and leadership actually recognise. This is the most cited reason CX investment gets deprioritised even when the underlying metrics look healthy.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">Tie journey work to financial accountability explicitly</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">Journey initiatives with green KPIs still lose internal prioritisation battles if no one has connected those KPIs to revenue, cost, or retention impact in a way finance and leadership actually recognise. This is the most cited reason CX investment gets deprioritised even when the underlying metrics look healthy.</p>
             </div>
           </div>
         </section>
@@ -1731,7 +1731,7 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 05 — Build sequence */}
         <section>
           <SectionHeading number="05" title="The practical build sequence" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Nine steps, in order. Each one is a prerequisite for the next. Skip the validation step and the map becomes a liability. Skip the KPI-attachment step and the map becomes invisible.
           </p>
 
@@ -1749,8 +1749,8 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
                 'Revisit on a cadence, not once — a stale map is worse than no map, because it creates false confidence.',
               ].map((step, i) => (
                 <li key={i} className="flex gap-4">
-                  <span className="font-display text-2xl text-brand-cobalt/25 flex-shrink-0 leading-none w-6">{i + 1}</span>
-                  <p className="font-sans text-sm text-brand-black/70 leading-relaxed">{step}</p>
+                  <span className="font-book font-bold text-2xl text-bk-gold/25 flex-shrink-0 leading-none w-6">{i + 1}</span>
+                  <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">{step}</p>
                 </li>
               ))}
             </ol>
@@ -1760,25 +1760,25 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 06 — Making it stick */}
         <section>
           <SectionHeading number="06" title="The connective tissue that makes it stick" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Forrester identifies one differentiator between journey work that compounds and journey work that gets quietly deprioritised: whether the platform connects voice of customer, analytics, business intelligence, and delivery tooling into one operating system, versus keeping journey insight, execution, and measurement in separate tools that require manual translation between them.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
             Manual translation is where journey initiatives quietly die. Not from lack of insight, but from the insight never reaching the team that could act on it. The fix is not a new tool. It is treating the connective layer — the link from what the map surfaces to what the delivery team ships — as infrastructure rather than coordination overhead.
           </p>
 
           <div className="mt-8 space-y-4">
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Fix the brilliant basics before chasing big initiatives</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Consistency and reliability at the fundamental touchpoints — a support reply that actually resolves the issue, a checkout that does not break on mobile — build the trust foundation that makes any more ambitious CX investment actually land. A flashy new initiative on top of unreliable basics does not move the needle. It gets ignored because trust has not been earned yet.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">Fix the brilliant basics before chasing big initiatives</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">Consistency and reliability at the fundamental touchpoints — a support reply that actually resolves the issue, a checkout that does not break on mobile — build the trust foundation that makes any more ambitious CX investment actually land. A flashy new initiative on top of unreliable basics does not move the needle. It gets ignored because trust has not been earned yet.</p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Close the loop with the customer, not just internally</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">When a journey map surfaces a real fix, the highest-trust version of &ldquo;we heard you&rdquo; is telling the specific customers who experienced the friction what changed — not a generic release note, but a targeted message to the segment the friction affected. This is what actually builds Advocacy-stage behaviour: the feeling that the feedback went somewhere.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">Close the loop with the customer, not just internally</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">When a journey map surfaces a real fix, the highest-trust version of &ldquo;we heard you&rdquo; is telling the specific customers who experienced the friction what changed — not a generic release note, but a targeted message to the segment the friction affected. This is what actually builds Advocacy-stage behaviour: the feeling that the feedback went somewhere.</p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">CX ownership is cross-functional from the start</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">A journey map that identifies a handoff failure between marketing and support only creates change if both teams see the same map and agree on the same fix. A map that lives solely inside one team&rsquo;s tooling rarely survives contact with a budget or roadmap conversation outside that team.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">CX ownership is cross-functional from the start</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">A journey map that identifies a handoff failure between marketing and support only creates change if both teams see the same map and agree on the same fix. A map that lives solely inside one team&rsquo;s tooling rarely survives contact with a budget or roadmap conversation outside that team.</p>
             </div>
           </div>
         </section>
@@ -1798,8 +1798,8 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
                 'Each phase has a KPI that actually matches what that phase is meant to diagnose',
                 'Findings routed to the specific team that can act on them — not just archived in a deck',
               ].map((item, i) => (
-                <li key={i} className="flex gap-3 font-sans text-sm text-brand-black/70 leading-relaxed">
-                  <span className="text-brand-cobalt/50 flex-shrink-0 mt-0.5">&#9632;</span>
+                <li key={i} className="flex gap-3 font-sans text-sm text-bk-parchment/70 leading-relaxed">
+                  <span className="text-bk-gold/50 flex-shrink-0 mt-0.5">&#9632;</span>
                   {item}
                 </li>
               ))}
@@ -1808,8 +1808,8 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
         </section>
 
         {/* Closing */}
-        <section className="border-t border-brand-concrete pt-10">
-          <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+        <section className="border-t border-bk-rule pt-10">
+          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
             The map is only as good as what it changes.
           </p>
         </section>
@@ -1826,34 +1826,34 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
 
 function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
 
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
 
-        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
           THE<br />
-          <span className="text-brand-cobalt">MISSING</span><br />
+          <span className="text-bk-gold">MISSING</span><br />
           MIDDLE.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/70 border border-bk-gold/25 px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -1864,21 +1864,21 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
 
         {/* Lede */}
         <section>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
             The funnel model has a design flaw everyone knows about and almost nobody fixes: it implies buyers move in one direction through a fixed sequence. Real buyers loop. They re-enter. They jump from BOFU back to TOFU when a competitor changes their pricing, or when the person who was championing your product gets a new job. McKinsey&rsquo;s Customer Decision Journey was built specifically as a corrective to this, and the practitioner consensus in 2026 has caught up with it.
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             The funnel still earns its keep as a planning and measurement scaffold. It forces distinct content, channels, and metrics per stage. But the operating model underneath it needs to assume non-linear movement, not a straight pipe. That framing resolves the apparent contradiction in treating each stage as a separable engineering problem while accepting that buyers will not cooperate with your PowerPoint slides.
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             A second structural change is reshaping the top of the funnel specifically. Around 60% of Google searches now end without a click. Buyers are getting their first answers inside ChatGPT, Gemini, and Perplexity before they ever reach brand-owned content. That share of awareness is happening on a surface you do not control and cannot put a pixel on, which is why AEO and GEO work is now a parallel TOFU investment rather than a side project.
           </p>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>Only about a third of companies actively optimise each funnel stage independently. The rest treat the whole pipeline as undifferentiated and wonder where qualified buyers went.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Around 60% of Google searches now end without a click: TOFU awareness is increasingly captured inside AI tools before buyers ever reach brand-owned content.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Expansion ARR represents over 40% of new ARR for SaaS companies above $50M, making Loyalty and Advocacy the highest-leverage stages most teams underinvest in.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Applying a TOFU metric to a BOFU decision is the most common funnel measurement error. Each stage needs its own distinct primary KPI, not a single shared scoreboard.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Only about a third of companies actively optimise each funnel stage independently. The rest treat the whole pipeline as undifferentiated and wonder where qualified buyers went.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Around 60% of Google searches now end without a click: TOFU awareness is increasingly captured inside AI tools before buyers ever reach brand-owned content.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Expansion ARR represents over 40% of new ARR for SaaS companies above $50M, making Loyalty and Advocacy the highest-leverage stages most teams underinvest in.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Applying a TOFU metric to a BOFU decision is the most common funnel measurement error. Each stage needs its own distinct primary KPI, not a single shared scoreboard.</li>
             </ul>
           </Callout>
         </section>
@@ -1886,7 +1886,7 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 01 — Five-stage overview */}
         <section>
           <SectionHeading number="01" title="The five-stage model" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Most current B2B and SaaS practice runs five stages: Awareness, Consideration, Conversion, Loyalty, and Advocacy. TOFU, MOFU, and BOFU are practitioner shorthand for the first three. The post-purchase stages matter more than most teams treat them: expansion ARR represents over 40% of new ARR for SaaS companies above $50M, so &ldquo;done at the sale&rdquo; means leaving compounding growth on the table. Only about a third of companies actively optimise each stage independently. The rest treat the whole thing as one undifferentiated pipeline, and wonder where qualified buyers went.
           </p>
 
@@ -1894,11 +1894,11 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
             <FunnelStageDiagram />
           </div>
 
-          <div className="mt-8 border border-brand-concrete divide-y divide-brand-concrete">
-            <div className="grid grid-cols-3 divide-x divide-brand-concrete bg-brand-graphite/40">
-              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-muted">Stage</span></div>
-              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-muted">Buyer mindset</span></div>
-              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-muted">Primary metric</span></div>
+          <div className="mt-8 border border-bk-rule divide-y divide-brand-concrete">
+            <div className="grid grid-cols-3 divide-x divide-brand-concrete bg-bk-deep/40">
+              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-bk-muted">Stage</span></div>
+              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-bk-muted">Buyer mindset</span></div>
+              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-bk-muted">Primary metric</span></div>
             </div>
             {[
               { stage: 'Awareness', mindset: 'Exploratory — looking for education, not a product', metric: 'Reach / CPM / organic traffic' },
@@ -1909,13 +1909,13 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
             ].map(({ stage, mindset, metric }) => (
               <div key={stage} className="grid grid-cols-3 divide-x divide-brand-concrete">
                 <div className="px-4 py-4">
-                  <span className="font-sans font-semibold text-sm text-brand-black">{stage}</span>
+                  <span className="font-sans font-semibold text-sm text-bk-parchment">{stage}</span>
                 </div>
                 <div className="px-4 py-4">
-                  <p className="font-sans text-sm text-brand-black/70 leading-relaxed">{mindset}</p>
+                  <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">{mindset}</p>
                 </div>
                 <div className="px-4 py-4">
-                  <p className="font-sans text-sm text-brand-muted leading-relaxed font-mono text-[12px]">{metric}</p>
+                  <p className="font-sans text-sm text-bk-muted leading-relaxed font-mono text-[12px]">{metric}</p>
                 </div>
               </div>
             ))}
@@ -1925,18 +1925,18 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 02 — TOFU */}
         <section>
           <SectionHeading number="02" title="Awareness — the metric most teams get wrong" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             TOFU buyers have a problem, or a symptom of one. They are not looking for your product, your demo, or your brand name. They want education. The job of awareness-stage content is to reach them on the surfaces where they are already looking and to give them something genuinely useful.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
             The single most common practitioner mistake at this stage is applying a bottom-funnel metric to top-of-funnel spend. Judging TOFU content by conversion rate, ROAS, or CPA is the wrong scoreboard entirely. Those metrics belong further down. Applying them here produces one of two outcomes: spend gets cut on channels that are doing their actual job, or content gets pushed toward premature pitching to generate trackable conversions from cold audiences who are not ready for them. Either way, awareness atrophies.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
             The right metrics for a healthy TOFU are reach, impressions, organic traffic volume, and content engagement. A BOFU-style call to action shown to a cold TOFU audience measurably reduces engagement because it mismatches intent. That is not a copywriting problem. It is a stage-confusion problem.
           </p>
 
           <Callout label="The AEO dimension" className="mt-8">
-            <p className="font-sans text-sm text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-sm text-bk-parchment/75 leading-relaxed">
               Around 60% of Google searches now end without a click. A meaningful share of first-touch awareness is happening inside AI answer engines that your standard GA4 and GSC reporting cannot see. Citation tracking, structured schema, and answer-engine-specific content architecture are now TOFU investments, not a side project. If your SAGE-style citation data and your organic traffic trend are diverging, that is the gap.
             </p>
           </Callout>
@@ -1945,10 +1945,10 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 03 — MOFU */}
         <section>
           <SectionHeading number="03" title="Consideration — where qualified buyers go cold" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             MOFU buyers know the problem is real and are actively comparing solutions. They do not need more education about the category. They need proof that you specifically are the right choice, and help building an internal case for it.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
             This is the stage most teams under-invest in. The pattern is consistent: a team builds strong TOFU reach and a sharp BOFU conversion push, then leaves the middle thin. Qualified prospects stall in the gap, cool off, and eventually show up in a lost-deal report attributed to &ldquo;went with a competitor&rdquo; or &ldquo;went dark.&rdquo; The fix is almost never more content. It is a scoring and nurture engineering problem.
           </p>
 
@@ -1956,22 +1956,22 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
             <ScoringGapDiagram />
           </div>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-8">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-8">
             The data on this is unambiguous. MQL-to-SQL conversion averages 13–15% for teams using static demographic and firmographic scoring. Teams using genuine behavioural scoring run 39–40%. That is not a marginal improvement. It is a 3x gap driven almost entirely by which signals are being weighted. A lead score built on job title, company size, and industry tag is profiling, not scoring. Pricing page visits, guide downloads, webinar completions, and demo requests are the actual intent signals.
           </p>
 
           <div className="mt-8 space-y-4">
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Content shape shifts at MOFU</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Case studies, comparison content, webinars, product-led demos, and structured email nurture. Material that helps someone build an internal case, not material that re-explains the problem they already understand.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">Content shape shifts at MOFU</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">Case studies, comparison content, webinars, product-led demos, and structured email nurture. Material that helps someone build an internal case, not material that re-explains the problem they already understand.</p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Behavioural scoring in Marketo</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">The audit question worth running: what percentage of your current lead score is built on engagement signal versus static attributes? If the answer is below 50%, that is where the MQL-to-SQL gap lives.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">Behavioural scoring in Marketo</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">The audit question worth running: what percentage of your current lead score is built on engagement signal versus static attributes? If the answer is below 50%, that is where the MQL-to-SQL gap lives.</p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">AI-driven nurture sequencing</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">The 2026 upgrade to static drip sequences: trigger the next piece of content off actual engagement signal. Viewed pricing page, then send a comparison guide. Downloaded the guide, then invite to a webinar. One static sequence for everyone, regardless of behaviour, is leaving MOFU on manual.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">AI-driven nurture sequencing</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">The 2026 upgrade to static drip sequences: trigger the next piece of content off actual engagement signal. Viewed pricing page, then send a comparison guide. Downloaded the guide, then invite to a webinar. One static sequence for everyone, regardless of behaviour, is leaving MOFU on manual.</p>
             </div>
           </div>
         </section>
@@ -1979,25 +1979,25 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 04 — BOFU */}
         <section>
           <SectionHeading number="04" title="Conversion — process and tooling, not content" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             BOFU buyers are deciding. They need the practical specifics: cost, implementation timeline, contract terms, proof of outcome. They are not discovering you at this point. The job is removing friction from a decision they are already working toward.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
             The most under-discussed lever at this stage is follow-up speed. Responding to an inbound lead within five minutes makes a team roughly 21 times more likely to qualify that lead compared to slower response times. The number is striking enough to warrant a moment of attention. This is not a content fix, a better case study, or a stronger CTA. It is a process and tooling fix. Response time is infrastructure, and most teams treat it as a soft metric.
           </p>
 
           <div className="mt-8 space-y-4">
             <div className="border-l-2 border-amber-500/50 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Retargeting over prospecting</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">At BOFU you are not trying to find new people. You are removing friction for people who are already most of the way there. Tightly controlled ABO-style retargeting, not broad prospecting.</p>
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">Retargeting over prospecting</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">At BOFU you are not trying to find new people. You are removing friction for people who are already most of the way there. Tightly controlled ABO-style retargeting, not broad prospecting.</p>
             </div>
             <div className="border-l-2 border-amber-500/50 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Remove ambiguity explicitly</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Ambiguity at BOFU costs you the deal. Clear pricing, clear implementation timeline, ROI case studies, guarantees, and direct comparisons. The buyer is actively looking for a reason to say yes or a reason to hesitate. Do not give them the hesitation by accident.</p>
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">Remove ambiguity explicitly</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">Ambiguity at BOFU costs you the deal. Clear pricing, clear implementation timeline, ROI case studies, guarantees, and direct comparisons. The buyer is actively looking for a reason to say yes or a reason to hesitate. Do not give them the hesitation by accident.</p>
             </div>
             <div className="border-l-2 border-amber-500/50 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">BOFU metrics: CPA, ROAS, close rate, sales-cycle length, lead-response time</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">These are the metrics that belong at BOFU. If they are being applied to TOFU spend, that is a measurement problem upstream.</p>
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">BOFU metrics: CPA, ROAS, close rate, sales-cycle length, lead-response time</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">These are the metrics that belong at BOFU. If they are being applied to TOFU spend, that is a measurement problem upstream.</p>
             </div>
           </div>
         </section>
@@ -2005,22 +2005,22 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 05 — Loyalty + Advocacy */}
         <section>
           <SectionHeading number="05" title="Loyalty and Advocacy — where compounding growth lives" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             The conventional funnel ends at Conversion. For most SaaS businesses running at meaningful scale, that is the wrong finish line. Expansion ARR now represents over 40% of new ARR for companies above $50M. Net Revenue Retention above 100% means the existing customer base is growing without any new logos, and the compounding effect of that on a growth trajectory is materially different from what CAC-driven acquisition alone produces.
           </p>
 
           <div className="mt-8 space-y-4">
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Loyalty: onboarding quality is the leading indicator</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">A rocky first 30, 60, 90 days is the single strongest predictor of early churn, independent of how good the product actually is. The engineering job here is proactive, usage-based outreach: a customer under-using a paid feature, a customer approaching a plan limit. Those triggers should fire before churn risk appears in a lagging retention number.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">Loyalty: onboarding quality is the leading indicator</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">A rocky first 30, 60, 90 days is the single strongest predictor of early churn, independent of how good the product actually is. The engineering job here is proactive, usage-based outreach: a customer under-using a paid feature, a customer approaching a plan limit. Those triggers should fire before churn risk appears in a lagging retention number.</p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Advocacy rarely happens spontaneously at scale</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">It needs a deliberate mechanism: referral programmes, case-study requests timed to a genuine recent win, review prompts triggered by a high in-app satisfaction signal rather than sent on a blanket schedule. The timing matters as much as the ask.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">Advocacy rarely happens spontaneously at scale</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">It needs a deliberate mechanism: referral programmes, case-study requests timed to a genuine recent win, review prompts triggered by a high in-app satisfaction signal rather than sent on a blanket schedule. The timing matters as much as the ask.</p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Advocacy feeds Awareness — the loop closes here</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Reviews, referrals, and user-generated proof feed directly back into Stage 1. This is why &ldquo;funnel&rdquo; is a slightly misleading shape for the mature model. The bottom genuinely does feed the top, and teams that treat post-purchase stages as cost centres are compounding the wrong direction.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">Advocacy feeds Awareness — the loop closes here</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">Reviews, referrals, and user-generated proof feed directly back into Stage 1. This is why &ldquo;funnel&rdquo; is a slightly misleading shape for the mature model. The bottom genuinely does feed the top, and teams that treat post-purchase stages as cost centres are compounding the wrong direction.</p>
             </div>
           </div>
         </section>
@@ -2028,10 +2028,10 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 06 — Connective layer + Attribution */}
         <section>
           <SectionHeading number="06" title="The connective layer — attribution and measurement" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             A funnel engineered stage-by-stage but never connected end-to-end just moves the bottleneck around. The two disciplines that matter more here than any single stage tactic are unified measurement across stages and an honest attribution model.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
             A dashboard that shows TOFU traffic and BOFU revenue as separate reports with no connective tissue can tell you that each stage looks healthy but cannot actually diagnose where the leak is. The exec, waterfall, and diagnostic-layer structure is not organisational habit. It is the minimum information architecture required to run the funnel as a system rather than five independent silos.
           </p>
 
@@ -2039,19 +2039,19 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
             <AttributionDiagram />
           </div>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-8">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-8">
             Attribution model choice is more consequential than most teams treat it. Last-Click systematically over-credits BOFU and under-credits the awareness and nurture work that built the pipeline in the first place. A team running Last-Click attribution will consistently under-invest in TOFU and MOFU, because those stages show up poorly on the scoreboard they are actually being measured against.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
             The 2026 shift practitioners are making: moving toward causal models, specifically Marketing Mix Modelling and incrementality testing. These can distinguish which stage-level spend is actually driving outcomes versus which is riding along with demand that would have existed anyway. Last-Click cannot make that distinction. The practical starting point is not replacing your current attribution overnight, but identifying the two or three channels where Last-Click is most likely to be mismeasuring contribution, and running an incrementality test on those.
           </p>
 
           <Callout label="Quick reference" className="mt-10">
-            <div className="border border-brand-concrete divide-y divide-brand-concrete mt-2">
-              <div className="grid grid-cols-3 divide-x divide-brand-concrete bg-brand-graphite/40">
-                <div className="px-3 py-2"><span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-muted">Stage</span></div>
-                <div className="px-3 py-2"><span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-muted">Primary metric</span></div>
-                <div className="px-3 py-2"><span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-muted">Most common mistake</span></div>
+            <div className="border border-bk-rule divide-y divide-brand-concrete mt-2">
+              <div className="grid grid-cols-3 divide-x divide-brand-concrete bg-bk-deep/40">
+                <div className="px-3 py-2"><span className="font-sans text-[10px] tracking-[0.2em] uppercase text-bk-muted">Stage</span></div>
+                <div className="px-3 py-2"><span className="font-sans text-[10px] tracking-[0.2em] uppercase text-bk-muted">Primary metric</span></div>
+                <div className="px-3 py-2"><span className="font-sans text-[10px] tracking-[0.2em] uppercase text-bk-muted">Most common mistake</span></div>
               </div>
               {[
                 { stage: 'Awareness', metric: 'Reach / CPM / organic traffic', mistake: 'Judging TOFU content by conversion rate' },
@@ -2061,9 +2061,9 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
                 { stage: 'Advocacy', metric: 'Referral rate / NPS / UGC volume', mistake: 'Expecting it to happen without a mechanism' },
               ].map(({ stage, metric, mistake }) => (
                 <div key={stage} className="grid grid-cols-3 divide-x divide-brand-concrete">
-                  <div className="px-3 py-3"><span className="font-sans font-semibold text-xs text-brand-black">{stage}</span></div>
-                  <div className="px-3 py-3"><p className="font-sans text-xs text-brand-muted font-mono">{metric}</p></div>
-                  <div className="px-3 py-3"><p className="font-sans text-xs text-brand-black/65 italic leading-snug">{mistake}</p></div>
+                  <div className="px-3 py-3"><span className="font-sans font-semibold text-xs text-bk-parchment">{stage}</span></div>
+                  <div className="px-3 py-3"><p className="font-sans text-xs text-bk-muted font-mono">{metric}</p></div>
+                  <div className="px-3 py-3"><p className="font-sans text-xs text-bk-parchment/65 italic leading-snug">{mistake}</p></div>
                 </div>
               ))}
             </div>
@@ -2071,8 +2071,8 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
         </section>
 
         {/* Closing */}
-        <section className="border-t border-brand-concrete pt-10">
-          <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+        <section className="border-t border-bk-rule pt-10">
+          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
             The funnel is not broken. The assumption that it runs in a straight line is.
           </p>
         </section>
@@ -2089,33 +2089,33 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
 
 function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
 
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
 
-        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
           PROOF<br />
-          <span className="text-brand-cobalt">FIRST.</span>
+          <span className="text-bk-gold">FIRST.</span>
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/70 border border-bk-gold/25 px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -2126,18 +2126,18 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
 
         {/* Lede */}
         <section>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
             Building has gotten cheap. AI-assisted engineering has collapsed the cost of shipping software, which means the scarce resource has inverted. It is no longer &ldquo;can you build it.&rdquo; It is &ldquo;can you prove anyone actually wants it, fast, before you spend real time and credibility on the wrong thing.&rdquo;
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             Both investors and internal stakeholders have adjusted accordingly. A deck full of vision does not move either audience anymore. Evidence does. 2026 is the year of proof over promises.
           </p>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>POC, MVP, and Traction prove fundamentally different things. Conflating them is the single most common strategic error at this stage.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>A burn multiple of 1.5&times; or below is the current investor threshold for efficient growth. Above 5&times; is operationally unsustainable regardless of revenue growth rate.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>106% net revenue retention is the Series A benchmark: expansion revenue from existing customers must cover churn, or the growth story does not hold.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>The four-step validation sequence exists to kill bad ideas cheaply, not to justify the ones you already have. Run it in order before committing to a full build.</li>
+              <li><span className="text-bk-gold mr-2">—</span>POC, MVP, and Traction prove fundamentally different things. Conflating them is the single most common strategic error at this stage.</li>
+              <li><span className="text-bk-gold mr-2">—</span>A burn multiple of 1.5&times; or below is the current investor threshold for efficient growth. Above 5&times; is operationally unsustainable regardless of revenue growth rate.</li>
+              <li><span className="text-bk-gold mr-2">—</span>106% net revenue retention is the Series A benchmark: expansion revenue from existing customers must cover churn, or the growth story does not hold.</li>
+              <li><span className="text-bk-gold mr-2">—</span>The four-step validation sequence exists to kill bad ideas cheaply, not to justify the ones you already have. Run it in order before committing to a full build.</li>
             </ul>
           </Callout>
         </section>
@@ -2145,15 +2145,15 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 01 — Three things */}
         <section>
           <SectionHeading number="01" title="Three things that are not the same thing" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Conflating these is the single most common strategic error at this stage. Each one proves something different, and understanding what each one does not prove is more useful than understanding what it does.
           </p>
 
-          <div className="mt-8 border border-brand-concrete divide-y divide-brand-concrete">
-            <div className="grid grid-cols-3 divide-x divide-brand-concrete bg-brand-graphite/40">
-              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-muted">Term</span></div>
-              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-muted">Proves</span></div>
-              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-muted">Does not prove</span></div>
+          <div className="mt-8 border border-bk-rule divide-y divide-brand-concrete">
+            <div className="grid grid-cols-3 divide-x divide-brand-concrete bg-bk-deep/40">
+              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-bk-muted">Term</span></div>
+              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-bk-muted">Proves</span></div>
+              <div className="px-4 py-3"><span className="font-sans text-[10px] tracking-[0.22em] uppercase text-bk-muted">Does not prove</span></div>
             </div>
             {[
               {
@@ -2174,19 +2174,19 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
             ].map(({ term, proves, not }) => (
               <div key={term} className="grid grid-cols-3 divide-x divide-brand-concrete">
                 <div className="px-4 py-4">
-                  <span className="font-sans font-semibold text-sm text-brand-black">{term}</span>
+                  <span className="font-sans font-semibold text-sm text-bk-parchment">{term}</span>
                 </div>
                 <div className="px-4 py-4">
-                  <p className="font-sans text-sm text-brand-black/70 leading-relaxed">{proves}</p>
+                  <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">{proves}</p>
                 </div>
                 <div className="px-4 py-4">
-                  <p className="font-sans text-sm text-brand-muted leading-relaxed italic">{not}</p>
+                  <p className="font-sans text-sm text-bk-muted leading-relaxed italic">{not}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             A POC without traction is theory. An MVP without traction is a beta nobody has proven anyone wants. Traction is the actual finish line. Everything before it exists to get you there as cheaply and quickly as possible.
           </p>
         </section>
@@ -2194,7 +2194,7 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 02 — Validation sequence */}
         <section>
           <SectionHeading number="02" title="The four-step validation sequence" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Run these in order. Each step is a filter. Most ideas should die at Problem Validation, and that is the system working correctly, not failing.
           </p>
 
@@ -2225,18 +2225,18 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
                 body: 'The hardest and most honest signal. People will say they like an idea in an interview. Far fewer will hand over a card number — or, internally, reallocate their own team\'s hours toward it.',
               },
             ].map(({ n, head, body }) => (
-              <div key={n} className="flex gap-5 items-start border-b border-brand-concrete pb-5 last:border-b-0">
-                <span className="font-display text-3xl text-brand-cobalt/20 flex-shrink-0 w-10 leading-none">{n}</span>
+              <div key={n} className="flex gap-5 items-start border-b border-bk-rule pb-5 last:border-b-0">
+                <span className="font-book font-bold text-3xl text-bk-gold/20 flex-shrink-0 w-10 leading-none">{n}</span>
                 <div>
-                  <h4 className="font-sans font-semibold text-brand-black mb-2">{head}</h4>
-                  <p className="font-sans text-sm text-brand-black/70 leading-relaxed">{body}</p>
+                  <h4 className="font-sans font-semibold text-bk-parchment mb-2">{head}</h4>
+                  <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">{body}</p>
                 </div>
               </div>
             ))}
           </div>
 
           <Callout label="The mindset shift" className="mt-8">
-            <p className="font-sans text-sm text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-sm text-bk-parchment/75 leading-relaxed">
               Success in this phase is measured by how fast you can invalidate a bad idea, not confirm a good one. Every week spent building on an unvalidated assumption is a week you cannot get back. A fast &ldquo;no&rdquo; is a genuine win.
             </p>
           </Callout>
@@ -2245,7 +2245,7 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 03 — Scoping the MVP */}
         <section>
           <SectionHeading number="03" title="Scoping the MVP" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             A strong MVP scope in practice: one user type, one core job, one complete end-to-end workflow, using only the services required to make that one workflow function in production. Everything else looks strategic on a roadmap and is almost always waste at this stage.
           </p>
 
@@ -2254,21 +2254,21 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
           </div>
 
           <div className="mt-8 space-y-4">
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">Target 90 days, concept to live MVP</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">If it is taking meaningfully longer, that is usually a sign of over-building or of avoiding an uncomfortable truth about the idea, rather than a genuinely hard technical problem.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">Target 90 days, concept to live MVP</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">If it is taking meaningfully longer, that is usually a sign of over-building or of avoiding an uncomfortable truth about the idea, rather than a genuinely hard technical problem.</p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">No-code and low-code are a legitimate MVP</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">A landing page with a specific value-proposition headline and a working signup or waitlist flow is a valid first MVP. Do not hire engineers to validate the &ldquo;what&rdquo; and &ldquo;why.&rdquo;</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">No-code and low-code are a legitimate MVP</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">A landing page with a specific value-proposition headline and a working signup or waitlist flow is a valid first MVP. Do not hire engineers to validate the &ldquo;what&rdquo; and &ldquo;why.&rdquo;</p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">AI-assisted engineering: use for scaffolding, not decisions</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">Let AI handle boilerplate, drafts, migrations, and repetitive scaffolding. Keep the architectural decisions — data model, auth, RLS policy design, payment integration — as deliberate human calls. Treating AI-generated first-draft output as production-ready is where hidden defects concentrate, and those decisions are exactly the ones that get expensive to unwind later.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">AI-assisted engineering: use for scaffolding, not decisions</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">Let AI handle boilerplate, drafts, migrations, and repetitive scaffolding. Keep the architectural decisions — data model, auth, RLS policy design, payment integration — as deliberate human calls. Treating AI-generated first-draft output as production-ready is where hidden defects concentrate, and those decisions are exactly the ones that get expensive to unwind later.</p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-1">One complete workflow beats several partial ones</span>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">A user who can go start-to-finish through the one thing that matters gives you a real signal. A user poking at three half-finished features gives you noise.</p>
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">One complete workflow beats several partial ones</span>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">A user who can go start-to-finish through the one thing that matters gives you a real signal. A user poking at three half-finished features gives you noise.</p>
             </div>
           </div>
         </section>
@@ -2276,7 +2276,7 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 04 — Traction metrics */}
         <section>
           <SectionHeading number="04" title="Traction metrics that actually mean something" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             The rule that separates a real traction result from a vanity one: waitlists, a Product Hunt spike, and social follower counts tell an investor nothing on their own. Repeatable demand is what they are actually looking for. Proof that a specific segment comes back, pays, or refers others without being pushed each time.
           </p>
 
@@ -2307,18 +2307,18 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
                 desc: 'The time it takes acquisition cost to pay itself back in revenue. Over roughly 18 months is treated as a hard stop at Series A in the current funding climate, regardless of everything else.',
               },
             ].map(({ metric, desc }) => (
-              <div key={metric} className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-                <span className="font-sans font-semibold text-sm text-brand-black block mb-1">{metric}</span>
-                <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{desc}</p>
+              <div key={metric} className="border-l-2 border-bk-gold/30 pl-4 py-1">
+                <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">{metric}</span>
+                <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
 
           <div className="mt-8 space-y-4">
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               How to present it: one hero metric, full-width, with a trendline — not buried in a table. Stack two or three supporting proofs underneath. Investors reportedly spend roughly three times longer on the traction slide than any other page in a seed deck, and decide whether to keep listening within the first 20 seconds of seeing it. The hero number needs to be the strongest thing you have, put first.
             </p>
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               Paid pilots are the strongest available proof point. Someone reallocating real money is qualitatively different evidence from someone saying yes in an interview. A signed pilot beats a waitlist of a thousand signups.
             </p>
           </div>
@@ -2327,21 +2327,21 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 05 — Intrapreneurship track */}
         <section>
           <SectionHeading number="05" title="The intrapreneurship track" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Same underlying discipline, different audience and different currency. You are not raising capital — you are winning internal sponsorship, budget, and protected time against competing priorities.
           </p>
 
           <div className="mt-6 space-y-4">
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               Stage-Gate is the dominant internal model: progress is reviewed at defined milestones, unravelling a Value Hypothesis, a Business Hypothesis, and a Growth Hypothesis in sequence. Most organisations need the sense of control that milestone review provides — pure &ldquo;move fast and don&apos;t ask&rdquo; does not survive contact with a budget owner.
             </p>
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               You often have resources a startup founder does not: existing customer data, existing distribution channels, regulatory cover, technical infrastructure already in place. This can get you to traction faster than an equivalent external startup — but only if you use those advantages deliberately rather than defaulting to building everything from scratch.
             </p>
           </div>
 
           <div className="mt-8">
-            <h3 className="font-sans font-semibold text-brand-black mb-4">What internal &ldquo;traction&rdquo; looks like before there is external revenue</h3>
+            <h3 className="font-sans font-semibold text-bk-parchment mb-4">What internal &ldquo;traction&rdquo; looks like before there is external revenue</h3>
             <div className="space-y-3">
               {[
                 'A senior sponsor who can actually unblock resources and shield the initiative from bureaucratic drag. Equivalent to a lead investor.',
@@ -2350,23 +2350,23 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
                 'Learning velocity tracked as an explicit outcome. Reward systems that only value short-term output will quietly kill genuine experimentation.',
               ].map((item, i) => (
                 <div key={i} className="flex gap-4 items-start">
-                  <span className="font-sans text-[11px] font-semibold text-brand-cobalt flex-shrink-0 mt-0.5 w-5">{i + 1}.</span>
-                  <p className="font-sans text-sm text-brand-black/70 leading-relaxed">{item}</p>
+                  <span className="font-sans text-[11px] font-semibold text-bk-gold flex-shrink-0 mt-0.5 w-5">{i + 1}.</span>
+                  <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">{item}</p>
                 </div>
               ))}
             </div>
           </div>
 
           <div className="mt-8">
-            <h3 className="font-sans font-semibold text-brand-black mb-4">Three guardrails</h3>
+            <h3 className="font-sans font-semibold text-bk-parchment mb-4">Three guardrails</h3>
             <div className="space-y-3">
               {[
                 'Decentralise decision rights to a small, accountable team early. Layered approvals are not caution — they are inertia dressed up as governance.',
                 'Reframe failed experiments explicitly as disproved hypotheses. This is both more accurate and the only way learning velocity survives a performance-review cycle.',
                 'Ring-fence budget before you need it. Organisations that pre-allocate incubation funding during normal budgeting report meaningfully smoother internal venture launches than those fighting for it project by project.',
               ].map((text, i) => (
-                <div key={i} className="flex gap-4 items-start border-l-2 border-brand-cobalt/20 pl-4 py-1">
-                  <p className="font-sans text-sm text-brand-black/70 leading-relaxed">{text}</p>
+                <div key={i} className="flex gap-4 items-start border-l-2 border-bk-gold/20 pl-4 py-1">
+                  <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">{text}</p>
                 </div>
               ))}
             </div>
@@ -2385,8 +2385,8 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
                 'Am I measuring repeatable demand, or a one-time spike I\'m mistaking for a trend?',
                 'If this isn\'t gaining real traction, would I have the discipline to say so — to myself, and to whoever is sponsoring it?',
               ].map((q, i) => (
-                <li key={i} className="flex gap-3 font-sans text-sm text-brand-black/70 leading-relaxed">
-                  <span className="text-brand-cobalt/50 flex-shrink-0 mt-0.5">□</span>
+                <li key={i} className="flex gap-3 font-sans text-sm text-bk-parchment/70 leading-relaxed">
+                  <span className="text-bk-gold/50 flex-shrink-0 mt-0.5">□</span>
                   {q}
                 </li>
               ))}
@@ -2396,7 +2396,7 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
 
         {/* Closing */}
         <section>
-          <p className="font-sans text-lg text-brand-black/75 leading-relaxed border-t border-brand-concrete pt-10">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed border-t border-bk-rule pt-10">
             The finish line is not a shipped product. It is repeatable demand. Everything else is progress toward it — not a substitute for it.
           </p>
         </section>
@@ -2408,13 +2408,13 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
         ]} />
 
         {/* Footer */}
-        <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
-          <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <footer className="pt-4 pb-16 border-t border-bk-rule flex flex-wrap justify-between items-center gap-4">
+          <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
             ← All Field Notes
           </Link>
           <div className="flex flex-wrap gap-2">
             {article!.tags.map((tag) => (
-              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/60 border border-brand-cobalt/20 px-2 py-0.5">
+              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/60 border border-bk-gold/20 px-2 py-0.5">
                 {tag}
               </span>
             ))}
@@ -2427,34 +2427,34 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
 
 function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
 
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
 
-        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
           THE<br />
-          <span className="text-brand-cobalt">SWAP</span><br />
+          <span className="text-bk-gold">SWAP</span><br />
           TEST.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/70 border border-bk-gold/25 px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -2465,24 +2465,24 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
 
         {/* Lede */}
         <section>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
             Taste is not talent. It is not a style you were born liking. It is a trained
             pattern-recognition skill — built the same way any skill is built: repeated
             exposure to good and bad examples, paired with the discipline of naming{' '}
             <em>why</em> one beats the other. Designers who &ldquo;just have an eye&rdquo; spent
             years doing this. They just didn&rsquo;t call it training.
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             The gap between &ldquo;I like this&rdquo; and &ldquo;this works because of X&rdquo; is the
             entire distance between having preferences and having taste.
           </p>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>Taste is a trained pattern-recognition skill, not an innate talent. It is built through repeated exposure to good and bad examples paired with the discipline of naming why one beats the other.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>The Swap Test is the core diagnostic: swap the logo and copy for an unrelated brand. If the design still makes sense, it came from a default, not from the subject.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Typography is the largest single leverage point in frontend design: one display face plus one body face, consistent scale, and maximum contrast in the type itself.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>The two-pass process separates structure (first pass) from polish (second pass). Skipping the first pass produces work that looks finished but cannot be improved systematically.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>AI-generated design defaults to the same handful of looks for the same reason untrained designers do: they are statistically safe. The swap test catches this too.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Taste is a trained pattern-recognition skill, not an innate talent. It is built through repeated exposure to good and bad examples paired with the discipline of naming why one beats the other.</li>
+              <li><span className="text-bk-gold mr-2">—</span>The Swap Test is the core diagnostic: swap the logo and copy for an unrelated brand. If the design still makes sense, it came from a default, not from the subject.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Typography is the largest single leverage point in frontend design: one display face plus one body face, consistent scale, and maximum contrast in the type itself.</li>
+              <li><span className="text-bk-gold mr-2">—</span>The two-pass process separates structure (first pass) from polish (second pass). Skipping the first pass produces work that looks finished but cannot be improved systematically.</li>
+              <li><span className="text-bk-gold mr-2">—</span>AI-generated design defaults to the same handful of looks for the same reason untrained designers do: they are statistically safe. The swap test catches this too.</li>
             </ul>
           </Callout>
         </section>
@@ -2491,7 +2491,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
         <section>
           <SectionHeading number="01" title="Competent or distinctive" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               There is a specific reason a huge share of current interfaces cluster around the
               same handful of looks: warm cream backgrounds with a serif display face and a
               terracotta accent; near-black with one acid-green accent; broadsheet layouts with
@@ -2499,7 +2499,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
               is that they are defaults, reached for regardless of subject, rather than choices
               made because a specific brief called for them.
             </p>
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               Competent design executes a template well. Distinctive design makes choices that
               could only belong to this specific subject. The diagnostic worth running on your
               own work is direct: swap the logo and copy for an unrelated brand. Does the design
@@ -2523,7 +2523,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
         <section>
           <SectionHeading number="02" title="Training your eye" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               This is deliberate practice, not passive scrolling. The difference is whether you
               are forcing yourself to name why. Four practices that actually compound into taste:
             </p>
@@ -2548,10 +2548,10 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
                 body: 'Colour theory and typography fundamentals are not optional extras — they are what let you explain why something works instead of just recognising that it does.',
               },
             ].map(({ head, body }, i) => (
-              <div key={i} className="flex gap-5 border-l-2 border-brand-cobalt/20 pl-5">
+              <div key={i} className="flex gap-5 border-l-2 border-bk-gold/20 pl-5">
                 <div>
-                  <p className="font-sans text-base font-semibold text-brand-black/85">{head}</p>
-                  <p className="font-sans text-base text-brand-black/65 leading-relaxed mt-1">{body}</p>
+                  <p className="font-sans text-base font-semibold text-bk-parchment/85">{head}</p>
+                  <p className="font-sans text-base text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
                 </div>
               </div>
             ))}
@@ -2579,7 +2579,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
         <section>
           <SectionHeading number="03" title="The fundamentals" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               Most interface problems are solved by contrast, size, and spacing — used deliberately —
               long before you need a clever idea. Four principles that do the most work for the
               least effort:
@@ -2609,10 +2609,10 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
                 body: 'The same action should look and read the same everywhere it appears. A button labelled "Publish" that produces a toast saying "Submitted" breaks the mental model a user is quietly building — small inconsistencies erode trust faster than almost any visual flaw.',
               },
             ].map(({ head, body }, i) => (
-              <div key={i} className="flex gap-5 border-l-2 border-brand-cobalt/20 pl-5">
+              <div key={i} className="flex gap-5 border-l-2 border-bk-gold/20 pl-5">
                 <div>
-                  <p className="font-sans text-base font-semibold text-brand-black/85">{head}</p>
-                  <p className="font-sans text-base text-brand-black/65 leading-relaxed mt-1">{body}</p>
+                  <p className="font-sans text-base font-semibold text-bk-parchment/85">{head}</p>
+                  <p className="font-sans text-base text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
                 </div>
               </div>
             ))}
@@ -2623,7 +2623,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
         <section>
           <SectionHeading number="04" title="The two-pass process" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               Taste that never gets externalised into a real decision does not count. This is the
               discipline that separates knowing what good looks like from actually shipping
               something distinctive.
@@ -2635,19 +2635,19 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
           </div>
 
           <div className="mt-8 space-y-4">
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               Pass one is a named token system: four to six hex values stated explicitly (not
               &ldquo;blues and greys&rdquo;), a characterful display face used with restraint, a complementary
               body face, a rough wireframe to compare structural ideas before committing pixels,
               and the single signature element this design will actually be remembered by.
             </p>
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               Pass two is the interrogation: for every choice in the plan, would you make the same
               choice for an unrelated brief? If the honest answer is yes, that choice is not coming
               from the subject. Revise it and name explicitly what changed and why. The plan earns
               the right to become the build only once it holds up under this check.
             </p>
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               Spend boldness in exactly one place. Pick the single signature element that carries
               the risk, and keep everything else quiet and disciplined around it. A design with
               five bold ideas competing for attention reads as less confident than a design with
@@ -2661,7 +2661,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
         <section>
           <SectionHeading number="05" title="Copy is design material" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               Copy is one of the fastest ways a design reveals whether it is genuinely considered
               or templated. Generic copy makes even a well-executed visual system read as hollow.
             </p>
@@ -2686,10 +2686,10 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
                 body: 'An error should state exactly what happened and how to fix it, without apologising. An empty state should read as an invitation to act, not a dead end.',
               },
             ].map(({ head, body }, i) => (
-              <div key={i} className="flex gap-5 border-l-2 border-brand-cobalt/20 pl-5">
+              <div key={i} className="flex gap-5 border-l-2 border-bk-gold/20 pl-5">
                 <div>
-                  <p className="font-sans text-base font-semibold text-brand-black/85">{head}</p>
-                  <p className="font-sans text-base text-brand-black/65 leading-relaxed mt-1">{body}</p>
+                  <p className="font-sans text-base font-semibold text-bk-parchment/85">{head}</p>
+                  <p className="font-sans text-base text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
                 </div>
               </div>
             ))}
@@ -2700,7 +2700,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
         <section>
           <SectionHeading number="06" title="The AI-design filter" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               The same default-vs-choice test from Section 01 is what you should run on
               AI-generated design output before accepting it. AI models cluster on the same
               handful of looks for the same reason designers without trained taste do — they
@@ -2736,10 +2736,10 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
                 body: 'Run the same test you run on your own work. If the answer is yes, accept the output as a starting structure — then design it.',
               },
             ].map(({ head, body }, i) => (
-              <div key={i} className="flex gap-5 border-l-2 border-brand-cobalt/20 pl-5">
+              <div key={i} className="flex gap-5 border-l-2 border-bk-gold/20 pl-5">
                 <div>
-                  <p className="font-sans text-base font-semibold text-brand-black/85">{head}</p>
-                  <p className="font-sans text-base text-brand-black/65 leading-relaxed mt-1">{body}</p>
+                  <p className="font-sans text-base font-semibold text-bk-parchment/85">{head}</p>
+                  <p className="font-sans text-base text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
                 </div>
               </div>
             ))}
@@ -2749,7 +2749,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 07 — Self-check */}
         <section>
           <SectionHeading number="07" title="Before calling it finished" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Run this checklist before shipping anything:
           </p>
 
@@ -2763,8 +2763,8 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
                 'Copy matches the visual register and stays consistent through the whole flow.',
                 'Reviewed after time away from the screen, not only in the moment of building.',
               ].map((item, i) => (
-                <li key={i} className="flex gap-3 font-sans text-sm text-brand-black/75 leading-relaxed">
-                  <span className="text-brand-cobalt shrink-0 mt-0.5">&#10003;</span>
+                <li key={i} className="flex gap-3 font-sans text-sm text-bk-parchment/75 leading-relaxed">
+                  <span className="text-bk-gold shrink-0 mt-0.5">&#10003;</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -2774,7 +2774,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
 
         {/* Closing */}
         <section>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
             A template executed well is not design — it is production. The swap test is how
             you tell the difference, on your own work and on everything a model generates for
             you. If it survives the swap, it hasn&rsquo;t been designed yet.
@@ -2789,13 +2789,13 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
 
       </div>
 
-      <footer className="max-w-[900px] mx-auto px-6 md:px-10 py-10 border-t border-brand-concrete mt-6">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+      <footer className="max-w-[900px] mx-auto px-6 md:px-10 py-10 border-t border-bk-rule mt-6">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← All Field Notes
         </Link>
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/70 border border-bk-gold/25 px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -2807,34 +2807,34 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
 
 function ContentWritingArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
 
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
 
-        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
           THE<br />
-          <span className="text-brand-cobalt">LAST</span><br />
+          <span className="text-bk-gold">LAST</span><br />
           50%.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/70 border border-bk-gold/25 px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -2845,24 +2845,24 @@ function ContentWritingArticle({ article, formattedDate }: { article: ReturnType
 
         {/* Lede */}
         <section>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
             The American Dialect Society named &ldquo;AI slop&rdquo; its 2025 Word of the Year.
             Merriam-Webster flagged it as a defining term of the era. Google never needed to
             penalise AI-generated content specifically. It ranked it the same way it always
             ranked everything: does it demonstrate real experience, real expertise, and does it
             actually help the reader?
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             The practical upshot: the question was never AI or not. It is whether a real point of
             view, real specifics, and real editorial judgment are present in what ships. AI is a
             legitimate production tool. Skipping the thinking is the actual failure.
           </p>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>A 2025 Edelman study found 73% of consumers can spot AI slop and 61% say it lowers their trust in the source. That is a reader penalty, not an algorithm penalty.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>AI is a legitimate tool for the first 50% of content production. The last 50%, specificity, originality, editorial judgment, and first-hand examples, cannot be delegated.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Google ranks AI-generated content the same way it ranks everything: by whether it demonstrates real experience, expertise, and actually helps the reader.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>E-E-A-T signals that survive algorithmic scrutiny: named references, specific data, first-hand examples, and something that proves the author actually did the thing being written about.</li>
+              <li><span className="text-bk-gold mr-2">—</span>A 2025 Edelman study found 73% of consumers can spot AI slop and 61% say it lowers their trust in the source. That is a reader penalty, not an algorithm penalty.</li>
+              <li><span className="text-bk-gold mr-2">—</span>AI is a legitimate tool for the first 50% of content production. The last 50%, specificity, originality, editorial judgment, and first-hand examples, cannot be delegated.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Google ranks AI-generated content the same way it ranks everything: by whether it demonstrates real experience, expertise, and actually helps the reader.</li>
+              <li><span className="text-bk-gold mr-2">—</span>E-E-A-T signals that survive algorithmic scrutiny: named references, specific data, first-hand examples, and something that proves the author actually did the thing being written about.</li>
             </ul>
           </Callout>
         </section>
@@ -2871,7 +2871,7 @@ function ContentWritingArticle({ article, formattedDate }: { article: ReturnType
         <section>
           <SectionHeading number="01" title="What slop actually is" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               Slop is not &ldquo;written with AI help.&rdquo; It is a specific failure pattern: no
               point of view, structural padding substituted for substance, generic phrasing that
               could have come from any source, and nothing that proves someone actually did the
@@ -2879,7 +2879,7 @@ function ContentWritingArticle({ article, formattedDate }: { article: ReturnType
               able to spot it, and 61% say it lowers their trust in the source. That is the
               commercial cost — not an algorithm penalty, a reader penalty.
             </p>
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               The tells are patterns, not individual words. A single instance proves nothing.
               A cluster of these, combined with the absence of any specific detail, is the
               actual signal — to a human reader and to the ranking systems built to detect it:
@@ -2924,7 +2924,7 @@ Inflated vocabulary standing in for a real claim
         <section>
           <SectionHeading number="02" title="The six-step fix" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               The practitioner consensus that holds up across every serious source: AI produces
               the first 50% — structure, outline, rough pass. The last 50%, where trust and
               originality live, is still a human job.
@@ -2968,11 +2968,11 @@ Inflated vocabulary standing in for a real claim
                 body: 'If a sentence doesn\'t survive being deleted, delete it. Length that isn\'t earning its place is the single most common slop signal.',
               },
             ].map(({ n, head, body }) => (
-              <div key={n} className="flex gap-5 border-l-2 border-brand-cobalt/20 pl-5">
-                <span className="font-mono text-[11px] text-brand-cobalt/50 font-bold pt-0.5 shrink-0">{n}</span>
+              <div key={n} className="flex gap-5 border-l-2 border-bk-gold/20 pl-5">
+                <span className="font-mono text-[11px] text-bk-gold/50 font-bold pt-0.5 shrink-0">{n}</span>
                 <div>
-                  <p className="font-sans text-base font-semibold text-brand-black/85">{head}</p>
-                  <p className="font-sans text-base text-brand-black/65 leading-relaxed mt-1">{body}</p>
+                  <p className="font-sans text-base font-semibold text-bk-parchment/85">{head}</p>
+                  <p className="font-sans text-base text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
                 </div>
               </div>
             ))}
@@ -2983,7 +2983,7 @@ Inflated vocabulary standing in for a real claim
         <section>
           <SectionHeading number="03" title="E-E-A-T, practically" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               Google's E-E-A-T framework is the official vocabulary for what &ldquo;quality&rdquo;
               means in search ranking. Increasingly, it is also the signal answer engines use when
               deciding what to cite. The four components translate to a single practical question:
@@ -2997,7 +2997,7 @@ Inflated vocabulary standing in for a real claim
           </div>
 
           <div className="mt-8 space-y-4">
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               Generic best-practices content, however well-structured, is exactly the shape
               E-E-A-T is designed to rank below something narrower but real. A campaign page
               or blog post gets stronger the moment it contains a specific number from a real
@@ -3011,23 +3011,23 @@ Inflated vocabulary standing in for a real claim
         <section>
           <SectionHeading number="04" title="Structure and clarity" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               These principles predate AI and still determine whether anyone reads to the end.
             </p>
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               Plain language, active voice. If you wouldn&apos;t say it out loud that way, don&apos;t
               publish it that way. One idea per sentence, one point per paragraph — bloated,
               multi-clause sentences are exactly what forces a reader to mentally run your
               writing back through AI just to extract what you meant.
             </p>
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               Front-load the point. Readers and answer engines both reward getting to the actual
               answer fast, not building up to it. Concrete beats abstract, always: &ldquo;Grew signups
               34% in six weeks&rdquo; beats &ldquo;significantly improved conversion.&rdquo; Specificity is also
               the fastest way to sound human, because generic language is what AI defaults to
               when it doesn&apos;t have a real number to reach for.
             </p>
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               Match format to intent. A comparison deserves a table. A process deserves numbered
               steps. A narrative deserves prose. Forcing content into the wrong shape is itself
               a slop signal, independent of the sentences inside it.
@@ -3038,7 +3038,7 @@ Inflated vocabulary standing in for a real claim
         {/* Section 5 — The self-edit pass */}
         <section>
           <SectionHeading number="05" title="The self-edit pass" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Before publishing anything AI helped draft, run this checklist:
           </p>
 
@@ -3052,8 +3052,8 @@ Inflated vocabulary standing in for a real claim
                 'No sentence survives purely because it sounds good. Each one earns its place or gets cut.',
                 'Format matches the content\'s actual shape — list vs. table vs. narrative — not defaulted to generic paragraphs.',
               ].map((item, i) => (
-                <li key={i} className="flex gap-3 font-sans text-sm text-brand-black/75 leading-relaxed">
-                  <span className="text-brand-cobalt shrink-0 mt-0.5">&#10003;</span>
+                <li key={i} className="flex gap-3 font-sans text-sm text-bk-parchment/75 leading-relaxed">
+                  <span className="text-bk-gold shrink-0 mt-0.5">&#10003;</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -3063,7 +3063,7 @@ Inflated vocabulary standing in for a real claim
 
         {/* Closing */}
         <section>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
             The writing is the thinking. Skip that part, and it shows.
           </p>
         </section>
@@ -3076,13 +3076,13 @@ Inflated vocabulary standing in for a real claim
 
       </div>
 
-      <footer className="max-w-[900px] mx-auto px-6 md:px-10 py-10 border-t border-brand-concrete mt-6">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+      <footer className="max-w-[900px] mx-auto px-6 md:px-10 py-10 border-t border-bk-rule mt-6">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← All Field Notes
         </Link>
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/70 border border-bk-gold/25 px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -3094,34 +3094,34 @@ Inflated vocabulary standing in for a real claim
 
 function AppSecurityArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
 
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
 
-        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
           THE<br />
-          <span className="text-brand-cobalt">OPEN</span><br />
+          <span className="text-bk-gold">OPEN</span><br />
           DOOR.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/70 border border-bk-gold/25 px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -3132,23 +3132,23 @@ function AppSecurityArticle({ article, formattedDate }: { article: ReturnType<ty
 
         {/* Lede */}
         <section>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
             In January 2026, a startup called Moltbook shipped with their Supabase database wide open.
             No breach, no sophisticated attack: anyone who copied the project URL from the browser
             could make a raw HTTP request and read 1.5 million API keys. The app functioned perfectly.
             Every manual test passed. The database was just sitting there.
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             This is not a story about bad developers. It is a story about a gap that AI-assisted tooling
             creates by default: the gap between an app that <em>works</em> and an app that is <em>secured</em>.
             Nothing in the demo experience tells you the difference.
           </p>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>A 2025 analysis found 10.3% of tested AI-scaffolded apps exposed vulnerable Supabase endpoints due to missing or misconfigured Row Level Security.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Without RLS, the Supabase anon key (which ships inside your JavaScript bundle by design) is a skeleton key to your entire public schema accessible to anyone with a curl command.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Functional correctness and access control are different concerns. Only one shows up in a manual click-through. AI coding tools verify the former; you must verify the latter separately.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>OWASP LLM Top 10:2025 adds two new categories specific to AI systems: Unbounded Consumption and Vector and Embedding Weaknesses. Both are already exploitable in production.</li>
+              <li><span className="text-bk-gold mr-2">—</span>A 2025 analysis found 10.3% of tested AI-scaffolded apps exposed vulnerable Supabase endpoints due to missing or misconfigured Row Level Security.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Without RLS, the Supabase anon key (which ships inside your JavaScript bundle by design) is a skeleton key to your entire public schema accessible to anyone with a curl command.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Functional correctness and access control are different concerns. Only one shows up in a manual click-through. AI coding tools verify the former; you must verify the latter separately.</li>
+              <li><span className="text-bk-gold mr-2">—</span>OWASP LLM Top 10:2025 adds two new categories specific to AI systems: Unbounded Consumption and Vector and Embedding Weaknesses. Both are already exploitable in production.</li>
             </ul>
           </Callout>
         </section>
@@ -3157,21 +3157,21 @@ function AppSecurityArticle({ article, formattedDate }: { article: ReturnType<ty
         <section>
           <SectionHeading number="01" title="Why the demo lies" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               Your Supabase anon key ships inside your JavaScript bundle. That is not a mistake — Supabase
               designed it that way. The anon key is public by intent, meant to be visible in browser dev
               tools. It is safe for exactly one reason: Row Level Security. With RLS correctly in place,
               the anon key can only do what your policies allow. Without it, the anon key is a skeleton
               key to your entire public schema.
             </p>
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               An AI coding tool will generate a complete, working frontend against that open database.
               Click through every screen. Create a user, load data, submit a form. It all functions.
               Nothing in that experience surfaces the fact that the same data is readable by anyone on
               the internet with a curl command. A 2025 analysis found that 10.3% of tested AI-scaffolded
               apps exposed vulnerable Supabase endpoints due to missing or misconfigured RLS.
             </p>
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               Functional correctness and access control are different concerns, and only one of them
               shows up in a manual click-through. That gap is the central failure mode.
             </p>
@@ -3181,33 +3181,33 @@ function AppSecurityArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 2 — Three states */}
         <section>
           <SectionHeading number="02" title="The three states of a table" />
-          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-8">
+          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-8">
             RLS has three states, and confusing them is the most common mistake. Only one of the
             three is actually safe.
           </p>
 
-          <div className="border border-brand-concrete overflow-hidden mb-8">
+          <div className="border border-bk-rule overflow-hidden mb-8">
             <RLSStateDiagram />
           </div>
 
-          <div className="border border-brand-concrete divide-y divide-brand-concrete">
+          <div className="border border-bk-rule divide-y divide-brand-concrete">
             <div className="flex gap-0">
-              <div className="w-44 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/40">
-                <span className="font-sans text-[10px] text-brand-muted block leading-snug tracking-[0.1em] uppercase">State</span>
+              <div className="w-44 flex-shrink-0 p-4 border-r border-bk-rule bg-bk-deep/40">
+                <span className="font-sans text-[10px] text-bk-muted block leading-snug tracking-[0.1em] uppercase">State</span>
                 <span className="font-sans font-semibold text-sm text-red-700 mt-0.5 block">RLS off</span>
               </div>
-              <p className="font-sans text-sm text-brand-black/70 p-4 leading-relaxed">
+              <p className="font-sans text-sm text-bk-parchment/70 p-4 leading-relaxed">
                 The default on every new Supabase table. The table is fully public — anyone with your
                 anon key can read or write everything, with no authentication required. Your frontend
                 auth checks do not protect this; those run on the client you control, not on the database.
               </p>
             </div>
             <div className="flex gap-0">
-              <div className="w-44 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/40">
-                <span className="font-sans text-[10px] text-brand-muted block leading-snug tracking-[0.1em] uppercase">State</span>
+              <div className="w-44 flex-shrink-0 p-4 border-r border-bk-rule bg-bk-deep/40">
+                <span className="font-sans text-[10px] text-bk-muted block leading-snug tracking-[0.1em] uppercase">State</span>
                 <span className="font-sans font-semibold text-sm text-amber-700 mt-0.5 block">RLS on, no policies</span>
               </div>
-              <p className="font-sans text-sm text-brand-black/70 p-4 leading-relaxed">
+              <p className="font-sans text-sm text-bk-parchment/70 p-4 leading-relaxed">
                 The opposite failure. The table is fully locked — including from your own app. Every
                 query returns zero rows, every write is rejected. Your app looks broken, not insecure.
                 This is actually the safer failure mode to land in by accident, because it surfaces
@@ -3215,11 +3215,11 @@ function AppSecurityArticle({ article, formattedDate }: { article: ReturnType<ty
               </p>
             </div>
             <div className="flex gap-0">
-              <div className="w-44 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/40">
-                <span className="font-sans text-[10px] text-brand-muted block leading-snug tracking-[0.1em] uppercase">State</span>
-                <span className="font-sans font-semibold text-sm text-brand-cobalt mt-0.5 block">RLS on + policies</span>
+              <div className="w-44 flex-shrink-0 p-4 border-r border-bk-rule bg-bk-deep/40">
+                <span className="font-sans text-[10px] text-bk-muted block leading-snug tracking-[0.1em] uppercase">State</span>
+                <span className="font-sans font-semibold text-sm text-bk-gold mt-0.5 block">RLS on + policies</span>
               </div>
-              <p className="font-sans text-sm text-brand-black/70 p-4 leading-relaxed">
+              <p className="font-sans text-sm text-bk-parchment/70 p-4 leading-relaxed">
                 Where you want to be. Access is scoped to what your policies explicitly permit — typically
                 the authenticated user's own data, or data their role grants them access to. This is the
                 only state that is actually secure.
@@ -3231,21 +3231,21 @@ function AppSecurityArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 3 — OWASP Top 10 */}
         <section>
           <SectionHeading number="03" title="OWASP Top 10:2025, translated" />
-          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-8">
+          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-8">
             The OWASP Top 10 is the industry-consensus list of the most critical web application
             security risks. The 2025 edition added two new categories that reflect how cloud-native,
             AI-assisted apps actually break. The list matters, but not equally — for a solo builder
             shipping on Supabase, two categories are doing most of the work.
           </p>
 
-          <div className="border border-brand-concrete overflow-hidden mb-8">
+          <div className="border border-bk-rule overflow-hidden mb-8">
             <OWASPTopTenVisual />
           </div>
 
           <Callout label="The two that actually matter">
-            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
-              <strong className="text-brand-black">A01 (Broken Access Control)</strong> and{' '}
-              <strong className="text-brand-black">A02 (Security Misconfiguration)</strong> account for
+            <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
+              <strong className="text-bk-parchment">A01 (Broken Access Control)</strong> and{' '}
+              <strong className="text-bk-parchment">A02 (Security Misconfiguration)</strong> account for
               the overwhelming majority of real incidents in small, fast-shipped apps. A01 is the
               category that missing or misconfigured RLS falls into — it has been the number-one risk
               on the OWASP list for four years running. A02 jumped from fifth to second in 2025,
@@ -3258,21 +3258,21 @@ function AppSecurityArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 4 — Five fixes */}
         <section>
           <SectionHeading number="04" title="Five fixes, in order" />
-          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-10">
+          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-10">
             These are the highest-leverage moves, ordered by when to apply them.
           </p>
 
           {/* Fix 1 */}
-          <div className="border-l-2 border-brand-cobalt pl-6 mb-10">
-            <h3 className="font-sans font-semibold text-base text-brand-black mb-3">1. Audit what is open right now</h3>
-            <p className="font-sans text-sm text-brand-black/70 leading-relaxed mb-4">
+          <div className="border-l-2 border-bk-gold pl-6 mb-10">
+            <h3 className="font-sans font-semibold text-base text-bk-parchment mb-3">1. Audit what is open right now</h3>
+            <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed mb-4">
               Run this in the Supabase SQL editor on every project you own. It takes five minutes and
               it is the check that would have caught every real-world incident cited in this article.
             </p>
             <CodeBlock>{`SELECT schemaname, tablename, rowsecurity
 FROM pg_tables
 WHERE schemaname = 'public' AND rowsecurity = false;`}</CodeBlock>
-            <p className="font-sans text-sm text-brand-black/60 leading-relaxed mt-4">
+            <p className="font-sans text-sm text-bk-parchment/60 leading-relaxed mt-4">
               Every table this query returns is publicly readable and writable through the REST and
               GraphQL APIs right now, regardless of what your frontend appears to enforce. Do this
               before anything else in this guide.
@@ -3280,13 +3280,13 @@ WHERE schemaname = 'public' AND rowsecurity = false;`}</CodeBlock>
           </div>
 
           {/* Fix 2 */}
-          <div className="border-l-2 border-brand-cobalt pl-6 mb-10">
-            <h3 className="font-sans font-semibold text-base text-brand-black mb-3">2. Enable RLS and write real policies</h3>
-            <p className="font-sans text-sm text-brand-black/70 leading-relaxed mb-6">
+          <div className="border-l-2 border-bk-gold pl-6 mb-10">
+            <h3 className="font-sans font-semibold text-base text-bk-parchment mb-3">2. Enable RLS and write real policies</h3>
+            <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed mb-6">
               There is a pattern that looks like RLS but does nothing. Know it so you can spot it in
               generated code.
             </p>
-            <div className="border border-brand-concrete overflow-hidden mb-6">
+            <div className="border border-bk-rule overflow-hidden mb-6">
               <RLSPolicyDiagram />
             </div>
             <CodeBlock>{`-- Enable on every table, every time
@@ -3301,18 +3301,18 @@ CREATE POLICY "users read own profile" ON profiles
 CREATE POLICY "users update own profile" ON profiles
   FOR UPDATE USING (auth.uid() = user_id)
   WITH CHECK (auth.uid() = user_id);`}</CodeBlock>
-            <p className="font-sans text-sm text-brand-black/60 leading-relaxed mt-4">
-              The <code className="font-mono text-[11px] bg-brand-graphite px-1.5 py-0.5">USING</code> / <code className="font-mono text-[11px] bg-brand-graphite px-1.5 py-0.5">WITH CHECK</code> distinction matters: UPDATE policies need both, or a user
+            <p className="font-sans text-sm text-bk-parchment/60 leading-relaxed mt-4">
+              The <code className="font-mono text-[11px] bg-bk-deep px-1.5 py-0.5">USING</code> / <code className="font-mono text-[11px] bg-bk-deep px-1.5 py-0.5">WITH CHECK</code> distinction matters: UPDATE policies need both, or a user
               can read their own row but silently overwrite it with another user's data.
-              Add <code className="font-mono text-[11px] bg-brand-graphite px-1.5 py-0.5">ALTER TABLE ... ENABLE ROW LEVEL SECURITY</code> to every table-creation migration
+              Add <code className="font-mono text-[11px] bg-bk-deep px-1.5 py-0.5">ALTER TABLE ... ENABLE ROW LEVEL SECURITY</code> to every table-creation migration
               as a standing habit — not an afterthought once data exists.
             </p>
           </div>
 
           {/* Fix 3 */}
-          <div className="border-l-2 border-brand-cobalt pl-6 mb-10">
-            <h3 className="font-sans font-semibold text-base text-brand-black mb-3">3. Test from the client, not the SQL editor</h3>
-            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+          <div className="border-l-2 border-bk-gold pl-6 mb-10">
+            <h3 className="font-sans font-semibold text-base text-bk-parchment mb-3">3. Test from the client, not the SQL editor</h3>
+            <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
               The Supabase SQL editor runs as an elevated role that bypasses RLS entirely. Testing
               a policy there tells you nothing about what a real user can actually do. Test from the
               client SDK, logged in as different real accounts, and verify each policy behaves as
@@ -3322,10 +3322,10 @@ CREATE POLICY "users update own profile" ON profiles
           </div>
 
           {/* Fix 4 */}
-          <div className="border-l-2 border-brand-cobalt pl-6 mb-10">
-            <h3 className="font-sans font-semibold text-base text-brand-black mb-3">4. Never expose the service_role key</h3>
-            <p className="font-sans text-sm text-brand-black/70 leading-relaxed mb-4">
-              The <code className="font-mono text-[11px] bg-brand-graphite px-1.5 py-0.5">service_role</code> key bypasses RLS completely — full database access, no restrictions.
+          <div className="border-l-2 border-bk-gold pl-6 mb-10">
+            <h3 className="font-sans font-semibold text-base text-bk-parchment mb-3">4. Never expose the service_role key</h3>
+            <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed mb-4">
+              The <code className="font-mono text-[11px] bg-bk-deep px-1.5 py-0.5">service_role</code> key bypasses RLS completely — full database access, no restrictions.
               It should never appear in client-side code. The most common real-world leak paths:
             </p>
             <div className="space-y-3">
@@ -3335,12 +3335,12 @@ CREATE POLICY "users update own profile" ON profiles
                 { label: 'Logged at server boot', note: 'Or returned in an error response from an Edge Function. Scan your logs if you suspect this.' },
               ].map(({ label, note }) => (
                 <div key={label} className="flex gap-3 items-start">
-                  <span className="font-mono text-[10px] text-brand-cobalt/60 mt-0.5 flex-shrink-0 bg-brand-graphite px-2 py-1 border border-brand-cobalt/20">{label}</span>
-                  <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{note}</p>
+                  <span className="font-mono text-[10px] text-bk-gold/60 mt-0.5 flex-shrink-0 bg-bk-deep px-2 py-1 border border-bk-gold/20">{label}</span>
+                  <p className="font-sans text-sm text-bk-parchment/60 leading-relaxed">{note}</p>
                 </div>
               ))}
             </div>
-            <p className="font-sans text-sm text-brand-black/60 leading-relaxed mt-4">
+            <p className="font-sans text-sm text-bk-parchment/60 leading-relaxed mt-4">
               If you suspect a service_role key has leaked, rotate it immediately in the Supabase
               dashboard, then audit query logs for anything that could not plausibly have come from
               your own app.
@@ -3348,13 +3348,13 @@ CREATE POLICY "users update own profile" ON profiles
           </div>
 
           {/* Fix 5 */}
-          <div className="border-l-2 border-brand-cobalt pl-6">
-            <h3 className="font-sans font-semibold text-base text-brand-black mb-3">5. Index every column referenced in your policies</h3>
-            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+          <div className="border-l-2 border-bk-gold pl-6">
+            <h3 className="font-sans font-semibold text-base text-bk-parchment mb-3">5. Index every column referenced in your policies</h3>
+            <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
               An unindexed policy check is the single most common performance killer in production
               Supabase apps. A policy on an unindexed column can turn a 2ms query into a multi-second
               one — which then becomes the reason someone disables the policy to "fix" a performance
-              problem. Every column referenced inside a <code className="font-mono text-[11px] bg-brand-graphite px-1.5 py-0.5">USING</code> or <code className="font-mono text-[11px] bg-brand-graphite px-1.5 py-0.5">WITH CHECK</code> clause needs an index.
+              problem. Every column referenced inside a <code className="font-mono text-[11px] bg-bk-deep px-1.5 py-0.5">USING</code> or <code className="font-mono text-[11px] bg-bk-deep px-1.5 py-0.5">WITH CHECK</code> clause needs an index.
               Do not give anyone a reason to remove security for speed.
             </p>
           </div>
@@ -3364,19 +3364,19 @@ CREATE POLICY "users update own profile" ON profiles
         <section>
           <SectionHeading number="05" title="When you're building with AI" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               Treat "it works" and "it's secured" as two separate checkpoints, not one. An AI coding
               tool will happily scaffold a fully functional app against a completely open database,
               because functional correctness and access control are different problems and only the
               first one shows up in a demo.
             </p>
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               Ask for RLS policies in the same prompt as the table — not as a follow-up. "Create
               this table with RLS enabled and a policy scoping rows to the authenticated user's own
               data" gets you the right output. "Create this table" followed by "oh, and secure it
               later" produces a table that is live and open until you remember.
             </p>
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               Review AI-generated error handling specifically. Generated code often returns raw
               exception details to help with debugging during development — stack traces, database
               error messages, table names. That pattern, shipped to production unchanged, is an
@@ -3386,7 +3386,7 @@ CREATE POLICY "users update own profile" ON profiles
           </div>
 
           <Callout label="Standing habit" className="mt-8">
-            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+            <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
               Run the audit query from Fix 1 before every deploy, not just at initial launch.
               It takes five minutes. A significant schema change is enough to introduce an unprotected
               table — normalising the check means you catch it before it ships rather than after.
@@ -3397,7 +3397,7 @@ CREATE POLICY "users update own profile" ON profiles
         {/* Section 6 — Pre-launch checklist */}
         <section>
           <SectionHeading number="06" title="Pre-launch checklist" />
-          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-8">
+          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-8">
             Run this against any project before it goes live, and again after any significant schema
             change. The ongoing items belong in your regular review cycle.
           </p>
@@ -3439,12 +3439,12 @@ CREATE POLICY "users update own profile" ON profiles
               },
             ].map(({ group, items }) => (
               <div key={group}>
-                <h3 className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-cobalt mb-3">{group}</h3>
-                <ul className="space-y-2 border border-brand-concrete">
+                <h3 className="font-sans text-[10px] tracking-[0.2em] uppercase text-bk-gold mb-3">{group}</h3>
+                <ul className="space-y-2 border border-bk-rule">
                   {items.map((item) => (
-                    <li key={item} className="flex gap-3 items-start px-4 py-2.5 border-b border-brand-concrete/60 last:border-b-0">
+                    <li key={item} className="flex gap-3 items-start px-4 py-2.5 border-b border-bk-rule/60 last:border-b-0">
                       <span className="font-mono text-xs text-brand-concrete flex-shrink-0 mt-0.5 select-none">☐</span>
-                      <span className="font-sans text-sm text-brand-black/70">{item}</span>
+                      <span className="font-sans text-sm text-bk-parchment/70">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -3455,7 +3455,7 @@ CREATE POLICY "users update own profile" ON profiles
 
         {/* Closing */}
         <section>
-          <p className="font-sans text-base text-brand-black/60 leading-relaxed border-t border-brand-concrete pt-8">
+          <p className="font-sans text-base text-bk-parchment/60 leading-relaxed border-t border-bk-rule pt-8">
             The security gap in AI-scaffolded apps is not a model problem or a tooling problem — it is a
             checkpoint problem. The five fixes above are not complex. None of them require specialised
             knowledge. They require only that you treat "it works" and "it's secured" as two separate
@@ -3470,10 +3470,10 @@ CREATE POLICY "users update own profile" ON profiles
         ]} />
 
         {/* Back link */}
-        <div className="border-t border-brand-concrete pt-8">
+        <div className="border-t border-bk-rule pt-8">
           <Link
             href="/articles"
-            className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
+            className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200"
           >
             ← Back to Field Notes
           </Link>
@@ -3486,34 +3486,34 @@ CREATE POLICY "users update own profile" ON profiles
 
 function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
 
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
 
-        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
           STOP<br />
-          <span className="text-brand-cobalt">BUILDING</span><br />
+          <span className="text-bk-gold">BUILDING</span><br />
           AGENTS.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/70 border border-bk-gold/25 px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -3524,14 +3524,14 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
 
         {/* Lede */}
         <section>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
             Most things marketed as AI agents are not agents. They are workflows: fixed sequences of LLM calls
             with predefined branching logic and deterministic execution paths. The distinction matters, not
             because "workflow" is a demotion, but because calling a workflow an agent tends to make you engineer
             it wrong. You add complexity it doesn't need, remove predictability you were counting on, and then
             wonder why the system that was supposed to be intelligent keeps doing unexpected things.
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             Anthropic's own engineering team puts it plainly: find the simplest solution possible, and only
             increase complexity when a simpler workflow genuinely can't do the job. The most common production
             mistake isn't under-engineering AI systems. It's reaching for autonomous loops when a fixed
@@ -3539,10 +3539,10 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
           </p>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>Anthropic&rsquo;s own engineering guidance: find the simplest solution possible and only increase complexity when a simpler workflow genuinely cannot do the job.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>The practical test: can you enumerate the steps before running them? If yes, build a workflow. If the right next step genuinely depends on what the previous step returned, that is when an agent earns its complexity.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Five workflow patterns cover the vast majority of production AI tasks: prompt chaining, routing, parallelisation, orchestrator-subagents, and evaluator-optimizer loops.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>The ReAct loop (reason, act, observe, repeat) is the correct mental model for genuine agents. Errors compound across steps in ways they cannot in a fixed workflow.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Anthropic&rsquo;s own engineering guidance: find the simplest solution possible and only increase complexity when a simpler workflow genuinely cannot do the job.</li>
+              <li><span className="text-bk-gold mr-2">—</span>The practical test: can you enumerate the steps before running them? If yes, build a workflow. If the right next step genuinely depends on what the previous step returned, that is when an agent earns its complexity.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Five workflow patterns cover the vast majority of production AI tasks: prompt chaining, routing, parallelisation, orchestrator-subagents, and evaluator-optimizer loops.</li>
+              <li><span className="text-bk-gold mr-2">—</span>The ReAct loop (reason, act, observe, repeat) is the correct mental model for genuine agents. Errors compound across steps in ways they cannot in a fixed workflow.</li>
             </ul>
           </Callout>
         </section>
@@ -3551,19 +3551,19 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
         <section>
           <SectionHeading number="01" title="The distinction that actually matters" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
-              A <strong className="text-brand-black">workflow</strong> executes LLM calls and tool calls through
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+              A <strong className="text-bk-parchment">workflow</strong> executes LLM calls and tool calls through
               code paths you define in advance. You decide the structure; the model fills in the content. It is
               predictable, testable, and cheaper because every call has a known place in a known sequence.
             </p>
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
-              An <strong className="text-brand-black">agent</strong> is a system where the LLM dynamically
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+              An <strong className="text-bk-parchment">agent</strong> is a system where the LLM dynamically
               decides its own sequence of actions based on what it observes — rather than following a control
               flow you wrote in advance. You own the goal and the guardrails; the model decides what to do next.
               Flexible. Harder to predict. More expensive. And errors can compound across steps in ways they
               can't in a fixed workflow.
             </p>
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               The practical test: can you enumerate the steps this task requires before running it? If yes,
               you're building a workflow and should. If no — if the right next step genuinely depends on what
               the previous step returned, and you can't anticipate that in advance — that's when an agent
@@ -3575,17 +3575,17 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
         {/* Section 2 — Five patterns */}
         <section>
           <SectionHeading number="02" title="The five patterns. Use these first" />
-          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-8">
+          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-8">
             These are Anthropic's own taxonomy. Five compositional patterns that are all technically workflows —
             predefined code paths — but that together cover nearly every real production use case.
             If your task fits any of these, you don't need a full autonomous agent.
           </p>
 
-          <div className="border border-brand-concrete overflow-hidden mb-10">
+          <div className="border border-bk-rule overflow-hidden mb-10">
             <WorkflowSpectrum />
           </div>
 
-          <div className="border border-brand-concrete divide-y divide-brand-concrete">
+          <div className="border border-bk-rule divide-y divide-brand-concrete">
             <AgentPatternRow
               n="01" label="Prompt chaining" when="Fixed, ordered sub-steps"
               desc={"Each LLM call processes the output of the previous one, in a fixed sequence. The model at step 3 doesn't decide to go to step 3. Your code does. Use when the task decomposes cleanly into ordered stages whose structure you can write down in advance."}
@@ -3618,7 +3618,7 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
         {/* Section 3 — Loop patterns */}
         <section>
           <SectionHeading number="03" title="When you actually need a loop" />
-          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-10">
+          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-10">
             Once a task does need genuine autonomy, two loop shapes handle the majority of production cases.
             The choice between them is less about which is "better" and more about which failure mode
             you're most worried about.
@@ -3626,58 +3626,58 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
 
           <div className="grid md:grid-cols-2 gap-8 mb-10">
             <div>
-              <h3 className="font-sans font-semibold text-sm tracking-[0.15em] uppercase text-brand-cobalt mb-4">ReAct (Reason + Act)</h3>
-              <div className="border border-brand-concrete overflow-hidden mb-5">
+              <h3 className="font-sans font-semibold text-sm tracking-[0.15em] uppercase text-bk-gold mb-4">ReAct (Reason + Act)</h3>
+              <div className="border border-bk-rule overflow-hidden mb-5">
                 <ReActLoop />
               </div>
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed mb-3">
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed mb-3">
                 The foundational loop. The model alternates: <em>Thought</em> (what do I know, what do I
                 need next) → <em>Action</em> (call a tool) → <em>Observation</em> (what came back) →
                 loop or terminate.
               </p>
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
                 Strengths: transparent, auditable, adapts immediately to unexpected results. If a search
                 returns nothing, it reformulates. If an API errors, it tries a fallback. The loop recalibrates
                 after every single step.
               </p>
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed mt-3">
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed mt-3">
                 Weakness: prone to getting stuck on tasks that need strict execution order, since it
                 recalibrates at every step rather than committing to a plan.
               </p>
-              <div className="mt-4 p-3 border border-brand-concrete bg-brand-graphite/30">
-                <p className="font-sans text-xs text-brand-cobalt font-medium">Use for:</p>
-                <p className="font-sans text-xs text-brand-black/60 mt-1">Exploratory, open-ended tasks — debugging, research, anything where the right next step can't be known until the previous step returns.</p>
+              <div className="mt-4 p-3 border border-bk-rule bg-bk-deep/30">
+                <p className="font-sans text-xs text-bk-gold font-medium">Use for:</p>
+                <p className="font-sans text-xs text-bk-parchment/60 mt-1">Exploratory, open-ended tasks — debugging, research, anything where the right next step can't be known until the previous step returns.</p>
               </div>
             </div>
 
             <div>
-              <h3 className="font-sans font-semibold text-sm tracking-[0.15em] uppercase text-brand-cobalt mb-4">Plan-and-Execute</h3>
-              <div className="border border-brand-concrete overflow-hidden mb-5">
+              <h3 className="font-sans font-semibold text-sm tracking-[0.15em] uppercase text-bk-gold mb-4">Plan-and-Execute</h3>
+              <div className="border border-bk-rule overflow-hidden mb-5">
                 <PlanExecuteDiagram />
               </div>
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed mb-3">
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed mb-3">
                 Splits thinking into two phases. A planner LLM writes the full multi-step plan up front,
                 then an executor runs each step in sequence — or in parallel where steps don't depend
                 on each other.
               </p>
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
                 Strengths: locks in a coherent strategy before any irreversible action is taken. Reduces
                 step-count on long-horizon tasks. Lets a cheaper model do plain execution once a stronger
                 model has done the planning.
               </p>
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed mt-3">
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed mt-3">
                 Weakness: less adaptive — if an early step produces an unexpected result, the plan
                 doesn't automatically recalibrate the way ReAct does.
               </p>
-              <div className="mt-4 p-3 border border-brand-concrete bg-brand-graphite/30">
-                <p className="font-sans text-xs text-brand-cobalt font-medium">Use for:</p>
-                <p className="font-sans text-xs text-brand-black/60 mt-1">Long, structured tasks where you need a guaranteed sequence and mid-stream drift — the agent executing well but in the wrong order — is the failure mode you're most worried about.</p>
+              <div className="mt-4 p-3 border border-bk-rule bg-bk-deep/30">
+                <p className="font-sans text-xs text-bk-gold font-medium">Use for:</p>
+                <p className="font-sans text-xs text-bk-parchment/60 mt-1">Long, structured tasks where you need a guaranteed sequence and mid-stream drift — the agent executing well but in the wrong order — is the failure mode you're most worried about.</p>
               </div>
             </div>
           </div>
 
-          <h3 className="font-sans font-semibold text-sm tracking-[0.15em] uppercase text-brand-cobalt mb-4">Beyond the two basics</h3>
-          <div className="border border-brand-concrete divide-y divide-brand-concrete">
+          <h3 className="font-sans font-semibold text-sm tracking-[0.15em] uppercase text-bk-gold mb-4">Beyond the two basics</h3>
+          <div className="border border-bk-rule divide-y divide-brand-concrete">
             <AgentLoopRow label="Reflection" desc={"The simplest quality loop: generate output, evaluate it, accept or revise. The agent becomes its own reviewer. Identical in shape to evaluator-optimizer, but run as a loop within a single agent rather than as two separate calls."} />
             <AgentLoopRow label="Multi-agent / Debate" desc={"A coordinator LLM breaks a large task into pieces and dispatches to specialised sub-agents. For high-stakes factual decisions: spawn multiple agents with different stances and have them argue; a judge synthesises the result. Measurably reduces hallucination because no single confident wrong answer goes unchallenged."} />
             <AgentLoopRow label="Agentic RAG" desc={"Retrieval embedded inside the reasoning loop rather than run once upfront. The agent decides mid-loop when it needs to retrieve and what to retrieve, based on what it's discovered so far. Different from standard RAG — retrieval itself becomes an available action at every step, not a fixed preprocessing stage."} />
@@ -3688,43 +3688,43 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
         {/* Section 4 — Failure modes */}
         <section>
           <SectionHeading number="04" title="The four failure modes" />
-          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-8">
+          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-8">
             These are what production teams actually learn, usually after deploying something that seemed to work fine in testing.
             Design against all of them before you build, not after.
           </p>
 
-          <div className="border border-brand-concrete overflow-hidden mb-8">
+          <div className="border border-bk-rule overflow-hidden mb-8">
             <AgentFailureModeDiagram />
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-1">
-              <h4 className="font-sans font-semibold text-sm text-brand-black">Loop-stuck behavior</h4>
-              <p className="font-sans text-sm text-brand-black/60 leading-relaxed">
+              <h4 className="font-sans font-semibold text-sm text-bk-parchment">Loop-stuck behavior</h4>
+              <p className="font-sans text-sm text-bk-parchment/60 leading-relaxed">
                 ReAct-style agents can cycle without making progress if the termination condition is
                 poorly specified. The fix: define an explicit "done" condition, and add a hard step-count
                 ceiling as a backstop. Both. Not one or the other.
               </p>
             </div>
             <div className="space-y-1">
-              <h4 className="font-sans font-semibold text-sm text-brand-black">Error compounding</h4>
-              <p className="font-sans text-sm text-brand-black/60 leading-relaxed">
+              <h4 className="font-sans font-semibold text-sm text-bk-parchment">Error compounding</h4>
+              <p className="font-sans text-sm text-bk-parchment/60 leading-relaxed">
                 Each autonomous step is a chance to drift further from the goal. The longer the loop,
                 the more this matters. Grounding in real environment feedback at each step — tool output,
                 execution results — is what keeps this in check. Not just model reasoning.
               </p>
             </div>
             <div className="space-y-1">
-              <h4 className="font-sans font-semibold text-sm text-brand-black">Circular evaluation</h4>
-              <p className="font-sans text-sm text-brand-black/60 leading-relaxed">
+              <h4 className="font-sans font-semibold text-sm text-bk-parchment">Circular evaluation</h4>
+              <p className="font-sans text-sm text-bk-parchment/60 leading-relaxed">
                 The evaluator-optimizer pattern breaks down when the evaluator can't reliably distinguish
                 good output from bad. If you can't clearly state what "good" looks like, this pattern
                 will loop without actually improving anything. State the quality bar before you build the loop.
               </p>
             </div>
             <div className="space-y-1">
-              <h4 className="font-sans font-semibold text-sm text-brand-black">Over-engineering</h4>
-              <p className="font-sans text-sm text-brand-black/60 leading-relaxed">
+              <h4 className="font-sans font-semibold text-sm text-bk-parchment">Over-engineering</h4>
+              <p className="font-sans text-sm text-bk-parchment/60 leading-relaxed">
                 Reaching for multi-agent orchestration or full autonomy on tasks that are actually
                 fixed-sequence or simple classification problems. Reported as the single most common
                 production mistake — not the reverse. The same note applies to agent frameworks:
@@ -3737,11 +3737,11 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
         {/* Section 5 — Build sequence */}
         <section>
           <SectionHeading number="05" title="Build it right. Six steps in order" />
-          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-8">
+          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-8">
             These steps are sequenced deliberately. Skipping ahead is the failure mode.
           </p>
 
-          <div className="border border-brand-concrete divide-y divide-brand-concrete">
+          <div className="border border-bk-rule divide-y divide-brand-concrete">
             <AgentBuildStep n={1} label="State the goal and the done condition"
               desc={"Before writing any code or prompt. If you can't state what success looks like, you're not ready to build the loop yet — you're still scoping the problem. A vague goal produces a loop that can never terminate correctly."} />
             <AgentBuildStep n={2} label="Try the simplest workflow pattern first"
@@ -3767,8 +3767,8 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
         {/* Quick reference */}
         <section>
           <SectionHeading number="06" title="Quick reference" />
-          <p className="font-sans text-sm text-brand-muted mb-5 mt-4">Which pattern fits which task.</p>
-          <div className="border border-brand-concrete divide-y divide-brand-concrete">
+          <p className="font-sans text-sm text-bk-muted mb-5 mt-4">Which pattern fits which task.</p>
+          <div className="border border-bk-rule divide-y divide-brand-concrete">
             {([
               ['Fixed, ordered sub-steps', 'Prompt chaining'],
               ['Different input types need different handling', 'Routing'],
@@ -3782,11 +3782,11 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
               ['Task spans multiple sessions or days', 'Loop engineering + checkpointing'],
             ] as [string, string][]).map(([situation, pattern], i, arr) => (
               <div key={situation} className={`flex gap-0 ${i < arr.length - 1 ? '' : ''}`}>
-                <div className="w-1/2 p-4 border-r border-brand-concrete">
-                  <p className="font-sans text-sm text-brand-black/70">{situation}</p>
+                <div className="w-1/2 p-4 border-r border-bk-rule">
+                  <p className="font-sans text-sm text-bk-parchment/70">{situation}</p>
                 </div>
                 <div className="w-1/2 p-4">
-                  <p className="font-sans text-sm font-medium text-brand-cobalt">{pattern}</p>
+                  <p className="font-sans text-sm font-medium text-bk-gold">{pattern}</p>
                 </div>
               </div>
             ))}
@@ -3800,13 +3800,13 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
         ]} />
 
         {/* Footer */}
-        <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
-          <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <footer className="pt-4 pb-16 border-t border-bk-rule flex flex-wrap justify-between items-center gap-4">
+          <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
             ← All Field Notes
           </Link>
           <div className="flex flex-wrap gap-2">
             {article!.tags.map((tag) => (
-              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/60 border border-brand-cobalt/20 px-2 py-0.5">
+              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/60 border border-bk-gold/20 px-2 py-0.5">
                 {tag}
               </span>
             ))}
@@ -3820,15 +3820,15 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
 function AgentPatternRow({ n, label, when, desc, last = false }: { n: string; label: string; when: string; desc: string; last?: boolean }) {
   return (
     <div className={`flex gap-0 ${!last ? '' : ''}`}>
-      <div className="w-8 flex-shrink-0 p-4 border-r border-brand-concrete flex items-start justify-center">
-        <span className="font-sans text-[10px] text-brand-muted font-medium">{n}</span>
+      <div className="w-8 flex-shrink-0 p-4 border-r border-bk-rule flex items-start justify-center">
+        <span className="font-sans text-[10px] text-bk-muted font-medium">{n}</span>
       </div>
       <div className="flex-1 p-4">
         <div className="flex flex-wrap items-baseline gap-3 mb-2">
-          <span className="font-sans font-semibold text-sm text-brand-black">{label}</span>
-          <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/60 border border-brand-cobalt/20 px-2 py-0.5">{when}</span>
+          <span className="font-sans font-semibold text-sm text-bk-parchment">{label}</span>
+          <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/60 border border-bk-gold/20 px-2 py-0.5">{when}</span>
         </div>
-        <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{desc}</p>
+        <p className="font-sans text-sm text-bk-parchment/60 leading-relaxed">{desc}</p>
       </div>
     </div>
   )
@@ -3837,10 +3837,10 @@ function AgentPatternRow({ n, label, when, desc, last = false }: { n: string; la
 function AgentLoopRow({ label, desc, last = false }: { label: string; desc: string; last?: boolean }) {
   return (
     <div className={`flex gap-0 ${!last ? '' : ''}`}>
-      <div className="w-44 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/30">
-        <span className="font-sans font-semibold text-sm text-brand-cobalt">{label}</span>
+      <div className="w-44 flex-shrink-0 p-4 border-r border-bk-rule bg-bk-deep/30">
+        <span className="font-sans font-semibold text-sm text-bk-gold">{label}</span>
       </div>
-      <p className="font-sans text-sm text-brand-black/65 p-4 leading-relaxed">{desc}</p>
+      <p className="font-sans text-sm text-bk-parchment/65 p-4 leading-relaxed">{desc}</p>
     </div>
   )
 }
@@ -3848,12 +3848,12 @@ function AgentLoopRow({ label, desc, last = false }: { label: string; desc: stri
 function AgentBuildStep({ n, label, desc, last = false }: { n: number; label: string; desc: string; last?: boolean }) {
   return (
     <div className={`flex gap-0 ${!last ? '' : ''}`}>
-      <div className="w-12 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/20 flex items-start justify-center">
-        <span className="font-display text-2xl text-brand-cobalt/30 leading-none">{n}</span>
+      <div className="w-12 flex-shrink-0 p-4 border-r border-bk-rule bg-bk-deep/20 flex items-start justify-center">
+        <span className="font-book font-bold text-2xl text-bk-gold/30 leading-none">{n}</span>
       </div>
       <div className="flex-1 p-4">
-        <h4 className="font-sans font-semibold text-sm text-brand-black mb-1.5">{label}</h4>
-        <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{desc}</p>
+        <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-1.5">{label}</h4>
+        <p className="font-sans text-sm text-bk-parchment/60 leading-relaxed">{desc}</p>
       </div>
     </div>
   )
@@ -3861,33 +3861,33 @@ function AgentBuildStep({ n, label, desc, last = false }: { n: number; label: st
 
 function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
 
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
 
-        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
           RETRIEVE<br />
-          <span className="text-brand-cobalt">FIRST.</span>
+          <span className="text-bk-gold">FIRST.</span>
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted border border-brand-concrete px-2.5 py-1">{tag}</span>
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-muted border border-bk-rule px-2.5 py-1">{tag}</span>
           ))}
         </div>
       </header>
@@ -3896,24 +3896,24 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
 
         {/* Lede */}
         <section>
-          <div className="border-l-2 border-brand-cobalt pl-6 space-y-4">
-            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+          <div className="border-l-2 border-bk-gold pl-6 space-y-4">
+            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
               RAG fixes two problems simultaneously: a language model&apos;s training data goes stale,
               and a model under-specified on a fact will confidently generate a plausible wrong answer.
               Retrieval gives it a source to draw from instead. It introduces one new way to fail:
               bad retrieval with false confidence attached.
             </p>
-            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
               The pipeline is seven steps and conceptually simple. Getting retrieval right is not.
               Most production mistakes aren&apos;t in the LLM call. They&apos;re in the three steps before it.
             </p>
           </div>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>RAG fixes stale training data and hallucination simultaneously by giving the model an actual source to draw from instead of generating plausible-sounding answers from memory.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Bad retrieval is worse than no RAG: it adds latency and cost while producing ungrounded answers, now with a citation attached to give them unearned authority.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Most production RAG failures happen in the three steps before the LLM call: chunking strategy, embedding quality, and retrieval precision, not in the generation step itself.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Hybrid retrieval (keyword plus semantic search) with a reranking step consistently outperforms pure vector search for production use cases with mixed query types.</li>
+              <li><span className="text-bk-gold mr-2">—</span>RAG fixes stale training data and hallucination simultaneously by giving the model an actual source to draw from instead of generating plausible-sounding answers from memory.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Bad retrieval is worse than no RAG: it adds latency and cost while producing ungrounded answers, now with a citation attached to give them unearned authority.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Most production RAG failures happen in the three steps before the LLM call: chunking strategy, embedding quality, and retrieval precision, not in the generation step itself.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Hybrid retrieval (keyword plus semantic search) with a reranking step consistently outperforms pure vector search for production use cases with mixed query types.</li>
             </ul>
           </Callout>
         </section>
@@ -3922,7 +3922,7 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="01" title="What RAG actually does" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             RAG (Retrieval-Augmented Generation) pairs a language model with an external retrieval system.
             Instead of answering purely from memorised training data, the model first retrieves relevant
             documents from a knowledge source, then generates its answer using those retrieved documents
@@ -3930,27 +3930,27 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            <div className="border border-brand-cobalt/30 p-5 bg-brand-graphite">
-              <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-cobalt block mb-3">What it fixes</span>
+            <div className="border border-bk-gold/30 p-5 bg-bk-deep">
+              <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-bk-gold block mb-3">What it fixes</span>
               <div className="space-y-2">
-                <p className="font-sans text-sm text-brand-black/75 leading-relaxed">
-                  <strong className="text-brand-black">Staleness:</strong> model training has a cutoff. RAG works with information from after that cutoff, or with private data the model never saw.
+                <p className="font-sans text-sm text-bk-parchment/75 leading-relaxed">
+                  <strong className="text-bk-parchment">Staleness:</strong> model training has a cutoff. RAG works with information from after that cutoff, or with private data the model never saw.
                 </p>
-                <p className="font-sans text-sm text-brand-black/75 leading-relaxed">
-                  <strong className="text-brand-black">Hallucination:</strong> without retrieval, a model under-specified on a fact generates a plausible-sounding wrong answer. With retrieval, it has an actual source.
+                <p className="font-sans text-sm text-bk-parchment/75 leading-relaxed">
+                  <strong className="text-bk-parchment">Hallucination:</strong> without retrieval, a model under-specified on a fact generates a plausible-sounding wrong answer. With retrieval, it has an actual source.
                 </p>
               </div>
             </div>
-            <div className="border border-brand-concrete p-5 bg-brand-graphite">
-              <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-muted block mb-3">What it introduces</span>
-              <p className="font-sans text-sm text-brand-black/75 leading-relaxed">
-                <strong className="text-brand-black">False confidence:</strong> a RAG system with poor retrieval is worse than no RAG. It adds latency and cost while producing an ungrounded answer, now with a citation attached to give it unearned authority.
+            <div className="border border-bk-rule p-5 bg-bk-deep">
+              <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-bk-muted block mb-3">What it introduces</span>
+              <p className="font-sans text-sm text-bk-parchment/75 leading-relaxed">
+                <strong className="text-bk-parchment">False confidence:</strong> a RAG system with poor retrieval is worse than no RAG. It adds latency and cost while producing an ungrounded answer, now with a citation attached to give it unearned authority.
               </p>
             </div>
           </div>
 
           <Callout label="vs. fine-tuning">
-            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+            <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
               Fine-tuning changes model <em>behaviour</em>: tone, format, task specialisation.
               RAG changes what <em>facts</em> the model has access to. If you need the model to know
               something specific, use RAG. If you need it to behave differently, fine-tune.
@@ -3964,17 +3964,17 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="02" title="The pipeline" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
             Seven steps, two phases. Steps 1–4 run at ingestion time (once per document, or when documents
             update). Steps 5–7 run at query time for every user request. The quality of the query-time
             steps depends entirely on how well the ingestion steps were done.
           </p>
 
           <figure className="mb-8">
-            <div className="border border-brand-concrete overflow-hidden">
+            <div className="border border-bk-rule overflow-hidden">
               <RAGPipeline />
             </div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
               Shaded steps run at query time — everything before the dashed line is ingestion.
             </figcaption>
           </figure>
@@ -3994,12 +3994,12 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="03" title="Chunking strategy" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
             Fixed-size chunking — split every N characters — is a fast start and a low ceiling.
             The chunk boundary is arbitrary, so it frequently falls mid-sentence, severing context and
             making the extracted chunk ambiguous without what came before or after.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
             Semantic chunking computes embeddings sentence-by-sentence and starts a new chunk when semantic
             similarity between adjacent sentences drops below a threshold. Boundaries correspond to where
             meaning actually shifts. Retrieving a semantically coherent chunk against a semantically similar
@@ -4007,10 +4007,10 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
           </p>
 
           <figure>
-            <div className="border border-brand-concrete overflow-hidden">
+            <div className="border border-bk-rule overflow-hidden">
               <ChunkingComparison />
             </div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
               Fixed-size chunks split at arbitrary boundaries — semantic chunks split where meaning shifts.
             </figcaption>
           </figure>
@@ -4020,13 +4020,13 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="04" title="Hybrid retrieval" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             Dense vector search and sparse keyword search (BM25) are complementary, not competing.
             Vector search finds conceptually related content even without matching words — useful for
             paraphrase, synonyms, and domain inference. Keyword search catches exact terms, proper names,
             codes, and identifiers that embeddings can blur by collapsing similar-sounding but distinct things.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
             Hybrid retrieval combined with reranking is the default for production systems in 2026.
             It&apos;s not exotic — it&apos;s the sensible baseline. The common reranking pattern: retrieve a
             broad candidate pool (~20), rerank down to 3–5 strong candidates, and send only those to the LLM.
@@ -4034,10 +4034,10 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
           </p>
 
           <figure>
-            <div className="border border-brand-concrete overflow-hidden">
+            <div className="border border-bk-rule overflow-hidden">
               <HybridRetrievalDiagram />
             </div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
               Hybrid retrieval — both branches run on the same query, results merge before reranking.
             </figcaption>
           </figure>
@@ -4047,22 +4047,22 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="05" title="Query transformation" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
             Raw user queries are often poorly shaped for retrieval. Two techniques address this:
           </p>
 
           <div className="space-y-4">
-            <div className="border border-brand-concrete p-5">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-2">Query expansion</span>
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+            <div className="border border-bk-rule p-5">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-2">Query expansion</span>
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
                 Generate several reformulations of the same question to widen the retrieval net. A user asking
                 &quot;how does this work with large files&quot; might retrieve more with
                 &quot;performance characteristics on large datasets&quot; or &quot;scalability with file size&quot; added as parallel queries.
               </p>
             </div>
-            <div className="border border-brand-concrete p-5">
-              <span className="font-sans font-semibold text-sm text-brand-black block mb-2">HyDE — Hypothetical Document Embeddings</span>
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+            <div className="border border-bk-rule p-5">
+              <span className="font-sans font-semibold text-sm text-bk-parchment block mb-2">HyDE — Hypothetical Document Embeddings</span>
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
                 Have the model generate a hypothetical answer first, then embed and retrieve using <em>that</em> rather
                 than the raw query. The hypothetical answer contains domain language the user&apos;s original
                 question likely lacks. It&apos;s counterintuitive — you generate before you retrieve — but it
@@ -4076,15 +4076,15 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="06" title="Advanced patterns" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
             Know these exist. Don&apos;t reach for them by default.
           </p>
 
           <figure className="mb-8">
-            <div className="border border-brand-concrete overflow-hidden">
+            <div className="border border-bk-rule overflow-hidden">
               <AdaptiveRAGDiagram />
             </div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
               Adaptive RAG — a classifier routes each query to the cheapest pipeline that can handle it.
             </figcaption>
           </figure>
@@ -4105,7 +4105,7 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
           </div>
 
           <Callout label="The field's actual lesson" className="mt-8">
-            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+            <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
               The most common production mistake is not under-engineering RAG — it&apos;s over-engineering it.
               Start with hybrid retrieval plus a reranker. Measure retrieval quality before adding anything else.
               Only add query transformation, agentic loops, or graph structures once metrics prove the simpler
@@ -4118,15 +4118,15 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="07" title="Two tracks" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
             The right architecture depends on scale. One setup I use routinely; one for production applications.
           </p>
 
-          <div className="space-y-0 border border-brand-concrete mb-8">
-            <div className="border-b border-brand-concrete">
-              <div className="p-4 border-b border-brand-concrete/60 bg-brand-graphite/40">
-                <span className="font-display text-2xl text-brand-cobalt">TRACK A</span>
-                <span className="font-sans text-sm text-brand-muted ml-3">Personal / research RAG</span>
+          <div className="space-y-0 border border-bk-rule mb-8">
+            <div className="border-b border-bk-rule">
+              <div className="p-4 border-b border-bk-rule/60 bg-bk-deep/40">
+                <span className="font-book font-bold text-2xl text-bk-gold">TRACK A</span>
+                <span className="font-sans text-sm text-bk-muted ml-3">Personal / research RAG</span>
               </div>
               <div className="p-5 space-y-3">
                 <RAGTrackRow n="1" text="One markdown file per topic — not one giant document. Retrieval works at the chunk level, and a single well-scoped file chunks more predictably than a sprawling one." />
@@ -4137,9 +4137,9 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
               </div>
             </div>
             <div>
-              <div className="p-4 border-b border-brand-concrete/60 bg-brand-graphite/40">
-                <span className="font-display text-2xl text-brand-black">TRACK B</span>
-                <span className="font-sans text-sm text-brand-muted ml-3">Production / application RAG</span>
+              <div className="p-4 border-b border-bk-rule/60 bg-bk-deep/40">
+                <span className="font-book font-bold text-2xl text-bk-parchment">TRACK B</span>
+                <span className="font-sans text-sm text-bk-muted ml-3">Production / application RAG</span>
               </div>
               <div className="p-5 space-y-3">
                 <RAGTrackRow n="1" text="Define the question set first. What will this system actually be asked? Build against real query patterns, not hypothetical ones." />
@@ -4173,12 +4173,12 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="09" title="Evaluation" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
             &quot;It looks like it&apos;s working&quot; is not evaluation. Systematic evaluation from day one is becoming
             standard — a majority of new RAG deployments now build it in from the start. Three things to measure:
           </p>
 
-          <div className="space-y-0 border border-brand-concrete">
+          <div className="space-y-0 border border-bk-rule">
             <EvalRow
               metric="Retrieval quality"
               detail="Are the retrieved chunks actually relevant to the query? Measure precision and recall against a labeled test set. This is the most important metric — if retrieval is bad, generation can't save it."
@@ -4194,14 +4194,14 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
             />
           </div>
 
-          <p className="font-sans text-sm text-brand-muted leading-relaxed mt-4 italic">
+          <p className="font-sans text-sm text-bk-muted leading-relaxed mt-4 italic">
             RAGAS is a commonly used open framework for scoring these dimensions systematically.
           </p>
         </section>
 
         {/* Source note */}
-        <section className="border-t border-brand-concrete pt-10">
-          <p className="font-sans text-sm text-brand-muted leading-relaxed">
+        <section className="border-t border-bk-rule pt-10">
+          <p className="font-sans text-sm text-bk-muted leading-relaxed">
             Core RAG mechanism per Lewis et al. (2020), the original RAG paper. Implementation patterns —
             hybrid retrieval, reranking ratios, adaptive routing, evaluation-first deployment —
             drawn from practitioner sources reporting on production trends (2026). Treat specific tool and
@@ -4216,8 +4216,8 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
           { title: 'Speech and Language Processing', author: 'Daniel Jurafsky & James Martin · Stanford University (draft)', type: 'Book', description: 'The standard NLP textbook, with up-to-date chapters on dense retrieval, vector semantics, and language model architecture — freely available at web.stanford.edu/~jurafsky/slp3.' },
         ]} />
 
-        <div className="border-t border-brand-concrete pt-8">
-          <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <div className="border-t border-bk-rule pt-8">
+          <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
             ← Back to Field Notes
           </Link>
         </div>
@@ -4228,13 +4228,13 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
 
 function PipelineRow({ n, label, detail, highlight = false }: { n: string; label: string; detail: string; highlight?: boolean }) {
   return (
-    <div className={`flex gap-0 border border-brand-concrete ${highlight ? 'border-brand-cobalt/30' : ''}`}>
-      <div className={`w-12 flex-shrink-0 flex items-center justify-center border-r border-brand-concrete ${highlight ? 'bg-brand-cobalt/8 border-brand-cobalt/30' : 'bg-brand-graphite/40'}`}>
-        <span className={`font-display text-xl ${highlight ? 'text-brand-cobalt' : 'text-brand-muted/50'}`}>{n}</span>
+    <div className={`flex gap-0 border border-bk-rule ${highlight ? 'border-bk-gold/30' : ''}`}>
+      <div className={`w-12 flex-shrink-0 flex items-center justify-center border-r border-bk-rule ${highlight ? 'bg-brand-cobalt/8 border-bk-gold/30' : 'bg-bk-deep/40'}`}>
+        <span className={`font-book font-bold text-xl ${highlight ? 'text-bk-gold' : 'text-bk-muted/50'}`}>{n}</span>
       </div>
       <div className="p-3 flex-1">
-        <span className={`font-sans font-semibold text-sm block mb-1 ${highlight ? 'text-brand-cobalt' : 'text-brand-black'}`}>{label}</span>
-        <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{detail}</p>
+        <span className={`font-sans font-semibold text-sm block mb-1 ${highlight ? 'text-bk-gold' : 'text-bk-parchment'}`}>{label}</span>
+        <p className="font-sans text-sm text-bk-parchment/60 leading-relaxed">{detail}</p>
       </div>
     </div>
   )
@@ -4242,9 +4242,9 @@ function PipelineRow({ n, label, detail, highlight = false }: { n: string; label
 
 function AdvancedPatternRow({ name, detail }: { name: string; detail: string }) {
   return (
-    <div className="border border-brand-concrete p-4">
-      <span className="font-sans font-semibold text-sm text-brand-black block mb-1.5">{name}</span>
-      <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{detail}</p>
+    <div className="border border-bk-rule p-4">
+      <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1.5">{name}</span>
+      <p className="font-sans text-sm text-bk-parchment/60 leading-relaxed">{detail}</p>
     </div>
   )
 }
@@ -4252,53 +4252,53 @@ function AdvancedPatternRow({ name, detail }: { name: string; detail: string }) 
 function RAGTrackRow({ n, text }: { n: string; text: string }) {
   return (
     <div className="flex gap-3">
-      <span className="font-mono text-xs text-brand-cobalt/50 flex-shrink-0 mt-0.5">{n}.</span>
-      <p className="font-sans text-sm text-brand-black/70 leading-relaxed">{text}</p>
+      <span className="font-mono text-xs text-bk-gold/50 flex-shrink-0 mt-0.5">{n}.</span>
+      <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">{text}</p>
     </div>
   )
 }
 
 function EvalRow({ metric, detail, last = false }: { metric: string; detail: string; last?: boolean }) {
   return (
-    <div className={`flex gap-0 ${!last ? 'border-b border-brand-concrete' : ''}`}>
-      <div className="w-40 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/40">
-        <span className="font-sans font-semibold text-sm text-brand-cobalt block leading-tight">{metric}</span>
+    <div className={`flex gap-0 ${!last ? 'border-b border-bk-rule' : ''}`}>
+      <div className="w-40 flex-shrink-0 p-4 border-r border-bk-rule bg-bk-deep/40">
+        <span className="font-sans font-semibold text-sm text-bk-gold block leading-tight">{metric}</span>
       </div>
-      <p className="font-sans text-sm text-brand-black/70 p-4 leading-relaxed">{detail}</p>
+      <p className="font-sans text-sm text-bk-parchment/70 p-4 leading-relaxed">{detail}</p>
     </div>
   )
 }
 
 function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
 
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
 
-        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
           THE<br />
-          <span className="text-brand-cobalt">THREE</span><br />
+          <span className="text-bk-gold">THREE</span><br />
           GATES.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted border border-brand-concrete px-2.5 py-1">{tag}</span>
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-muted border border-bk-rule px-2.5 py-1">{tag}</span>
           ))}
         </div>
       </header>
@@ -4307,23 +4307,23 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
 
         {/* Lede */}
         <section>
-          <div className="border-l-2 border-brand-cobalt pl-6 space-y-4">
-            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+          <div className="border-l-2 border-bk-gold pl-6 space-y-4">
+            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
               Most content optimisation assumes a visibility problem. It usually isn&apos;t.
               It&apos;s a mechanism problem. The engine never opened your page, or chose not to click through,
               or couldn&apos;t extract a usable answer from what it found. Three different problems.
               Three different fixes.
             </p>
-            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
               Treating them as one is why most AEO advice gives you motion without traction.
             </p>
           </div>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>Content failing Gate 2 (Chosen) is the most common AEO problem: the engine never clicked through because nothing in the snippet signalled a usable answer.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>BrightEdge data shows AI engines are opening a progressively smaller share of candidate results per query, making selection at Gate 2 increasingly competitive.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>The three-gate diagnostic maps to three distinct fixes: technical (Gate 1, Fetchable), snippet and title optimisation (Gate 2, Chosen), and content structure (Gate 3, Extractable).</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Traditional SEO optimises for ranking. AEO optimises for being opened, extracted from, and cited. These are three different mechanisms requiring three different interventions.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Content failing Gate 2 (Chosen) is the most common AEO problem: the engine never clicked through because nothing in the snippet signalled a usable answer.</li>
+              <li><span className="text-bk-gold mr-2">—</span>BrightEdge data shows AI engines are opening a progressively smaller share of candidate results per query, making selection at Gate 2 increasingly competitive.</li>
+              <li><span className="text-bk-gold mr-2">—</span>The three-gate diagnostic maps to three distinct fixes: technical (Gate 1, Fetchable), snippet and title optimisation (Gate 2, Chosen), and content structure (Gate 3, Extractable).</li>
+              <li><span className="text-bk-gold mr-2">—</span>Traditional SEO optimises for ranking. AEO optimises for being opened, extracted from, and cited. These are three different mechanisms requiring three different interventions.</li>
             </ul>
           </Callout>
         </section>
@@ -4333,20 +4333,20 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
           <SectionHeading number="01" title="The core reframe" />
 
           <Callout label="The rule">
-            <p className="font-sans text-base text-brand-cobalt font-medium leading-relaxed">
+            <p className="font-sans text-base text-bk-gold font-medium leading-relaxed">
               The model can only answer from what it fetched. Not what exists. Not what is true.
               What it actually pulled into context for that specific query.
             </p>
           </Callout>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6 mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6 mb-4">
             This sounds obvious stated plainly. It&apos;s not obvious in practice, because most content
             optimisation still treats AI visibility the same way it treats search ranking: quality, relevance,
             and authority. Those things matter. But they&apos;re evaluated only after
             the engine has already decided to open your page. Get eliminated before that decision and
             quality is irrelevant.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
             The mechanism works in sequence. A human types a messy, multi-part question. The engine
             doesn&apos;t search for that exact query — it translates it into several clean, query-shaped
             searches (query fan-out). Each search returns its own candidate source list. The engine
@@ -4357,10 +4357,10 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
 
         {/* Query fan-out diagram */}
         <figure>
-          <div className="border border-brand-concrete overflow-hidden">
+          <div className="border border-bk-rule overflow-hidden">
             <QueryFanOut />
           </div>
-          <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+          <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
             Query fan-out — one human prompt becomes multiple discrete searches, each with its own candidate source list.
           </figcaption>
         </figure>
@@ -4369,7 +4369,7 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="02" title="The cover" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             Before any extraction, before any quality assessment, the engine makes a click decision
             based on what&apos;s visible without opening the page: URL, title, snippet, sometimes
             a freshness date. That&apos;s the cover. Content quality inside the page is irrelevant at this
@@ -4377,7 +4377,7 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
             a press release rather than an answer, the engine won&apos;t click through regardless of
             what&apos;s inside.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
             This is why a well-written product page with strong SEO fundamentals can still be
             invisible in AI answers. The cover wasn&apos;t shaped for the engine&apos;s selection criteria.
             Optimizing the inside without optimizing the cover is backwards.
@@ -4388,16 +4388,16 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="03" title="The three gates" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
             Use this diagnostic any time visibility is lower than expected. It tells you
-            <em className="text-brand-black"> which</em> problem you have rather than asking you to guess.
+            <em className="text-bk-parchment"> which</em> problem you have rather than asking you to guess.
           </p>
 
           <figure className="mb-8">
-            <div className="border border-brand-concrete overflow-hidden">
+            <div className="border border-bk-rule overflow-hidden">
               <ThreeGateDiagram />
             </div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
               Three gates — failing any one removes you from consideration for that query.
             </figcaption>
           </figure>
@@ -4427,7 +4427,7 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
           </div>
 
           <Callout label="Platform divergence is diagnostic" className="mt-8">
-            <p className="font-sans text-sm text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-sm text-bk-parchment/75 leading-relaxed">
               Ranking first on ChatGPT and tenth on Gemini isn&apos;t noise: it means two engines are
               applying different selection logic to the same content. The fix for each will be different.
               Averaging them into a single &quot;AI visibility&quot; number hides both the problem and the opportunity.
@@ -4440,28 +4440,28 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="04" title="Score vs Rank" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
             These two metrics get conflated constantly. They measure completely different things.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            <div className="border border-brand-cobalt/30 p-5 bg-brand-graphite">
-              <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-cobalt block mb-2">Visibility Score</span>
-              <p className="font-sans text-sm text-brand-black/75 leading-relaxed">
+            <div className="border border-bk-gold/30 p-5 bg-bk-deep">
+              <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-bk-gold block mb-2">Visibility Score</span>
+              <p className="font-sans text-sm text-bk-parchment/75 leading-relaxed">
                 Your raw presence in AI answers. This can rise for everyone simultaneously as engines
                 cite more sources overall. A rising score tells you the category is growing.
               </p>
             </div>
-            <div className="border border-brand-concrete p-5 bg-brand-graphite">
-              <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-muted block mb-2">Visibility Rank</span>
-              <p className="font-sans text-sm text-brand-black/75 leading-relaxed">
+            <div className="border border-bk-rule p-5 bg-bk-deep">
+              <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-bk-muted block mb-2">Visibility Rank</span>
+              <p className="font-sans text-sm text-bk-parchment/75 leading-relaxed">
                 Your position relative to competitors. This is the number that tells you whether
                 you&apos;re actually winning. Track both, but optimise for rank.
               </p>
             </div>
           </div>
 
-          <p className="font-sans text-sm text-brand-muted leading-relaxed italic">
+          <p className="font-sans text-sm text-bk-muted leading-relaxed italic">
             A rising score with flat or falling rank means the category is growing but you&apos;re not
             capturing more of it. This is the most common misread in AEO reporting — a chart that
             goes up and right masking a competitive position that&apos;s quietly getting worse.
@@ -4472,7 +4472,7 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="05" title="The SAGE loop" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
             SAGE is a four-stage cycle (Setup, Analyse, Generate, Engineer) and its most useful
             property is that it tells you which stage to be in right now. The temptation is to default
             to Generate (producing content) because it feels productive. Generating against the wrong
@@ -4480,15 +4480,15 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
           </p>
 
           <figure className="mb-8">
-            <div className="border border-brand-concrete overflow-hidden">
+            <div className="border border-bk-rule overflow-hidden">
               <SAGELoop />
             </div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
               SAGE loop — a cycle you run continuously, not a checklist you complete once.
             </figcaption>
           </figure>
 
-          <div className="space-y-0 border border-brand-concrete mb-6">
+          <div className="space-y-0 border border-bk-rule mb-6">
             <SAGERow
               stage="Setup"
               trigger={`"We don't know what to track yet"`}
@@ -4517,12 +4517,12 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="06" title="Content that gets cited" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             Two concepts do most of the work here.
           </p>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
-            <strong className="text-brand-black">Compound jobs</strong> — queries that combine
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+            <strong className="text-bk-parchment">Compound jobs</strong> — queries that combine
             multiple needs in a single ask (&quot;cooling <em>and</em> support&quot;, not just
             &quot;cooling&quot;). These force the engine to be selective. It can&apos;t satisfy every angle,
             so it picks the source that covers the combination best. Single-angle content loses to
@@ -4530,8 +4530,8 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
             concentrates, because most content is still written to rank on one keyword at a time.
           </p>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
-            <strong className="text-brand-black">Utility assets</strong> — content shaped to match
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
+            <strong className="text-bk-parchment">Utility assets</strong> — content shaped to match
             what the engine is already fetching: comparative, high-density, answer-shaped. Explicitly
             not: product pages, brand-story copy, buried leads. The format question to ask before
             writing is &quot;does this match the shape of the answer the AI is already producing for
@@ -4539,16 +4539,16 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
           </p>
 
           <figure>
-            <div className="border border-brand-concrete overflow-hidden">
+            <div className="border border-bk-rule overflow-hidden">
               <ContentShapeComparison />
             </div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
               Utility asset vs product page — same topic, different shape, very different citation rate.
             </figcaption>
           </figure>
 
           <Callout label="Supply chain awareness" className="mt-8">
-            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+            <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
               Every AI-generated answer has a traceable supply chain: specific sources, specific
               citations, specific reasons one brand gets mentioned over another. Most marketers never
               read this chain. Understanding which sources an engine draws from — and why those
@@ -4562,7 +4562,7 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="07" title="Applying this to the stack" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
             The three-gate model maps directly onto existing tools. The diagnostic is faster
             when you already know which data to pull.
           </p>
@@ -4592,8 +4592,8 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
         </section>
 
         {/* Source note */}
-        <section className="border-t border-brand-concrete pt-10">
-          <p className="font-sans text-sm text-brand-muted leading-relaxed">
+        <section className="border-t border-bk-rule pt-10">
+          <p className="font-sans text-sm text-bk-muted leading-relaxed">
             The SAGE framework, three-gate model, query fan-out, and utility asset framing are sourced
             from Profound University&apos;s Profound 101 curriculum — Profound is the AEO analytics
             platform named sole Leader on G2&apos;s first AEO Grid (Winter 2026). The underlying framework
@@ -4608,8 +4608,8 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
           { title: 'Content Chemistry', author: 'Andy Crestodina · Orbit Media Studios', type: 'Book', description: 'A data-driven content marketing handbook from someone who has surveyed thousands of bloggers annually for a decade — grounded in evidence rather than theory.' },
         ]} />
 
-        <div className="border-t border-brand-concrete pt-8">
-          <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <div className="border-t border-bk-rule pt-8">
+          <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
             ← Back to Field Notes
           </Link>
         </div>
@@ -4622,23 +4622,23 @@ function GateRow({ n, name, question, checks, symptom }: {
   n: string; name: string; question: string; checks: string[]; symptom: string;
 }) {
   return (
-    <div className="border border-brand-concrete">
-      <div className="flex items-baseline gap-3 p-4 pb-3 border-b border-brand-concrete bg-brand-graphite/40">
-        <span className="font-display text-3xl text-brand-cobalt/25 leading-none">{n}</span>
-        <span className="font-display text-2xl text-brand-black">{name.toUpperCase()}</span>
+    <div className="border border-bk-rule">
+      <div className="flex items-baseline gap-3 p-4 pb-3 border-b border-bk-rule bg-bk-deep/40">
+        <span className="font-book font-bold text-3xl text-bk-gold/25 leading-none">{n}</span>
+        <span className="font-book font-bold text-2xl text-bk-parchment">{name.toUpperCase()}</span>
       </div>
       <div className="p-4 space-y-3">
-        <p className="font-sans text-sm font-semibold text-brand-black/80">{question}</p>
+        <p className="font-sans text-sm font-semibold text-bk-parchment/80">{question}</p>
         <ul className="space-y-1">
           {checks.map((c) => (
-            <li key={c} className="font-sans text-sm text-brand-muted flex gap-2">
-              <span className="text-brand-cobalt/60 flex-shrink-0">✓</span>{c}
+            <li key={c} className="font-sans text-sm text-bk-muted flex gap-2">
+              <span className="text-bk-gold/60 flex-shrink-0">✓</span>{c}
             </li>
           ))}
         </ul>
-        <div className="pt-2 border-t border-brand-concrete/60">
-          <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted mr-2">Symptom</span>
-          <span className="font-sans text-xs text-brand-black/60 italic">{symptom}</span>
+        <div className="pt-2 border-t border-bk-rule/60">
+          <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-muted mr-2">Symptom</span>
+          <span className="font-sans text-xs text-bk-parchment/60 italic">{symptom}</span>
         </div>
       </div>
     </div>
@@ -4649,15 +4649,15 @@ function SAGERow({ stage, trigger, actions, last = false }: {
   stage: string; trigger: string; actions: string[]; last?: boolean;
 }) {
   return (
-    <div className={`flex gap-0 ${!last ? 'border-b border-brand-concrete' : ''}`}>
-      <div className="w-32 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/40">
-        <span className="font-display text-xl text-brand-cobalt block">{stage.toUpperCase()}</span>
-        <span className="font-sans text-[10px] text-brand-muted leading-tight block mt-1 italic">{trigger}</span>
+    <div className={`flex gap-0 ${!last ? 'border-b border-bk-rule' : ''}`}>
+      <div className="w-32 flex-shrink-0 p-4 border-r border-bk-rule bg-bk-deep/40">
+        <span className="font-book font-bold text-xl text-bk-gold block">{stage.toUpperCase()}</span>
+        <span className="font-sans text-[10px] text-bk-muted leading-tight block mt-1 italic">{trigger}</span>
       </div>
       <ul className="p-4 space-y-1.5 flex-1">
         {actions.map((a) => (
-          <li key={a} className="font-sans text-sm text-brand-black/70 flex gap-2">
-            <span className="text-brand-cobalt/40 flex-shrink-0">—</span>{a}
+          <li key={a} className="font-sans text-sm text-bk-parchment/70 flex gap-2">
+            <span className="text-bk-gold/40 flex-shrink-0">—</span>{a}
           </li>
         ))}
       </ul>
@@ -4667,55 +4667,55 @@ function SAGERow({ stage, trigger, actions, last = false }: {
 
 function StackRow({ tool, gate, detail }: { tool: string; gate: string; detail: string }) {
   return (
-    <div className="border border-brand-concrete p-4">
+    <div className="border border-bk-rule p-4">
       <div className="flex items-center justify-between mb-2">
-        <span className="font-sans font-semibold text-sm text-brand-black">{tool}</span>
-        <span className="font-mono text-[10px] text-brand-cobalt bg-brand-graphite px-2 py-0.5 border border-brand-cobalt/25">
+        <span className="font-sans font-semibold text-sm text-bk-parchment">{tool}</span>
+        <span className="font-mono text-[10px] text-bk-gold bg-bk-deep px-2 py-0.5 border border-bk-gold/25">
           {gate}
         </span>
       </div>
-      <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{detail}</p>
+      <p className="font-sans text-sm text-bk-parchment/60 leading-relaxed">{detail}</p>
     </div>
   )
 }
 
 function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       {/* Back nav */}
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
         <Link
           href="/articles"
-          className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
+          className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200"
         >
           ← Field Notes
         </Link>
       </div>
 
       {/* Header */}
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">
             {article!.category}
           </span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
 
-        <h1 className="font-display text-7xl md:text-9xl lg:text-[120px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-7xl md:text-9xl lg:text-[120px] text-bk-parchment leading-none tracking-normal mb-4">
           THE<br />
-          <span className="text-brand-cobalt">$140</span><br />
+          <span className="text-bk-gold">$140</span><br />
           QUESTION.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted border border-brand-concrete px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-muted border border-bk-rule px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -4727,20 +4727,20 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
 
         {/* Lede */}
         <section>
-          <div className="border-l-2 border-brand-cobalt pl-6 space-y-4">
-            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+          <div className="border-l-2 border-bk-gold pl-6 space-y-4">
+            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
               In one documented Express.js refactor, Claude Code cost $155. Codex cost $15. Same task, same outcome: a working, passing codebase, but one ran 10&times; the bill. That gap is real. So is the other direction: blind code-quality reviews of the same output preferred Claude Code 67% of the time vs Codex&apos;s 25%.
             </p>
-            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
               Neither number wins the argument cleanly. They tell you what you&apos;re trading, not what to choose.
             </p>
           </div>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>In one documented Express.js refactor, Claude Code cost $155 vs Codex&rsquo;s $15 for the same passing outcome: a real 10&times; cost difference on an identical task.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Blind code-quality reviews of the same output preferred Claude Code 67% of the time vs Codex&rsquo;s 25%. The quality premium is real and so is the price premium.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Context window is the decisive technical differentiator: 1M tokens (Claude Code) vs 200K (Codex). On tightly coupled legacy codebases, Codex has to sample what Claude Code can hold whole.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Use Codex for well-scoped greenfield work. Use Claude Code for deep legacy refactors where full-codebase context changes the outcome.</li>
+              <li><span className="text-bk-gold mr-2">—</span>In one documented Express.js refactor, Claude Code cost $155 vs Codex&rsquo;s $15 for the same passing outcome: a real 10&times; cost difference on an identical task.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Blind code-quality reviews of the same output preferred Claude Code 67% of the time vs Codex&rsquo;s 25%. The quality premium is real and so is the price premium.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Context window is the decisive technical differentiator: 1M tokens (Claude Code) vs 200K (Codex). On tightly coupled legacy codebases, Codex has to sample what Claude Code can hold whole.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Use Codex for well-scoped greenfield work. Use Claude Code for deep legacy refactors where full-codebase context changes the outcome.</li>
             </ul>
           </Callout>
         </section>
@@ -4749,27 +4749,27 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
         <section>
           <SectionHeading number="01" title="Context window" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             1M tokens vs 200K. On a greenfield project with clean module boundaries, the difference is irrelevant.
             On a three-year-old monolith with circular imports, undocumented global state, and ten contributors&apos;
             worth of conflicting conventions — it&apos;s the whole game.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
             Claude Code can hold the full codebase graph while making a change. Codex has to sample it. Whether
             that sampling degrades the result depends entirely on how interconnected the code is. On a tightly
             coupled legacy codebase, it usually does.
           </p>
 
           <figure>
-            <div className="border border-brand-concrete overflow-hidden">
+            <div className="border border-bk-rule overflow-hidden">
               <ContextWindowComparison />
             </div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
               1M vs 200K token context window — 5× difference; significant on large, interconnected codebases.
             </figcaption>
           </figure>
 
-          <p className="font-sans text-sm text-brand-muted leading-relaxed mt-6 italic">
+          <p className="font-sans text-sm text-bk-muted leading-relaxed mt-6 italic">
             This is the most durable differentiator between the two tools — not benchmark scores, which shift with
             every model update, but a structural fact about how much each agent can hold at once.
           </p>
@@ -4779,22 +4779,22 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
         <section>
           <SectionHeading number="02" title="Benchmarks vs reviews" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             On Terminal-Bench 2.0, Codex leads: 82.7% vs 69.4%. On SWE-bench Verified, they&apos;re effectively
             tied: 88.7% vs 88.6%. Both measure whether the tool completed an automated evaluation of a coding task —
             not whether a senior developer would merge that output without edits.
           </p>
 
           <figure className="my-8">
-            <div className="border border-brand-concrete overflow-hidden">
+            <div className="border border-bk-rule overflow-hidden">
               <BenchmarkChart />
             </div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
               Benchmark scores vs blind code-quality reviews — divergence is the story.
             </figcaption>
           </figure>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             The blind review number is the interesting one. A 42-point gap in human code-quality preference doesn&apos;t
             show up in benchmark pass rates because benchmarks are binary — the test either passes or it doesn&apos;t.
             They don&apos;t measure readability, consistency with existing patterns, or whether the approach you&apos;d
@@ -4802,7 +4802,7 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
           </p>
 
           <Callout label="How to read these numbers">
-            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+            <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
               SWE-bench Verified and Terminal-Bench measure different tasks — treat them as directional, not
               directly comparable. Blind review numbers vary by evaluator and task type. Verify current figures
               at source before using them to justify budget decisions.
@@ -4814,17 +4814,17 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
         <section>
           <SectionHeading number="03" title="The actual cost" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
             Claude Code burns 3–4× more tokens per task than Codex on comparable benchmarks. Extended thinking
             is on by default and billed at 5× the input token rate — meaningful if you&apos;re running it
             iteratively against large files.
           </p>
 
           <figure className="my-8">
-            <div className="border border-brand-concrete overflow-hidden">
+            <div className="border border-bk-rule overflow-hidden">
               <CostComparison />
             </div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
               Same Express.js refactor — one documented community test. Treat as directional.
             </figcaption>
           </figure>
@@ -4849,30 +4849,30 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
         <section>
           <SectionHeading number="04" title="When to reach for each" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
             The most effective pattern isn&apos;t picking one tool — it&apos;s knowing which moment calls for which.
           </p>
 
           <figure className="mb-8">
-            <div className="border border-brand-concrete overflow-hidden">
+            <div className="border border-bk-rule overflow-hidden">
               <WorkflowSplit />
             </div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
               Workflow fit — the decision is about task shape, not tool quality.
             </figcaption>
           </figure>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
-            Reach for <strong className="text-brand-cobalt font-semibold">Claude Code</strong> when you&apos;re in
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+            Reach for <strong className="text-bk-gold font-semibold">Claude Code</strong> when you&apos;re in
             the editor actively building something, the context needs to span many files, and the iteration is
             conversational — you&apos;re steering, not just queuing work.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
-            Reach for <strong className="text-brand-black font-semibold">Codex</strong> when the task is
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+            Reach for <strong className="text-bk-parchment font-semibold">Codex</strong> when the task is
             well-defined enough to hand off unattended: dependency bumps, isolated type fixes, feature flags on
             a stable interface. It handles async PRs well precisely because the task spec does the steering.
           </p>
-          <p className="font-sans text-sm text-brand-muted leading-relaxed italic">
+          <p className="font-sans text-sm text-bk-muted leading-relaxed italic">
             Agent Teams — multiple Claude Code instances sharing a task list — changes this calculus somewhat for
             large parallel workloads, but that&apos;s a workflow for teams rather than solo development.
           </p>
@@ -4882,14 +4882,14 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
         <section>
           <SectionHeading number="05" title="Getting more out of Claude Code" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
             Three habits that materially affect both output quality and cost:
           </p>
 
-          <div className="space-y-0 border border-brand-concrete">
+          <div className="space-y-0 border border-bk-rule">
             <TipRow
               label="Cap extended thinking"
-              detail={<>On by default, billed at 5× input token rate. Use <code className="font-mono text-brand-cobalt text-xs">MAX_THINKING_TOKENS</code> or <code className="font-mono text-brand-cobalt text-xs">/effort</code> to drop it for tasks that don&apos;t need deep reasoning — most Marketo scripting, AEM component work, small fixes.</>}
+              detail={<>On by default, billed at 5× input token rate. Use <code className="font-mono text-bk-gold text-xs">MAX_THINKING_TOKENS</code> or <code className="font-mono text-bk-gold text-xs">/effort</code> to drop it for tasks that don&apos;t need deep reasoning — most Marketo scripting, AEM component work, small fixes.</>}
             />
             <TipRow
               label="Checkpoint before stepping away"
@@ -4904,8 +4904,8 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
         </section>
 
         {/* Closing */}
-        <section className="border-t border-brand-concrete pt-10">
-          <p className="font-sans text-base text-brand-black/70 leading-relaxed max-w-prose">
+        <section className="border-t border-bk-rule pt-10">
+          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed max-w-prose">
             Both tools are accelerators on well-scoped tasks. Neither replaces architectural judgement on
             ambiguous requirements — that&apos;s still your job. The question isn&apos;t which AI is smarter;
             it&apos;s which workflow fits what you&apos;re building today.
@@ -4919,10 +4919,10 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
         ]} />
 
         {/* Back link */}
-        <div className="border-t border-brand-concrete pt-8">
+        <div className="border-t border-bk-rule pt-8">
           <Link
             href="/articles"
-            className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
+            className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200"
           >
             ← Back to Field Notes
           </Link>
@@ -4934,10 +4934,10 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
 
 function CostNote({ label, text }: { label: string; text: string }) {
   return (
-    <div className="flex gap-4 items-start border-l border-brand-concrete pl-4">
+    <div className="flex gap-4 items-start border-l border-bk-rule pl-4">
       <div>
-        <span className="font-sans font-semibold text-sm text-brand-black block mb-1">{label}</span>
-        <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{text}</p>
+        <span className="font-sans font-semibold text-sm text-bk-parchment block mb-1">{label}</span>
+        <p className="font-sans text-sm text-bk-parchment/60 leading-relaxed">{text}</p>
       </div>
     </div>
   )
@@ -4945,52 +4945,52 @@ function CostNote({ label, text }: { label: string; text: string }) {
 
 function TipRow({ label, detail, last = false }: { label: string; detail: React.ReactNode; last?: boolean }) {
   return (
-    <div className={`flex gap-0 ${!last ? 'border-b border-brand-concrete' : ''}`}>
-      <div className="w-44 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/50">
-        <span className="font-sans font-semibold text-sm text-brand-cobalt leading-snug block">{label}</span>
+    <div className={`flex gap-0 ${!last ? 'border-b border-bk-rule' : ''}`}>
+      <div className="w-44 flex-shrink-0 p-4 border-r border-bk-rule bg-bk-deep/50">
+        <span className="font-sans font-semibold text-sm text-bk-gold leading-snug block">{label}</span>
       </div>
-      <p className="font-sans text-sm text-brand-black/70 p-4 leading-relaxed">{detail}</p>
+      <p className="font-sans text-sm text-bk-parchment/70 p-4 leading-relaxed">{detail}</p>
     </div>
   )
 }
 
 function PKMArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       {/* Back nav */}
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
         <Link
           href="/articles"
-          className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
+          className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200"
         >
           ← Field Notes
         </Link>
       </div>
 
       {/* Article header */}
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">
             {article!.category}
           </span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
 
-        <h1 className="font-display text-6xl md:text-8xl lg:text-[108px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-6xl md:text-8xl lg:text-[108px] text-bk-parchment leading-none tracking-normal mb-4">
           CAPTURE<br />
-          <span className="text-brand-cobalt">THINK.</span><br />
+          <span className="text-bk-gold">THINK.</span><br />
           COORD.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted border border-brand-concrete px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-muted border border-bk-rule px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -5002,18 +5002,18 @@ function PKMArticle({ article, formattedDate }: { article: ReturnType<typeof get
 
         {/* Intro — the boundary rule */}
         <section>
-          <div className="border-l-2 border-brand-cobalt pl-6 mb-8">
-            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+          <div className="border-l-2 border-bk-gold pl-6 mb-8">
+            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
               Most PKM setups fail the same way: tools overlap, filing decisions happen mid-thought, and
               maintenance debt compounds until the system collapses. The fix is boundaries, not cleverness.
             </p>
           </div>
           <Callout label="Key Takeaways" className="mb-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>Three tools, three distinct jobs: Wispr Flow (capture only), Obsidian (thinking and writing), Notion (anything that needs a status, date, or relation).</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>The filing rule that eliminates mid-thought decisions: does this need a status field? Yes goes to Notion. No goes to Obsidian.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Notion links out to Obsidian; Obsidian never links back to Notion. Directional data flow prevents the synchronisation overhead that collapses most PKM systems.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Wispr Flow&rsquo;s single function is capture as an input method. It has no permanent home for content, only a path into Obsidian or Notion.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Three tools, three distinct jobs: Wispr Flow (capture only), Obsidian (thinking and writing), Notion (anything that needs a status, date, or relation).</li>
+              <li><span className="text-bk-gold mr-2">—</span>The filing rule that eliminates mid-thought decisions: does this need a status field? Yes goes to Notion. No goes to Obsidian.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Notion links out to Obsidian; Obsidian never links back to Notion. Directional data flow prevents the synchronisation overhead that collapses most PKM systems.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Wispr Flow&rsquo;s single function is capture as an input method. It has no permanent home for content, only a path into Obsidian or Notion.</li>
             </ul>
           </Callout>
 
@@ -5023,7 +5023,7 @@ function PKMArticle({ article, formattedDate }: { article: ReturnType<typeof get
               <RuleRow icon="◈" tool="Obsidian" role="Thinking" note="Anything that needs to be written: specs, research, RAG docs, decision logs." />
               <RuleRow icon="⊞" tool="Notion" role="Coordination" note="Anything that needs a status, date, or relation." />
             </div>
-            <p className="font-sans text-sm text-brand-muted mt-4 pt-4 border-t border-brand-concrete">
+            <p className="font-sans text-sm text-bk-muted mt-4 pt-4 border-t border-bk-rule">
               Test: does this need a status field? Yes → Notion. No → Obsidian.
             </p>
           </Callout>
@@ -5031,10 +5031,10 @@ function PKMArticle({ article, formattedDate }: { article: ReturnType<typeof get
 
         {/* Flow diagram */}
         <figure>
-          <div className="border border-brand-concrete overflow-hidden">
+          <div className="border border-bk-rule overflow-hidden">
             <FlowDiagram />
           </div>
-          <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+          <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
             System overview — Wispr feeds both capture destinations; Notion links out to Obsidian, never the reverse.
           </figcaption>
         </figure>
@@ -5043,7 +5043,7 @@ function PKMArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="01" title="Wispr Flow" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
             Wispr is not a storage layer. It&apos;s a dictation engine — you speak, text appears wherever your cursor is.
             The setup is minimal and the benefits compound fast once you&apos;re in the habit.
           </p>
@@ -5056,16 +5056,16 @@ function PKMArticle({ article, formattedDate }: { article: ReturnType<typeof get
             { label: 'Notetaker', value: 'Mac only, free plan, launched Aug 2026. System-audio meeting capture — no bot joins the call. Windows and mobile not yet available.' },
           ]} />
 
-          <p className="font-sans text-sm text-brand-muted leading-relaxed mt-6 italic">
+          <p className="font-sans text-sm text-bk-muted leading-relaxed mt-6 italic">
             Primary use case: dictating long Claude prompts and dumping raw ideas directly into the Obsidian inbox note.
           </p>
 
           {/* Wispr mockup */}
           <figure className="mt-8">
-            <div className="border border-brand-concrete overflow-hidden">
+            <div className="border border-bk-rule overflow-hidden">
               <WisprMockup />
             </div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
               Wispr Flow dictation capsule — hovers at cursor position, disappears when done.
             </figcaption>
           </figure>
@@ -5075,7 +5075,7 @@ function PKMArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="02" title="Obsidian" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
             Obsidian is the thinking layer. Every note lives in a local markdown file — no proprietary format,
             no lock-in. The vault structure below is opinionated but simple: four numbered folders plus a templates
             directory. The inbox folder does the heaviest lifting.
@@ -5088,7 +5088,7 @@ function PKMArticle({ article, formattedDate }: { article: ReturnType<typeof get
 40-archive/
 _templates/`}</CodeBlock>
 
-          <p className="font-sans text-sm text-brand-black/75 leading-relaxed mt-6 mb-4">
+          <p className="font-sans text-sm text-bk-parchment/75 leading-relaxed mt-6 mb-4">
             Every note uses the same frontmatter structure — this makes the Bases views work and keeps retrieval consistent:
           </p>
 
@@ -5102,16 +5102,16 @@ tags: []
 
           {/* Obsidian mockup */}
           <figure className="mt-8">
-            <div className="border border-brand-concrete overflow-hidden">
+            <div className="border border-bk-rule overflow-hidden">
               <ObsidianMockup />
             </div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
               Obsidian vault — file tree with numbered folders, note editor showing standard frontmatter.
             </figcaption>
           </figure>
 
-          <h3 className="font-display text-3xl text-brand-black mt-10 mb-4">Bases Views</h3>
-          <p className="font-sans text-sm text-brand-black/70 leading-relaxed mb-6">
+          <h3 className="font-book font-bold text-3xl text-bk-parchment mt-10 mb-4">Bases Views</h3>
+          <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed mb-6">
             Three views are all you need. Install Bases and configure these — they make the daily processing loop fast.
           </p>
 
@@ -5134,14 +5134,14 @@ tags: []
           </div>
 
           <Callout label="Plugin shortlist" className="mt-8">
-            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+            <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
               Templater, QuickAdd, Obsidian Git, Excalidraw. Resist adding more until these earn their keep.
               The marginal plugin is where vaults go to rot.
             </p>
           </Callout>
 
-          <p className="font-sans text-sm text-brand-muted leading-relaxed mt-6 italic">
-            RAG note: keep one markdown file per topic in <code className="font-mono text-brand-cobalt text-xs">30-library/</code>,
+          <p className="font-sans text-sm text-bk-muted leading-relaxed mt-6 italic">
+            RAG note: keep one markdown file per topic in <code className="font-mono text-bk-gold text-xs">30-library/</code>,
             headings as retrieval anchors, no exotic formatting — this is already the ideal shape for feeding into Claude.
           </p>
         </section>
@@ -5150,7 +5150,7 @@ tags: []
         <section>
           <SectionHeading number="03" title="Notion" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
             Notion handles everything with a status or a date. If a project exists as an Obsidian folder, it
             also exists as a row in the Projects database — but working content lives in Obsidian, never duplicated
             in Notion.
@@ -5158,15 +5158,15 @@ tags: []
 
           {/* Notion mockup */}
           <figure className="mb-8">
-            <div className="border border-brand-concrete overflow-hidden">
+            <div className="border border-bk-rule overflow-hidden">
               <NotionMockup />
             </div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
               Notion Projects database — four core databases with relational links between them.
             </figcaption>
           </figure>
 
-          <h3 className="font-display text-3xl text-brand-black mb-4">Database Schema</h3>
+          <h3 className="font-book font-bold text-3xl text-bk-parchment mb-4">Database Schema</h3>
 
           <div className="space-y-6">
             <DatabaseSchema
@@ -5217,11 +5217,11 @@ tags: []
         <section>
           <SectionHeading number="04" title="The Loop" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
             The system only works if the loop runs. Three cadences, each with a distinct scope:
           </p>
 
-          <div className="space-y-0 border border-brand-concrete">
+          <div className="space-y-0 border border-bk-rule">
             <LoopRow
               cadence="All day"
               label="Capture"
@@ -5265,8 +5265,8 @@ tags: []
         </section>
 
         {/* Closing */}
-        <section className="border-t border-brand-concrete pt-10">
-          <p className="font-sans text-base text-brand-black/70 leading-relaxed max-w-prose">
+        <section className="border-t border-bk-rule pt-10">
+          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed max-w-prose">
             This stack isn&apos;t clever. It&apos;s boring in the right way — each tool does one thing, the boundaries are
             explicit, and the maintenance loop is short enough to actually run. The goal isn&apos;t a perfect system,
             it&apos;s one that doesn&apos;t require willpower to maintain.
@@ -5280,10 +5280,10 @@ tags: []
         ]} />
 
         {/* Back link */}
-        <div className="border-t border-brand-concrete pt-8">
+        <div className="border-t border-bk-rule pt-8">
           <Link
             href="/articles"
-            className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
+            className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200"
           >
             ← Back to Field Notes
           </Link>
@@ -5295,34 +5295,34 @@ tags: []
 
 function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
 
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
 
-        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
           NOT<br />
-          <span className="text-brand-cobalt">PROMPTING.</span><br />
+          <span className="text-bk-gold">PROMPTING.</span><br />
           DIRECTING.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/70 border border-bk-gold/25 px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -5333,17 +5333,17 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
 
         {/* Tool comparison */}
         <section>
-          <div className="border border-brand-concrete overflow-hidden mb-8">
+          <div className="border border-bk-rule overflow-hidden mb-8">
             <ToolComparisonSplit />
           </div>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
             Midjourney and Higgsfield are not the same kind of tool in competition. One is built around
             image quality and aesthetic sensibility: stills, art direction, composition. The other is
             a director's console layered over 30-plus third-party and in-house video models, with
             70-plus named, one-click camera presets as its actual product. You use Midjourney to build
             the frame. You use Higgsfield to move it.
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             The quality gap that separates usable AI video from something that actually looks like it was
             directed isn't model quality. It's intent. Defaulting to Static and hoping the prompt carries
             the shot is the wrong workflow. Picking a deliberate camera move for a deliberate narrative
@@ -5351,10 +5351,10 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
           </p>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>Midjourney V8.2 is built around image quality and Personalisation. Higgsfield is a director&rsquo;s console over 30-plus video models with 70-plus named camera presets. They are not competing tools.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>The quality gap between usable AI video and something that looks directed is not model quality. It is intent: picking a deliberate camera move for a deliberate narrative reason.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Three camera moves worth knowing cold: Dolly (camera physically moves toward or away from subject), Orbit (camera arcs around a fixed subject), Push (simulated zoom applied in post).</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>The universal prompt formula structures every generation: subject, context, style, technical parameters, negative space. Adding all five eliminates most prompt ambiguity.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Midjourney V8.2 is built around image quality and Personalisation. Higgsfield is a director&rsquo;s console over 30-plus video models with 70-plus named camera presets. They are not competing tools.</li>
+              <li><span className="text-bk-gold mr-2">—</span>The quality gap between usable AI video and something that looks directed is not model quality. It is intent: picking a deliberate camera move for a deliberate narrative reason.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Three camera moves worth knowing cold: Dolly (camera physically moves toward or away from subject), Orbit (camera arcs around a fixed subject), Push (simulated zoom applied in post).</li>
+              <li><span className="text-bk-gold mr-2">—</span>The universal prompt formula structures every generation: subject, context, style, technical parameters, negative space. Adding all five eliminates most prompt ambiguity.</li>
             </ul>
           </Callout>
         </section>
@@ -5362,18 +5362,18 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
         {/* Midjourney section */}
         <section>
           <SectionHeading number="01" title="Midjourney — stills, art direction, composition" />
-          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-8">
+          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-8">
             V8.2 is the current default as of mid-2026, focused on aesthetics and Personalisation — it reads
             your accumulated ratings and moodboard to skew toward your taste. A handful of parameters do
             most of the work. The rest are edge cases.
           </p>
 
-          <div className="border border-brand-concrete overflow-hidden mb-8">
+          <div className="border border-bk-rule overflow-hidden mb-8">
             <MidjourneyParams />
           </div>
 
-          <h3 className="font-sans font-semibold text-sm tracking-[0.15em] uppercase text-brand-cobalt mb-4">Technique that actually moves the needle</h3>
-          <div className="border border-brand-concrete divide-y divide-brand-concrete">
+          <h3 className="font-sans font-semibold text-sm tracking-[0.15em] uppercase text-bk-gold mb-4">Technique that actually moves the needle</h3>
+          <div className="border border-bk-rule divide-y divide-brand-concrete">
             <CreativeTechRow
               label="Draft → full render workflow"
               desc={"Generate 8–12 low-quality variants in Draft Mode at roughly a quarter of standard credit cost. Pick the strongest 2–3 compositions. Then render those at full quality. Running full renders on your first pass is the expensive way to explore."}
@@ -5400,7 +5400,7 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
         {/* Higgsfield section */}
         <section>
           <SectionHeading number="02" title="Higgsfield — camera control, motion, Soul ID" />
-          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-6">
+          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-6">
             Higgsfield is an orchestration layer over 30-plus underlying models — Kling 3.0, Veo 3.1,
             Seedance 2.0, Wan 2.6, MiniMax Hailuo, Sora 2, and its own Soul and Cinema models. You route
             each shot to whichever model fits it, from one interface, without managing separate subscriptions.
@@ -5408,19 +5408,19 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
             preset system.
           </p>
 
-          <div className="border border-brand-concrete overflow-hidden mb-8">
+          <div className="border border-bk-rule overflow-hidden mb-8">
             <CameraMovesGrid />
           </div>
 
-          <h3 className="font-sans font-semibold text-sm tracking-[0.15em] uppercase text-brand-cobalt mb-4">Model routing — which model for which shot</h3>
-          <div className="border border-brand-concrete divide-y divide-brand-concrete mb-8">
+          <h3 className="font-sans font-semibold text-sm tracking-[0.15em] uppercase text-bk-gold mb-4">Model routing — which model for which shot</h3>
+          <div className="border border-bk-rule divide-y divide-brand-concrete mb-8">
             <CreativeTechRow label="Kling 3.0" desc={"Photorealistic human motion and character-driven scenes. The go-to for anything that requires a real face to move naturally. Also supports Kling Motion Control — takes a character reference image plus a separate motion-reference video and transfers the movement onto the still while preserving identity."} />
             <CreativeTechRow label="Veo 3.1" desc={"Atmospheric and outdoor scenes, native audio generation. Strong for establishing shots, environmental B-roll, and anything where ambient sound matters as much as the image."} />
             <CreativeTechRow label="Seedance 2.0" desc={"Multi-shot narrative and stylized motion. Use it when you need consistent motion logic across a short sequence rather than a single clip."} />
             <CreativeTechRow label="Wan 2.6" desc={"Restyling and video-to-video transfer. Takes real footage and reskins it rather than generating from nothing — useful for adapting one piece of content across multiple visual treatments without reshooting."} last />
           </div>
 
-          <h3 className="font-sans font-semibold text-sm tracking-[0.15em] uppercase text-brand-cobalt mb-4">The honest trade-offs</h3>
+          <h3 className="font-sans font-semibold text-sm tracking-[0.15em] uppercase text-bk-gold mb-4">The honest trade-offs</h3>
           <div className="grid md:grid-cols-2 gap-4 mb-6">
             {([
               ['Motion stability', "Complex, busy action sequences get unstable. Calm single-subject shots and stylized B-roll are where it performs best. Don't use it to replicate a Michael Bay sequence — use it to hold a character in a deliberate frame."],
@@ -5428,9 +5428,9 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
               ['Credit economics', 'It\'s a credit-metered aggregator. Realistic per-clip cost runs well above the headline subscription once re-rolls factor in. Budget roughly $0.60–$1.00 per usable Kling-quality clip, more for Sora/Veo-tier output.'],
               ['Learning curve', 'It operates as a structured pipeline, not a single-prompt generator. There\'s real workflow to learn versus typing one line and hoping. The presets are the payoff for that investment.'],
             ] as [string, string][]).map(([label, desc]) => (
-              <div key={label} className="border border-brand-concrete p-4">
-                <h4 className="font-sans font-semibold text-xs text-brand-black mb-1.5">{label}</h4>
-                <p className="font-sans text-xs text-brand-black/60 leading-relaxed">{desc}</p>
+              <div key={label} className="border border-bk-rule p-4">
+                <h4 className="font-sans font-semibold text-xs text-bk-parchment mb-1.5">{label}</h4>
+                <p className="font-sans text-xs text-bk-parchment/60 leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
@@ -5447,13 +5447,13 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
         {/* Cinematography vocabulary */}
         <section>
           <SectionHeading number="03" title="Cinematography vocabulary — know these cold" />
-          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-8">
+          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-8">
             Prompting with cinematographic precision beats prompting with mood words every time.
             "35mm film photography, Rembrandt lighting" outperforms "cinematic, moody" reliably and repeatably.
             These are the terms worth having immediately available — they work across both tools.
           </p>
 
-          <div className="border border-brand-concrete divide-y divide-brand-concrete">
+          <div className="border border-bk-rule divide-y divide-brand-concrete">
             {([
               ['Dolly', 'Camera physically moves toward / away / alongside the subject on a track. Different from zoom — the whole camera moves, changing perspective relationships.'],
               ['Dolly zoom (vertigo effect)', 'Dolly and zoom move in opposite directions simultaneously. Background appears to warp while subject stays framed. Hitchcock. Iconic. Use once.'],
@@ -5467,10 +5467,10 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
               ['B-roll', 'Supplementary footage that cuts away from the main narrative shot. In AI generation, the fastest shots to generate and the easiest to over-produce.'],
             ] as [string, string][]).map(([term, def], i, arr) => (
               <div key={term} className="flex gap-0">
-                <div className="w-52 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/20">
-                  <span className="font-sans font-semibold text-sm text-brand-black">{term}</span>
+                <div className="w-52 flex-shrink-0 p-4 border-r border-bk-rule bg-bk-deep/20">
+                  <span className="font-sans font-semibold text-sm text-bk-parchment">{term}</span>
                 </div>
-                <p className="font-sans text-sm text-brand-black/65 p-4 leading-relaxed">{def}</p>
+                <p className="font-sans text-sm text-bk-parchment/65 p-4 leading-relaxed">{def}</p>
               </div>
             ))}
           </div>
@@ -5479,33 +5479,33 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
         {/* Prompt formula */}
         <section>
           <SectionHeading number="04" title="The universal prompt formula" />
-          <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-4 mb-8">
+          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-8">
             This structure works across both tools. The order matters — subject and environment set the
             foundation; lighting and lens guide the model's interpretation; style and parameters tune the output.
             App-level controls (aspect ratio, model selection, duration in Higgsfield) belong in the interface,
             not buried in prompt text.
           </p>
 
-          <div className="border border-brand-concrete overflow-hidden mb-8">
+          <div className="border border-bk-rule overflow-hidden mb-8">
             <PromptFormulaDiagram />
           </div>
 
-          <div className="border border-brand-concrete p-6 bg-brand-graphite/20 space-y-4 mb-6">
+          <div className="border border-bk-rule p-6 bg-bk-deep/20 space-y-4 mb-6">
             <div>
-              <p className="font-sans text-xs text-brand-cobalt font-medium tracking-[0.1em] uppercase mb-1.5">Image (Midjourney-style)</p>
-              <p className="font-mono text-sm text-brand-black/70 leading-relaxed">
+              <p className="font-sans text-xs text-bk-gold font-medium tracking-[0.1em] uppercase mb-1.5">Image (Midjourney-style)</p>
+              <p className="font-mono text-sm text-bk-parchment/70 leading-relaxed">
                 {"A contemplative portrait of a woman in her 30s, Rembrandt lighting casting gentle shadows across her face, medium format photography aesthetic, shallow depth of field --ar 4:5 --raw --s 150"}
               </p>
             </div>
-            <div className="border-t border-brand-concrete pt-4">
-              <p className="font-sans text-xs text-brand-cobalt font-medium tracking-[0.1em] uppercase mb-1.5">Video (Higgsfield-style)</p>
-              <p className="font-mono text-sm text-brand-black/70 leading-relaxed">
+            <div className="border-t border-bk-rule pt-4">
+              <p className="font-sans text-xs text-bk-gold font-medium tracking-[0.1em] uppercase mb-1.5">Video (Higgsfield-style)</p>
+              <p className="font-mono text-sm text-bk-parchment/70 leading-relaxed">
                 {"Cinematic slow dolly-in on [subject] standing in a fog-filled warehouse, camera glides forward at a steady creep, shallow depth of field with background softening, volumetric god rays through haze, teal-and-orange grade, anamorphic flares, 24fps film look — Preset: Dolly In"}
               </p>
             </div>
           </div>
 
-          <div className="border border-brand-concrete divide-y divide-brand-concrete">
+          <div className="border border-bk-rule divide-y divide-brand-concrete">
             <CreativeTechRow label="One dominant cue" desc={"One dominant style or lighting cue is more reliable than five competing ones. Pick the one or two terms that matter most. 'Rembrandt lighting, shallow depth of field' is better than 'dramatic, moody, cinematic, noir, ethereal.'"} />
             <CreativeTechRow label="Concrete beats vague" desc={'"35mm film photography, Rembrandt lighting" outperforms "cinematic, moody" every time. The model has nothing to work with when you give it a mood word and no technical signal.'} />
             <CreativeTechRow label="App controls stay in the app" desc={"Settings that are app-level controls — duration, aspect ratio, model choice in Higgsfield — belong in the interface, not in the prompt. Add a short reminder at the end of your saved prompt template so you don't forget to set them each time."} last />
@@ -5524,9 +5524,9 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
               ['Concept art', "Midjourney's strength in stylized composition makes it a fast concept-art layer ahead of a 3D build (directly relevant to Three.js / Unity / UE5 environment work)."],
               ['Voiceover + lipsync', 'Higgsfield bundles multilingual translation with automatic lip-sync and voice swapping — useful for adapting one video asset across markets without re-shooting or re-recording.'],
             ] as [string, string][]).map(([label, desc]) => (
-              <div key={label} className="border border-brand-concrete p-4">
-                <h4 className="font-sans font-semibold text-xs text-brand-black mb-1.5">{label}</h4>
-                <p className="font-sans text-xs text-brand-black/60 leading-relaxed">{desc}</p>
+              <div key={label} className="border border-bk-rule p-4">
+                <h4 className="font-sans font-semibold text-xs text-bk-parchment mb-1.5">{label}</h4>
+                <p className="font-sans text-xs text-bk-parchment/60 leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
@@ -5535,7 +5535,7 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
         {/* What separates good from average */}
         <section>
           <SectionHeading number="06" title="What separates good output from average" />
-          <div className="border border-brand-concrete divide-y divide-brand-concrete">
+          <div className="border border-bk-rule divide-y divide-brand-concrete">
             <CreativeTechRow
               label="Direct, don't just prompt"
               desc={"The biggest quality jump in Higgsfield specifically comes from treating the preset menu as a director's toolkit — picking a deliberate camera move for a deliberate narrative reason — rather than defaulting to Static and relying on text to carry all the motion description. Bullet Time on a quiet moment reads as a mistake, not a choice."}
@@ -5562,13 +5562,13 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
         ]} />
 
         {/* Footer */}
-        <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
-          <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <footer className="pt-4 pb-16 border-t border-bk-rule flex flex-wrap justify-between items-center gap-4">
+          <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
             ← All Field Notes
           </Link>
           <div className="flex flex-wrap gap-2">
             {article!.tags.map((tag) => (
-              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/60 border border-brand-cobalt/20 px-2 py-0.5">
+              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/60 border border-bk-gold/20 px-2 py-0.5">
                 {tag}
               </span>
             ))}
@@ -5582,56 +5582,56 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
 function CreativeTechRow({ label, desc, last = false }: { label: string; desc: string; last?: boolean }) {
   return (
     <div className="flex gap-0">
-      <div className="w-48 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/20">
-        <span className="font-sans font-semibold text-sm text-brand-cobalt">{label}</span>
+      <div className="w-48 flex-shrink-0 p-4 border-r border-bk-rule bg-bk-deep/20">
+        <span className="font-sans font-semibold text-sm text-bk-gold">{label}</span>
       </div>
-      <p className="font-sans text-sm text-brand-black/65 p-4 leading-relaxed">{desc}</p>
+      <p className="font-sans text-sm text-bk-parchment/65 p-4 leading-relaxed">{desc}</p>
     </div>
   )
 }
 
 function HermesCommandRow({ cmd, desc, last = false }: { cmd: string; desc: string; last?: boolean }) {
   return (
-    <div className={`flex gap-0 ${!last ? 'border-b border-brand-concrete' : ''}`}>
-      <div className="w-56 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/30">
-        <code className="font-mono text-xs text-brand-cobalt">{cmd}</code>
+    <div className={`flex gap-0 ${!last ? 'border-b border-bk-rule' : ''}`}>
+      <div className="w-56 flex-shrink-0 p-4 border-r border-bk-rule bg-bk-deep/30">
+        <code className="font-mono text-xs text-bk-gold">{cmd}</code>
       </div>
-      <p className="font-sans text-sm text-brand-black/65 p-4 leading-relaxed">{desc}</p>
+      <p className="font-sans text-sm text-bk-parchment/65 p-4 leading-relaxed">{desc}</p>
     </div>
   )
 }
 
 function HermesArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
 
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
 
-        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
           THE<br />
           AGENT<br />
-          <span className="text-brand-cobalt">THAT</span><br />
+          <span className="text-bk-gold">THAT</span><br />
           REMEMBERS.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/70 border border-bk-gold/25 px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -5642,14 +5642,14 @@ function HermesArticle({ article, formattedDate }: { article: ReturnType<typeof 
 
         {/* Lede */}
         <section>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
             Every time you open a chat tool, you start from zero. You re-explain your stack.
             You re-explain your project history, your naming conventions, your preferences, the decision you made
             last week and why. The model has no memory of any of it, because session tools are designed
             to be stateless. That&rsquo;s a product choice, not a technical constraint. And for most
             active-session work, it&rsquo;s a reasonable one.
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             Hermes Agent, released by Nous Research in February 2026 under MIT, is built around the opposite
             premise. It runs as a persistent daemon on your own hardware. It indexes every session into a
             local SQLite store with full-text search. It writes reusable skill documents when it solves
@@ -5659,17 +5659,17 @@ function HermesArticle({ article, formattedDate }: { article: ReturnType<typeof 
           </p>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>Hermes Agent (Nous Research, MIT, February 2026) stores all memory locally in SQLite at ~/.hermes/state.db, indexed with FTS5 for full-text search across every session ever run.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Memory is agent-curated, not a raw transcript dump. Hermes periodically reviews what it has logged and decides what is worth keeping, so the system stays fast and useful over time.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>When Hermes solves a hard problem, it writes a reusable skill document. The next time a similar problem appears, it draws on the documented approach rather than reasoning from scratch.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Use Claude Code for active development sessions where you are present. Use Hermes for deep context accumulation and unattended background tasks that benefit from cross-session memory.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Hermes Agent (Nous Research, MIT, February 2026) stores all memory locally in SQLite at ~/.hermes/state.db, indexed with FTS5 for full-text search across every session ever run.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Memory is agent-curated, not a raw transcript dump. Hermes periodically reviews what it has logged and decides what is worth keeping, so the system stays fast and useful over time.</li>
+              <li><span className="text-bk-gold mr-2">—</span>When Hermes solves a hard problem, it writes a reusable skill document. The next time a similar problem appears, it draws on the documented approach rather than reasoning from scratch.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Use Claude Code for active development sessions where you are present. Use Hermes for deep context accumulation and unattended background tasks that benefit from cross-session memory.</li>
             </ul>
           </Callout>
 
-          <div className="mt-10 border border-brand-concrete">
+          <div className="mt-10 border border-bk-rule">
             <HermesMemoryTimeline />
           </div>
-          <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+          <p className="font-sans text-[11px] text-bk-muted mt-3 text-center tracking-wide uppercase">
             Standard chat vs. Hermes: the session inheritance model
           </p>
         </section>
@@ -5678,21 +5678,21 @@ function HermesArticle({ article, formattedDate }: { article: ReturnType<typeof 
         <section>
           <SectionHeading number="01" title="Memory that actually persists" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
-              Hermes stores all memory in a local SQLite database at <code className="font-mono text-xs bg-brand-graphite px-1.5 py-0.5">~/.hermes/state.db</code>, indexed with FTS5 for full-text search across every session you&rsquo;ve ever run. When you ask &ldquo;what did we land on for the authentication schema?&rdquo; it&rsquo;s not searching your current context — it&rsquo;s searching the actual historical record, with LLM summarisation to surface relevant cross-session context the way a good note-taking system would.
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+              Hermes stores all memory in a local SQLite database at <code className="font-mono text-xs bg-bk-deep px-1.5 py-0.5">~/.hermes/state.db</code>, indexed with FTS5 for full-text search across every session you&rsquo;ve ever run. When you ask &ldquo;what did we land on for the authentication schema?&rdquo; it&rsquo;s not searching your current context — it&rsquo;s searching the actual historical record, with LLM summarisation to surface relevant cross-session context the way a good note-taking system would.
             </p>
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
-              The memory is <strong className="text-brand-black">agent-curated, not a raw transcript dump.</strong> Hermes periodically reviews what it&rsquo;s logged and decides what&rsquo;s actually worth keeping — condensing, surfacing key decisions, archiving noise. This matters because unlimited transcript accumulation gets expensive and slow quickly; curated memory stays useful.
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+              The memory is <strong className="text-bk-parchment">agent-curated, not a raw transcript dump.</strong> Hermes periodically reviews what it&rsquo;s logged and decides what&rsquo;s actually worth keeping — condensing, surfacing key decisions, archiving noise. This matters because unlimited transcript accumulation gets expensive and slow quickly; curated memory stays useful.
             </p>
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               For teams or individuals who want deeper user modeling, there&rsquo;s optional Honcho integration — &ldquo;dialectic user modeling&rdquo; in the project&rsquo;s own framing. Instead of re-inferring your working style, your tool preferences, and your project context each session, Honcho builds and maintains a persistent model of who you are across all sessions. The result is an agent that gets progressively better at working with you specifically, not just better at generating text generally.
             </p>
           </div>
 
           <Callout label="All of it stays local" className="mt-8">
-            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+            <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
               Zero telemetry, zero data collection. The state database, all session logs, all memories
-              and skills — everything lives in <code className="font-mono text-xs bg-brand-graphite px-1 py-0.5">~/.hermes/</code> on your machine. Nothing leaves unless you&rsquo;ve
+              and skills — everything lives in <code className="font-mono text-xs bg-bk-deep px-1 py-0.5">~/.hermes/</code> on your machine. Nothing leaves unless you&rsquo;ve
               explicitly connected an external provider or messaging platform. The project is fully
               open-source under MIT — every line is auditable.
             </p>
@@ -5702,21 +5702,21 @@ function HermesArticle({ article, formattedDate }: { article: ReturnType<typeof 
         {/* Section 2 */}
         <section>
           <SectionHeading number="02" title="The agent that writes its own manual" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
-            When Hermes solves something non-trivial, it writes a <strong className="text-brand-black">SKILL.md</strong> — a reusable, portable skill document that captures what it learned. The next time a similar problem comes up, it loads the relevant skill rather than re-solving from scratch. Skills self-improve during use, accumulate naturally as you work, and follow the open <code className="font-mono text-xs bg-brand-graphite px-1.5 py-0.5">agentskills.io</code> standard — meaning they&rsquo;re portable across any Hermes instance and shareable with the community.
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+            When Hermes solves something non-trivial, it writes a <strong className="text-bk-parchment">SKILL.md</strong> — a reusable, portable skill document that captures what it learned. The next time a similar problem comes up, it loads the relevant skill rather than re-solving from scratch. Skills self-improve during use, accumulate naturally as you work, and follow the open <code className="font-mono text-xs bg-bk-deep px-1.5 py-0.5">agentskills.io</code> standard — meaning they&rsquo;re portable across any Hermes instance and shareable with the community.
           </p>
 
-          <div className="mt-10 border border-brand-concrete">
+          <div className="mt-10 border border-bk-rule">
             <SkillFlywheel />
           </div>
-          <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+          <p className="font-sans text-[11px] text-bk-muted mt-3 text-center tracking-wide uppercase">
             The skill accumulation flywheel — solved once, reused indefinitely
           </p>
 
           <div className="mt-8 space-y-4">
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               40+ skills ship built-in — MLOps workflows, GitHub automation, diagramming, note-taking,
-              and more. The community skill hub at <code className="font-mono text-xs bg-brand-graphite px-1.5 py-0.5">agentskills.io</code> extends that with a one-command install.
+              and more. The community skill hub at <code className="font-mono text-xs bg-bk-deep px-1.5 py-0.5">agentskills.io</code> extends that with a one-command install.
               But the most useful skills are the ones the agent writes from your own work — those are
               calibrated to your specific stack, your naming conventions, your preferences. They&rsquo;re
               not generic.
@@ -5724,8 +5724,8 @@ function HermesArticle({ article, formattedDate }: { article: ReturnType<typeof 
           </div>
 
           <Callout label="Curator hygiene" className="mt-8">
-            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
-              As a long-running instance accumulates skills, overlap and redundancy creep in. <code className="font-mono text-xs bg-brand-graphite px-1 py-0.5">hermes curator</code> runs background maintenance: reviewing agent-created skills, consolidating duplicates, archiving stale entries, and protecting anything you&rsquo;ve pinned. Without periodic curation, a mature instance can end up with conflicting skill documents that slow retrieval and produce inconsistent behaviour. Run the curator; don&rsquo;t skip it.
+            <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
+              As a long-running instance accumulates skills, overlap and redundancy creep in. <code className="font-mono text-xs bg-bk-deep px-1 py-0.5">hermes curator</code> runs background maintenance: reviewing agent-created skills, consolidating duplicates, archiving stale entries, and protecting anything you&rsquo;ve pinned. Without periodic curation, a mature instance can end up with conflicting skill documents that slow retrieval and produce inconsistent behaviour. Run the curator; don&rsquo;t skip it.
             </p>
           </Callout>
         </section>
@@ -5733,14 +5733,14 @@ function HermesArticle({ article, formattedDate }: { article: ReturnType<typeof 
         {/* Section 3 */}
         <section>
           <SectionHeading number="03" title="One daemon, every surface" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
-            A single <code className="font-mono text-xs bg-brand-graphite px-1.5 py-0.5">hermes gateway</code> process serves every connected platform simultaneously — Telegram, Discord, Slack, WhatsApp, Signal, email, and roughly a dozen more. Cross-platform conversation continuity means you can start a thread on your phone via Telegram, continue it in the terminal, and pick it up in your IDE — same session memory, same context, carried across every surface.
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+            A single <code className="font-mono text-xs bg-bk-deep px-1.5 py-0.5">hermes gateway</code> process serves every connected platform simultaneously — Telegram, Discord, Slack, WhatsApp, Signal, email, and roughly a dozen more. Cross-platform conversation continuity means you can start a thread on your phone via Telegram, continue it in the terminal, and pick it up in your IDE — same session memory, same context, carried across every surface.
           </p>
 
-          <div className="mt-10 border border-brand-concrete">
+          <div className="mt-10 border border-bk-rule">
             <GatewayHubSpoke />
           </div>
-          <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+          <p className="font-sans text-[11px] text-bk-muted mt-3 text-center tracking-wide uppercase">
             One gateway process — eight platforms shown, twenty supported
           </p>
 
@@ -5750,25 +5750,25 @@ hermes gateway           # start the gateway process
 hermes gateway install   # install as a systemd service (runs on reboot)`}</CodeBlock>
           </div>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-8">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-8">
             Execution environments give you control over how much isolation you want:
           </p>
           <div className="mt-4 space-y-4">
-            <div className="border-l-2 border-brand-cobalt pl-6">
-              <h3 className="font-display text-xl text-brand-black mb-1">LOCAL TERMINAL</h3>
-              <p className="font-sans text-sm text-brand-black/65">Direct execution on your machine. Fast, no overhead. Appropriate for trusted tasks you&rsquo;d run manually.</p>
+            <div className="border-l-2 border-bk-gold pl-6">
+              <h3 className="font-book font-bold text-xl text-bk-parchment mb-1">LOCAL TERMINAL</h3>
+              <p className="font-sans text-sm text-bk-parchment/65">Direct execution on your machine. Fast, no overhead. Appropriate for trusted tasks you&rsquo;d run manually.</p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/40 pl-6">
-              <h3 className="font-display text-xl text-brand-black mb-1">DOCKER</h3>
-              <p className="font-sans text-sm text-brand-black/65">Isolated container with read-only root filesystem, dropped capabilities, and PID limits. The right default for anything untrusted.</p>
+            <div className="border-l-2 border-bk-gold/40 pl-6">
+              <h3 className="font-book font-bold text-xl text-bk-parchment mb-1">DOCKER</h3>
+              <p className="font-sans text-sm text-bk-parchment/65">Isolated container with read-only root filesystem, dropped capabilities, and PID limits. The right default for anything untrusted.</p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/40 pl-6">
-              <h3 className="font-display text-xl text-brand-black mb-1">SSH REMOTE</h3>
-              <p className="font-sans text-sm text-brand-black/65">Execute on any remote server. Useful for scheduled tasks that touch production infrastructure without opening it to your local environment.</p>
+            <div className="border-l-2 border-bk-gold/40 pl-6">
+              <h3 className="font-book font-bold text-xl text-bk-parchment mb-1">SSH REMOTE</h3>
+              <p className="font-sans text-sm text-bk-parchment/65">Execute on any remote server. Useful for scheduled tasks that touch production infrastructure without opening it to your local environment.</p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/40 pl-6">
-              <h3 className="font-display text-xl text-brand-black mb-1">MODAL / SINGULARITY</h3>
-              <p className="font-sans text-sm text-brand-black/65">Cloud and HPC execution backends for compute-heavy workloads.</p>
+            <div className="border-l-2 border-bk-gold/40 pl-6">
+              <h3 className="font-book font-bold text-xl text-bk-parchment mb-1">MODAL / SINGULARITY</h3>
+              <p className="font-sans text-sm text-bk-parchment/65">Cloud and HPC execution backends for compute-heavy workloads.</p>
             </div>
           </div>
         </section>
@@ -5776,14 +5776,14 @@ hermes gateway install   # install as a systemd service (runs on reboot)`}</Code
         {/* Section 4 */}
         <section>
           <SectionHeading number="04" title="The machine that runs while you sleep" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             The scheduling system is the practical unlock. A cron job written in natural language, delivered to any connected platform, with skills attached so it doesn&rsquo;t start cold. A &ldquo;morning briefing to Telegram&rdquo; or &ldquo;nightly infrastructure health check to Slack&rdquo; is a single command plus a well-scoped prompt. No script, no wrapper, no pipeline configuration.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
-            The most important rule for cron job prompts: <strong className="text-brand-black">the prompt must contain everything the agent needs that isn&rsquo;t covered by an attached skill.</strong> Vague prompts fail silently in unattended runs — there&rsquo;s no one present to clarify. A well-scoped cron prompt looks like: <em>&ldquo;SSH into server 192.168.1.100 as user &lsquo;deploy&rsquo;, check if nginx is running with systemctl status nginx, and verify that https://example.com returns HTTP 200.&rdquo;</em> That&rsquo;s specific enough to succeed without human input.
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
+            The most important rule for cron job prompts: <strong className="text-bk-parchment">the prompt must contain everything the agent needs that isn&rsquo;t covered by an attached skill.</strong> Vague prompts fail silently in unattended runs — there&rsquo;s no one present to clarify. A well-scoped cron prompt looks like: <em>&ldquo;SSH into server 192.168.1.100 as user &lsquo;deploy&rsquo;, check if nginx is running with systemctl status nginx, and verify that https://example.com returns HTTP 200.&rdquo;</em> That&rsquo;s specific enough to succeed without human input.
           </p>
 
-          <div className="mt-10 border border-brand-concrete divide-y divide-brand-concrete">
+          <div className="mt-10 border border-bk-rule divide-y divide-brand-concrete">
             <HermesCommandRow cmd="hermes cron list" desc="Show all scheduled jobs — status, next run, attached skills." />
             <HermesCommandRow cmd="hermes cron create" desc="Create a job from a natural-language prompt. Specify delivery target and attached skills." />
             <HermesCommandRow cmd="hermes cron edit <job>" desc="Update schedule, prompt, name, delivery target, or attached skills." />
@@ -5793,7 +5793,7 @@ hermes gateway install   # install as a systemd service (runs on reboot)`}</Code
           </div>
 
           <Callout label="Two safety constraints" className="mt-8">
-            <ul className="space-y-2 font-sans text-sm text-brand-black/70 leading-relaxed">
+            <ul className="space-y-2 font-sans text-sm text-bk-parchment/70 leading-relaxed">
               <li>Scheduled task prompts are scanned for prompt-injection and credential-exfiltration patterns at both creation and update time.</li>
               <li>Cron-run sessions cannot recursively create more cron jobs — Hermes disables cron-management tools inside cron executions specifically to prevent runaway self-scheduling loops.</li>
             </ul>
@@ -5803,29 +5803,29 @@ hermes gateway install   # install as a systemd service (runs on reboot)`}</Code
         {/* Section 5 */}
         <section>
           <SectionHeading number="05" title="Claude Code or Hermes?" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             These tools solve different problems. The marketing language around both implies overlap that doesn&rsquo;t exist in practice.
           </p>
 
-          <div className="mt-8 border border-brand-concrete">
+          <div className="mt-8 border border-bk-rule">
             <HermesVsClaudeComparison />
           </div>
-          <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+          <p className="font-sans text-[11px] text-bk-muted mt-3 text-center tracking-wide uppercase">
             Different tools, different jobs — the honest comparison
           </p>
 
           <div className="mt-8 space-y-4">
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               If your need is &ldquo;help me refactor this codebase right now,&rdquo; Claude Code is the sharper tool. It has deeper context engineering, better real-time coding capability, and it&rsquo;s purpose-built for the active-session pairing model.
             </p>
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               Hermes is worth the setup overhead specifically for the work that currently means re-explaining your context every time you start a new session — recurring automation, multi-project context management, unattended overnight tasks. If you&rsquo;re not doing that kind of work, the setup overhead doesn&rsquo;t pay off. If you are, nothing else has the same architecture for it.
             </p>
           </div>
 
           <Callout label="The setup calculus" className="mt-8">
-            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
-              Recommended first run: install via the curl script, run <code className="font-mono text-xs bg-brand-graphite px-1 py-0.5">hermes setup</code> with whichever provider you already have credentials for, then <code className="font-mono text-xs bg-brand-graphite px-1 py-0.5">hermes doctor</code> to confirm a clean install. Run one plain interactive session as a smoke test before enabling the gateway or creating any cron jobs. Create exactly one low-stakes scheduled job first — a daily summary delivered to your home channel — before trusting it with anything that touches infrastructure or credentials. Let skills accumulate naturally through real use. That&rsquo;s the entire point of the design.
+            <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
+              Recommended first run: install via the curl script, run <code className="font-mono text-xs bg-bk-deep px-1 py-0.5">hermes setup</code> with whichever provider you already have credentials for, then <code className="font-mono text-xs bg-bk-deep px-1 py-0.5">hermes doctor</code> to confirm a clean install. Run one plain interactive session as a smoke test before enabling the gateway or creating any cron jobs. Create exactly one low-stakes scheduled job first — a daily summary delivered to your home channel — before trusting it with anything that touches infrastructure or credentials. Let skills accumulate naturally through real use. That&rsquo;s the entire point of the design.
             </p>
           </Callout>
         </section>
@@ -5837,13 +5837,13 @@ hermes gateway install   # install as a systemd service (runs on reboot)`}</Code
         ]} />
 
         {/* Footer */}
-        <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
-          <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <footer className="pt-4 pb-16 border-t border-bk-rule flex flex-wrap justify-between items-center gap-4">
+          <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
             ← All Field Notes
           </Link>
           <div className="flex flex-wrap gap-2">
             {article!.tags.map((tag) => (
-              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/60 border border-brand-cobalt/20 px-2 py-0.5">
+              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/60 border border-bk-gold/20 px-2 py-0.5">
                 {tag}
               </span>
             ))}
@@ -5856,45 +5856,45 @@ hermes gateway install   # install as a systemd service (runs on reboot)`}</Code
 
 function MetricRow({ signal, meaning, last = false }: { signal: string; meaning: string; last?: boolean }) {
   return (
-    <div className={`flex gap-0 ${!last ? 'border-b border-brand-concrete' : ''}`}>
-      <div className="w-52 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/30">
-        <span className="font-sans font-medium text-sm text-brand-black">{signal}</span>
+    <div className={`flex gap-0 ${!last ? 'border-b border-bk-rule' : ''}`}>
+      <div className="w-52 flex-shrink-0 p-4 border-r border-bk-rule bg-bk-deep/30">
+        <span className="font-sans font-medium text-sm text-bk-parchment">{signal}</span>
       </div>
-      <p className="font-sans text-sm text-brand-black/65 p-4 leading-relaxed">{meaning}</p>
+      <p className="font-sans text-sm text-bk-parchment/65 p-4 leading-relaxed">{meaning}</p>
     </div>
   )
 }
 
 function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
 
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
 
-        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
           THE<br />
-          <span className="text-brand-cobalt">WRONG</span><br />
+          <span className="text-bk-gold">WRONG</span><br />
           SCOREBOARD.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/70 border border-bk-gold/25 px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -5905,24 +5905,24 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
 
         {/* Lede */}
         <section>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
             In April 2026, The Information reported that a Meta employee had built an internal leaderboard,
             nicknamed &ldquo;Claudeonomics,&rdquo; ranking colleagues by tokens processed and generated.
             Top performers earned digital badges with titles like &ldquo;Cache Wizard&rdquo; and &ldquo;Model
             Connoisseur.&rdquo; The highest-ranked individual averaged 281 billion tokens. The leaderboard
             was taken down two days after the report.
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             That&rsquo;s the whole story. Everything else is commentary on why it was always going to end
             that way, and what the people who built similar dashboards at Amazon, Atlassian, and a dozen
             other companies should have tracked instead.
           </p>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>Meta&rsquo;s internal &ldquo;Claudeonomics&rdquo; leaderboard peaked at 281 billion tokens for the highest-ranked individual and was pulled two days after The Information reported on it.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Tokenmaxxing measures consumption, not output. An internal audit of roughly 100,000 prompt logs found approximately 65% of queries were simple tasks that did not need expensive frontier-tier tokens.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Once a metric appears on a leaderboard, behaviour warps around it: padding prompts, redundant parallel agents, and routing every task through frontier models regardless of complexity.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>The corrective metric is tasks completed per dollar. It catches when the same outcome could have been reached with a cheaper model or a shorter, more precise prompt.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Meta&rsquo;s internal &ldquo;Claudeonomics&rdquo; leaderboard peaked at 281 billion tokens for the highest-ranked individual and was pulled two days after The Information reported on it.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Tokenmaxxing measures consumption, not output. An internal audit of roughly 100,000 prompt logs found approximately 65% of queries were simple tasks that did not need expensive frontier-tier tokens.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Once a metric appears on a leaderboard, behaviour warps around it: padding prompts, redundant parallel agents, and routing every task through frontier models regardless of complexity.</li>
+              <li><span className="text-bk-gold mr-2">—</span>The corrective metric is tasks completed per dollar. It catches when the same outcome could have been reached with a cheaper model or a shorter, more precise prompt.</li>
             </ul>
           </Callout>
         </section>
@@ -5931,20 +5931,20 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
         <section>
           <SectionHeading number="01" title="Why the metric failed" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               The origin of tokenmaxxing is rational. Organisations wanted a visible signal that teams were
               actually adopting AI tools — a genuine, reasonable goal. Token counts happened to be one of the
               only AI inputs every provider meters cleanly, so it was the easiest number to put on a dashboard.
               Easy to measure is not the same thing as a good proxy for the thing you actually care about, and
               that gap is the entire problem.
             </p>
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
-              The core issue: <strong className="text-brand-black">tokenmaxxing measures consumption, not output.</strong> Token-heavy
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+              The core issue: <strong className="text-bk-parchment">tokenmaxxing measures consumption, not output.</strong> Token-heavy
               workflows — agentic coding, multi-step reasoning — genuinely do consume large volumes of tokens when
               they deliver real value. But identical token volumes can come from an agent running in circles
               producing nothing useful. The number alone cannot distinguish the two cases.
             </p>
-            <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
               Once the metric became visible on a leaderboard, behaviour predictably warped around it: engineers
               padding prompts, running redundant parallel agents, routing everything through frontier-tier models
               regardless of task complexity. One internal audit of roughly 100,000 prompt logs found that
@@ -5954,15 +5954,15 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
             </p>
           </div>
 
-          <div className="mt-10 border border-brand-concrete">
+          <div className="mt-10 border border-bk-rule">
             <TokenLeaderboard />
           </div>
-          <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+          <p className="font-sans text-[11px] text-bk-muted mt-3 text-center tracking-wide uppercase">
             Claudeonomics: the leaderboard that lasted 48 hours
           </p>
 
           <Callout label="The Goodhart problem" className="mt-8">
-            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+            <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
               When a measure becomes a target, it ceases to be a good measure. Goodhart&rsquo;s Law has
               been applied to everything from school test scores to hospital wait times. AI token
               leaderboards were always going to produce the same outcome: behaviour optimised for the
@@ -5974,26 +5974,26 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
         {/* Section 2 */}
         <section>
           <SectionHeading number="02" title="The corrective: valuemaxxing" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
-            The counter-practice gaining traction is <strong className="text-brand-black">valuemaxxing</strong>:
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+            The counter-practice gaining traction is <strong className="text-bk-parchment">valuemaxxing</strong>:
             optimising for outcomes per dollar spent, rather than volume for its own sake. The signal
             distinction is straightforward. Genuine skill shows up as tokens per good outcome
             <em> going down</em>, not up. A tighter, better-scoped context package consistently
             outperforms four parallel agents running against a vague prompt, using a fraction of
             the tokens to reach an acceptable result.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
             What to actually track:
           </p>
 
-          <div className="mt-8 border border-brand-concrete">
+          <div className="mt-8 border border-bk-rule">
             <VanityVsValue />
           </div>
-          <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+          <p className="font-sans text-[11px] text-bk-muted mt-3 text-center tracking-wide uppercase">
             Left column: what's on the dashboard. Right column: what should be.
           </p>
 
-          <div className="mt-10 border border-brand-concrete divide-y divide-brand-concrete">
+          <div className="mt-10 border border-bk-rule divide-y divide-brand-concrete">
             <MetricRow signal="Total tokens used" meaning="Activity level only — tells you something happened, nothing about whether it was worth anything." />
             <MetricRow signal="Tasks completed & shipped" meaning="The closest single-number proxy to actual productivity. Not granular, but directionally honest." />
             <MetricRow signal="Iterations to acceptable output" meaning="A measure of prompt and context quality. Falling iteration count is the real skill signal." />
@@ -6005,23 +6005,23 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
         {/* Section 3 */}
         <section>
           <SectionHeading number="03" title="Practical calibration" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Most of this comes down to one discipline: match the tool to the task before you spend, not
             after. That sounds obvious, but the default in most AI-enabled environments is to route
             everything to the most capable endpoint available. The cost of that default adds up.
           </p>
 
-          <div className="mt-10 border border-brand-concrete">
+          <div className="mt-10 border border-bk-rule">
             <ComplexityRouter />
           </div>
-          <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+          <p className="font-sans text-[11px] text-bk-muted mt-3 text-center tracking-wide uppercase">
             Efficient allocation vs. defaulting everything to frontier tier
           </p>
 
           <div className="mt-10 space-y-6">
-            <div className="border-l-2 border-brand-cobalt pl-6">
-              <h3 className="font-display text-2xl text-brand-black mb-2">SCOPE BEFORE YOU SPEND.</h3>
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+            <div className="border-l-2 border-bk-gold pl-6">
+              <h3 className="font-book font-bold text-2xl text-bk-parchment mb-2">SCOPE BEFORE YOU SPEND.</h3>
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
                 Write the actual goal and &ldquo;done&rdquo; condition before starting a session. A vague
                 prompt invites a vague, token-heavy back-and-forth to converge on what you actually meant.
                 For Claude Code specifically: extended thinking is billed as output tokens at a real premium.
@@ -6031,9 +6031,9 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
               </p>
             </div>
 
-            <div className="border-l-2 border-brand-cobalt pl-6">
-              <h3 className="font-display text-2xl text-brand-black mb-2">MATCH MODEL TO TASK, NOT HABIT.</h3>
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+            <div className="border-l-2 border-bk-gold pl-6">
+              <h3 className="font-book font-bold text-2xl text-bk-parchment mb-2">MATCH MODEL TO TASK, NOT HABIT.</h3>
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
                 Default to lighter, faster models for simple, well-defined work — definitional questions,
                 small refactors, formatting. Reserve heavier models for tasks with real ambiguity or
                 multi-step reasoning. The 65% figure above — simple queries hitting frontier endpoints by
@@ -6041,9 +6041,9 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
               </p>
             </div>
 
-            <div className="border-l-2 border-brand-cobalt pl-6">
-              <h3 className="font-display text-2xl text-brand-black mb-2">CHECKPOINT INSTEAD OF SPRAWL.</h3>
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+            <div className="border-l-2 border-bk-gold pl-6">
+              <h3 className="font-book font-bold text-2xl text-bk-parchment mb-2">CHECKPOINT INSTEAD OF SPRAWL.</h3>
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
                 Long, meandering sessions accumulate context that isn&rsquo;t all pulling weight. Checkpoint
                 progress to a doc and start a fresh, compressed session rather than letting one conversation
                 run indefinitely. The same principle applies to your own working sessions, not just
@@ -6051,9 +6051,9 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
               </p>
             </div>
 
-            <div className="border-l-2 border-brand-cobalt pl-6">
-              <h3 className="font-display text-2xl text-brand-black mb-2">MEASURE YOUR OWN SIGNAL.</h3>
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+            <div className="border-l-2 border-bk-gold pl-6">
+              <h3 className="font-book font-bold text-2xl text-bk-parchment mb-2">MEASURE YOUR OWN SIGNAL.</h3>
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
                 Pick one recurring task type and track iterations and spend this month versus last.
                 Falling iteration count at stable or falling cost is the actual win condition.
                 Rising raw token usage is not.
@@ -6065,28 +6065,28 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
         {/* Section 4 */}
         <section>
           <SectionHeading number="04" title="The trend line that actually matters" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             There&rsquo;s a legitimate version of high token consumption: the learning phase. When
             you&rsquo;re learning how to engineer a new workflow type — figuring out the right context
             packaging, the right model tier, the right loop structure — iteration is expensive, and that
             cost is worth paying. It&rsquo;s training spend. Expected, worth budgeting for, worth
             timeboxing.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
             What isn&rsquo;t acceptable is treating training-mode burn rates as steady-state. If you&rsquo;re
             still consuming the same volume six weeks into a repeatable task, that&rsquo;s a signal the
             workflow hasn&rsquo;t been engineered yet — it&rsquo;s still being improvised.
           </p>
 
-          <div className="mt-10 border border-brand-concrete">
+          <div className="mt-10 border border-bk-rule">
             <CostPerTaskChart />
           </div>
-          <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+          <p className="font-sans text-[11px] text-bk-muted mt-3 text-center tracking-wide uppercase">
             Training spend followed by outcome mode. The payoff should be visible.
           </p>
 
           <Callout label="The real skill signal" className="mt-8">
-            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+            <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
               The transition from training spend to steady-state should be visible on a graph.
               If cost per task is still climbing six weeks into a repeatable workflow, the workflow
               hasn&rsquo;t been engineered yet. Track cost per completed task week over week.
@@ -6094,12 +6094,12 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
             </p>
           </Callout>
 
-          <div className="mt-10 bg-brand-graphite border border-brand-concrete p-8">
-            <p className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-cobalt mb-5">Quick reference</p>
-            <div className="border border-brand-concrete divide-y divide-brand-concrete">
-              <div className="grid grid-cols-2 bg-brand-black/5">
-                <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted p-3">Signal</span>
-                <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted p-3">What it actually tells you</span>
+          <div className="mt-10 bg-bk-deep border border-bk-rule p-8">
+            <p className="font-sans text-[10px] tracking-[0.22em] uppercase text-bk-gold mb-5">Quick reference</p>
+            <div className="border border-bk-rule divide-y divide-brand-concrete">
+              <div className="grid grid-cols-2 bg-bk-deep/5">
+                <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-muted p-3">Signal</span>
+                <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-muted p-3">What it actually tells you</span>
               </div>
               <MetricRow signal="Total tokens used" meaning="Activity level only — no outcome information" />
               <MetricRow signal="Tasks completed per session" meaning="Closer to real productivity" />
@@ -6117,13 +6117,13 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
         ]} />
 
         {/* Footer */}
-        <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
-          <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <footer className="pt-4 pb-16 border-t border-bk-rule flex flex-wrap justify-between items-center gap-4">
+          <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
             ← All Field Notes
           </Link>
           <div className="flex flex-wrap gap-2">
             {article!.tags.map((tag) => (
-              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/60 border border-brand-cobalt/20 px-2 py-0.5">
+              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/60 border border-bk-gold/20 px-2 py-0.5">
                 {tag}
               </span>
             ))}
@@ -6138,28 +6138,28 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
 
 function APIArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       {/* Hero */}
-      <div className="border-b border-brand-concrete/40 pb-10 pt-8 px-6 md:px-10 max-w-[900px] mx-auto">
+      <div className="border-b border-bk-rule/40 pb-10 pt-8 px-6 md:px-10 max-w-[900px] mx-auto">
         <div className="flex items-center gap-3 mb-6">
-          <Link href="/articles" className="font-mono text-[11px] tracking-[0.15em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors">
+          <Link href="/articles" className="font-mono text-[11px] tracking-[0.15em] uppercase text-bk-muted hover:text-bk-gold transition-colors">
             ← Articles
           </Link>
           <span className="text-brand-concrete">·</span>
-          <span className="font-mono text-[11px] tracking-[0.15em] uppercase text-brand-cobalt">{article!.category}</span>
+          <span className="font-mono text-[11px] tracking-[0.15em] uppercase text-bk-gold">{article!.category}</span>
         </div>
-        <h1 className="font-display text-[clamp(3.5rem,10vw,7rem)] leading-none tracking-tight text-brand-black mb-6">
+        <h1 className="font-book font-bold text-[clamp(3.5rem,10vw,7rem)] leading-none tracking-tight text-bk-parchment mb-6">
           BEFORE / THE 429.
         </h1>
-        <p className="font-sans text-lg text-brand-muted max-w-[600px] leading-relaxed mb-6">{article!.subtitle}</p>
-        <div className="flex flex-wrap items-center gap-4 text-brand-muted font-mono text-[11px]">
+        <p className="font-sans text-lg text-bk-muted max-w-[600px] leading-relaxed mb-6">{article!.subtitle}</p>
+        <div className="flex flex-wrap items-center gap-4 text-bk-muted font-mono text-[11px]">
           <span>{formattedDate}</span>
           <span>·</span>
           <span>{article!.readTime}</span>
           <span>·</span>
           <div className="flex flex-wrap gap-2">
             {article!.tags.map((tag) => (
-              <span key={tag} className="border border-brand-cobalt/30 text-brand-cobalt/70 px-2 py-0.5 text-[10px] tracking-[0.12em] uppercase">{tag}</span>
+              <span key={tag} className="border border-bk-gold/30 text-bk-gold/70 px-2 py-0.5 text-[10px] tracking-[0.12em] uppercase">{tag}</span>
             ))}
           </div>
         </div>
@@ -6169,39 +6169,39 @@ function APIArticle({ article, formattedDate }: { article: ReturnType<typeof get
       <div className="px-6 md:px-10 max-w-[900px] mx-auto py-10 space-y-12">
 
         {/* Lede */}
-        <p className="font-sans text-xl text-brand-black/80 leading-relaxed max-w-[680px]">
+        <p className="font-sans text-xl text-bk-parchment/80 leading-relaxed max-w-[680px]">
           Rate limits are infrastructure. Every API you consume has one, and every API you build should have one. The engineers who treat them as an edge case discover that assumption in production. The engineers who understand them in advance never do.
         </p>
         <Callout label="Key Takeaways" className="mt-8">
           <ul className="space-y-1.5 list-none">
-            <li><span className="text-brand-cobalt mr-2">—</span>Read rate limit headers on every response, not just on a 429. By the time a 429 fires, the wall has already been hit. Proactive slowdown prevents the limit from firing at all.</li>
-            <li><span className="text-brand-cobalt mr-2">—</span>IETF draft-11 (May 2026) defines a real standard using RateLimit and RateLimit-Policy fields. Most APIs still use legacy X-RateLimit-* prefixes. Write client code that tolerates both.</li>
-            <li><span className="text-brand-cobalt mr-2">—</span>Full Jitter combined with exponential backoff spreads retry storms across time, reducing total calls by 50%+ compared to fixed-interval retries under the same load.</li>
-            <li><span className="text-brand-cobalt mr-2">—</span>REST is the safe default for public or partner-facing APIs. Reach for GraphQL only when deeply nested, variable data needs across different client types genuinely justify the added query complexity.</li>
+            <li><span className="text-bk-gold mr-2">—</span>Read rate limit headers on every response, not just on a 429. By the time a 429 fires, the wall has already been hit. Proactive slowdown prevents the limit from firing at all.</li>
+            <li><span className="text-bk-gold mr-2">—</span>IETF draft-11 (May 2026) defines a real standard using RateLimit and RateLimit-Policy fields. Most APIs still use legacy X-RateLimit-* prefixes. Write client code that tolerates both.</li>
+            <li><span className="text-bk-gold mr-2">—</span>Full Jitter combined with exponential backoff spreads retry storms across time, reducing total calls by 50%+ compared to fixed-interval retries under the same load.</li>
+            <li><span className="text-bk-gold mr-2">—</span>REST is the safe default for public or partner-facing APIs. Reach for GraphQL only when deeply nested, variable data needs across different client types genuinely justify the added query complexity.</li>
           </ul>
         </Callout>
 
         {/* Section 01 — Architecture choice */}
         <section>
           <SectionHeading number="01" title="Choosing the right style before you start" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
             REST, GraphQL, gRPC, tRPC — the "which one" conversation happens before a line is written, and it matters because the answer shapes everything downstream: caching behaviour, client flexibility, typing guarantees, and who can consume the result. The honest framing in 2026 is that REST vs GraphQL is no longer a binary — most mature organisations use both, picking per use case. The genuinely new element is MCP-based consumption for AI agents, which sits alongside all three as a fourth option, not a replacement for any of them.
           </p>
           <div className="my-8">
             <APIArchitectureDiagram />
           </div>
-          <div className="space-y-5 border-l-2 border-brand-cobalt/20 pl-6">
+          <div className="space-y-5 border-l-2 border-bk-gold/20 pl-6">
             <div>
-              <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-brand-cobalt mb-1">The practical rule</p>
-              <p className="font-sans text-sm text-brand-black/75 leading-relaxed">REST is the safe default for anything public or partner-facing. Reach for GraphQL specifically when front-end complexity — deeply nested, highly variable data needs across different client types — genuinely justifies the added query-complexity cost. Not by default. gRPC is an internal-infrastructure decision, not a public-API one.</p>
+              <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-bk-gold mb-1">The practical rule</p>
+              <p className="font-sans text-sm text-bk-parchment/75 leading-relaxed">REST is the safe default for anything public or partner-facing. Reach for GraphQL specifically when front-end complexity — deeply nested, highly variable data needs across different client types — genuinely justifies the added query-complexity cost. Not by default. gRPC is an internal-infrastructure decision, not a public-API one.</p>
             </div>
             <div>
-              <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-brand-cobalt mb-1">Design fundamentals that hold regardless of style</p>
-              <ul className="font-sans text-sm text-brand-black/75 leading-relaxed space-y-1.5 list-none">
-                <li><span className="text-brand-cobalt mr-2">—</span>Resources are nouns, not verbs. <span className="font-mono text-[12px] text-brand-cobalt/80">/users</span> not <span className="font-mono text-[12px] text-brand-cobalt/80">/getUsers</span>. HTTP methods already express the action.</li>
-                <li><span className="text-brand-cobalt mr-2">—</span>Version deliberately. Breaking changes go in a new version path (<span className="font-mono text-[12px] text-brand-cobalt/80">/v2/</span>), with the old version kept live on a communicated deprecation timeline.</li>
-                <li><span className="text-brand-cobalt mr-2">—</span>Paginate with cursors, not offsets, for any dataset that grows or changes frequently. Offset pagination breaks when rows shift mid-page.</li>
-                <li><span className="text-brand-cobalt mr-2">—</span>Return structured errors that explain <em>what</em> went wrong, not just <em>that</em> something failed. RFC 9457 (Problem Details for HTTP APIs) is the current standard worth adopting.</li>
+              <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-bk-gold mb-1">Design fundamentals that hold regardless of style</p>
+              <ul className="font-sans text-sm text-bk-parchment/75 leading-relaxed space-y-1.5 list-none">
+                <li><span className="text-bk-gold mr-2">—</span>Resources are nouns, not verbs. <span className="font-mono text-[12px] text-bk-gold/80">/users</span> not <span className="font-mono text-[12px] text-bk-gold/80">/getUsers</span>. HTTP methods already express the action.</li>
+                <li><span className="text-bk-gold mr-2">—</span>Version deliberately. Breaking changes go in a new version path (<span className="font-mono text-[12px] text-bk-gold/80">/v2/</span>), with the old version kept live on a communicated deprecation timeline.</li>
+                <li><span className="text-bk-gold mr-2">—</span>Paginate with cursors, not offsets, for any dataset that grows or changes frequently. Offset pagination breaks when rows shift mid-page.</li>
+                <li><span className="text-bk-gold mr-2">—</span>Return structured errors that explain <em>what</em> went wrong, not just <em>that</em> something failed. RFC 9457 (Problem Details for HTTP APIs) is the current standard worth adopting.</li>
               </ul>
             </div>
           </div>
@@ -6210,17 +6210,17 @@ function APIArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Section 02 — Reading rate limit headers */}
         <section>
           <SectionHeading number="02" title="Reading the wall before you hit it" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
             Most modern APIs expose their limits directly in response headers. The engineers who only check these on a 429 are doing it wrong — by then, the wall has already been hit. The right practice is to read these on every response, so you can proactively slow down before the limit fires.
           </p>
           <CodeBlock>{`X-RateLimit-Limit: 100
 X-RateLimit-Remaining: 0
 X-RateLimit-Reset: 1643723400
 Retry-After: 60`}</CodeBlock>
-          <p className="font-sans text-sm text-brand-black/75 leading-relaxed mt-5 mb-2">
-            One thing worth knowing: the header convention is currently in transition. The <span className="font-mono text-[12px] text-brand-cobalt/80">X-RateLimit-*</span> prefix most engineers treat as "the standard" is actually legacy — IETF draft-11 (May 2026) defines a real standard using <span className="font-mono text-[12px] text-brand-cobalt/80">RateLimit</span> and <span className="font-mono text-[12px] text-brand-cobalt/80">RateLimit-Policy</span> fields instead. Cloudflare adopted the new standard in late 2025. GitHub and Stripe still use the legacy vendor-prefixed headers as of this writing.
+          <p className="font-sans text-sm text-bk-parchment/75 leading-relaxed mt-5 mb-2">
+            One thing worth knowing: the header convention is currently in transition. The <span className="font-mono text-[12px] text-bk-gold/80">X-RateLimit-*</span> prefix most engineers treat as "the standard" is actually legacy — IETF draft-11 (May 2026) defines a real standard using <span className="font-mono text-[12px] text-bk-gold/80">RateLimit</span> and <span className="font-mono text-[12px] text-bk-gold/80">RateLimit-Policy</span> fields instead. Cloudflare adopted the new standard in late 2025. GitHub and Stripe still use the legacy vendor-prefixed headers as of this writing.
           </p>
-          <p className="font-sans text-sm text-brand-black/75 leading-relaxed">
+          <p className="font-sans text-sm text-bk-parchment/75 leading-relaxed">
             Write client code that tolerates this divergence. Check for both rather than hard-coding one header format.
           </p>
         </section>
@@ -6228,7 +6228,7 @@ Retry-After: 60`}</CodeBlock>
         {/* Section 03 — Handling rate limits */}
         <section>
           <SectionHeading number="03" title="The standard handling pattern, in order" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
             When a 429 fires, there is a correct order of operations. Most implementations get parts of it right. Few get all of it right.
           </p>
           <div className="space-y-4 mb-8">
@@ -6240,10 +6240,10 @@ Retry-After: 60`}</CodeBlock>
               { n: '5', title: 'If 429s are frequent, the fix is upstream', body: 'Audit your actual request volume, add a queue, or reduce polling frequency. Retry logic handles the exception — it should not be relied on to handle a structurally too-high request rate.' },
             ].map(({ n, title, body }) => (
               <div key={n} className="flex gap-4">
-                <span className="font-mono text-[11px] text-brand-cobalt/60 pt-0.5 flex-shrink-0 w-4">{n}</span>
+                <span className="font-mono text-[11px] text-bk-gold/60 pt-0.5 flex-shrink-0 w-4">{n}</span>
                 <div>
-                  <p className="font-mono text-[12px] text-brand-black/80 font-semibold mb-0.5">{title}</p>
-                  <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{body}</p>
+                  <p className="font-mono text-[12px] text-bk-parchment/80 font-semibold mb-0.5">{title}</p>
+                  <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">{body}</p>
                 </div>
               </div>
             ))}
@@ -6252,13 +6252,13 @@ Retry-After: 60`}</CodeBlock>
             <BackoffJitterDiagram />
           </div>
           <div className="space-y-4 mt-6">
-            <div className="border-l-2 border-brand-cobalt/20 pl-6">
-              <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-brand-cobalt mb-1">Rate limiting vs throttling</p>
-              <p className="font-sans text-sm text-brand-black/75 leading-relaxed">Rate limiting sets a hard cap and rejects excess requests outright (429). Throttling is softer — it slows requests down via delay or queuing rather than rejecting them. Rate limiting suits programmatic API access, where the client is expected to implement backoff logic. Throttling suits user-facing endpoints, where a slow response is a better experience than a hard failure.</p>
+            <div className="border-l-2 border-bk-gold/20 pl-6">
+              <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-bk-gold mb-1">Rate limiting vs throttling</p>
+              <p className="font-sans text-sm text-bk-parchment/75 leading-relaxed">Rate limiting sets a hard cap and rejects excess requests outright (429). Throttling is softer — it slows requests down via delay or queuing rather than rejecting them. Rate limiting suits programmatic API access, where the client is expected to implement backoff logic. Throttling suits user-facing endpoints, where a slow response is a better experience than a hard failure.</p>
             </div>
             <div className="border-l-2 border-amber-500/40 pl-6">
               <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-amber-600 mb-1">Circuit breaker</p>
-              <p className="font-sans text-sm text-brand-black/75 leading-relaxed">A circuit breaker is the backstop for sustained throttling, not just retry logic. If an API is throttling heavily and consistently rather than briefly, a circuit breaker that stops sending requests entirely for a cooldown period prevents sustained throttling from becoming a full outage on your end.</p>
+              <p className="font-sans text-sm text-bk-parchment/75 leading-relaxed">A circuit breaker is the backstop for sustained throttling, not just retry logic. If an API is throttling heavily and consistently rather than briefly, a circuit breaker that stops sending requests entirely for a cooldown period prevents sustained throttling from becoming a full outage on your end.</p>
             </div>
           </div>
         </section>
@@ -6266,7 +6266,7 @@ Retry-After: 60`}</CodeBlock>
         {/* Section 04 — Maximising quota */}
         <section>
           <SectionHeading number="04" title="Getting more done within the limits you have" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
             The four patterns below compose into a stack. Each one removes a category of unnecessary requests or handles the remainder more gracefully. All four together, not any single one in isolation, is what actually moves the needle.
           </p>
           <div className="my-8">
@@ -6279,13 +6279,13 @@ Retry-After: 60`}</CodeBlock>
               { label: 'Weight expensive operations', body: 'Some providers charge different costs for different operation types — GitHub is the commonly cited example, where writes cost more quota than reads. Understand your specific provider\'s actual cost model. Optimising against the wrong cost model wastes effort.' },
               { label: 'Use the higher-tier auth method', body: 'GitHub Apps get materially higher rate limits than personal access tokens (15,000 requests/hour vs 5,000) for the exact same underlying work. Check whether your provider offers a higher-throughput auth path before assuming your current limit is fixed.' },
             ].map(({ label, body }) => (
-              <div key={label} className="border border-brand-concrete/40 p-4">
-                <p className="font-mono text-[11px] tracking-[0.12em] uppercase text-brand-cobalt mb-2">{label}</p>
-                <p className="font-sans text-sm text-brand-black/70 leading-relaxed">{body}</p>
+              <div key={label} className="border border-bk-rule/40 p-4">
+                <p className="font-mono text-[11px] tracking-[0.12em] uppercase text-bk-gold mb-2">{label}</p>
+                <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">{body}</p>
               </div>
             ))}
           </div>
-          <p className="font-sans text-sm text-brand-black/65 leading-relaxed mt-5">
+          <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed mt-5">
             Monitor proactively, not reactively. Track quota usage against known limits before you hit them, with alerting on a real threshold — 80% of quota consumed, for example. This is the difference between catching a problem in a dashboard and catching it in a production incident.
           </p>
         </section>
@@ -6300,10 +6300,10 @@ Retry-After: 60`}</CodeBlock>
               { label: 'tRPC for single-team TypeScript stacks', body: 'Worth knowing about specifically because it removes an entire category of API-contract-drift bugs — client and server share actual types, not just a documented schema — when the team building both ends is the same team.' },
               { label: 'MCP as a genuinely different consumption model', body: 'Rather than a human-facing API a developer calls from code, MCP exposes tools to an AI agent directly, with the protocol handling auth, discovery, and interaction patterns in a standardised way. This is not a replacement for REST, GraphQL, or gRPC — it is a parallel consumption layer specifically for AI-agent access, and it is the fastest-growing alternative in the sense that it is genuinely new rather than a repackaging of an older idea.' },
             ].map(({ label, body }) => (
-              <div key={label} className="flex gap-4 border-l-2 border-brand-cobalt/20 pl-5">
+              <div key={label} className="flex gap-4 border-l-2 border-bk-gold/20 pl-5">
                 <div>
-                  <p className="font-mono text-[12px] text-brand-cobalt/80 font-semibold mb-1">{label}</p>
-                  <p className="font-sans text-sm text-brand-black/70 leading-relaxed">{body}</p>
+                  <p className="font-mono text-[12px] text-bk-gold/80 font-semibold mb-1">{label}</p>
+                  <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">{body}</p>
                 </div>
               </div>
             ))}
@@ -6321,15 +6321,15 @@ Retry-After: 60`}</CodeBlock>
               ['Circuit breaker', 'Stop sending entirely during sustained throttling rather than retrying in a loop.'],
             ].map(([pattern, desc]) => (
               <div key={pattern} className="flex gap-3">
-                <span className="font-mono text-[11px] text-brand-cobalt min-w-[160px] flex-shrink-0">{pattern}</span>
-                <span className="font-sans text-sm text-brand-black/70">{desc}</span>
+                <span className="font-mono text-[11px] text-bk-gold min-w-[160px] flex-shrink-0">{pattern}</span>
+                <span className="font-sans text-sm text-bk-parchment/70">{desc}</span>
               </div>
             ))}
           </div>
         </Callout>
 
         {/* Closing */}
-        <p className="font-sans text-base text-brand-black/60 leading-relaxed border-t border-brand-concrete/30 pt-8 max-w-[600px]">
+        <p className="font-sans text-base text-bk-parchment/60 leading-relaxed border-t border-bk-rule/30 pt-8 max-w-[600px]">
           The header that tells you how close you are to the wall has been there the whole time. The four-pattern stack is not complicated — it is just the discipline of reading it before the 429 fires, and knowing what to do when it does.
         </p>
 
@@ -6347,34 +6347,34 @@ Retry-After: 60`}</CodeBlock>
 
 function DataVizArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
 
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
 
-        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
           BEFORE<br />
           THE<br />
-          <span className="text-brand-cobalt">CHART.</span>
+          <span className="text-bk-gold">CHART.</span>
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/70 border border-bk-gold/25 px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -6385,21 +6385,21 @@ function DataVizArticle({ article, formattedDate }: { article: ReturnType<typeof
 
         {/* Lede */}
         <section>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
             The failure mode in most dashboards isn&rsquo;t the chart library or the color palette. It&rsquo;s that the question was never written down before the building started. &ldquo;Show performance&rdquo; sends you in the wrong direction before you&rsquo;ve opened a tool. &ldquo;Did the Q3 campaign hit its CPA target&rdquo; resolves most downstream design questions automatically: the chart type, what to cut, what to highlight, and what the headline should say.
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             Write the business question in one sentence before picking a chart type. If you can&rsquo;t, the visual isn&rsquo;t ready to build. This sounds obvious and is routinely skipped, which is why most bad dashboards aren&rsquo;t bad because of technology or design skill. They&rsquo;re bad because no one wrote down what decision the chart was supposed to inform.
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             Accuracy and readability are separate requirements, not substitutes for each other. A chart can be beautifully designed and still misleading. A technically correct chart can still be unreadable. Both bars have to clear.
           </p>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>Write the business question in one sentence before picking a chart type. If you cannot, the visual is not ready to build.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Perception accuracy follows a clear hierarchy: position on a common scale (bar chart) is the most reliable encoding. Angle (pie) is systematically misjudged. Area (bubble) is consistently underestimated by roughly 30%.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>One high-contrast highlight colour per chart is enough. Multiple accent colours shift cognitive load from the data to decoding the colour legend.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>AI is useful for drafting, labelling, and layout. The business judgment about what to highlight and what to cut requires knowing what decision the chart is supposed to inform.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Write the business question in one sentence before picking a chart type. If you cannot, the visual is not ready to build.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Perception accuracy follows a clear hierarchy: position on a common scale (bar chart) is the most reliable encoding. Angle (pie) is systematically misjudged. Area (bubble) is consistently underestimated by roughly 30%.</li>
+              <li><span className="text-bk-gold mr-2">—</span>One high-contrast highlight colour per chart is enough. Multiple accent colours shift cognitive load from the data to decoding the colour legend.</li>
+              <li><span className="text-bk-gold mr-2">—</span>AI is useful for drafting, labelling, and layout. The business judgment about what to highlight and what to cut requires knowing what decision the chart is supposed to inform.</li>
             </ul>
           </Callout>
         </section>
@@ -6407,29 +6407,29 @@ function DataVizArticle({ article, formattedDate }: { article: ReturnType<typeof
         {/* Section 01 — Perception */}
         <section>
           <SectionHeading number="01" title="Why some chart choices are wrong, not just unpopular" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Chart choice isn&rsquo;t a matter of style. It&rsquo;s grounded in how human visual perception actually works. The relevant concept is preattentive processing — the visual judgment that happens before conscious attention kicks in. Different encodings engage this mechanism differently. Some produce accurate judgments at a glance. Others are systematically misjudged, regardless of how well-designed the chart is.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
             Length on a common scale — the bar chart — is the most reliable encoding available. Two bars plotted on the same axis: the difference reads immediately and accurately. This is why bar charts dominate good analytical work. Not as a default, but as a deliberate match between task and encoding.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
             Area is reliably underestimated. When comparing circles, humans consistently misjudge the ratio — a bubble representing twice the value of another looks like maybe 1.5×. This isn&rsquo;t a fixable design problem. It&rsquo;s a property of how the visual system processes area. Treemaps and bubble charts are weak tools for precise comparison, not just unfashionable ones.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
             Angle is the worst encoding for comparison beyond two or three categories. With more than three slices, angle differences become genuinely unreadable, and errors compound as the number of categories grows. Pie charts aren&rsquo;t bad for aesthetic reasons. They&rsquo;re bad because the question &ldquo;how do these compare?&rdquo; cannot be accurately answered by looking at angles.
           </p>
 
-          <div className="mt-8 border border-brand-concrete">
+          <div className="mt-8 border border-bk-rule">
             <PerceptionAccuracyDiagram />
           </div>
-          <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+          <p className="font-sans text-[11px] text-bk-muted mt-3 text-center tracking-wide uppercase">
             The same two values — 72 and 45 — encoded three different ways. Only one reads accurately at a glance.
           </p>
 
           <div className="mt-8">
-            <p className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-cobalt mb-5">Practical selection guide</p>
-            <div className="border border-brand-concrete divide-y divide-brand-concrete">
+            <p className="font-sans text-[10px] tracking-[0.22em] uppercase text-bk-gold mb-5">Practical selection guide</p>
+            <div className="border border-bk-rule divide-y divide-brand-concrete">
               {[
                 { task: 'Comparing categories', chart: 'Bar chart' },
                 { task: 'Change over time', chart: 'Line chart' },
@@ -6439,8 +6439,8 @@ function DataVizArticle({ article, formattedDate }: { article: ReturnType<typeof
                 { task: 'Hierarchical proportion', chart: 'Table or sorted bar chart before reaching for a treemap' },
               ].map(({ task, chart }, i) => (
                 <div key={i} className="grid grid-cols-2 px-4 py-3">
-                  <span className="font-sans text-sm text-brand-black/70">{task}</span>
-                  <span className="font-sans text-sm text-brand-cobalt font-medium">{chart}</span>
+                  <span className="font-sans text-sm text-bk-parchment/70">{task}</span>
+                  <span className="font-sans text-sm text-bk-gold font-medium">{chart}</span>
                 </div>
               ))}
             </div>
@@ -6450,68 +6450,68 @@ function DataVizArticle({ article, formattedDate }: { article: ReturnType<typeof
         {/* Section 02 — Honesty rules */}
         <section>
           <SectionHeading number="02" title="The honesty rules — each one describes a real mistake" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             These aren&rsquo;t stylistic preferences. Each describes a specific, common error that changes what a chart says — silently, without requiring any design intent.
           </p>
 
           <div className="mt-8 space-y-8">
 
             <div>
-              <p className="font-sans font-semibold text-brand-black text-base mb-2">Don&rsquo;t connect a line across missing data</p>
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              <p className="font-sans font-semibold text-bk-parchment text-base mb-2">Don&rsquo;t connect a line across missing data</p>
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
                 A connected line makes an implicit claim: a value existed for every point along it. When data is missing — a tracking script went down, an integration broke, an event wasn&rsquo;t captured — connecting across that gap invents a trend that was never measured. Break the line, or mark the gap explicitly. The alternative is a chart that lies by continuity.
               </p>
             </div>
 
             <div>
-              <p className="font-sans font-semibold text-brand-black text-base mb-2">Don&rsquo;t let a partial period read as a complete one</p>
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              <p className="font-sans font-semibold text-bk-parchment text-base mb-2">Don&rsquo;t let a partial period read as a complete one</p>
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
                 Six days of July plotted alongside six complete prior months creates a visual collapse that isn&rsquo;t happening. The bar is low because it contains six days of data, not because July underperformed. Every live dashboard that includes the current period needs one of three interventions: shade the partial bar differently, label it &ldquo;in progress,&rdquo; or exclude it until the period closes.
               </p>
-              <div className="mt-5 border border-brand-concrete">
+              <div className="mt-5 border border-bk-rule">
                 <PartialPeriodDiagram />
               </div>
-              <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+              <p className="font-sans text-[11px] text-bk-muted mt-3 text-center tracking-wide uppercase">
                 Same data — June with 6 of 30 days collected. One version misleads; the other informs.
               </p>
             </div>
 
             <div>
-              <p className="font-sans font-semibold text-brand-black text-base mb-2">Don&rsquo;t drop a forecast&rsquo;s confidence range</p>
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              <p className="font-sans font-semibold text-bk-parchment text-base mb-2">Don&rsquo;t drop a forecast&rsquo;s confidence range</p>
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
                 Any statistical forecast carries real uncertainty the model can quantify and report. Showing only the point estimate and omitting the confidence interval removes the only part of the forecast that was honest about its own limits. A narrow band is reassuring. A wide band is information — the reader deserves to know how uncertain the projection is. Both are more useful than a single line drawn through unknowns.
               </p>
-              <div className="mt-5 border border-brand-concrete">
+              <div className="mt-5 border border-bk-rule">
                 <ForecastBandDiagram />
               </div>
-              <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+              <p className="font-sans text-[11px] text-bk-muted mt-3 text-center tracking-wide uppercase">
                 The confidence range isn&rsquo;t decoration — it&rsquo;s the honest part of the forecast.
               </p>
             </div>
 
             <div>
-              <p className="font-sans font-semibold text-brand-black text-base mb-2">Use color to focus attention, not to fill the legend</p>
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              <p className="font-sans font-semibold text-bk-parchment text-base mb-2">Use color to focus attention, not to fill the legend</p>
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
                 One accent color on a muted base does more work than five colors competing for attention. Gray context bars, one cobalt bar for what matters this period. This single change — requiring no other redesign — is the fastest upgrade available for any executive-facing dashboard. The insight becomes visible without narration.
               </p>
-              <div className="mt-5 border border-brand-concrete">
+              <div className="mt-5 border border-bk-rule">
                 <OneHighlightColorDiagram />
               </div>
-              <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+              <p className="font-sans text-[11px] text-bk-muted mt-3 text-center tracking-wide uppercase">
                 Same six bars. The right version guides the eye without requiring a legend.
               </p>
             </div>
 
             <div>
-              <p className="font-sans font-semibold text-brand-black text-base mb-2">Label directly — don&rsquo;t outsource meaning to a legend</p>
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              <p className="font-sans font-semibold text-bk-parchment text-base mb-2">Label directly — don&rsquo;t outsource meaning to a legend</p>
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
                 A legend forces the reader&rsquo;s eye to travel between data and key — a round trip with every new data point. Labels placed on or next to the data eliminate that friction entirely. This is especially important for line charts with multiple series: a label at the end of each line costs nothing and removes a constant cognitive tax from the reader.
               </p>
             </div>
 
             <div>
-              <p className="font-sans font-semibold text-brand-black text-base mb-2">Remove anything that competes with the main insight</p>
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              <p className="font-sans font-semibold text-bk-parchment text-base mb-2">Remove anything that competes with the main insight</p>
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
                 Gridlines, decorative borders, 3D effects, and unused legends are each a small tax on the reader&rsquo;s attention. They accumulate. A chart that has had decorative elements stripped out isn&rsquo;t &ldquo;minimalist&rdquo; — it&rsquo;s a chart where the data has more room. Every element that doesn&rsquo;t serve the one question this chart answers is in competition with it.
               </p>
             </div>
@@ -6524,30 +6524,30 @@ function DataVizArticle({ article, formattedDate }: { article: ReturnType<typeof
           <SectionHeading number="03" title="Dashboard-level design — beyond the single chart" />
 
           <div className="mt-6 space-y-6">
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <p className="font-sans font-semibold text-sm text-brand-black mb-2">One question per view</p>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <p className="font-sans font-semibold text-sm text-bk-parchment mb-2">One question per view</p>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">
                 The most underused principle in dashboard design. Every view should answer exactly one business question, with the answer placed prominently above the fold. Multiple questions crammed into one screen shift the prioritization burden to the viewer — which slows decisions and increases the chance they leave with the wrong takeaway. The question shouldn&rsquo;t be implicit in the charts. It should be stated, in plain language, before the charts begin.
               </p>
             </div>
 
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <p className="font-sans font-semibold text-sm text-brand-black mb-2">Interactivity should be used, not just available</p>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <p className="font-sans font-semibold text-sm text-bk-parchment mb-2">Interactivity should be used, not just available</p>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">
                 Tooltips, drill-downs, and cross-filtering are valuable when they&rsquo;re actually used. Review interaction data periodically: if a filter or drill-down is never clicked, remove it. Unused interactivity adds cognitive overhead without adding analytical value — and it&rsquo;s the easiest thing to accumulate without noticing, because it feels like adding capability when it&rsquo;s actually adding noise.
               </p>
             </div>
 
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <p className="font-sans font-semibold text-sm text-brand-black mb-2">Animation is for state change, not decoration</p>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <p className="font-sans font-semibold text-sm text-bk-parchment mb-2">Animation is for state change, not decoration</p>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">
                 Motion should communicate that something changed — a filter applied, a value updated. Animation that exists for visual interest distracts from the data and creates a genuine accessibility barrier for users with motion sensitivity. If removing an animation doesn&rsquo;t make the chart harder to understand, the animation shouldn&rsquo;t be there.
               </p>
             </div>
 
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <p className="font-sans font-semibold text-sm text-brand-black mb-2">Mobile requires rearrangement, not rescaling</p>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <p className="font-sans font-semibold text-sm text-bk-parchment mb-2">Mobile requires rearrangement, not rescaling</p>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">
                 Charts that simply shrink on mobile become unreadable rather than smaller. The layout needs to genuinely reflow — which means designing for it explicitly as a separate layout state, not treating it as a scaling problem to handle automatically.
               </p>
             </div>
@@ -6557,27 +6557,27 @@ function DataVizArticle({ article, formattedDate }: { article: ReturnType<typeof
         {/* Section 04 — AI */}
         <section>
           <SectionHeading number="04" title="AI in the visualization workflow" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             The shift worth understanding: AI tools now handle a meaningful share of the mechanical work — cleaning data, selecting chart types, detecting anomalies, generating written summaries — from natural-language descriptions alone. Typing &ldquo;show sales trends for the last six months&rdquo; produces a working chart in most modern BI tools, with the AI selecting the format and often surfacing an initial insight. The genuine benefit is removing the setup cost between raw data and a first-draft visual, freeing time for the judgment calls described in sections 1 through 3.
           </p>
 
           <Callout label="Where AI-generated charts need real caution" className="mt-8">
             <div className="space-y-4">
               <div>
-                <p className="font-sans text-sm font-semibold text-brand-black mb-1">SQL hallucination</p>
-                <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                <p className="font-sans text-sm font-semibold text-bk-parchment mb-1">SQL hallucination</p>
+                <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
                   An AI generating SQL from scratch can silently compute &ldquo;revenue&rdquo; or &ldquo;conversion&rdquo; using an assumption that doesn&rsquo;t match your team&rsquo;s agreed definition. An AI grounded in an explicit semantic layer — pre-agreed, governed metric definitions — is materially more trustworthy than one improvising from a raw prompt. A metric that seems right but isn&rsquo;t damages trust in the whole dashboard faster than any single right answer can rebuild it.
                 </p>
               </div>
               <div>
-                <p className="font-sans text-sm font-semibold text-brand-black mb-1">Summary scope</p>
-                <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                <p className="font-sans text-sm font-semibold text-bk-parchment mb-1">Summary scope</p>
+                <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
                   Any AI-written chart summary should be treated as provisional until you&rsquo;ve confirmed the date range and filters it used. A summary that doesn&rsquo;t state its own scope can&rsquo;t be verified. An unverified metric shared upward is a metric that may be wrong — and wrong numbers erode trust in the whole dashboard, not just the one number.
                 </p>
               </div>
               <div>
-                <p className="font-sans text-sm font-semibold text-brand-black mb-1">AI forecasts — same honesty rules apply</p>
-                <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+                <p className="font-sans text-sm font-semibold text-bk-parchment mb-1">AI forecasts — same honesty rules apply</p>
+                <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
                   An AI-generated predictive overlay that drops its own confidence interval is making exactly the mistake described in Section 2 — automated. The honesty rules don&rsquo;t carry an AI exemption. If the model can report uncertainty (it almost always can), the chart should show it.
                 </p>
               </div>
@@ -6588,11 +6588,11 @@ function DataVizArticle({ article, formattedDate }: { article: ReturnType<typeof
         {/* Section 05 — Build sequence */}
         <section>
           <SectionHeading number="05" title="The build sequence" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Before opening any tool, write the business question in one sentence. Then:
           </p>
 
-          <div className="mt-8 border border-brand-concrete divide-y divide-brand-concrete">
+          <div className="mt-8 border border-bk-rule divide-y divide-brand-concrete">
             {[
               { num: '01', step: 'Write the question', detail: 'One sentence. If you can\'t write it, the visual isn\'t ready to build.' },
               { num: '02', step: 'Choose chart type from the perception table', detail: 'Match the encoding to the question. Not from habit, not from what looks interesting.' },
@@ -6603,10 +6603,10 @@ function DataVizArticle({ article, formattedDate }: { article: ReturnType<typeof
               { num: '07', step: 'Show it to someone outside the room', detail: 'Teams that ship readable dashboards treat a confusing chart type as a defect, not a preference. Fresh eyes catch it before deployment does.' },
             ].map(({ num, step, detail }) => (
               <div key={num} className="px-5 py-4 flex gap-5">
-                <span className="font-display text-3xl text-brand-cobalt/20 flex-shrink-0 leading-none mt-1">{num}</span>
+                <span className="font-book font-bold text-3xl text-bk-gold/20 flex-shrink-0 leading-none mt-1">{num}</span>
                 <div>
-                  <p className="font-sans font-semibold text-sm text-brand-black mb-1">{step}</p>
-                  <p className="font-sans text-sm text-brand-muted leading-relaxed">{detail}</p>
+                  <p className="font-sans font-semibold text-sm text-bk-parchment mb-1">{step}</p>
+                  <p className="font-sans text-sm text-bk-muted leading-relaxed">{detail}</p>
                 </div>
               </div>
             ))}
@@ -6616,7 +6616,7 @@ function DataVizArticle({ article, formattedDate }: { article: ReturnType<typeof
         {/* Honesty checklist */}
         <section>
           <SectionHeading number="—" title="The honesty checklist" />
-          <div className="mt-6 bg-brand-graphite border border-brand-concrete p-6 space-y-3">
+          <div className="mt-6 bg-bk-deep border border-bk-rule p-6 space-y-3">
             {[
               'No line connects across a real data gap without a visible break or explicit note',
               'No partial / in-progress period is shown as if it were complete',
@@ -6627,8 +6627,8 @@ function DataVizArticle({ article, formattedDate }: { article: ReturnType<typeof
               'Any AI-generated metric or summary has been checked against a governed definition before being shared',
             ].map((item, i) => (
               <div key={i} className="flex gap-3 items-start">
-                <span className="text-brand-cobalt font-sans text-xs mt-0.5 flex-shrink-0">□</span>
-                <span className="font-sans text-sm text-brand-black/75 leading-relaxed">{item}</span>
+                <span className="text-bk-gold font-sans text-xs mt-0.5 flex-shrink-0">□</span>
+                <span className="font-sans text-sm text-bk-parchment/75 leading-relaxed">{item}</span>
               </div>
             ))}
           </div>
@@ -6641,13 +6641,13 @@ function DataVizArticle({ article, formattedDate }: { article: ReturnType<typeof
         ]} />
 
         {/* Footer */}
-        <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
-          <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <footer className="pt-4 pb-16 border-t border-bk-rule flex flex-wrap justify-between items-center gap-4">
+          <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
             ← All Field Notes
           </Link>
           <div className="flex flex-wrap gap-2">
             {article!.tags.map((tag) => (
-              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/60 border border-brand-cobalt/20 px-2 py-0.5">
+              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/60 border border-bk-gold/20 px-2 py-0.5">
                 {tag}
               </span>
             ))}
@@ -6662,34 +6662,34 @@ function DataVizArticle({ article, formattedDate }: { article: ReturnType<typeof
 
 function EmailMarketingArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
 
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
 
-        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
           THE<br />
-          <span className="text-brand-cobalt">2%</span><br />
+          <span className="text-bk-gold">2%</span><br />
           LEVER.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/70 border border-bk-gold/25 px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -6700,25 +6700,25 @@ function EmailMarketingArticle({ article, formattedDate }: { article: ReturnType
 
         {/* Lede */}
         <section>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
             Email returns $36–$42 for every dollar spent in 2026. Paid search returns $2. Social advertising, $2.80. Display, $1.35. The gap isn&rsquo;t narrowing. It&rsquo;s widening, because AI personalization compounds the return on the channel that already had the highest return. 59% of marketers name email their single most effective revenue channel.
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             The concentration finding inside that number is the more useful one: roughly 2% of send volume, the automated, behavior-triggered flows, generates 41% of total email revenue. Campaigns and newsletters are real work with real but comparatively thin payback. The welcome series, booking confirmation, and win-back flow are where the leverage actually sits. If you build one thing, the data is explicit about which three.
           </p>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>Email returns $36–$42 per dollar spent in 2026. Paid search returns $2. Social advertising, $2.80. The ROI gap is not narrowing.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Roughly 2% of send volume, the automated behavior-triggered flows, generates 41% of total email revenue. Build the welcome series, booking confirmation, and win-back flow before campaigns.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Open rate is now a directional health check, not a real KPI. Apple&rsquo;s Mail Privacy Protection pre-fetches images for a large share of opens regardless of whether a human actually read the email.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Deliverability is the floor everything else rests on: bounce rate must stay below 2% and unsubscribe rate below 0.5%, or domain reputation degrades and inboxing rates fall across the entire list.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Email returns $36–$42 per dollar spent in 2026. Paid search returns $2. Social advertising, $2.80. The ROI gap is not narrowing.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Roughly 2% of send volume, the automated behavior-triggered flows, generates 41% of total email revenue. Build the welcome series, booking confirmation, and win-back flow before campaigns.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Open rate is now a directional health check, not a real KPI. Apple&rsquo;s Mail Privacy Protection pre-fetches images for a large share of opens regardless of whether a human actually read the email.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Deliverability is the floor everything else rests on: bounce rate must stay below 2% and unsubscribe rate below 0.5%, or domain reputation degrades and inboxing rates fall across the entire list.</li>
             </ul>
           </Callout>
 
-          <div className="mt-8 border border-brand-concrete">
+          <div className="mt-8 border border-bk-rule">
             <EmailROIComparisonDiagram />
           </div>
-          <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+          <p className="font-sans text-[11px] text-bk-muted mt-3 text-center tracking-wide uppercase">
             ROI per $1 spent — 2026 benchmarks. Sources: Angarum Media, Litmus, DMA, Omnisend, Klaviyo.
           </p>
         </section>
@@ -6726,15 +6726,15 @@ function EmailMarketingArticle({ article, formattedDate }: { article: ReturnType
         {/* Section 01 — Metrics */}
         <section>
           <SectionHeading number="01" title="The metrics that matter — and the one that doesn&rsquo;t anymore" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Open rate is now a directional health check, not a real KPI. Apple&rsquo;s Mail Privacy Protection pre-fetches images for a large share of opens regardless of whether a human actually read the email — structurally inflating the metric in a way that cannot be corrected for. Continuing to optimise primarily against open rate is optimising against a number that no longer means what it used to. This isn&rsquo;t a temporary quirk. MPP is a permanent shift in what &ldquo;open rate&rdquo; measures.
           </p>
 
-          <div className="mt-8 border border-brand-concrete divide-y divide-brand-concrete">
-            <div className="grid grid-cols-3 bg-brand-graphite px-4 py-3">
-              <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted">Metric</span>
-              <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted">2026 Benchmark</span>
-              <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted">Status</span>
+          <div className="mt-8 border border-bk-rule divide-y divide-brand-concrete">
+            <div className="grid grid-cols-3 bg-bk-deep px-4 py-3">
+              <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-muted">Metric</span>
+              <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-muted">2026 Benchmark</span>
+              <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-muted">Status</span>
             </div>
             {[
               { metric: 'Open rate (all-industry)', benchmark: '21–31% (MPP-adjusted)', status: 'Directional only', dim: true },
@@ -6746,15 +6746,15 @@ function EmailMarketingArticle({ article, formattedDate }: { article: ReturnType
               { metric: 'Unsubscribe ceiling', benchmark: '< 0.5%', status: 'Guardrail metric', dim: false },
             ].map(({ metric, benchmark, status, dim }) => (
               <div key={metric} className="grid grid-cols-3 px-4 py-3">
-                <span className={`font-sans text-sm ${dim ? 'text-brand-muted line-through' : 'text-brand-black/75'}`}>{metric}</span>
-                <span className="font-sans text-sm text-brand-black/60">{benchmark}</span>
-                <span className={`font-sans text-sm font-medium ${dim ? 'text-brand-muted' : 'text-brand-cobalt'}`}>{status}</span>
+                <span className={`font-sans text-sm ${dim ? 'text-bk-muted line-through' : 'text-bk-parchment/75'}`}>{metric}</span>
+                <span className="font-sans text-sm text-bk-parchment/60">{benchmark}</span>
+                <span className={`font-sans text-sm font-medium ${dim ? 'text-bk-muted' : 'text-bk-gold'}`}>{status}</span>
               </div>
             ))}
           </div>
 
           <Callout label="The two guardrail metrics" className="mt-6">
-            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+            <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
               Bounce rate above 2% and unsubscribe rate above 0.5% are the numbers that, if they slip, put every other metric at risk. A deliverability problem suppresses your real engagement numbers before you ever see the effect in clicks or revenue — which is exactly what makes it dangerous. These don&rsquo;t need to be optimised. They need to be maintained below their ceilings, and monitored every send.
             </p>
           </Callout>
@@ -6763,33 +6763,33 @@ function EmailMarketingArticle({ article, formattedDate }: { article: ReturnType
         {/* Section 02 — Deliverability */}
         <section>
           <SectionHeading number="02" title="Deliverability — the precondition everything else sits on" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             If deliverability is broken, no amount of copywriting or AI personalization matters. The email never reaches an inbox. This is worth stating plainly because it&rsquo;s treated as a technical checkbox when it&rsquo;s actually the foundation that everything else depends on.
           </p>
 
-          <div className="mt-8 border border-brand-concrete">
+          <div className="mt-8 border border-bk-rule">
             <DeliverabilityStackDiagram />
           </div>
-          <p className="font-sans text-[11px] text-brand-muted mt-3 text-center tracking-wide uppercase">
+          <p className="font-sans text-[11px] text-bk-muted mt-3 text-center tracking-wide uppercase">
             Deliverability layers in order of priority — each one is a precondition for the next.
           </p>
 
           <div className="mt-8 space-y-5">
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <p className="font-sans font-semibold text-sm text-brand-black mb-2">Full authentication is table stakes</p>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <p className="font-sans font-semibold text-sm text-bk-parchment mb-2">Full authentication is table stakes</p>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">
                 SPF, DKIM, and DMARC set to enforcement — not just monitoring mode — are the baseline mailbox providers now expect. Monitoring mode means you&rsquo;re observing failures without blocking them. Enforcement is what actually protects sender reputation and passes the mailbox providers&rsquo; increasingly AI-driven filtering.
               </p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <p className="font-sans font-semibold text-sm text-brand-black mb-2">List hygiene compounds into deliverability</p>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <p className="font-sans font-semibold text-sm text-bk-parchment mb-2">List hygiene compounds into deliverability</p>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">
                 Continued sends to unengaged contacts signal to mailbox providers that your list is poorly managed — and that signal damages sender reputation for all your sends, not just the ones to those contacts. A smaller, genuinely engaged list consistently outperforms a larger, stale one on every metric that matters, including reach. Suppressing unengaged contacts isn&rsquo;t a concession; it&rsquo;s how you protect the audience that does engage.
               </p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <p className="font-sans font-semibold text-sm text-brand-black mb-2">AI-drafted volume is a live deliverability variable</p>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <p className="font-sans font-semibold text-sm text-bk-parchment mb-2">AI-drafted volume is a live deliverability variable</p>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">
                 As AI-generated email becomes the norm, mailbox providers are adjusting relevance filtering in response. The specific risk: a large volume of similarly-structured, AI-generated sends can trigger pattern detection that affects inbox placement. This isn&rsquo;t a solved problem. If a significant share of your sends are AI-drafted, it&rsquo;s worth monitoring as a risk factor rather than assuming current placement rates will hold.
               </p>
             </div>
@@ -6799,11 +6799,11 @@ function EmailMarketingArticle({ article, formattedDate }: { article: ReturnType
         {/* Section 03 — Flows */}
         <section>
           <SectionHeading number="03" title="The five flows — in the order they pay back" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             The 2%-drives-41% concentration finding has a direct implication for build priority. Campaigns and newsletters get attention because they&rsquo;re visible and scheduled. Automated lifecycle flows get neglected because they require upfront engineering work and then largely run unnoticed. The data says the unnoticed work is the leverage.
           </p>
 
-          <div className="mt-8 border border-brand-concrete overflow-hidden">
+          <div className="mt-8 border border-bk-rule overflow-hidden">
             <EmailFlowPriorityDiagram />
           </div>
 
@@ -6811,50 +6811,50 @@ function EmailMarketingArticle({ article, formattedDate }: { article: ReturnType
 
             <div>
               <div className="flex items-baseline gap-3 mb-3">
-                <span className="font-display text-4xl text-brand-cobalt/30">01</span>
-                <p className="font-sans font-semibold text-base text-brand-black">Welcome series</p>
+                <span className="font-book font-bold text-4xl text-bk-gold/30">01</span>
+                <p className="font-sans font-semibold text-base text-bk-parchment">Welcome series</p>
               </div>
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
                 Three to five emails over 7–14 days: introduction → product education → value reinforcement. The highest-performing automated flow type by open rate (~35%), for an obvious reason: it reaches people at peak interest, right after they opted in. The attention window is real and finite. A welcome sequence that doesn&rsquo;t exist is leaving the highest-engagement moment in the entire subscriber lifecycle with nothing in it.
               </p>
             </div>
 
             <div>
               <div className="flex items-baseline gap-3 mb-3">
-                <span className="font-display text-4xl text-brand-cobalt/30">02</span>
-                <p className="font-sans font-semibold text-base text-brand-black">Booking / conversion confirmation</p>
+                <span className="font-book font-bold text-4xl text-bk-gold/30">02</span>
+                <p className="font-sans font-semibold text-base text-bk-parchment">Booking / conversion confirmation</p>
               </div>
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
                 Confirmation touches are high-open, high-trust moments — the reader has just completed an action and expects communication. This makes them the best time to reinforce the decision, cross-sell adjacent offerings, or prime the next step in the lifecycle. They&rsquo;re consistently under-built relative to their actual value, because they feel like operational emails rather than marketing emails. That distinction doesn&rsquo;t matter to the reader.
               </p>
             </div>
 
             <div>
               <div className="flex items-baseline gap-3 mb-3">
-                <span className="font-display text-4xl text-brand-cobalt/30">03</span>
-                <p className="font-sans font-semibold text-base text-brand-black">Win-back / re-engagement</p>
+                <span className="font-book font-bold text-4xl text-bk-gold/30">03</span>
+                <p className="font-sans font-semibold text-base text-bk-parchment">Win-back / re-engagement</p>
               </div>
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
                 This flow does double work: it recovers revenue from contacts whose engagement has dropped, and it protects deliverability by identifying which contacts to suppress before they become a reputation liability. A re-engagement sequence that converts inactive subscribers back to active ones improves deliverability while recovering revenue. One that doesn&rsquo;t convert identifies exactly who to remove from the active list — which also improves deliverability. It&rsquo;s useful regardless of outcome.
               </p>
             </div>
 
             <div>
               <div className="flex items-baseline gap-3 mb-3">
-                <span className="font-display text-4xl text-brand-cobalt/30">04</span>
-                <p className="font-sans font-semibold text-base text-brand-black">Abandoned action recovery</p>
+                <span className="font-book font-bold text-4xl text-bk-gold/30">04</span>
+                <p className="font-sans font-semibold text-base text-bk-parchment">Abandoned action recovery</p>
               </div>
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
                 Classic abandoned cart recovery has expanded to include browse abandonment, wishlist reminders, and multi-step nurture that addresses specific purchase hesitations rather than sending a single generic reminder. In a B2B or campaign context, the direct analog is a form-start-without-completion or a content-download-without-follow-through trigger. The underlying logic is identical: someone expressed intent and didn&rsquo;t complete. Automated follow-up on that signal consistently recovers near-miss conversions.
               </p>
             </div>
 
             <div>
               <div className="flex items-baseline gap-3 mb-3">
-                <span className="font-display text-4xl text-brand-cobalt/30">05</span>
-                <p className="font-sans font-semibold text-base text-brand-black">Behavioral MOFU nurture</p>
+                <span className="font-book font-bold text-4xl text-bk-gold/30">05</span>
+                <p className="font-sans font-semibold text-base text-bk-parchment">Behavioral MOFU nurture</p>
               </div>
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
                 Triggering the next email off actual behavior — viewed pricing → send comparison content; downloaded a guide → invite to webinar — rather than running one static drip for everyone is what closes the middle-funnel gap. This is squarely a marketing automation problem, not a content problem. The content may already exist. What&rsquo;s missing is the behavioral trigger logic that delivers the right content to someone who just demonstrated specific intent.
               </p>
             </div>
@@ -6864,38 +6864,38 @@ function EmailMarketingArticle({ article, formattedDate }: { article: ReturnType
         {/* Section 04 — AI personalization */}
         <section>
           <SectionHeading number="04" title="AI personalization — what it moves, and what to watch" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             The lift figures from AI personalization in email are real and consistent across multiple sources, even where the exact percentages vary by methodology and list type.
           </p>
 
-          <div className="mt-6 bg-brand-graphite border border-brand-concrete p-6 grid grid-cols-2 gap-4">
+          <div className="mt-6 bg-bk-deep border border-bk-rule p-6 grid grid-cols-2 gap-4">
             {[
               { stat: '+26%', label: 'Open rate lift from AI-optimised subject lines vs manually written' },
               { stat: '+14%', label: 'Additional lift from AI send-time optimisation, stacking on the above' },
               { stat: '3.75%', label: 'Average click rate from AI product/content recommendations (top: 8.79%)' },
               { stat: 'up to 6×', label: 'More transactions from personalised sends vs generic — across multiple sources' },
             ].map(({ stat, label }) => (
-              <div key={stat} className="border border-brand-concrete bg-brand-white p-4">
-                <span className="font-display text-4xl text-brand-cobalt block mb-2">{stat}</span>
-                <p className="font-sans text-xs text-brand-black/60 leading-relaxed">{label}</p>
+              <div key={stat} className="border border-bk-rule bg-bk-slate p-4">
+                <span className="font-book font-bold text-4xl text-bk-gold block mb-2">{stat}</span>
+                <p className="font-sans text-xs text-bk-parchment/60 leading-relaxed">{label}</p>
               </div>
             ))}
           </div>
 
-          <p className="font-sans text-sm text-brand-muted mt-4 leading-relaxed">
+          <p className="font-sans text-sm text-bk-muted mt-4 leading-relaxed">
             Treat specific figures as benchmarks to validate against your own A/B test data, not as guaranteed results. The directional finding — AI personalization meaningfully improves performance — is well-supported. Whether the exact lifts hold for your list and industry requires your own test data to confirm.
           </p>
 
           <div className="mt-8 space-y-5">
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <p className="font-sans font-semibold text-sm text-brand-black mb-2">Differentiation is shifting from using AI to using it well</p>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <p className="font-sans font-semibold text-sm text-bk-parchment mb-2">Differentiation is shifting from using AI to using it well</p>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">
                 61% of enterprise email programs are projected to use AI for at least one element of campaign creation by late 2026, with adoption projected toward 97% by 2030. Simply using AI in email is moving from advantage to baseline expectation. The differentiation increasingly sits in avoiding the failure mode: AI-generated email at scale that doesn&rsquo;t clear the same quality bar as human-written email creates &ldquo;AI slop&rdquo; at volume — which triggers both reader disengagement and, increasingly, filtering from mailbox providers.
               </p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/30 pl-4 py-1">
-              <p className="font-sans font-semibold text-sm text-brand-black mb-2">Zero-party data is the fuel AI personalization depends on</p>
-              <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+            <div className="border-l-2 border-bk-gold/30 pl-4 py-1">
+              <p className="font-sans font-semibold text-sm text-bk-parchment mb-2">Zero-party data is the fuel AI personalization depends on</p>
+              <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">
                 AI personalization is only as good as the data it personalises on. Quiz funnels and direct preference-capture mechanisms — where a person tells you explicitly what they want, rather than having behavior inferred — are the highest-yield way to collect zero-party data. As cookieless tracking erodes behavioral inference across the web, zero-party data collected through email interactions becomes increasingly valuable. The channel that collects the preference is also the channel that benefits from it.
               </p>
             </div>
@@ -6906,7 +6906,7 @@ function EmailMarketingArticle({ article, formattedDate }: { article: ReturnType
         <section>
           <SectionHeading number="05" title="The practical audit — where to look first" />
 
-          <div className="mt-6 border border-brand-concrete divide-y divide-brand-concrete">
+          <div className="mt-6 border border-bk-rule divide-y divide-brand-concrete">
             {[
               {
                 check: 'Which of the five flows actually exist — and in what order they were built',
@@ -6930,20 +6930,20 @@ function EmailMarketingArticle({ article, formattedDate }: { article: ReturnType
               },
             ].map(({ check, why }, i) => (
               <div key={i} className="px-5 py-5">
-                <p className="font-sans font-semibold text-sm text-brand-black mb-2">{check}</p>
-                <p className="font-sans text-sm text-brand-muted leading-relaxed">{why}</p>
+                <p className="font-sans font-semibold text-sm text-bk-parchment mb-2">{check}</p>
+                <p className="font-sans text-sm text-bk-muted leading-relaxed">{why}</p>
               </div>
             ))}
           </div>
         </section>
 
         {/* Closing */}
-        <section className="border-t border-brand-concrete pt-10">
-          <p className="font-sans text-lg text-brand-black/75 leading-relaxed">
+        <section className="border-t border-bk-rule pt-10">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
             The channel with the highest ROI also has the highest concentration of returns in the smallest slice of its activity. That 2% of send volume — the automated flows — is where the build priority belongs. Everything else is diminishing returns until those exist.
           </p>
 
-          <div className="mt-8 border border-brand-concrete">
+          <div className="mt-8 border border-bk-rule">
             <RevenueConcentrationDiagram />
           </div>
         </section>
@@ -6955,13 +6955,13 @@ function EmailMarketingArticle({ article, formattedDate }: { article: ReturnType
         ]} />
 
         {/* Footer */}
-        <footer className="pt-4 pb-16 border-t border-brand-concrete flex flex-wrap justify-between items-center gap-4">
-          <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <footer className="pt-4 pb-16 border-t border-bk-rule flex flex-wrap justify-between items-center gap-4">
+          <Link href="/articles" className="font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
             ← All Field Notes
           </Link>
           <div className="flex flex-wrap gap-2">
             {article!.tags.map((tag) => (
-              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/60 border border-brand-cobalt/20 px-2 py-0.5">
+              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/60 border border-bk-gold/20 px-2 py-0.5">
                 {tag}
               </span>
             ))}
@@ -6976,17 +6976,17 @@ function EmailMarketingArticle({ article, formattedDate }: { article: ReturnType
 
 function SectionHeading({ number, title }: { number: string; title: string }) {
   return (
-    <div className="flex items-baseline gap-4 mb-6 pb-4 border-b border-brand-concrete">
-      <span className="font-display text-5xl text-brand-cobalt/20">{number}</span>
-      <h2 className="font-display text-4xl md:text-5xl text-brand-black">{title.toUpperCase()}</h2>
+    <div className="flex items-baseline gap-4 mb-6 pb-4 border-b border-bk-rule">
+      <span className="font-book font-bold text-5xl text-bk-gold/20">{number}</span>
+      <h2 className="font-book font-bold text-4xl md:text-5xl text-bk-parchment">{title.toUpperCase()}</h2>
     </div>
   )
 }
 
 function Callout({ label, children, className = '' }: { label: string; children: React.ReactNode; className?: string }) {
   return (
-    <div className={`bg-brand-graphite border border-brand-concrete p-6 ${className}`}>
-      <span className="font-sans text-[10px] tracking-[0.22em] uppercase text-brand-cobalt mb-4 block">{label}</span>
+    <div className={`bg-bk-deep border border-bk-rule p-6 ${className}`}>
+      <span className="font-sans text-[10px] tracking-[0.22em] uppercase text-bk-gold mb-4 block">{label}</span>
       {children}
     </div>
   )
@@ -6995,12 +6995,12 @@ function Callout({ label, children, className = '' }: { label: string; children:
 function RuleRow({ icon, tool, role, note }: { icon: string; tool: string; role: string; note: string }) {
   return (
     <div className="flex gap-3 items-start">
-      <span className="text-brand-cobalt/60 mt-0.5 flex-shrink-0">{icon}</span>
+      <span className="text-bk-gold/60 mt-0.5 flex-shrink-0">{icon}</span>
       <div>
-        <span className="font-sans font-semibold text-sm text-brand-black">{tool}</span>
-        <span className="font-sans text-sm text-brand-cobalt mx-1.5">=</span>
-        <span className="font-sans font-semibold text-sm text-brand-cobalt">{role}.</span>
-        <span className="font-sans text-sm text-brand-black/60 ml-1.5">{note}</span>
+        <span className="font-sans font-semibold text-sm text-bk-parchment">{tool}</span>
+        <span className="font-sans text-sm text-bk-gold mx-1.5">=</span>
+        <span className="font-sans font-semibold text-sm text-bk-gold">{role}.</span>
+        <span className="font-sans text-sm text-bk-parchment/60 ml-1.5">{note}</span>
       </div>
     </div>
   )
@@ -7011,8 +7011,8 @@ function SetupList({ items }: { items: { label: string; value: string }[] }) {
     <ul className="space-y-3">
       {items.map(({ label, value }) => (
         <li key={label} className="flex gap-3 font-sans text-sm">
-          <span className="text-brand-cobalt flex-shrink-0 w-[140px] font-medium">{label}</span>
-          <span className="text-brand-black/70">{value}</span>
+          <span className="text-bk-gold flex-shrink-0 w-[140px] font-medium">{label}</span>
+          <span className="text-bk-parchment/70">{value}</span>
         </li>
       ))}
     </ul>
@@ -7021,7 +7021,7 @@ function SetupList({ items }: { items: { label: string; value: string }[] }) {
 
 function CodeBlock({ children }: { children: React.ReactNode }) {
   return (
-    <pre className="bg-brand-graphite border border-brand-concrete p-5 font-mono text-xs text-brand-black/70 leading-relaxed overflow-x-auto">
+    <pre className="bg-bk-deep border border-bk-rule p-5 font-mono text-xs text-bk-parchment/70 leading-relaxed overflow-x-auto">
       {children}
     </pre>
   )
@@ -7029,12 +7029,12 @@ function CodeBlock({ children }: { children: React.ReactNode }) {
 
 function BasesView({ name, desc, filter }: { name: string; desc: string; filter: string }) {
   return (
-    <div className="border border-brand-concrete p-4">
+    <div className="border border-bk-rule p-4">
       <div className="flex items-start justify-between gap-4 mb-2">
-        <span className="font-sans font-semibold text-sm text-brand-black">{name}</span>
-        <code className="font-mono text-[10px] text-brand-cobalt/70 bg-brand-graphite px-2 py-0.5 flex-shrink-0">{filter}</code>
+        <span className="font-sans font-semibold text-sm text-bk-parchment">{name}</span>
+        <code className="font-mono text-[10px] text-bk-gold/70 bg-bk-deep px-2 py-0.5 flex-shrink-0">{filter}</code>
       </div>
-      <p className="font-sans text-sm text-brand-black/60">{desc}</p>
+      <p className="font-sans text-sm text-bk-parchment/60">{desc}</p>
     </div>
   )
 }
@@ -7042,12 +7042,12 @@ function BasesView({ name, desc, filter }: { name: string; desc: string; filter:
 function DatabaseSchema({ name, rows }: { name: string; rows: [string, string][] }) {
   return (
     <div>
-      <h4 className="font-sans font-semibold text-sm text-brand-cobalt tracking-[0.1em] uppercase mb-2">{name}</h4>
-      <div className="border border-brand-concrete divide-y divide-brand-concrete/60">
+      <h4 className="font-sans font-semibold text-sm text-bk-gold tracking-[0.1em] uppercase mb-2">{name}</h4>
+      <div className="border border-bk-rule divide-y divide-brand-concrete/60">
         {rows.map(([prop, type]) => (
           <div key={prop} className="flex gap-0 font-sans text-xs">
-            <span className="w-40 px-3 py-2 text-brand-black font-medium flex-shrink-0">{prop}</span>
-            <span className="px-3 py-2 text-brand-muted border-l border-brand-concrete/60">{type}</span>
+            <span className="w-40 px-3 py-2 text-bk-parchment font-medium flex-shrink-0">{prop}</span>
+            <span className="px-3 py-2 text-bk-muted border-l border-bk-rule/60">{type}</span>
           </div>
         ))}
       </div>
@@ -7057,12 +7057,12 @@ function DatabaseSchema({ name, rows }: { name: string; rows: [string, string][]
 
 function LoopRow({ cadence, label, desc, last = false }: { cadence: string; label: string; desc: string; last?: boolean }) {
   return (
-    <div className={`flex gap-0 ${!last ? 'border-b border-brand-concrete' : ''}`}>
-      <div className="w-36 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/50">
-        <span className="font-sans text-[10px] text-brand-muted block leading-snug">{cadence}</span>
-        <span className="font-sans font-semibold text-sm text-brand-cobalt mt-0.5 block">{label}</span>
+    <div className={`flex gap-0 ${!last ? 'border-b border-bk-rule' : ''}`}>
+      <div className="w-36 flex-shrink-0 p-4 border-r border-bk-rule bg-bk-deep/50">
+        <span className="font-sans text-[10px] text-bk-muted block leading-snug">{cadence}</span>
+        <span className="font-sans font-semibold text-sm text-bk-gold mt-0.5 block">{label}</span>
       </div>
-      <p className="font-sans text-sm text-brand-black/70 p-4 leading-relaxed">{desc}</p>
+      <p className="font-sans text-sm text-bk-parchment/70 p-4 leading-relaxed">{desc}</p>
     </div>
   )
 }
@@ -7070,10 +7070,10 @@ function LoopRow({ cadence, label, desc, last = false }: { cadence: string; labe
 function FailureMode({ n, title, desc }: { n: number; title: string; desc: string }) {
   return (
     <div className="flex gap-4 items-start">
-      <span className="font-display text-4xl text-brand-cobalt/20 flex-shrink-0 leading-none">{n}</span>
+      <span className="font-book font-bold text-4xl text-bk-gold/20 flex-shrink-0 leading-none">{n}</span>
       <div>
-        <h4 className="font-sans font-semibold text-sm text-brand-black mb-1">{title}</h4>
-        <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{desc}</p>
+        <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-1">{title}</h4>
+        <p className="font-sans text-sm text-bk-parchment/60 leading-relaxed">{desc}</p>
       </div>
     </div>
   )
@@ -7081,33 +7081,33 @@ function FailureMode({ n, title, desc }: { n: number; title: string; desc: strin
 
 function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
 
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
 
-        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
           NOT A<br />
-          <span className="text-brand-cobalt">PIPE.</span>
+          <span className="text-bk-gold">PIPE.</span>
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/70 border border-bk-gold/25 px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -7118,13 +7118,13 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
 
         {/* Lede */}
         <section>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
             The three automation platforms have arrived at clear positions. Zapier is the fast path for
             non-technical teams with simple, low-volume needs. Make is the visual canvas for mid-complexity
             work with generous operation pricing. n8n is the choice for teams that want total control over
             data, cost, and AI integration depth: open-source, self-hostable, execution-based pricing.
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             That market settling is context. The actual 2026 story is different: all three platforms have
             stopped being deterministic trigger-action pipes and started becoming genuine AI orchestration
             layers. That shift changes not just which tool you pick. It changes what you build with them
@@ -7132,10 +7132,10 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
           </p>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>Three platforms, three contracts: Zapier (8,000+ integrations, simple non-technical deployments), Make (visual canvas, ~10,000 operations for $29/month), n8n (open-source, self-hostable, execution-based pricing, deepest AI integration).</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>All three platforms have shifted from deterministic trigger-action pipes to genuine AI orchestration layers. This changes what you build, not just which tool you pick.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>An AI Agent node inside n8n reasons across steps rather than executing a fixed sequence. This is the qualitative difference between routing and genuine agentic behaviour.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>n8n&rsquo;s MCP Client Tool integration means it can connect to any MCP server, extending its AI workflows to the full ecosystem of MCP-compatible tools and data sources.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Three platforms, three contracts: Zapier (8,000+ integrations, simple non-technical deployments), Make (visual canvas, ~10,000 operations for $29/month), n8n (open-source, self-hostable, execution-based pricing, deepest AI integration).</li>
+              <li><span className="text-bk-gold mr-2">—</span>All three platforms have shifted from deterministic trigger-action pipes to genuine AI orchestration layers. This changes what you build, not just which tool you pick.</li>
+              <li><span className="text-bk-gold mr-2">—</span>An AI Agent node inside n8n reasons across steps rather than executing a fixed sequence. This is the qualitative difference between routing and genuine agentic behaviour.</li>
+              <li><span className="text-bk-gold mr-2">—</span>n8n&rsquo;s MCP Client Tool integration means it can connect to any MCP server, extending its AI workflows to the full ecosystem of MCP-compatible tools and data sources.</li>
             </ul>
           </Callout>
         </section>
@@ -7143,20 +7143,20 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Section 01 */}
         <section>
           <SectionHeading number="01" title="Three platforms, three different contracts" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Zapier&rsquo;s structural advantage is integration breadth — 8,000+ apps — and the ability to
             deploy something simple in under an hour without touching code. The cost model gets expensive
             fast: each step in a workflow is counted separately, so a three-step automation uses three
             tasks. At real volume, this adds up. If the automation is simple, low-volume, and the priority
             is speed without code, Zapier remains the fastest path.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
             Make operates on a visual canvas with genuine parallel branching, 2,000+ integrations, and an
             operations model that bundles generously — roughly 10,000 operations for $29/month. Right fit
             for mid-complexity workflows where the visual builder is doing real work: mapping out a
             branching process that would be difficult to reason about as text.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
             n8n is the choice for anything that needs total data control, deep AI integration, or cost
             predictability at scale. Open-source, self-hostable, execution-based pricing, and the ability
             to reach virtually any API via custom HTTP calls. If the automation involves AI agents that need
@@ -7178,7 +7178,7 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Section 02 */}
         <section>
           <SectionHeading number="02" title="From pipe to reasoning layer" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Classic automation follows a predetermined path. The workflow decides nothing — you decide
             everything in advance, the trigger fires, and the sequence executes. Each branch has to be
             scripted before the workflow runs. If something falls outside the branches you anticipated,
@@ -7190,14 +7190,14 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
             <WorkflowVsAgentDiagram />
           </div>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
             An AI agent inside the same platform works differently. It observes the current context,
             reasons about what action fits, selects from the tools available to it, acts, observes the
             result, and decides what happens next. No predetermined path. If a database query returns an
             unexpected shape, the agent can reason about whether to retry, fall back to a different source,
             or surface the ambiguity. The workflow did not have to anticipate it in advance.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
             The practical implication is not that every automation should use an agent node. It is that
             the distinction now exists and can be applied deliberately. Deterministic sequences — webhook
             fires, data transforms, sends notification — belong in fixed workflow nodes, where they run
@@ -7205,7 +7205,7 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
             actions fits an edge case, handling a response format you could not script for in advance.
             That is where agent reasoning earns its overhead.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
             n8n 2.0 codified this maturity with the Publish vs. Save split. Save is draft mode: test
             against realistic data without touching the live webhook. Publish creates an immutable
             production version. This is standard CI/CD practice applied to automation workflows — useful
@@ -7217,7 +7217,7 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Section 03 */}
         <section>
           <SectionHeading number="03" title="n8n and MCP: both sides of the bridge" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             n8n&rsquo;s most significant 2026 development is that it can now sit on both sides of an MCP
             relationship simultaneously — as a server that exposes workflows to external AI clients, and
             as a client that calls external MCP tools from inside a running workflow.
@@ -7228,9 +7228,9 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
           </div>
 
           <div className="space-y-6 mt-6">
-            <div className="border-l-2 border-brand-cobalt pl-5">
-              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">n8n as MCP Server</h4>
-              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+            <div className="border-l-2 border-bk-gold pl-5">
+              <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">n8n as MCP Server</h4>
+              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
                 Any n8n workflow can be exposed as a callable tool to an external AI host — Claude Desktop,
                 Cursor, a custom enterprise LLM. The AI reasons through a task and natively triggers your
                 workflow to take real-world action, without a custom API wrapper for that specific client.
@@ -7238,18 +7238,18 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
                 going forward.
               </p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/50 pl-5">
-              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">n8n as MCP Client</h4>
-              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+            <div className="border-l-2 border-bk-gold/50 pl-5">
+              <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">n8n as MCP Client</h4>
+              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
                 Internal n8n agents can dynamically discover and call external MCP tools mid-workflow,
                 using the MCP Client Tool node with an SSE endpoint. An n8n agent handling a support
                 ticket can call out to an external documentation search tool mid-workflow — the same way
                 a Claude agent would — without any custom integration between the two systems.
               </p>
             </div>
-            <div className="border-l-2 border-brand-concrete pl-5">
-              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">The n8n-mcp package</h4>
-              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+            <div className="border-l-2 border-bk-rule pl-5">
+              <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">The n8n-mcp package</h4>
+              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
                 A third mode: expose n8n&rsquo;s own workflow management API to Claude or Cursor, so you
                 can describe an automation in natural language and have the model build the actual workflow
                 via API calls rather than dragging nodes. Genuinely useful for prototyping — &ldquo;create
@@ -7264,12 +7264,12 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Section 04 */}
         <section>
           <SectionHeading number="04" title="The filter before you build" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Not every repetitive task deserves automation, and not every automatable task is worth the
             setup cost. Four questions that filter before you start:
           </p>
 
-          <div className="mt-6 space-y-0 border border-brand-concrete">
+          <div className="mt-6 space-y-0 border border-bk-rule">
             {[
               {
                 n: '01',
@@ -7292,13 +7292,13 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
                 a: 'A workflow that silently breaks at 3am and nobody notices until a client complains is worse than not automating the task at all. Pair every automation with a real failure alert — Slack, email, something someone actively checks.',
               },
             ].map((item, i, arr) => (
-              <div key={item.n} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
-                <div className="w-14 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/50 flex items-start justify-center pt-5">
-                  <span className="font-display text-2xl text-brand-cobalt/30">{item.n}</span>
+              <div key={item.n} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-bk-rule' : ''}`}>
+                <div className="w-14 flex-shrink-0 p-4 border-r border-bk-rule bg-bk-deep/50 flex items-start justify-center pt-5">
+                  <span className="font-book font-bold text-2xl text-bk-gold/30">{item.n}</span>
                 </div>
                 <div className="p-4 flex-1">
-                  <h4 className="font-sans font-semibold text-sm text-brand-black leading-snug mb-2">{item.q}</h4>
-                  <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{item.a}</p>
+                  <h4 className="font-sans font-semibold text-sm text-bk-parchment leading-snug mb-2">{item.q}</h4>
+                  <p className="font-sans text-sm text-bk-parchment/60 leading-relaxed">{item.a}</p>
                 </div>
               </div>
             ))}
@@ -7308,28 +7308,28 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Section 05 */}
         <section>
           <SectionHeading number="05" title="Where this applies immediately" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             A few categories where the workflow discipline from this workbook maps directly to real tasks:
           </p>
-          <ul className="mt-5 space-y-4 font-sans text-base text-brand-black/70 leading-relaxed">
+          <ul className="mt-5 space-y-4 font-sans text-base text-bk-parchment/70 leading-relaxed">
             <li className="flex gap-3">
-              <span className="text-brand-cobalt mt-1 flex-shrink-0">—</span>
-              <span><strong className="text-brand-black font-semibold">Recurring reporting.</strong> A workflow that pulls data from analytics tools on a schedule and drops a formatted summary into Slack or email is a textbook n8n use case — deterministic, clear trigger, clear output, nothing that requires agent reasoning.</span>
+              <span className="text-bk-gold mt-1 flex-shrink-0">—</span>
+              <span><strong className="text-bk-parchment font-semibold">Recurring reporting.</strong> A workflow that pulls data from analytics tools on a schedule and drops a formatted summary into Slack or email is a textbook n8n use case — deterministic, clear trigger, clear output, nothing that requires agent reasoning.</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-brand-cobalt mt-1 flex-shrink-0">—</span>
-              <span><strong className="text-brand-black font-semibold">Platform handoffs.</strong> Campaign page publishing, lead routing between Marketo and Salesforce, or any multi-platform data movement with a clear trigger and clear destination is exactly the kind of work n8n handles cleanly without an agent node.</span>
+              <span className="text-bk-gold mt-1 flex-shrink-0">—</span>
+              <span><strong className="text-bk-parchment font-semibold">Platform handoffs.</strong> Campaign page publishing, lead routing between Marketo and Salesforce, or any multi-platform data movement with a clear trigger and clear destination is exactly the kind of work n8n handles cleanly without an agent node.</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-brand-cobalt mt-1 flex-shrink-0">—</span>
-              <span><strong className="text-brand-black font-semibold">Content distribution.</strong> A scheduled workflow that checks for new assets and cross-posts or queues them for review is low-risk, high-leverage, and a practical first automation to actually Publish — not just test.</span>
+              <span className="text-bk-gold mt-1 flex-shrink-0">—</span>
+              <span><strong className="text-bk-parchment font-semibold">Content distribution.</strong> A scheduled workflow that checks for new assets and cross-posts or queues them for review is low-risk, high-leverage, and a practical first automation to actually Publish — not just test.</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-brand-cobalt mt-1 flex-shrink-0">—</span>
-              <span><strong className="text-brand-black font-semibold">Notification sequences.</strong> Reminders, expiry alerts, meeting triggers — genuinely repetitive, clear-trigger, clear-outcome work. No AI agent node needed. The agent overhead would be pure waste on a deterministic task.</span>
+              <span className="text-bk-gold mt-1 flex-shrink-0">—</span>
+              <span><strong className="text-bk-parchment font-semibold">Notification sequences.</strong> Reminders, expiry alerts, meeting triggers — genuinely repetitive, clear-trigger, clear-outcome work. No AI agent node needed. The agent overhead would be pure waste on a deterministic task.</span>
             </li>
           </ul>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             The connecting thread: n8n&rsquo;s MCP Server capability means any workflow you build becomes
             callable from Claude or Cursor directly. n8n&rsquo;s MCP Client capability means it can call
             out to any MCP server already in your stack mid-workflow. Worth designing new workflows with
@@ -7338,8 +7338,8 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
         </section>
 
         {/* Closing */}
-        <section className="border-t border-brand-concrete pt-10">
-          <p className="font-sans text-lg text-brand-black/75 leading-relaxed">
+        <section className="border-t border-bk-rule pt-10">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
             Build the automation. Test it against real data. Publish deliberately. Then connect it to something.
           </p>
         </section>
@@ -7353,8 +7353,8 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
       </div>
 
       {/* Footer nav */}
-      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-brand-concrete pt-10">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-bk-rule pt-10">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
@@ -7364,30 +7364,30 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
 
 function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
 
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
-        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
           EAST OF<br />
-          <span className="text-brand-cobalt">CLOSED.</span>
+          <span className="text-bk-gold">CLOSED.</span>
         </h1>
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/70 border border-bk-gold/25 px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -7398,20 +7398,20 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
 
         {/* Lede */}
         <section>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
             Four of the five leading open-weight models in mid-2026 come from Chinese labs: DeepSeek,
             Moonshot AI (Kimi), Zhipu/Z.ai (GLM), and Alibaba (Qwen). This is not a &ldquo;things are
             catching up&rdquo; observation. GLM-5&rsquo;s 77.8% on SWE-bench Verified outperforms
             Gemini 3 Pro. DeepSeek V4 Pro&rsquo;s 80.6% on the same benchmark is within a percentage
             point of Claude Opus 4.6 at 80.9%. The capability gap is closed.
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             The question has shifted. It is no longer whether to consider these models. It is which
             one, for which workload, under what deployment and licensing constraints. Both the advantages
             and the risks are real. They are also more specific, and more resolvable, than the public
             discourse suggests.
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             The clearest mistake in how most teams evaluate this category is collapsing compliance risk,
             security risk, and output-quality risk into a single &ldquo;China models: yes or no&rdquo;
             verdict. They are different columns on the risk matrix, and they respond to completely
@@ -7420,10 +7420,10 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
           </p>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>Four of the five leading open-weight models in mid-2026 come from Chinese labs: DeepSeek, Moonshot AI (Kimi), Zhipu/Z.ai (GLM), and Alibaba (Qwen). The capability gap is closed.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>GLM-5&rsquo;s 77.8% on SWE-bench Verified outperforms Gemini 3 Pro. DeepSeek V4 Pro&rsquo;s 80.6% is within one percentage point of Claude Opus 4.6 at 80.9%.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Compliance risk, security risk, and output-quality risk are different columns on the risk matrix and respond to completely different controls. Collapsing them into a single verdict leads to either blanket avoidance or unexamined acceptance.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Deployment path is the primary risk variable: locally deployed open weights carry a different profile than API calls routed through a Chinese provider&rsquo;s infrastructure.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Four of the five leading open-weight models in mid-2026 come from Chinese labs: DeepSeek, Moonshot AI (Kimi), Zhipu/Z.ai (GLM), and Alibaba (Qwen). The capability gap is closed.</li>
+              <li><span className="text-bk-gold mr-2">—</span>GLM-5&rsquo;s 77.8% on SWE-bench Verified outperforms Gemini 3 Pro. DeepSeek V4 Pro&rsquo;s 80.6% is within one percentage point of Claude Opus 4.6 at 80.9%.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Compliance risk, security risk, and output-quality risk are different columns on the risk matrix and respond to completely different controls. Collapsing them into a single verdict leads to either blanket avoidance or unexamined acceptance.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Deployment path is the primary risk variable: locally deployed open weights carry a different profile than API calls routed through a Chinese provider&rsquo;s infrastructure.</li>
             </ul>
           </Callout>
         </section>
@@ -7431,14 +7431,14 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 01 */}
         <section>
           <SectionHeading number="01" title="The four families" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             The current open-weight field has genuinely differentiated by workload rather than converging
             on identical strengths. The four leading families and what distinguishes each:
           </p>
           <div className="mt-8 mb-8 overflow-x-auto">
             <ModelLandscapeDiagram />
           </div>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Reading benchmark numbers carefully matters here specifically. Different labs report against
             different suites — SWE-bench Verified versus the newer and harder SWE-bench Pro — so a
             direct number comparison across vendors misleads unless you check which suite produced it.
@@ -7448,7 +7448,7 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
             which models to evaluate, not a final selection criterion. The consistent practitioner
             advice: run a real-task evaluation on your actual codebase or workflow before committing.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-5">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-5">
             The licensing landscape is clearer than the family-level reputation suggests. Qwen (Apache
             2.0), DeepSeek (MIT), and GLM (MIT) carry genuinely permissive commercial licences —
             no royalties, no usage caps, fine-tunable for enterprise deployment. The specific exception
@@ -7461,14 +7461,14 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 02 */}
         <section>
           <SectionHeading number="02" title="The real advantages" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Three of the four advantages below apply specifically to the open-weight, self-hosted
             deployment model. The fourth applies regardless of how you deploy.
           </p>
           <div className="space-y-8 mt-8">
-            <div className="border-l-2 border-brand-cobalt pl-5">
-              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">Cost efficiency — structural, not just sticker price</h4>
-              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+            <div className="border-l-2 border-bk-gold pl-5">
+              <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">Cost efficiency — structural, not just sticker price</h4>
+              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
                 DeepSeek-R1 was reportedly trained for under $6 million using 2,000 H800 chips over 55
                 days. That is a genuinely different cost structure from Western frontier training runs,
                 and the efficiency carries through to inference cost when self-hosted. Qwen3.6-27B runs
@@ -7477,9 +7477,9 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
                 hardware-constrained contexts.
               </p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/60 pl-5">
-              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">Permissive licensing for commercial use</h4>
-              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+            <div className="border-l-2 border-bk-gold/60 pl-5">
+              <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">Permissive licensing for commercial use</h4>
+              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
                 Apache 2.0 and MIT licences on three of the four families mean commercial deployment and
                 fine-tuning with zero royalties. For enterprise fine-tuning in particular, GLM-5.1&rsquo;s
                 MIT licence is a material differentiator from options that carry revenue gates or usage
@@ -7487,9 +7487,9 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
                 family headline.
               </p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/60 pl-5">
-              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">Self-hosting and full data control</h4>
-              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+            <div className="border-l-2 border-bk-gold/60 pl-5">
+              <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">Self-hosting and full data control</h4>
+              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
                 Because weights are public, you can run any of these models entirely on your own
                 infrastructure. No data leaves your environment. No dependency on a hosted API&rsquo;s
                 uptime, pricing changes, or terms-of-service updates. This is a genuinely different trust
@@ -7497,9 +7497,9 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
                 it directly resolves the most commonly cited concern about this model category.
               </p>
             </div>
-            <div className="border-l-2 border-brand-concrete pl-5">
-              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">Specialisation by workload</h4>
-              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+            <div className="border-l-2 border-bk-rule pl-5">
+              <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">Specialisation by workload</h4>
+              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
                 The field has differentiated meaningfully. Kimi and GLM are purpose-built for
                 long-horizon coding agents and multi-step tool-use loops. DeepSeek&rsquo;s pro tiers and
                 Qwen&rsquo;s flagship cover general reasoning and breadth. Qwen&rsquo;s 119-language
@@ -7514,7 +7514,7 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 03 */}
         <section>
           <SectionHeading number="03" title="Two risk columns, not one" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Most of the public risk analysis on Chinese LLMs collapses three separate risk categories
             into a single verdict. Separating them gives a more useful picture — because they respond
             to different controls, and because one of them disappears entirely when you self-host.
@@ -7524,8 +7524,8 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
           </div>
           <div className="space-y-7 mt-8">
             <div>
-              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">Data jurisdiction: real, documented, specific to hosted services</h4>
-              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+              <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">Data jurisdiction: real, documented, specific to hosted services</h4>
+              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
                 If you use a Chinese lab&rsquo;s hosted API or chat product — not a self-hosted open-weight
                 download — your data may be subject to Chinese data-governance law and processed on servers
                 you do not control. This is the specific concern that led Italy&rsquo;s data protection
@@ -7535,8 +7535,8 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
               </p>
             </div>
             <div>
-              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">Content moderation in hosted services</h4>
-              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+              <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">Content moderation in hosted services</h4>
+              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
                 A 2026 academic study (NDSS) found persistent content-blocking mechanisms in several major
                 Chinese LLM hosted services — operating at the input, output, and search phases — tied to
                 Chinese regulatory compliance requirements. This is a hosted-service-layer behaviour. Whether
@@ -7546,8 +7546,8 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
               </p>
             </div>
             <div>
-              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">A coding-safety signal worth tracking</h4>
-              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+              <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">A coding-safety signal worth tracking</h4>
+              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
                 A 2026 Booz Allen study reported that several Chinese coding models produced more vulnerable
                 code when the prompt implied a US government end user. Treat this as an early, single-study
                 signal rather than a settled finding — but it is concrete enough to be worth an independent
@@ -7556,7 +7556,7 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
               </p>
             </div>
             <Callout label="What is overstated">
-              <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
                 Claims of hidden backdoors or covert command-and-control channels in open-weight models
                 are a theoretical, largely unproven concern. Worth taking seriously in
                 critical-infrastructure contexts where stakes justify caution against unproven risk —
@@ -7574,7 +7574,7 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 04 */}
         <section>
           <SectionHeading number="04" title="The deployment decision" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             The most useful framing: match the model to the sensitivity of the data it will touch, and
             the deployment model to that same sensitivity — not a blanket yes/no on &ldquo;Chinese
             models.&rdquo; A self-hosted, open-weight model running on non-sensitive workloads carries
@@ -7585,7 +7585,7 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
           <div className="mt-8 mb-8 overflow-x-auto">
             <DeploymentPathDiagram />
           </div>
-          <div className="mt-6 space-y-0 border border-brand-concrete">
+          <div className="mt-6 space-y-0 border border-bk-rule">
             {[
               { situation: 'Personal prototyping, non-sensitive data', guidance: 'Any of the four families. Pick by task fit (Section 01 above).' },
               { situation: 'Client or committee data involved', guidance: 'Self-host the open-weight model. The jurisdiction risk is the hosted service, not the weights.' },
@@ -7594,17 +7594,17 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
               { situation: 'Commercial licensing required', guidance: 'Qwen (Apache 2.0), DeepSeek or GLM (MIT). Verify the specific model release, not just the family.' },
               { situation: 'Building a product on Kimi', guidance: 'Read the actual K3 licence text — it is not MIT despite common assumption.' },
             ].map((row, i, arr) => (
-              <div key={row.situation} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
-                <div className="w-64 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/40">
-                  <p className="font-sans text-xs text-brand-black/80 leading-snug font-medium">{row.situation}</p>
+              <div key={row.situation} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-bk-rule' : ''}`}>
+                <div className="w-64 flex-shrink-0 p-4 border-r border-bk-rule bg-bk-deep/40">
+                  <p className="font-sans text-xs text-bk-parchment/80 leading-snug font-medium">{row.situation}</p>
                 </div>
                 <div className="p-4 flex-1">
-                  <p className="font-sans text-sm text-brand-black/65 leading-relaxed">{row.guidance}</p>
+                  <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">{row.guidance}</p>
                 </div>
               </div>
             ))}
           </div>
-          <p className="font-sans text-sm text-brand-black/55 leading-relaxed mt-6">
+          <p className="font-sans text-sm text-bk-parchment/55 leading-relaxed mt-6">
             US congressional committees announced in July 2026 they would examine growing enterprise use
             of Chinese AI models. This is a live regulatory conversation, not a settled one — particularly
             for client-facing or regulated work. Worth monitoring over the next six to twelve months
@@ -7613,8 +7613,8 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
         </section>
 
         {/* Closing */}
-        <section className="border-t border-brand-concrete pt-10">
-          <p className="font-sans text-lg text-brand-black/75 leading-relaxed">
+        <section className="border-t border-bk-rule pt-10">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
             The models are good enough. The decision is whether you are deploying them in a way that matches your actual risk profile.
           </p>
         </section>
@@ -7628,8 +7628,8 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
       </div>
 
       {/* Footer nav */}
-      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-brand-concrete pt-10">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-bk-rule pt-10">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
@@ -7639,9 +7639,9 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
 
 function OSINTArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
@@ -7649,74 +7649,74 @@ function OSINTArticle({ article, formattedDate }: { article: ReturnType<typeof g
         {/* Header */}
         <header className="mb-12">
           <div className="flex items-center gap-3 mb-6">
-            <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt font-medium">{article!.category}</span>
+            <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold font-medium">{article!.category}</span>
             <span className="text-brand-border">·</span>
-            <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted">{formattedDate}</span>
+            <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-muted">{formattedDate}</span>
             <span className="text-brand-border">·</span>
-            <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted">{article!.readTime}</span>
+            <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-muted">{article!.readTime}</span>
           </div>
-          <h1 className="font-display text-[clamp(52px,8vw,96px)] leading-[0.88] tracking-[-0.03em] text-brand-black mb-8 uppercase">
+          <h1 className="font-book font-bold text-[clamp(52px,8vw,96px)] leading-[0.88] tracking-[-0.03em] text-bk-parchment mb-8 uppercase">
             ALREADY<br />PUBLIC.
           </h1>
-          <p className="font-sans text-[15px] leading-[1.7] text-brand-muted max-w-[600px]">
+          <p className="font-sans text-[15px] leading-[1.7] text-bk-muted max-w-[600px]">
             {article!.subtitle}
           </p>
           <div className="flex flex-wrap gap-2 mt-6">
             {article!.tags.map(tag => (
-              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted border border-brand-border px-2 py-1">{tag}</span>
+              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-muted border border-brand-border px-2 py-1">{tag}</span>
             ))}
           </div>
         </header>
 
         {/* Lede */}
-        <p className="font-sans text-[15px] leading-[1.75] text-brand-black mb-8">
+        <p className="font-sans text-[15px] leading-[1.75] text-bk-parchment mb-8">
           Information your organisation has exposed is already visible to anyone who knows how to look. Security teams call the practice of finding it OSINT: open-source intelligence. The same techniques used to monitor your own exposure are used to map a target before an attack. That dual-use reality is not a disclaimer at the end of a methodology document. It is the reason ethical and legal framing is load-bearing here, not decorative.
         </p>
         <Callout label="Key Takeaways" className="mb-8">
           <ul className="space-y-1.5 list-none">
-            <li><span className="text-brand-cobalt mr-2">—</span>OSINT covers legally accessible public data: social media, public records, news archives, company filings, DNS/WHOIS records, technical infrastructure metadata, and breach-disclosure databases.</li>
-            <li><span className="text-brand-cobalt mr-2">—</span>The same techniques a security team uses to find their own organisation&rsquo;s exposure are what an attacker uses for reconnaissance. Dual-use is the reason ethical framing is load-bearing, not decorative.</li>
-            <li><span className="text-brand-cobalt mr-2">—</span>The four-stage cycle (Planning, Collection, Processing/Analysis, Dissemination) exists to prevent the most common failure: skipping straight from collection to conclusion without corroboration.</li>
-            <li><span className="text-brand-cobalt mr-2">—</span>OSINT is one of nine recognised intelligence disciplines. In business and security contexts, its primary value is as a corroboration layer for other sources, not as a standalone intelligence product.</li>
+            <li><span className="text-bk-gold mr-2">—</span>OSINT covers legally accessible public data: social media, public records, news archives, company filings, DNS/WHOIS records, technical infrastructure metadata, and breach-disclosure databases.</li>
+            <li><span className="text-bk-gold mr-2">—</span>The same techniques a security team uses to find their own organisation&rsquo;s exposure are what an attacker uses for reconnaissance. Dual-use is the reason ethical framing is load-bearing, not decorative.</li>
+            <li><span className="text-bk-gold mr-2">—</span>The four-stage cycle (Planning, Collection, Processing/Analysis, Dissemination) exists to prevent the most common failure: skipping straight from collection to conclusion without corroboration.</li>
+            <li><span className="text-bk-gold mr-2">—</span>OSINT is one of nine recognised intelligence disciplines. In business and security contexts, its primary value is as a corroboration layer for other sources, not as a standalone intelligence product.</li>
           </ul>
         </Callout>
 
         {/* 01 — What OSINT actually is */}
         <SectionHeading number="01" title="What OSINT actually is" />
-        <p className="font-sans text-[15px] leading-[1.75] text-brand-black mb-6">
+        <p className="font-sans text-[15px] leading-[1.75] text-bk-parchment mb-6">
           Open-source intelligence is the structured practice of collecting, analysing, and interpreting publicly or commercially available information to produce actionable insight. Not covert collection, which is a different discipline and a different legal category entirely. &quot;Open source&quot; means legally accessible: social media, public records, news archives, company filings, DNS and WHOIS records, technical infrastructure metadata, breach-disclosure databases.
         </p>
         <div className="my-8">
           <OSINTCycleDiagram />
         </div>
-        <p className="font-sans text-[15px] leading-[1.75] text-brand-black mb-6">
+        <p className="font-sans text-[15px] leading-[1.75] text-bk-parchment mb-6">
           OSINT is a collection method, not the finished product. Threat intelligence, competitive intelligence, and due diligence are the broader disciplines that combine OSINT with proprietary data, internal context, and analytical judgment to produce something a decision-maker can act on. A raw search result is a data point. Intelligence is that data point placed in context, corroborated, and connected to a decision.
         </p>
-        <p className="font-sans text-[15px] leading-[1.75] text-brand-black mb-8">
+        <p className="font-sans text-[15px] leading-[1.75] text-bk-parchment mb-8">
           The most common way OSINT work goes wrong: skipping straight from collection to conclusion without the analysis and corroboration steps. The four-stage process exists specifically to prevent that failure mode.
         </p>
 
         {/* 02 — The nine disciplines */}
         <SectionHeading number="02" title="The nine intelligence disciplines" />
-        <p className="font-sans text-[15px] leading-[1.75] text-brand-black mb-6">
+        <p className="font-sans text-[15px] leading-[1.75] text-bk-parchment mb-6">
           OSINT is one of nine recognised intelligence disciplines. In most business and security contexts, its real value is as a corroboration layer across others — validating what a human source says, cross-referencing financial records against public disclosures, confirming a threat actor&apos;s claimed infrastructure actually exists.
         </p>
         <div className="my-8">
           <IntelDisciplinesMap />
         </div>
-        <p className="font-sans text-[15px] leading-[1.75] text-brand-black mb-8">
+        <p className="font-sans text-[15px] leading-[1.75] text-bk-parchment mb-8">
           CTI and FININT have the most direct OSINT overlap in a business context. GEOINT is relevant for supply-chain risk and market analysis. The rest — SIGINT, MASINT — are government and defence domains. Treating OSINT findings as complete on their own, without cross-referencing, is a consistent source of false conclusions in practice.
         </p>
 
         {/* 03 — How AI changes each area */}
         <SectionHeading number="03" title="How AI changes each application area" />
-        <p className="font-sans text-[15px] leading-[1.75] text-brand-black mb-6">
+        <p className="font-sans text-[15px] leading-[1.75] text-bk-parchment mb-6">
           AI-assisted OSINT has matured fastest in cybersecurity and threat intelligence, but the same capability shifts are happening across every application area. The underlying change is consistent: AI handles the volume problem that made continuous monitoring impractical and surfaces relationships across disconnected sources that no single search would reveal.
         </p>
         <div className="my-8">
           <OSINTApplicationsDiagram />
         </div>
-        <p className="font-sans text-[15px] leading-[1.75] text-brand-black mb-8">
+        <p className="font-sans text-[15px] leading-[1.75] text-bk-parchment mb-8">
           One practical framing worth holding onto across all six areas: the same category of technique that a security team uses to find their own organisation&apos;s exposure is what an attacker uses for reconnaissance. The discipline is the same. The target and the intent are what differ.
         </p>
 
@@ -7730,16 +7730,16 @@ function OSINTArticle({ article, formattedDate }: { article: ReturnType<typeof g
             { label: 'Faster verification and corroboration', body: 'What used to require manually cross-checking multiple sources can now be partially automated. The corroboration step still requires human judgment — but the volume of sources that can be checked in parallel has changed significantly.' },
             { label: 'The contamination problem', body: 'AI-generated content is now a contaminant in the public data that OSINT tools search against. Search results increasingly include AI-generated material that needs its own verification, not just the original claim. This is a genuine, growing complication that does not yet have a clean solution.' },
           ].map(({ label, body }) => (
-            <div key={label} className="border-l-2 border-brand-cobalt pl-5">
-              <p className="font-sans text-[13px] tracking-[0.1em] uppercase text-brand-cobalt mb-1">{label}</p>
-              <p className="font-sans text-[15px] leading-[1.7] text-brand-black">{body}</p>
+            <div key={label} className="border-l-2 border-bk-gold pl-5">
+              <p className="font-sans text-[13px] tracking-[0.1em] uppercase text-bk-gold mb-1">{label}</p>
+              <p className="font-sans text-[15px] leading-[1.7] text-bk-parchment">{body}</p>
             </div>
           ))}
         </div>
 
         {/* 05 — Ethical and legal boundaries */}
         <SectionHeading number="05" title="Ethical and legal boundaries" />
-        <p className="font-sans text-[15px] leading-[1.75] text-brand-black mb-6">
+        <p className="font-sans text-[15px] leading-[1.75] text-bk-parchment mb-6">
           Every credible source in this discipline treats legal and ethical boundaries as a stated, load-bearing part of the methodology — not an optional add-on. The following five principles are consistent across the practitioner literature.
         </p>
         <Callout label="Five core principles">
@@ -7751,13 +7751,13 @@ function OSINTArticle({ article, formattedDate }: { article: ReturnType<typeof g
               'Individuals are a different category from organisations and infrastructure. Public-facing corporate information, published research, infrastructure exposure, and brand mentions are the legitimate core of business OSINT. Anything that starts to look like profiling a specific private individual — their movements, relationships, habits — requires a real, specific legal and ethical basis before proceeding.',
               'The same techniques serve very different purposes depending on who uses them and why. Intent, authorisation, and defined scope matter as much as the technique itself.',
             ].map((p, i) => (
-              <p key={i} className="font-sans text-[14px] leading-[1.7] text-brand-black">{i + 1}. {p}</p>
+              <p key={i} className="font-sans text-[14px] leading-[1.7] text-bk-parchment">{i + 1}. {p}</p>
             ))}
           </div>
         </Callout>
 
         {/* Closing */}
-        <p className="font-sans text-[15px] leading-[1.75] text-brand-black mt-10">
+        <p className="font-sans text-[15px] leading-[1.75] text-bk-parchment mt-10">
           The information is there either way. The question is whether you look before someone else does.
         </p>
 
@@ -7773,30 +7773,30 @@ function OSINTArticle({ article, formattedDate }: { article: ReturnType<typeof g
 
 function PromptInjectionArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
 
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
-        <h1 className="font-display text-8xl md:text-[110px] lg:text-[130px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
           THE SAME<br />
-          <span className="text-brand-cobalt">CHANNEL.</span>
+          <span className="text-bk-gold">CHANNEL.</span>
         </h1>
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/70 border border-bk-gold/25 px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -7807,7 +7807,7 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
 
         {/* Lede */}
         <section>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
             Prompt injection has held the top spot on the OWASP Top 10 for LLM Applications for two
             consecutive editions. The reason is structural, not incidental. LLMs process instructions
             and the data they are working on through the same channel, with no built-in separation
@@ -7816,7 +7816,7 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
             point is data, not commands. If the email contains something that looks like an instruction,
             the model cannot reliably tell the difference.
           </p>
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed mt-5">
             OWASP is direct about the consequence: you cannot patch your way out of prompt injection.
             It exploits how LLMs fundamentally work, not a specific bug you can fix once. As anything
             agentic gets wired to these models, email access, file-system access, API credentials, the
@@ -7824,10 +7824,10 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
           </p>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>Prompt injection has held the OWASP Top 10 for LLM Applications #1 spot for two consecutive editions because it exploits how LLMs fundamentally work, not a specific bug.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>At one injection attempt the success rate is 4.7%. At one hundred attempts it climbs to 63%. This is the argument for defense in depth and monitoring, not just a single good filter.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>The ceiling on impact scales directly with what the compromised model is allowed to do. An agent with email, file-system, and API access has a much higher ceiling than a read-only chatbot.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>You cannot patch your way out of prompt injection. Mitigation requires layering: content segregation, least-privilege tooling, human approval for irreversible actions, input/output filtering, and regular red-teaming.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Prompt injection has held the OWASP Top 10 for LLM Applications #1 spot for two consecutive editions because it exploits how LLMs fundamentally work, not a specific bug.</li>
+              <li><span className="text-bk-gold mr-2">—</span>At one injection attempt the success rate is 4.7%. At one hundred attempts it climbs to 63%. This is the argument for defense in depth and monitoring, not just a single good filter.</li>
+              <li><span className="text-bk-gold mr-2">—</span>The ceiling on impact scales directly with what the compromised model is allowed to do. An agent with email, file-system, and API access has a much higher ceiling than a read-only chatbot.</li>
+              <li><span className="text-bk-gold mr-2">—</span>You cannot patch your way out of prompt injection. Mitigation requires layering: content segregation, least-privilege tooling, human approval for irreversible actions, input/output filtering, and regular red-teaming.</li>
             </ul>
           </Callout>
         </section>
@@ -7839,9 +7839,9 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
             <DirectVsIndirectDiagram />
           </div>
           <div className="space-y-7 mt-8">
-            <div className="border-l-2 border-brand-cobalt pl-5">
-              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">Direct injection</h4>
-              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+            <div className="border-l-2 border-bk-gold pl-5">
+              <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">Direct injection</h4>
+              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
                 A user explicitly types a malicious instruction — the classic pattern is asking a chatbot
                 to disregard its prior instructions and reveal internal configuration. This is the version
                 most people picture, and it is the easier of the two to defend against, because the input
@@ -7849,15 +7849,15 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
               </p>
             </div>
             <div className="border-l-2 border-red-700/40 pl-5">
-              <h4 className="font-sans font-semibold text-sm text-brand-black mb-2 tracking-wide uppercase">Indirect injection — the one that actually matters for anything agentic</h4>
-              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+              <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">Indirect injection — the one that actually matters for anything agentic</h4>
+              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
                 The attacker types nothing into your chat. Instead, they embed malicious instructions
                 inside content the model will later process on your behalf: a webpage, a document, an
                 email, a support ticket, a Slack message. When your AI assistant reads that content — to
                 summarise, triage, or review — it can encounter those embedded instructions and follow
                 them as if they came from you. From the model&rsquo;s perspective, text is text.
               </p>
-              <p className="font-sans text-base text-brand-black/70 leading-relaxed mt-3">
+              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-3">
                 This is precisely what happened in the documented Slack AI incident: malicious instructions
                 hidden in ordinary Slack content caused the AI integration to exfiltrate information it
                 should not have accessed. The attack surface is not the model — it is the model&rsquo;s
@@ -7870,7 +7870,7 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 02 */}
         <section>
           <SectionHeading number="02" title="The numbers" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Anthropic&rsquo;s own published system card for Claude Opus 4.5 provides one of the more
             concrete, quantified pictures of real-world injection resistance in an agentic coding
             environment:
@@ -7878,7 +7878,7 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
           <div className="mt-8 mb-8 overflow-x-auto">
             <AttackSuccessRateDiagram />
           </div>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Two things worth taking from that data. First, single-attempt defenses genuinely work
             most of the time — a 4.7% success rate at one attempt means a casual attacker hits a wall
             more than 95% of the time. Second, an attacker who can make many attempts — an automated,
@@ -7886,14 +7886,14 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
             tries. That is the actual argument for defense in depth and monitoring, not just a single
             good filter.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-5">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-5">
             The ceiling on impact scales directly with what the compromised model is allowed to do.
             A chatbot with no tool access and no memory of sensitive data has a low ceiling on what
             a successful injection can achieve. An agent with email access, file-system access, and
             API credentials has a very different ceiling. This is why prevention has to focus as much
             on limiting what a model can do as on stopping it from being tricked in the first place.
           </p>
-          <div className="mt-6 space-y-0 border border-brand-concrete">
+          <div className="mt-6 space-y-0 border border-bk-rule">
             {[
               { outcome: 'Instruction override', desc: 'Model ignores original guidance and follows attacker instructions instead.' },
               { outcome: 'Data exfiltration', desc: 'Sensitive content the model can access — system prompt, documents, connected-account data — gets surfaced to the attacker.' },
@@ -7901,11 +7901,11 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
               { outcome: 'System prompt leakage', desc: 'Attacker extracts the hidden instructions that shape the application\'s AI behaviour, enabling more targeted follow-on attacks.' },
               { outcome: 'Downstream chain corruption', desc: 'In a multi-step workflow, a single injected instruction early in the chain quietly corrupts subsequent steps that trust earlier outputs.' },
             ].map((row, i, arr) => (
-              <div key={row.outcome} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
-                <div className="w-52 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/40">
-                  <p className="font-sans text-xs text-brand-black/80 font-semibold leading-snug">{row.outcome}</p>
+              <div key={row.outcome} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-bk-rule' : ''}`}>
+                <div className="w-52 flex-shrink-0 p-4 border-r border-bk-rule bg-bk-deep/40">
+                  <p className="font-sans text-xs text-bk-parchment/80 font-semibold leading-snug">{row.outcome}</p>
                 </div>
-                <p className="font-sans text-sm text-brand-black/65 leading-relaxed p-4">{row.desc}</p>
+                <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed p-4">{row.desc}</p>
               </div>
             ))}
           </div>
@@ -7914,7 +7914,7 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 03 */}
         <section>
           <SectionHeading number="03" title="The layered defense" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             No single control solves this. OWASP&rsquo;s own guidance is explicit that mitigation
             requires layering multiple defenses, because none of them is individually sufficient against
             a motivated, repeated attack. Each technique below reduces risk — stacked together, they
@@ -7924,26 +7924,26 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
             <DefenseStackDiagram />
           </div>
           <div className="space-y-6 mt-8">
-            <div className="border-l-2 border-brand-cobalt pl-5">
-              <h4 className="font-sans font-semibold text-sm text-brand-black mb-1 tracking-wide uppercase">1 — Segregate untrusted content from the instruction stream</h4>
-              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+            <div className="border-l-2 border-bk-gold pl-5">
+              <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-1 tracking-wide uppercase">1 — Segregate untrusted content from the instruction stream</h4>
+              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
                 Structure prompts so untrusted content — a fetched webpage, an uploaded document, an email
                 body — is visibly delimited as data to be processed, not blended into the instruction
                 stream. This is the direct analogue to parameterised queries preventing SQL injection:
                 separate the command channel from the data channel wherever the architecture allows it.
               </p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/60 pl-5">
-              <h4 className="font-sans font-semibold text-sm text-brand-black mb-1 tracking-wide uppercase">2 — System-level behavioral constraints</h4>
-              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+            <div className="border-l-2 border-bk-gold/60 pl-5">
+              <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-1 tracking-wide uppercase">2 — System-level behavioral constraints</h4>
+              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
                 Define expected output formats and behavioral boundaries in the system prompt itself. A
                 model instructed to only ever output a specific structured format has less room for an
                 injected instruction to hijack the interaction into open-ended behaviour.
               </p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/60 pl-5">
-              <h4 className="font-sans font-semibold text-sm text-brand-black mb-1 tracking-wide uppercase">3 — Least-privilege tooling</h4>
-              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+            <div className="border-l-2 border-bk-gold/60 pl-5">
+              <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-1 tracking-wide uppercase">3 — Least-privilege tooling</h4>
+              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
                 This is the highest-leverage structural defense for anything agentic. Give a model or
                 agent only the specific tools and access it needs for its actual task — nothing broader
                 &ldquo;just in case.&rdquo; An agent that can only read a specific document has a low
@@ -7952,35 +7952,35 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
                 applied to agent permissions.
               </p>
             </div>
-            <div className="border-l-2 border-brand-cobalt/60 pl-5">
-              <h4 className="font-sans font-semibold text-sm text-brand-black mb-1 tracking-wide uppercase">4 — Human approval for high-risk or irreversible actions</h4>
-              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+            <div className="border-l-2 border-bk-gold/60 pl-5">
+              <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-1 tracking-wide uppercase">4 — Human approval for high-risk or irreversible actions</h4>
+              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
                 For anything with real consequence — sending an email, making a purchase, deleting data,
                 executing code against production — insert an explicit human-in-the-loop checkpoint rather
                 than letting an agent act autonomously. This is the single most reliable backstop against
                 an injection that clears every earlier filter.
               </p>
             </div>
-            <div className="border-l-2 border-brand-concrete pl-5">
-              <h4 className="font-sans font-semibold text-sm text-brand-black mb-1 tracking-wide uppercase">5 — Input/output filtering</h4>
-              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+            <div className="border-l-2 border-bk-rule pl-5">
+              <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-1 tracking-wide uppercase">5 — Input/output filtering</h4>
+              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
                 Scan for known attack patterns and known-bad output signatures on both sides. This
                 catches what you have seen before — not novel attacks, which is exactly why it is one
                 layer among several rather than a complete solution.
               </p>
             </div>
-            <div className="border-l-2 border-brand-concrete pl-5">
-              <h4 className="font-sans font-semibold text-sm text-brand-black mb-1 tracking-wide uppercase">6 — RAG groundedness checks</h4>
-              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+            <div className="border-l-2 border-bk-rule pl-5">
+              <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-1 tracking-wide uppercase">6 — RAG groundedness checks</h4>
+              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
                 For any RAG-connected system, assess context relevance and groundedness as a way of
                 catching outputs that have drifted from what the retrieved content actually supports —
                 a useful signal that something embedded in a retrieved document has pulled the model
                 off-track.
               </p>
             </div>
-            <div className="border-l-2 border-brand-concrete pl-5">
-              <h4 className="font-sans font-semibold text-sm text-brand-black mb-1 tracking-wide uppercase">7 — Adversarial testing on a real cadence</h4>
-              <p className="font-sans text-base text-brand-black/70 leading-relaxed">
+            <div className="border-l-2 border-bk-rule pl-5">
+              <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-1 tracking-wide uppercase">7 — Adversarial testing on a real cadence</h4>
+              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
                 Conduct regular red-teaming and breach simulations — not a one-time pre-launch audit,
                 but a recurring practice. The attack-success-rate data makes the argument: repeated
                 attempts matter, and a single pre-launch test does not model a production attacker
@@ -7990,7 +7990,7 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
             </div>
           </div>
           <Callout label="One misconception to clear directly" className="mt-8">
-            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+            <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
               Grounding a model in retrieved data (RAG) or fine-tuning it on your own data does not close
               the prompt injection gap. Both are still vulnerable to malicious content smuggled into
               whatever they process. Defense in depth remains necessary regardless of whether you have
@@ -8002,31 +8002,31 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 04 */}
         <section>
           <SectionHeading number="04" title="Where this applies now" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mt-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
             Prompt injection is not a theoretical concern for a future AI product — it is a present
             concern for anything already wiring AI to external content. Four categories where the
             risk is immediate:
           </p>
-          <ul className="mt-5 space-y-4 font-sans text-base text-brand-black/70 leading-relaxed">
+          <ul className="mt-5 space-y-4 font-sans text-base text-bk-parchment/70 leading-relaxed">
             <li className="flex gap-3">
-              <span className="text-brand-cobalt mt-1 flex-shrink-0">—</span>
-              <span><strong className="text-brand-black font-semibold">Anything processing untrusted external content.</strong> A webpage summariser, an email triage tool, a document reviewer, an n8n workflow reading inbound Slack messages — build these assuming the content might contain hidden instructions, not as an edge case to patch later.</span>
+              <span className="text-bk-gold mt-1 flex-shrink-0">—</span>
+              <span><strong className="text-bk-parchment font-semibold">Anything processing untrusted external content.</strong> A webpage summariser, an email triage tool, a document reviewer, an n8n workflow reading inbound Slack messages — build these assuming the content might contain hidden instructions, not as an edge case to patch later.</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-brand-cobalt mt-1 flex-shrink-0">—</span>
-              <span><strong className="text-brand-black font-semibold">n8n workflows with MCP Client Tool nodes or Tools Agent steps.</strong> Treat every external tool call as a potential injection vector if the data feeding that step originates from anything outside your direct control — an inbound email, a scraped page, a public API response.</span>
+              <span className="text-bk-gold mt-1 flex-shrink-0">—</span>
+              <span><strong className="text-bk-parchment font-semibold">n8n workflows with MCP Client Tool nodes or Tools Agent steps.</strong> Treat every external tool call as a potential injection vector if the data feeding that step originates from anything outside your direct control — an inbound email, a scraped page, a public API response.</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-brand-cobalt mt-1 flex-shrink-0">—</span>
-              <span><strong className="text-brand-black font-semibold">Coding agents against real codebases.</strong> A malicious or compromised dependency, a poisoned README, or planted comments in a repo an agent is asked to review are all plausible indirect-injection vectors. Arbitrary repo content is external, untrusted content — treat it accordingly.</span>
+              <span className="text-bk-gold mt-1 flex-shrink-0">—</span>
+              <span><strong className="text-bk-parchment font-semibold">Coding agents against real codebases.</strong> A malicious or compromised dependency, a poisoned README, or planted comments in a repo an agent is asked to review are all plausible indirect-injection vectors. Arbitrary repo content is external, untrusted content — treat it accordingly.</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-brand-cobalt mt-1 flex-shrink-0">—</span>
-              <span><strong className="text-brand-black font-semibold">Any agentic system with permissions broader than the task requires.</strong> The access model is the amplifier. Start with least-privilege before you build the feature, not after you ship it.</span>
+              <span className="text-bk-gold mt-1 flex-shrink-0">—</span>
+              <span><strong className="text-bk-parchment font-semibold">Any agentic system with permissions broader than the task requires.</strong> The access model is the amplifier. Start with least-privilege before you build the feature, not after you ship it.</span>
             </li>
           </ul>
           <Callout label="Layered defense checklist" className="mt-8">
-            <ul className="space-y-2 font-sans text-sm text-brand-black/70">
+            <ul className="space-y-2 font-sans text-sm text-bk-parchment/70">
               {[
                 'Untrusted content is explicitly delimited from the instruction stream',
                 'System-level behavioral constraints and expected output formats are defined',
@@ -8038,7 +8038,7 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
                 'No assumption that RAG or fine-tuning alone closes the injection gap',
               ].map((item) => (
                 <li key={item} className="flex gap-2 items-start">
-                  <span className="text-brand-cobalt flex-shrink-0 mt-0.5">·</span>
+                  <span className="text-bk-gold flex-shrink-0 mt-0.5">·</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -8047,8 +8047,8 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
         </section>
 
         {/* Closing */}
-        <section className="border-t border-brand-concrete pt-10">
-          <p className="font-sans text-lg text-brand-black/75 leading-relaxed">
+        <section className="border-t border-bk-rule pt-10">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
             The attack surface is not the model — it is every piece of untrusted content you let the model touch, and everything you let it do with what it finds there.
           </p>
         </section>
@@ -8062,8 +8062,8 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
       </div>
 
       {/* Footer nav */}
-      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-brand-concrete pt-10">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-bk-rule pt-10">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
@@ -8073,27 +8073,27 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
 
 function SmallBusinessAcquisitionArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
 
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
-        <h1 className="font-display text-7xl md:text-9xl lg:text-[120px] text-brand-black leading-none tracking-tightest mb-4">
-          SKIP<br />YEAR<br /><span className="text-brand-cobalt">ZERO.</span>
+        <h1 className="font-book font-bold text-7xl md:text-9xl lg:text-[120px] text-bk-parchment leading-none tracking-normal mb-4">
+          SKIP<br />YEAR<br /><span className="text-bk-gold">ZERO.</span>
         </h1>
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">{article!.subtitle}</p>
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">{article!.subtitle}</p>
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted border border-brand-concrete px-2.5 py-1">{tag}</span>
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-muted border border-bk-rule px-2.5 py-1">{tag}</span>
           ))}
         </div>
       </header>
@@ -8101,58 +8101,58 @@ function SmallBusinessAcquisitionArticle({ article, formattedDate }: { article: 
       <article className="max-w-[720px] mx-auto px-6 md:px-10 py-16 space-y-16">
 
         <section>
-          <div className="border-l-2 border-brand-cobalt pl-6 space-y-4">
-            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+          <div className="border-l-2 border-bk-gold pl-6 space-y-4">
+            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
               Starting a business from scratch means spending the first one to three years on problems that have nothing to do with your actual proposition: finding initial customers, surviving zero revenue, validating assumptions that may or may not hold. Most of that time is spent proving something already proven by every existing business in your target market.
             </p>
-            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
               ETA — Entrepreneurship Through Acquisition — is the practice of skipping that. Buy a business that already has customers, proven cash flow, and real operating history. Skip Year Zero entirely and start operating on day one. It is a genuine, taught career path now, with Stanford, Harvard, and INSEAD running dedicated programs — and the structural backdrop for it has never been better.
             </p>
           </div>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>~6 million US small businesses are expected to change hands by 2035 as Baby Boomer owners retire. 70% have no formal succession plan. That gap is the structural opportunity.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Two structural paths: funded search funds (20–30% equity, institutional backing) vs. self-funded/SBA (full equity, personal guarantee). Different risk profiles, different best fits.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>The two hardest, most valuable screening filters: recurring revenue percentage and owner-independence. Both take real digging to verify honestly.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>AI genuinely compresses deal sourcing, first-pass diligence, and market research. It does not substitute for a valuation professional or legal counsel at the decision stage.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Relationship and trust factor into who gets first access to a deal — many retiring owners actively prefer an individual operator over PE. Price is not the only variable.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Write an explicit buy box before looking at a single listing. The discipline that catches bad deals is the constraint you set at the start, not the diligence you run after falling in love with one.</li>
+              <li><span className="text-bk-gold mr-2">—</span>~6 million US small businesses are expected to change hands by 2035 as Baby Boomer owners retire. 70% have no formal succession plan. That gap is the structural opportunity.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Two structural paths: funded search funds (20–30% equity, institutional backing) vs. self-funded/SBA (full equity, personal guarantee). Different risk profiles, different best fits.</li>
+              <li><span className="text-bk-gold mr-2">—</span>The two hardest, most valuable screening filters: recurring revenue percentage and owner-independence. Both take real digging to verify honestly.</li>
+              <li><span className="text-bk-gold mr-2">—</span>AI genuinely compresses deal sourcing, first-pass diligence, and market research. It does not substitute for a valuation professional or legal counsel at the decision stage.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Relationship and trust factor into who gets first access to a deal — many retiring owners actively prefer an individual operator over PE. Price is not the only variable.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Write an explicit buy box before looking at a single listing. The discipline that catches bad deals is the constraint you set at the start, not the diligence you run after falling in love with one.</li>
             </ul>
           </Callout>
         </section>
 
         <section>
           <SectionHeading number="01" title="The demographic window" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             Roughly six million small and medium-sized US businesses are expected to change ownership by 2035 as Baby Boomer owners retire. That represents as much as $5 trillion in enterprise value — and per the 2026 State of Main Street report, 70% of these owners have no formal succession plan. The ETA community calls this the &ldquo;Silver Tsunami,&rdquo; and it is the structural reason buying an existing business has become a serious, institutionally-recognized career path rather than a niche curiosity.
           </p>
           <figure className="my-8">
-            <div className="border border-brand-concrete overflow-hidden"><SilverTsunamiDiagram /></div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">The scale of the succession gap driving the ETA opportunity in 2026.</figcaption>
+            <div className="border border-bk-rule overflow-hidden"><SilverTsunamiDiagram /></div>
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">The scale of the succession gap driving the ETA opportunity in 2026.</figcaption>
           </figure>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             The phenomenon is global — the same founder succession gap shows up in the UK, Australia, Kenya, and Nigeria&rsquo;s owner-operated business populations. But the US market is the deepest and most liquid, with the most developed search fund infrastructure, the widest access to SBA financing, and the most mature broker and advisor ecosystem.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
             One dynamic worth understanding before you start: many retiring founders are actively motivated to sell to an energetic individual operator who will preserve what they built and protect existing employees — rather than to a private equity firm intent on stripping costs and flipping. Relationship and trust genuinely factor into who gets first access to a deal, which means you are not purely competing on price against institutional capital.
           </p>
         </section>
 
         <section>
           <SectionHeading number="02" title="The two structural paths" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             ETA splits into two structurally different models. They share the same basic proposition — buy an existing profitable business, operate it, grow it — but they differ fundamentally on capital structure, equity outcome, and risk exposure.
           </p>
           <figure className="my-8">
-            <div className="border border-brand-concrete overflow-hidden"><ETAPathsDiagram /></div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">Funded search and self-funded ETA — same destination, structurally different tradeoffs.</figcaption>
+            <div className="border border-bk-rule overflow-hidden"><ETAPathsDiagram /></div>
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">Funded search and self-funded ETA — same destination, structurally different tradeoffs.</figcaption>
           </figure>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             The honest numbers on funded search: search funds have returned a reported 35.1% IRR across 681 tracked funds — a genuinely strong risk-adjusted return, materially better than early-stage venture capital according to Stanford&rsquo;s longitudinal data. But more than half of searches fail to result in an acquisition at all. Read both numbers together: the return profile for deals that do close is excellent; the base rate of actually closing is genuinely uncertain. This is a multi-year undertaking with real attrition, not a guaranteed path.
           </p>
-          <div className="bg-brand-graphite border border-brand-concrete p-5 mt-6">
-            <p className="font-sans text-sm font-semibold text-brand-black/85 mb-1">Which path fits?</p>
-            <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+          <div className="bg-bk-deep border border-bk-rule p-5 mt-6">
+            <p className="font-sans text-sm font-semibold text-bk-parchment/85 mb-1">Which path fits?</p>
+            <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">
               Funded search makes sense when you want institutional support, network, and capital, and are willing to accept significant equity dilution. Self-funded makes sense when you want full ownership and control, have access to debt financing, and can tolerate the personal guarantee a leveraged balance sheet implies. Neither is universally better — the choice turns on risk tolerance and equity appetite.
             </p>
           </div>
@@ -8160,15 +8160,15 @@ function SmallBusinessAcquisitionArticle({ article, formattedDate }: { article: 
 
         <section>
           <SectionHeading number="03" title="What to actually screen for" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             Consistent across every serious ETA source, two filters matter more than anything else and are also the hardest to verify honestly: recurring revenue percentage and owner-independence. A business with 80% recurring revenue and a management team that can run without the founder is a fundamentally different acquisition than one with 80% project work and a founder whose personal relationships generate every dollar.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
             The practical problem: a seller has natural incentive to overstate how systemized the business already is. The recurring revenue percentage may rest on month-to-month contracts with a single large customer. The &ldquo;strong management team&rdquo; may dissolve the moment the founder&rsquo;s personal referral network stops feeding it. Both claims benefit from corroboration against multiple independent sources.
           </p>
-          <div className="space-y-0 border border-brand-concrete">
-            <div className="border-b border-brand-concrete bg-brand-graphite px-4 py-3">
-              <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-cobalt">Revenue quality — diagnostic questions</p>
+          <div className="space-y-0 border border-bk-rule">
+            <div className="border-b border-bk-rule bg-bk-deep px-4 py-3">
+              <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-bk-gold">Revenue quality — diagnostic questions</p>
             </div>
             {[
               { q: 'What percentage is genuinely recurring?', a: 'Get the contracts. Is it a long-term service agreement or a nominal subscription the customer can cancel monthly?' },
@@ -8176,15 +8176,15 @@ function SmallBusinessAcquisitionArticle({ article, formattedDate }: { article: 
               { q: 'Is the revenue figure audited or self-reported?', a: 'Reviewed financials are better than compiled. Audited are best. Self-reported figures in a deal pitch are a starting point, not a fact.' },
               { q: 'What is the contract term and renewal history?', a: 'Multi-year contracts with historically high renewal rates are very different from auto-renewing 30-day terms.' },
             ].map(({ q, a }, i, arr) => (
-              <div key={i} className={`px-4 py-3 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
-                <p className="font-sans text-sm font-semibold text-brand-black/85 mb-0.5">{q}</p>
-                <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{a}</p>
+              <div key={i} className={`px-4 py-3 ${i < arr.length - 1 ? 'border-b border-bk-rule' : ''}`}>
+                <p className="font-sans text-sm font-semibold text-bk-parchment/85 mb-0.5">{q}</p>
+                <p className="font-sans text-sm text-bk-parchment/60 leading-relaxed">{a}</p>
               </div>
             ))}
           </div>
-          <div className="space-y-0 border border-brand-concrete mt-4">
-            <div className="border-b border-brand-concrete bg-brand-graphite px-4 py-3">
-              <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-cobalt">Owner-independence — diagnostic questions</p>
+          <div className="space-y-0 border border-bk-rule mt-4">
+            <div className="border-b border-bk-rule bg-bk-deep px-4 py-3">
+              <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-bk-gold">Owner-independence — diagnostic questions</p>
             </div>
             {[
               { q: 'Does the seller personally own the key customer relationships?', a: 'If yes, plan for a substantial transition period with earnout incentives — and still model for churn.' },
@@ -8192,14 +8192,14 @@ function SmallBusinessAcquisitionArticle({ article, formattedDate }: { article: 
               { q: 'Are there documented systems and processes?', a: 'Written SOPs are not proof of independence, but their absence is a signal. An undocumented business depends on a person.' },
               { q: 'Can the team hire without the founder?', a: 'If the founder is the face for every hire, that network leaves with them at close.' },
             ].map(({ q, a }, i, arr) => (
-              <div key={i} className={`px-4 py-3 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
-                <p className="font-sans text-sm font-semibold text-brand-black/85 mb-0.5">{q}</p>
-                <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{a}</p>
+              <div key={i} className={`px-4 py-3 ${i < arr.length - 1 ? 'border-b border-bk-rule' : ''}`}>
+                <p className="font-sans text-sm font-semibold text-bk-parchment/85 mb-0.5">{q}</p>
+                <p className="font-sans text-sm text-bk-parchment/60 leading-relaxed">{a}</p>
               </div>
             ))}
           </div>
-          <div className="bg-brand-graphite border-l-4 border-amber-600/50 pl-5 pr-4 py-4 mt-6">
-            <p className="font-sans text-sm text-brand-black/80 leading-relaxed">
+          <div className="bg-bk-deep border-l border-amber-600/40 pl-5 pr-4 py-4 mt-6">
+            <p className="font-sans text-sm text-bk-parchment/80 leading-relaxed">
               <span className="font-semibold">The corroboration rule:</span> every material claim a seller makes about recurring revenue or owner-independence should be verifiable from at least two sources independent of the seller — contracts, customer interviews, employee tenure data, financial statements. The claim is a hypothesis; diligence is how you test it.
             </p>
           </div>
@@ -8207,12 +8207,12 @@ function SmallBusinessAcquisitionArticle({ article, formattedDate }: { article: 
 
         <section>
           <SectionHeading number="04" title="Where AI actually helps" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             The AI deal-sourcing and diligence tooling that exists today was largely built for institutional PE and investment banking — PitchBook-scale budgets, enterprise data rooms. But the underlying capability translates down to individual buyer scale, even without the enterprise price tag.
           </p>
           <figure className="my-8">
-            <div className="border border-brand-concrete overflow-hidden"><AIDealSourceDiagram /></div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">AI leverage by task — where it compresses work vs. where professional judgment is non-negotiable.</figcaption>
+            <div className="border border-bk-rule overflow-hidden"><AIDealSourceDiagram /></div>
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">AI leverage by task — where it compresses work vs. where professional judgment is non-negotiable.</figcaption>
           </figure>
           <div className="space-y-5 mt-6">
             {[
@@ -8222,17 +8222,17 @@ function SmallBusinessAcquisitionArticle({ article, formattedDate }: { article: 
               { head: 'Valuation sanity check', body: "AI can synthesize multiple valuation approaches — revenue multiples, EBITDA multiples, comparable transaction data — faster than manual comp-building. Useful as a second opinion against a broker's asking price. Not a substitute for a real accountant or M&A advisor's judgment on the actual negotiated number." },
               { head: 'Owner outreach', body: "Drafting genuinely personalized, respectful outreach to business owners — not a templated cold-email blast — is a real, practical use. Tone matters enormously: a retiring owner deciding who to trust with their life's work responds differently to a specific, evidently-researched message than to something generic." },
             ].map(({ head, body }, i) => (
-              <div key={i} className="flex gap-5 border-l-2 border-brand-cobalt/20 pl-5">
+              <div key={i} className="flex gap-5 border-l-2 border-bk-gold/20 pl-5">
                 <div>
-                  <p className="font-sans text-base font-semibold text-brand-black/85">{head}</p>
-                  <p className="font-sans text-base text-brand-black/65 leading-relaxed mt-1">{body}</p>
+                  <p className="font-sans text-base font-semibold text-bk-parchment/85">{head}</p>
+                  <p className="font-sans text-base text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
                 </div>
               </div>
             ))}
           </div>
-          <div className="bg-brand-graphite border border-brand-concrete p-5 mt-8">
-            <p className="font-sans text-sm font-semibold text-brand-black/85 mb-1">The speed trap</p>
-            <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+          <div className="bg-bk-deep border border-bk-rule p-5 mt-8">
+            <p className="font-sans text-sm font-semibold text-bk-parchment/85 mb-1">The speed trap</p>
+            <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">
               AI-assisted speed is a genuine advantage — and a genuine risk if it creates false confidence. An AI-assisted first pass through financials or contracts is a useful accelerant. Treat every AI-surfaced finding as something to verify independently before it factors into a real decision. A material acquisition still warrants a real accountant or M&A advisor&rsquo;s involvement — AI compresses the research time, it does not replace the professional judgment.
             </p>
           </div>
@@ -8240,10 +8240,10 @@ function SmallBusinessAcquisitionArticle({ article, formattedDate }: { article: 
 
         <section>
           <SectionHeading number="05" title="A practical search sequence" />
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
             The sequence that consistently produces better deals than passive listing-browsing: write a buy box first, stress-test it against market data, source beyond public listings, screen fast, diligence deep only on real finalists, verify every material claim independently, and bring in professional judgment before any binding step. In that order, without skipping.
           </p>
-          <div className="space-y-0 border border-brand-concrete">
+          <div className="space-y-0 border border-bk-rule">
             {[
               { step: '01', label: 'Write an explicit buy box', detail: "Industry, revenue range, geography, owner-dependency tolerance, deal size relative to your actual financing capacity. Write it before looking at a single listing. Constraints set before you fall in love with a deal are the ones that actually protect you." },
               { step: '02', label: 'Stress-test the buy box', detail: "Use AI-assisted research to validate the box against real market data — typical multiples for the target industry, consolidation trends, regional demand. If the numbers don't support the thesis, adjust the box before committing search time to it." },
@@ -8252,13 +8252,13 @@ function SmallBusinessAcquisitionArticle({ article, formattedDate }: { article: 
               { step: '05', label: 'Verify every material claim independently', detail: 'Recurring revenue percentage, owner-dependency, technology debt — verify against at least two sources independent of the seller before treating any claim as a fact. The diligence discipline that catches deals that look clean on the surface.' },
               { step: '06', label: 'Bring in real professionals before any binding step', detail: "Accountant, M&A advisor, lawyer — before LOI signature, before exclusivity, before anything that constrains your options. AI compresses the research and first-pass analysis time. It does not replace the professional sign-off a real transaction warrants." },
             ].map(({ step, label, detail }, i, arr) => (
-              <div key={i} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
-                <div className="w-14 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/50 flex items-start justify-center">
-                  <span className="font-mono text-xs text-brand-cobalt/60 mt-0.5">{step}</span>
+              <div key={i} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-bk-rule' : ''}`}>
+                <div className="w-14 flex-shrink-0 p-4 border-r border-bk-rule bg-bk-deep/50 flex items-start justify-center">
+                  <span className="font-mono text-xs text-bk-gold/60 mt-0.5">{step}</span>
                 </div>
                 <div className="p-4">
-                  <p className="font-sans text-sm font-semibold text-brand-black/85 mb-1">{label}</p>
-                  <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{detail}</p>
+                  <p className="font-sans text-sm font-semibold text-bk-parchment/85 mb-1">{label}</p>
+                  <p className="font-sans text-sm text-bk-parchment/60 leading-relaxed">{detail}</p>
                 </div>
               </div>
             ))}
@@ -8279,8 +8279,8 @@ Exclusion list:    [Industries, revenue models, customer concentrations to avoid
 DO NOT ENGAGE with any deal that fails ≥ 2 of these criteria.`}</CodeBlock></div>
         </section>
 
-        <section className="border-t border-brand-concrete pt-10">
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+        <section className="border-t border-bk-rule pt-10">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
             The businesses that fit are out there. The ones that don&rsquo;t will waste your time systematically — and the most dangerous ones are the ones that almost fit. Write the buy box before you look at a single listing, use AI to compress the research, and then bring in the human judgment that actually closes it. The structural window is genuinely open; the discipline is in not letting a specific deal override the constraints you set before you found it.
           </p>
         </section>
@@ -8293,8 +8293,8 @@ DO NOT ENGAGE with any deal that fails ≥ 2 of these criteria.`}</CodeBlock></d
 
       </article>
 
-      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-brand-concrete pt-10">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-bk-rule pt-10">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
@@ -8304,27 +8304,27 @@ DO NOT ENGAGE with any deal that fails ≥ 2 of these criteria.`}</CodeBlock></d
 
 function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>
 
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">{article!.category}</span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">{article!.category}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
-        <h1 className="font-display text-7xl md:text-9xl lg:text-[120px] text-brand-black leading-none tracking-tightest mb-4">
-          THE<br />REAL<br /><span className="text-brand-cobalt">PROBLEM.</span>
+        <h1 className="font-book font-bold text-7xl md:text-9xl lg:text-[120px] text-bk-parchment leading-none tracking-normal mb-4">
+          THE<br />REAL<br /><span className="text-bk-gold">PROBLEM.</span>
         </h1>
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">{article!.subtitle}</p>
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">{article!.subtitle}</p>
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted border border-brand-concrete px-2.5 py-1">{tag}</span>
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-muted border border-bk-rule px-2.5 py-1">{tag}</span>
           ))}
         </div>
       </header>
@@ -8333,23 +8333,23 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
 
         {/* Lede */}
         <section>
-          <div className="border-l-2 border-brand-cobalt pl-6 space-y-4">
-            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+          <div className="border-l-2 border-bk-gold pl-6 space-y-4">
+            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
               The problem a client brings you is almost never the problem. It&rsquo;s the symptom they noticed — the thing that broke the surface. The actual mechanism producing it is usually a layer deeper, and often requires a completely different fix than the one the client already has in mind.
             </p>
-            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
               The first job in any consulting engagement is separating those two things. Not starting with the solution. Not proposing a framework. Diagnosing — specifically, producing one falsifiable statement of what&rsquo;s actually broken and why. Everything else follows from whether that statement is right.
             </p>
           </div>
 
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>The slow-audit model (6–12 month discovery) is structurally obsolete. Time-to-value is the metric that matters; fast, structured diagnostic sprints are the credible alternative.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>The stated problem is rarely the root cause. The first real job is separating the symptom the client noticed from the mechanism actually producing it.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>AI genuinely compresses intake synthesis and first-pass analysis — but every AI-surfaced pattern is a hypothesis to validate in conversation, not a finding to present as settled.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>A technically excellent solution the client&rsquo;s team can&rsquo;t run after you leave is a failed engagement. Match the solution to the organization&rsquo;s real capacity, not an idealized one.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>A vendor executes what&rsquo;s requested. A partner says no when the requested solution doesn&rsquo;t match the diagnosis. That uncomfortable moment is precisely what earns durable trust.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Deloitte AU partially refunded AU$440K after AI-generated fabricated citations reached a client deliverable. Every AI-surfaced fact in client-facing work gets independently verified before delivery — no exceptions.</li>
+              <li><span className="text-bk-gold mr-2">—</span>The slow-audit model (6–12 month discovery) is structurally obsolete. Time-to-value is the metric that matters; fast, structured diagnostic sprints are the credible alternative.</li>
+              <li><span className="text-bk-gold mr-2">—</span>The stated problem is rarely the root cause. The first real job is separating the symptom the client noticed from the mechanism actually producing it.</li>
+              <li><span className="text-bk-gold mr-2">—</span>AI genuinely compresses intake synthesis and first-pass analysis — but every AI-surfaced pattern is a hypothesis to validate in conversation, not a finding to present as settled.</li>
+              <li><span className="text-bk-gold mr-2">—</span>A technically excellent solution the client&rsquo;s team can&rsquo;t run after you leave is a failed engagement. Match the solution to the organization&rsquo;s real capacity, not an idealized one.</li>
+              <li><span className="text-bk-gold mr-2">—</span>A vendor executes what&rsquo;s requested. A partner says no when the requested solution doesn&rsquo;t match the diagnosis. That uncomfortable moment is precisely what earns durable trust.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Deloitte AU partially refunded AU$440K after AI-generated fabricated citations reached a client deliverable. Every AI-surfaced fact in client-facing work gets independently verified before delivery — no exceptions.</li>
             </ul>
           </Callout>
         </section>
@@ -8358,25 +8358,25 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
         <section>
           <SectionHeading number="01" title="The presenting problem is rarely the actual one" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             A request to &ldquo;improve our website conversion rate&rdquo; might actually be a positioning problem, a targeting problem, or a genuinely broken product-market fit that no landing page fix will solve. A request to &ldquo;help us with team communication&rdquo; might be a trust problem, a structure problem, or a strategy problem that no Slack configuration will touch. The first real job of diagnosis is separating the symptom the client noticed from the mechanism actually producing it — and not accepting the client&rsquo;s internal theory of their own problem at face value.
           </p>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
             The traditional consulting response to this was a long, slow audit — 6 to 12 months of discovery, workshops, and stakeholder interviews that became expensive, and whose delay itself functioned as a real competitive cost. In 2026, that model is being described as structurally obsolete. The credible alternative is a fast, structured diagnostic sprint — deliberately compressed, using pre-work to bypass the slow discovery phase entirely.
           </p>
 
           <figure className="my-8">
-            <div className="border border-brand-concrete overflow-hidden"><DiagnosticSprintDiagram /></div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">The sprint structure — front-load intake, spend the meeting on diagnosis, output one falsifiable statement.</figcaption>
+            <div className="border border-bk-rule overflow-hidden"><DiagnosticSprintDiagram /></div>
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">The sprint structure — front-load intake, spend the meeting on diagnosis, output one falsifiable statement.</figcaption>
           </figure>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             The sprint works by front-loading structured, asynchronous intake before the first real conversation — a written questionnaire, existing dashboards, current reporting. AI-assisted synthesis of that intake material can compress what used to take a week of reading and note-taking into a structured brief: what the client says their problem is, what their own data actually shows, where the two diverge. The meeting time then goes to genuine diagnosis rather than basic fact-gathering.
           </p>
 
-          <div className="bg-brand-graphite border-l-4 border-brand-cobalt/30 pl-5 pr-4 py-4 mt-6">
-            <p className="font-sans text-sm text-brand-black/80 leading-relaxed">
+          <div className="bg-bk-deep border-l border-bk-gold/30 pl-5 pr-4 py-4 mt-6">
+            <p className="font-sans text-sm text-bk-parchment/80 leading-relaxed">
               <span className="font-semibold">The output of this stage is a single, falsifiable problem statement</span> — not a list of ten possible issues, not a framework deck, not a methodology overview. One specific, testable statement of what&rsquo;s actually broken and why, stated in a form the client can push back on. If the diagnosis can&rsquo;t be stated in one clear sentence, the diagnostic phase isn&rsquo;t finished yet, regardless of how much material has been gathered.
             </p>
           </div>
@@ -8386,26 +8386,26 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
         <section>
           <SectionHeading number="02" title="Frame before solving" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             Once the diagnosis holds — once there&rsquo;s a falsifiable problem statement both sides agree is testable — the next failure mode is jumping straight to solution design without setting the frame. Two things have to happen before any solution work starts.
           </p>
 
-          <div className="space-y-0 border border-brand-concrete mb-6">
-            <div className="border-b border-brand-concrete bg-brand-graphite px-4 py-3">
-              <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-cobalt">Before any solution work begins</p>
+          <div className="space-y-0 border border-bk-rule mb-6">
+            <div className="border-b border-bk-rule bg-bk-deep px-4 py-3">
+              <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-bk-gold">Before any solution work begins</p>
             </div>
             {[
               { q: 'Co-design with the people who will live with the solution', a: 'A fix imposed without genuine input from the team executing it day-to-day faces real adoption resistance regardless of how sound the strategy is. Involvement in shaping the solution is not a courtesy — it\'s the mechanism by which the solution survives after you leave.' },
               { q: 'Set explicit, measurable success criteria', a: 'State what "working" will actually look like in measurable terms before building anything. Not as a formality — because it\'s what lets both sides recognize a real result later instead of arguing about whether it happened.' },
             ].map(({ q, a }, i, arr) => (
-              <div key={i} className={`px-4 py-3 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
-                <p className="font-sans text-sm font-semibold text-brand-black/85 mb-0.5">{q}</p>
-                <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{a}</p>
+              <div key={i} className={`px-4 py-3 ${i < arr.length - 1 ? 'border-b border-bk-rule' : ''}`}>
+                <p className="font-sans text-sm font-semibold text-bk-parchment/85 mb-0.5">{q}</p>
+                <p className="font-sans text-sm text-bk-parchment/60 leading-relaxed">{a}</p>
               </div>
             ))}
           </div>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             There&rsquo;s a third framing discipline specific to AI-augmented consulting: be transparent about what AI will and won&rsquo;t touch in the engagement. If AI tooling is part of how you work — research synthesis, first-pass analysis, drafting — say so plainly, and be equally direct about where it isn&rsquo;t being used.
           </p>
 
@@ -8415,10 +8415,10 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
               { head: 'Where AI wasn\'t used', body: 'Judgment calls, anything client-confidential, the final recommendation itself.' },
               { head: 'Why transparency matters', body: 'A consultant who is vague about where AI touched the work reads as less trustworthy, not more sophisticated. Clients in 2026 are trained to ask this question.' },
             ].map(({ head, body }, i) => (
-              <div key={i} className="flex gap-5 border-l-2 border-brand-cobalt/20 pl-5">
+              <div key={i} className="flex gap-5 border-l-2 border-bk-gold/20 pl-5">
                 <div>
-                  <p className="font-sans text-base font-semibold text-brand-black/85">{head}</p>
-                  <p className="font-sans text-base text-brand-black/65 leading-relaxed mt-1">{body}</p>
+                  <p className="font-sans text-base font-semibold text-bk-parchment/85">{head}</p>
+                  <p className="font-sans text-base text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
                 </div>
               </div>
             ))}
@@ -8429,40 +8429,40 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
         <section>
           <SectionHeading number="03" title="Analysis that actually holds up" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             The most common failure mode in the analysis stage is generic output — a recommendation that looks like it could apply to any organization in the same industry, because it was built on general best practice rather than the client&rsquo;s actual data. The credible 2026 standard is RAG-style analysis: build a structured reference set from the client&rsquo;s own documents, reporting, and history, and have any AI-assisted analysis draw from that specific material rather than general training knowledge.
           </p>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
             Framework selection follows the same discipline: pick the one that fits the specific diagnosis from Section 01, not the one you default to. A CDJ-style journey map, a funnel-stage breakdown, a Stage-Gate structure — the right choice is the one that actually explains the data, not the one most familiar. AI-assisted first passes can genuinely help test a diagnosis against several structural lenses quickly, letting you see which framework explains the data best before committing to build the recommendation around it.
           </p>
 
-          <div className="space-y-0 border border-brand-concrete">
-            <div className="border-b border-brand-concrete bg-brand-graphite px-4 py-3">
-              <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-cobalt">Framework selection — the discipline</p>
+          <div className="space-y-0 border border-bk-rule">
+            <div className="border-b border-bk-rule bg-bk-deep px-4 py-3">
+              <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-bk-gold">Framework selection — the discipline</p>
             </div>
             {[
               { framework: 'CDJ journey map', fits: 'Diagnosis is a broken customer experience or friction point along a defined path', when_not: 'When the problem is structural or financial — mapping a journey doesn\'t fix the economics' },
               { framework: 'Funnel-stage breakdown', fits: 'Diagnosis is a conversion or retention problem with clear quantitative stages', when_not: 'When the problem is pre-funnel (audience targeting, positioning) — the funnel starts too late' },
               { framework: 'Stage-Gate model', fits: 'Diagnosis is a prioritization or pipeline management problem in a multi-initiative org', when_not: 'When speed is the constraint — gate reviews slow things down deliberately' },
             ].map(({ framework, fits, when_not }, i, arr) => (
-              <div key={i} className={`grid grid-cols-3 gap-0 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
-                <div className="p-3 border-r border-brand-concrete bg-brand-graphite/30">
-                  <p className="font-sans text-xs font-semibold text-brand-cobalt">{framework}</p>
+              <div key={i} className={`grid grid-cols-3 gap-0 ${i < arr.length - 1 ? 'border-b border-bk-rule' : ''}`}>
+                <div className="p-3 border-r border-bk-rule bg-bk-deep/30">
+                  <p className="font-sans text-xs font-semibold text-bk-gold">{framework}</p>
                 </div>
-                <div className="p-3 border-r border-brand-concrete">
-                  <p className="font-sans text-xs text-brand-black/65 leading-relaxed">{fits}</p>
+                <div className="p-3 border-r border-bk-rule">
+                  <p className="font-sans text-xs text-bk-parchment/65 leading-relaxed">{fits}</p>
                 </div>
                 <div className="p-3">
-                  <p className="font-sans text-xs text-brand-black/50 leading-relaxed">{when_not}</p>
+                  <p className="font-sans text-xs text-bk-parchment/50 leading-relaxed">{when_not}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="bg-brand-graphite border border-brand-concrete p-5 mt-6">
-            <p className="font-sans text-sm font-semibold text-brand-black/85 mb-1">The subtraction discipline</p>
-            <p className="font-sans text-sm text-brand-black/65 leading-relaxed">
+          <div className="bg-bk-deep border border-bk-rule p-5 mt-6">
+            <p className="font-sans text-sm font-semibold text-bk-parchment/85 mb-1">The subtraction discipline</p>
+            <p className="font-sans text-sm text-bk-parchment/65 leading-relaxed">
               The differentiated move at this stage isn&rsquo;t generating more analysis. It&rsquo;s cutting everything that doesn&rsquo;t serve the one recommendation that actually matters. A 40-slide deck covering every possible angle is weaker, not stronger, than a tight, specific recommendation with the reasoning shown. AI-assisted drafting makes it easy to generate comprehensive-looking material; the actual skill is knowing what to leave out.
             </p>
           </div>
@@ -8472,20 +8472,20 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
         <section>
           <SectionHeading number="04" title="Implementation that survives your exit" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             A technically excellent solution the client&rsquo;s team can&rsquo;t actually operate after you leave is a failed engagement, regardless of how sound the strategy was. &ldquo;It&rsquo;s a good plan&rdquo; and &ldquo;this organization can actually run it&rdquo; are different bars, and both have to clear.
           </p>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
             Two implementation disciplines matter most for survivability. First, phase the rollout: start any new process, system, or recommendation in a mode where it <em>suggests</em> actions for human review before it&rsquo;s trusted to act autonomously. This reduces resistance to change, catches early mistakes before they compound, and gives the client&rsquo;s team a genuine on-ramp rather than a disruptive cutover. Second, track leading indicators rather than waiting for the lagging outcome metric — define the faster signals (adoption rate, early usage data, first-week engagement with a new tool) that will tell you within weeks, not months, whether the implementation is on track.
           </p>
 
           <figure className="my-8">
-            <div className="border border-brand-concrete overflow-hidden"><VendorPartnerDiagram /></div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">The vendor and partner models are structurally different relationships, not just different positioning language.</figcaption>
+            <div className="border border-bk-rule overflow-hidden"><VendorPartnerDiagram /></div>
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">The vendor and partner models are structurally different relationships, not just different positioning language.</figcaption>
           </figure>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
             The goal of any AI-assisted implementation is augmenting the client&rsquo;s team, not replacing it — freeing people from repetitive execution to focus on judgment, relationship, and oversight work. A team that understands and can operate what was built is the mechanism by which a solution survives after you leave. A team that was handed a black box is not.
           </p>
         </section>
@@ -8494,11 +8494,11 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
         <section>
           <SectionHeading number="05" title="What earns partner status" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
             Partner status isn&rsquo;t positioning language. It&rsquo;s a set of specific, observable behaviors that distinguish an ongoing advisory relationship from a bounded project transaction. Five of them are worth naming explicitly.
           </p>
 
-          <div className="space-y-0 border border-brand-concrete mb-8">
+          <div className="space-y-0 border border-bk-rule mb-8">
             {[
               { n: '01', label: 'Stay close after the formal deliverable ships', detail: 'A vendor\'s relationship ends at delivery; a partner\'s continues. Check in on the leading indicators from Section 04, be available when the next bottleneck surfaces, treat the engagement as the start of an ongoing diagnostic relationship rather than a one-off transaction.' },
               { n: '02', label: 'Bring the next problem before being asked', detail: 'The advisory value increasingly sits in diagnosing bottlenecks in an existing setup — meaning a genuine partner keeps watching for what\'s about to become the next constraint, rather than waiting for a new RFP to re-engage.' },
@@ -8506,35 +8506,35 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
               { n: '04', label: 'Make the client\'s team look good, not just the deliverable', detail: 'Credit and visibility for the client team\'s own contribution to a successful implementation builds the goodwill that turns into the next engagement, the referral, and the retained relationship.' },
               { n: '05', label: 'Price and structure the relationship to reflect this', detail: 'A vendor engagement is priced per deliverable; a partner relationship is more often structured as retained, ongoing access. The pricing model itself is a signal of which relationship you\'re actually offering.' },
             ].map(({ n, label, detail }, i, arr) => (
-              <div key={i} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
-                <div className="w-14 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/50 flex items-start justify-center">
-                  <span className="font-mono text-xs text-brand-cobalt/60 mt-0.5">{n}</span>
+              <div key={i} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-bk-rule' : ''}`}>
+                <div className="w-14 flex-shrink-0 p-4 border-r border-bk-rule bg-bk-deep/50 flex items-start justify-center">
+                  <span className="font-mono text-xs text-bk-gold/60 mt-0.5">{n}</span>
                 </div>
                 <div className="p-4">
-                  <p className="font-sans text-sm font-semibold text-brand-black/85 mb-1">{label}</p>
-                  <p className="font-sans text-sm text-brand-black/60 leading-relaxed">{detail}</p>
+                  <p className="font-sans text-sm font-semibold text-bk-parchment/85 mb-1">{label}</p>
+                  <p className="font-sans text-sm text-bk-parchment/60 leading-relaxed">{detail}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-6">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
             AI risk management deserves its own discipline, not a footnote. The failure mode is real and has already happened publicly. In 2026, treating this as seriously as any other part of the methodology is the minimum standard for credibility.
           </p>
 
           <figure className="my-8">
-            <div className="border border-brand-concrete overflow-hidden"><AIConsultingRiskDiagram /></div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">AI risk register for consulting work — four categories, two at high or critical severity.</figcaption>
+            <div className="border border-bk-rule overflow-hidden"><AIConsultingRiskDiagram /></div>
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">AI risk register for consulting work — four categories, two at high or critical severity.</figcaption>
           </figure>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
             The Deloitte Australia case is the non-abstract version of what happens when AI risk isn&rsquo;t treated seriously: an AU$440,000 government contract partially refunded after an AI-generated report included fabricated court quotes and references. Well-formatted, confident-looking output is not evidence of accuracy. Independent verification before any client-facing delivery isn&rsquo;t optional — it&rsquo;s what separates a credible practice from a liability.
           </p>
         </section>
 
         {/* Closing */}
-        <section className="border-t border-brand-concrete pt-10">
-          <p className="font-sans text-lg text-brand-black/80 leading-relaxed">
+        <section className="border-t border-bk-rule pt-10">
+          <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
             A vendor executes whatever&rsquo;s requested and leaves when the invoice is paid. A partner pushes back when the requested solution doesn&rsquo;t match the actual diagnosis — genuinely uncomfortable in the moment, and precisely what earns the trust that outlasts any single project. The diagnostic discipline is what makes the difference possible. It only works if you actually do it first.
           </p>
         </section>
@@ -8547,8 +8547,8 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
 
       </article>
 
-      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-brand-concrete pt-10">
-        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200">
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pb-16 border-t border-bk-rule pt-10">
+        <Link href="/articles" className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200">
           ← Field Notes
         </Link>
       </div>

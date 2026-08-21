@@ -1,30 +1,29 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { fadeUp, cobaltUnderline, staggerContainer } from '@/lib/motion'
-import SectionLabel from '@/components/ui/SectionLabel'
+import { fadeUp, staggerContainer, rowReveal } from '@/lib/motion'
 
-const domains = [
+const domains: {
+  title: string
+  descriptor: string
+  tools: string[]
+}[] = [
   {
-    index: '01',
     title: 'Creative Technology',
     descriptor: 'Bridging design intent and technical execution. Interactive experiences, generative systems, and tools that extend creative possibility.',
     tools: ['React / Next.js', 'GSAP', 'Three.js', 'Creative Coding'],
   },
   {
-    index: '02',
     title: 'Digital Marketing',
     descriptor: 'Performance-driven campaigns grounded in brand truth. Channel strategy, creative direction, and analytics that connect culture to conversion.',
     tools: ['Paid Media', 'Analytics', 'Brand Strategy', 'Content'],
   },
   {
-    index: '03',
     title: 'Frontend Engineering',
     descriptor: 'Production-grade interfaces built for scale. Design systems, component libraries, and the craft of making complex things feel effortless.',
     tools: ['TypeScript', 'Tailwind', 'Design Systems', 'Performance'],
   },
   {
-    index: '04',
     title: 'Product Management',
     descriptor: 'From insight to roadmap to release. Defining what to build, why it matters, and how to ship it with clarity, speed, and stakeholder alignment.',
     tools: ['Roadmapping', 'User Research', 'GTM', 'Agile'],
@@ -33,69 +32,68 @@ const domains = [
 
 export default function ExpertiseSection() {
   return (
-    <section id="expertise" className="section-padding bg-brand-white">
+    <section id="expertise" className="section-padding px-6 md:px-10 lg:px-16 bg-bk-slate">
       {/* Header */}
-      <div className="px-6 md:px-10 lg:px-16 mb-16">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-10%' }}
-          variants={staggerContainer}
+      <motion.div
+        className="mb-16"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-10%' }}
+        variants={staggerContainer}
+      >
+        <motion.h2
+          variants={fadeUp}
+          className="font-book font-bold text-bk-gold leading-none"
+          style={{ fontSize: 'clamp(2.5rem, 7vw, 6rem)' }}
         >
-          <motion.div variants={fadeUp} className="mb-4">
-            <SectionLabel>Expertise Index</SectionLabel>
-          </motion.div>
-          <motion.h2
-            variants={fadeUp}
-            className="font-display text-[clamp(3rem,8vw,7rem)] leading-none text-brand-black"
-          >
-            WHAT I DO
-          </motion.h2>
+          Disciplines
+        </motion.h2>
+        <motion.div variants={fadeUp} className="mt-4">
+          <span className="font-mono text-[9px] tracking-[0.25em] uppercase text-bk-muted">
+            4 Areas of Practice · 2019–Present
+          </span>
         </motion.div>
-      </div>
+      </motion.div>
 
-      {/* Domain grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-brand-concrete/40">
+      {/* Domain list — typographic, no cards */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-5%' }}
+        variants={staggerContainer}
+      >
         {domains.map((domain, i) => (
           <motion.div
-            key={domain.index}
-            className="bg-brand-white px-8 py-10 group relative overflow-hidden"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-5%' }}
-            variants={fadeUp}
-            transition={{ delay: i * 0.08 }}
+            key={domain.title}
+            variants={rowReveal}
+            className="group border-t border-bk-rule/60 py-8 md:py-10 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-16 items-start hover:border-bk-gold/30 transition-colors duration-300"
           >
-            {/* Index number */}
-            <div className="font-display text-7xl text-brand-cobalt/15 leading-none mb-4 group-hover:text-brand-cobalt/30 transition-colors duration-500">
-              {domain.index}
+            <div>
+              {/* Index + title */}
+              <div className="flex items-baseline gap-4 mb-4">
+                <span className="font-mono text-[9px] tracking-[0.25em] text-bk-gold/50 group-hover:text-bk-gold/80 transition-colors duration-200">
+                  0{i + 1}
+                </span>
+                <h3
+                  className="font-book text-bk-parchment group-hover:text-bk-gold transition-colors duration-200 leading-tight"
+                  style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)' }}
+                >
+                  {domain.title}
+                </h3>
+              </div>
+
+              {/* Descriptor */}
+              <p className="font-sans text-sm text-bk-muted leading-relaxed max-w-lg">
+                {domain.descriptor}
+              </p>
             </div>
 
-            {/* Title */}
-            <h3 className="font-display text-3xl text-brand-black mb-3 group-hover:text-brand-cobalt transition-colors duration-300">
-              {domain.title}
-            </h3>
-
-            {/* Animated underline */}
-            <div className="relative h-px bg-brand-concrete mb-6 overflow-hidden">
-              <motion.div
-                className="absolute inset-y-0 left-0 bg-brand-cobalt"
-                style={{ originX: 0 }}
-                variants={cobaltUnderline}
-              />
-            </div>
-
-            {/* Descriptor */}
-            <p className="font-sans text-sm text-brand-muted leading-relaxed mb-6">
-              {domain.descriptor}
-            </p>
-
-            {/* Tools */}
-            <div className="flex flex-wrap gap-2">
+            {/* Tools — right aligned */}
+            <div className="flex flex-wrap md:flex-col gap-2 md:items-end md:pt-1">
               {domain.tools.map((tool) => (
                 <span
                   key={tool}
-                  className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted border border-brand-concrete px-2.5 py-1 group-hover:border-brand-cobalt/40 group-hover:text-brand-cobalt transition-all duration-300"
+                  className="font-mono text-[9px] tracking-[0.18em] uppercase text-bk-muted/60 border border-bk-rule px-2.5 py-1 group-hover:border-bk-rule/80 group-hover:text-bk-muted transition-all duration-200 whitespace-nowrap"
                 >
                   {tool}
                 </span>
@@ -103,7 +101,8 @@ export default function ExpertiseSection() {
             </div>
           </motion.div>
         ))}
-      </div>
+        <motion.div variants={fadeUp} className="border-t border-bk-rule/60" />
+      </motion.div>
     </section>
   )
 }

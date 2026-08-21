@@ -1,0 +1,53 @@
+{
+  "title": "Choose your visual world",
+  "question": "Three directions — serious impact, light grounds, no fluorescent. Pick one, steer it, or re-roll.",
+  "options": [
+    {
+      "id": "studio-dumbar",
+      "label": "Studio Dumbar",
+      "kicker": "STRONGEST FOR YOUR AUDIENCE",
+      "lineage": "Dutch modular identity — Studio Dumbar, 1980s–present",
+      "thesis": "Saturated print-ink color blocks layered over photography on a cool white ground. The visual language of the best brand studios.",
+      "palette": ["#FFFFFF", "#00AEEF", "#E6007E", "#FFE000", "#1A1A1A"],
+      "materials": ["offset print", "modular grid", "photography"],
+      "viewport": "Saturated color bar overlays a cropped photo. CHRIS MA in a neutral grotesque at large scale. Work grid as a photo-plus-bar module that tiles edge to edge.",
+      "risk": "Reads generic if the photography is stock — distinctive when the composition is authored and the bars are structural, not decorative.",
+      "sketch": ".impeccable/sketches/studio-dumbar.webp",
+      "board": "https://impeccable.style/worlds/cards/studio-dumbar-identity.webp",
+      "hero": "https://impeccable.style/worlds/cards/studio-dumbar-identity-hero.webp"
+    },
+    {
+      "id": "swiss-poster",
+      "label": "Swiss Offset Poster",
+      "lineage": "Müller-Brockmann, Armin Hofmann — International Style",
+      "thesis": "Pure white ground, one deeply committed ink accent in your chosen color, Bebas at maximum scale. Zero decoration — authority through graphic weight alone.",
+      "palette": ["#FFFFFF", "#1B3A8C", "#D42B2B", "#1A1A1A", "#E8E0D0"],
+      "materials": ["silkscreen", "offset litho", "strict grid"],
+      "viewport": "CHRIS MA at near-full-viewport scale in black. A single full-width color rule below it. Work cases in a strict two-column grid with number and title.",
+      "risk": "Timid spacing collapses it into every other minimal portfolio — the execution must be as committed as the concept.",
+      "case": "Wins on product clarity: the graphic weight signals serious craft without needing to say it.",
+      "sketch": ".impeccable/sketches/swiss-poster.webp"
+    },
+    {
+      "id": "book-cloth",
+      "label": "Luxury Book Cloth",
+      "lineage": "Taschen, Penguin Modern Classics, Phaidon monographs",
+      "thesis": "Rich non-neutral ground — deep slate, forest green, or burgundy — gold or parchment lettering. A physical object that happens to be a website.",
+      "palette": ["#1C3340", "#D4AF6E", "#F0EAD6", "#0D1F28", "#8B2635"],
+      "materials": ["book cloth", "foil press", "letterpress"],
+      "viewport": "Full-bleed rich-colored ground. Oversized name in a gold-toned weight. Work presented as a typeset table of contents with chapter numbers.",
+      "risk": "Mis-executed it reads costume; well-executed it reads confident. Highest memorability of the three — lowest risk of looking AI-generated.",
+      "case": "Most distinctive for a culturally-literate audience. No other portfolio in this category looks like this.",
+      "sketch": ".impeccable/sketches/book-cloth.webp"
+    }
+  ],
+  "reroll": true,
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "Clean, professional portfolio — familiar arrangement, executed at full craft.",
+    "viewport": "Light ground, large name, work grid, about, contact. The arrangement a visitor expects, done well.",
+    "sketch": ".impeccable/sketches/canon.webp"
+  },
+  "steer": true
+}

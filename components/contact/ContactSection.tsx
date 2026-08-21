@@ -1,20 +1,19 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { fadeUp, staggerContainer } from '@/lib/motion'
-import SectionLabel from '@/components/ui/SectionLabel'
+import { fadeUp, staggerContainer, ruleReveal } from '@/lib/motion'
 
 const socials = [
-  { label: 'LinkedIn',   href: 'https://linkedin.com/in/chrisma' },
-  { label: 'GitHub',     href: 'https://github.com/chris-ma' },
+  { label: 'LinkedIn',    href: 'https://linkedin.com/in/chrisma' },
+  { label: 'GitHub',      href: 'https://github.com/chris-ma' },
   { label: 'Twitter / X', href: 'https://twitter.com/chrisma' },
 ]
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="bg-brand-white">
+    <section id="contact" className="bg-bk-deep border-t border-bk-rule/60">
       {/* Main contact block */}
-      <div className="section-padding px-6 md:px-10 lg:px-16 border-t border-brand-concrete">
+      <div className="section-padding px-6 md:px-10 lg:px-16">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -22,17 +21,25 @@ export default function ContactSection() {
           variants={staggerContainer}
         >
           <motion.div variants={fadeUp} className="mb-8">
-            <SectionLabel>Available for select projects</SectionLabel>
+            <span className="font-mono text-[9px] tracking-[0.25em] uppercase text-bk-muted">
+              Available for select projects
+            </span>
           </motion.div>
 
           <motion.h2
             variants={fadeUp}
-            className="font-display text-[clamp(4rem,14vw,12rem)] leading-[0.9] text-brand-black mb-10"
+            className="font-book font-bold text-bk-gold leading-[0.88] mb-12"
+            style={{ fontSize: 'clamp(4rem, 14vw, 13rem)' }}
           >
-            GET IN
-            <br />
-            <span className="text-brand-cobalt">TOUCH.</span>
+            Correspondence.
           </motion.h2>
+
+          {/* Animated rule */}
+          <motion.div
+            className="w-full h-px bg-bk-rule mb-10 overflow-hidden"
+            variants={ruleReveal}
+            style={{ transformOrigin: 'left' }}
+          />
 
           <motion.div
             variants={fadeUp}
@@ -40,18 +47,20 @@ export default function ContactSection() {
           >
             <a
               href="mailto:hello@chrisma.co"
-              className="group font-sans text-base md:text-lg text-brand-black/70 hover:text-brand-cobalt transition-colors duration-300 flex items-center gap-3"
+              className="group font-sans text-base md:text-lg text-bk-muted hover:text-bk-parchment transition-colors duration-150 flex items-center gap-3"
             >
               hello@chrisma.co
               <motion.span
-                className="inline-block text-brand-cobalt"
+                className="inline-block text-bk-gold"
                 whileHover={{ x: 4 }}
-                transition={{ duration: 0.25 }}
+                transition={{ duration: 0.2 }}
               >
                 →
               </motion.span>
             </a>
-            <span className="hidden md:block w-px h-8 bg-brand-concrete" />
+
+            <span className="hidden md:block w-px h-8 bg-bk-rule" />
+
             <div className="flex items-center gap-6">
               {socials.map((social) => (
                 <a
@@ -59,39 +68,47 @@ export default function ContactSection() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-sans text-xs tracking-[0.18em] uppercase text-brand-muted hover:text-brand-black transition-colors duration-300"
+                  className="font-mono text-[10px] tracking-[0.2em] uppercase text-bk-muted/60 hover:text-bk-muted transition-colors duration-150"
                 >
                   {social.label}
                 </a>
               ))}
             </div>
           </motion.div>
+
+          {/* CTA */}
+          <motion.div variants={fadeUp} className="mt-10">
+            <a
+              href="mailto:hello@chrisma.co"
+              className="group inline-flex items-center gap-3 font-mono text-[10px] tracking-[0.22em] uppercase px-7 py-4 bg-bk-gold text-bk-deep hover:bg-bk-parchment transition-colors duration-150"
+            >
+              Start a conversation
+              <span className="inline-block transition-transform duration-150 group-hover:translate-x-1">→</span>
+            </a>
+          </motion.div>
         </motion.div>
       </div>
 
-      {/* Footer strip */}
-      <motion.div
-        className="px-6 md:px-10 lg:px-16 py-8 border-t border-brand-concrete flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
+      {/* Footer */}
+      <div className="border-t border-bk-rule/60 px-6 md:px-10 lg:px-16 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div className="flex items-center gap-6">
-          <span className="font-display text-xl text-brand-black">CM</span>
-          <span className="font-sans text-xs tracking-[0.15em] uppercase text-brand-muted">
+          <span className="font-book font-bold italic text-xl text-bk-gold tracking-tight">CM</span>
+          <span className="font-mono text-[9px] tracking-[0.2em] uppercase text-bk-muted/60">
             Chris Ma · Creative Technologist
           </span>
         </div>
         <div className="flex flex-wrap items-center gap-6">
-          <span className="font-sans text-xs text-brand-muted">
-            © 2026 Chris Ma. All rights reserved.
-          </span>
-          <span className="font-sans text-xs tracking-[0.15em] uppercase text-brand-muted/50">
+          <span className="font-mono text-[9px] text-bk-muted/40">© 2026 Chris Ma.</span>
+          <span className="font-mono text-[9px] tracking-[0.18em] uppercase text-bk-muted/30">
             Built in Next.js
           </span>
+          {/* Gold rule mark — closing identity element */}
+          <div className="flex gap-px" aria-hidden>
+            <div className="w-6 h-6 border border-bk-rule/60" />
+            <div className="w-6 h-6 bg-bk-gold/15 border border-bk-gold/20" />
+          </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   )
 }

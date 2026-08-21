@@ -1,0 +1,152 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-color",
+        "value": "rgba(255,255,255,0.08)",
+        "createdAt": "2026-08-21T10:46:14.847Z",
+        "reason": "Legacy bc-rule utility for broadcast-themed article pages — intentional carry-over"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#00aeef",
+        "createdAt": "2026-08-21T10:47:37.603Z",
+        "reason": "Studio Dumbar process cyan — core CMY palette"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#e6007e",
+        "createdAt": "2026-08-21T10:47:37.632Z",
+        "reason": "Studio Dumbar process magenta — core CMY palette"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#ffe000",
+        "createdAt": "2026-08-21T10:47:37.659Z",
+        "reason": "Studio Dumbar process yellow — core CMY palette"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "9px",
+        "createdAt": "2026-08-21T10:49:20.755Z",
+        "reason": "Sub-label metadata tier — intentionally one step below the 10px primary label, used for secondary operational text like dates and footers"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "4rem",
+        "createdAt": "2026-08-21T10:51:02.164Z",
+        "reason": "Clamp floor value for section headline on mobile — intentional responsive minimum"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "2.5rem",
+        "createdAt": "2026-08-21T10:51:02.192Z",
+        "reason": "Stat number / title tier — intentional intermediate display size between body and headline"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#edeae4",
+        "createdAt": "2026-08-21T10:54:00.750Z",
+        "reason": "Legacy warm parchment for article diagram wrappers — backlit-screen effect, intentional carry-over from previous direction"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "13rem",
+        "createdAt": "2026-08-21T10:54:27.291Z",
+        "reason": "Clamp ceiling for contact sign-off heading — intentional large-format display size"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(212, 175, 110, 0.25)",
+        "createdAt": "2026-08-21T11:08:45.097Z",
+        "reason": "bk-gold at 25% opacity — gold rule divider utility, intentional Book Cloth palette derivative"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#1c3340",
+        "createdAt": "2026-08-21T11:09:58.977Z",
+        "reason": "bk-slate: Book Cloth deep slate ground"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#0d1f28",
+        "createdAt": "2026-08-21T11:09:59.008Z",
+        "reason": "bk-deep: Book Cloth secondary surface"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#d4af6e",
+        "createdAt": "2026-08-21T11:09:59.036Z",
+        "reason": "bk-gold: Book Cloth warm gold accent"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#f0ead6",
+        "createdAt": "2026-08-21T11:09:59.062Z",
+        "reason": "bk-parchment: Book Cloth primary text"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#b8a898",
+        "createdAt": "2026-08-21T11:09:59.089Z",
+        "reason": "bk-muted: Book Cloth secondary text"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#8b2635",
+        "createdAt": "2026-08-21T11:09:59.115Z",
+        "reason": "bk-burgundy: Book Cloth rare accent"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#2a4455",
+        "createdAt": "2026-08-21T11:09:59.143Z",
+        "reason": "bk-rule: Book Cloth rule line color"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "11px",
+        "createdAt": "2026-08-21T11:13:44.934Z",
+        "reason": "Roman numeral TOC index marks — intentional micro-step between 9px and 10px label sizes"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "3rem",
+        "createdAt": "2026-08-21T12:07:24.491Z",
+        "reason": "Clamp floor for section subheadings — intentional step between headline and display"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "2rem",
+        "createdAt": "2026-08-21T12:07:24.522Z",
+        "reason": "Clamp floor for stat numerals — intentional sub-headline step"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.25rem",
+        "createdAt": "2026-08-21T12:09:05.880Z",
+        "reason": "Clamp floor for article card titles — intentional compact step below title scale"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "8px",
+        "createdAt": "2026-08-21T12:15:28.147Z",
+        "reason": "Podcast player micro-label — intentional compact player UI"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "18px",
+        "createdAt": "2026-08-21T12:15:28.174Z",
+        "reason": "Podcast player title — intentional compact player UI"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "22px",
+        "createdAt": "2026-08-21T12:15:28.201Z",
+        "reason": "Podcast player title sm breakpoint — intentional compact player UI"
+      }
+    ]
+  }
+}

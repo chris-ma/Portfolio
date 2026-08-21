@@ -12,25 +12,25 @@ export default function ArticlesPage() {
   const categories = Array.from(new Set(articles.map((a) => a.category)))
 
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       {/* Header */}
-      <header className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 pt-32 pb-14 border-b border-brand-concrete">
+      <header className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 pt-32 pb-14 border-b border-bk-rule">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <div>
-            <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-brand-cobalt mb-4">Field Notes</p>
-            <h1 className="font-display text-7xl md:text-9xl lg:text-[130px] text-brand-black leading-none tracking-tightest">
+            <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-bk-gold mb-4">Field Notes</p>
+            <h1 className="font-book font-bold text-7xl md:text-9xl lg:text-[130px] text-bk-parchment leading-none tracking-normal">
               THINK<br />
-              <span className="text-brand-cobalt">ALOUD.</span>
+              <span className="text-bk-gold">ALOUD.</span>
             </h1>
           </div>
           <div className="md:mb-4 max-w-xs">
-            <p className="font-sans text-sm text-brand-muted leading-relaxed">
+            <p className="font-sans text-sm text-bk-muted leading-relaxed">
               Systems, tooling, and the mental models behind the work.
               Notes on how I think and build.
             </p>
             <div className="flex flex-wrap gap-2 mt-4">
               {categories.map((cat) => (
-                <span key={cat} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-cobalt/70 border border-brand-cobalt/25 px-2.5 py-1">
+                <span key={cat} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-gold/70 border border-bk-gold/25 px-2.5 py-1">
                   {cat}
                 </span>
               ))}
@@ -54,10 +54,10 @@ export default function ArticlesPage() {
       </main>
 
       {/* Footer nav */}
-      <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 pb-16 border-t border-brand-concrete pt-10">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 pb-16 border-t border-bk-rule pt-10">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
+          className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200"
         >
           ← Back to portfolio
         </Link>

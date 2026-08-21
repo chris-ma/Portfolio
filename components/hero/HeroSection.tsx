@@ -1,120 +1,118 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { fadeIn } from '@/lib/motion'
-import SectionLabel from '@/components/ui/SectionLabel'
-import WebGLBackground from '@/components/ui/WebGLBackground'
+import { motion } from 'framer-motion'
+import { inkPress, fadeUp, staggerContainer } from '@/lib/motion'
 
 export default function HeroSection() {
-  const { scrollY } = useScroll()
-
-  const yText = useTransform(scrollY, [0, 600], [0, -140])
-  const opacityHero = useTransform(scrollY, [0, 400], [1, 0])
-
   return (
-    <section
-      className="relative min-h-screen flex items-center overflow-hidden bg-brand-white"
-      id="hero"
-    >
-      {/* ── WebGL parallax background ─────────────────────────────────────── */}
-      <WebGLBackground />
+    <section id="hero" className="relative min-h-screen bg-bk-slate flex flex-col overflow-hidden">
+      {/* Nav offset */}
+      <div className="pt-14" />
 
-      {/* ── Decorative grid overlay ───────────────────────────────────────── */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.04] z-[1]"
-        style={{
-          backgroundImage: `linear-gradient(var(--brand-concrete) 1px, transparent 1px), linear-gradient(90deg, var(--brand-concrete) 1px, transparent 1px)`,
-          backgroundSize: '80px 80px',
-        }}
-      />
+      {/* Content */}
+      <div className="flex-1 flex flex-col justify-center px-6 md:px-10 lg:px-16 py-20 md:py-28">
 
-      {/* ── Content ───────────────────────────────────────────────────────── */}
-      <motion.div
-        className="relative z-10 w-full px-6 md:px-10 lg:px-16 pt-32 pb-24"
-        style={{ y: yText, opacity: opacityHero }}
-      >
+        {/* Edition mark */}
         <motion.div
-          variants={fadeIn}
-          initial="hidden"
-          animate="visible"
-          transition={{ delay: 0.1 }}
-          className="mb-6"
-        >
-          <SectionLabel>Creative Technologist · Digital Marketer · Product Manager</SectionLabel>
-        </motion.div>
-
-        {/* Main headline */}
-        <div className="overflow-hidden">
-          <motion.h1
-            className="font-display text-[clamp(5rem,18vw,16rem)] leading-[0.9] tracking-tighter text-brand-black"
-            initial={{ y: '110%' }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          >
-            CHRIS
-          </motion.h1>
-        </div>
-        <div className="overflow-hidden">
-          <motion.h1
-            className="font-display text-[clamp(5rem,18vw,16rem)] leading-[0.9] tracking-tighter"
-            initial={{ y: '110%' }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.35 }}
-          >
-            <span className="text-brand-cobalt">MA</span>
-          </motion.h1>
-        </div>
-
-        {/* Sub-copy and CTAs */}
-        <motion.div
-          className="mt-10 flex flex-col md:flex-row md:items-end justify-between gap-8"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.6 }}
-        >
-          <div className="max-w-sm">
-            <p className="font-sans text-base text-brand-black/60 leading-relaxed">
-              Culture, technology, and commerce, applied.
-              Building digital experiences that earn attention.
-            </p>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <a
-              href="#work"
-              className="group font-sans text-xs tracking-[0.2em] uppercase px-8 py-4 bg-brand-cobalt text-brand-white hover:bg-brand-cobalt-light transition-all duration-300 flex items-center gap-3"
-            >
-              View Work
-              <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </a>
-            <a
-              href="#about"
-              className="font-sans text-xs tracking-[0.2em] uppercase px-8 py-4 border border-brand-black/20 text-brand-black/70 hover:border-brand-black/50 hover:text-brand-black transition-all duration-300"
-            >
-              About
-            </a>
-          </div>
-        </motion.div>
-
-        {/* Issue / metadata strip */}
-        <motion.div
-          className="mt-16 pt-6 border-t border-brand-concrete flex flex-wrap items-center justify-between gap-4"
+          className="mb-10 md:mb-14"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
         >
-          <div className="flex items-center gap-6">
-            <span className="font-sans text-xs tracking-[0.2em] uppercase text-brand-muted">Vol. 01</span>
-            <span className="font-sans text-xs tracking-[0.2em] uppercase text-brand-muted">2026 Edition</span>
-            <span className="font-sans text-xs tracking-[0.2em] uppercase text-brand-muted">
-              <span className="w-1.5 h-1.5 rounded-full bg-brand-cobalt inline-block mr-2" />
-              Available for work
-            </span>
-          </div>
-          <span className="font-sans text-xs tracking-[0.15em] uppercase text-brand-muted">
-            Scroll to explore ↓
+          <span className="font-mono text-[9px] tracking-[0.35em] uppercase text-bk-muted">
+            Portfolio · Sydney / Global · Est. 2019
           </span>
         </motion.div>
+
+        {/* Name — Playfair Display Bold Italic in warm gold */}
+        <div className="overflow-hidden mb-2">
+          <motion.h1
+            className="font-book font-bold italic text-bk-gold leading-[0.88] select-none"
+            style={{ fontSize: 'clamp(4.5rem, 18vw, 16rem)' }}
+            custom={0}
+            variants={inkPress}
+            initial="hidden"
+            animate="visible"
+          >
+            Chris
+          </motion.h1>
+        </div>
+        <div className="overflow-hidden">
+          <motion.h1
+            className="font-book font-bold italic text-bk-gold leading-[0.88] select-none"
+            style={{ fontSize: 'clamp(4.5rem, 18vw, 16rem)' }}
+            custom={1}
+            variants={inkPress}
+            initial="hidden"
+            animate="visible"
+          >
+            Ma.
+          </motion.h1>
+        </div>
+
+        {/* Gold horizontal rule */}
+        <motion.div
+          className="w-full h-px bg-bk-gold/30 mt-10 mb-10"
+          initial={{ scaleX: 0, originX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay: 0.8 }}
+        />
+
+        {/* Subtitle row */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-10 md:gap-16 items-end"
+          initial="hidden"
+          animate="visible"
+          variants={staggerContainer}
+        >
+          {/* Left: descriptor + CTAs */}
+          <motion.div variants={fadeUp}>
+            <p className="font-sans text-base md:text-lg text-bk-parchment leading-relaxed max-w-md mb-8 opacity-90">
+              Creative technologist working at the intersection of culture, technology, and commerce.
+              Building digital experiences that earn attention and deliver commercially.
+            </p>
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href="#work"
+                className="group font-mono text-[10px] tracking-[0.22em] uppercase px-7 py-4 bg-bk-gold text-bk-deep flex items-center gap-3 transition-colors duration-150 hover:bg-bk-parchment"
+              >
+                Selected Work
+                <span className="inline-block transition-transform duration-150 group-hover:translate-x-1">→</span>
+              </a>
+              <a
+                href="#contact"
+                className="font-mono text-[10px] tracking-[0.22em] uppercase px-7 py-4 border border-bk-rule text-bk-muted hover:border-bk-gold hover:text-bk-gold transition-all duration-150"
+              >
+                Correspondence
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Right: discipline list */}
+          <motion.div variants={fadeUp} className="flex flex-col gap-1.5 md:text-right">
+            {['Creative Technology', 'Digital Marketing', 'Product Management'].map((role) => (
+              <span key={role} className="font-mono text-[9px] tracking-[0.25em] uppercase text-bk-muted whitespace-nowrap">
+                {role}
+              </span>
+            ))}
+          </motion.div>
+        </motion.div>
+
+      </div>
+
+      {/* Footer rule */}
+      <motion.div
+        className="px-6 md:px-10 lg:px-16 py-6 border-t border-bk-rule flex justify-between items-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 1.2 }}
+      >
+        <span className="font-mono text-[9px] tracking-[0.25em] uppercase text-bk-muted/60">
+          Culture · Technology · Commerce
+        </span>
+        <span className="font-mono text-[9px] tracking-[0.25em] uppercase text-bk-muted/60">
+          Scroll ↓
+        </span>
       </motion.div>
     </section>
   )
