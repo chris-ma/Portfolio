@@ -1,15 +1,12 @@
 'use client'
 
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 
 const navLinks = [
-  { label: 'Work',    anchor: 'work' },
-  { label: 'About',   anchor: 'about' },
-  { label: 'Process', anchor: 'process' },
-  { label: 'Notes',   anchor: 'notes' },
-  { label: 'Contact', anchor: 'contact' },
+  { label: 'Notes',     href: '/' },
+  { label: 'Portfolio', href: '/portfolio' },
 ]
 
 export default function Navbar() {
@@ -17,10 +14,8 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const { scrollY } = useScroll()
   const pathname = usePathname()
-  const isHome = pathname === '/'
-
-  const href = (anchor: string) => isHome ? `#${anchor}` : `/#${anchor}`
-  const logoHref = isHome ? '#hero' : '/'
+  const isPortfolio = pathname === '/portfolio'
+  const contactHref = isPortfolio ? '#contact' : '/portfolio#contact'
 
   useMotionValueEvent(scrollY, 'change', (v) => setScrolled(v > 60))
 
@@ -42,7 +37,7 @@ export default function Navbar() {
 
       {/* Monogram — Playfair */}
       <a
-        href={logoHref}
+        href="/"
         className="font-book font-bold text-xl text-bk-gold hover:text-bk-parchment transition-colors duration-200 tracking-tight italic"
       >
         CM
@@ -50,18 +45,23 @@ export default function Navbar() {
 
       {/* Desktop links */}
       <div className="hidden md:flex items-center gap-8">
-        {navLinks.map((link) => (
-          <a
-            key={link.label}
-            href={href(link.anchor)}
-            className="font-mono text-[10px] tracking-[0.22em] uppercase text-bk-muted hover:text-bk-parchment transition-colors duration-200"
-          >
-            {link.label}
-          </a>
-        ))}
+        {navLinks.map((link) => {
+          const isActive = pathname === link.href
+          return (
+            <a
+              key={link.label}
+              href={link.href}
+              className={`font-mono text-[10px] tracking-[0.22em] uppercase transition-colors duration-200 ${
+                isActive ? 'text-bk-parchment' : 'text-bk-muted hover:text-bk-parchment'
+              }`}
+            >
+              {link.label}
+            </a>
+          )
+        })}
 
         <a
-          href={href('contact')}
+          href={contactHref}
           className="font-mono text-[10px] tracking-[0.22em] uppercase px-5 py-2.5 border border-bk-rule text-bk-muted hover:border-bk-gold hover:text-bk-gold transition-all duration-200"
         >
           Correspondence
@@ -102,7 +102,7 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <a
               key={link.label}
-              href={href(link.anchor)}
+              href={link.href}
               className="font-book font-bold text-4xl text-bk-parchment hover:text-bk-gold transition-colors duration-200"
               onClick={() => setMenuOpen(false)}
             >
@@ -110,7 +110,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href={href('contact')}
+            href={contactHref}
             className="font-mono text-[10px] tracking-[0.22em] uppercase px-5 py-4 border border-bk-gold text-bk-gold text-center mt-2"
             onClick={() => setMenuOpen(false)}
           >
