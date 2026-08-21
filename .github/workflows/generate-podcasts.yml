@@ -12,6 +12,10 @@ on:
         required: false
         default: true
         type: boolean
+  push:
+    branches: [main]
+    paths:
+      - 'public/podcasts/**.json'
 
 jobs:
   generate:
@@ -35,7 +39,7 @@ jobs:
         run: |
           if [ -n "${{ inputs.slug }}" ]; then
             node scripts/generate-podcasts.mjs "${{ inputs.slug }}"
-          elif [ "${{ inputs.skip_existing }}" = "true" ]; then
+          elif [ "${{ inputs.skip_existing }}" = "true" ] || [ "${{ github.event_name }}" = "push" ]; then
             node scripts/generate-podcasts.mjs --skip-existing
           else
             node scripts/generate-podcasts.mjs

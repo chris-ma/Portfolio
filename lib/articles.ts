@@ -11,6 +11,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'digital-experience-platforms',
+    title: 'The Judgment Gap',
+    subtitle: 'Every serious DXP ships with personalization, CMS, and automation. The feature list is no longer differentiating. What separates a genuinely good digital experience from a mediocre one is the judgment to orchestrate those capabilities toward a measurable outcome.',
+    category: 'Strategy',
+    date: '2026-08-21',
+    readTime: '11 min read',
+    tags: ['DXP', 'Digital Experience', 'Personalization', 'CMS', 'AEM', 'Composable Architecture', 'AI Orchestration'],
+    excerpt:
+      "The 2026 DXP market sits at $17.82B. Every serious platform now ships with content management, personalization, and AI-assisted authoring. The feature list is table stakes. What separates a genuinely good digital experience from a mediocre one is the judgment to orchestrate those capabilities toward a specific, measurable outcome — and that judgment isn't something a platform provides.",
+  },
+  {
     slug: 'consulting-ai-augmented',
     title: 'The Real Problem',
     subtitle: "The stated problem is almost never the actual one. The diagnostic-sprint model, AI's role at each stage, and what it actually takes to move from vendor to partner.",

@@ -5467,3 +5467,291 @@ export function AIConsultingRiskDiagram() {
     </svg>
   )
 }
+
+// ─── Digital Experience Platforms ───────────────────────────────────────────
+
+export function DXPLayersDiagram() {
+  const layers = [
+    { layer: 'Strategy', covers: 'Goals ranked by business impact, architecture choice, journey grounding', ref: 'Customer journey mapping' },
+    { layer: 'Structure', covers: 'Information architecture, interaction flow, entry/re-entry paths', ref: '—' },
+    { layer: 'Surface', covers: 'Visual design, hierarchy, contrast, signature element', ref: 'Design-taste workbook' },
+    { layer: 'Data', covers: 'First-party data strategy, zero-party collection, personalization logic', ref: 'Email marketing workbook' },
+    { layer: 'Orchestration', covers: 'Agentic optimization, experimentation, human guardrails', ref: 'Agentic AI workbook' },
+    { layer: 'Discovery', covers: 'Human search + AI-assistant navigation, AEO/GEO performance', ref: 'AEO/GEO workbook' },
+  ]
+  const ROW_H = 52
+  const HDR = 30
+  const H = HDR + layers.length * ROW_H + 20
+  return (
+    <svg viewBox={`0 0 720 ${H}`} className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height={H} fill={BG} />
+      {/* Header */}
+      <rect x="0" y="0" width="720" height={HDR} fill={BG2} />
+      <text x="16" y="20" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="1.5">LAYER</text>
+      <text x="150" y="20" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="1.5">WHAT IT COVERS</text>
+      <text x="560" y="20" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="1.5">CROSS-REF</text>
+      <line x1="0" y1={HDR} x2="720" y2={HDR} stroke={BORDER} strokeWidth="1" />
+      <line x1="140" y1="0" x2="140" y2={H} stroke={BORDER} strokeWidth="0.5" />
+      <line x1="550" y1="0" x2="550" y2={H} stroke={BORDER} strokeWidth="0.5" />
+      {layers.map((row, i) => {
+        const y = HDR + i * ROW_H
+        const isLast = i === layers.length - 1
+        const accent = i === 0 ? G : i === 4 ? GL : i === 5 ? '#4A6FA5' : MUTED
+        return (
+          <g key={i}>
+            <rect x="0" y={y} width="720" height={ROW_H} fill={i % 2 === 1 ? BG2 : 'transparent'} fillOpacity="0.4" />
+            {!isLast && <line x1="0" y1={y + ROW_H} x2="720" y2={y + ROW_H} stroke={BORDER} strokeWidth="0.5" strokeOpacity="0.6" />}
+            <rect x="0" y={y} width="4" height={ROW_H} fill={accent} />
+            <text x="16" y={y + 20} fontFamily="system-ui, sans-serif" fontSize="10" fontWeight="700" fill={accent} letterSpacing="0.5">{row.layer.toUpperCase()}</text>
+            <text x="150" y={y + 18} fontFamily="system-ui, sans-serif" fontSize="9" fill={TEXT} opacity="0.8">{row.covers.length > 60 ? row.covers.slice(0, 60) : row.covers}</text>
+            {row.covers.length > 60 && (
+              <text x="150" y={y + 32} fontFamily="system-ui, sans-serif" fontSize="9" fill={TEXT} opacity="0.8">{row.covers.slice(60)}</text>
+            )}
+            <text x="560" y={y + 18} fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED} fontStyle={row.ref === '—' ? 'normal' : 'italic'}>{row.ref}</text>
+          </g>
+        )
+      })}
+    </svg>
+  )
+}
+
+export function ComposableVsUnifiedDiagram() {
+  return (
+    <svg viewBox="0 0 720 320" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="320" fill={BG} />
+
+      {/* Divider */}
+      <line x1="360" y1="0" x2="360" y2="320" stroke={BORDER} strokeWidth="1" strokeDasharray="4 3" />
+
+      {/* Left label: Composable / MACH */}
+      <rect x="0" y="0" width="360" height="28" fill={BG2} />
+      <text x="180" y="18" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={G} letterSpacing="2">COMPOSABLE / MACH</text>
+      <line x1="0" y1="28" x2="360" y2="28" stroke={BORDER} strokeWidth="1" />
+
+      {/* Right label: Unified */}
+      <rect x="360" y="0" width="360" height="28" fill={BG2} />
+      <text x="540" y="18" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="2">UNIFIED / MONOLITHIC</text>
+      <line x1="360" y1="28" x2="720" y2="28" stroke={BORDER} strokeWidth="1" />
+
+      {/* Composable boxes */}
+      {[
+        { x: 30, y: 52, label: 'Headless CMS', sub: 'Contentful / Sanity' },
+        { x: 140, y: 52, label: 'CDP', sub: 'Segment / Tealium' },
+        { x: 250, y: 52, label: 'Commerce', sub: 'Shopify / Elastic' },
+      ].map(({ x, y, label, sub }, i) => (
+        <g key={i}>
+          <rect x={x} y={y} width="90" height="44" rx="3" fill="#fff" stroke={BORDER} strokeWidth="1" />
+          <text x={x + 45} y={y + 18} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fontWeight="600" fill={TEXT}>{label}</text>
+          <text x={x + 45} y={y + 32} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="7.5" fill={MUTED}>{sub}</text>
+        </g>
+      ))}
+
+      {/* API connectors */}
+      <line x1="120" y1="74" x2="140" y2="74" stroke={GL} strokeWidth="1.5" markerEnd="url(#arr)" />
+      <line x1="230" y1="74" x2="250" y2="74" stroke={GL} strokeWidth="1.5" markerEnd="url(#arr)" />
+      <defs>
+        <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill={GL} />
+        </marker>
+      </defs>
+
+      {/* API layer */}
+      <rect x="20" y="116" width="320" height="22" rx="2" fill={G} fillOpacity="0.08" stroke={G} strokeWidth="0.8" strokeOpacity="0.4" />
+      <text x="180" y="131" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} letterSpacing="1">API ORCHESTRATION LAYER</text>
+
+      {/* Frontend */}
+      <rect x="90" y="152" width="170" height="28" rx="3" fill="#fff" stroke={BORDER} strokeWidth="1" />
+      <text x="175" y="170" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fontWeight="600" fill={TEXT}>Frontend (any)</text>
+      <line x1="175" y1="138" x2="175" y2="152" stroke={GL} strokeWidth="1" strokeDasharray="3 2" />
+
+      {/* Composable pros/cons */}
+      <text x="16" y="204" fontFamily="system-ui, sans-serif" fontSize="8" fill={G} fontWeight="700">+ Vendor independence</text>
+      <text x="16" y="218" fontFamily="system-ui, sans-serif" fontSize="8" fill={G} fontWeight="700">+ Best-of-breed at each layer</text>
+      <text x="16" y="232" fontFamily="system-ui, sans-serif" fontSize="8" fill={G} fontWeight="700">+ Custom experiences</text>
+      <text x="16" y="252" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED}>− Higher integration overhead</text>
+      <text x="16" y="266" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED}>− More team coordination needed</text>
+      <text x="16" y="284" fontFamily="monospace" fontSize="7.5" fill={MUTED} letterSpacing="0.5">WHEN: custom experience is the product</text>
+
+      {/* Unified block */}
+      <rect x="390" y="52" width="290" height="148" rx="4" fill={BG2} stroke={BORDER} strokeWidth="1.5" />
+      <text x="535" y="100" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="11" fontWeight="700" fill={TEXT}>AEM / Sitecore</text>
+      <text x="535" y="118" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED}>CMS · Personalization · Forms</text>
+      <text x="535" y="134" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fill={MUTED}>Analytics · Commerce · DAM</text>
+      <rect x="415" y="152" width="240" height="30" rx="2" fill={BORDER} fillOpacity="0.3" />
+      <text x="535" y="171" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED} letterSpacing="1">ALL IN ONE VENDOR</text>
+
+      {/* Unified pros/cons */}
+      <text x="394" y="222" fontFamily="system-ui, sans-serif" fontSize="8" fill={G} fontWeight="700">+ Tighter out-of-box integration</text>
+      <text x="394" y="236" fontFamily="system-ui, sans-serif" fontSize="8" fill={G} fontWeight="700">+ Faster time to first value</text>
+      <text x="394" y="256" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED}>− Vendor lock-in</text>
+      <text x="394" y="270" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED}>− Constrained by platform roadmap</text>
+      <text x="394" y="288" fontFamily="monospace" fontSize="7.5" fill={MUTED} letterSpacing="0.5">WHEN: speed matters inside a known ecosystem</text>
+
+      <text x="360" y="310" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="7.5" fill={MUTED}>Neither is universally correct — the choice depends on how non-standard your target experience actually is.</text>
+    </svg>
+  )
+}
+
+export function DXPStructureFlowDiagram() {
+  return (
+    <svg viewBox="0 0 720 300" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="300" fill={BG} />
+
+      {/* Entry points */}
+      <text x="360" y="22" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED} letterSpacing="1.5">ENTRY POINTS</text>
+      {[
+        { x: 50, label: 'Paid ad' },
+        { x: 190, label: 'Organic search' },
+        { x: 340, label: 'Direct / brand' },
+        { x: 490, label: 'Social share' },
+        { x: 620, label: 'Email click' },
+      ].map(({ x, label }) => (
+        <g key={label}>
+          <rect x={x - 45} y="30" width="90" height="24" rx="2" fill="#fff" stroke={BORDER} strokeWidth="0.8" />
+          <text x={x} y="46" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED}>{label}</text>
+        </g>
+      ))}
+
+      {/* Arrows down to content nodes */}
+      {[50, 190, 340, 490, 620].map((x) => (
+        <line key={x} x1={x} y1="54" x2={x} y2="84" stroke={BORDER} strokeWidth="0.8" strokeDasharray="3 2" />
+      ))}
+
+      {/* Content nodes */}
+      <text x="360" y="79" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED} letterSpacing="1.5">CONTENT LAYER</text>
+      {[
+        { x: 100, label: 'Landing page' },
+        { x: 260, label: 'Blog / article' },
+        { x: 420, label: 'Product page' },
+        { x: 580, label: 'Category page' },
+      ].map(({ x, label }) => (
+        <g key={label}>
+          <rect x={x - 70} y="88" width="140" height="30" rx="3" fill={BG2} stroke={BORDER} strokeWidth="1" />
+          <text x={x} y="107" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fontWeight="600" fill={TEXT}>{label}</text>
+        </g>
+      ))}
+
+      {/* Re-entry loop arrows */}
+      <path d="M 260 118 Q 180 148 180 168" stroke={GL} strokeWidth="1" fill="none" strokeDasharray="3 2" />
+      <path d="M 420 118 Q 420 148 350 168" stroke={GL} strokeWidth="1" fill="none" strokeDasharray="3 2" />
+      <text x="155" y="155" fontFamily="system-ui, sans-serif" fontSize="7.5" fill={GL} fontStyle="italic">re-entry</text>
+      <text x="380" y="155" fontFamily="system-ui, sans-serif" fontSize="7.5" fill={GL} fontStyle="italic">re-entry</text>
+
+      {/* Evaluation layer */}
+      <text x="360" y="175" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={MUTED} letterSpacing="1.5">USER EVALUATES — LOOPS BACK OR CONTINUES</text>
+      <rect x="150" y="182" width="420" height="26" rx="2" fill={G} fillOpacity="0.07" stroke={G} strokeWidth="0.6" strokeOpacity="0.3" />
+      <text x="360" y="198" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={G}>Design for this layer explicitly — not just the straight-through path</text>
+
+      {/* Arrows to conversion */}
+      <line x1="280" y1="208" x2="310" y2="240" stroke={BORDER} strokeWidth="0.8" />
+      <line x1="440" y1="208" x2="410" y2="240" stroke={BORDER} strokeWidth="0.8" />
+
+      {/* Conversion */}
+      <rect x="260" y="240" width="200" height="36" rx="4" fill={G} fillOpacity="0.9" />
+      <text x="360" y="262" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="10" fontWeight="700" fill="#fff">Conversion / outcome</text>
+
+      {/* Abandon arrow */}
+      <path d="M 100 118 Q 50 180 50 240" stroke="#C9453A" strokeWidth="0.8" fill="none" strokeDasharray="3 2" />
+      <text x="20" y="200" fontFamily="system-ui, sans-serif" fontSize="7.5" fill="#C9453A" fontStyle="italic">drop-off</text>
+    </svg>
+  )
+}
+
+export function PersonalizationSpectrumDiagram() {
+  return (
+    <svg viewBox="0 0 720 210" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="210" fill={BG} />
+
+      <text x="360" y="28" textAnchor="middle" fontFamily="monospace" fontSize="8" fill={MUTED} letterSpacing="1.5">PERSONALIZATION SPECTRUM</text>
+
+      {/* Gradient bar via stops */}
+      <defs>
+        <linearGradient id="specGrad" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stopColor={BORDER} />
+          <stop offset="45%" stopColor={GL} />
+          <stop offset="62%" stopColor={G} />
+          <stop offset="80%" stopColor="#D4833A" />
+          <stop offset="100%" stopColor="#C9453A" />
+        </linearGradient>
+      </defs>
+      <rect x="40" y="50" width="640" height="28" rx="14" fill="url(#specGrad)" />
+
+      {/* Sweet spot highlight */}
+      <rect x="290" y="44" width="200" height="40" rx="6" fill="none" stroke={G} strokeWidth="1.5" strokeDasharray="4 3" />
+      <text x="390" y="40" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fill={G} letterSpacing="0.5">SWEET SPOT</text>
+
+      {/* Zone labels */}
+      <text x="60" y="102" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fontWeight="700" fill={MUTED}>Fully</text>
+      <text x="60" y="115" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fontWeight="700" fill={MUTED}>consistent</text>
+      <text x="390" y="102" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fontWeight="700" fill={G}>Optimally</text>
+      <text x="390" y="115" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fontWeight="700" fill={G}>personalized</text>
+      <text x="665" y="102" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fontWeight="700" fill="#C9453A">Over-</text>
+      <text x="665" y="115" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8.5" fontWeight="700" fill="#C9453A">personalized</text>
+
+      {/* Descriptions */}
+      <text x="60" y="138" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="7.5" fill={MUTED}>Predictable</text>
+      <text x="60" y="150" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="7.5" fill={MUTED}>but missed signal</text>
+
+      <text x="390" y="138" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="7.5" fill={G}>Behaviorally informed,</text>
+      <text x="390" y="150" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="7.5" fill={G}>consistently structured</text>
+
+      <text x="665" y="138" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="7.5" fill="#C9453A">Feels like</text>
+      <text x="665" y="150" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="7.5" fill="#C9453A">it&apos;s guessing at you</text>
+
+      {/* Key insight */}
+      <rect x="100" y="168" width="520" height="26" rx="2" fill={BG2} stroke={BORDER} strokeWidth="0.8" />
+      <text x="360" y="185" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={TEXT} opacity="0.8">Deciding what to personalize is a design decision — not something to delegate entirely to an algorithm.</text>
+    </svg>
+  )
+}
+
+export function AgentDXPOrchestrationDiagram() {
+  return (
+    <svg viewBox="0 0 720 310" className="w-full" xmlns="http://www.w3.org/2000/svg">
+      <rect width="720" height="310" fill={BG} />
+
+      {/* Tier labels */}
+      <text x="16" y="64" fontFamily="monospace" fontSize="7.5" fill={MUTED} letterSpacing="1">HUMAN</text>
+      <text x="16" y="162" fontFamily="monospace" fontSize="7.5" fill={MUTED} letterSpacing="1">AGENTS</text>
+      <text x="16" y="258" fontFamily="monospace" fontSize="7.5" fill={MUTED} letterSpacing="1">REVIEW</text>
+
+      {/* Human tier */}
+      <rect x="160" y="30" width="400" height="56" rx="4" fill="#fff" stroke={G} strokeWidth="1.5" />
+      <text x="360" y="54" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="10" fontWeight="700" fill={G}>Human: goals + guardrails</text>
+      <text x="360" y="72" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fill={MUTED}>Defines success metric, sets approval thresholds, owns brand and legal constraints</text>
+
+      {/* Arrow down */}
+      <line x1="360" y1="86" x2="360" y2="120" stroke={BORDER} strokeWidth="1" />
+      <polygon points="354,118 366,118 360,126" fill={BORDER} />
+
+      {/* Agent tier */}
+      {[
+        { x: 100, label: 'A/B testing', sub: 'Variant rotation, significance detection' },
+        { x: 310, label: 'Content routing', sub: 'Segment matching, offer selection' },
+        { x: 520, label: 'Performance opt.', sub: 'Load time, CWV monitoring' },
+      ].map(({ x, label, sub }) => (
+        <g key={label}>
+          <rect x={x - 90} y="128" width="180" height="52" rx="3" fill={BG2} stroke={GL} strokeWidth="1" />
+          <text x={x} y="150" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9" fontWeight="700" fill={G}>{label}</text>
+          <text x={x} y="163" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="7.5" fill={MUTED}>{sub.split(',')[0]}</text>
+          <text x={x} y="175" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="7.5" fill={MUTED}>{sub.split(',')[1]}</text>
+        </g>
+      ))}
+
+      {/* Arrows down to review */}
+      {[100, 310, 520].map((x) => (
+        <line key={x} x1={x} y1="180" x2={x} y2="214" stroke={BORDER} strokeWidth="0.8" strokeDasharray="3 2" />
+      ))}
+      <line x1="100" y1="214" x2="520" y2="214" stroke={BORDER} strokeWidth="0.8" strokeDasharray="3 2" />
+      <line x1="310" y1="214" x2="310" y2="228" stroke={BORDER} strokeWidth="1" />
+      <polygon points="304,226 316,226 310,234" fill={BORDER} />
+
+      {/* Review gate */}
+      <rect x="180" y="234" width="360" height="50" rx="4" fill={G} fillOpacity="0.08" stroke={G} strokeWidth="1.2" />
+      <text x="360" y="256" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="9.5" fontWeight="700" fill={G}>Human review gate</text>
+      <text x="360" y="272" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="7.5" fill={MUTED}>High-stakes changes (pricing, segmentation, brand voice) require explicit approval</text>
+
+      <text x="360" y="300" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="7.5" fill={MUTED}>The orchestrator-worker pattern applied to DXP: agents handle combinatorial testing, humans own consequences.</text>
+    </svg>
+  )
+}

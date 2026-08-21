@@ -1,0 +1,111 @@
+{
+  "title": "The Judgment Gap",
+  "slug": "digital-experience-platforms",
+  "duration_estimate": "6-8 min",
+  "turns": [
+    {
+      "speaker": "host",
+      "text": "The DXP market is worth $17.82 billion and every serious platform ships the same three things: a CMS, personalization, and AI-assisted authoring. So here's the uncomfortable question: if the feature list is identical, what are you actually buying?"
+    },
+    {
+      "speaker": "expert",
+      "text": "You're buying an instrument, not an outcome. The article calls this the judgment gap. The platform gives you the capabilities. But deciding which metric actually matters, how to sequence the experience to reach it, what to personalize and what to leave consistent, that's judgment. And no vendor ships that."
+    },
+    {
+      "speaker": "host",
+      "text": "So feature parity has made the platform choice less important than the decisions you make on top of it."
+    },
+    {
+      "speaker": "expert",
+      "text": "Exactly. And the article structures those decisions into six layers: Strategy, Structure, Surface, Data, Orchestration, and Discovery. Most teams invest heavily in Surface, which is the visual design layer, and almost nothing in Structure and Strategy, which is where the actual leverage is."
+    },
+    {
+      "speaker": "host",
+      "text": "Walk me through the layers that matter most."
+    },
+    {
+      "speaker": "expert",
+      "text": "Strategy is where you rank your goals by business impact and choose your architecture. Structure is information architecture and interaction flow, including re-entry paths. Then Surface is what users see. Data is your first-party data and personalization logic. Orchestration is agentic optimization. Discovery is how users find you through human search and AI assistants."
+    },
+    {
+      "speaker": "host",
+      "text": "Architecture choice comes up early in that stack. The article draws a sharp line between composable and unified."
+    },
+    {
+      "speaker": "expert",
+      "text": "Composable, which the industry calls MACH, means you're assembling best-of-breed pieces: a headless CMS like Contentful or Sanity, a CDP like Segment or Tealium, a commerce layer like Shopify. They communicate through an API orchestration layer. Unified means one vendor handles everything, AEM and Sitecore being the clearest examples."
+    },
+    {
+      "speaker": "host",
+      "text": "When do you choose composable over AEM?"
+    },
+    {
+      "speaker": "expert",
+      "text": "When the experience itself is the product. Composable gives you vendor independence and best-of-breed at each layer, but you pay for it in integration overhead and team coordination. Unified gives you faster time to first value with tighter built-in integration, but you're constrained by the platform roadmap. The article's framing: neither is universally correct. The answer depends on how non-standard your target experience actually needs to be."
+    },
+    {
+      "speaker": "host",
+      "text": "There's a structural point in the article that surprised me: most teams only design the straight-through conversion path."
+    },
+    {
+      "speaker": "expert",
+      "text": "Right. The flow is: entry point, whether that's paid ads, organic search, email click, whatever, then a content layer, landing pages, product pages, articles, then the user evaluates and either converts or leaves. The mistake is optimizing only for the user who lands and converts in one visit. Most users don't. They loop back."
+    },
+    {
+      "speaker": "host",
+      "text": "So re-entry paths need to be explicitly designed, not just hoped for."
+    },
+    {
+      "speaker": "expert",
+      "text": "That's the point. The diagram in the article literally labels it: design for this layer explicitly, not just the straight-through path. When someone returns from a search two days later, are they landing on the right content? Does the experience acknowledge where they are in the decision? Most DXPs don't answer that without deliberate information architecture."
+    },
+    {
+      "speaker": "host",
+      "text": "Personalization is where a lot of teams think the platform will just handle it for them."
+    },
+    {
+      "speaker": "expert",
+      "text": "And that's exactly where over-personalization happens. The article maps it as a spectrum. At one end you have fully consistent, same experience for everyone, predictable but ignoring behavioral signal. At the other end is over-personalized, where the experience starts to feel like it's guessing at you. There's a sweet spot in the middle: behaviorally informed, consistently structured."
+    },
+    {
+      "speaker": "host",
+      "text": "How do you know when you've crossed into over-personalized?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The clearest signal is user trust. Personalization should feel like the site understands what you came for. Over-personalization feels like surveillance. The article's key line on this: deciding what to personalize is a design decision, not something to delegate entirely to an algorithm. The algorithm can execute. It shouldn't choose the scope."
+    },
+    {
+      "speaker": "host",
+      "text": "That brings up the agentic layer, which is the orchestration tier in that six-layer stack."
+    },
+    {
+      "speaker": "expert",
+      "text": "The article applies the orchestrator-worker pattern to DXP. Agents handle the combinatorial testing work: A/B variant rotation, content routing and segment matching, Core Web Vitals monitoring. That's the stuff that's too high-frequency for humans to manage manually. The agents run continuously."
+    },
+    {
+      "speaker": "host",
+      "text": "But not everything goes to the agents."
+    },
+    {
+      "speaker": "expert",
+      "text": "High-stakes changes require a human review gate. Pricing decisions, major segmentation shifts, anything touching brand voice or legal constraints, those need explicit approval. The agents escalate rather than execute autonomously. The framing is: agents handle combinatorial testing, humans own consequences."
+    },
+    {
+      "speaker": "host",
+      "text": "The Discovery layer is the one people are only starting to think about."
+    },
+    {
+      "speaker": "expert",
+      "text": "Because it used to just be SEO. Now it's human search plus AI-assistant navigation. When someone asks an AI assistant a question and it surfaces your content, that's a different retrieval mechanism than a search engine crawl. The article cross-references AEO and GEO performance for this layer specifically. It's the newest front in the stack."
+    },
+    {
+      "speaker": "host",
+      "text": "So to bring it back to the top: if every platform ships the same capabilities, what actually separates a genuinely good digital experience?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Judgment at each of those six layers. Which metric you're actually optimizing. Whether you've designed for re-entry loops, not just the clean conversion path. Where you draw the personalization line. Which changes go to agents and which ones you gate on human review. The platform is the instrument. The judgment is what moves outcomes."
+    }
+  ]
+}

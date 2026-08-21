@@ -1,0 +1,127 @@
+{
+  "title": "Not the Bots",
+  "slug": "automation-strategy",
+  "duration_estimate": "6-8 min",
+  "turns": [
+    {
+      "speaker": "host",
+      "text": "Here's the thing most automation programs get wrong: they're not actually automating processes. They're automating tasks. And there's a gap between those two things that quietly swallows most of the value."
+    },
+    {
+      "speaker": "expert",
+      "text": "That's the silent ceiling. You deploy a bot that handles data entry, another that sends a notification, maybe a third that generates a report. But between each of those bots, a human still has to pick up the output and pass it to the next step. That's task automation. The hand-offs are still manual."
+    },
+    {
+      "speaker": "host",
+      "text": "So the bots are running, the team calls it an automation program, but the actual process is still human-in-the-middle."
+    },
+    {
+      "speaker": "expert",
+      "text": "Exactly. And closing that gap is one specific thing: a shared orchestration layer that passes output from one step directly into the next, without a human in between. Everything else in the article, the maturity ladder, the process-mining discipline, the AI agents, is in service of building that."
+    },
+    {
+      "speaker": "host",
+      "text": "Walk me through the maturity ladder. There are four rungs?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Four rungs. RPA at the bottom, which is plain rule-based bots for stable, repeatable tasks. Then IPA, which adds machine learning to handle bounded variation, think OCR or NLP when formats aren't perfectly consistent. Then APA, autonomous agents for tasks where genuine judgment is required. And Hyperautomation at the top, which is those rungs connected through a shared orchestration layer."
+    },
+    {
+      "speaker": "host",
+      "text": "And the common mistake is reaching for the wrong rung?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Both directions. Leaving a fully rule-based, stable task to a human when plain RPA would handle it fine is under-investing. But the more expensive mistake in 2026 is over-reaching. Adding an AI agent to a task that a simple trigger-action workflow handles perfectly well adds cost, latency, and unpredictability without adding any value."
+    },
+    {
+      "speaker": "host",
+      "text": "So before you even choose a rung, there's a prior step. The process mining piece."
+    },
+    {
+      "speaker": "expert",
+      "text": "This is where programs fail quietly. Process mining is discovering how a process actually runs today, from real system event logs, not from someone's memory of how it's supposed to work. Because the assumed process and the real process routinely diverge."
+    },
+    {
+      "speaker": "host",
+      "text": "How far apart are they usually?"
+    },
+    {
+      "speaker": "expert",
+      "text": "A workflow that's supposed to take three steps has often quietly grown to five, with exceptions and manual workarounds nobody wrote down. If you automate the three-step version, you've built something that doesn't match what people actually do. The automation breaks or gets bypassed the first time an edge case comes through."
+    },
+    {
+      "speaker": "host",
+      "text": "And you don't need enterprise software to apply this discipline."
+    },
+    {
+      "speaker": "expert",
+      "text": "The principle scales down. At any size, trace the process end-to-end as it actually runs, every manual step, every exception, every person who touches it. Write it out. The gaps between 'supposed to' and 'actually does' are exactly where automations break."
+    },
+    {
+      "speaker": "host",
+      "text": "Then there's the question of where AI agents actually belong in this picture. In 2026 that's shifted."
+    },
+    {
+      "speaker": "expert",
+      "text": "The shift is specific. Agents have moved from executing predefined workflows to deciding which workflow to execute, based on context, priority, and live signals. A customer service agent that analyses inquiry complexity and routes accordingly. A supply chain agent adjusting inventory policy based on real-time demand. A financial agent approving routine transactions and automatically escalating genuine exceptions."
+    },
+    {
+      "speaker": "host",
+      "text": "So how do you know when a step actually needs an agent versus a fixed workflow?"
+    },
+    {
+      "speaker": "expert",
+      "text": "The test is ambiguity. If there are multiple plausible next actions and the right one depends on context, an agent fits. If only one action makes sense at each step, a fixed workflow is cheaper and more reliable. The other question is whether the task requires sensing live signals, things changing in real time that a cron job can't respond to."
+    },
+    {
+      "speaker": "host",
+      "text": "And the guardrails matter here."
+    },
+    {
+      "speaker": "expert",
+      "text": "The same flexibility that makes agents powerful makes them riskier unsupervised. Every agentic step handling high-stakes decisions needs a human-approval checkpoint until the pattern is proven reliable. The goal is concentrating human attention on decisions that actually need it, not removing human judgment from the loop entirely."
+    },
+    {
+      "speaker": "host",
+      "text": "Let's talk ROI. There's a stat in here that stopped me."
+    },
+    {
+      "speaker": "expert",
+      "text": "Fewer than 20% of large enterprises have actually mastered measuring their automation initiatives properly. Which means the majority are running programs without a reliable read on whether they're working. That's not a small oversight. Without a baseline, 'did this help?' is a guess."
+    },
+    {
+      "speaker": "host",
+      "text": "What do the numbers look like when measurement is done right?"
+    },
+    {
+      "speaker": "expert",
+      "text": "20 to 40% cost reduction, around 40% faster process completion, sub-12-month payback. Those are achievable. But none of it is automatic. It depends on picking the right processes, fixing the underlying process before automating it, and measuring rigorously on a real cadence after."
+    },
+    {
+      "speaker": "host",
+      "text": "That point about fixing it first is important. Automating a broken process."
+    },
+    {
+      "speaker": "expert",
+      "text": "You get a faster, more consistent way to produce the same bad outcome. The automation doesn't fix the brokenness, it institutionalizes it. That's why baselining time, cost, and error rate before you touch anything matters. Then you fix the process, then you automate it."
+    },
+    {
+      "speaker": "host",
+      "text": "So what does the full decision sequence look like? If someone's starting this properly."
+    },
+    {
+      "speaker": "expert",
+      "text": "Six steps. Trace the real process first, not the assumed one. Classify each step by what it actually requires, rule-based gets RPA, bounded variation gets IPA, genuine judgment gets APA only. Baseline cost, time, and error rate before touching anything. Match tooling to the classification, not to what's most impressive. Connect steps via a shared orchestration layer rather than leaving human hand-offs between automated pieces. And set a review cadence, not a launch-and-forget deployment."
+    },
+    {
+      "speaker": "host",
+      "text": "Which of those six steps is the one most programs skip?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Step five. Connecting through shared orchestration. That's the difference between a program that compounds over time and one that stalls at scattered bots. The bots are genuinely the easy part. The connective tissue between them is the actual work."
+    }
+  ]
+}

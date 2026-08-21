@@ -30,6 +30,7 @@ import {
   AutomationLadderDiagram, ProcessMiningDiagram, OrchestratedVsIsolatedDiagram,
   SilverTsunamiDiagram, ETAPathsDiagram, AIDealSourceDiagram,
   DiagnosticSprintDiagram, VendorPartnerDiagram, AIConsultingRiskDiagram,
+  DXPLayersDiagram, ComposableVsUnifiedDiagram, DXPStructureFlowDiagram, PersonalizationSpectrumDiagram, AgentDXPOrchestrationDiagram,
 } from '@/components/articles/ArticleMockups'
 import RecommendedReading from '@/components/articles/RecommendedReading'
 
@@ -156,6 +157,10 @@ export default function ArticlePage({ params }: PageProps) {
 
   if (article.slug === 'consulting-ai-augmented') {
     return <ConsultingArticle article={article} formattedDate={formattedDate} />
+  }
+
+  if (article.slug === 'digital-experience-platforms') {
+    return <DXPArticle article={article} formattedDate={formattedDate} />
   }
 
   notFound()
@@ -8547,6 +8552,362 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
           ← Field Notes
         </Link>
       </div>
+    </div>
+  )
+}
+
+function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
+  return (
+    <div className="bg-brand-white min-h-screen">
+      {/* Back nav */}
+      <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+        <Link
+          href="/articles"
+          className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
+        >
+          ← Field Notes
+        </Link>
+      </div>
+
+      {/* Header */}
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">
+            {article!.category}
+          </span>
+          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-brand-muted">·</span>
+          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+        </div>
+
+        <h1 className="font-display text-7xl md:text-9xl lg:text-[120px] text-brand-black leading-none tracking-tightest mb-4">
+          THE<br />
+          JUDGMENT<br />
+          <span className="text-brand-cobalt">GAP.</span>
+        </h1>
+
+        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+          {article!.subtitle}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mt-6">
+          {article!.tags.map((tag) => (
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted border border-brand-concrete px-2.5 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      {/* Body */}
+      <article className="max-w-[720px] mx-auto px-6 md:px-10 py-16 space-y-16">
+
+        {/* Lede */}
+        <section>
+          <div className="border-l-2 border-brand-cobalt pl-6 space-y-4">
+            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+              The 2026 DXP market is worth $17.82 billion. That figure is not a measure of how differentiated the
+              category has become &mdash; it&rsquo;s a measure of how necessary managed digital experiences are now
+              considered to be. The market&rsquo;s verdict: you can&rsquo;t leave the coordination of your channels,
+              content, and customer data to improvisation. The category&rsquo;s problem: buying a platform
+              doesn&rsquo;t coordinate anything for you.
+            </p>
+            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+              Every serious DXP in 2026 &mdash; AEM, Sitecore, Contentful, Sanity, Optimizely &mdash; ships with
+              content management, personalization, segmentation, A/B testing, and AI-assisted authoring. The feature
+              list is no longer a differentiator. What separates a genuinely good digital experience from a mediocre
+              one is the judgment about how to orchestrate those capabilities toward a measurable outcome. That
+              judgment is not something a platform provides.
+            </p>
+          </div>
+          <Callout label="Key Takeaways" className="mt-8">
+            <ul className="space-y-1.5 list-none">
+              <li><span className="text-brand-cobalt mr-2">—</span>The DXP category has commoditized at the feature level. Platform choice matters less than how intelligently you orchestrate the stack you have.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Composable/MACH buys flexibility and vendor independence. Unified (AEM-style) buys tighter integration and faster initial delivery. Neither is universally correct.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Structure before surface: a beautiful interface on a confused information architecture is still a confused experience.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>Personalization only works if the underlying data is behavioral and current &mdash; not a one-time persona built at kickoff. The over-personalization failure mode is real and under-discussed.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>The genuinely new AI capability in 2026 is agentic orchestration: agents handling combinatorial experimentation under human direction, not AI-generated copy.</li>
+              <li><span className="text-brand-cobalt mr-2">—</span>AEO/GEO performance is now a first-class DXP metric. How your experience performs when an AI assistant is navigating it matters as much as how it performs for a human.</li>
+            </ul>
+          </Callout>
+        </section>
+
+        {/* Section 01 */}
+        <section>
+          <SectionHeading number="01" title="What&apos;s actually table stakes" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            74% of enterprises are expected to have integrated AI-driven capabilities into their digital experience
+            stack by 2026. 90% of consumers now expect seamless cross-channel experiences as a baseline, not a
+            feature. Personalization leaders generate 40% more revenue than average performers. These numbers are
+            cited constantly &mdash; and they create a specific pressure: to buy and configure every capability a
+            platform offers, rather than to think carefully about which ones serve this particular experience.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+            The honest read: platform vendors have largely caught up to each other. CMS, personalization engine,
+            CDP integration, A/B testing, commerce connectors, AI authoring assistance &mdash; the checklist is
+            nearly identical across every serious contender. Buying the platform with the longer feature list is
+            no longer the decision. The decision is how to deploy what you have against a specific, ranked set of
+            business goals.
+          </p>
+
+          <figure className="my-8">
+            <div className="border border-brand-concrete overflow-hidden">
+              <DXPLayersDiagram />
+            </div>
+            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+              The six layers of a digital experience. Each one can be purchased. Only the judgment connecting them can&rsquo;t.
+            </figcaption>
+          </figure>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            The practical consequence: before evaluating any platform or starting any design work, rank the actual
+            business goals by impact for this specific project. Personalization, omnichannel publishing, global
+            content operations, commerce integration &mdash; which of these actually moves the outcome you&rsquo;re
+            being measured on? The capabilities you don&rsquo;t rank first should be deprioritized deliberately,
+            not simply enabled because the platform includes them.
+          </p>
+        </section>
+
+        {/* Section 02 */}
+        <section>
+          <SectionHeading number="02" title="The architecture decision" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            The dominant architectural trend in 2026 is composable, MACH-style architecture &mdash; Microservices,
+            API-first, Cloud-native, Headless. The pitch: best-of-breed components assembled and swapped without
+            full platform replacement. Vendor independence as a structural property, not a negotiating position.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+            The trade-off is real. Composable buys flexibility at the cost of integration overhead. A unified
+            platform (AEM, Sitecore) buys tighter out-of-box integration at the cost of vendor lock-in and
+            constraint by the platform&rsquo;s own roadmap. The right choice is not a market trend &mdash; it
+            depends on how custom and non-standard the experience you&rsquo;re building actually is.
+          </p>
+
+          <figure className="my-8">
+            <div className="border border-brand-concrete overflow-hidden">
+              <ComposableVsUnifiedDiagram />
+            </div>
+            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+              Composable vs. unified: a genuine trade-off, not a generational upgrade.
+            </figcaption>
+          </figure>
+
+          <div className="space-y-0 border border-brand-concrete mt-6">
+            {[
+              { label: 'Choose composable when', detail: 'The experience you\'re building is genuinely non-standard — custom interaction patterns, multi-vendor data, or a frontend the platform\'s own rendering can\'t serve. The flexibility cost is real.' },
+              { label: 'Choose unified when', detail: 'Speed and integration matter more than flexibility. You\'re building within a known, well-supported ecosystem (AEM, Sitecore) and the experience fits the platform\'s model. Lock-in is a deliberate trade.' },
+              { label: 'Avoid the default', detail: 'The most common failure: choosing composable because the trend says to, then spending 80% of the project on integration plumbing instead of on the experience itself.' },
+            ].map(({ label, detail }, i, arr) => (
+              <div key={i} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
+                <div className="w-48 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/50">
+                  <span className="font-sans font-semibold text-sm text-brand-cobalt leading-snug block">{label}</span>
+                </div>
+                <p className="font-sans text-sm text-brand-black/70 p-4 leading-relaxed">{detail}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 03 */}
+        <section>
+          <SectionHeading number="03" title="Structure before surface" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            Before any visual design, the underlying content and interaction structure has to be right: what&rsquo;s
+            the actual path from entry to the intended outcome, what needs to exist at each step, what can be cut.
+            A beautifully executed interface built on a confused structure is still a confused experience.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+            Real users don&rsquo;t take ideal paths. They loop, re-enter from different channels, revisit earlier
+            steps after being interrupted. A digital experience designed only for the straight-through &ldquo;ideal&rdquo;
+            path will misserve the often-large share of visitors who don&rsquo;t take it. That share is visible
+            in your analytics &mdash; it&rsquo;s the direct evidence that the assumed path and the real path differ.
+          </p>
+
+          <figure className="my-8">
+            <div className="border border-brand-concrete overflow-hidden">
+              <DXPStructureFlowDiagram />
+            </div>
+            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+              The real user journey is non-linear. Design for re-entry and loop-back, not just the straight-through path.
+            </figcaption>
+          </figure>
+
+          <Callout label="Two non-negotiable gates">
+            <p className="font-sans text-sm text-brand-black/70 leading-relaxed mb-3">
+              <strong>Accessibility:</strong> WCAG compliance is a gating requirement, not a QA checklist item at
+              the end. A digital experience that&rsquo;s inaccessible has already failed a meaningful share of its
+              audience before personalization or content strategy are even evaluated.
+            </p>
+            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+              <strong>Performance:</strong> Core Web Vitals (LCP, INP, CLS) are structural requirements, not
+              optimizations. Slow load times compound every other problem &mdash; personalization can&rsquo;t recover
+              a user who already left.
+            </p>
+          </Callout>
+        </section>
+
+        {/* Section 04 */}
+        <section>
+          <SectionHeading number="04" title="Personalization, done honestly" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            Personalization only works if the underlying data is behavioral and current. A persona built at project
+            kickoff and never updated is not a personalization strategy &mdash; it&rsquo;s an assumption that
+            compounds over time. The customer journey map you maintain actively is the direct infrastructure for
+            personalization decisions. If those two things aren&rsquo;t connected, the personalization isn&rsquo;t
+            grounded in anything real.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+            First-party data strategy is now a structural requirement, not a nice-to-have. As third-party cookies
+            continue their exit, the ability to personalize depends increasingly on data someone has genuinely given
+            you: quiz funnels, preference centers, explicit opt-ins. Zero-party data collection &mdash; data the
+            user actively provides &mdash; is the practical mechanism, not a workaround.
+          </p>
+
+          <figure className="my-8">
+            <div className="border border-brand-concrete overflow-hidden">
+              <PersonalizationSpectrumDiagram />
+            </div>
+            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+              The over-personalization failure mode is real: an experience that feels like it&rsquo;s constantly guessing at you erodes trust faster than no personalization at all.
+            </figcaption>
+          </figure>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            The under-discussed failure mode: over-personalization. Machine learning can dynamically adjust content
+            and offers based on real-time behaviour &mdash; but deciding which moments in the journey actually
+            benefit from personalization is a design decision, not something to delegate to an algorithm by default.
+            Some moments in a digital experience should be deliberately consistent: the checkout flow, the support
+            contact path, anything where predictability is part of the trust signal. Personalize selectively, and
+            be able to say why each personalized touchpoint serves the outcome, not just because the platform
+            permits it.
+          </p>
+        </section>
+
+        {/* Section 05 */}
+        <section>
+          <SectionHeading number="05" title="Where AI changes the build" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            The meaningful shift in 2026 is not &ldquo;AI writes the copy.&rdquo; AI-assisted content authoring
+            inside the CMS &mdash; copy suggestions, quality checks, localisation, SEO flagging &mdash; has become
+            a standard platform feature, not a differentiator. It&rsquo;s useful, and it&rsquo;s already table
+            stakes.
+          </p>
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+            The genuinely new capability is agentic orchestration: AI agents operating under human direction to run
+            experimentation, personalization, and optimisation across an experience at a scale no team could manage
+            manually. An agent continuously testing variant combinations, monitoring CWV regressions, and adjusting
+            content routing based on live signals &mdash; while a human sets the goals and approves high-stakes
+            changes. That&rsquo;s the orchestrator-worker pattern applied to DXP.
+          </p>
+
+          <figure className="my-8">
+            <div className="border border-brand-concrete overflow-hidden">
+              <AgentDXPOrchestrationDiagram />
+            </div>
+            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+              Agents handle the combinatorial work of testing. Humans own the guardrails and sign off on high-stakes changes.
+            </figcaption>
+          </figure>
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+            A third AI dimension that now belongs explicitly in a DXP strategy: how the experience performs when an
+            AI assistant is navigating or summarising it on a user&rsquo;s behalf. AEO and GEO optimisation &mdash;
+            engineering your content to be accurately retrieved, cited, and summarised by AI search surfaces &mdash;
+            is no longer a separate initiative competing for attention. It&rsquo;s part of the same system. A modern
+            digital experience strategy in 2026 includes a first-class answer to: &ldquo;what does a user get when
+            they ask an AI assistant about us instead of clicking through directly?&rdquo;
+          </p>
+
+          <div className="mt-6 space-y-5">
+            {[
+              {
+                head: 'The governance rule doesn\'t change at platform scale.',
+                body: 'An AI agent with broad latitude to personalise and optimise across an entire digital experience needs the same guardrails as any other agentic system: human review on high-stakes changes, a defined success condition, and monitoring for drift. Unsupervised autonomy from day one is not a DXP strategy.',
+              },
+              {
+                head: 'AI-assisted content ops is already embedded in the CMS layer.',
+                body: 'Editorial assistants built into platforms like CoreMedia support copy preparation, quality checks, and content migration inside the authoring workflow. For AEM-adjacent work, this is the direction the category is moving — not a separate bolt-on product.',
+              },
+            ].map(({ head, body }, i) => (
+              <div key={i} className="flex gap-5 border-l-2 border-brand-cobalt/20 pl-5">
+                <div>
+                  <p className="font-sans text-base font-semibold text-brand-black/85">{head}</p>
+                  <p className="font-sans text-base text-brand-black/65 leading-relaxed mt-1">{body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 06 */}
+        <section>
+          <SectionHeading number="06" title="The build sequence" />
+
+          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+            The sequence matters. Each of these steps is upstream of the next &mdash; skipping or compressing one
+            creates problems that are expensive to fix later, not just inconvenient.
+          </p>
+
+          <div className="space-y-0 border border-brand-concrete">
+            {[
+              { n: '01', phase: 'Strategy', step: 'Map goals and rank by business impact', detail: 'Before touching a platform or opening a design file. Rank, don\'t list — everything can\'t be equally important.' },
+              { n: '02', phase: 'Strategy', step: 'Ground the structure in a real customer journey', detail: 'Not an assumed ideal path. The CDJ dashboard or equivalent is the infrastructure for this step, not a separate exercise.' },
+              { n: '03', phase: 'Structure', step: 'Build the information architecture and interaction flow', detail: 'Before visual design. What\'s the path from entry to outcome? What exists at each step? What can be cut?' },
+              { n: '04', phase: 'Surface', step: 'Apply design fundamentals to the visual execution', detail: 'Contrast, hierarchy, spacing. One signature element carries the risk. Everything else stays disciplined.' },
+              { n: '05', phase: 'Surface', step: 'Gate on accessibility and Core Web Vitals early', detail: 'Not a final QA pass. WCAG compliance and CWV are structural requirements, set before the build is half-finished.' },
+              { n: '06', phase: 'Data', step: 'Define the first-party data strategy explicitly', detail: 'What you\'ll ask for, why each piece serves a specific personalization decision. Not data collection for its own sake.' },
+              { n: '07', phase: 'Data', step: 'Decide deliberately what gets personalized', detail: 'Don\'t default to "personalize everything the platform allows." Some touchpoints should be consistently structured.' },
+              { n: '08', phase: 'Orchestration', step: 'Set guardrails before enabling agentic optimization', detail: 'Human-in-the-loop on high-stakes changes. Defined success condition. Monitoring for drift. Then enable.' },
+              { n: '09', phase: 'Discovery', step: 'Check AEO/GEO as a first-class success metric', detail: 'How does the experience perform when an AI assistant is navigating it? That\'s part of your audience now.' },
+            ].map(({ n, phase, step, detail }, i, arr) => (
+              <div key={i} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
+                <div className="w-12 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/30 flex items-start justify-center">
+                  <span className="font-display text-xl text-brand-cobalt/40 leading-none">{n}</span>
+                </div>
+                <div className="w-28 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/20">
+                  <span className="font-sans text-[9px] tracking-[0.15em] uppercase text-brand-muted">{phase}</span>
+                </div>
+                <div className="flex-1 p-4">
+                  <p className="font-sans text-sm font-semibold text-brand-black/85 mb-1">{step}</p>
+                  <p className="font-sans text-xs text-brand-black/60 leading-relaxed">{detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Closing */}
+        <section className="border-t border-brand-concrete pt-10">
+          <p className="font-sans text-base text-brand-black/70 leading-relaxed max-w-prose">
+            The 40% revenue gap between personalization leaders and average performers is real and measured. But
+            it&rsquo;s not a function of which platform they bought &mdash; it&rsquo;s a function of whether they
+            had the clarity to rank what mattered, the discipline to build the structure before the surface, and
+            the judgment to personalize selectively rather than maximally. Those things don&rsquo;t come with a
+            license. They come from doing the work in the right order.
+          </p>
+        </section>
+
+        <RecommendedReading items={[
+          { title: 'Forrester Wave: Digital Experience Platforms, Q4 2025', author: 'Forrester Research', type: 'Article', description: 'The primary analyst source for DXP platform evaluation. The capability comparison across major vendors is where to look when the architecture decision is live — it separates the vendor pitch from the independent assessment.' },
+          { title: 'Continuous Discovery Habits', author: 'Teresa Torres — Product Talk', type: 'Book', description: 'The foundational text on grounding product and experience decisions in continuous, behavioral evidence rather than assumed personas. The discipline this article argues for in Part 4 is what Torres teaches at practitioner level.' },
+          { title: "Don't Make Me Think", author: 'Steve Krug — New Riders', type: 'Book', description: "Still the clearest guide to the structure-before-surface principle. The insight that usability is about removing friction, not adding features, translates directly to the IA and interaction flow stage of any DXP build." },
+        ]} />
+
+        {/* Back link */}
+        <div className="border-t border-brand-concrete pt-8">
+          <Link
+            href="/articles"
+            className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
+          >
+            ← Back to Field Notes
+          </Link>
+        </div>
+      </article>
     </div>
   )
 }

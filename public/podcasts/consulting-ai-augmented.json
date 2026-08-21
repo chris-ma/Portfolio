@@ -1,0 +1,119 @@
+{
+  "title": "The Real Problem",
+  "slug": "consulting-ai-augmented",
+  "duration_estimate": "7-9 min",
+  "turns": [
+    {
+      "speaker": "host",
+      "text": "Here's the thing most consultants don't want to admit: the problem a client brings you is almost never the actual problem. It's the symptom they noticed. The real mechanism is a layer deeper, and it usually needs a completely different fix than the one the client already has in mind."
+    },
+    {
+      "speaker": "expert",
+      "text": "Right. A request to improve website conversion might be a positioning problem, a targeting problem, or a broken product-market fit that no landing page change will touch. A request to fix team communication might be a trust problem or a structural one that no Slack configuration will reach. The first job is separating the symptom from the mechanism, and not accepting the client's internal theory of their own problem at face value."
+    },
+    {
+      "speaker": "host",
+      "text": "The traditional response to that was a long discovery phase, right? Six to twelve months of workshops and stakeholder interviews."
+    },
+    {
+      "speaker": "expert",
+      "text": "And that model is now being described as structurally obsolete. The delay itself was a real competitive cost, before you even got to the recommendation. The credible alternative in 2026 is a fast, structured diagnostic sprint, deliberately compressed, where pre-work bypasses the slow discovery phase entirely."
+    },
+    {
+      "speaker": "host",
+      "text": "How does AI actually compress that? What changes in practice?"
+    },
+    {
+      "speaker": "expert",
+      "text": "You front-load structured asynchronous intake before the first real conversation, a written questionnaire, existing dashboards, current reporting. AI-assisted synthesis of that material can compress what used to take a week of reading into a structured brief: what the client says their problem is, what their own data actually shows, where the two diverge. The meeting time then goes to diagnosis rather than basic fact-gathering."
+    },
+    {
+      "speaker": "host",
+      "text": "And what does a completed diagnostic sprint produce?"
+    },
+    {
+      "speaker": "expert",
+      "text": "One specific, falsifiable problem statement. Not a list of ten possible issues, not a framework deck. One statement of what's actually broken and why, stated in a form the client can push back on. If it can't be said in one clear sentence, the diagnostic phase isn't finished, regardless of how much material has been gathered."
+    },
+    {
+      "speaker": "host",
+      "text": "Once that problem statement holds, what has to happen before any solution work starts?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Two things. First, co-design with the people who will live with the solution, because a fix imposed without genuine input from the team executing it day-to-day faces real adoption resistance, regardless of how sound the strategy is. Second, set explicit measurable success criteria before building anything, so both sides can recognize a real result later instead of arguing about whether it happened."
+    },
+    {
+      "speaker": "host",
+      "text": "There's also a framing discipline specific to AI-augmented consulting that you call out. What is it?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Be transparent about what AI touched and what it didn't. If AI was used for intake synthesis, first-pass analysis, or drafting, name it specifically. If it wasn't used for the judgment calls, the client-confidential material, or the final recommendation, say that too. A consultant who's vague about where AI touched the work reads as less trustworthy, not more sophisticated. Clients in 2026 are trained to ask this question."
+    },
+    {
+      "speaker": "host",
+      "text": "What's the main failure mode in the analysis stage?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Generic output, a recommendation that looks like it could apply to any organization in the same industry because it was built on general best practice rather than the client's actual data. The 2026 standard is what you'd call a RAG-style approach: build a structured reference set from the client's own documents, reporting, and history, and have any AI-assisted analysis draw from that specific material rather than general training knowledge."
+    },
+    {
+      "speaker": "host",
+      "text": "You make the point that the differentiated move at that stage isn't generating more analysis."
+    },
+    {
+      "speaker": "expert",
+      "text": "It's cutting everything that doesn't serve the one recommendation that actually matters. A forty-slide deck covering every possible angle is weaker, not stronger, than a tight specific recommendation with the reasoning shown. AI-assisted drafting makes it easy to generate comprehensive-looking material. The actual skill is knowing what to leave out."
+    },
+    {
+      "speaker": "host",
+      "text": "Implementation is where a lot of good strategies go to die. What does it mean for a solution to survive the exit?"
+    },
+    {
+      "speaker": "expert",
+      "text": "It means two things. Phase the rollout: start any new process or system in a mode where it suggests actions for human review before it's trusted to act autonomously. This reduces resistance and catches early mistakes before they compound. And track leading indicators, not just the lagging outcome metric. Define the faster signals, adoption rate, early usage data, first-week engagement, that tell you within weeks whether implementation is on track."
+    },
+    {
+      "speaker": "host",
+      "text": "You frame the goal as augmenting the client's team, not replacing it."
+    },
+    {
+      "speaker": "expert",
+      "text": "A team that understands and can operate what was built is the mechanism by which a solution survives after you leave. A team that was handed a black box is not. The engagement fails if the answer to 'can they run this without you?' is no, regardless of how technically sound the strategy was."
+    },
+    {
+      "speaker": "host",
+      "text": "Partner status versus vendor status, what actually earns it? You name five behaviors."
+    },
+    {
+      "speaker": "expert",
+      "text": "Stay close after the deliverable ships, bring the next problem before being asked, make the client's team look good rather than the deliverable, structure the relationship as retained access rather than per-deliverable. But the one that actually earns durable trust is saying no. A vendor executes whatever's requested. A partner pushes back when the requested solution doesn't match the actual diagnosis. That moment is genuinely uncomfortable, and it's precisely what creates the kind of trust that outlasts any single project."
+    },
+    {
+      "speaker": "host",
+      "text": "You reference a real case where AI risk management failed publicly. What happened?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Deloitte Australia partially refunded AU$440,000 on a government contract after an AI-generated report included fabricated court quotes and references. Well-formatted, confident-looking output is not evidence of accuracy. Independent verification before any client-facing delivery isn't optional, it's what separates a credible practice from a liability."
+    },
+    {
+      "speaker": "host",
+      "text": "And that AU$440,000 case makes the verification discipline concrete rather than theoretical."
+    },
+    {
+      "speaker": "expert",
+      "text": "Every AI-surfaced pattern is a hypothesis to validate in conversation, not a finding to present as settled. Every AI-surfaced fact in client-facing work gets independently verified before delivery. No exceptions. That's the minimum standard for credibility in 2026."
+    },
+    {
+      "speaker": "host",
+      "text": "So what's the single thing a consultant should take from all of this?"
+    },
+    {
+      "speaker": "expert",
+      "text": "Do the diagnosis first, before any solution work. The diagnostic sprint, the falsifiable problem statement, the willingness to tell a client their stated problem isn't the real one. AI can compress the intake work, the synthesis, the first-pass analysis. But the judgment call at the center, 'what is actually broken here and why,' that's still yours. Get that right and everything else follows. Get it wrong and nothing else saves the engagement."
+    }
+  ]
+}
