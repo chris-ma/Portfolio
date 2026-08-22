@@ -188,6 +188,8 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
 
         <h1 className="font-book font-bold text-7xl md:text-9xl lg:text-[120px] text-bk-parchment leading-none tracking-normal mb-4">
@@ -196,7 +198,7 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
           <span className="text-bk-gold">BOTS.</span>
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
@@ -215,12 +217,12 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
         {/* Lede */}
         <section>
           <div className="border-l-2 border-bk-gold pl-6 space-y-4">
-            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
               Most automation programs have a silent ceiling. Individual steps get automated — a data-entry bot here,
               a notification trigger there — but the hand-offs between them stay human. That&rsquo;s task automation.
               It captures a fraction of the value of what&rsquo;s actually possible, and it&rsquo;s where most programs stop.
             </p>
-            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
               The gap between task automation and process automation is a single thing: a shared orchestration layer
               that passes output from one step directly into the next, without a human in between. Everything else —
               the maturity ladder, the process-mining discipline, the AI agents — is in service of closing that gap.
@@ -242,7 +244,7 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
         <section>
           <SectionHeading number="01" title="The maturity ladder" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             Automation isn&rsquo;t one thing — it&rsquo;s a ladder, and knowing which rung a given task sits on
             determines which tool and which level of investment actually fit. The most common mistake named directly
             across multiple 2026 industry reports: reaching for the wrong rung, either under-investing (leaving
@@ -259,7 +261,7 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
             </figcaption>
           </figure>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             A perfectly structured, rule-based, rarely-changing task — data entry from a fixed-format form — is
             genuinely well-served by plain RPA. Reaching for an AI agent there adds cost, latency, and
             unpredictability without adding value. The right question is not &ldquo;what&rsquo;s the most
@@ -287,13 +289,13 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
         <section>
           <SectionHeading number="02" title="Process mining first" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             Starting an automation program without first mapping the real process is described bluntly, across
             multiple 2026 sources, as building infrastructure without a site survey. Process mining discovers
             how a process actually runs today — from real system event logs, objectively, at scale — rather
             than relying on someone&rsquo;s memory of how it&rsquo;s supposed to work.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-8">
             The assumed process and the real process routinely diverge. A workflow that&rsquo;s supposed to take
             three steps often has quietly grown five, with exceptions and manual workarounds nobody wrote down.
             Automating the assumed version instead of the real one is a common, avoidable failure mode: you end
@@ -324,13 +326,13 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
         <section>
           <SectionHeading number="03" title="Where AI agents actually fit" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             The 2026 shift, stated precisely: AI agents are moving from executing predefined workflows to
             <em> deciding which workflow to execute</em> — based on context, priority, and business rules —
             sensing process signals continuously and adjusting, rather than running a fixed script on a fixed
             trigger.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-8">
             Concrete examples already in production: customer service agents analysing inquiry complexity and
             routing accordingly; supply chain agents adjusting inventory policy based on live demand signals;
             financial agents approving routine transactions while automatically escalating genuine exceptions.
@@ -360,7 +362,7 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
               <div key={i} className="flex gap-5 border-l-2 border-bk-gold/20 pl-5">
                 <div>
                   <p className="font-sans text-base font-semibold text-bk-parchment/85">{head}</p>
-                  <p className="font-sans text-base text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
+                  <p className="font-sans text-lg text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
                 </div>
               </div>
             ))}
@@ -371,14 +373,14 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
         <section>
           <SectionHeading number="04" title="ROI discipline" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             Fewer than 20% of large enterprises have actually mastered measuring their automation initiatives
             properly — meaning the majority are running automation programs without a reliable read on whether
             they&rsquo;re actually working. Real, achievable numbers exist when it&rsquo;s done properly:
             20–40% cost reduction, roughly 40% faster process completion, sub-12-month payback. But the framing
             across every credible source is consistent: <strong className="text-bk-parchment">the ROI is real but not automatic.</strong>
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-8">
             It depends specifically on picking the right processes, actually fixing the underlying process before
             automating it (automating a broken process just executes the brokenness faster), and measuring
             rigorously rather than assuming success from activity.
@@ -405,7 +407,7 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
         <section>
           <SectionHeading number="05" title="The decision sequence" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-8">
             The difference between a program that compounds over time and one that stalls at scattered bots is
             whether each automated step is connected to the next — or left as another isolated island with a
             human hand-off on each side.
@@ -444,7 +446,7 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
 
         {/* Closing */}
         <section className="border-t border-bk-rule pt-10">
-          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed max-w-prose">
+          <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed max-w-prose">
             A governance cadence and a shared orchestration layer are not overhead on top of automation. They
             are the mechanism that determines whether automation compounds or stalls. The bots are the easy
             part — the connective tissue between them is the actual work.
@@ -501,6 +503,8 @@ function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof get
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
 
         <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
@@ -508,7 +512,7 @@ function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof get
           <span className="text-bk-gold">PROTOCOL.</span>
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
@@ -544,7 +548,7 @@ function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Section 01 — The core advantage */}
         <section>
           <SectionHeading number="01" title="The core advantage — build once, work with everything" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Before MCP, every AI product that wanted to integrate with GitHub had to build and maintain its own GitHub integration. Every tool, its own connector. The result was n different tools each maintaining n different connectors to the same services — a quadratic problem getting worse as both sides of the market grew. MCP flips the model: a server built for GitHub works with Claude, ChatGPT, Cursor, VS Code, or any other MCP-compatible host, with no additional integration work on the server side.
           </p>
 
@@ -552,7 +556,7 @@ function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof get
             <MCPInteropDiagram />
           </div>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             The MCP Registry, launched September 2025, reached nearly 2,000 server entries within months — tools for databases, design systems, code repositories, project management, monitoring, payments, and dozens of other categories. The practical implication: before writing a custom integration for anything, check the registry. The odds a maintained MCP server already exists are genuinely high.
           </p>
 
@@ -564,7 +568,7 @@ function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Section 02 — What MCP enables */}
         <section>
           <SectionHeading number="02" title="What MCP actually enables — three layers most people never reach" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Most casual MCP usage stays at Layer 1: connect a tool, call a function, get a result. The leverage that compounds is in Layers 2 and 3.
           </p>
 
@@ -598,10 +602,10 @@ function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Section 03 — Agentic capabilities */}
         <section>
           <SectionHeading number="03" title="Agentic loops, sampling, and human-in-the-loop by design" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             The November 2025 spec release added server-side agent loops as a formal capability — meaning an MCP server itself can run genuinely agentic behaviour: reasoning, multi-step tool use, sampling calls to the client&rsquo;s model. Combined with the Tasks extension for long-running, poll-based work, this is what makes MCP a real substrate for agentic workflow patterns rather than a plain tool-calling layer underneath them.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-5">
             Two primitives — sampling and elicitation — exist specifically so a server can request something from the user or model without ever seeing raw credentials or bypassing user control. Sampling lets a server ask the client&rsquo;s own model to generate text as part of a task, but the client controls model selection, can review and edit the prompt, and can deny the request outright. The server never sees the API key. This is a materially different trust model from a plugin that just gets handed a key and runs unsupervised.
           </p>
 
@@ -631,7 +635,7 @@ function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Section 04 — Timeline */}
         <section>
           <SectionHeading number="04" title="From Anthropic's 2024 release to Linux Foundation infrastructure" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             The pace of the MCP specification has been unusually fast for a protocol that is supposed to be stable infrastructure. The July 2026 release — described by its own authors as the largest revision since launch — restructured the core to be stateless: a remote MCP server that previously needed sticky sessions and a shared session store can now run behind a plain round-robin load balancer. That is an infrastructure-level change that makes MCP viable as real production infrastructure for multi-user products, not just developer tooling.
           </p>
 
@@ -639,7 +643,7 @@ function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof get
             <MCPTimelineDiagram />
           </div>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             The formal 12-month minimum deprecation policy, introduced alongside the July 2026 revision, is worth noting for anything production-facing. Deprecated features — including Roots, the original Sampling specification, and Logging as previously specified — are on a 12-month removal clock. If you are building on older patterns, particularly Dynamic Client Registration, the migration to Client ID Metadata Documents is the correct path now rather than a forced one later.
           </p>
         </section>
@@ -734,6 +738,8 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
 
         <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
@@ -742,7 +748,7 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
           REQUIRED.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
@@ -781,7 +787,7 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 01 — The metric trap */}
         <section>
           <SectionHeading number="01" title="The metric trap — and which numbers actually predict anything" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Every platform surfaces the metric that flatters it. Instagram highlights reach. TikTok flaunts view counts. LinkedIn emphasises impressions. None of these are wrong to look at — they are just not KPIs on their own. Treat every number as diagnostic, laddering up to an actual business goal, and pick a small number of primary KPIs per campaign. One is genuinely enough. Everything else is context, not a second scoreboard.
           </p>
 
@@ -811,7 +817,7 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 02 — Platform benchmarks */}
         <section>
           <SectionHeading number="02" title="Platform benchmarks — the 2026 numbers and what to actually track" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Treat every figure below as a directional gut-check against your own numbers, not a target. They vary meaningfully by industry, follower tier, and format, and social benchmarks age faster than almost any other marketing data category. The most important rule: never benchmark across platforms. A 0.5% engagement rate on Instagram is healthy. The same number on TikTok is a warning sign.
           </p>
 
@@ -869,7 +875,7 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 03 — How the algorithm works now */}
         <section>
           <SectionHeading number="03" title="How the algorithm works now — and what that demands of you" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Every major platform — LinkedIn, Instagram, YouTube, Facebook, X — now uses AI to determine who sees what, based on individual relevance rather than chronology or follower relationship. A post from three days ago can outperform one from three hours ago if the algorithm judges it more relevant to a specific viewer. Growing a following is necessary. It is no longer sufficient.
           </p>
 
@@ -903,7 +909,7 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 04 — Social SEO */}
         <section>
           <SectionHeading number="04" title="Social SEO — captions as crawlable pages" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Users increasingly type full questions directly into TikTok and Instagram search bars rather than starting on Google. The platforms scan captions, on-screen text, and spoken audio transcripts for keyword relevance — which means a caption written like a mini-answer to a specific question outperforms a vague tagline, and saying the keyword out loud in the first three seconds of a video measurably improves search ranking within the platform.
           </p>
 
@@ -937,13 +943,13 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 05 — AI and the content flood */}
         <section>
           <SectionHeading number="05" title="AI collapsed production cost — which raises the bar, not lowers it" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             59% of creators now use generative AI to streamline content creation. Most audiences see AI-assisted images, captions, and video without any visible label. The brands actually winning with this shift are using AI to remove production bottlenecks — not to replace the editorial judgment about what is worth making and why.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-5">
             Generic AI-assisted content is now the baseline everyone has, not a differentiator. On a platform flooded with it, the specific, first-hand detail is what actually separates a post from the noise — not production speed. This is the same finding as the content-writing workbook: AI produces roughly the first half of the work. The differentiated, trust-earning half is still a human editorial call. Skipping that half is visible, on social more than anywhere.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-5">
             There is also a longer-term trend worth tracking: roughly two-thirds of U.S. teens now use an AI chatbot at least sometimes for things social media used to provide. UK adult active posting, sharing, and commenting rates have fallen from 61% to 49% since 2024. Social platforms are increasingly competing with AI interfaces for raw discretionary attention — worth being aware of as the landscape continues to shift.
           </p>
         </section>
@@ -951,7 +957,7 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 06 — Practical playbook */}
         <section>
           <SectionHeading number="06" title="The practical playbook" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Eight rules that hold regardless of which platform you are optimising for in 2026.
           </p>
 
@@ -1020,6 +1026,8 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
 
         <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
@@ -1028,7 +1036,7 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
           <span className="text-bk-gold">WRONG.</span>
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
@@ -1064,7 +1072,7 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
         {/* Section 01 — The reframe */}
         <section>
           <SectionHeading number="01" title="Accuracy vs calibration — why the distinction matters" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             The standard framing is accuracy: how often does the model get it right? The sharper framing is calibration: does the model know what it knows? A model that is right 95% of the time and silently wrong 5% of the time is less useful than one that is right 80% of the time and honest about the remaining 20% — because the honest model flags exactly where to double-check, and the overconfident one poisons the decisions you build on it.
           </p>
 
@@ -1072,7 +1080,7 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
             <CalibrationVsAccuracyDiagram />
           </div>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             This reframe changes what you are optimising for. You are not trying to make the model answer more confidently. You are trying to make it honest about its own uncertainty. A model that says &ldquo;I cannot answer this with confidence&rdquo; has done exactly the right thing. A model that answers anyway, fluently and wrongly, has done the most damaging thing.
           </p>
         </section>
@@ -1080,7 +1088,7 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
         {/* Section 02 — Why hallucinations happen */}
         <section>
           <SectionHeading number="02" title="Why hallucinations happen" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             LLMs do not &ldquo;know&rdquo; facts the way a person does. They predict the statistically most likely next token given training data and context. Hallucination is not a rare malfunction; it is a predictable output of a system optimised for fluency rather than for auditing its own claims. Two specific triggers explain most real-world failures.
           </p>
 
@@ -1102,7 +1110,7 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
             ))}
           </div>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Both triggers point to the same fix: remove the ambiguity, and explicitly authorise the model to say it does not know.
           </p>
         </section>
@@ -1110,7 +1118,7 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
         {/* Section 03 — The 11 techniques */}
         <section>
           <SectionHeading number="03" title="The 11 techniques, ranked by leverage" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Every technique below is structurally the same: a way of narrowing the space the model has to guess in, or of giving it explicit permission to refuse rather than invent. Ranked by consistent real-world impact.
           </p>
 
@@ -1172,7 +1180,7 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
         {/* Section 04 — Verification pass */}
         <section>
           <SectionHeading number="04" title="The verification pass — auditing, not retrying" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Techniques 08 through 11 are all variations on verification — having the model check its own output. The critical distinction is that verification is structurally different from generation. Asking a model to try harder produces a more confident version of the same answer. Asking it to audit its output puts it in a different mode entirely.
           </p>
 
@@ -1219,7 +1227,7 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
         {/* Section 05 — What doesn't work */}
         <section>
           <SectionHeading number="05" title="What doesn't work as well as it sounds" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Three approaches that feel intuitive but consistently underperform:
           </p>
 
@@ -1249,7 +1257,7 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
         {/* Section 06 — Production practices */}
         <section>
           <SectionHeading number="06" title="Production and workflow-level practices" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Per-prompt techniques reduce hallucination. Architectural choices eliminate the root cause. For anything recurring — a regular workflow, a tool you are building, a report you produce weekly — these apply alongside the prompting layer, not instead of it.
           </p>
 
@@ -1283,7 +1291,7 @@ function HallucinationArticle({ article, formattedDate }: { article: ReturnType<
         {/* Section 07 — Combined prompt pattern */}
         <section>
           <SectionHeading number="07" title="The combined prompt pattern" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             A single template that stacks the highest-leverage techniques together. Use this as a starting point and strip back anything the context does not require.
           </p>
 
@@ -1341,6 +1349,8 @@ function SelfImprovementArticle({ article, formattedDate }: { article: ReturnTyp
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
 
         <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
@@ -1349,7 +1359,7 @@ function SelfImprovementArticle({ article, formattedDate }: { article: ReturnTyp
           FACTOR.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
@@ -1388,7 +1398,7 @@ function SelfImprovementArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 01 — What the research says */}
         <section>
           <SectionHeading number="01" title="What the research actually found" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             The Behavioral Sciences review covered AI-facilitated interventions across wellbeing, education, interpersonal skill development, and AI companionship. The consistent pattern: structured interactions produced real short-term benefit; unstructured use produced much weaker and less consistent results. The difference was not model quality or tool choice. It was whether the interaction had a clear goal and a clear feedback loop.
           </p>
 
@@ -1410,7 +1420,7 @@ function SelfImprovementArticle({ article, formattedDate }: { article: ReturnTyp
             ))}
           </div>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             The review treats these as moderately reliable findings rather than settled consensus — this is an actively developing research area, and specific results vary by context, population, and how tightly the study controlled for confounders. Use the pattern as a calibration tool rather than a guarantee.
           </p>
         </section>
@@ -1418,7 +1428,7 @@ function SelfImprovementArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 02 — Three modes */}
         <section>
           <SectionHeading number="02" title="Three modes of use — and why most people only have one" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Most AI use is task-directed. Draft this, fix that, build this. That mode is useful and it is also the only mode most people ever use. The two modes that produce the most growth are almost never on anyone&rsquo;s regular schedule.
           </p>
 
@@ -1456,7 +1466,7 @@ function SelfImprovementArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 03 — Opportunity */}
         <section>
           <SectionHeading number="03" title="Using AI to open up more opportunity" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             The same principle applies here as in content and AEO work: opportunity flows to whoever has a specific, findable point of view, not generic competence. AI can help you produce more and faster. The thing that actually opens doors is still specific, real expertise made visible. The tool collapses the production cost. The substance has to come from somewhere else.
           </p>
 
@@ -1483,7 +1493,7 @@ function SelfImprovementArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 04 — Wellbeing boundary */}
         <section>
           <SectionHeading number="04" title="Where it genuinely helps — and where the real risk sits" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             The research on AI and wellbeing is where people most want a clear answer and where the evidence is most genuinely mixed. The honest version: structured use can help with real things. The risks are also real, not hypothetical, and they are worth being specific about.
           </p>
 
@@ -1510,7 +1520,7 @@ function SelfImprovementArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 05 — Rhythm */}
         <section>
           <SectionHeading number="05" title="A practical weekly rhythm" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             A concrete way to run all of this without it becoming another thing to manage. Four cadences, each with a distinct purpose. The ongoing one is not a scheduled session — it is a standing question.
           </p>
 
@@ -1540,7 +1550,7 @@ function SelfImprovementArticle({ article, formattedDate }: { article: ReturnTyp
 
         {/* Closing */}
         <section className="border-t border-bk-rule pt-10">
-          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed">
             The tool is not the deciding factor. The structure is.
           </p>
         </section>
@@ -1570,6 +1580,8 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
 
         <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
@@ -1578,7 +1590,7 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
           <span className="text-bk-gold">POSTER.</span>
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
@@ -1617,10 +1629,10 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 01 — Scope */}
         <section>
           <SectionHeading number="01" title="Scope it tight, or fix nothing" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Pick one journey, not &ldquo;the whole customer experience.&rdquo; A first-purchase journey, an onboarding journey, and a renewal journey are three different maps with three different owners and three different failure points. Trying to map all of them at once produces something too vague to act on.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-4">
             State these four things explicitly before gathering a single data point. Without them, the map will drift to reflect what is easy to measure rather than what the business actually needs to understand.
           </p>
 
@@ -1640,7 +1652,7 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
             </div>
           </div>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Tight scope is not a limitation. It is the thing that makes the work actionable. A well-scoped map of one journey that actually changes behaviour is worth more than a sweeping map of five journeys that sits in a shared drive.
           </p>
         </section>
@@ -1648,10 +1660,10 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 02 — Real data */}
         <section>
           <SectionHeading number="02" title="Build from real data, not assumptions" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             The most consistent finding across current practitioner guidance: internal teams are reliably wrong about where the actual friction lives, because they experience the product from the inside. A journey map built from internal assumptions tends to reflect the product team&rsquo;s mental model of the experience rather than the one customers actually have.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-4">
             The fix is not more research. It is pulling the data you already have before commissioning anything new. GA4, Salesforce, support ticket history, and existing survey data cover most of what you need for a first working draft. Most teams skip this step and go straight to a workshop.
           </p>
 
@@ -1678,7 +1690,7 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 03 — Non-linear map */}
         <section>
           <SectionHeading number="03" title="Design for the non-linear path" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Customers loop. They re-enter stages. A subscription customer might cycle back through evaluation multiple times over a relationship — when a competitor changes pricing, when the internal champion gets a new job, when a new feature makes them reconsider what they are paying for. A map that only shows a single forward path misrepresents how returning and long-tenure customers actually behave.
           </p>
 
@@ -1686,10 +1698,10 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
             <JourneyMapVisual />
           </div>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-8">
             This is the same principle underlying the McKinsey Customer Decision Journey model: the corrective to the linear funnel is not that stages are wrong, but that the assumption of unidirectional movement is wrong. On the acquisition side, a buyer who reaches Consideration may loop back to Awareness when a competitor shifts the category definition. On the post-purchase side, an Onboarding customer who hits friction may re-enter Consideration — evaluating whether to stay with you or switch.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-4">
             Designing the map to accommodate this explicitly is not a complexity exercise. It is an accuracy exercise. A map that cannot represent the paths your customers actually take cannot tell you where they actually get stuck.
           </p>
         </section>
@@ -1697,7 +1709,7 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 04 — KPIs */}
         <section>
           <SectionHeading number="04" title="The right metric for the right question" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             NPS, CSAT, and CES are each answering a different question. Using them interchangeably is the single most common CX measurement mistake, because it produces data that is too blunt to act on.
           </p>
 
@@ -1705,10 +1717,10 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
             <CXMetricsDiagram />
           </div>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-8">
             The practical rule: NPS tells you if there is a problem somewhere in the relationship. CES and CSAT, measured at specific touchpoints, tell you where. Relying on NPS alone to diagnose a specific broken flow is like using a fever to diagnose which organ is infected. It tells you something is wrong, not what to fix.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-4">
             A touchpoint that causes the most complaints is not automatically the one worth fixing first. Weigh it against how many customers actually pass through that touchpoint and how much value, in revenue or retention risk, sits on the other side of it. The highest-volume friction point and the highest-value friction point are rarely the same thing.
           </p>
 
@@ -1731,7 +1743,7 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 05 — Build sequence */}
         <section>
           <SectionHeading number="05" title="The practical build sequence" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Nine steps, in order. Each one is a prerequisite for the next. Skip the validation step and the map becomes a liability. Skip the KPI-attachment step and the map becomes invisible.
           </p>
 
@@ -1760,10 +1772,10 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 06 — Making it stick */}
         <section>
           <SectionHeading number="06" title="The connective tissue that makes it stick" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Forrester identifies one differentiator between journey work that compounds and journey work that gets quietly deprioritised: whether the platform connects voice of customer, analytics, business intelligence, and delivery tooling into one operating system, versus keeping journey insight, execution, and measurement in separate tools that require manual translation between them.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-4">
             Manual translation is where journey initiatives quietly die. Not from lack of insight, but from the insight never reaching the team that could act on it. The fix is not a new tool. It is treating the connective layer — the link from what the map surfaces to what the delivery team ships — as infrastructure rather than coordination overhead.
           </p>
 
@@ -1809,7 +1821,7 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
 
         {/* Closing */}
         <section className="border-t border-bk-rule pt-10">
-          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed">
             The map is only as good as what it changes.
           </p>
         </section>
@@ -1839,6 +1851,8 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
 
         <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
@@ -1847,7 +1861,7 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
           MIDDLE.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
@@ -1886,7 +1900,7 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 01 — Five-stage overview */}
         <section>
           <SectionHeading number="01" title="The five-stage model" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Most current B2B and SaaS practice runs five stages: Awareness, Consideration, Conversion, Loyalty, and Advocacy. TOFU, MOFU, and BOFU are practitioner shorthand for the first three. The post-purchase stages matter more than most teams treat them: expansion ARR represents over 40% of new ARR for SaaS companies above $50M, so &ldquo;done at the sale&rdquo; means leaving compounding growth on the table. Only about a third of companies actively optimise each stage independently. The rest treat the whole thing as one undifferentiated pipeline, and wonder where qualified buyers went.
           </p>
 
@@ -1925,13 +1939,13 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 02 — TOFU */}
         <section>
           <SectionHeading number="02" title="Awareness — the metric most teams get wrong" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             TOFU buyers have a problem, or a symptom of one. They are not looking for your product, your demo, or your brand name. They want education. The job of awareness-stage content is to reach them on the surfaces where they are already looking and to give them something genuinely useful.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-4">
             The single most common practitioner mistake at this stage is applying a bottom-funnel metric to top-of-funnel spend. Judging TOFU content by conversion rate, ROAS, or CPA is the wrong scoreboard entirely. Those metrics belong further down. Applying them here produces one of two outcomes: spend gets cut on channels that are doing their actual job, or content gets pushed toward premature pitching to generate trackable conversions from cold audiences who are not ready for them. Either way, awareness atrophies.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-4">
             The right metrics for a healthy TOFU are reach, impressions, organic traffic volume, and content engagement. A BOFU-style call to action shown to a cold TOFU audience measurably reduces engagement because it mismatches intent. That is not a copywriting problem. It is a stage-confusion problem.
           </p>
 
@@ -1945,10 +1959,10 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 03 — MOFU */}
         <section>
           <SectionHeading number="03" title="Consideration — where qualified buyers go cold" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             MOFU buyers know the problem is real and are actively comparing solutions. They do not need more education about the category. They need proof that you specifically are the right choice, and help building an internal case for it.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-4">
             This is the stage most teams under-invest in. The pattern is consistent: a team builds strong TOFU reach and a sharp BOFU conversion push, then leaves the middle thin. Qualified prospects stall in the gap, cool off, and eventually show up in a lost-deal report attributed to &ldquo;went with a competitor&rdquo; or &ldquo;went dark.&rdquo; The fix is almost never more content. It is a scoring and nurture engineering problem.
           </p>
 
@@ -1956,7 +1970,7 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
             <ScoringGapDiagram />
           </div>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-8">
             The data on this is unambiguous. MQL-to-SQL conversion averages 13–15% for teams using static demographic and firmographic scoring. Teams using genuine behavioural scoring run 39–40%. That is not a marginal improvement. It is a 3x gap driven almost entirely by which signals are being weighted. A lead score built on job title, company size, and industry tag is profiling, not scoring. Pricing page visits, guide downloads, webinar completions, and demo requests are the actual intent signals.
           </p>
 
@@ -1979,10 +1993,10 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 04 — BOFU */}
         <section>
           <SectionHeading number="04" title="Conversion — process and tooling, not content" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             BOFU buyers are deciding. They need the practical specifics: cost, implementation timeline, contract terms, proof of outcome. They are not discovering you at this point. The job is removing friction from a decision they are already working toward.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-4">
             The most under-discussed lever at this stage is follow-up speed. Responding to an inbound lead within five minutes makes a team roughly 21 times more likely to qualify that lead compared to slower response times. The number is striking enough to warrant a moment of attention. This is not a content fix, a better case study, or a stronger CTA. It is a process and tooling fix. Response time is infrastructure, and most teams treat it as a soft metric.
           </p>
 
@@ -2005,7 +2019,7 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 05 — Loyalty + Advocacy */}
         <section>
           <SectionHeading number="05" title="Loyalty and Advocacy — where compounding growth lives" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             The conventional funnel ends at Conversion. For most SaaS businesses running at meaningful scale, that is the wrong finish line. Expansion ARR now represents over 40% of new ARR for companies above $50M. Net Revenue Retention above 100% means the existing customer base is growing without any new logos, and the compounding effect of that on a growth trajectory is materially different from what CAC-driven acquisition alone produces.
           </p>
 
@@ -2028,10 +2042,10 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 06 — Connective layer + Attribution */}
         <section>
           <SectionHeading number="06" title="The connective layer — attribution and measurement" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             A funnel engineered stage-by-stage but never connected end-to-end just moves the bottleneck around. The two disciplines that matter more here than any single stage tactic are unified measurement across stages and an honest attribution model.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-4">
             A dashboard that shows TOFU traffic and BOFU revenue as separate reports with no connective tissue can tell you that each stage looks healthy but cannot actually diagnose where the leak is. The exec, waterfall, and diagnostic-layer structure is not organisational habit. It is the minimum information architecture required to run the funnel as a system rather than five independent silos.
           </p>
 
@@ -2039,10 +2053,10 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
             <AttributionDiagram />
           </div>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-8">
             Attribution model choice is more consequential than most teams treat it. Last-Click systematically over-credits BOFU and under-credits the awareness and nurture work that built the pipeline in the first place. A team running Last-Click attribution will consistently under-invest in TOFU and MOFU, because those stages show up poorly on the scoreboard they are actually being measured against.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-4">
             The 2026 shift practitioners are making: moving toward causal models, specifically Marketing Mix Modelling and incrementality testing. These can distinguish which stage-level spend is actually driving outcomes versus which is riding along with demand that would have existed anyway. Last-Click cannot make that distinction. The practical starting point is not replacing your current attribution overnight, but identifying the two or three channels where Last-Click is most likely to be mismeasuring contribution, and running an incrementality test on those.
           </p>
 
@@ -2072,7 +2086,7 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
 
         {/* Closing */}
         <section className="border-t border-bk-rule pt-10">
-          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed">
             The funnel is not broken. The assumption that it runs in a straight line is.
           </p>
         </section>
@@ -2102,6 +2116,8 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
 
         <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
@@ -2109,7 +2125,7 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
           <span className="text-bk-gold">FIRST.</span>
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
@@ -2145,7 +2161,7 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 01 — Three things */}
         <section>
           <SectionHeading number="01" title="Three things that are not the same thing" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Conflating these is the single most common strategic error at this stage. Each one proves something different, and understanding what each one does not prove is more useful than understanding what it does.
           </p>
 
@@ -2186,7 +2202,7 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
             ))}
           </div>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             A POC without traction is theory. An MVP without traction is a beta nobody has proven anyone wants. Traction is the actual finish line. Everything before it exists to get you there as cheaply and quickly as possible.
           </p>
         </section>
@@ -2194,7 +2210,7 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 02 — Validation sequence */}
         <section>
           <SectionHeading number="02" title="The four-step validation sequence" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Run these in order. Each step is a filter. Most ideas should die at Problem Validation, and that is the system working correctly, not failing.
           </p>
 
@@ -2245,7 +2261,7 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 03 — Scoping the MVP */}
         <section>
           <SectionHeading number="03" title="Scoping the MVP" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             A strong MVP scope in practice: one user type, one core job, one complete end-to-end workflow, using only the services required to make that one workflow function in production. Everything else looks strategic on a roadmap and is almost always waste at this stage.
           </p>
 
@@ -2276,7 +2292,7 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 04 — Traction metrics */}
         <section>
           <SectionHeading number="04" title="Traction metrics that actually mean something" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             The rule that separates a real traction result from a vanity one: waitlists, a Product Hunt spike, and social follower counts tell an investor nothing on their own. Repeatable demand is what they are actually looking for. Proof that a specific segment comes back, pays, or refers others without being pushed each time.
           </p>
 
@@ -2315,10 +2331,10 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
           </div>
 
           <div className="mt-8 space-y-4">
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               How to present it: one hero metric, full-width, with a trendline — not buried in a table. Stack two or three supporting proofs underneath. Investors reportedly spend roughly three times longer on the traction slide than any other page in a seed deck, and decide whether to keep listening within the first 20 seconds of seeing it. The hero number needs to be the strongest thing you have, put first.
             </p>
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               Paid pilots are the strongest available proof point. Someone reallocating real money is qualitatively different evidence from someone saying yes in an interview. A signed pilot beats a waitlist of a thousand signups.
             </p>
           </div>
@@ -2327,15 +2343,15 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 05 — Intrapreneurship track */}
         <section>
           <SectionHeading number="05" title="The intrapreneurship track" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Same underlying discipline, different audience and different currency. You are not raising capital — you are winning internal sponsorship, budget, and protected time against competing priorities.
           </p>
 
           <div className="mt-6 space-y-4">
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               Stage-Gate is the dominant internal model: progress is reviewed at defined milestones, unravelling a Value Hypothesis, a Business Hypothesis, and a Growth Hypothesis in sequence. Most organisations need the sense of control that milestone review provides — pure &ldquo;move fast and don&apos;t ask&rdquo; does not survive contact with a budget owner.
             </p>
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               You often have resources a startup founder does not: existing customer data, existing distribution channels, regulatory cover, technical infrastructure already in place. This can get you to traction faster than an equivalent external startup — but only if you use those advantages deliberately rather than defaulting to building everything from scratch.
             </p>
           </div>
@@ -2440,6 +2456,8 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
 
         <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
@@ -2448,7 +2466,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
           TEST.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
@@ -2491,7 +2509,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
         <section>
           <SectionHeading number="01" title="Competent or distinctive" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               There is a specific reason a huge share of current interfaces cluster around the
               same handful of looks: warm cream backgrounds with a serif display face and a
               terracotta accent; near-black with one acid-green accent; broadsheet layouts with
@@ -2499,7 +2517,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
               is that they are defaults, reached for regardless of subject, rather than choices
               made because a specific brief called for them.
             </p>
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               Competent design executes a template well. Distinctive design makes choices that
               could only belong to this specific subject. The diagnostic worth running on your
               own work is direct: swap the logo and copy for an unrelated brand. Does the design
@@ -2523,7 +2541,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
         <section>
           <SectionHeading number="02" title="Training your eye" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               This is deliberate practice, not passive scrolling. The difference is whether you
               are forcing yourself to name why. Four practices that actually compound into taste:
             </p>
@@ -2551,7 +2569,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
               <div key={i} className="flex gap-5 border-l-2 border-bk-gold/20 pl-5">
                 <div>
                   <p className="font-sans text-base font-semibold text-bk-parchment/85">{head}</p>
-                  <p className="font-sans text-base text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
+                  <p className="font-sans text-lg text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
                 </div>
               </div>
             ))}
@@ -2579,7 +2597,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
         <section>
           <SectionHeading number="03" title="The fundamentals" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               Most interface problems are solved by contrast, size, and spacing — used deliberately —
               long before you need a clever idea. Four principles that do the most work for the
               least effort:
@@ -2612,7 +2630,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
               <div key={i} className="flex gap-5 border-l-2 border-bk-gold/20 pl-5">
                 <div>
                   <p className="font-sans text-base font-semibold text-bk-parchment/85">{head}</p>
-                  <p className="font-sans text-base text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
+                  <p className="font-sans text-lg text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
                 </div>
               </div>
             ))}
@@ -2623,7 +2641,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
         <section>
           <SectionHeading number="04" title="The two-pass process" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               Taste that never gets externalised into a real decision does not count. This is the
               discipline that separates knowing what good looks like from actually shipping
               something distinctive.
@@ -2635,19 +2653,19 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
           </div>
 
           <div className="mt-8 space-y-4">
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               Pass one is a named token system: four to six hex values stated explicitly (not
               &ldquo;blues and greys&rdquo;), a characterful display face used with restraint, a complementary
               body face, a rough wireframe to compare structural ideas before committing pixels,
               and the single signature element this design will actually be remembered by.
             </p>
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               Pass two is the interrogation: for every choice in the plan, would you make the same
               choice for an unrelated brief? If the honest answer is yes, that choice is not coming
               from the subject. Revise it and name explicitly what changed and why. The plan earns
               the right to become the build only once it holds up under this check.
             </p>
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               Spend boldness in exactly one place. Pick the single signature element that carries
               the risk, and keep everything else quiet and disciplined around it. A design with
               five bold ideas competing for attention reads as less confident than a design with
@@ -2661,7 +2679,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
         <section>
           <SectionHeading number="05" title="Copy is design material" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               Copy is one of the fastest ways a design reveals whether it is genuinely considered
               or templated. Generic copy makes even a well-executed visual system read as hollow.
             </p>
@@ -2689,7 +2707,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
               <div key={i} className="flex gap-5 border-l-2 border-bk-gold/20 pl-5">
                 <div>
                   <p className="font-sans text-base font-semibold text-bk-parchment/85">{head}</p>
-                  <p className="font-sans text-base text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
+                  <p className="font-sans text-lg text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
                 </div>
               </div>
             ))}
@@ -2700,7 +2718,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
         <section>
           <SectionHeading number="06" title="The AI-design filter" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               The same default-vs-choice test from Section 01 is what you should run on
               AI-generated design output before accepting it. AI models cluster on the same
               handful of looks for the same reason designers without trained taste do — they
@@ -2739,7 +2757,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
               <div key={i} className="flex gap-5 border-l-2 border-bk-gold/20 pl-5">
                 <div>
                   <p className="font-sans text-base font-semibold text-bk-parchment/85">{head}</p>
-                  <p className="font-sans text-base text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
+                  <p className="font-sans text-lg text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
                 </div>
               </div>
             ))}
@@ -2749,7 +2767,7 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 07 — Self-check */}
         <section>
           <SectionHeading number="07" title="Before calling it finished" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Run this checklist before shipping anything:
           </p>
 
@@ -2820,6 +2838,8 @@ function ContentWritingArticle({ article, formattedDate }: { article: ReturnType
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
 
         <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
@@ -2828,7 +2848,7 @@ function ContentWritingArticle({ article, formattedDate }: { article: ReturnType
           50%.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
@@ -2871,7 +2891,7 @@ function ContentWritingArticle({ article, formattedDate }: { article: ReturnType
         <section>
           <SectionHeading number="01" title="What slop actually is" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               Slop is not &ldquo;written with AI help.&rdquo; It is a specific failure pattern: no
               point of view, structural padding substituted for substance, generic phrasing that
               could have come from any source, and nothing that proves someone actually did the
@@ -2879,7 +2899,7 @@ function ContentWritingArticle({ article, formattedDate }: { article: ReturnType
               able to spot it, and 61% say it lowers their trust in the source. That is the
               commercial cost — not an algorithm penalty, a reader penalty.
             </p>
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               The tells are patterns, not individual words. A single instance proves nothing.
               A cluster of these, combined with the absence of any specific detail, is the
               actual signal — to a human reader and to the ranking systems built to detect it:
@@ -2924,7 +2944,7 @@ Inflated vocabulary standing in for a real claim
         <section>
           <SectionHeading number="02" title="The six-step fix" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               The practitioner consensus that holds up across every serious source: AI produces
               the first 50% — structure, outline, rough pass. The last 50%, where trust and
               originality live, is still a human job.
@@ -2972,7 +2992,7 @@ Inflated vocabulary standing in for a real claim
                 <span className="font-mono text-[11px] text-bk-gold/50 font-bold pt-0.5 shrink-0">{n}</span>
                 <div>
                   <p className="font-sans text-base font-semibold text-bk-parchment/85">{head}</p>
-                  <p className="font-sans text-base text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
+                  <p className="font-sans text-lg text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
                 </div>
               </div>
             ))}
@@ -2983,7 +3003,7 @@ Inflated vocabulary standing in for a real claim
         <section>
           <SectionHeading number="03" title="E-E-A-T, practically" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               Google's E-E-A-T framework is the official vocabulary for what &ldquo;quality&rdquo;
               means in search ranking. Increasingly, it is also the signal answer engines use when
               deciding what to cite. The four components translate to a single practical question:
@@ -2997,7 +3017,7 @@ Inflated vocabulary standing in for a real claim
           </div>
 
           <div className="mt-8 space-y-4">
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               Generic best-practices content, however well-structured, is exactly the shape
               E-E-A-T is designed to rank below something narrower but real. A campaign page
               or blog post gets stronger the moment it contains a specific number from a real
@@ -3011,23 +3031,23 @@ Inflated vocabulary standing in for a real claim
         <section>
           <SectionHeading number="04" title="Structure and clarity" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               These principles predate AI and still determine whether anyone reads to the end.
             </p>
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               Plain language, active voice. If you wouldn&apos;t say it out loud that way, don&apos;t
               publish it that way. One idea per sentence, one point per paragraph — bloated,
               multi-clause sentences are exactly what forces a reader to mentally run your
               writing back through AI just to extract what you meant.
             </p>
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               Front-load the point. Readers and answer engines both reward getting to the actual
               answer fast, not building up to it. Concrete beats abstract, always: &ldquo;Grew signups
               34% in six weeks&rdquo; beats &ldquo;significantly improved conversion.&rdquo; Specificity is also
               the fastest way to sound human, because generic language is what AI defaults to
               when it doesn&apos;t have a real number to reach for.
             </p>
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               Match format to intent. A comparison deserves a table. A process deserves numbered
               steps. A narrative deserves prose. Forcing content into the wrong shape is itself
               a slop signal, independent of the sentences inside it.
@@ -3038,7 +3058,7 @@ Inflated vocabulary standing in for a real claim
         {/* Section 5 — The self-edit pass */}
         <section>
           <SectionHeading number="05" title="The self-edit pass" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Before publishing anything AI helped draft, run this checklist:
           </p>
 
@@ -3107,6 +3127,8 @@ function AppSecurityArticle({ article, formattedDate }: { article: ReturnType<ty
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
 
         <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
@@ -3115,7 +3137,7 @@ function AppSecurityArticle({ article, formattedDate }: { article: ReturnType<ty
           DOOR.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
@@ -3157,21 +3179,21 @@ function AppSecurityArticle({ article, formattedDate }: { article: ReturnType<ty
         <section>
           <SectionHeading number="01" title="Why the demo lies" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               Your Supabase anon key ships inside your JavaScript bundle. That is not a mistake — Supabase
               designed it that way. The anon key is public by intent, meant to be visible in browser dev
               tools. It is safe for exactly one reason: Row Level Security. With RLS correctly in place,
               the anon key can only do what your policies allow. Without it, the anon key is a skeleton
               key to your entire public schema.
             </p>
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               An AI coding tool will generate a complete, working frontend against that open database.
               Click through every screen. Create a user, load data, submit a form. It all functions.
               Nothing in that experience surfaces the fact that the same data is readable by anyone on
               the internet with a curl command. A 2025 analysis found that 10.3% of tested AI-scaffolded
               apps exposed vulnerable Supabase endpoints due to missing or misconfigured RLS.
             </p>
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               Functional correctness and access control are different concerns, and only one of them
               shows up in a manual click-through. That gap is the central failure mode.
             </p>
@@ -3181,7 +3203,7 @@ function AppSecurityArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 2 — Three states */}
         <section>
           <SectionHeading number="02" title="The three states of a table" />
-          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-8">
+          <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed mt-4 mb-8">
             RLS has three states, and confusing them is the most common mistake. Only one of the
             three is actually safe.
           </p>
@@ -3231,7 +3253,7 @@ function AppSecurityArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 3 — OWASP Top 10 */}
         <section>
           <SectionHeading number="03" title="OWASP Top 10:2025, translated" />
-          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-8">
+          <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed mt-4 mb-8">
             The OWASP Top 10 is the industry-consensus list of the most critical web application
             security risks. The 2025 edition added two new categories that reflect how cloud-native,
             AI-assisted apps actually break. The list matters, but not equally — for a solo builder
@@ -3258,7 +3280,7 @@ function AppSecurityArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 4 — Five fixes */}
         <section>
           <SectionHeading number="04" title="Five fixes, in order" />
-          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-10">
+          <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed mt-4 mb-10">
             These are the highest-leverage moves, ordered by when to apply them.
           </p>
 
@@ -3364,19 +3386,19 @@ CREATE POLICY "users update own profile" ON profiles
         <section>
           <SectionHeading number="05" title="When you're building with AI" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               Treat "it works" and "it's secured" as two separate checkpoints, not one. An AI coding
               tool will happily scaffold a fully functional app against a completely open database,
               because functional correctness and access control are different problems and only the
               first one shows up in a demo.
             </p>
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               Ask for RLS policies in the same prompt as the table — not as a follow-up. "Create
               this table with RLS enabled and a policy scoping rows to the authenticated user's own
               data" gets you the right output. "Create this table" followed by "oh, and secure it
               later" produces a table that is live and open until you remember.
             </p>
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               Review AI-generated error handling specifically. Generated code often returns raw
               exception details to help with debugging during development — stack traces, database
               error messages, table names. That pattern, shipped to production unchanged, is an
@@ -3397,7 +3419,7 @@ CREATE POLICY "users update own profile" ON profiles
         {/* Section 6 — Pre-launch checklist */}
         <section>
           <SectionHeading number="06" title="Pre-launch checklist" />
-          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-8">
+          <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed mt-4 mb-8">
             Run this against any project before it goes live, and again after any significant schema
             change. The ongoing items belong in your regular review cycle.
           </p>
@@ -3499,6 +3521,8 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
 
         <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
@@ -3507,7 +3531,7 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
           AGENTS.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
@@ -3551,19 +3575,19 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
         <section>
           <SectionHeading number="01" title="The distinction that actually matters" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               A <strong className="text-bk-parchment">workflow</strong> executes LLM calls and tool calls through
               code paths you define in advance. You decide the structure; the model fills in the content. It is
               predictable, testable, and cheaper because every call has a known place in a known sequence.
             </p>
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               An <strong className="text-bk-parchment">agent</strong> is a system where the LLM dynamically
               decides its own sequence of actions based on what it observes — rather than following a control
               flow you wrote in advance. You own the goal and the guardrails; the model decides what to do next.
               Flexible. Harder to predict. More expensive. And errors can compound across steps in ways they
               can't in a fixed workflow.
             </p>
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               The practical test: can you enumerate the steps this task requires before running it? If yes,
               you're building a workflow and should. If no — if the right next step genuinely depends on what
               the previous step returned, and you can't anticipate that in advance — that's when an agent
@@ -3575,7 +3599,7 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
         {/* Section 2 — Five patterns */}
         <section>
           <SectionHeading number="02" title="The five patterns. Use these first" />
-          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-8">
+          <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed mt-4 mb-8">
             These are Anthropic's own taxonomy. Five compositional patterns that are all technically workflows —
             predefined code paths — but that together cover nearly every real production use case.
             If your task fits any of these, you don't need a full autonomous agent.
@@ -3618,7 +3642,7 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
         {/* Section 3 — Loop patterns */}
         <section>
           <SectionHeading number="03" title="When you actually need a loop" />
-          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-10">
+          <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed mt-4 mb-10">
             Once a task does need genuine autonomy, two loop shapes handle the majority of production cases.
             The choice between them is less about which is "better" and more about which failure mode
             you're most worried about.
@@ -3688,7 +3712,7 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
         {/* Section 4 — Failure modes */}
         <section>
           <SectionHeading number="04" title="The four failure modes" />
-          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-8">
+          <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed mt-4 mb-8">
             These are what production teams actually learn, usually after deploying something that seemed to work fine in testing.
             Design against all of them before you build, not after.
           </p>
@@ -3737,7 +3761,7 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
         {/* Section 5 — Build sequence */}
         <section>
           <SectionHeading number="05" title="Build it right. Six steps in order" />
-          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-8">
+          <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed mt-4 mb-8">
             These steps are sequenced deliberately. Skipping ahead is the failure mode.
           </p>
 
@@ -3874,6 +3898,8 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
 
         <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
@@ -3881,7 +3907,7 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
           <span className="text-bk-gold">FIRST.</span>
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
@@ -3897,13 +3923,13 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Lede */}
         <section>
           <div className="border-l-2 border-bk-gold pl-6 space-y-4">
-            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
               RAG fixes two problems simultaneously: a language model&apos;s training data goes stale,
               and a model under-specified on a fact will confidently generate a plausible wrong answer.
               Retrieval gives it a source to draw from instead. It introduces one new way to fail:
               bad retrieval with false confidence attached.
             </p>
-            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
               The pipeline is seven steps and conceptually simple. Getting retrieval right is not.
               Most production mistakes aren&apos;t in the LLM call. They&apos;re in the three steps before it.
             </p>
@@ -3922,7 +3948,7 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="01" title="What RAG actually does" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             RAG (Retrieval-Augmented Generation) pairs a language model with an external retrieval system.
             Instead of answering purely from memorised training data, the model first retrieves relevant
             documents from a knowledge source, then generates its answer using those retrieved documents
@@ -3964,7 +3990,7 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="02" title="The pipeline" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-8">
             Seven steps, two phases. Steps 1–4 run at ingestion time (once per document, or when documents
             update). Steps 5–7 run at query time for every user request. The quality of the query-time
             steps depends entirely on how well the ingestion steps were done.
@@ -3994,12 +4020,12 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="03" title="Chunking strategy" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-6">
             Fixed-size chunking — split every N characters — is a fast start and a low ceiling.
             The chunk boundary is arbitrary, so it frequently falls mid-sentence, severing context and
             making the extracted chunk ambiguous without what came before or after.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-8">
             Semantic chunking computes embeddings sentence-by-sentence and starts a new chunk when semantic
             similarity between adjacent sentences drops below a threshold. Boundaries correspond to where
             meaning actually shifts. Retrieving a semantically coherent chunk against a semantically similar
@@ -4020,13 +4046,13 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="04" title="Hybrid retrieval" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             Dense vector search and sparse keyword search (BM25) are complementary, not competing.
             Vector search finds conceptually related content even without matching words — useful for
             paraphrase, synonyms, and domain inference. Keyword search catches exact terms, proper names,
             codes, and identifiers that embeddings can blur by collapsing similar-sounding but distinct things.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-8">
             Hybrid retrieval combined with reranking is the default for production systems in 2026.
             It&apos;s not exotic — it&apos;s the sensible baseline. The common reranking pattern: retrieve a
             broad candidate pool (~20), rerank down to 3–5 strong candidates, and send only those to the LLM.
@@ -4047,7 +4073,7 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="05" title="Query transformation" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-6">
             Raw user queries are often poorly shaped for retrieval. Two techniques address this:
           </p>
 
@@ -4076,7 +4102,7 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="06" title="Advanced patterns" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-6">
             Know these exist. Don&apos;t reach for them by default.
           </p>
 
@@ -4118,7 +4144,7 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="07" title="Two tracks" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-8">
             The right architecture depends on scale. One setup I use routinely; one for production applications.
           </p>
 
@@ -4173,7 +4199,7 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="09" title="Evaluation" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-6">
             &quot;It looks like it&apos;s working&quot; is not evaluation. Systematic evaluation from day one is becoming
             standard — a majority of new RAG deployments now build it in from the start. Three things to measure:
           </p>
@@ -4284,6 +4310,8 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
 
         <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
@@ -4292,7 +4320,7 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
           GATES.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
@@ -4308,13 +4336,13 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Lede */}
         <section>
           <div className="border-l-2 border-bk-gold pl-6 space-y-4">
-            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
               Most content optimisation assumes a visibility problem. It usually isn&apos;t.
               It&apos;s a mechanism problem. The engine never opened your page, or chose not to click through,
               or couldn&apos;t extract a usable answer from what it found. Three different problems.
               Three different fixes.
             </p>
-            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
               Treating them as one is why most AEO advice gives you motion without traction.
             </p>
           </div>
@@ -4339,14 +4367,14 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
             </p>
           </Callout>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6 mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6 mb-4">
             This sounds obvious stated plainly. It&apos;s not obvious in practice, because most content
             optimisation still treats AI visibility the same way it treats search ranking: quality, relevance,
             and authority. Those things matter. But they&apos;re evaluated only after
             the engine has already decided to open your page. Get eliminated before that decision and
             quality is irrelevant.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
             The mechanism works in sequence. A human types a messy, multi-part question. The engine
             doesn&apos;t search for that exact query — it translates it into several clean, query-shaped
             searches (query fan-out). Each search returns its own candidate source list. The engine
@@ -4369,7 +4397,7 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="02" title="The cover" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             Before any extraction, before any quality assessment, the engine makes a click decision
             based on what&apos;s visible without opening the page: URL, title, snippet, sometimes
             a freshness date. That&apos;s the cover. Content quality inside the page is irrelevant at this
@@ -4377,7 +4405,7 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
             a press release rather than an answer, the engine won&apos;t click through regardless of
             what&apos;s inside.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
             This is why a well-written product page with strong SEO fundamentals can still be
             invisible in AI answers. The cover wasn&apos;t shaped for the engine&apos;s selection criteria.
             Optimizing the inside without optimizing the cover is backwards.
@@ -4388,7 +4416,7 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="03" title="The three gates" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-8">
             Use this diagnostic any time visibility is lower than expected. It tells you
             <em className="text-bk-parchment"> which</em> problem you have rather than asking you to guess.
           </p>
@@ -4440,7 +4468,7 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="04" title="Score vs Rank" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-6">
             These two metrics get conflated constantly. They measure completely different things.
           </p>
 
@@ -4472,7 +4500,7 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="05" title="The SAGE loop" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-6">
             SAGE is a four-stage cycle (Setup, Analyse, Generate, Engineer) and its most useful
             property is that it tells you which stage to be in right now. The temptation is to default
             to Generate (producing content) because it feels productive. Generating against the wrong
@@ -4517,11 +4545,11 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="06" title="Content that gets cited" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             Two concepts do most of the work here.
           </p>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             <strong className="text-bk-parchment">Compound jobs</strong> — queries that combine
             multiple needs in a single ask (&quot;cooling <em>and</em> support&quot;, not just
             &quot;cooling&quot;). These force the engine to be selective. It can&apos;t satisfy every angle,
@@ -4530,7 +4558,7 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
             concentrates, because most content is still written to rank on one keyword at a time.
           </p>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-8">
             <strong className="text-bk-parchment">Utility assets</strong> — content shaped to match
             what the engine is already fetching: comparative, high-density, answer-shaped. Explicitly
             not: product pages, brand-story copy, buried leads. The format question to ask before
@@ -4562,7 +4590,7 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="07" title="Applying this to the stack" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-6">
             The three-gate model maps directly onto existing tools. The diagnostic is faster
             when you already know which data to pull.
           </p>
@@ -4701,6 +4729,8 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
 
         <h1 className="font-book font-bold text-7xl md:text-9xl lg:text-[120px] text-bk-parchment leading-none tracking-normal mb-4">
@@ -4709,7 +4739,7 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
           QUESTION.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
@@ -4728,10 +4758,10 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
         {/* Lede */}
         <section>
           <div className="border-l-2 border-bk-gold pl-6 space-y-4">
-            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
               In one documented Express.js refactor, Claude Code cost $155. Codex cost $15. Same task, same outcome: a working, passing codebase, but one ran 10&times; the bill. That gap is real. So is the other direction: blind code-quality reviews of the same output preferred Claude Code 67% of the time vs Codex&apos;s 25%.
             </p>
-            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
               Neither number wins the argument cleanly. They tell you what you&apos;re trading, not what to choose.
             </p>
           </div>
@@ -4749,12 +4779,12 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
         <section>
           <SectionHeading number="01" title="Context window" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             1M tokens vs 200K. On a greenfield project with clean module boundaries, the difference is irrelevant.
             On a three-year-old monolith with circular imports, undocumented global state, and ten contributors&apos;
             worth of conflicting conventions — it&apos;s the whole game.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-8">
             Claude Code can hold the full codebase graph while making a change. Codex has to sample it. Whether
             that sampling degrades the result depends entirely on how interconnected the code is. On a tightly
             coupled legacy codebase, it usually does.
@@ -4779,7 +4809,7 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
         <section>
           <SectionHeading number="02" title="Benchmarks vs reviews" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             On Terminal-Bench 2.0, Codex leads: 82.7% vs 69.4%. On SWE-bench Verified, they&apos;re effectively
             tied: 88.7% vs 88.6%. Both measure whether the tool completed an automated evaluation of a coding task —
             not whether a senior developer would merge that output without edits.
@@ -4794,7 +4824,7 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
             </figcaption>
           </figure>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             The blind review number is the interesting one. A 42-point gap in human code-quality preference doesn&apos;t
             show up in benchmark pass rates because benchmarks are binary — the test either passes or it doesn&apos;t.
             They don&apos;t measure readability, consistency with existing patterns, or whether the approach you&apos;d
@@ -4814,7 +4844,7 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
         <section>
           <SectionHeading number="03" title="The actual cost" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-6">
             Claude Code burns 3–4× more tokens per task than Codex on comparable benchmarks. Extended thinking
             is on by default and billed at 5× the input token rate — meaningful if you&apos;re running it
             iteratively against large files.
@@ -4849,7 +4879,7 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
         <section>
           <SectionHeading number="04" title="When to reach for each" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-8">
             The most effective pattern isn&apos;t picking one tool — it&apos;s knowing which moment calls for which.
           </p>
 
@@ -4862,12 +4892,12 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
             </figcaption>
           </figure>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             Reach for <strong className="text-bk-gold font-semibold">Claude Code</strong> when you&apos;re in
             the editor actively building something, the context needs to span many files, and the iteration is
             conversational — you&apos;re steering, not just queuing work.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             Reach for <strong className="text-bk-parchment font-semibold">Codex</strong> when the task is
             well-defined enough to hand off unattended: dependency bumps, isolated type fixes, feature flags on
             a stable interface. It handles async PRs well precisely because the task spec does the steering.
@@ -4882,7 +4912,7 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
         <section>
           <SectionHeading number="05" title="Getting more out of Claude Code" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-6">
             Three habits that materially affect both output quality and cost:
           </p>
 
@@ -4905,7 +4935,7 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
 
         {/* Closing */}
         <section className="border-t border-bk-rule pt-10">
-          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed max-w-prose">
+          <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed max-w-prose">
             Both tools are accelerators on well-scoped tasks. Neither replaces architectural judgement on
             ambiguous requirements — that&apos;s still your job. The question isn&apos;t which AI is smarter;
             it&apos;s which workflow fits what you&apos;re building today.
@@ -4976,6 +5006,8 @@ function PKMArticle({ article, formattedDate }: { article: ReturnType<typeof get
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
 
         <h1 className="font-book font-bold text-6xl md:text-8xl lg:text-[108px] text-bk-parchment leading-none tracking-normal mb-4">
@@ -4984,7 +5016,7 @@ function PKMArticle({ article, formattedDate }: { article: ReturnType<typeof get
           COORD.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
@@ -5003,7 +5035,7 @@ function PKMArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Intro — the boundary rule */}
         <section>
           <div className="border-l-2 border-bk-gold pl-6 mb-8">
-            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
               Most PKM setups fail the same way: tools overlap, filing decisions happen mid-thought, and
               maintenance debt compounds until the system collapses. The fix is boundaries, not cleverness.
             </p>
@@ -5043,7 +5075,7 @@ function PKMArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="01" title="Wispr Flow" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-6">
             Wispr is not a storage layer. It&apos;s a dictation engine — you speak, text appears wherever your cursor is.
             The setup is minimal and the benefits compound fast once you&apos;re in the habit.
           </p>
@@ -5075,7 +5107,7 @@ function PKMArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="02" title="Obsidian" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-6">
             Obsidian is the thinking layer. Every note lives in a local markdown file — no proprietary format,
             no lock-in. The vault structure below is opinionated but simple: four numbered folders plus a templates
             directory. The inbox folder does the heaviest lifting.
@@ -5150,7 +5182,7 @@ tags: []
         <section>
           <SectionHeading number="03" title="Notion" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-6">
             Notion handles everything with a status or a date. If a project exists as an Obsidian folder, it
             also exists as a row in the Projects database — but working content lives in Obsidian, never duplicated
             in Notion.
@@ -5217,7 +5249,7 @@ tags: []
         <section>
           <SectionHeading number="04" title="The Loop" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-8">
             The system only works if the loop runs. Three cadences, each with a distinct scope:
           </p>
 
@@ -5266,7 +5298,7 @@ tags: []
 
         {/* Closing */}
         <section className="border-t border-bk-rule pt-10">
-          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed max-w-prose">
+          <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed max-w-prose">
             This stack isn&apos;t clever. It&apos;s boring in the right way — each tool does one thing, the boundaries are
             explicit, and the maintenance loop is short enough to actually run. The goal isn&apos;t a perfect system,
             it&apos;s one that doesn&apos;t require willpower to maintain.
@@ -5308,6 +5340,8 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
 
         <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
@@ -5316,7 +5350,7 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
           DIRECTING.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
@@ -5362,7 +5396,7 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
         {/* Midjourney section */}
         <section>
           <SectionHeading number="01" title="Midjourney — stills, art direction, composition" />
-          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-8">
+          <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed mt-4 mb-8">
             V8.2 is the current default as of mid-2026, focused on aesthetics and Personalisation — it reads
             your accumulated ratings and moodboard to skew toward your taste. A handful of parameters do
             most of the work. The rest are edge cases.
@@ -5400,7 +5434,7 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
         {/* Higgsfield section */}
         <section>
           <SectionHeading number="02" title="Higgsfield — camera control, motion, Soul ID" />
-          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-6">
+          <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed mt-4 mb-6">
             Higgsfield is an orchestration layer over 30-plus underlying models — Kling 3.0, Veo 3.1,
             Seedance 2.0, Wan 2.6, MiniMax Hailuo, Sora 2, and its own Soul and Cinema models. You route
             each shot to whichever model fits it, from one interface, without managing separate subscriptions.
@@ -5447,7 +5481,7 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
         {/* Cinematography vocabulary */}
         <section>
           <SectionHeading number="03" title="Cinematography vocabulary — know these cold" />
-          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-8">
+          <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed mt-4 mb-8">
             Prompting with cinematographic precision beats prompting with mood words every time.
             "35mm film photography, Rembrandt lighting" outperforms "cinematic, moody" reliably and repeatably.
             These are the terms worth having immediately available — they work across both tools.
@@ -5479,7 +5513,7 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
         {/* Prompt formula */}
         <section>
           <SectionHeading number="04" title="The universal prompt formula" />
-          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-4 mb-8">
+          <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed mt-4 mb-8">
             This structure works across both tools. The order matters — subject and environment set the
             foundation; lighting and lens guide the model's interpretation; style and parameters tune the output.
             App-level controls (aspect ratio, model selection, duration in Higgsfield) belong in the interface,
@@ -5616,6 +5650,8 @@ function HermesArticle({ article, formattedDate }: { article: ReturnType<typeof 
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
 
         <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
@@ -5625,7 +5661,7 @@ function HermesArticle({ article, formattedDate }: { article: ReturnType<typeof 
           REMEMBERS.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
@@ -5678,13 +5714,13 @@ function HermesArticle({ article, formattedDate }: { article: ReturnType<typeof 
         <section>
           <SectionHeading number="01" title="Memory that actually persists" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               Hermes stores all memory in a local SQLite database at <code className="font-mono text-xs bg-bk-deep px-1.5 py-0.5">~/.hermes/state.db</code>, indexed with FTS5 for full-text search across every session you&rsquo;ve ever run. When you ask &ldquo;what did we land on for the authentication schema?&rdquo; it&rsquo;s not searching your current context — it&rsquo;s searching the actual historical record, with LLM summarisation to surface relevant cross-session context the way a good note-taking system would.
             </p>
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               The memory is <strong className="text-bk-parchment">agent-curated, not a raw transcript dump.</strong> Hermes periodically reviews what it&rsquo;s logged and decides what&rsquo;s actually worth keeping — condensing, surfacing key decisions, archiving noise. This matters because unlimited transcript accumulation gets expensive and slow quickly; curated memory stays useful.
             </p>
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               For teams or individuals who want deeper user modeling, there&rsquo;s optional Honcho integration — &ldquo;dialectic user modeling&rdquo; in the project&rsquo;s own framing. Instead of re-inferring your working style, your tool preferences, and your project context each session, Honcho builds and maintains a persistent model of who you are across all sessions. The result is an agent that gets progressively better at working with you specifically, not just better at generating text generally.
             </p>
           </div>
@@ -5702,7 +5738,7 @@ function HermesArticle({ article, formattedDate }: { article: ReturnType<typeof 
         {/* Section 2 */}
         <section>
           <SectionHeading number="02" title="The agent that writes its own manual" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             When Hermes solves something non-trivial, it writes a <strong className="text-bk-parchment">SKILL.md</strong> — a reusable, portable skill document that captures what it learned. The next time a similar problem comes up, it loads the relevant skill rather than re-solving from scratch. Skills self-improve during use, accumulate naturally as you work, and follow the open <code className="font-mono text-xs bg-bk-deep px-1.5 py-0.5">agentskills.io</code> standard — meaning they&rsquo;re portable across any Hermes instance and shareable with the community.
           </p>
 
@@ -5714,7 +5750,7 @@ function HermesArticle({ article, formattedDate }: { article: ReturnType<typeof 
           </p>
 
           <div className="mt-8 space-y-4">
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               40+ skills ship built-in — MLOps workflows, GitHub automation, diagramming, note-taking,
               and more. The community skill hub at <code className="font-mono text-xs bg-bk-deep px-1.5 py-0.5">agentskills.io</code> extends that with a one-command install.
               But the most useful skills are the ones the agent writes from your own work — those are
@@ -5733,7 +5769,7 @@ function HermesArticle({ article, formattedDate }: { article: ReturnType<typeof 
         {/* Section 3 */}
         <section>
           <SectionHeading number="03" title="One daemon, every surface" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             A single <code className="font-mono text-xs bg-bk-deep px-1.5 py-0.5">hermes gateway</code> process serves every connected platform simultaneously — Telegram, Discord, Slack, WhatsApp, Signal, email, and roughly a dozen more. Cross-platform conversation continuity means you can start a thread on your phone via Telegram, continue it in the terminal, and pick it up in your IDE — same session memory, same context, carried across every surface.
           </p>
 
@@ -5750,7 +5786,7 @@ hermes gateway           # start the gateway process
 hermes gateway install   # install as a systemd service (runs on reboot)`}</CodeBlock>
           </div>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-8">
             Execution environments give you control over how much isolation you want:
           </p>
           <div className="mt-4 space-y-4">
@@ -5776,10 +5812,10 @@ hermes gateway install   # install as a systemd service (runs on reboot)`}</Code
         {/* Section 4 */}
         <section>
           <SectionHeading number="04" title="The machine that runs while you sleep" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             The scheduling system is the practical unlock. A cron job written in natural language, delivered to any connected platform, with skills attached so it doesn&rsquo;t start cold. A &ldquo;morning briefing to Telegram&rdquo; or &ldquo;nightly infrastructure health check to Slack&rdquo; is a single command plus a well-scoped prompt. No script, no wrapper, no pipeline configuration.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-4">
             The most important rule for cron job prompts: <strong className="text-bk-parchment">the prompt must contain everything the agent needs that isn&rsquo;t covered by an attached skill.</strong> Vague prompts fail silently in unattended runs — there&rsquo;s no one present to clarify. A well-scoped cron prompt looks like: <em>&ldquo;SSH into server 192.168.1.100 as user &lsquo;deploy&rsquo;, check if nginx is running with systemctl status nginx, and verify that https://example.com returns HTTP 200.&rdquo;</em> That&rsquo;s specific enough to succeed without human input.
           </p>
 
@@ -5803,7 +5839,7 @@ hermes gateway install   # install as a systemd service (runs on reboot)`}</Code
         {/* Section 5 */}
         <section>
           <SectionHeading number="05" title="Claude Code or Hermes?" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             These tools solve different problems. The marketing language around both implies overlap that doesn&rsquo;t exist in practice.
           </p>
 
@@ -5815,10 +5851,10 @@ hermes gateway install   # install as a systemd service (runs on reboot)`}</Code
           </p>
 
           <div className="mt-8 space-y-4">
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               If your need is &ldquo;help me refactor this codebase right now,&rdquo; Claude Code is the sharper tool. It has deeper context engineering, better real-time coding capability, and it&rsquo;s purpose-built for the active-session pairing model.
             </p>
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               Hermes is worth the setup overhead specifically for the work that currently means re-explaining your context every time you start a new session — recurring automation, multi-project context management, unattended overnight tasks. If you&rsquo;re not doing that kind of work, the setup overhead doesn&rsquo;t pay off. If you are, nothing else has the same architecture for it.
             </p>
           </div>
@@ -5880,6 +5916,8 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
 
         <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
@@ -5888,7 +5926,7 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
           SCOREBOARD.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
@@ -5931,20 +5969,20 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
         <section>
           <SectionHeading number="01" title="Why the metric failed" />
           <div className="space-y-4 mt-6">
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               The origin of tokenmaxxing is rational. Organisations wanted a visible signal that teams were
               actually adopting AI tools — a genuine, reasonable goal. Token counts happened to be one of the
               only AI inputs every provider meters cleanly, so it was the easiest number to put on a dashboard.
               Easy to measure is not the same thing as a good proxy for the thing you actually care about, and
               that gap is the entire problem.
             </p>
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               The core issue: <strong className="text-bk-parchment">tokenmaxxing measures consumption, not output.</strong> Token-heavy
               workflows — agentic coding, multi-step reasoning — genuinely do consume large volumes of tokens when
               they deliver real value. But identical token volumes can come from an agent running in circles
               producing nothing useful. The number alone cannot distinguish the two cases.
             </p>
-            <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
               Once the metric became visible on a leaderboard, behaviour predictably warped around it: engineers
               padding prompts, running redundant parallel agents, routing everything through frontier-tier models
               regardless of task complexity. One internal audit of roughly 100,000 prompt logs found that
@@ -5974,7 +6012,7 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
         {/* Section 2 */}
         <section>
           <SectionHeading number="02" title="The corrective: valuemaxxing" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             The counter-practice gaining traction is <strong className="text-bk-parchment">valuemaxxing</strong>:
             optimising for outcomes per dollar spent, rather than volume for its own sake. The signal
             distinction is straightforward. Genuine skill shows up as tokens per good outcome
@@ -5982,7 +6020,7 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
             outperforms four parallel agents running against a vague prompt, using a fraction of
             the tokens to reach an acceptable result.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-4">
             What to actually track:
           </p>
 
@@ -6005,7 +6043,7 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
         {/* Section 3 */}
         <section>
           <SectionHeading number="03" title="Practical calibration" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Most of this comes down to one discipline: match the tool to the task before you spend, not
             after. That sounds obvious, but the default in most AI-enabled environments is to route
             everything to the most capable endpoint available. The cost of that default adds up.
@@ -6065,14 +6103,14 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
         {/* Section 4 */}
         <section>
           <SectionHeading number="04" title="The trend line that actually matters" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             There&rsquo;s a legitimate version of high token consumption: the learning phase. When
             you&rsquo;re learning how to engineer a new workflow type — figuring out the right context
             packaging, the right model tier, the right loop structure — iteration is expensive, and that
             cost is worth paying. It&rsquo;s training spend. Expected, worth budgeting for, worth
             timeboxing.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-4">
             What isn&rsquo;t acceptable is treating training-mode burn rates as steady-state. If you&rsquo;re
             still consuming the same volume six weeks into a repeatable task, that&rsquo;s a signal the
             workflow hasn&rsquo;t been engineered yet — it&rsquo;s still being improvised.
@@ -6184,7 +6222,7 @@ function APIArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Section 01 — Architecture choice */}
         <section>
           <SectionHeading number="01" title="Choosing the right style before you start" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-6">
             REST, GraphQL, gRPC, tRPC — the "which one" conversation happens before a line is written, and it matters because the answer shapes everything downstream: caching behaviour, client flexibility, typing guarantees, and who can consume the result. The honest framing in 2026 is that REST vs GraphQL is no longer a binary — most mature organisations use both, picking per use case. The genuinely new element is MCP-based consumption for AI agents, which sits alongside all three as a fourth option, not a replacement for any of them.
           </p>
           <div className="my-8">
@@ -6210,7 +6248,7 @@ function APIArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Section 02 — Reading rate limit headers */}
         <section>
           <SectionHeading number="02" title="Reading the wall before you hit it" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-6">
             Most modern APIs expose their limits directly in response headers. The engineers who only check these on a 429 are doing it wrong — by then, the wall has already been hit. The right practice is to read these on every response, so you can proactively slow down before the limit fires.
           </p>
           <CodeBlock>{`X-RateLimit-Limit: 100
@@ -6228,7 +6266,7 @@ Retry-After: 60`}</CodeBlock>
         {/* Section 03 — Handling rate limits */}
         <section>
           <SectionHeading number="03" title="The standard handling pattern, in order" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-6">
             When a 429 fires, there is a correct order of operations. Most implementations get parts of it right. Few get all of it right.
           </p>
           <div className="space-y-4 mb-8">
@@ -6266,7 +6304,7 @@ Retry-After: 60`}</CodeBlock>
         {/* Section 04 — Maximising quota */}
         <section>
           <SectionHeading number="04" title="Getting more done within the limits you have" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-6">
             The four patterns below compose into a stack. Each one removes a category of unnecessary requests or handles the remainder more gracefully. All four together, not any single one in isolation, is what actually moves the needle.
           </p>
           <div className="my-8">
@@ -6360,6 +6398,8 @@ function DataVizArticle({ article, formattedDate }: { article: ReturnType<typeof
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
 
         <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
@@ -6368,7 +6408,7 @@ function DataVizArticle({ article, formattedDate }: { article: ReturnType<typeof
           <span className="text-bk-gold">CHART.</span>
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
@@ -6407,16 +6447,16 @@ function DataVizArticle({ article, formattedDate }: { article: ReturnType<typeof
         {/* Section 01 — Perception */}
         <section>
           <SectionHeading number="01" title="Why some chart choices are wrong, not just unpopular" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Chart choice isn&rsquo;t a matter of style. It&rsquo;s grounded in how human visual perception actually works. The relevant concept is preattentive processing — the visual judgment that happens before conscious attention kicks in. Different encodings engage this mechanism differently. Some produce accurate judgments at a glance. Others are systematically misjudged, regardless of how well-designed the chart is.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-4">
             Length on a common scale — the bar chart — is the most reliable encoding available. Two bars plotted on the same axis: the difference reads immediately and accurately. This is why bar charts dominate good analytical work. Not as a default, but as a deliberate match between task and encoding.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-4">
             Area is reliably underestimated. When comparing circles, humans consistently misjudge the ratio — a bubble representing twice the value of another looks like maybe 1.5×. This isn&rsquo;t a fixable design problem. It&rsquo;s a property of how the visual system processes area. Treemaps and bubble charts are weak tools for precise comparison, not just unfashionable ones.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-4">
             Angle is the worst encoding for comparison beyond two or three categories. With more than three slices, angle differences become genuinely unreadable, and errors compound as the number of categories grows. Pie charts aren&rsquo;t bad for aesthetic reasons. They&rsquo;re bad because the question &ldquo;how do these compare?&rdquo; cannot be accurately answered by looking at angles.
           </p>
 
@@ -6450,7 +6490,7 @@ function DataVizArticle({ article, formattedDate }: { article: ReturnType<typeof
         {/* Section 02 — Honesty rules */}
         <section>
           <SectionHeading number="02" title="The honesty rules — each one describes a real mistake" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             These aren&rsquo;t stylistic preferences. Each describes a specific, common error that changes what a chart says — silently, without requiring any design intent.
           </p>
 
@@ -6557,7 +6597,7 @@ function DataVizArticle({ article, formattedDate }: { article: ReturnType<typeof
         {/* Section 04 — AI */}
         <section>
           <SectionHeading number="04" title="AI in the visualization workflow" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             The shift worth understanding: AI tools now handle a meaningful share of the mechanical work — cleaning data, selecting chart types, detecting anomalies, generating written summaries — from natural-language descriptions alone. Typing &ldquo;show sales trends for the last six months&rdquo; produces a working chart in most modern BI tools, with the AI selecting the format and often surfacing an initial insight. The genuine benefit is removing the setup cost between raw data and a first-draft visual, freeing time for the judgment calls described in sections 1 through 3.
           </p>
 
@@ -6588,7 +6628,7 @@ function DataVizArticle({ article, formattedDate }: { article: ReturnType<typeof
         {/* Section 05 — Build sequence */}
         <section>
           <SectionHeading number="05" title="The build sequence" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Before opening any tool, write the business question in one sentence. Then:
           </p>
 
@@ -6675,6 +6715,8 @@ function EmailMarketingArticle({ article, formattedDate }: { article: ReturnType
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
 
         <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
@@ -6683,7 +6725,7 @@ function EmailMarketingArticle({ article, formattedDate }: { article: ReturnType
           LEVER.
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
@@ -6726,7 +6768,7 @@ function EmailMarketingArticle({ article, formattedDate }: { article: ReturnType
         {/* Section 01 — Metrics */}
         <section>
           <SectionHeading number="01" title="The metrics that matter — and the one that doesn&rsquo;t anymore" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Open rate is now a directional health check, not a real KPI. Apple&rsquo;s Mail Privacy Protection pre-fetches images for a large share of opens regardless of whether a human actually read the email — structurally inflating the metric in a way that cannot be corrected for. Continuing to optimise primarily against open rate is optimising against a number that no longer means what it used to. This isn&rsquo;t a temporary quirk. MPP is a permanent shift in what &ldquo;open rate&rdquo; measures.
           </p>
 
@@ -6763,7 +6805,7 @@ function EmailMarketingArticle({ article, formattedDate }: { article: ReturnType
         {/* Section 02 — Deliverability */}
         <section>
           <SectionHeading number="02" title="Deliverability — the precondition everything else sits on" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             If deliverability is broken, no amount of copywriting or AI personalization matters. The email never reaches an inbox. This is worth stating plainly because it&rsquo;s treated as a technical checkbox when it&rsquo;s actually the foundation that everything else depends on.
           </p>
 
@@ -6799,7 +6841,7 @@ function EmailMarketingArticle({ article, formattedDate }: { article: ReturnType
         {/* Section 03 — Flows */}
         <section>
           <SectionHeading number="03" title="The five flows — in the order they pay back" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             The 2%-drives-41% concentration finding has a direct implication for build priority. Campaigns and newsletters get attention because they&rsquo;re visible and scheduled. Automated lifecycle flows get neglected because they require upfront engineering work and then largely run unnoticed. The data says the unnoticed work is the leverage.
           </p>
 
@@ -6864,7 +6906,7 @@ function EmailMarketingArticle({ article, formattedDate }: { article: ReturnType
         {/* Section 04 — AI personalization */}
         <section>
           <SectionHeading number="04" title="AI personalization — what it moves, and what to watch" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             The lift figures from AI personalization in email are real and consistent across multiple sources, even where the exact percentages vary by methodology and list type.
           </p>
 
@@ -6975,10 +7017,18 @@ function EmailMarketingArticle({ article, formattedDate }: { article: ReturnType
 // ─── Sub-components ────────────────────────────────────────────────────────────
 
 function SectionHeading({ number, title }: { number: string; title: string }) {
+  const id = `section-${number}`
   return (
-    <div className="flex items-baseline gap-4 mb-6 pb-4 border-b border-bk-rule">
+    <div id={id} className="group flex items-baseline gap-4 mb-6 pb-4 border-b border-bk-rule scroll-mt-24">
       <span className="font-book font-bold text-5xl text-bk-gold/20">{number}</span>
       <h2 className="font-book font-bold text-4xl md:text-5xl text-bk-parchment">{title.toUpperCase()}</h2>
+      <a
+        href={`#${id}`}
+        className="opacity-0 group-hover:opacity-100 transition-opacity duration-150 font-mono text-[11px] text-bk-gold/40 hover:text-bk-gold ml-1 flex-shrink-0 self-center"
+        aria-label={`Link to section ${number}`}
+      >
+        #
+      </a>
     </div>
   )
 }
@@ -7094,6 +7144,8 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
 
         <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
@@ -7101,7 +7153,7 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
           <span className="text-bk-gold">PIPE.</span>
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
@@ -7143,20 +7195,20 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Section 01 */}
         <section>
           <SectionHeading number="01" title="Three platforms, three different contracts" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Zapier&rsquo;s structural advantage is integration breadth — 8,000+ apps — and the ability to
             deploy something simple in under an hour without touching code. The cost model gets expensive
             fast: each step in a workflow is counted separately, so a three-step automation uses three
             tasks. At real volume, this adds up. If the automation is simple, low-volume, and the priority
             is speed without code, Zapier remains the fastest path.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-4">
             Make operates on a visual canvas with genuine parallel branching, 2,000+ integrations, and an
             operations model that bundles generously — roughly 10,000 operations for $29/month. Right fit
             for mid-complexity workflows where the visual builder is doing real work: mapping out a
             branching process that would be difficult to reason about as text.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-4">
             n8n is the choice for anything that needs total data control, deep AI integration, or cost
             predictability at scale. Open-source, self-hostable, execution-based pricing, and the ability
             to reach virtually any API via custom HTTP calls. If the automation involves AI agents that need
@@ -7178,7 +7230,7 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Section 02 */}
         <section>
           <SectionHeading number="02" title="From pipe to reasoning layer" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Classic automation follows a predetermined path. The workflow decides nothing — you decide
             everything in advance, the trigger fires, and the sequence executes. Each branch has to be
             scripted before the workflow runs. If something falls outside the branches you anticipated,
@@ -7190,14 +7242,14 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
             <WorkflowVsAgentDiagram />
           </div>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
             An AI agent inside the same platform works differently. It observes the current context,
             reasons about what action fits, selects from the tools available to it, acts, observes the
             result, and decides what happens next. No predetermined path. If a database query returns an
             unexpected shape, the agent can reason about whether to retry, fall back to a different source,
             or surface the ambiguity. The workflow did not have to anticipate it in advance.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-4">
             The practical implication is not that every automation should use an agent node. It is that
             the distinction now exists and can be applied deliberately. Deterministic sequences — webhook
             fires, data transforms, sends notification — belong in fixed workflow nodes, where they run
@@ -7205,7 +7257,7 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
             actions fits an edge case, handling a response format you could not script for in advance.
             That is where agent reasoning earns its overhead.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-4">
             n8n 2.0 codified this maturity with the Publish vs. Save split. Save is draft mode: test
             against realistic data without touching the live webhook. Publish creates an immutable
             production version. This is standard CI/CD practice applied to automation workflows — useful
@@ -7217,7 +7269,7 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Section 03 */}
         <section>
           <SectionHeading number="03" title="n8n and MCP: both sides of the bridge" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             n8n&rsquo;s most significant 2026 development is that it can now sit on both sides of an MCP
             relationship simultaneously — as a server that exposes workflows to external AI clients, and
             as a client that calls external MCP tools from inside a running workflow.
@@ -7230,7 +7282,7 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
           <div className="space-y-6 mt-6">
             <div className="border-l-2 border-bk-gold pl-5">
               <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">n8n as MCP Server</h4>
-              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
+              <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed">
                 Any n8n workflow can be exposed as a callable tool to an external AI host — Claude Desktop,
                 Cursor, a custom enterprise LLM. The AI reasons through a task and natively triggers your
                 workflow to take real-world action, without a custom API wrapper for that specific client.
@@ -7240,7 +7292,7 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
             </div>
             <div className="border-l-2 border-bk-gold/50 pl-5">
               <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">n8n as MCP Client</h4>
-              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
+              <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed">
                 Internal n8n agents can dynamically discover and call external MCP tools mid-workflow,
                 using the MCP Client Tool node with an SSE endpoint. An n8n agent handling a support
                 ticket can call out to an external documentation search tool mid-workflow — the same way
@@ -7249,7 +7301,7 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
             </div>
             <div className="border-l-2 border-bk-rule pl-5">
               <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">The n8n-mcp package</h4>
-              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
+              <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed">
                 A third mode: expose n8n&rsquo;s own workflow management API to Claude or Cursor, so you
                 can describe an automation in natural language and have the model build the actual workflow
                 via API calls rather than dragging nodes. Genuinely useful for prototyping — &ldquo;create
@@ -7264,7 +7316,7 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Section 04 */}
         <section>
           <SectionHeading number="04" title="The filter before you build" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Not every repetitive task deserves automation, and not every automatable task is worth the
             setup cost. Four questions that filter before you start:
           </p>
@@ -7308,10 +7360,10 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Section 05 */}
         <section>
           <SectionHeading number="05" title="Where this applies immediately" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             A few categories where the workflow discipline from this workbook maps directly to real tasks:
           </p>
-          <ul className="mt-5 space-y-4 font-sans text-base text-bk-parchment/70 leading-relaxed">
+          <ul className="mt-5 space-y-4 font-sans text-lg text-bk-parchment/70 leading-relaxed">
             <li className="flex gap-3">
               <span className="text-bk-gold mt-1 flex-shrink-0">—</span>
               <span><strong className="text-bk-parchment font-semibold">Recurring reporting.</strong> A workflow that pulls data from analytics tools on a schedule and drops a formatted summary into Slack or email is a textbook n8n use case — deterministic, clear trigger, clear output, nothing that requires agent reasoning.</span>
@@ -7329,7 +7381,7 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
               <span><strong className="text-bk-parchment font-semibold">Notification sequences.</strong> Reminders, expiry alerts, meeting triggers — genuinely repetitive, clear-trigger, clear-outcome work. No AI agent node needed. The agent overhead would be pure waste on a deterministic task.</span>
             </li>
           </ul>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             The connecting thread: n8n&rsquo;s MCP Server capability means any workflow you build becomes
             callable from Claude or Cursor directly. n8n&rsquo;s MCP Client capability means it can call
             out to any MCP server already in your stack mid-workflow. Worth designing new workflows with
@@ -7377,12 +7429,14 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
         <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
           EAST OF<br />
           <span className="text-bk-gold">CLOSED.</span>
         </h1>
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
         <div className="flex flex-wrap gap-2 mt-6">
@@ -7431,14 +7485,14 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 01 */}
         <section>
           <SectionHeading number="01" title="The four families" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             The current open-weight field has genuinely differentiated by workload rather than converging
             on identical strengths. The four leading families and what distinguishes each:
           </p>
           <div className="mt-8 mb-8 overflow-x-auto">
             <ModelLandscapeDiagram />
           </div>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Reading benchmark numbers carefully matters here specifically. Different labs report against
             different suites — SWE-bench Verified versus the newer and harder SWE-bench Pro — so a
             direct number comparison across vendors misleads unless you check which suite produced it.
@@ -7448,7 +7502,7 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
             which models to evaluate, not a final selection criterion. The consistent practitioner
             advice: run a real-task evaluation on your actual codebase or workflow before committing.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-5">
             The licensing landscape is clearer than the family-level reputation suggests. Qwen (Apache
             2.0), DeepSeek (MIT), and GLM (MIT) carry genuinely permissive commercial licences —
             no royalties, no usage caps, fine-tunable for enterprise deployment. The specific exception
@@ -7461,14 +7515,14 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 02 */}
         <section>
           <SectionHeading number="02" title="The real advantages" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Three of the four advantages below apply specifically to the open-weight, self-hosted
             deployment model. The fourth applies regardless of how you deploy.
           </p>
           <div className="space-y-8 mt-8">
             <div className="border-l-2 border-bk-gold pl-5">
               <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">Cost efficiency — structural, not just sticker price</h4>
-              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
+              <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed">
                 DeepSeek-R1 was reportedly trained for under $6 million using 2,000 H800 chips over 55
                 days. That is a genuinely different cost structure from Western frontier training runs,
                 and the efficiency carries through to inference cost when self-hosted. Qwen3.6-27B runs
@@ -7479,7 +7533,7 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
             </div>
             <div className="border-l-2 border-bk-gold/60 pl-5">
               <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">Permissive licensing for commercial use</h4>
-              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
+              <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed">
                 Apache 2.0 and MIT licences on three of the four families mean commercial deployment and
                 fine-tuning with zero royalties. For enterprise fine-tuning in particular, GLM-5.1&rsquo;s
                 MIT licence is a material differentiator from options that carry revenue gates or usage
@@ -7489,7 +7543,7 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
             </div>
             <div className="border-l-2 border-bk-gold/60 pl-5">
               <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">Self-hosting and full data control</h4>
-              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
+              <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed">
                 Because weights are public, you can run any of these models entirely on your own
                 infrastructure. No data leaves your environment. No dependency on a hosted API&rsquo;s
                 uptime, pricing changes, or terms-of-service updates. This is a genuinely different trust
@@ -7499,7 +7553,7 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
             </div>
             <div className="border-l-2 border-bk-rule pl-5">
               <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">Specialisation by workload</h4>
-              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
+              <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed">
                 The field has differentiated meaningfully. Kimi and GLM are purpose-built for
                 long-horizon coding agents and multi-step tool-use loops. DeepSeek&rsquo;s pro tiers and
                 Qwen&rsquo;s flagship cover general reasoning and breadth. Qwen&rsquo;s 119-language
@@ -7514,7 +7568,7 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 03 */}
         <section>
           <SectionHeading number="03" title="Two risk columns, not one" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Most of the public risk analysis on Chinese LLMs collapses three separate risk categories
             into a single verdict. Separating them gives a more useful picture — because they respond
             to different controls, and because one of them disappears entirely when you self-host.
@@ -7525,7 +7579,7 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
           <div className="space-y-7 mt-8">
             <div>
               <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">Data jurisdiction: real, documented, specific to hosted services</h4>
-              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
+              <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed">
                 If you use a Chinese lab&rsquo;s hosted API or chat product — not a self-hosted open-weight
                 download — your data may be subject to Chinese data-governance law and processed on servers
                 you do not control. This is the specific concern that led Italy&rsquo;s data protection
@@ -7536,7 +7590,7 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
             </div>
             <div>
               <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">Content moderation in hosted services</h4>
-              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
+              <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed">
                 A 2026 academic study (NDSS) found persistent content-blocking mechanisms in several major
                 Chinese LLM hosted services — operating at the input, output, and search phases — tied to
                 Chinese regulatory compliance requirements. This is a hosted-service-layer behaviour. Whether
@@ -7547,7 +7601,7 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
             </div>
             <div>
               <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">A coding-safety signal worth tracking</h4>
-              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
+              <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed">
                 A 2026 Booz Allen study reported that several Chinese coding models produced more vulnerable
                 code when the prompt implied a US government end user. Treat this as an early, single-study
                 signal rather than a settled finding — but it is concrete enough to be worth an independent
@@ -7574,7 +7628,7 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
         {/* Section 04 */}
         <section>
           <SectionHeading number="04" title="The deployment decision" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             The most useful framing: match the model to the sensitivity of the data it will touch, and
             the deployment model to that same sensitivity — not a blanket yes/no on &ldquo;Chinese
             models.&rdquo; A self-hosted, open-weight model running on non-sensitive workloads carries
@@ -7786,12 +7840,14 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
         <h1 className="font-book font-bold text-8xl md:text-[110px] lg:text-[130px] text-bk-parchment leading-none tracking-normal mb-4">
           THE SAME<br />
           <span className="text-bk-gold">CHANNEL.</span>
         </h1>
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
         <div className="flex flex-wrap gap-2 mt-6">
@@ -7841,7 +7897,7 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
           <div className="space-y-7 mt-8">
             <div className="border-l-2 border-bk-gold pl-5">
               <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">Direct injection</h4>
-              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
+              <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed">
                 A user explicitly types a malicious instruction — the classic pattern is asking a chatbot
                 to disregard its prior instructions and reveal internal configuration. This is the version
                 most people picture, and it is the easier of the two to defend against, because the input
@@ -7850,14 +7906,14 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
             </div>
             <div className="border-l-2 border-red-700/40 pl-5">
               <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-2 tracking-wide uppercase">Indirect injection — the one that actually matters for anything agentic</h4>
-              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
+              <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed">
                 The attacker types nothing into your chat. Instead, they embed malicious instructions
                 inside content the model will later process on your behalf: a webpage, a document, an
                 email, a support ticket, a Slack message. When your AI assistant reads that content — to
                 summarise, triage, or review — it can encounter those embedded instructions and follow
                 them as if they came from you. From the model&rsquo;s perspective, text is text.
               </p>
-              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed mt-3">
+              <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed mt-3">
                 This is precisely what happened in the documented Slack AI incident: malicious instructions
                 hidden in ordinary Slack content caused the AI integration to exfiltrate information it
                 should not have accessed. The attack surface is not the model — it is the model&rsquo;s
@@ -7870,7 +7926,7 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 02 */}
         <section>
           <SectionHeading number="02" title="The numbers" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Anthropic&rsquo;s own published system card for Claude Opus 4.5 provides one of the more
             concrete, quantified pictures of real-world injection resistance in an agentic coding
             environment:
@@ -7878,7 +7934,7 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
           <div className="mt-8 mb-8 overflow-x-auto">
             <AttackSuccessRateDiagram />
           </div>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Two things worth taking from that data. First, single-attempt defenses genuinely work
             most of the time — a 4.7% success rate at one attempt means a casual attacker hits a wall
             more than 95% of the time. Second, an attacker who can make many attempts — an automated,
@@ -7886,7 +7942,7 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
             tries. That is the actual argument for defense in depth and monitoring, not just a single
             good filter.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-5">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-5">
             The ceiling on impact scales directly with what the compromised model is allowed to do.
             A chatbot with no tool access and no memory of sensitive data has a low ceiling on what
             a successful injection can achieve. An agent with email access, file-system access, and
@@ -7914,7 +7970,7 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 03 */}
         <section>
           <SectionHeading number="03" title="The layered defense" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             No single control solves this. OWASP&rsquo;s own guidance is explicit that mitigation
             requires layering multiple defenses, because none of them is individually sufficient against
             a motivated, repeated attack. Each technique below reduces risk — stacked together, they
@@ -7926,7 +7982,7 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
           <div className="space-y-6 mt-8">
             <div className="border-l-2 border-bk-gold pl-5">
               <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-1 tracking-wide uppercase">1 — Segregate untrusted content from the instruction stream</h4>
-              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
+              <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed">
                 Structure prompts so untrusted content — a fetched webpage, an uploaded document, an email
                 body — is visibly delimited as data to be processed, not blended into the instruction
                 stream. This is the direct analogue to parameterised queries preventing SQL injection:
@@ -7935,7 +7991,7 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
             </div>
             <div className="border-l-2 border-bk-gold/60 pl-5">
               <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-1 tracking-wide uppercase">2 — System-level behavioral constraints</h4>
-              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
+              <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed">
                 Define expected output formats and behavioral boundaries in the system prompt itself. A
                 model instructed to only ever output a specific structured format has less room for an
                 injected instruction to hijack the interaction into open-ended behaviour.
@@ -7943,7 +7999,7 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
             </div>
             <div className="border-l-2 border-bk-gold/60 pl-5">
               <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-1 tracking-wide uppercase">3 — Least-privilege tooling</h4>
-              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
+              <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed">
                 This is the highest-leverage structural defense for anything agentic. Give a model or
                 agent only the specific tools and access it needs for its actual task — nothing broader
                 &ldquo;just in case.&rdquo; An agent that can only read a specific document has a low
@@ -7954,7 +8010,7 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
             </div>
             <div className="border-l-2 border-bk-gold/60 pl-5">
               <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-1 tracking-wide uppercase">4 — Human approval for high-risk or irreversible actions</h4>
-              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
+              <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed">
                 For anything with real consequence — sending an email, making a purchase, deleting data,
                 executing code against production — insert an explicit human-in-the-loop checkpoint rather
                 than letting an agent act autonomously. This is the single most reliable backstop against
@@ -7963,7 +8019,7 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
             </div>
             <div className="border-l-2 border-bk-rule pl-5">
               <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-1 tracking-wide uppercase">5 — Input/output filtering</h4>
-              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
+              <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed">
                 Scan for known attack patterns and known-bad output signatures on both sides. This
                 catches what you have seen before — not novel attacks, which is exactly why it is one
                 layer among several rather than a complete solution.
@@ -7971,7 +8027,7 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
             </div>
             <div className="border-l-2 border-bk-rule pl-5">
               <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-1 tracking-wide uppercase">6 — RAG groundedness checks</h4>
-              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
+              <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed">
                 For any RAG-connected system, assess context relevance and groundedness as a way of
                 catching outputs that have drifted from what the retrieved content actually supports —
                 a useful signal that something embedded in a retrieved document has pulled the model
@@ -7980,7 +8036,7 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
             </div>
             <div className="border-l-2 border-bk-rule pl-5">
               <h4 className="font-sans font-semibold text-sm text-bk-parchment mb-1 tracking-wide uppercase">7 — Adversarial testing on a real cadence</h4>
-              <p className="font-sans text-base text-bk-parchment/70 leading-relaxed">
+              <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed">
                 Conduct regular red-teaming and breach simulations — not a one-time pre-launch audit,
                 but a recurring practice. The attack-success-rate data makes the argument: repeated
                 attempts matter, and a single pre-launch test does not model a production attacker
@@ -8002,12 +8058,12 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
         {/* Section 04 */}
         <section>
           <SectionHeading number="04" title="Where this applies now" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mt-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mt-6">
             Prompt injection is not a theoretical concern for a future AI product — it is a present
             concern for anything already wiring AI to external content. Four categories where the
             risk is immediate:
           </p>
-          <ul className="mt-5 space-y-4 font-sans text-base text-bk-parchment/70 leading-relaxed">
+          <ul className="mt-5 space-y-4 font-sans text-lg text-bk-parchment/70 leading-relaxed">
             <li className="flex gap-3">
               <span className="text-bk-gold mt-1 flex-shrink-0">—</span>
               <span><strong className="text-bk-parchment font-semibold">Anything processing untrusted external content.</strong> A webpage summariser, an email triage tool, a document reviewer, an n8n workflow reading inbound Slack messages — build these assuming the content might contain hidden instructions, not as an edge case to patch later.</span>
@@ -8086,11 +8142,13 @@ function SmallBusinessAcquisitionArticle({ article, formattedDate }: { article: 
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
         <h1 className="font-book font-bold text-7xl md:text-9xl lg:text-[120px] text-bk-parchment leading-none tracking-normal mb-4">
           SKIP<br />YEAR<br /><span className="text-bk-gold">ZERO.</span>
         </h1>
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">{article!.subtitle}</p>
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">{article!.subtitle}</p>
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
             <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-muted border border-bk-rule px-2.5 py-1">{tag}</span>
@@ -8102,10 +8160,10 @@ function SmallBusinessAcquisitionArticle({ article, formattedDate }: { article: 
 
         <section>
           <div className="border-l-2 border-bk-gold pl-6 space-y-4">
-            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
               Starting a business from scratch means spending the first one to three years on problems that have nothing to do with your actual proposition: finding initial customers, surviving zero revenue, validating assumptions that may or may not hold. Most of that time is spent proving something already proven by every existing business in your target market.
             </p>
-            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
               ETA — Entrepreneurship Through Acquisition — is the practice of skipping that. Buy a business that already has customers, proven cash flow, and real operating history. Skip Year Zero entirely and start operating on day one. It is a genuine, taught career path now, with Stanford, Harvard, and INSEAD running dedicated programs — and the structural backdrop for it has never been better.
             </p>
           </div>
@@ -8123,31 +8181,31 @@ function SmallBusinessAcquisitionArticle({ article, formattedDate }: { article: 
 
         <section>
           <SectionHeading number="01" title="The demographic window" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             Roughly six million small and medium-sized US businesses are expected to change ownership by 2035 as Baby Boomer owners retire. That represents as much as $5 trillion in enterprise value — and per the 2026 State of Main Street report, 70% of these owners have no formal succession plan. The ETA community calls this the &ldquo;Silver Tsunami,&rdquo; and it is the structural reason buying an existing business has become a serious, institutionally-recognized career path rather than a niche curiosity.
           </p>
           <figure className="my-8">
             <div className="border border-bk-rule overflow-hidden"><SilverTsunamiDiagram /></div>
             <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">The scale of the succession gap driving the ETA opportunity in 2026.</figcaption>
           </figure>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             The phenomenon is global — the same founder succession gap shows up in the UK, Australia, Kenya, and Nigeria&rsquo;s owner-operated business populations. But the US market is the deepest and most liquid, with the most developed search fund infrastructure, the widest access to SBA financing, and the most mature broker and advisor ecosystem.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
             One dynamic worth understanding before you start: many retiring founders are actively motivated to sell to an energetic individual operator who will preserve what they built and protect existing employees — rather than to a private equity firm intent on stripping costs and flipping. Relationship and trust genuinely factor into who gets first access to a deal, which means you are not purely competing on price against institutional capital.
           </p>
         </section>
 
         <section>
           <SectionHeading number="02" title="The two structural paths" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             ETA splits into two structurally different models. They share the same basic proposition — buy an existing profitable business, operate it, grow it — but they differ fundamentally on capital structure, equity outcome, and risk exposure.
           </p>
           <figure className="my-8">
             <div className="border border-bk-rule overflow-hidden"><ETAPathsDiagram /></div>
             <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">Funded search and self-funded ETA — same destination, structurally different tradeoffs.</figcaption>
           </figure>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             The honest numbers on funded search: search funds have returned a reported 35.1% IRR across 681 tracked funds — a genuinely strong risk-adjusted return, materially better than early-stage venture capital according to Stanford&rsquo;s longitudinal data. But more than half of searches fail to result in an acquisition at all. Read both numbers together: the return profile for deals that do close is excellent; the base rate of actually closing is genuinely uncertain. This is a multi-year undertaking with real attrition, not a guaranteed path.
           </p>
           <div className="bg-bk-deep border border-bk-rule p-5 mt-6">
@@ -8160,10 +8218,10 @@ function SmallBusinessAcquisitionArticle({ article, formattedDate }: { article: 
 
         <section>
           <SectionHeading number="03" title="What to actually screen for" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             Consistent across every serious ETA source, two filters matter more than anything else and are also the hardest to verify honestly: recurring revenue percentage and owner-independence. A business with 80% recurring revenue and a management team that can run without the founder is a fundamentally different acquisition than one with 80% project work and a founder whose personal relationships generate every dollar.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-6">
             The practical problem: a seller has natural incentive to overstate how systemized the business already is. The recurring revenue percentage may rest on month-to-month contracts with a single large customer. The &ldquo;strong management team&rdquo; may dissolve the moment the founder&rsquo;s personal referral network stops feeding it. Both claims benefit from corroboration against multiple independent sources.
           </p>
           <div className="space-y-0 border border-bk-rule">
@@ -8207,7 +8265,7 @@ function SmallBusinessAcquisitionArticle({ article, formattedDate }: { article: 
 
         <section>
           <SectionHeading number="04" title="Where AI actually helps" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             The AI deal-sourcing and diligence tooling that exists today was largely built for institutional PE and investment banking — PitchBook-scale budgets, enterprise data rooms. But the underlying capability translates down to individual buyer scale, even without the enterprise price tag.
           </p>
           <figure className="my-8">
@@ -8225,7 +8283,7 @@ function SmallBusinessAcquisitionArticle({ article, formattedDate }: { article: 
               <div key={i} className="flex gap-5 border-l-2 border-bk-gold/20 pl-5">
                 <div>
                   <p className="font-sans text-base font-semibold text-bk-parchment/85">{head}</p>
-                  <p className="font-sans text-base text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
+                  <p className="font-sans text-lg text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
                 </div>
               </div>
             ))}
@@ -8240,7 +8298,7 @@ function SmallBusinessAcquisitionArticle({ article, formattedDate }: { article: 
 
         <section>
           <SectionHeading number="05" title="A practical search sequence" />
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-6">
             The sequence that consistently produces better deals than passive listing-browsing: write a buy box first, stress-test it against market data, source beyond public listings, screen fast, diligence deep only on real finalists, verify every material claim independently, and bring in professional judgment before any binding step. In that order, without skipping.
           </p>
           <div className="space-y-0 border border-bk-rule">
@@ -8317,11 +8375,13 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
         <h1 className="font-book font-bold text-7xl md:text-9xl lg:text-[120px] text-bk-parchment leading-none tracking-normal mb-4">
           THE<br />REAL<br /><span className="text-bk-gold">PROBLEM.</span>
         </h1>
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">{article!.subtitle}</p>
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">{article!.subtitle}</p>
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
             <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-muted border border-bk-rule px-2.5 py-1">{tag}</span>
@@ -8334,10 +8394,10 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
         {/* Lede */}
         <section>
           <div className="border-l-2 border-bk-gold pl-6 space-y-4">
-            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
               The problem a client brings you is almost never the problem. It&rsquo;s the symptom they noticed — the thing that broke the surface. The actual mechanism producing it is usually a layer deeper, and often requires a completely different fix than the one the client already has in mind.
             </p>
-            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
               The first job in any consulting engagement is separating those two things. Not starting with the solution. Not proposing a framework. Diagnosing — specifically, producing one falsifiable statement of what&rsquo;s actually broken and why. Everything else follows from whether that statement is right.
             </p>
           </div>
@@ -8358,11 +8418,11 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
         <section>
           <SectionHeading number="01" title="The presenting problem is rarely the actual one" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             A request to &ldquo;improve our website conversion rate&rdquo; might actually be a positioning problem, a targeting problem, or a genuinely broken product-market fit that no landing page fix will solve. A request to &ldquo;help us with team communication&rdquo; might be a trust problem, a structure problem, or a strategy problem that no Slack configuration will touch. The first real job of diagnosis is separating the symptom the client noticed from the mechanism actually producing it — and not accepting the client&rsquo;s internal theory of their own problem at face value.
           </p>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-6">
             The traditional consulting response to this was a long, slow audit — 6 to 12 months of discovery, workshops, and stakeholder interviews that became expensive, and whose delay itself functioned as a real competitive cost. In 2026, that model is being described as structurally obsolete. The credible alternative is a fast, structured diagnostic sprint — deliberately compressed, using pre-work to bypass the slow discovery phase entirely.
           </p>
 
@@ -8371,7 +8431,7 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
             <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">The sprint structure — front-load intake, spend the meeting on diagnosis, output one falsifiable statement.</figcaption>
           </figure>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             The sprint works by front-loading structured, asynchronous intake before the first real conversation — a written questionnaire, existing dashboards, current reporting. AI-assisted synthesis of that intake material can compress what used to take a week of reading and note-taking into a structured brief: what the client says their problem is, what their own data actually shows, where the two diverge. The meeting time then goes to genuine diagnosis rather than basic fact-gathering.
           </p>
 
@@ -8386,7 +8446,7 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
         <section>
           <SectionHeading number="02" title="Frame before solving" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             Once the diagnosis holds — once there&rsquo;s a falsifiable problem statement both sides agree is testable — the next failure mode is jumping straight to solution design without setting the frame. Two things have to happen before any solution work starts.
           </p>
 
@@ -8405,7 +8465,7 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
             ))}
           </div>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             There&rsquo;s a third framing discipline specific to AI-augmented consulting: be transparent about what AI will and won&rsquo;t touch in the engagement. If AI tooling is part of how you work — research synthesis, first-pass analysis, drafting — say so plainly, and be equally direct about where it isn&rsquo;t being used.
           </p>
 
@@ -8418,7 +8478,7 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
               <div key={i} className="flex gap-5 border-l-2 border-bk-gold/20 pl-5">
                 <div>
                   <p className="font-sans text-base font-semibold text-bk-parchment/85">{head}</p>
-                  <p className="font-sans text-base text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
+                  <p className="font-sans text-lg text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
                 </div>
               </div>
             ))}
@@ -8429,11 +8489,11 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
         <section>
           <SectionHeading number="03" title="Analysis that actually holds up" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             The most common failure mode in the analysis stage is generic output — a recommendation that looks like it could apply to any organization in the same industry, because it was built on general best practice rather than the client&rsquo;s actual data. The credible 2026 standard is RAG-style analysis: build a structured reference set from the client&rsquo;s own documents, reporting, and history, and have any AI-assisted analysis draw from that specific material rather than general training knowledge.
           </p>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-6">
             Framework selection follows the same discipline: pick the one that fits the specific diagnosis from Section 01, not the one you default to. A CDJ-style journey map, a funnel-stage breakdown, a Stage-Gate structure — the right choice is the one that actually explains the data, not the one most familiar. AI-assisted first passes can genuinely help test a diagnosis against several structural lenses quickly, letting you see which framework explains the data best before committing to build the recommendation around it.
           </p>
 
@@ -8472,11 +8532,11 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
         <section>
           <SectionHeading number="04" title="Implementation that survives your exit" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             A technically excellent solution the client&rsquo;s team can&rsquo;t actually operate after you leave is a failed engagement, regardless of how sound the strategy was. &ldquo;It&rsquo;s a good plan&rdquo; and &ldquo;this organization can actually run it&rdquo; are different bars, and both have to clear.
           </p>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-6">
             Two implementation disciplines matter most for survivability. First, phase the rollout: start any new process, system, or recommendation in a mode where it <em>suggests</em> actions for human review before it&rsquo;s trusted to act autonomously. This reduces resistance to change, catches early mistakes before they compound, and gives the client&rsquo;s team a genuine on-ramp rather than a disruptive cutover. Second, track leading indicators rather than waiting for the lagging outcome metric — define the faster signals (adoption rate, early usage data, first-week engagement with a new tool) that will tell you within weeks, not months, whether the implementation is on track.
           </p>
 
@@ -8485,7 +8545,7 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
             <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">The vendor and partner models are structurally different relationships, not just different positioning language.</figcaption>
           </figure>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
             The goal of any AI-assisted implementation is augmenting the client&rsquo;s team, not replacing it — freeing people from repetitive execution to focus on judgment, relationship, and oversight work. A team that understands and can operate what was built is the mechanism by which a solution survives after you leave. A team that was handed a black box is not.
           </p>
         </section>
@@ -8494,7 +8554,7 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
         <section>
           <SectionHeading number="05" title="What earns partner status" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-6">
             Partner status isn&rsquo;t positioning language. It&rsquo;s a set of specific, observable behaviors that distinguish an ongoing advisory relationship from a bounded project transaction. Five of them are worth naming explicitly.
           </p>
 
@@ -8518,7 +8578,7 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
             ))}
           </div>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-6">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-6">
             AI risk management deserves its own discipline, not a footnote. The failure mode is real and has already happened publicly. In 2026, treating this as seriously as any other part of the methodology is the minimum standard for credibility.
           </p>
 
@@ -8527,7 +8587,7 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
             <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">AI risk register for consulting work — four categories, two at high or critical severity.</figcaption>
           </figure>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed">
             The Deloitte Australia case is the non-abstract version of what happens when AI risk isn&rsquo;t treated seriously: an AU$440,000 government contract partially refunded after an AI-generated report included fabricated court quotes and references. Well-formatted, confident-looking output is not evidence of accuracy. Independent verification before any client-facing delivery isn&rsquo;t optional — it&rsquo;s what separates a credible practice from a liability.
           </p>
         </section>
@@ -8578,6 +8638,8 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
           <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
           <span className="font-sans text-[11px] text-bk-muted">·</span>
           <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
         </div>
 
         <h1 className="font-book font-bold text-7xl md:text-9xl lg:text-[120px] text-bk-parchment leading-none tracking-normal mb-4">
@@ -8586,7 +8648,7 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
           <span className="text-bk-gold">GAP.</span>
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
@@ -8605,14 +8667,14 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         {/* Lede */}
         <section>
           <div className="border-l-2 border-bk-gold pl-6 space-y-4">
-            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
               The 2026 DXP market is worth $17.82 billion. That figure is not a measure of how differentiated the
               category has become &mdash; it&rsquo;s a measure of how necessary managed digital experiences are now
               considered to be. The market&rsquo;s verdict: you can&rsquo;t leave the coordination of your channels,
               content, and customer data to improvisation. The category&rsquo;s problem: buying a platform
               doesn&rsquo;t coordinate anything for you.
             </p>
-            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
+            <p className="font-sans text-lg text-bk-parchment/80 leading-relaxed">
               Every serious DXP in 2026 &mdash; AEM, Sitecore, Contentful, Sanity, Optimizely &mdash; ships with
               content management, personalization, segmentation, A/B testing, and AI-assisted authoring. The feature
               list is no longer a differentiator. What separates a genuinely good digital experience from a mediocre
@@ -8636,14 +8698,14 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="01" title="What&apos;s actually table stakes" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             74% of enterprises are expected to have integrated AI-driven capabilities into their digital experience
             stack by 2026. 90% of consumers now expect seamless cross-channel experiences as a baseline, not a
             feature. Personalization leaders generate 40% more revenue than average performers. These numbers are
             cited constantly &mdash; and they create a specific pressure: to buy and configure every capability a
             platform offers, rather than to think carefully about which ones serve this particular experience.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-8">
             The honest read: platform vendors have largely caught up to each other. CMS, personalization engine,
             CDP integration, A/B testing, commerce connectors, AI authoring assistance &mdash; the checklist is
             nearly identical across every serious contender. Buying the platform with the longer feature list is
@@ -8660,7 +8722,7 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
             </figcaption>
           </figure>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             The practical consequence: before evaluating any platform or starting any design work, rank the actual
             business goals by impact for this specific project. Personalization, omnichannel publishing, global
             content operations, commerce integration &mdash; which of these actually moves the outcome you&rsquo;re
@@ -8673,12 +8735,12 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="02" title="The architecture decision" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             The dominant architectural trend in 2026 is composable, MACH-style architecture &mdash; Microservices,
             API-first, Cloud-native, Headless. The pitch: best-of-breed components assembled and swapped without
             full platform replacement. Vendor independence as a structural property, not a negotiating position.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-8">
             The trade-off is real. Composable buys flexibility at the cost of integration overhead. A unified
             platform (AEM, Sitecore) buys tighter out-of-box integration at the cost of vendor lock-in and
             constraint by the platform&rsquo;s own roadmap. The right choice is not a market trend &mdash; it
@@ -8714,12 +8776,12 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="03" title="Structure before surface" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             Before any visual design, the underlying content and interaction structure has to be right: what&rsquo;s
             the actual path from entry to the intended outcome, what needs to exist at each step, what can be cut.
             A beautifully executed interface built on a confused structure is still a confused experience.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-8">
             Real users don&rsquo;t take ideal paths. They loop, re-enter from different channels, revisit earlier
             steps after being interrupted. A digital experience designed only for the straight-through &ldquo;ideal&rdquo;
             path will misserve the often-large share of visitors who don&rsquo;t take it. That share is visible
@@ -8753,14 +8815,14 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="04" title="Personalization, done honestly" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             Personalization only works if the underlying data is behavioral and current. A persona built at project
             kickoff and never updated is not a personalization strategy &mdash; it&rsquo;s an assumption that
             compounds over time. The customer journey map you maintain actively is the direct infrastructure for
             personalization decisions. If those two things aren&rsquo;t connected, the personalization isn&rsquo;t
             grounded in anything real.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-8">
             First-party data strategy is now a structural requirement, not a nice-to-have. As third-party cookies
             continue their exit, the ability to personalize depends increasingly on data someone has genuinely given
             you: quiz funnels, preference centers, explicit opt-ins. Zero-party data collection &mdash; data the
@@ -8776,7 +8838,7 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
             </figcaption>
           </figure>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             The under-discussed failure mode: over-personalization. Machine learning can dynamically adjust content
             and offers based on real-time behaviour &mdash; but deciding which moments in the journey actually
             benefit from personalization is a design decision, not something to delegate to an algorithm by default.
@@ -8791,13 +8853,13 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="05" title="Where AI changes the build" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             The meaningful shift in 2026 is not &ldquo;AI writes the copy.&rdquo; AI-assisted content authoring
             inside the CMS &mdash; copy suggestions, quality checks, localisation, SEO flagging &mdash; has become
             a standard platform feature, not a differentiator. It&rsquo;s useful, and it&rsquo;s already table
             stakes.
           </p>
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-8">
             The genuinely new capability is agentic orchestration: AI agents operating under human direction to run
             experimentation, personalization, and optimisation across an experience at a scale no team could manage
             manually. An agent continuously testing variant combinations, monitoring CWV regressions, and adjusting
@@ -8814,7 +8876,7 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
             </figcaption>
           </figure>
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-4">
             A third AI dimension that now belongs explicitly in a DXP strategy: how the experience performs when an
             AI assistant is navigating or summarising it on a user&rsquo;s behalf. AEO and GEO optimisation &mdash;
             engineering your content to be accurately retrieved, cited, and summarised by AI search surfaces &mdash;
@@ -8837,7 +8899,7 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
               <div key={i} className="flex gap-5 border-l-2 border-bk-gold/20 pl-5">
                 <div>
                   <p className="font-sans text-base font-semibold text-bk-parchment/85">{head}</p>
-                  <p className="font-sans text-base text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
+                  <p className="font-sans text-lg text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
                 </div>
               </div>
             ))}
@@ -8848,7 +8910,7 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="06" title="The build sequence" />
 
-          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
+          <p className="font-sans text-lg text-bk-parchment/75 leading-relaxed mb-8">
             The sequence matters. Each of these steps is upstream of the next &mdash; skipping or compressing one
             creates problems that are expensive to fix later, not just inconvenient.
           </p>
@@ -8883,7 +8945,7 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
 
         {/* Closing */}
         <section className="border-t border-bk-rule pt-10">
-          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed max-w-prose">
+          <p className="font-sans text-lg text-bk-parchment/70 leading-relaxed max-w-prose">
             The 40% revenue gap between personalization leaders and average performers is real and measured. But
             it&rsquo;s not a function of which platform they bought &mdash; it&rsquo;s a function of whether they
             had the clarity to rank what mattered, the discipline to build the structure before the surface, and
