@@ -3,6 +3,7 @@ interface ReadingItem {
   author: string
   type: 'Book' | 'Paper' | 'Article'
   description: string
+  href?: string
 }
 
 export default function RecommendedReading({ items }: { items: ReadingItem[] }) {
@@ -18,7 +19,19 @@ export default function RecommendedReading({ items }: { items: ReadingItem[] }) 
               <span className="font-sans text-[9px] tracking-[0.18em] uppercase text-bk-gold/60 border border-bk-gold/20 px-1.5 py-0.5 flex-shrink-0">
                 {item.type}
               </span>
-              <span className="font-book font-bold text-lg text-bk-parchment leading-tight">{item.title}</span>
+              {item.href ? (
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-book font-bold text-lg text-bk-parchment leading-tight hover:text-bk-gold transition-colors duration-200 group"
+                >
+                  {item.title}
+                  <span className="ml-1.5 font-sans text-[11px] text-bk-gold/40 group-hover:text-bk-gold transition-colors">↗</span>
+                </a>
+              ) : (
+                <span className="font-book font-bold text-lg text-bk-parchment leading-tight">{item.title}</span>
+              )}
             </div>
             <p className="font-sans text-xs text-bk-muted mb-2">{item.author}</p>
             <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">{item.description}</p>

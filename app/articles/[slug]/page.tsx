@@ -456,13 +456,13 @@ function AutomationStrategyArticle({ article, formattedDate }: { article: Return
             title: 'Work the System',
             author: 'Sam Carpenter — Greenleaf Book Group',
             type: 'Book',
-            description: 'The case for documenting and systematizing every process before attempting to optimize or automate it — the prerequisite discipline for any automation program.',
+            href: 'https://www.amazon.com/dp/160832253X', description: 'The case for documenting and systematizing every process before attempting to optimize or automate it — the prerequisite discipline for any automation program.',
           },
           {
             title: 'The Phoenix Project',
             author: 'Gene Kim, Kevin Behr, George Spafford — IT Revolution Press',
             type: 'Book',
-            description: 'A novel about DevOps and operational discipline that remains the clearest treatment of why process visibility — knowing what is actually happening — must precede improvement.',
+            href: 'https://www.amazon.com/dp/1942788290', description: 'A novel about DevOps and operational discipline that remains the clearest treatment of why process visibility — knowing what is actually happening — must precede improvement.',
           },
           {
             title: 'Gartner Hyperautomation Market Guide',
@@ -699,9 +699,9 @@ function MCPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         </section>
 
         <RecommendedReading items={[
-          { title: 'Model Context Protocol Documentation', author: 'Anthropic · anthropic.com', type: 'Article', description: 'The canonical specification and developer guide for MCP — covers the full message schema, transport options, and tool definition format.' },
-          { title: 'Toolformer: Language Models Can Teach Themselves to Use Tools', author: 'Schick et al. · arXiv 2023', type: 'Paper', description: 'The research that established tool use as a first-class capability for language models, directly preceding the protocol standardization effort.' },
-          { title: 'Designing Web APIs', author: 'Brenda Jin, Saurabh Sahni & Amir Shevat · O\'Reilly Media', type: 'Book', description: 'Practical patterns for API design that translate cleanly to the server-side of MCP implementations — schema design, versioning, error handling.' },
+          { title: 'Model Context Protocol Documentation', author: 'Anthropic · anthropic.com', type: 'Article', href: 'https://modelcontextprotocol.io/introduction', description: 'The canonical specification and developer guide for MCP — covers the full message schema, transport options, and tool definition format.' },
+          { title: 'Toolformer: Language Models Can Teach Themselves to Use Tools', author: 'Schick et al. · arXiv 2023', type: 'Paper', href: 'https://arxiv.org/abs/2302.04761', description: 'The research that established tool use as a first-class capability for language models, directly preceding the protocol standardization effort.' },
+          { title: 'Designing Web APIs', author: 'Brenda Jin, Saurabh Sahni & Amir Shevat · O\'Reilly Media', type: 'Book', href: 'https://www.amazon.com/dp/1492026921', description: 'Practical patterns for API design that translate cleanly to the server-side of MCP implementations — schema design, versioning, error handling.' },
         ]} />
 
       </div>
@@ -985,8 +985,8 @@ function SocialMediaArticle({ article, formattedDate }: { article: ReturnType<ty
         </section>
 
         <RecommendedReading items={[
-          { title: 'Influence: The Psychology of Persuasion', author: 'Robert Cialdini · Harper Business', type: 'Book', description: 'The six principles of influence — reciprocity, commitment, social proof, authority, liking, scarcity — are the mechanics behind every algorithm\'s engagement signal.' },
-          { title: 'Contagious: Why Things Catch On', author: 'Jonah Berger · Simon & Schuster', type: 'Book', description: 'A Wharton professor\'s STEPPS framework for virality — Social Currency, Triggers, Emotion, Public, Practical Value, Stories — grounded in empirical research.' },
+          { title: 'Influence: The Psychology of Persuasion', author: 'Robert Cialdini · Harper Business', type: 'Book', href: 'https://www.amazon.com/dp/006124189X', description: 'The six principles of influence — reciprocity, commitment, social proof, authority, liking, scarcity — are the mechanics behind every algorithm\'s engagement signal.' },
+          { title: 'Contagious: Why Things Catch On', author: 'Jonah Berger · Simon & Schuster', type: 'Book', href: 'https://www.amazon.com/dp/1451686579', description: 'A Wharton professor\'s STEPPS framework for virality — Social Currency, Triggers, Emotion, Public, Practical Value, Stories — grounded in empirical research.' },
           { title: 'Engagement as a Design Metric', author: 'MIT Technology Review', type: 'Article', description: 'A critical examination of how platforms optimise for engagement and what that optimisation actually measures — important context for reading any platform analytics.' },
         ]} />
 
@@ -1306,9 +1306,9 @@ Reason step-by-step before your final answer. For each claim, note your confiden
         </section>
 
         <RecommendedReading items={[
-          { title: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks', author: 'Lewis et al. · NeurIPS 2020', type: 'Paper', description: 'The original RAG paper from Facebook AI Research — establishes the architecture that remains the dominant approach for grounding LLMs in factual sources.' },
-          { title: 'TruthfulQA: Measuring How Models Mimic Human Falsehoods', author: 'Lin et al. · ACL 2022', type: 'Paper', description: 'Introduces the benchmark that exposes how LLMs replicate popular misconceptions and why perplexity-based evaluation misses truthfulness entirely.' },
-          { title: 'Weapons of Math Destruction', author: 'Cathy O\'Neil · Crown Publishers', type: 'Book', description: 'A data scientist\'s account of what happens when algorithmic outputs are treated as ground truth — essential critical context for any AI deployment.' },
+          { title: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks', author: 'Lewis et al. · NeurIPS 2020', type: 'Paper', href: 'https://arxiv.org/abs/2005.11401', description: 'The original RAG paper from Facebook AI Research — establishes the architecture that remains the dominant approach for grounding LLMs in factual sources.' },
+          { title: 'TruthfulQA: Measuring How Models Mimic Human Falsehoods', author: 'Lin et al. · ACL 2022', type: 'Paper', href: 'https://arxiv.org/abs/2109.07958', description: 'Introduces the benchmark that exposes how LLMs replicate popular misconceptions and why perplexity-based evaluation misses truthfulness entirely.' },
+          { title: 'Weapons of Math Destruction', author: 'Cathy O\'Neil · Crown Publishers', type: 'Book', href: 'https://www.amazon.com/dp/0553418815', description: 'A data scientist\'s account of what happens when algorithmic outputs are treated as ground truth — essential critical context for any AI deployment.' },
         ]} />
 
       </div>
@@ -1546,9 +1546,9 @@ function SelfImprovementArticle({ article, formattedDate }: { article: ReturnTyp
         </section>
 
         <RecommendedReading items={[
-          { title: 'Deep Work', author: 'Cal Newport · Grand Central Publishing', type: 'Book', description: 'The case for protecting blocks of distraction-free concentration as the scarcest and most valuable professional resource — now more relevant in an AI-assisted world.' },
-          { title: 'Four Thousand Weeks', author: 'Oliver Burkeman · Farrar, Straus and Giroux', type: 'Book', description: 'A philosophical reframe of productivity: you will never do everything, so the question is which constraints to accept — pairs directly with any AI leverage argument.' },
-          { title: 'Claude\'s Model Spec', author: 'Anthropic · anthropic.com', type: 'Article', description: 'Anthropic\'s public document on how Claude is trained to behave — the clearest published articulation of what responsible AI self-improvement actually means.' },
+          { title: 'Deep Work', author: 'Cal Newport · Grand Central Publishing', type: 'Book', href: 'https://www.amazon.com/dp/1455586692', description: 'The case for protecting blocks of distraction-free concentration as the scarcest and most valuable professional resource — now more relevant in an AI-assisted world.' },
+          { title: 'Four Thousand Weeks', author: 'Oliver Burkeman · Farrar, Straus and Giroux', type: 'Book', href: 'https://www.amazon.com/dp/0374159122', description: 'A philosophical reframe of productivity: you will never do everything, so the question is which constraints to accept — pairs directly with any AI leverage argument.' },
+          { title: 'Claude\'s Model Spec', author: 'Anthropic · anthropic.com', type: 'Article', href: 'https://www.anthropic.com/research/model-specification', description: 'Anthropic\'s public document on how Claude is trained to behave — the clearest published articulation of what responsible AI self-improvement actually means.' },
         ]} />
       </div>
     </div>
@@ -1815,9 +1815,9 @@ function CustomerJourneyArticle({ article, formattedDate }: { article: ReturnTyp
         </section>
 
         <RecommendedReading items={[
-          { title: 'This Is Service Design Doing', author: 'Stickdorn, Hormess, Lawrence & Schneider · O\'Reilly Media', type: 'Book', description: 'The most comprehensive practitioner handbook on service design — journey mapping, blueprinting, research synthesis, and implementation all covered with field-tested methods.' },
-          { title: 'Jobs to Be Done: Theory to Practice', author: 'Anthony Ulwick · Idea Bite Press', type: 'Book', description: 'The quantitative complement to qualitative journey work — JTBD provides the \'why\' that prevents journey maps from becoming outputs with no outcome.' },
-          { title: 'The Lean UX', author: 'Jeff Gothelf & Josh Seiden · O\'Reilly Media', type: 'Book', description: 'Integrates UX research (including journey work) into agile product cycles so insights actually ship — closes the gap between discovery and delivery.' },
+          { title: 'This Is Service Design Doing', author: 'Stickdorn, Hormess, Lawrence & Schneider · O\'Reilly Media', type: 'Book', href: 'https://www.amazon.com/dp/1491927399', description: 'The most comprehensive practitioner handbook on service design — journey mapping, blueprinting, research synthesis, and implementation all covered with field-tested methods.' },
+          { title: 'Jobs to Be Done: Theory to Practice', author: 'Anthony Ulwick · Idea Bite Press', type: 'Book', href: 'https://www.amazon.com/dp/0990576744', description: 'The quantitative complement to qualitative journey work — JTBD provides the \'why\' that prevents journey maps from becoming outputs with no outcome.' },
+          { title: 'The Lean UX', author: 'Jeff Gothelf & Josh Seiden · O\'Reilly Media', type: 'Book', href: 'https://www.amazon.com/dp/1491953608', description: 'Integrates UX research (including journey work) into agile product cycles so insights actually ship — closes the gap between discovery and delivery.' },
         ]} />
       </div>
     </div>
@@ -2078,9 +2078,9 @@ function MarketingFunnelArticle({ article, formattedDate }: { article: ReturnTyp
         </section>
 
         <RecommendedReading items={[
-          { title: 'Predictably Irrational', author: 'Dan Ariely · Harper Perennial', type: 'Book', description: 'Behavioural economics experiments that explain why standard funnel assumptions about rational buyers are wrong, and what actually moves people to act.' },
-          { title: 'Traction: How Any Startup Can Achieve Explosive Customer Growth', author: 'Gabriel Weinberg & Justin Mares', type: 'Book', description: 'A systematic framework for finding the acquisition channel that will move the needle — tests 19 channels against a Bullseye method rather than guessing.' },
-          { title: 'Hooked: How to Build Habit-Forming Products', author: 'Nir Eyal · Portfolio/Penguin', type: 'Book', description: 'The Hook model (Trigger → Action → Variable Reward → Investment) maps directly onto retention engineering in the lower funnel.' },
+          { title: 'Predictably Irrational', author: 'Dan Ariely · Harper Perennial', type: 'Book', href: 'https://www.amazon.com/dp/006135323X', description: 'Behavioural economics experiments that explain why standard funnel assumptions about rational buyers are wrong, and what actually moves people to act.' },
+          { title: 'Traction: How Any Startup Can Achieve Explosive Customer Growth', author: 'Gabriel Weinberg & Justin Mares', type: 'Book', href: 'https://www.amazon.com/dp/1591848369', description: 'A systematic framework for finding the acquisition channel that will move the needle — tests 19 channels against a Bullseye method rather than guessing.' },
+          { title: 'Hooked: How to Build Habit-Forming Products', author: 'Nir Eyal · Portfolio/Penguin', type: 'Book', href: 'https://www.amazon.com/dp/1591847788', description: 'The Hook model (Trigger → Action → Variable Reward → Investment) maps directly onto retention engineering in the lower funnel.' },
         ]} />
       </div>
     </div>
@@ -2402,9 +2402,9 @@ function MVPTractionArticle({ article, formattedDate }: { article: ReturnType<ty
         </section>
 
         <RecommendedReading items={[
-          { title: 'The Lean Startup', author: 'Eric Ries · Crown Business', type: 'Book', description: 'The book that codified build-measure-learn as a discipline — the MVP concept originated here, including the critical distinction between validated and vanity learning.' },
-          { title: 'Zero to One', author: 'Peter Thiel & Blake Masters · Crown Business', type: 'Book', description: 'Contrarian takes on competition, monopoly, and distribution that challenge the standard advice — particularly the chapter on sales as an engineering problem.' },
-          { title: 'The Mom Test', author: 'Rob Fitzpatrick · CreateSpace', type: 'Book', description: 'The most practical guide to customer interviews — teaches you to ask questions that surface real intent rather than polite encouragement.' },
+          { title: 'The Lean Startup', author: 'Eric Ries · Crown Business', type: 'Book', href: 'https://www.amazon.com/dp/0307887898', description: 'The book that codified build-measure-learn as a discipline — the MVP concept originated here, including the critical distinction between validated and vanity learning.' },
+          { title: 'Zero to One', author: 'Peter Thiel & Blake Masters · Crown Business', type: 'Book', href: 'https://www.amazon.com/dp/0804139296', description: 'Contrarian takes on competition, monopoly, and distribution that challenge the standard advice — particularly the chapter on sales as an engineering problem.' },
+          { title: 'The Mom Test', author: 'Rob Fitzpatrick · CreateSpace', type: 'Book', href: 'https://www.amazon.com/dp/1492180742', description: 'The most practical guide to customer interviews — teaches you to ask questions that surface real intent rather than polite encouragement.' },
         ]} />
 
         {/* Footer */}
@@ -2782,9 +2782,9 @@ function DesignTasteArticle({ article, formattedDate }: { article: ReturnType<ty
         </section>
 
         <RecommendedReading items={[
-          { title: 'The Design of Everyday Things', author: 'Don Norman · Basic Books', type: 'Book', description: 'The foundational text on human-centred design — affordances, signifiers, and feedback loops that explain why some interfaces feel obvious and others feel broken.' },
-          { title: 'Refactoring UI', author: 'Adam Wathan & Steve Schoger', type: 'Book', description: 'Practical visual design for developers: specific rules for spacing, typography, colour, and hierarchy that produce professional results without formal design training.' },
-          { title: 'Grid Systems in Graphic Design', author: 'Josef Müller-Brockmann · Niggli Verlag', type: 'Book', description: 'The original systematic treatment of typographic grids — understanding this makes every layout decision intentional rather than intuitive.' },
+          { title: 'The Design of Everyday Things', author: 'Don Norman · Basic Books', type: 'Book', href: 'https://www.amazon.com/dp/0465050654', description: 'The foundational text on human-centred design — affordances, signifiers, and feedback loops that explain why some interfaces feel obvious and others feel broken.' },
+          { title: 'Refactoring UI', author: 'Adam Wathan & Steve Schoger', type: 'Book', href: 'https://www.refactoringui.com/', description: 'Practical visual design for developers: specific rules for spacing, typography, colour, and hierarchy that produce professional results without formal design training.' },
+          { title: 'Grid Systems in Graphic Design', author: 'Josef Müller-Brockmann · Niggli Verlag', type: 'Book', href: 'https://www.amazon.com/dp/3721201450', description: 'The original systematic treatment of typographic grids — understanding this makes every layout decision intentional rather than intuitive.' },
         ]} />
 
       </div>
@@ -3069,9 +3069,9 @@ Inflated vocabulary standing in for a real claim
         </section>
 
         <RecommendedReading items={[
-          { title: 'They Ask You Answer', author: 'Marcus Sheridan · Wiley', type: 'Book', description: 'A revenue-first approach to content: answer every question your customers ask, with full transparency — the method behind River Pools becoming the most-visited pool site on the internet.' },
-          { title: 'Google Search Quality Rater Guidelines', author: 'Google · google.com/search/docs', type: 'Article', description: 'The actual document Google\'s human quality raters use — reading it directly tells you what E-E-A-T means in practice, not in interpretation.' },
-          { title: 'Building a StoryBrand', author: 'Donald Miller · HarperCollins Leadership', type: 'Book', description: 'Seven-part narrative framework that clarifies brand messaging — prevents the expert\'s curse from making content incomprehensible to the audience it\'s meant to help.' },
+          { title: 'They Ask You Answer', author: 'Marcus Sheridan · Wiley', type: 'Book', href: 'https://www.amazon.com/dp/1119610141', description: 'A revenue-first approach to content: answer every question your customers ask, with full transparency — the method behind River Pools becoming the most-visited pool site on the internet.' },
+          { title: 'Google Search Quality Rater Guidelines', author: 'Google · google.com/search/docs', type: 'Article', href: 'https://developers.google.com/search/docs/quality-evaluator', description: 'The actual document Google\'s human quality raters use — reading it directly tells you what E-E-A-T means in practice, not in interpretation.' },
+          { title: 'Building a StoryBrand', author: 'Donald Miller · HarperCollins Leadership', type: 'Book', href: 'https://www.amazon.com/dp/0718033329', description: 'Seven-part narrative framework that clarifies brand messaging — prevents the expert\'s curse from making content incomprehensible to the audience it\'s meant to help.' },
         ]} />
 
       </div>
@@ -3464,9 +3464,9 @@ CREATE POLICY "users update own profile" ON profiles
         </section>
 
         <RecommendedReading items={[
-          { title: 'OWASP Top 10', author: 'OWASP Foundation · owasp.org', type: 'Article', description: 'The definitive ranked list of critical web application security risks, updated regularly by the open security community — the baseline for any security review.' },
-          { title: 'The Web Application Hacker\'s Handbook', author: 'Stuttard & Pinto · Wiley', type: 'Book', description: 'Comprehensive attack-and-defend coverage of SQL injection, authentication flaws, access control, and CSRF — understanding the attack is the prerequisite for the defence.' },
-          { title: 'Security Engineering', author: 'Ross Anderson · Wiley', type: 'Book', description: 'The most thorough academic treatment of building secure systems, covering cryptography, protocols, and psychology of security failure — freely available online.' },
+          { title: 'OWASP Top 10', author: 'OWASP Foundation · owasp.org', type: 'Article', href: 'https://owasp.org/www-project-top-ten/', description: 'The definitive ranked list of critical web application security risks, updated regularly by the open security community — the baseline for any security review.' },
+          { title: 'The Web Application Hacker\'s Handbook', author: 'Stuttard & Pinto · Wiley', type: 'Book', href: 'https://www.amazon.com/dp/1118026470', description: 'Comprehensive attack-and-defend coverage of SQL injection, authentication flaws, access control, and CSRF — understanding the attack is the prerequisite for the defence.' },
+          { title: 'Security Engineering', author: 'Ross Anderson · Wiley', type: 'Book', href: 'https://www.cl.cam.ac.uk/~rja14/book.html', description: 'The most thorough academic treatment of building secure systems, covering cryptography, protocols, and psychology of security failure — freely available online.' },
         ]} />
 
         {/* Back link */}
@@ -3794,9 +3794,9 @@ function AgenticArticle({ article, formattedDate }: { article: ReturnType<typeof
         </section>
 
         <RecommendedReading items={[
-          { title: 'ReAct: Synergizing Reasoning and Acting in Language Models', author: 'Yao et al. · arXiv 2022', type: 'Paper', description: 'The paper that established the Reason + Act loop as a viable LLM architecture — the conceptual foundation for every agent framework built since.' },
-          { title: 'Thinking, Fast and Slow', author: 'Daniel Kahneman · Farrar, Straus and Giroux', type: 'Book', description: 'The cognitive science behind when to trust fast intuitive outputs versus slow deliberate reasoning — maps directly onto when to use single-shot LLM calls versus multi-step agent loops.' },
-          { title: 'Agents', author: 'Lilian Weng · lilianweng.github.io', type: 'Article', description: 'The most widely cited technical overview of LLM agent architectures — planning, memory, tool use, and multi-agent coordination explained with both diagrams and implementation detail.' },
+          { title: 'ReAct: Synergizing Reasoning and Acting in Language Models', author: 'Yao et al. · arXiv 2022', type: 'Paper', href: 'https://arxiv.org/abs/2210.03629', description: 'The paper that established the Reason + Act loop as a viable LLM architecture — the conceptual foundation for every agent framework built since.' },
+          { title: 'Thinking, Fast and Slow', author: 'Daniel Kahneman · Farrar, Straus and Giroux', type: 'Book', href: 'https://www.amazon.com/dp/0374533555', description: 'The cognitive science behind when to trust fast intuitive outputs versus slow deliberate reasoning — maps directly onto when to use single-shot LLM calls versus multi-step agent loops.' },
+          { title: 'Agents', author: 'Lilian Weng · lilianweng.github.io', type: 'Article', href: 'https://lilianweng.github.io/posts/2023-06-23-agent/', description: 'The most widely cited technical overview of LLM agent architectures — planning, memory, tool use, and multi-agent coordination explained with both diagrams and implementation detail.' },
         ]} />
 
         {/* Footer */}
@@ -4211,9 +4211,9 @@ function RAGArticle({ article, formattedDate }: { article: ReturnType<typeof get
         </section>
 
         <RecommendedReading items={[
-          { title: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks', author: 'Lewis et al. · NeurIPS 2020', type: 'Paper', description: 'The original RAG paper — establishes the retriever-generator architecture and shows it outperforms parametric models on open-domain QA while remaining updateable without retraining.' },
-          { title: 'Dense Passage Retrieval for Open-Domain Question Answering', author: 'Karpukhin et al. · EMNLP 2020', type: 'Paper', description: 'Introduces the bi-encoder retrieval approach that powers most production RAG systems — shows dense retrieval substantially outperforms BM25 on knowledge tasks.' },
-          { title: 'Speech and Language Processing', author: 'Daniel Jurafsky & James Martin · Stanford University (draft)', type: 'Book', description: 'The standard NLP textbook, with up-to-date chapters on dense retrieval, vector semantics, and language model architecture — freely available at web.stanford.edu/~jurafsky/slp3.' },
+          { title: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks', author: 'Lewis et al. · NeurIPS 2020', type: 'Paper', href: 'https://arxiv.org/abs/2005.11401', description: 'The original RAG paper — establishes the retriever-generator architecture and shows it outperforms parametric models on open-domain QA while remaining updateable without retraining.' },
+          { title: 'Dense Passage Retrieval for Open-Domain Question Answering', author: 'Karpukhin et al. · EMNLP 2020', type: 'Paper', href: 'https://arxiv.org/abs/2004.04906', description: 'Introduces the bi-encoder retrieval approach that powers most production RAG systems — shows dense retrieval substantially outperforms BM25 on knowledge tasks.' },
+          { title: 'Speech and Language Processing', author: 'Daniel Jurafsky & James Martin · Stanford University (draft)', type: 'Book', href: 'https://web.stanford.edu/~jurafsky/slp3/', description: 'The standard NLP textbook, with up-to-date chapters on dense retrieval, vector semantics, and language model architecture — freely available at web.stanford.edu/~jurafsky/slp3.' },
         ]} />
 
         <div className="border-t border-bk-rule pt-8">
@@ -4603,9 +4603,9 @@ function AEOArticle({ article, formattedDate }: { article: ReturnType<typeof get
         </section>
 
         <RecommendedReading items={[
-          { title: 'They Ask You Answer', author: 'Marcus Sheridan · Wiley', type: 'Book', description: 'The method that anticipated answer-engine optimisation before the term existed — full transparency, direct answers, and genuine expertise as the content strategy.' },
-          { title: 'How Google Search Works', author: 'Google Search Central · developers.google.com', type: 'Article', description: 'Google\'s own explanation of crawling, indexing, and ranking — reading primary source documentation removes the guesswork from optimisation decisions.' },
-          { title: 'Content Chemistry', author: 'Andy Crestodina · Orbit Media Studios', type: 'Book', description: 'A data-driven content marketing handbook from someone who has surveyed thousands of bloggers annually for a decade — grounded in evidence rather than theory.' },
+          { title: 'They Ask You Answer', author: 'Marcus Sheridan · Wiley', type: 'Book', href: 'https://www.amazon.com/dp/1119610141', description: 'The method that anticipated answer-engine optimisation before the term existed — full transparency, direct answers, and genuine expertise as the content strategy.' },
+          { title: 'How Google Search Works', author: 'Google Search Central · developers.google.com', type: 'Article', href: 'https://developers.google.com/search/docs/fundamentals/how-search-works', description: 'Google\'s own explanation of crawling, indexing, and ranking — reading primary source documentation removes the guesswork from optimisation decisions.' },
+          { title: 'Content Chemistry', author: 'Andy Crestodina · Orbit Media Studios', type: 'Book', href: 'https://www.amazon.com/dp/0988415631', description: 'A data-driven content marketing handbook from someone who has surveyed thousands of bloggers annually for a decade — grounded in evidence rather than theory.' },
         ]} />
 
         <div className="border-t border-bk-rule pt-8">
@@ -4913,9 +4913,9 @@ function CodexArticle({ article, formattedDate }: { article: ReturnType<typeof g
         </section>
 
         <RecommendedReading items={[
-          { title: 'Evaluating Large Language Models Trained on Code (HumanEval)', author: 'Chen et al. · arXiv 2021', type: 'Paper', description: 'The paper that introduced the HumanEval benchmark and established code generation as a measurable LLM capability — the methodology behind most subsequent coding benchmarks.' },
-          { title: 'The Impact of AI on Developer Productivity: Evidence from GitHub Copilot', author: 'Peng et al. · arXiv 2023', type: 'Paper', description: 'A controlled experiment showing Copilot users completed tasks 55% faster — the most rigorous published study on AI-assisted coding productivity to date.' },
-          { title: 'A Philosophy of Software Design', author: 'John Ousterhout · Yaknyam Press', type: 'Book', description: 'The clearest articulation of what good code design actually means — essential for evaluating AI-generated code rather than accepting it uncritically.' },
+          { title: 'Evaluating Large Language Models Trained on Code (HumanEval)', author: 'Chen et al. · arXiv 2021', type: 'Paper', href: 'https://arxiv.org/abs/2107.03374', description: 'The paper that introduced the HumanEval benchmark and established code generation as a measurable LLM capability — the methodology behind most subsequent coding benchmarks.' },
+          { title: 'The Impact of AI on Developer Productivity: Evidence from GitHub Copilot', author: 'Peng et al. · arXiv 2023', type: 'Paper', href: 'https://arxiv.org/abs/2302.06590', description: 'A controlled experiment showing Copilot users completed tasks 55% faster — the most rigorous published study on AI-assisted coding productivity to date.' },
+          { title: 'A Philosophy of Software Design', author: 'John Ousterhout · Yaknyam Press', type: 'Book', href: 'https://www.amazon.com/dp/1732102201', description: 'The clearest articulation of what good code design actually means — essential for evaluating AI-generated code rather than accepting it uncritically.' },
         ]} />
 
         {/* Back link */}
@@ -5274,9 +5274,9 @@ tags: []
         </section>
 
         <RecommendedReading items={[
-          { title: 'Building a Second Brain', author: 'Tiago Forte · Atria Books', type: 'Book', description: 'The PARA method (Projects, Areas, Resources, Archive) for organising digital notes — the framework most compatible with Obsidian\'s folder and tag structure.' },
-          { title: 'How to Take Smart Notes', author: 'Sönke Ahrens · Independently Published', type: 'Book', description: 'An explanation of Niklas Luhmann\'s Zettelkasten method — the practice behind Obsidian\'s linked-thinking design and the origin of the evergreen note concept.' },
-          { title: 'Getting Things Done', author: 'David Allen · Penguin Books', type: 'Book', description: 'The capture-clarify-organise-reflect-engage workflow that complements any PKM system — particularly relevant to the inbox and action-item layer of a multi-tool stack.' },
+          { title: 'Building a Second Brain', author: 'Tiago Forte · Atria Books', type: 'Book', href: 'https://www.amazon.com/dp/1982167386', description: 'The PARA method (Projects, Areas, Resources, Archive) for organising digital notes — the framework most compatible with Obsidian\'s folder and tag structure.' },
+          { title: 'How to Take Smart Notes', author: 'Sönke Ahrens · Independently Published', type: 'Book', href: 'https://www.amazon.com/dp/1542866502', description: 'An explanation of Niklas Luhmann\'s Zettelkasten method — the practice behind Obsidian\'s linked-thinking design and the origin of the evergreen note concept.' },
+          { title: 'Getting Things Done', author: 'David Allen · Penguin Books', type: 'Book', href: 'https://www.amazon.com/dp/0143126563', description: 'The capture-clarify-organise-reflect-engage workflow that complements any PKM system — particularly relevant to the inbox and action-item layer of a multi-tool stack.' },
         ]} />
 
         {/* Back link */}
@@ -5556,9 +5556,9 @@ function CreativeToolsArticle({ article, formattedDate }: { article: ReturnType<
         </section>
 
         <RecommendedReading items={[
-          { title: 'Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding (Imagen)', author: 'Saharia et al. · Google Research, arXiv 2022', type: 'Paper', description: 'The research behind Google\'s Imagen model — explains how cascaded diffusion with large language model conditioning produces coherent, detailed images from text.' },
-          { title: 'The Creativity Code', author: 'Marcus du Sautoy · Harvard University Press', type: 'Book', description: 'An Oxford mathematician examines whether machines can genuinely create — covers generative art, music, and language with both technical precision and philosophical depth.' },
-          { title: 'Ways of Seeing', author: 'John Berger · Penguin Modern Classics', type: 'Book', description: 'The foundational text on how cultural context shapes visual interpretation — essential for understanding what it means to direct rather than simply prompt an image model.' },
+          { title: 'Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding (Imagen)', author: 'Saharia et al. · Google Research, arXiv 2022', type: 'Paper', href: 'https://arxiv.org/abs/2205.11487', description: 'The research behind Google\'s Imagen model — explains how cascaded diffusion with large language model conditioning produces coherent, detailed images from text.' },
+          { title: 'The Creativity Code', author: 'Marcus du Sautoy · Harvard University Press', type: 'Book', href: 'https://www.amazon.com/dp/0674239571', description: 'An Oxford mathematician examines whether machines can genuinely create — covers generative art, music, and language with both technical precision and philosophical depth.' },
+          { title: 'Ways of Seeing', author: 'John Berger · Penguin Modern Classics', type: 'Book', href: 'https://www.amazon.com/dp/0140135154', description: 'The foundational text on how cultural context shapes visual interpretation — essential for understanding what it means to direct rather than simply prompt an image model.' },
         ]} />
 
         {/* Footer */}
@@ -5831,9 +5831,9 @@ hermes gateway install   # install as a systemd service (runs on reboot)`}</Code
         </section>
 
         <RecommendedReading items={[
-          { title: 'MemGPT: Towards LLMs as Operating Systems', author: 'Packer et al. · arXiv 2023', type: 'Paper', description: 'The research prototype that formalized the idea of giving LLMs a tiered memory system — main context as RAM, external storage as disk — directly influencing persistent agent design.' },
-          { title: 'Building Effective Agents', author: 'Anthropic · anthropic.com/research', type: 'Article', description: 'Anthropic\'s published guidance on agent architecture patterns — covers memory, tool use, and orchestration with concrete implementation examples.' },
-          { title: 'The Alignment Problem', author: 'Brian Christian · W. W. Norton', type: 'Book', description: 'A journalist\'s clear-eyed account of what it actually takes to make AI systems do what we want — grounding reading before deploying any autonomous agent.' },
+          { title: 'MemGPT: Towards LLMs as Operating Systems', author: 'Packer et al. · arXiv 2023', type: 'Paper', href: 'https://arxiv.org/abs/2310.08560', description: 'The research prototype that formalized the idea of giving LLMs a tiered memory system — main context as RAM, external storage as disk — directly influencing persistent agent design.' },
+          { title: 'Building Effective Agents', author: 'Anthropic · anthropic.com/research', type: 'Article', href: 'https://www.anthropic.com/research/building-effective-agents', description: 'Anthropic\'s published guidance on agent architecture patterns — covers memory, tool use, and orchestration with concrete implementation examples.' },
+          { title: 'The Alignment Problem', author: 'Brian Christian · W. W. Norton', type: 'Book', href: 'https://www.amazon.com/dp/0393635821', description: 'A journalist\'s clear-eyed account of what it actually takes to make AI systems do what we want — grounding reading before deploying any autonomous agent.' },
         ]} />
 
         {/* Footer */}
@@ -6111,8 +6111,8 @@ function TokenmaxxingArticle({ article, formattedDate }: { article: ReturnType<t
         </section>
 
         <RecommendedReading items={[
-          { title: 'Deep Work', author: 'Cal Newport · Grand Central Publishing', type: 'Book', description: 'The intellectual case for protecting distraction-free concentration — the argument that depth, not volume, is the unit of knowledge work productivity.' },
-          { title: 'Thinking, Fast and Slow', author: 'Daniel Kahneman · Farrar, Straus and Giroux', type: 'Book', description: 'System 1 and System 2 thinking — the cognitive science foundation for understanding when to offload to AI versus when human judgment is non-negotiable.' },
+          { title: 'Deep Work', author: 'Cal Newport · Grand Central Publishing', type: 'Book', href: 'https://www.amazon.com/dp/1455586692', description: 'The intellectual case for protecting distraction-free concentration — the argument that depth, not volume, is the unit of knowledge work productivity.' },
+          { title: 'Thinking, Fast and Slow', author: 'Daniel Kahneman · Farrar, Straus and Giroux', type: 'Book', href: 'https://www.amazon.com/dp/0374533555', description: 'System 1 and System 2 thinking — the cognitive science foundation for understanding when to offload to AI versus when human judgment is non-negotiable.' },
           { title: 'Measuring Developer Productivity', author: 'McKinsey & Company · mckinsey.com', type: 'Article', description: 'A rigorous look at what productivity metrics actually capture versus what they miss — useful calibration for anyone tempted to measure AI leverage by tokens per hour.' },
         ]} />
 
@@ -6334,9 +6334,9 @@ Retry-After: 60`}</CodeBlock>
         </p>
 
         <RecommendedReading items={[
-          { title: 'Designing Distributed Systems', author: 'Brendan Burns · O\'Reilly Media', type: 'Book', description: 'Patterns and idioms for container-based distributed systems, covering rate limiting, load balancing, and fault tolerance.' },
-          { title: 'Rate Limiting, Cells, and GCRA', author: 'Stripe Engineering Blog', type: 'Article', description: 'How Stripe implements token-bucket rate limiting in production, with the math behind Generic Cell Rate Algorithm.' },
-          { title: 'The Art of Scalability', author: 'Martin Abbott & Michael Fisher · Addison-Wesley', type: 'Book', description: 'A practical framework for scaling people, process, and technology — including quota and throttle design at each scale dimension.' },
+          { title: 'Designing Distributed Systems', author: 'Brendan Burns · O\'Reilly Media', type: 'Book', href: 'https://www.amazon.com/dp/1491983647', description: 'Patterns and idioms for container-based distributed systems, covering rate limiting, load balancing, and fault tolerance.' },
+          { title: 'Rate Limiting, Cells, and GCRA', author: 'Stripe Engineering Blog', type: 'Article', href: 'https://stripe.com/blog/rate-limiters', description: 'How Stripe implements token-bucket rate limiting in production, with the math behind Generic Cell Rate Algorithm.' },
+          { title: 'The Art of Scalability', author: 'Martin Abbott & Michael Fisher · Addison-Wesley', type: 'Book', href: 'https://www.amazon.com/dp/0134032802', description: 'A practical framework for scaling people, process, and technology — including quota and throttle design at each scale dimension.' },
         ]} />
       </div>
     </div>
@@ -6635,9 +6635,9 @@ function DataVizArticle({ article, formattedDate }: { article: ReturnType<typeof
         </section>
 
         <RecommendedReading items={[
-          { title: 'The Visual Display of Quantitative Information', author: 'Edward Tufte · Graphics Press', type: 'Book', description: 'The definitive text on data graphics. Tufte\'s data-ink ratio principle alone changes how you evaluate every chart you produce.' },
-          { title: 'Storytelling with Data', author: 'Cole Nussbaumer Knaflic · Wiley', type: 'Book', description: 'Practical guide to turning spreadsheets into narratives that drive decisions — focused on business audiences, not academic ones.' },
-          { title: 'How Charts Lie', author: 'Alberto Cairo · W. W. Norton', type: 'Book', description: 'A journalist and visualization researcher explains the seven ways charts mislead, and how to read them critically.' },
+          { title: 'The Visual Display of Quantitative Information', author: 'Edward Tufte · Graphics Press', type: 'Book', href: 'https://www.edwardtufte.com/book/the-visual-display-of-quantitative-information/', description: 'The definitive text on data graphics. Tufte\'s data-ink ratio principle alone changes how you evaluate every chart you produce.' },
+          { title: 'Storytelling with Data', author: 'Cole Nussbaumer Knaflic · Wiley', type: 'Book', href: 'https://www.amazon.com/dp/1119002257', description: 'Practical guide to turning spreadsheets into narratives that drive decisions — focused on business audiences, not academic ones.' },
+          { title: 'How Charts Lie', author: 'Alberto Cairo · W. W. Norton', type: 'Book', href: 'https://www.amazon.com/dp/1324001569', description: 'A journalist and visualization researcher explains the seven ways charts mislead, and how to read them critically.' },
         ]} />
 
         {/* Footer */}
@@ -6949,9 +6949,9 @@ function EmailMarketingArticle({ article, formattedDate }: { article: ReturnType
         </section>
 
         <RecommendedReading items={[
-          { title: 'Permission Marketing', author: 'Seth Godin · Simon & Schuster', type: 'Book', description: 'The foundational argument that earned attention outperforms interruption marketing — written in 1999, more relevant now than ever.' },
-          { title: 'Email Marketing Rules', author: 'Chad White · CreateSpace', type: 'Book', description: 'A structured playbook covering subscriber acquisition, segmentation, lifecycle flows, and deliverability from a senior industry analyst.' },
-          { title: 'Building a StoryBrand', author: 'Donald Miller · HarperCollins Leadership', type: 'Book', description: 'A seven-part messaging framework that clarifies copy at every funnel stage — applies directly to subject lines and nurture sequences.' },
+          { title: 'Permission Marketing', author: 'Seth Godin · Simon & Schuster', type: 'Book', href: 'https://www.amazon.com/dp/0684856360', description: 'The foundational argument that earned attention outperforms interruption marketing — written in 1999, more relevant now than ever.' },
+          { title: 'Email Marketing Rules', author: 'Chad White · CreateSpace', type: 'Book', href: 'https://www.amazon.com/dp/1519546890', description: 'A structured playbook covering subscriber acquisition, segmentation, lifecycle flows, and deliverability from a senior industry analyst.' },
+          { title: 'Building a StoryBrand', author: 'Donald Miller · HarperCollins Leadership', type: 'Book', href: 'https://www.amazon.com/dp/0718033329', description: 'A seven-part messaging framework that clarifies copy at every funnel stage — applies directly to subject lines and nurture sequences.' },
         ]} />
 
         {/* Footer */}
@@ -7345,9 +7345,9 @@ function N8NArticle({ article, formattedDate }: { article: ReturnType<typeof get
         </section>
 
         <RecommendedReading items={[
-          { title: 'Work the System', author: 'Sam Carpenter · Greenleaf Book Group', type: 'Book', description: 'A systems-thinking manifesto for small business owners — argues that documenting and optimizing processes is the only durable growth strategy.' },
-          { title: 'The E-Myth Revisited', author: 'Michael Gerber · HarperCollins', type: 'Book', description: 'The classic case for systematizing every repeatable task so the business runs on procedures rather than heroics.' },
-          { title: 'Thinking in Systems', author: 'Donella Meadows · Chelsea Green Publishing', type: 'Book', description: 'The foundational text on systems dynamics — teaches you to see feedback loops and leverage points, which is exactly how good automation is designed.' },
+          { title: 'Work the System', author: 'Sam Carpenter · Greenleaf Book Group', type: 'Book', href: 'https://www.amazon.com/dp/160832253X', description: 'A systems-thinking manifesto for small business owners — argues that documenting and optimizing processes is the only durable growth strategy.' },
+          { title: 'The E-Myth Revisited', author: 'Michael Gerber · HarperCollins', type: 'Book', href: 'https://www.amazon.com/dp/0887307280', description: 'The classic case for systematizing every repeatable task so the business runs on procedures rather than heroics.' },
+          { title: 'Thinking in Systems', author: 'Donella Meadows · Chelsea Green Publishing', type: 'Book', href: 'https://www.amazon.com/dp/1603580557', description: 'The foundational text on systems dynamics — teaches you to see feedback loops and leverage points, which is exactly how good automation is designed.' },
         ]} />
 
       </div>
@@ -7620,9 +7620,9 @@ function ChineseLLMsArticle({ article, formattedDate }: { article: ReturnType<ty
         </section>
 
         <RecommendedReading items={[
-          { title: 'DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning', author: 'DeepSeek AI · arXiv 2025', type: 'Paper', description: 'The full technical report behind DeepSeek-R1 — shows exactly how a Chinese lab matched frontier reasoning at a fraction of the reported cost.' },
-          { title: 'The Coming Wave', author: 'Mustafa Suleyman · Crown Currency', type: 'Book', description: 'By the co-founder of DeepMind and current CEO of Microsoft AI — a serious argument about AI containment that doesn\'t flinch from the geopolitical dimension.' },
-          { title: 'On the Measure of Intelligence', author: 'François Chollet · arXiv 2019', type: 'Paper', description: 'Reframes what we mean by AI capability and benchmarking — useful context for evaluating open-weight model claims with appropriate skepticism.' },
+          { title: 'DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning', author: 'DeepSeek AI · arXiv 2025', type: 'Paper', href: 'https://arxiv.org/abs/2501.12948', description: 'The full technical report behind DeepSeek-R1 — shows exactly how a Chinese lab matched frontier reasoning at a fraction of the reported cost.' },
+          { title: 'The Coming Wave', author: 'Mustafa Suleyman · Crown Currency', type: 'Book', href: 'https://www.amazon.com/dp/0593593952', description: 'By the co-founder of DeepMind and current CEO of Microsoft AI — a serious argument about AI containment that doesn\'t flinch from the geopolitical dimension.' },
+          { title: 'On the Measure of Intelligence', author: 'François Chollet · arXiv 2019', type: 'Paper', href: 'https://arxiv.org/abs/1911.01547', description: 'Reframes what we mean by AI capability and benchmarking — useful context for evaluating open-weight model claims with appropriate skepticism.' },
         ]} />
 
       </div>
@@ -7762,9 +7762,9 @@ function OSINTArticle({ article, formattedDate }: { article: ReturnType<typeof g
         </p>
 
         <RecommendedReading items={[
-          { title: 'Open Source Intelligence Techniques', author: 'Michael Bazzell · IntelTechniques', type: 'Book', description: 'The practitioner\'s handbook for OSINT: search operators, metadata extraction, social graph analysis, and investigative workflows.' },
-          { title: 'The Art of Invisibility', author: 'Kevin Mitnick · Little, Brown and Company', type: 'Book', description: 'The world\'s most famous hacker explains what data you leave behind and how adversaries collect it — essential threat-model reading.' },
-          { title: 'Adversarial Examples Are Not Easily Detected', author: 'Carlini & Wagner · ACM CCS 2017', type: 'Paper', description: 'Seminal paper showing that AI-based detection systems are themselves vulnerable to targeted manipulation — directly relevant to AI-augmented OSINT.' },
+          { title: 'Open Source Intelligence Techniques', author: 'Michael Bazzell · IntelTechniques', type: 'Book', href: 'https://www.amazon.com/dp/B0BRDLYX75', description: 'The practitioner\'s handbook for OSINT: search operators, metadata extraction, social graph analysis, and investigative workflows.' },
+          { title: 'The Art of Invisibility', author: 'Kevin Mitnick · Little, Brown and Company', type: 'Book', href: 'https://www.amazon.com/dp/0316380504', description: 'The world\'s most famous hacker explains what data you leave behind and how adversaries collect it — essential threat-model reading.' },
+          { title: 'Adversarial Examples Are Not Easily Detected', author: 'Carlini & Wagner · ACM CCS 2017', type: 'Paper', href: 'https://arxiv.org/abs/1705.07263', description: 'Seminal paper showing that AI-based detection systems are themselves vulnerable to targeted manipulation — directly relevant to AI-augmented OSINT.' },
         ]} />
       </article>
     </div>
@@ -8054,9 +8054,9 @@ function PromptInjectionArticle({ article, formattedDate }: { article: ReturnTyp
         </section>
 
         <RecommendedReading items={[
-          { title: 'OWASP Top 10 for Large Language Model Applications', author: 'OWASP Foundation · owasp.org', type: 'Article', description: 'The industry-standard risk list for LLM deployments, with prompt injection ranked #1. Essential reading before shipping any LLM-powered feature.' },
-          { title: 'Prompt Injection Attacks Against GPT-3', author: 'Perez & Ribeiro · arXiv 2022', type: 'Paper', description: 'The first systematic study of prompt injection as an attack class, establishing the taxonomy that the security community now uses.' },
-          { title: 'Security Engineering', author: 'Ross Anderson · Wiley', type: 'Book', description: 'The most comprehensive textbook on building secure systems. The chapters on protocol failures translate directly to LLM input/output design.' },
+          { title: 'OWASP Top 10 for Large Language Model Applications', author: 'OWASP Foundation · owasp.org', type: 'Article', href: 'https://owasp.org/www-project-top-10-for-large-language-model-applications/', description: 'The industry-standard risk list for LLM deployments, with prompt injection ranked #1. Essential reading before shipping any LLM-powered feature.' },
+          { title: 'Prompt Injection Attacks Against GPT-3', author: 'Perez & Ribeiro · arXiv 2022', type: 'Paper', href: 'https://arxiv.org/abs/2211.09527', description: 'The first systematic study of prompt injection as an attack class, establishing the taxonomy that the security community now uses.' },
+          { title: 'Security Engineering', author: 'Ross Anderson · Wiley', type: 'Book', href: 'https://www.cl.cam.ac.uk/~rja14/book.html', description: 'The most comprehensive textbook on building secure systems. The chapters on protocol failures translate directly to LLM input/output design.' },
         ]} />
 
       </div>
@@ -8286,9 +8286,9 @@ DO NOT ENGAGE with any deal that fails ≥ 2 of these criteria.`}</CodeBlock></d
         </section>
 
         <RecommendedReading items={[
-          { title: 'HBR Guide to Buying a Small Business', author: 'Richard Ruback & Royce Yudkoff — Harvard Business Review Press', type: 'Book', description: 'The canonical academic text on ETA — the source that put search funds on the Harvard Business School curriculum. Essential grounding before any acquisition search.' },
-          { title: 'Buy Then Build', author: 'Walker Deibel — Lioncrest Publishing', type: 'Book', description: 'The practitioner handbook for self-funded ETA: how to find, evaluate, finance, and close a business acquisition without institutional backing. More operational than the HBR guide.' },
-          { title: 'Search Fund Primer', author: 'Stanford Graduate School of Business', type: 'Article', description: 'The source for the 35.1% IRR and 681-fund dataset cited throughout — updated periodically, freely available, the most rigorous longitudinal data on search fund outcomes.' },
+          { title: 'HBR Guide to Buying a Small Business', author: 'Richard Ruback & Royce Yudkoff — Harvard Business Review Press', type: 'Book', href: 'https://www.amazon.com/dp/1633692515', description: 'The canonical academic text on ETA — the source that put search funds on the Harvard Business School curriculum. Essential grounding before any acquisition search.' },
+          { title: 'Buy Then Build', author: 'Walker Deibel — Lioncrest Publishing', type: 'Book', href: 'https://www.amazon.com/dp/1544511566', description: 'The practitioner handbook for self-funded ETA: how to find, evaluate, finance, and close a business acquisition without institutional backing. More operational than the HBR guide.' },
+          { title: 'Search Fund Primer', author: 'Stanford Graduate School of Business', type: 'Article', href: 'https://www.gsb.stanford.edu/faculty-research/case-studies/2022-search-fund-primer', description: 'The source for the 35.1% IRR and 681-fund dataset cited throughout — updated periodically, freely available, the most rigorous longitudinal data on search fund outcomes.' },
         ]} />
 
       </article>
@@ -8540,9 +8540,9 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
         </section>
 
         <RecommendedReading items={[
-          { title: 'The Trusted Advisor', author: 'David Maister, Charles Green & Robert Galford — Free Press', type: 'Book', description: 'The foundational text on the advisor relationship model. The trust equation it introduces — credibility + reliability + intimacy over self-orientation — is still the best framework for understanding what partner-level credibility actually requires.' },
-          { title: 'Flawless Consulting', author: 'Peter Block — Pfeiffer', type: 'Book', description: 'The canonical practitioner guide to engaging clients authentically: getting to the real problem, structuring the engagement for genuine ownership rather than dependency, and avoiding the patterns that keep consultants in a permanent vendor position.' },
-          { title: 'The McKinsey Way', author: 'Ethan Rasiel — McGraw-Hill', type: 'Book', description: 'The practitioner\'s guide to hypothesis-first, structured problem-solving as a consulting methodology. The diagnostic discipline this article builds on — start with a falsifiable hypothesis, test it, revise — is exactly what this book teaches at practitioner level.' },
+          { title: 'The Trusted Advisor', author: 'David Maister, Charles Green & Robert Galford — Free Press', type: 'Book', href: 'https://www.amazon.com/dp/0743207667', description: 'The foundational text on the advisor relationship model. The trust equation it introduces — credibility + reliability + intimacy over self-orientation — is still the best framework for understanding what partner-level credibility actually requires.' },
+          { title: 'Flawless Consulting', author: 'Peter Block — Pfeiffer', type: 'Book', href: 'https://www.amazon.com/dp/0787948039', description: 'The canonical practitioner guide to engaging clients authentically: getting to the real problem, structuring the engagement for genuine ownership rather than dependency, and avoiding the patterns that keep consultants in a permanent vendor position.' },
+          { title: 'The McKinsey Way', author: 'Ethan Rasiel — McGraw-Hill', type: 'Book', href: 'https://www.amazon.com/dp/0070534489', description: 'The practitioner\'s guide to hypothesis-first, structured problem-solving as a consulting methodology. The diagnostic discipline this article builds on — start with a falsifiable hypothesis, test it, revise — is exactly what this book teaches at practitioner level.' },
         ]} />
 
       </article>
@@ -8558,41 +8558,41 @@ function ConsultingArticle({ article, formattedDate }: { article: ReturnType<typ
 
 function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof getArticleBySlug> & object; formattedDate: string }) {
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-bk-slate min-h-screen">
       {/* Back nav */}
       <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
         <Link
           href="/articles"
-          className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
+          className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200"
         >
           ← Field Notes
         </Link>
       </div>
 
       {/* Header */}
-      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-brand-concrete">
+      <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-cobalt border border-brand-cobalt/40 px-3 py-1.5">
+          <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">
             {article!.category}
           </span>
-          <span className="font-sans text-[11px] text-brand-muted">{formattedDate}</span>
-          <span className="font-sans text-[11px] text-brand-muted">·</span>
-          <span className="font-sans text-[11px] text-brand-muted">{article!.readTime}</span>
+          <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+          <span className="font-sans text-[11px] text-bk-muted">·</span>
+          <span className="font-sans text-[11px] text-bk-muted">{article!.readTime}</span>
         </div>
 
-        <h1 className="font-display text-7xl md:text-9xl lg:text-[120px] text-brand-black leading-none tracking-tightest mb-4">
+        <h1 className="font-book font-bold text-7xl md:text-9xl lg:text-[120px] text-bk-parchment leading-none tracking-normal mb-4">
           THE<br />
           JUDGMENT<br />
-          <span className="text-brand-cobalt">GAP.</span>
+          <span className="text-bk-gold">GAP.</span>
         </h1>
 
-        <p className="font-sans text-lg md:text-xl text-brand-black/70 leading-relaxed max-w-2xl mt-6">
+        <p className="font-sans text-lg md:text-xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
           {article!.subtitle}
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6">
           {article!.tags.map((tag) => (
-            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-brand-muted border border-brand-concrete px-2.5 py-1">
+            <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-muted border border-bk-rule px-2.5 py-1">
               {tag}
             </span>
           ))}
@@ -8604,15 +8604,15 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
 
         {/* Lede */}
         <section>
-          <div className="border-l-2 border-brand-cobalt pl-6 space-y-4">
-            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+          <div className="border-l-2 border-bk-gold pl-6 space-y-4">
+            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
               The 2026 DXP market is worth $17.82 billion. That figure is not a measure of how differentiated the
               category has become &mdash; it&rsquo;s a measure of how necessary managed digital experiences are now
               considered to be. The market&rsquo;s verdict: you can&rsquo;t leave the coordination of your channels,
               content, and customer data to improvisation. The category&rsquo;s problem: buying a platform
               doesn&rsquo;t coordinate anything for you.
             </p>
-            <p className="font-sans text-base text-brand-black/80 leading-relaxed">
+            <p className="font-sans text-base text-bk-parchment/80 leading-relaxed">
               Every serious DXP in 2026 &mdash; AEM, Sitecore, Contentful, Sanity, Optimizely &mdash; ships with
               content management, personalization, segmentation, A/B testing, and AI-assisted authoring. The feature
               list is no longer a differentiator. What separates a genuinely good digital experience from a mediocre
@@ -8622,12 +8622,12 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
           </div>
           <Callout label="Key Takeaways" className="mt-8">
             <ul className="space-y-1.5 list-none">
-              <li><span className="text-brand-cobalt mr-2">—</span>The DXP category has commoditized at the feature level. Platform choice matters less than how intelligently you orchestrate the stack you have.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Composable/MACH buys flexibility and vendor independence. Unified (AEM-style) buys tighter integration and faster initial delivery. Neither is universally correct.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Structure before surface: a beautiful interface on a confused information architecture is still a confused experience.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>Personalization only works if the underlying data is behavioral and current &mdash; not a one-time persona built at kickoff. The over-personalization failure mode is real and under-discussed.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>The genuinely new AI capability in 2026 is agentic orchestration: agents handling combinatorial experimentation under human direction, not AI-generated copy.</li>
-              <li><span className="text-brand-cobalt mr-2">—</span>AEO/GEO performance is now a first-class DXP metric. How your experience performs when an AI assistant is navigating it matters as much as how it performs for a human.</li>
+              <li><span className="text-bk-gold mr-2">—</span>The DXP category has commoditized at the feature level. Platform choice matters less than how intelligently you orchestrate the stack you have.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Composable/MACH buys flexibility and vendor independence. Unified (AEM-style) buys tighter integration and faster initial delivery. Neither is universally correct.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Structure before surface: a beautiful interface on a confused information architecture is still a confused experience.</li>
+              <li><span className="text-bk-gold mr-2">—</span>Personalization only works if the underlying data is behavioral and current &mdash; not a one-time persona built at kickoff. The over-personalization failure mode is real and under-discussed.</li>
+              <li><span className="text-bk-gold mr-2">—</span>The genuinely new AI capability in 2026 is agentic orchestration: agents handling combinatorial experimentation under human direction, not AI-generated copy.</li>
+              <li><span className="text-bk-gold mr-2">—</span>AEO/GEO performance is now a first-class DXP metric. How your experience performs when an AI assistant is navigating it matters as much as how it performs for a human.</li>
             </ul>
           </Callout>
         </section>
@@ -8636,14 +8636,14 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="01" title="What&apos;s actually table stakes" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             74% of enterprises are expected to have integrated AI-driven capabilities into their digital experience
             stack by 2026. 90% of consumers now expect seamless cross-channel experiences as a baseline, not a
             feature. Personalization leaders generate 40% more revenue than average performers. These numbers are
             cited constantly &mdash; and they create a specific pressure: to buy and configure every capability a
             platform offers, rather than to think carefully about which ones serve this particular experience.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
             The honest read: platform vendors have largely caught up to each other. CMS, personalization engine,
             CDP integration, A/B testing, commerce connectors, AI authoring assistance &mdash; the checklist is
             nearly identical across every serious contender. Buying the platform with the longer feature list is
@@ -8652,15 +8652,15 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
           </p>
 
           <figure className="my-8">
-            <div className="border border-brand-concrete overflow-hidden">
+            <div className="border border-bk-rule overflow-hidden">
               <DXPLayersDiagram />
             </div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
               The six layers of a digital experience. Each one can be purchased. Only the judgment connecting them can&rsquo;t.
             </figcaption>
           </figure>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             The practical consequence: before evaluating any platform or starting any design work, rank the actual
             business goals by impact for this specific project. Personalization, omnichannel publishing, global
             content operations, commerce integration &mdash; which of these actually moves the outcome you&rsquo;re
@@ -8673,12 +8673,12 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="02" title="The architecture decision" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             The dominant architectural trend in 2026 is composable, MACH-style architecture &mdash; Microservices,
             API-first, Cloud-native, Headless. The pitch: best-of-breed components assembled and swapped without
             full platform replacement. Vendor independence as a structural property, not a negotiating position.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
             The trade-off is real. Composable buys flexibility at the cost of integration overhead. A unified
             platform (AEM, Sitecore) buys tighter out-of-box integration at the cost of vendor lock-in and
             constraint by the platform&rsquo;s own roadmap. The right choice is not a market trend &mdash; it
@@ -8686,25 +8686,25 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
           </p>
 
           <figure className="my-8">
-            <div className="border border-brand-concrete overflow-hidden">
+            <div className="border border-bk-rule overflow-hidden">
               <ComposableVsUnifiedDiagram />
             </div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
               Composable vs. unified: a genuine trade-off, not a generational upgrade.
             </figcaption>
           </figure>
 
-          <div className="space-y-0 border border-brand-concrete mt-6">
+          <div className="space-y-0 border border-bk-rule mt-6">
             {[
               { label: 'Choose composable when', detail: 'The experience you\'re building is genuinely non-standard — custom interaction patterns, multi-vendor data, or a frontend the platform\'s own rendering can\'t serve. The flexibility cost is real.' },
               { label: 'Choose unified when', detail: 'Speed and integration matter more than flexibility. You\'re building within a known, well-supported ecosystem (AEM, Sitecore) and the experience fits the platform\'s model. Lock-in is a deliberate trade.' },
               { label: 'Avoid the default', detail: 'The most common failure: choosing composable because the trend says to, then spending 80% of the project on integration plumbing instead of on the experience itself.' },
             ].map(({ label, detail }, i, arr) => (
-              <div key={i} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
-                <div className="w-48 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/50">
-                  <span className="font-sans font-semibold text-sm text-brand-cobalt leading-snug block">{label}</span>
+              <div key={i} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-bk-rule' : ''}`}>
+                <div className="w-48 flex-shrink-0 p-4 border-r border-bk-rule bg-bk-deep/50">
+                  <span className="font-sans font-semibold text-sm text-bk-gold leading-snug block">{label}</span>
                 </div>
-                <p className="font-sans text-sm text-brand-black/70 p-4 leading-relaxed">{detail}</p>
+                <p className="font-sans text-sm text-bk-parchment/70 p-4 leading-relaxed">{detail}</p>
               </div>
             ))}
           </div>
@@ -8714,12 +8714,12 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="03" title="Structure before surface" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             Before any visual design, the underlying content and interaction structure has to be right: what&rsquo;s
             the actual path from entry to the intended outcome, what needs to exist at each step, what can be cut.
             A beautifully executed interface built on a confused structure is still a confused experience.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
             Real users don&rsquo;t take ideal paths. They loop, re-enter from different channels, revisit earlier
             steps after being interrupted. A digital experience designed only for the straight-through &ldquo;ideal&rdquo;
             path will misserve the often-large share of visitors who don&rsquo;t take it. That share is visible
@@ -8727,21 +8727,21 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
           </p>
 
           <figure className="my-8">
-            <div className="border border-brand-concrete overflow-hidden">
+            <div className="border border-bk-rule overflow-hidden">
               <DXPStructureFlowDiagram />
             </div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
               The real user journey is non-linear. Design for re-entry and loop-back, not just the straight-through path.
             </figcaption>
           </figure>
 
           <Callout label="Two non-negotiable gates">
-            <p className="font-sans text-sm text-brand-black/70 leading-relaxed mb-3">
+            <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed mb-3">
               <strong>Accessibility:</strong> WCAG compliance is a gating requirement, not a QA checklist item at
               the end. A digital experience that&rsquo;s inaccessible has already failed a meaningful share of its
               audience before personalization or content strategy are even evaluated.
             </p>
-            <p className="font-sans text-sm text-brand-black/70 leading-relaxed">
+            <p className="font-sans text-sm text-bk-parchment/70 leading-relaxed">
               <strong>Performance:</strong> Core Web Vitals (LCP, INP, CLS) are structural requirements, not
               optimizations. Slow load times compound every other problem &mdash; personalization can&rsquo;t recover
               a user who already left.
@@ -8753,14 +8753,14 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="04" title="Personalization, done honestly" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             Personalization only works if the underlying data is behavioral and current. A persona built at project
             kickoff and never updated is not a personalization strategy &mdash; it&rsquo;s an assumption that
             compounds over time. The customer journey map you maintain actively is the direct infrastructure for
             personalization decisions. If those two things aren&rsquo;t connected, the personalization isn&rsquo;t
             grounded in anything real.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
             First-party data strategy is now a structural requirement, not a nice-to-have. As third-party cookies
             continue their exit, the ability to personalize depends increasingly on data someone has genuinely given
             you: quiz funnels, preference centers, explicit opt-ins. Zero-party data collection &mdash; data the
@@ -8768,15 +8768,15 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
           </p>
 
           <figure className="my-8">
-            <div className="border border-brand-concrete overflow-hidden">
+            <div className="border border-bk-rule overflow-hidden">
               <PersonalizationSpectrumDiagram />
             </div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
               The over-personalization failure mode is real: an experience that feels like it&rsquo;s constantly guessing at you erodes trust faster than no personalization at all.
             </figcaption>
           </figure>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             The under-discussed failure mode: over-personalization. Machine learning can dynamically adjust content
             and offers based on real-time behaviour &mdash; but deciding which moments in the journey actually
             benefit from personalization is a design decision, not something to delegate to an algorithm by default.
@@ -8791,13 +8791,13 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="05" title="Where AI changes the build" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             The meaningful shift in 2026 is not &ldquo;AI writes the copy.&rdquo; AI-assisted content authoring
             inside the CMS &mdash; copy suggestions, quality checks, localisation, SEO flagging &mdash; has become
             a standard platform feature, not a differentiator. It&rsquo;s useful, and it&rsquo;s already table
             stakes.
           </p>
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
             The genuinely new capability is agentic orchestration: AI agents operating under human direction to run
             experimentation, personalization, and optimisation across an experience at a scale no team could manage
             manually. An agent continuously testing variant combinations, monitoring CWV regressions, and adjusting
@@ -8806,15 +8806,15 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
           </p>
 
           <figure className="my-8">
-            <div className="border border-brand-concrete overflow-hidden">
+            <div className="border border-bk-rule overflow-hidden">
               <AgentDXPOrchestrationDiagram />
             </div>
-            <figcaption className="font-sans text-xs text-brand-muted mt-3 text-center tracking-wide">
+            <figcaption className="font-sans text-xs text-bk-muted mt-3 text-center tracking-wide">
               Agents handle the combinatorial work of testing. Humans own the guardrails and sign off on high-stakes changes.
             </figcaption>
           </figure>
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-4">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-4">
             A third AI dimension that now belongs explicitly in a DXP strategy: how the experience performs when an
             AI assistant is navigating or summarising it on a user&rsquo;s behalf. AEO and GEO optimisation &mdash;
             engineering your content to be accurately retrieved, cited, and summarised by AI search surfaces &mdash;
@@ -8834,10 +8834,10 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
                 body: 'Editorial assistants built into platforms like CoreMedia support copy preparation, quality checks, and content migration inside the authoring workflow. For AEM-adjacent work, this is the direction the category is moving — not a separate bolt-on product.',
               },
             ].map(({ head, body }, i) => (
-              <div key={i} className="flex gap-5 border-l-2 border-brand-cobalt/20 pl-5">
+              <div key={i} className="flex gap-5 border-l-2 border-bk-gold/20 pl-5">
                 <div>
-                  <p className="font-sans text-base font-semibold text-brand-black/85">{head}</p>
-                  <p className="font-sans text-base text-brand-black/65 leading-relaxed mt-1">{body}</p>
+                  <p className="font-sans text-base font-semibold text-bk-parchment/85">{head}</p>
+                  <p className="font-sans text-base text-bk-parchment/65 leading-relaxed mt-1">{body}</p>
                 </div>
               </div>
             ))}
@@ -8848,12 +8848,12 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         <section>
           <SectionHeading number="06" title="The build sequence" />
 
-          <p className="font-sans text-base text-brand-black/75 leading-relaxed mb-8">
+          <p className="font-sans text-base text-bk-parchment/75 leading-relaxed mb-8">
             The sequence matters. Each of these steps is upstream of the next &mdash; skipping or compressing one
             creates problems that are expensive to fix later, not just inconvenient.
           </p>
 
-          <div className="space-y-0 border border-brand-concrete">
+          <div className="space-y-0 border border-bk-rule">
             {[
               { n: '01', phase: 'Strategy', step: 'Map goals and rank by business impact', detail: 'Before touching a platform or opening a design file. Rank, don\'t list — everything can\'t be equally important.' },
               { n: '02', phase: 'Strategy', step: 'Ground the structure in a real customer journey', detail: 'Not an assumed ideal path. The CDJ dashboard or equivalent is the infrastructure for this step, not a separate exercise.' },
@@ -8865,16 +8865,16 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
               { n: '08', phase: 'Orchestration', step: 'Set guardrails before enabling agentic optimization', detail: 'Human-in-the-loop on high-stakes changes. Defined success condition. Monitoring for drift. Then enable.' },
               { n: '09', phase: 'Discovery', step: 'Check AEO/GEO as a first-class success metric', detail: 'How does the experience perform when an AI assistant is navigating it? That\'s part of your audience now.' },
             ].map(({ n, phase, step, detail }, i, arr) => (
-              <div key={i} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-brand-concrete' : ''}`}>
-                <div className="w-12 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/30 flex items-start justify-center">
-                  <span className="font-display text-xl text-brand-cobalt/40 leading-none">{n}</span>
+              <div key={i} className={`flex gap-0 ${i < arr.length - 1 ? 'border-b border-bk-rule' : ''}`}>
+                <div className="w-12 flex-shrink-0 p-4 border-r border-bk-rule bg-bk-deep/30 flex items-start justify-center">
+                  <span className="font-mono text-xl text-bk-gold/40 leading-none">{n}</span>
                 </div>
-                <div className="w-28 flex-shrink-0 p-4 border-r border-brand-concrete bg-brand-graphite/20">
-                  <span className="font-sans text-[9px] tracking-[0.15em] uppercase text-brand-muted">{phase}</span>
+                <div className="w-28 flex-shrink-0 p-4 border-r border-bk-rule bg-bk-deep/20">
+                  <span className="font-sans text-[9px] tracking-[0.15em] uppercase text-bk-muted">{phase}</span>
                 </div>
                 <div className="flex-1 p-4">
-                  <p className="font-sans text-sm font-semibold text-brand-black/85 mb-1">{step}</p>
-                  <p className="font-sans text-xs text-brand-black/60 leading-relaxed">{detail}</p>
+                  <p className="font-sans text-sm font-semibold text-bk-parchment/85 mb-1">{step}</p>
+                  <p className="font-sans text-xs text-bk-parchment/60 leading-relaxed">{detail}</p>
                 </div>
               </div>
             ))}
@@ -8882,8 +8882,8 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
         </section>
 
         {/* Closing */}
-        <section className="border-t border-brand-concrete pt-10">
-          <p className="font-sans text-base text-brand-black/70 leading-relaxed max-w-prose">
+        <section className="border-t border-bk-rule pt-10">
+          <p className="font-sans text-base text-bk-parchment/70 leading-relaxed max-w-prose">
             The 40% revenue gap between personalization leaders and average performers is real and measured. But
             it&rsquo;s not a function of which platform they bought &mdash; it&rsquo;s a function of whether they
             had the clarity to rank what mattered, the discipline to build the structure before the surface, and
@@ -8894,15 +8894,15 @@ function DXPArticle({ article, formattedDate }: { article: ReturnType<typeof get
 
         <RecommendedReading items={[
           { title: 'Forrester Wave: Digital Experience Platforms, Q4 2025', author: 'Forrester Research', type: 'Article', description: 'The primary analyst source for DXP platform evaluation. The capability comparison across major vendors is where to look when the architecture decision is live — it separates the vendor pitch from the independent assessment.' },
-          { title: 'Continuous Discovery Habits', author: 'Teresa Torres — Product Talk', type: 'Book', description: 'The foundational text on grounding product and experience decisions in continuous, behavioral evidence rather than assumed personas. The discipline this article argues for in Part 4 is what Torres teaches at practitioner level.' },
-          { title: "Don't Make Me Think", author: 'Steve Krug — New Riders', type: 'Book', description: "Still the clearest guide to the structure-before-surface principle. The insight that usability is about removing friction, not adding features, translates directly to the IA and interaction flow stage of any DXP build." },
+          { title: 'Continuous Discovery Habits', author: 'Teresa Torres — Product Talk', type: 'Book', href: 'https://www.amazon.com/dp/1736633309', description: 'The foundational text on grounding product and experience decisions in continuous, behavioral evidence rather than assumed personas. The discipline this article argues for in Part 4 is what Torres teaches at practitioner level.' },
+          { title: "Don't Make Me Think", author: 'Steve Krug — New Riders', type: 'Book', href: 'https://www.amazon.com/dp/0321965515', description: "Still the clearest guide to the structure-before-surface principle. The insight that usability is about removing friction, not adding features, translates directly to the IA and interaction flow stage of any DXP build." },
         ]} />
 
         {/* Back link */}
-        <div className="border-t border-brand-concrete pt-8">
+        <div className="border-t border-bk-rule pt-8">
           <Link
             href="/articles"
-            className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-brand-muted hover:text-brand-cobalt transition-colors duration-200"
+            className="inline-flex items-center gap-2 font-sans text-sm tracking-[0.1em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200"
           >
             ← Back to Field Notes
           </Link>
