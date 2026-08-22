@@ -1,6 +1,9 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getArticleBySlug, articles } from '@/lib/articles'
+import { createClient } from '@/lib/supabase/server'
+import BlockRenderer from '@/components/articles/BlockRenderer'
+import type { DbArticle } from '@/lib/blocks'
 import {
   WisprMockup, ObsidianMockup, NotionMockup, FlowDiagram,
   ContextWindowComparison, BenchmarkChart, CostComparison, WorkflowSplit,
@@ -51,7 +54,65 @@ export async function generateMetadata({ params }: PageProps) {
   }
 }
 
-export default function ArticlePage({ params }: PageProps) {
+export default async function ArticlePage({ params }: PageProps) {
+  // Check Supabase for a CMS article first
+  const supabase = createClient()
+  const { data: dbArticle } = await supabase
+    .from('articles')
+    .select('*')
+    .eq('slug', params.slug)
+    .eq('published', true)
+    .single()
+
+  if (dbArticle) {
+    const a = dbArticle as DbArticle
+    const formattedDate = new Date(a.date).toLocaleDateString('en-AU', {
+      year: 'numeric', month: 'long', day: 'numeric',
+    })
+    return (
+      <div className="bg-bk-slate min-h-screen">
+        <div className="max-w-[900px] mx-auto px-6 md:px-10 pt-10 pb-0">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-bk-muted hover:text-bk-gold transition-colors duration-200"
+          >
+            ← Field Notes
+          </Link>
+        </div>
+        <header className="max-w-[900px] mx-auto px-6 md:px-10 pt-12 pb-10 border-b border-bk-rule">
+          <div className="flex flex-wrap items-center gap-3 mb-6">
+            <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-bk-gold border border-bk-gold/40 px-3 py-1.5">
+              {a.category}
+            </span>
+            <span className="font-sans text-[11px] text-bk-muted">{formattedDate}</span>
+            <span className="font-sans text-[11px] text-bk-muted">·</span>
+            <span className="font-sans text-[11px] text-bk-muted">{a.read_time}</span>
+            <span className="font-sans text-[11px] text-bk-muted">·</span>
+            <span className="font-sans text-[11px] text-bk-muted">Chris Ma</span>
+          </div>
+          <h1 className="font-book font-bold text-5xl md:text-7xl text-bk-parchment leading-tight mb-4">
+            {a.title}
+          </h1>
+          {a.subtitle && (
+            <p className="font-sans text-xl md:text-2xl text-bk-parchment/70 leading-relaxed max-w-2xl mt-6">
+              {a.subtitle}
+            </p>
+          )}
+          <div className="flex flex-wrap gap-2 mt-6">
+            {a.tags.map((tag) => (
+              <span key={tag} className="font-sans text-[10px] tracking-[0.15em] uppercase text-bk-muted border border-bk-rule px-2.5 py-1">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </header>
+        <article className="max-w-[720px] mx-auto px-6 md:px-10 py-16">
+          <BlockRenderer blocks={a.blocks} />
+        </article>
+      </div>
+    )
+  }
+
   const article = getArticleBySlug(params.slug)
   if (!article) notFound()
 
